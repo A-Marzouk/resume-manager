@@ -105148,6 +105148,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -105160,6 +105162,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       results: [],
       customSearch: false,
+      project: {
+        name: '',
+        description: '',
+        link: '',
+        images: []
+      },
+      showPopUpProject: false,
       searchParams: {
         jobTitle: '',
         rate: '',
@@ -105303,6 +105312,8 @@ exports.push([module.i, "\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n  margi
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hireAgent__ = __webpack_require__(537);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hireAgent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__hireAgent__);
 //
 //
 //
@@ -105372,14 +105383,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+
 
 
 // Receives the users from laravel using props
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['freelancer'],
-
+  components: {
+    'hire-agent': __WEBPACK_IMPORTED_MODULE_0__hireAgent___default.a
+  },
   data: function data() {
-    return {};
+    return {
+      showHire: false,
+      projects: [{
+        name: 'Project 1',
+        description: 'Anim commodo enim aliquip officia. Duis deserunt in mollit ipsum ad voluptate cillum enim ex pariatur culpa. Est non nostrud eu duis dolor cupidatat. Esse Lorem consectetur tempor magna id aute laborum sit.',
+        link: '#',
+        images: ['/home/work1.png', '/home/work2.png', '/home/work3.png']
+      }, {
+        name: 'Project 2',
+        description: 'Anim commodo enim aliquip officia. Duis deserunt in mollit ipsum ad voluptate cillum enim ex pariatur culpa. Est non nostrud eu duis dolor cupidatat. Esse Lorem consectetur tempor magna id aute laborum sit.',
+        link: '#',
+        images: ['/home/work1.png', '/home/work2.png', '/home/work3.png']
+      }, {
+        name: 'Project 3',
+        description: 'Anim commodo enim aliquip officia. Duis deserunt in mollit ipsum ad voluptate cillum enim ex pariatur culpa. Est non nostrud eu duis dolor cupidatat. Esse Lorem consectetur tempor magna id aute laborum sit.',
+        link: '#',
+        images: ['/home/work1.png', '/home/work2.png', '/home/work3.png']
+      }]
+    };
   }
 });
 
@@ -105388,6 +105423,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
+  var this$1 = this
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -105491,6 +105527,11 @@ var render = function() {
                         attrs: {
                           href: "javascript:void(0)",
                           id: "showHireSection" + _vm.freelancer.id
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.showHire = true
+                          }
                         }
                       },
                       [
@@ -105517,6 +105558,11 @@ var render = function() {
                       attrs: {
                         href: "javascript:void(0)",
                         id: "showHireSection" + _vm.freelancer.id
+                      },
+                      on: {
+                        click: function($event) {
+                          _vm.showHire = true
+                        }
                       }
                     },
                     [_vm._v("\n                    HIRE ME\n                ")]
@@ -105528,7 +105574,31 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    !_vm.showHire
+      ? _c("div", { staticClass: "agentsContainer__portfolio" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3)
+        ])
+      : _c(
+          "div",
+          { staticClass: "agentsContainer__hireContainer" },
+          [
+            _c("hire-agent", {
+              attrs: {
+                cancel: function() {
+                  return (this$1.showHire = false)
+                },
+                freelancer: _vm.freelancer
+              }
+            })
+          ],
+          1
+        )
   ])
 }
 var staticRenderFns = [
@@ -105536,31 +105606,41 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "agentsContainer__portfolio" }, [
-      _c("div", { staticClass: "work" }, [
+    return _c("div", { staticClass: "work" }, [
+      _c("img", { attrs: { src: "/images/home/work1.png", alt: "" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "work" }, [
+      _c("img", { attrs: { src: "/images/home/work2.png", alt: "" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "work" }, [
+      _c("img", { attrs: { src: "/images/home/work3.png", alt: "" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "slickSlide_portfolio" }, [
+      _c("div", { staticClass: "slide" }, [
         _c("img", { attrs: { src: "/images/home/work1.png", alt: "" } })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "work" }, [
+      _c("div", { staticClass: "slide" }, [
         _c("img", { attrs: { src: "/images/home/work2.png", alt: "" } })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "work" }, [
+      _c("div", { staticClass: "slide" }, [
         _c("img", { attrs: { src: "/images/home/work3.png", alt: "" } })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "slickSlide_portfolio" }, [
-        _c("div", { staticClass: "slide" }, [
-          _c("img", { attrs: { src: "/images/home/work1.png", alt: "" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "slide" }, [
-          _c("img", { attrs: { src: "/images/home/work2.png", alt: "" } })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "slide" }, [
-          _c("img", { attrs: { src: "/images/home/work3.png", alt: "" } })
-        ])
       ])
     ])
   }
@@ -105794,22 +105874,58 @@ var render = function() {
       ? _c(
           "div",
           { staticClass: "agentsContainer" },
-          _vm._l(_vm.freelancers, function(freelancer) {
-            return _c("freelancer-card-small", {
-              key: freelancer.id + freelancer.firstName,
-              attrs: { freelancer: freelancer }
+          [
+            _vm._l(_vm.freelancers, function(freelancer) {
+              return _c("freelancer-card-small", {
+                key: freelancer.id + freelancer.firstName,
+                attrs: {
+                  showPopUpProject: _vm.showPopUpProject,
+                  freelancer: freelancer
+                }
+              })
+            }),
+            _vm._v(" "),
+            _c("portfolio-pop-up", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.showPopUpProject,
+                  expression: "showPopUpProject"
+                }
+              ],
+              attrs: { project: _vm.project }
             })
-          })
+          ],
+          2
         )
       : _c(
           "div",
           { staticClass: "agentsContainer" },
-          _vm._l(_vm.results, function(agent) {
-            return _c("freelancer-card-small", {
-              key: agent.id + agent.firstName,
-              attrs: { freelancer: agent }
+          [
+            _vm._l(_vm.results, function(agent) {
+              return _c("freelancer-card-small", {
+                key: agent.id + agent.firstName,
+                attrs: {
+                  showPopUpProject: _vm.showPopUpProject,
+                  freelancer: agent
+                }
+              })
+            }),
+            _vm._v(" "),
+            _c("portfolio-pop-up", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.showPopUpProject,
+                  expression: "showPopUpProject"
+                }
+              ],
+              attrs: { project: _vm.project }
             })
-          })
+          ],
+          2
         )
   ])
 }
@@ -137151,6 +137267,375 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 534 */,
+/* 535 */,
+/* 536 */,
+/* 537 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(538)
+/* template */
+var __vue_template__ = __webpack_require__(539)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\homeDesigners\\hireAgent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-21c3e717", Component.options)
+  } else {
+    hotAPI.reload("data-v-21c3e717", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 538 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['freelancer', 'cancel'],
+    data: function data() {
+        return {
+            hours: this.freelancer.availableHours,
+            weeks: 4
+        };
+    },
+
+    methods: {
+        payment: function payment() {
+            var hours = this.hours,
+                weeks = this.weeks;
+
+
+            hours && weeks && window.location.replace('/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks);
+        }
+    }
+});
+
+/***/ }),
+/* 539 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticStyle: { "border-top": "1px solid #EBEDEF" },
+      attrs: { id: "hireContent" }
+    },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "offset-md-4 col-md-4 col-12" }, [
+          _c("div", { staticClass: "hireText" }, [
+            _vm._v(
+              "\n                Select the number of Hours you need per week:\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "hoursBtn NoDecor" }, [
+            _c(
+              "a",
+              {
+                staticClass: "hoursMinus",
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    _vm.hours && _vm.hours--
+                  }
+                }
+              },
+              [
+                _c("img", {
+                  staticStyle: { width: "18px", "padding-right": "8px" },
+                  attrs: { src: "/images/newResume/minus.png", alt: "minus" }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c("span", { attrs: { id: "numberOfHours" } }, [
+              _vm._v(_vm._s(_vm.hours))
+            ]),
+            _vm._v(" hours\n                "),
+            _c(
+              "a",
+              {
+                staticClass: "hoursPlus",
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    _vm.hours++
+                  }
+                }
+              },
+              [
+                _c("img", {
+                  staticStyle: { width: "18px", "padding-left": "8px" },
+                  attrs: { src: "/images/newResume/plus.png", alt: "plus" }
+                })
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "offset-md-4 col-md-4 col-12" }, [
+          _c("div", { staticClass: "hireText" }, [
+            _vm._v(
+              "\n                How many weeks would you like to book for?\n            "
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "hoursBtn NoDecor" }, [
+            _c(
+              "a",
+              {
+                staticClass: "weeksMinus",
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    _vm.weeks && _vm.weeks--
+                  }
+                }
+              },
+              [
+                _c("img", {
+                  staticStyle: { width: "18px", "padding-right": "8px" },
+                  attrs: { src: "/images/newResume/minus.png", alt: "minus" }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(_vm.weeks))]),
+            _vm._v(" weeks\n                "),
+            _c(
+              "a",
+              {
+                staticClass: "weeksPlus",
+                attrs: { href: "javascript:void(0)" },
+                on: {
+                  click: function($event) {
+                    _vm.weeks++
+                  }
+                }
+              },
+              [
+                _c("img", {
+                  staticStyle: { width: "18px", "padding-left": "8px" },
+                  attrs: { src: "/images/newResume/plus.png", alt: "plus" }
+                })
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "row",
+          staticStyle: { "padding-top": "50px", "padding-bottom": "50px" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "offset-md-2 col-12 col-md-8",
+              staticStyle: { "border-top": "1px solid #EBEDEF" }
+            },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-md-2 col-4 text-left jobTitle",
+                    staticStyle: { "font-size": "12px", color: "#30323D" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    Monthly rate\n                "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-md-2 col-3 offset-5 offset-md-8 text-right jobTitle",
+                    staticStyle: {
+                      "font-weight": "bold",
+                      "font-size": "12px",
+                      color: "#30323D"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(_vm.hours * 5 * _vm.weeks) +
+                        " $\n                "
+                    )
+                  ]
+                )
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "row",
+          staticStyle: { "border-top": "1px solid #EBEDEF" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "col-md-4 offset-md-2 col-12 NoDecor",
+              staticStyle: { "padding-top": "17px" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-block cancelBtn cancelBooking",
+                  attrs: { href: "javascript:void(0)" },
+                  on: { click: _vm.cancel }
+                },
+                [_vm._v("Cancel Booking")]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "col-md-4 col-12 NoDecor",
+              staticStyle: { "padding-top": "17px", "padding-bottom": "30px" }
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-block summaryBtn",
+                  attrs: { href: "javascript:;", id: "hireMeBtn" },
+                  on: { click: _vm.payment }
+                },
+                [_vm._v("Booking Summary")]
+              )
+            ]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-21c3e717", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

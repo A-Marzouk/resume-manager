@@ -33,13 +33,13 @@
                         </div>
                     </div>
                     <div v-if="freelancer.availableHours !== 0" class="text-center cardRow NoDecor hideOnSm">
-                      <a class="hireCardBtn btn-block showHireSection showOnSm" href="javascript:void(0)" :id="'showHireSection'+freelancer.id">
+                      <a @click="showHire = true" class="hireCardBtn btn-block showHireSection showOnSm" href="javascript:void(0)" :id="'showHireSection'+freelancer.id">
                         HIRE ME
                       </a>
                     </div>
                 </div>
                 <div v-if="freelancer.availableHours !== 0" class="text-center cardRow NoDecor showOnSm">
-                  <a class="hireCardBtn btn-block showHireSection showOnSm" href="javascript:void(0)" :id="'showHireSection'+freelancer.id">
+                  <a @click="showHire = true" class="hireCardBtn btn-block showHireSection showOnSm" href="javascript:void(0)" :id="'showHireSection'+freelancer.id">
                       HIRE ME
                   </a>
                 </div>
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="agentsContainer__portfolio">
+    <div v-if="!showHire" class="agentsContainer__portfolio">
       <div class="work"><img src="/images/home/work1.png" alt=""></div>
       <div class="work"><img src="/images/home/work2.png" alt=""></div>
       <div class="work"><img src="/images/home/work3.png" alt=""></div>
@@ -64,19 +64,45 @@
         </div>
       </div>
     </div>
+    <div v-else class="agentsContainer__hireContainer">
+      <hire-agent :cancel="() => this.showHire = false" :freelancer="freelancer"></hire-agent>
+    </div>
   </div>
 
 </template>
 <script>
+import hireAgent from './hireAgent'
 
 // Receives the users from laravel using props
 export default {
   props: [
     'freelancer'
   ],
-
+  components: {
+    'hire-agent': hireAgent
+  },
   data: () =>({
-
+    showHire: false,
+    projects: [
+      {
+        name: 'Project 1',
+        description: 'Anim commodo enim aliquip officia. Duis deserunt in mollit ipsum ad voluptate cillum enim ex pariatur culpa. Est non nostrud eu duis dolor cupidatat. Esse Lorem consectetur tempor magna id aute laborum sit.',
+        link: '#',
+        images: ['/home/work1.png', '/home/work2.png', '/home/work3.png']
+      },
+      {
+        name: 'Project 2',
+        description: 'Anim commodo enim aliquip officia. Duis deserunt in mollit ipsum ad voluptate cillum enim ex pariatur culpa. Est non nostrud eu duis dolor cupidatat. Esse Lorem consectetur tempor magna id aute laborum sit.',
+        link: '#',
+        images: ['/home/work1.png', '/home/work2.png', '/home/work3.png']
+      },
+      {
+        name: 'Project 3',
+        description: 'Anim commodo enim aliquip officia. Duis deserunt in mollit ipsum ad voluptate cillum enim ex pariatur culpa. Est non nostrud eu duis dolor cupidatat. Esse Lorem consectetur tempor magna id aute laborum sit.',
+        link: '#',
+        images: ['/home/work1.png', '/home/work2.png', '/home/work3.png']
+      }
+    ]
   })
 }
 </script>

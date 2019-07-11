@@ -4613,7 +4613,7 @@ html {
   padding: 100px 78px;
   overflow: hidden;
   width: 100%;
-  background-image: url(/resumeApp/public/images/home/agentsBg-1.svg), url(/resumeApp/public/images/home/pencilsBG.png);
+  background-image: url(/resumeApp/public/images/home/agentsBg-1.svg), url(/resumeApp/public/images/home/pencilsBg.png);
   background-repeat: no-repeat,no-repeat;
   background-size: cover;
 }

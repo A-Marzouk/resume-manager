@@ -70,7 +70,9 @@ class HomeController extends Controller
     }
 
     public function newHome(){
-        return view('new_home_page');
+        // homepage freelancers
+        $homeFreelancersData = UserData::with('user')->where('home_page_freelancer',true)->get();
+        return view('new_home_page',compact('homeFreelancersData'));
     }
 
     public function termsView(){

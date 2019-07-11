@@ -23,7 +23,7 @@
     </div>
 
     <div id="newHomeComponent">
-        <new-home-component></new-home-component>
+        <new-home-component :freelancers="{{ json_encode($homeFreelancersData) }}" ></new-home-component>
     </div>
 
 

@@ -120,7 +120,10 @@ export default {
         .then(response => this.results = response.data)
         .catch(error => console.log(error))
     }
-  }
+  },
+    mounted() {
+
+    }
 }
 </script>
 <style scoped>

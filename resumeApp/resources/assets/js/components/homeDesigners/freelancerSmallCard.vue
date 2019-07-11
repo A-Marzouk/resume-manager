@@ -14,7 +14,7 @@
                 <div class="freelancerCardRight">
                     <div class="nameArea">
                         <div class="nameCard">
-                            {{freelancer.firstName}}
+                            {{freelancer.name}}
                         </div>
                         <div class="jobTitle" id="animatedText">
                             {{freelancer.jobTitle}}
@@ -48,19 +48,19 @@
     </div>
 
     <div class="agentsContainer__portfolio">
-      <div class="work"><img src="/images/home/work1.png" alt=""></div>
-      <div class="work"><img src="/images/home/work2.png" alt=""></div>
-      <div class="work"><img src="/images/home/work3.png" alt=""></div>
+      <div class="work"><img src="resumeApp/public/images/home/work1.png" alt=""></div>
+      <div class="work"><img src="resumeApp/public/images/home/work2.png" alt=""></div>
+      <div class="work"><img src="resumeApp/public/images/home/work3.png" alt=""></div>
 
       <div class="slickSlide_portfolio">
         <div class="slide">
-          <img src="/images/home/work1.png" alt="">
+          <img src="resumeApp/public/images/home/work1.png" alt="">
         </div>
         <div class="slide">
-          <img src="/images/home/work2.png" alt="">
+          <img src="resumeApp/public/images/home/work2.png" alt="">
         </div>
         <div class="slide">
-          <img src="/images/home/work3.png" alt="">
+          <img src="resumeApp/public/images/home/work3.png" alt="">
         </div>
       </div>
     </div>

@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(297);
+module.exports = __webpack_require__(299);
 
 
 /***/ }),
@@ -14715,7 +14715,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
     }
 });
 
-__webpack_require__(296);
+__webpack_require__(298);
 
 /***/ }),
 /* 16 */
@@ -85729,13 +85729,13 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(301)
+  __webpack_require__(289)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(289)
+var __vue_script__ = __webpack_require__(291)
 /* template */
-var __vue_template__ = __webpack_require__(303)
+var __vue_template__ = __webpack_require__(297)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -85775,11 +85775,51 @@ module.exports = Component.exports
 
 /***/ }),
 /* 289 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(290);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("19364e03", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92252b4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHome.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92252b4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHome.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 290 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n*[data-v-92252b4e]:focus{\n    outline: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 291 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard__ = __webpack_require__(292);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard__);
 //
 //
@@ -85887,23 +85927,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return console.log(error);
       });
     }
-  }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
-/* 290 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(291)
+  __webpack_require__(293)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(293)
+var __vue_script__ = __webpack_require__(295)
 /* template */
-var __vue_template__ = __webpack_require__(294)
+var __vue_template__ = __webpack_require__(296)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -85942,13 +85983,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 291 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(292);
+var content = __webpack_require__(294);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -85968,7 +86009,7 @@ if(false) {
 }
 
 /***/ }),
-/* 292 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -85982,7 +86023,7 @@ exports.push([module.i, "\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n  margi
 
 
 /***/ }),
-/* 293 */
+/* 295 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -86068,7 +86109,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 294 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -86098,7 +86139,7 @@ var render = function() {
               _c("div", { staticClass: "nameCard" }, [
                 _vm._v(
                   "\n                          " +
-                    _vm._s(_vm.freelancer.firstName) +
+                    _vm._s(_vm.freelancer.name) +
                     "\n                      "
                 )
               ]),
@@ -86222,28 +86263,40 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "agentsContainer__portfolio" }, [
       _c("div", { staticClass: "work" }, [
-        _c("img", { attrs: { src: "/images/home/work1.png", alt: "" } })
+        _c("img", {
+          attrs: { src: "resumeApp/public/images/home/work1.png", alt: "" }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "work" }, [
-        _c("img", { attrs: { src: "/images/home/work2.png", alt: "" } })
+        _c("img", {
+          attrs: { src: "resumeApp/public/images/home/work2.png", alt: "" }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "work" }, [
-        _c("img", { attrs: { src: "/images/home/work3.png", alt: "" } })
+        _c("img", {
+          attrs: { src: "resumeApp/public/images/home/work3.png", alt: "" }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "slickSlide_portfolio" }, [
         _c("div", { staticClass: "slide" }, [
-          _c("img", { attrs: { src: "/images/home/work1.png", alt: "" } })
+          _c("img", {
+            attrs: { src: "resumeApp/public/images/home/work1.png", alt: "" }
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "slide" }, [
-          _c("img", { attrs: { src: "/images/home/work2.png", alt: "" } })
+          _c("img", {
+            attrs: { src: "resumeApp/public/images/home/work2.png", alt: "" }
+          })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "slide" }, [
-          _c("img", { attrs: { src: "/images/home/work3.png", alt: "" } })
+          _c("img", {
+            attrs: { src: "resumeApp/public/images/home/work3.png", alt: "" }
+          })
         ])
       ])
     ])
@@ -86259,8 +86312,259 @@ if (false) {
 }
 
 /***/ }),
-/* 295 */,
-/* 296 */
+/* 297 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "agentsSection" }, [
+    _c("img", {
+      staticClass: "agentsBg-1",
+      attrs: { src: "/resumeApp/public/images/home/agentsBg-1.svg", alt: "" }
+    }),
+    _vm._v(" "),
+    _c("img", {
+      staticClass: "agentsBg-2",
+      attrs: { src: "/resumeApp/public/images/home/agentsBg-2.svg", alt: "" }
+    }),
+    _vm._v(" "),
+    _c("img", {
+      staticClass: "agentsBg-3",
+      attrs: { src: "/resumeApp/public/images/home/agentsBg-3.svg", alt: "" }
+    }),
+    _vm._v(" "),
+    _c("img", {
+      staticClass: "pencilsBg",
+      attrs: { src: "/resumeApp/public/images/home/pencilsBg.png", alt: "" }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "agentsContainer__searchTools" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn-first",
+          class: { active: !_vm.customSearch },
+          on: {
+            click: function($event) {
+              _vm.customSearch = false
+            }
+          }
+        },
+        [_vm._v("Featured designers")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn-second",
+          class: { active: _vm.customSearch },
+          on: {
+            click: function($event) {
+              _vm.customSearch = true
+            }
+          }
+        },
+        [_vm._v("Search designers")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "agentsContainer__searchSelects" }, [
+      _c(
+        "div",
+        {
+          staticClass: "agentsContainer__selectContainer",
+          class: { active: _vm.activeBox === "jobTitle" }
+        },
+        [
+          _c(
+            "select",
+            {
+              attrs: { name: "jobTitle" },
+              on: {
+                change: _vm.handleChangeSelect,
+                focus: function($event) {
+                  _vm.activeBox = "jobTitle"
+                }
+              }
+            },
+            _vm._l(_vm.customValues.jobTitles, function(jobTitle, index) {
+              return _c(
+                "option",
+                { key: jobTitle + index, domProps: { value: jobTitle } },
+                [_vm._v(_vm._s(jobTitle))]
+              )
+            })
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm.customSearch
+        ? _c("div", { staticClass: "agentsContainer__customSelect" }, [
+            _c(
+              "div",
+              {
+                staticClass: "agentsContainer__selectContainer",
+                class: { active: _vm.activeBox === "rate" }
+              },
+              [
+                _c(
+                  "select",
+                  {
+                    attrs: { name: "rate" },
+                    on: {
+                      change: _vm.handleChangeSelect,
+                      focus: function($event) {
+                        _vm.activeBox = "rate"
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Choose a rate")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.customValues.rates, function(rate, index) {
+                      return _c(
+                        "option",
+                        { key: rate + index, domProps: { value: rate } },
+                        [_vm._v("$ " + _vm._s(rate) + " hourly")]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "agentsContainer__selectContainer",
+                class: { active: _vm.activeBox === "availability" }
+              },
+              [
+                _c(
+                  "select",
+                  {
+                    attrs: { name: "availability" },
+                    on: {
+                      change: _vm.handleChangeSelect,
+                      focus: function($event) {
+                        _vm.activeBox = "availability"
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Choose an availability")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.customValues.availabilities, function(
+                      availability,
+                      index
+                    ) {
+                      return _c(
+                        "option",
+                        {
+                          key: availability + index,
+                          domProps: { value: availability }
+                        },
+                        [_vm._v(_vm._s(availability) + " hours weekly")]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "agentsContainer__selectContainer",
+                class: { active: _vm.activeBox === "country" }
+              },
+              [
+                _c(
+                  "select",
+                  {
+                    attrs: { name: "country" },
+                    on: {
+                      change: _vm.handleChangeSelect,
+                      focus: function($event) {
+                        _vm.activeBox = "country"
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Choose a country")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.customValues.countries, function(
+                      country,
+                      index
+                    ) {
+                      return _c(
+                        "option",
+                        { key: country + index, domProps: { value: country } },
+                        [_vm._v(_vm._s(country))]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            )
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("img", {
+      staticClass: "bottomBg",
+      attrs: {
+        src: "/resumeApp/public/images/home/computer.png",
+        alt: "computer"
+      }
+    }),
+    _vm._v(" "),
+    !_vm.customSearch
+      ? _c(
+          "div",
+          { staticClass: "agentsContainer" },
+          _vm._l(_vm.freelancers, function(freelancer) {
+            return _c("freelancer-card-small", {
+              key: freelancer.id + freelancer.firstName,
+              attrs: { freelancer: freelancer }
+            })
+          })
+        )
+      : _c(
+          "div",
+          { staticClass: "agentsContainer" },
+          _vm._l(_vm.results, function(agent) {
+            return _c("freelancer-card-small", {
+              key: agent.id + agent.firstName,
+              attrs: { freelancer: agent }
+            })
+          })
+        )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-92252b4e", module.exports)
+  }
+}
+
+/***/ }),
+/* 298 */
 /***/ (function(module, exports) {
 
 var status = $('#record_status'),
@@ -86539,305 +86843,10 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 /***/ }),
-/* 297 */
+/* 299 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(302);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("19364e03", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92252b4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHome.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92252b4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHome.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 302 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n*[data-v-92252b4e]:focus{\n    outline: 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 303 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "agentsSection" }, [
-    _c("img", {
-      staticClass: "agentsBg-1",
-      attrs: { src: "/resumeApp/public/images/home/agentsBg-1.svg", alt: "" }
-    }),
-    _vm._v(" "),
-    _c("img", {
-      staticClass: "agentsBg-2",
-      attrs: { src: "/resumeApp/public/images/home/agentsBg-2.svg", alt: "" }
-    }),
-    _vm._v(" "),
-    _c("img", {
-      staticClass: "agentsBg-3",
-      attrs: { src: "/resumeApp/public/images/home/agentsBg-3.svg", alt: "" }
-    }),
-    _vm._v(" "),
-    _c("img", {
-      staticClass: "pencilsBg",
-      attrs: { src: "/resumeApp/public/images/home/pencilsBg.png", alt: "" }
-    }),
-    _vm._v(" "),
-    _c("div", { staticClass: "agentsContainer__searchTools" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn-first",
-          class: { active: !_vm.customSearch },
-          on: {
-            click: function($event) {
-              _vm.customSearch = false
-            }
-          }
-        },
-        [_vm._v("Featured designers")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn-second",
-          class: { active: _vm.customSearch },
-          on: {
-            click: function($event) {
-              _vm.customSearch = true
-            }
-          }
-        },
-        [_vm._v("Search designers")]
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "agentsContainer__searchSelects" }, [
-      _c(
-        "div",
-        {
-          staticClass: "agentsContainer__selectContainer",
-          class: { active: _vm.activeBox === "jobTitle" }
-        },
-        [
-          _c(
-            "select",
-            {
-              attrs: { name: "jobTitle" },
-              on: {
-                change: _vm.handleChangeSelect,
-                focus: function($event) {
-                  _vm.activeBox = "jobTitle"
-                }
-              }
-            },
-            _vm._l(_vm.customValues.jobTitles, function(jobTitle, index) {
-              return _c(
-                "option",
-                { key: jobTitle + index, domProps: { value: jobTitle } },
-                [_vm._v(_vm._s(jobTitle))]
-              )
-            })
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _vm.customSearch
-        ? _c("div", { staticClass: "agentsContainer__customSelect" }, [
-            _c(
-              "div",
-              {
-                staticClass: "agentsContainer__selectContainer",
-                class: { active: _vm.activeBox === "rate" }
-              },
-              [
-                _c(
-                  "select",
-                  {
-                    attrs: { name: "rate" },
-                    on: {
-                      change: _vm.handleChangeSelect,
-                      focus: function($event) {
-                        _vm.activeBox = "rate"
-                      }
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "" } }, [
-                      _vm._v("Choose a rate")
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(_vm.customValues.rates, function(rate, index) {
-                      return _c(
-                        "option",
-                        { key: rate + index, domProps: { value: rate } },
-                        [_vm._v("$ " + _vm._s(rate) + " hourly")]
-                      )
-                    })
-                  ],
-                  2
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "agentsContainer__selectContainer",
-                class: { active: _vm.activeBox === "availability" }
-              },
-              [
-                _c(
-                  "select",
-                  {
-                    attrs: { name: "availability" },
-                    on: {
-                      change: _vm.handleChangeSelect,
-                      focus: function($event) {
-                        _vm.activeBox = "availability"
-                      }
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "" } }, [
-                      _vm._v("Choose an availability")
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(_vm.customValues.availabilities, function(
-                      availability,
-                      index
-                    ) {
-                      return _c(
-                        "option",
-                        {
-                          key: availability + index,
-                          domProps: { value: availability }
-                        },
-                        [_vm._v(_vm._s(availability) + " hours weekly")]
-                      )
-                    })
-                  ],
-                  2
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "agentsContainer__selectContainer",
-                class: { active: _vm.activeBox === "country" }
-              },
-              [
-                _c(
-                  "select",
-                  {
-                    attrs: { name: "country" },
-                    on: {
-                      change: _vm.handleChangeSelect,
-                      focus: function($event) {
-                        _vm.activeBox = "country"
-                      }
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "" } }, [
-                      _vm._v("Choose a country")
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(_vm.customValues.countries, function(
-                      country,
-                      index
-                    ) {
-                      return _c(
-                        "option",
-                        { key: country + index, domProps: { value: country } },
-                        [_vm._v(_vm._s(country))]
-                      )
-                    })
-                  ],
-                  2
-                )
-              ]
-            )
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("img", {
-      staticClass: "bottomBg",
-      attrs: {
-        src: "/resumeApp/public/images/home/computer.png",
-        alt: "computer"
-      }
-    }),
-    _vm._v(" "),
-    !_vm.customSearch
-      ? _c(
-          "div",
-          { staticClass: "agentsContainer" },
-          _vm._l(_vm.freelancers, function(freelancer) {
-            return _c("freelancer-card-small", {
-              key: freelancer.id + freelancer.firstName,
-              attrs: { freelancer: freelancer }
-            })
-          })
-        )
-      : _c(
-          "div",
-          { staticClass: "agentsContainer" },
-          _vm._l(_vm.results, function(agent) {
-            return _c("freelancer-card-small", {
-              key: agent.id + agent.firstName,
-              attrs: { freelancer: agent }
-            })
-          })
-        )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-92252b4e", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

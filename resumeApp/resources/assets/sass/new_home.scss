@@ -672,8 +672,19 @@ html {
       }
     }
 
+    &__hireContainer {
+      width: calc(100% - 330px);
+      height: 182px;
+
+      @media (max-width: 770px) {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+
   }
-  
+
   &__filters {
     display: flex;
     // margin: 0 auto;

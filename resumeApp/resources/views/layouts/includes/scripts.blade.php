@@ -106,6 +106,23 @@
         ]
     });
 
+    $('.projectsSection').slick({
+        lazyLoad: 'ondemand',
+        dots: true,
+        arrows:false,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 786,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            }
+        ]
+    });
+
     function handler1() {
         $('img', this).attr('src','/resumeApp/public/images/Circle-PNG-HD.png');
         $(this).one("click", handler2);

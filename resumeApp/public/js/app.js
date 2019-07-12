@@ -85873,6 +85873,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -85889,9 +85895,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             customSearch: false,
 
             searchParams: {
-                jobTitle: 'design',
-                salary_hour: '1000',
-                available_hours: '1',
+                jobTitle: '',
+                salary_hour: '',
+                available_hours: '',
                 country: ''
             },
 
@@ -85945,7 +85951,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     mounted: function mounted() {
-        this.updateSearch();
         this.searchParams = {
             jobTitle: '',
             salary_hour: '',
@@ -86115,12 +86120,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 // Receives the users from laravel using props
@@ -86153,7 +86152,10 @@ var render = function() {
             _c("div", { staticClass: "imageContainer" }, [
               _c("img", {
                 staticClass: "freelancerImg",
-                attrs: { src: _vm.freelancer.photo, alt: "freelancer" }
+                attrs: {
+                  src: _vm.freelancer.user_data.photo,
+                  alt: "freelancer"
+                }
               })
             ])
           ]),
@@ -86163,7 +86165,7 @@ var render = function() {
               _c("div", { staticClass: "nameCard" }, [
                 _vm._v(
                   "\n                          " +
-                    _vm._s(_vm.freelancer.name) +
+                    _vm._s(_vm.freelancer.user_data.name) +
                     "\n                      "
                 )
               ]),
@@ -86174,7 +86176,7 @@ var render = function() {
                 [
                   _vm._v(
                     "\n                          " +
-                      _vm._s(_vm.freelancer.jobTitle) +
+                      _vm._s(_vm.freelancer.user_data.jobTitle) +
                       "\n                      "
                   )
                 ]
@@ -86200,7 +86202,7 @@ var render = function() {
                   [
                     _vm._v(
                       " $ " +
-                        _vm._s(parseInt(_vm.freelancer.salary)) +
+                        _vm._s(parseInt(_vm.freelancer.user_data.salary)) +
                         "\n                          "
                     )
                   ]
@@ -86225,7 +86227,9 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      _vm._s(parseInt(_vm.freelancer.availableHours)) + " hours"
+                      _vm._s(
+                        parseInt(_vm.freelancer.user_data.availableHours)
+                      ) + " hours"
                     )
                   ]
                 ),
@@ -86233,7 +86237,7 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm.freelancer.availableHours !== 0
+            _vm.freelancer.user_data.availableHours !== 0
               ? _c(
                   "div",
                   { staticClass: "text-center cardRow NoDecor hideOnSm" },
@@ -86259,7 +86263,7 @@ var render = function() {
               : _vm._e()
           ]),
           _vm._v(" "),
-          _vm.freelancer.availableHours !== 0
+          _vm.freelancer.user_data.availableHours !== 0
             ? _c(
                 "div",
                 { staticClass: "text-center cardRow NoDecor showOnSm" },
@@ -86283,55 +86287,31 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _c(
+      "div",
+      { staticClass: "agentsContainer__portfolio" },
+      [
+        _vm._l(_vm.freelancer.projects, function(project, index) {
+          return _c("div", { key: index, staticClass: "work" }, [
+            _c("img", { attrs: { src: project.mainImage, alt: "" } })
+          ])
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "slickSlide_portfolio" },
+          _vm._l(_vm.freelancer.projects, function(project, index) {
+            return _c("div", { key: index, staticClass: "slide" }, [
+              _c("img", { attrs: { src: project.mainImage, alt: "" } })
+            ])
+          })
+        )
+      ],
+      2
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "agentsContainer__portfolio" }, [
-      _c("div", { staticClass: "work" }, [
-        _c("img", {
-          attrs: { src: "resumeApp/public/images/home/work1.png", alt: "" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "work" }, [
-        _c("img", {
-          attrs: { src: "resumeApp/public/images/home/work2.png", alt: "" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "work" }, [
-        _c("img", {
-          attrs: { src: "resumeApp/public/images/home/work3.png", alt: "" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "slickSlide_portfolio" }, [
-        _c("div", { staticClass: "slide" }, [
-          _c("img", {
-            attrs: { src: "resumeApp/public/images/home/work1.png", alt: "" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "slide" }, [
-          _c("img", {
-            attrs: { src: "resumeApp/public/images/home/work2.png", alt: "" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "slide" }, [
-          _c("img", {
-            attrs: { src: "resumeApp/public/images/home/work3.png", alt: "" }
-          })
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -86690,12 +86670,29 @@ var render = function() {
       : _c(
           "div",
           { staticClass: "agentsContainer" },
-          _vm._l(_vm.results, function(agent) {
-            return _c("freelancer-card-small", {
-              key: agent.id + agent.firstName,
-              attrs: { freelancer: agent }
-            })
-          })
+          [
+            _vm._l(_vm.results, function(agent) {
+              return _c("freelancer-card-small", {
+                key: agent.id + agent.firstName,
+                attrs: { freelancer: agent }
+              })
+            }),
+            _vm._v(" "),
+            _vm.results.length < 1
+              ? _c("div", [
+                  _c(
+                    "div",
+                    { staticClass: "mainSection__content__description" },
+                    [
+                      _vm._v(
+                        "\n                Please choose search parameters\n            "
+                      )
+                    ]
+                  )
+                ])
+              : _vm._e()
+          ],
+          2
         )
   ])
 }

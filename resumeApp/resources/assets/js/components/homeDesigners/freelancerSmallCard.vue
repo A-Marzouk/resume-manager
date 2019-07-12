@@ -8,37 +8,37 @@
                 <img src="resumeApp/public/images/home/forum.svg" alt="" class="contact">
                 <div class="imageCol">
                     <div class="imageContainer">
-                        <img :src="freelancer.photo" alt="freelancer" class="freelancerImg">
+                        <img :src="freelancer.user_data.photo" alt="freelancer" class="freelancerImg">
                     </div>
                 </div>
                 <div class="freelancerCardRight">
                     <div class="nameArea">
                         <div class="nameCard">
-                            {{freelancer.name}}
+                            {{freelancer.user_data.name}}
                         </div>
                         <div class="jobTitle" id="animatedText">
-                            {{freelancer.jobTitle}}
+                            {{freelancer.user_data.jobTitle}}
                         </div>
                     </div>
                 </div>
                 <div class="hireRow showOnlyOnmd">
                     <div class="payment-details">
                         <div style="color: white;" >
-                            <img src="resumeApp/public/images/home/monetization.svg" alt=""><span class="payment-highLight" style="font-weight: bold;"> $ {{parseInt(freelancer.salary)}}
+                            <img src="resumeApp/public/images/home/monetization.svg" alt=""><span class="payment-highLight" style="font-weight: bold;"> $ {{parseInt(freelancer.user_data.salary)}}
                             </span>hourly rate
                         </div>
                         <div style="color: white;">
                             <img src="resumeApp/public/images/home/watch_later.svg" alt="">
-                            <span class="payment-highLight" :id="'maxHours' + freelancer.id" style="font-weight: bold;">{{parseInt(freelancer.availableHours)}} hours</span> availability
+                            <span class="payment-highLight" :id="'maxHours' + freelancer.id" style="font-weight: bold;">{{parseInt(freelancer.user_data.availableHours)}} hours</span> availability
                         </div>
                     </div>
-                    <div v-if="freelancer.availableHours !== 0" class="text-center cardRow NoDecor hideOnSm">
+                    <div v-if="freelancer.user_data.availableHours !== 0" class="text-center cardRow NoDecor hideOnSm">
                       <a class="hireCardBtn btn-block showHireSection showOnSm" href="javascript:void(0)" :id="'showHireSection'+freelancer.id">
                         HIRE ME
                       </a>
                     </div>
                 </div>
-                <div v-if="freelancer.availableHours !== 0" class="text-center cardRow NoDecor showOnSm">
+                <div v-if="freelancer.user_data.availableHours !== 0" class="text-center cardRow NoDecor showOnSm">
                   <a class="hireCardBtn btn-block showHireSection showOnSm" href="javascript:void(0)" :id="'showHireSection'+freelancer.id">
                       HIRE ME
                   </a>
@@ -48,20 +48,14 @@
     </div>
 
     <div class="agentsContainer__portfolio">
-      <div class="work"><img src="resumeApp/public/images/home/work1.png" alt=""></div>
-      <div class="work"><img src="resumeApp/public/images/home/work2.png" alt=""></div>
-      <div class="work"><img src="resumeApp/public/images/home/work3.png" alt=""></div>
+      <div class="work" v-for="(project,index) in freelancer.projects" :key="index">
+          <img :src="project.mainImage" alt="">
+      </div>
 
       <div class="slickSlide_portfolio">
-        <div class="slide">
-          <img src="resumeApp/public/images/home/work1.png" alt="">
-        </div>
-        <div class="slide">
-          <img src="resumeApp/public/images/home/work2.png" alt="">
-        </div>
-        <div class="slide">
-          <img src="resumeApp/public/images/home/work3.png" alt="">
-        </div>
+      <div class="slide" v-for="(project,index) in freelancer.projects" :key="index">
+          <img :src="project.mainImage" alt="">
+      </div>
       </div>
     </div>
   </div>

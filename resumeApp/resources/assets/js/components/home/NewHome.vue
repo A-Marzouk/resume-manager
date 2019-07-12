@@ -46,7 +46,13 @@
       </div>
       <div v-else class="agentsContainer">
         <freelancer-card-small v-for="agent in results" :key="agent.id + agent.firstName" :freelancer="agent"></freelancer-card-small>
+          <div v-if="results.length < 1">
+              <div class="mainSection__content__description">
+                  Please choose search parameters
+              </div>
+          </div>
       </div>
+
   </div>
 </template>
 
@@ -66,9 +72,9 @@ export default {
           customSearch: false,
 
           searchParams: {
-              jobTitle: 'design',
-              salary_hour: '1000',
-              available_hours: '1',
+              jobTitle: '',
+              salary_hour: '',
+              available_hours: '',
               country: '',
           },
 
@@ -151,7 +157,6 @@ export default {
 
 
     mounted() {
-        this.updateSearch();
         this.searchParams = {
                 jobTitle: '',
                 salary_hour: '',

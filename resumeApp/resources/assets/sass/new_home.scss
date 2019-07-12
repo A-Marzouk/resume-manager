@@ -672,18 +672,18 @@ html {
       }
     }
 
-  }
+    &__hireContainer {
+      width: calc(100% - 330px);
+      height: 182px;
 
-  &__hireContainer {
-    width: calc(100% - 330px);
-    height: 175px;
-
-    @media (max-width: 770px) {
-      width: 100%;
-      height: auto;
+      @media (max-width: 770px) {
+        width: 100%;
+        height: auto;
+      }
     }
-  }
 
+
+  }
 
   &__filters {
     display: flex;

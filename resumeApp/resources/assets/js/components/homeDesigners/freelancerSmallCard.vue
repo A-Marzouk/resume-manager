@@ -47,19 +47,13 @@
         </div>
     </div>
 
-    <div v-if="!showHire" class="agentsContainer__portfolio">
-          <div class="work" v-for="(project,index) in freelancer.projects" :key="index">
-              <img :src="project.mainImage" alt="">
-          </div>
-
-          <div class="slickSlide_portfolio">
-          <div class="slide" v-for="(project,index) in freelancer.projects" :key="index">
-              <img :src="project.mainImage" alt="">
-          </div>
-          </div>
+    <div v-show="!showHire" class="projectsSection">
+      <div  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center">
+          <img :src="project.mainImage" alt="" style="width:100%; max-width: 250px; height: 100%; max-height: 250px; padding: 5px;" >
+      </div>
     </div>
 
-    <div v-else class="agentsContainer__hireContainer">
+    <div v-show="showHire" class="agentsContainer__hireContainer">
       <hire-agent :cancel="() => this.showHire = false" :freelancer="freelancer"></hire-agent>
     </div>
   </div>
@@ -85,6 +79,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    .projectsSection{
+        width: calc(100% - 342px);
+        height:175px;
+        .slick-dots {
+            bottom: -5px !important;
+        }
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+    }
+
     .cardContainer{
         width: 330px;
 

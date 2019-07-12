@@ -4890,13 +4890,13 @@ html {
   }
 }
 
-.agentsSection__hireContainer {
+.agentsSection .agentsContainer__hireContainer {
   width: calc(100% - 330px);
-  height: 175px;
+  height: 182px;
 }
 
 @media (max-width: 770px) {
-  .agentsSection__hireContainer {
+  .agentsSection .agentsContainer__hireContainer {
     width: 100%;
     height: auto;
   }

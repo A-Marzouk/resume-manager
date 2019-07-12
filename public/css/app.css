@@ -12244,6 +12244,18 @@ html {
   }
 }
 
+.agentsSection .agentsContainer__hireContainer {
+  width: calc(100% - 330px);
+  height: 175px;
+}
+
+@media (max-width: 770px) {
+  .agentsSection .agentsContainer__hireContainer {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .agentsSection__filters {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -82,7 +82,7 @@ export default {
     'hire-agent': hireAgent
   },
   data: () =>({
-    showHire: false,
+    showHire: true,
     projects: [
       {
         name: 'Project 1',

@@ -86120,6 +86120,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 // Receives the users from laravel using props
@@ -86503,223 +86516,291 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "agentsContainer__card" }, [
-    _c("div", { staticClass: "freelancerCard smallCard" }, [
-      _c("div", { staticClass: "col-lg-12 col-md-12 col-12 resumeCardRight" }, [
-        _c("div", { staticClass: "nameRow cardContainer" }, [
-          _c("img", {
-            staticClass: "contact",
-            attrs: { src: "resumeApp/public/images/home/forum.svg", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "imageCol" }, [
-            _c("div", { staticClass: "imageContainer" }, [
+  return _c(
+    "div",
+    { staticClass: "agentsContainer__card" },
+    [
+      _c("div", { staticClass: "freelancerCard smallCard" }, [
+        _c(
+          "div",
+          { staticClass: "col-lg-12 col-md-12 col-12 resumeCardRight" },
+          [
+            _c("div", { staticClass: "nameRow cardContainer" }, [
               _c("img", {
-                staticClass: "freelancerImg",
+                staticClass: "contact",
                 attrs: {
-                  src: _vm.freelancer.user_data.photo,
-                  alt: "freelancer"
+                  src: "resumeApp/public/images/home/forum.svg",
+                  alt: ""
                 }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "freelancerCardRight" }, [
-            _c("div", { staticClass: "nameArea" }, [
-              _c("div", { staticClass: "nameCard" }, [
-                _vm._v(
-                  "\n                          " +
-                    _vm._s(_vm.freelancer.user_data.name) +
-                    "\n                      "
-                )
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "imageCol" }, [
+                _c("div", { staticClass: "imageContainer" }, [
+                  _c("img", {
+                    staticClass: "freelancerImg",
+                    attrs: {
+                      src: _vm.freelancer.user_data.photo,
+                      alt: "freelancer"
+                    }
+                  })
+                ])
               ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "jobTitle", attrs: { id: "animatedText" } },
-                [
-                  _vm._v(
-                    "\n                          " +
-                      _vm._s(_vm.freelancer.user_data.jobTitle) +
-                      "\n                      "
+              _c("div", { staticClass: "freelancerCardRight" }, [
+                _c("div", { staticClass: "nameArea" }, [
+                  _c("div", { staticClass: "nameCard" }, [
+                    _vm._v(
+                      "\n                          " +
+                        _vm._s(_vm.freelancer.user_data.name) +
+                        "\n                      "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "jobTitle", attrs: { id: "animatedText" } },
+                    [
+                      _vm._v(
+                        "\n                          " +
+                          _vm._s(_vm.freelancer.user_data.jobTitle) +
+                          "\n                      "
+                      )
+                    ]
                   )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "hireRow showOnlyOnmd" }, [
-            _c("div", { staticClass: "payment-details" }, [
-              _c("div", { staticStyle: { color: "white" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "resumeApp/public/images/home/monetization.svg",
-                    alt: ""
-                  }
-                }),
-                _c(
-                  "span",
-                  {
-                    staticClass: "payment-highLight",
-                    staticStyle: { "font-weight": "bold" }
-                  },
-                  [
-                    _vm._v(
-                      " $ " +
-                        _vm._s(parseInt(_vm.freelancer.user_data.salary)) +
-                        "\n                          "
-                    )
-                  ]
-                ),
-                _vm._v("hourly rate\n                      ")
+                ])
               ]),
               _vm._v(" "),
-              _c("div", { staticStyle: { color: "white" } }, [
-                _c("img", {
-                  attrs: {
-                    src: "resumeApp/public/images/home/watch_later.svg",
-                    alt: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    staticClass: "payment-highLight",
-                    staticStyle: { "font-weight": "bold" },
-                    attrs: { id: "maxHours" + _vm.freelancer.id }
-                  },
-                  [
-                    _vm._v(
-                      _vm._s(
-                        parseInt(_vm.freelancer.user_data.availableHours)
-                      ) + " hours"
-                    )
-                  ]
-                ),
-                _vm._v(" availability\n                      ")
-              ])
-            ]),
-            _vm._v(" "),
-            _vm.freelancer.user_data.availableHours !== 0
-              ? _c(
-                  "div",
-                  { staticClass: "text-center cardRow NoDecor hideOnSm" },
-                  [
+              _c("div", { staticClass: "hireRow showOnlyOnmd" }, [
+                _c("div", { staticClass: "payment-details" }, [
+                  _c("div", { staticStyle: { color: "white" } }, [
+                    _c("img", {
+                      attrs: {
+                        src: "resumeApp/public/images/home/monetization.svg",
+                        alt: ""
+                      }
+                    }),
                     _c(
-                      "a",
+                      "span",
                       {
-                        staticClass:
-                          "hireCardBtn btn-block showHireSection showOnSm",
-                        attrs: {
-                          href: "javascript:void(0)",
-                          id: "showHireSection" + _vm.freelancer.id
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.showHire = true
-                          }
-                        }
+                        staticClass: "payment-highLight",
+                        staticStyle: { "font-weight": "bold" }
                       },
                       [
                         _vm._v(
-                          "\n                      HIRE ME\n                    "
+                          " $ " +
+                            _vm._s(parseInt(_vm.freelancer.user_data.salary)) +
+                            "\n                          "
+                        )
+                      ]
+                    ),
+                    _vm._v("hourly rate\n                      ")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticStyle: { color: "white" } }, [
+                    _c("img", {
+                      attrs: {
+                        src: "resumeApp/public/images/home/watch_later.svg",
+                        alt: ""
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "payment-highLight",
+                        staticStyle: { "font-weight": "bold" },
+                        attrs: { id: "maxHours" + _vm.freelancer.id }
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            parseInt(_vm.freelancer.user_data.availableHours)
+                          ) + " hours"
+                        )
+                      ]
+                    ),
+                    _vm._v(" availability\n                      ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm.freelancer.user_data.availableHours !== 0
+                  ? _c(
+                      "div",
+                      { staticClass: "text-center cardRow NoDecor hideOnSm" },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass:
+                              "hireCardBtn btn-block showHireSection showOnSm",
+                            attrs: {
+                              href: "javascript:void(0)",
+                              id: "showHireSection" + _vm.freelancer.id
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.showHire = true
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                      HIRE ME\n                    "
+                            )
+                          ]
                         )
                       ]
                     )
-                  ]
-                )
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _vm.freelancer.user_data.availableHours !== 0
-            ? _c(
-                "div",
-                { staticClass: "text-center cardRow NoDecor showOnSm" },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "hireCardBtn btn-block showHireSection showOnSm",
-                      attrs: {
-                        href: "javascript:void(0)",
-                        id: "showHireSection" + _vm.freelancer.id
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.showHire = true
-                        }
-                      }
-                    },
-                    [_vm._v("\n                    HIRE ME\n                ")]
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _vm.freelancer.user_data.availableHours !== 0
+                ? _c(
+                    "div",
+                    { staticClass: "text-center cardRow NoDecor showOnSm" },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass:
+                            "hireCardBtn btn-block showHireSection showOnSm",
+                          attrs: {
+                            href: "javascript:void(0)",
+                            id: "showHireSection" + _vm.freelancer.id
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.showHire = true
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    HIRE ME\n                "
+                          )
+                        ]
+                      )
+                    ]
                   )
-                ]
-              )
-            : _vm._e()
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.showHire,
-            expression: "!showHire"
-          }
+                : _vm._e()
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.showHire,
+              expression: "!showHire"
+            }
+          ],
+          staticClass: "projectsSection"
+        },
+        _vm._l(_vm.freelancer.projects, function(project, index) {
+          return _c(
+            "a",
+            {
+              key: index,
+              staticClass: "d-flex justify-content-center",
+              attrs: {
+                href: "javascript:void(0)",
+                "data-toggle": "modal",
+                "data-target": "#project_modal_" + project.id
+              }
+            },
+            [
+              _c("img", {
+                staticStyle: {
+                  width: "100%",
+                  "max-width": "250px",
+                  height: "100%",
+                  "max-height": "250px",
+                  padding: "5px"
+                },
+                attrs: { src: project.mainImage, alt: "" }
+              })
+            ]
+          )
+        })
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.showHire,
+              expression: "showHire"
+            }
+          ],
+          staticClass: "agentsContainer__hireContainer"
+        },
+        [
+          _c("hire-agent", {
+            attrs: {
+              cancel: function() {
+                return (this$1.showHire = false)
+              },
+              freelancer: _vm.freelancer
+            }
+          })
         ],
-        staticClass: "projectsSection"
-      },
+        1
+      ),
+      _vm._v(" "),
       _vm._l(_vm.freelancer.projects, function(project, index) {
         return _c(
           "div",
-          { key: index, staticClass: "d-flex justify-content-center" },
+          {
+            key: index + project.id,
+            staticClass: "modal fade",
+            attrs: {
+              id: "project_modal_" + project.id,
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "certificate",
+              "aria-hidden": "true"
+            }
+          },
           [
-            _c("img", {
-              staticStyle: {
-                width: "100%",
-                "max-width": "250px",
-                height: "100%",
-                "max-height": "250px",
-                padding: "5px"
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-lg",
+                staticStyle: { margin: "1.75rem auto" },
+                attrs: { role: "document" }
               },
-              attrs: { src: project.mainImage, alt: "" }
-            })
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal-content",
+                    staticStyle: { background: "none", border: "0" }
+                  },
+                  [
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("img", {
+                        staticStyle: { width: "100%" },
+                        attrs: { src: project.mainImage, alt: "" }
+                      })
+                    ])
+                  ]
+                )
+              ]
+            )
           ]
         )
       })
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.showHire,
-            expression: "showHire"
-          }
-        ],
-        staticClass: "agentsContainer__hireContainer"
-      },
-      [
-        _c("hire-agent", {
-          attrs: {
-            cancel: function() {
-              return (this$1.showHire = false)
-            },
-            freelancer: _vm.freelancer
-          }
-        })
-      ],
-      1
-    )
-  ])
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

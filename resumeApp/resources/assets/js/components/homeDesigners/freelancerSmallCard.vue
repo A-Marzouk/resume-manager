@@ -48,14 +48,27 @@
     </div>
 
     <div v-show="!showHire" class="projectsSection">
-      <div  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center">
+      <a  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center" href="javascript:void(0)"  data-toggle="modal" :data-target="'#project_modal_'+project.id" >
           <img :src="project.mainImage" alt="" style="width:100%; max-width: 250px; height: 100%; max-height: 250px; padding: 5px;" >
-      </div>
+      </a>
     </div>
 
     <div v-show="showHire" class="agentsContainer__hireContainer">
       <hire-agent :cancel="() => this.showHire = false" :freelancer="freelancer"></hire-agent>
     </div>
+
+      <!-- modals -->
+
+      <div  v-for="(project,index) in freelancer.projects" :key="index + project.id" class="modal fade" :id="'project_modal_'+project.id" tabindex="-1" role="dialog" aria-labelledby="certificate" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document" style="margin: 1.75rem auto;">
+              <div class="modal-content" style="background: none;border:0;">
+                  <div class="modal-body">
+                      <img :src="project.mainImage" alt="" style="width: 100%;">
+                  </div>
+              </div>
+          </div>
+      </div>
+
   </div>
 
 </template>

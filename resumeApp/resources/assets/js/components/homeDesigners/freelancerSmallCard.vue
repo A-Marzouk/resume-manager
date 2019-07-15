@@ -48,9 +48,11 @@
     </div>
 
     <div v-show="!showHire" class="projectsSection">
-      <a  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center" href="javascript:void(0)"  data-toggle="modal" :data-target="'#project_modal_'+project.id" >
-          <img :src="project.mainImage" alt="" style="width:100%; max-width: 250px; height: 100%; max-height: 250px; padding: 5px;" >
-      </a>
+        <div  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center" style="height: 175px; overflow: hidden;">
+            <a  href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >
+                <img :src="project.mainImage" alt="" style="width:100%; max-width: 250px; padding: 5px; min-height: 175px;">
+            </a>
+        </div>
     </div>
 
     <div v-show="showHire" class="agentsContainer__hireContainer">
@@ -59,11 +61,49 @@
 
       <!-- modals -->
 
+      <!--<div  v-for="(project,index) in freelancer.projects" :key="index + project.id" class="modal fade" :id="'project_modal_'+project.id" tabindex="-1" role="dialog" aria-labelledby="certificate" aria-hidden="true">-->
+          <!--<div class="modal-dialog modal-lg" role="document" style="margin: 1.75rem auto;">-->
+              <!--<div class="modal-content" style="background: none;border:0;">-->
+                  <!--<div class="modal-body">-->
+                      <!--<img :src="project.mainImage" alt="" style="width: 100%;">-->
+                  <!--</div>-->
+              <!--</div>-->
+          <!--</div>-->
+      <!--</div>-->
+
       <div  v-for="(project,index) in freelancer.projects" :key="index + project.id" class="modal fade" :id="'project_modal_'+project.id" tabindex="-1" role="dialog" aria-labelledby="certificate" aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document" style="margin: 1.75rem auto;">
-              <div class="modal-content" style="background: none;border:0;">
-                  <div class="modal-body">
-                      <img :src="project.mainImage" alt="" style="width: 100%;">
+        <div class="modal-dialog modal-lg" role="document" style="">
+              <div class="modal-content modal-mobile-resume" data-dismiss="modal"
+                   aria-label="Close">
+                  <div class="modal-body" style="padding: 0;">
+                      <div class="row">
+                          <div class="col-md-9" style="padding: 0;">
+                              <img :src="project.mainImage" alt=""
+                                   width="100%" height="auto">
+                              <div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">
+                                  <iframe v-if="image.includes('embed')" height="400" width="100%" :src="image+'?bgcolor=%23191919'" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>
+                                  <img v-else :src="image" alt="" width="100%" height="auto">
+                              </div>
+                          </div>
+                          <div class="col-md-3">
+                              <div class="form-group" style="padding-top: 25px;">
+                                  <label class="panelFormLabel"> Name
+                                      <hr>
+                                  </label><br/>
+                                  <div class="panelFormLabel">
+                                      {{project.projectName}}
+                                  </div>
+                              </div>
+                              <div class="form-group" style="padding-top: 25px;">
+                                  <label class="panelFormLabel"> Description
+                                      <hr>
+                                  </label><br/>
+                                  <div class="panelFormLabel">
+                                      {{project.projectDesc}}
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
               </div>
           </div>
@@ -86,6 +126,25 @@ export default {
     data(){
         return {
             showHire: false,
+        }
+    },
+    methods:{
+        getImageSrc(src){
+            if(!src){
+                return '/resumeApp/public/images/placeholder.png';
+            }
+
+            if(src.charAt(0) !== 'h'){
+                return '/'+src;
+            }
+
+            return src;
+        },
+        getProjectImages(imagesString){
+            if(imagesString === null || imagesString === undefined ){
+                return [] ;
+            }
+            return  imagesString.split(','); // returns an array
         }
     }
 }

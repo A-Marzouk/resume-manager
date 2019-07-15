@@ -86133,6 +86133,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 // Receives the users from laravel using props
@@ -86146,6 +86186,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             showHire: false
         };
+    },
+
+    methods: {
+        getImageSrc: function getImageSrc(src) {
+            if (!src) {
+                return '/resumeApp/public/images/placeholder.png';
+            }
+
+            if (src.charAt(0) !== 'h') {
+                return '/' + src;
+            }
+
+            return src;
+        },
+        getProjectImages: function getProjectImages(imagesString) {
+            if (imagesString === null || imagesString === undefined) {
+                return [];
+            }
+            return imagesString.split(','); // returns an array
+        }
     }
 });
 
@@ -86703,27 +86763,35 @@ var render = function() {
         },
         _vm._l(_vm.freelancer.projects, function(project, index) {
           return _c(
-            "a",
+            "div",
             {
               key: index,
               staticClass: "d-flex justify-content-center",
-              attrs: {
-                href: "javascript:void(0)",
-                "data-toggle": "modal",
-                "data-target": "#project_modal_" + project.id
-              }
+              staticStyle: { height: "175px", overflow: "hidden" }
             },
             [
-              _c("img", {
-                staticStyle: {
-                  width: "100%",
-                  "max-width": "250px",
-                  height: "100%",
-                  "max-height": "250px",
-                  padding: "5px"
+              _c(
+                "a",
+                {
+                  staticStyle: { outline: "0" },
+                  attrs: {
+                    href: "javascript:void(0)",
+                    "data-toggle": "modal",
+                    "data-target": "#project_modal_" + project.id
+                  }
                 },
-                attrs: { src: project.mainImage, alt: "" }
-              })
+                [
+                  _c("img", {
+                    staticStyle: {
+                      width: "100%",
+                      "max-width": "250px",
+                      padding: "5px",
+                      "min-height": "175px"
+                    },
+                    attrs: { src: project.mainImage, alt: "" }
+                  })
+                ]
+              )
             ]
           )
         })
@@ -86774,23 +86842,117 @@ var render = function() {
               "div",
               {
                 staticClass: "modal-dialog modal-lg",
-                staticStyle: { margin: "1.75rem auto" },
                 attrs: { role: "document" }
               },
               [
                 _c(
                   "div",
                   {
-                    staticClass: "modal-content",
-                    staticStyle: { background: "none", border: "0" }
+                    staticClass: "modal-content modal-mobile-resume",
+                    attrs: { "data-dismiss": "modal", "aria-label": "Close" }
                   },
                   [
-                    _c("div", { staticClass: "modal-body" }, [
-                      _c("img", {
-                        staticStyle: { width: "100%" },
-                        attrs: { src: project.mainImage, alt: "" }
-                      })
-                    ])
+                    _c(
+                      "div",
+                      {
+                        staticClass: "modal-body",
+                        staticStyle: { padding: "0" }
+                      },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "col-md-9",
+                              staticStyle: { padding: "0" }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  src: project.mainImage,
+                                  alt: "",
+                                  width: "100%",
+                                  height: "auto"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm._l(
+                                _vm.getProjectImages(project.images),
+                                function(image, index) {
+                                  return _c("div", { key: index + "a" }, [
+                                    image.includes("embed")
+                                      ? _c("iframe", {
+                                          staticStyle: {
+                                            margin: "0px auto",
+                                            display: "block"
+                                          },
+                                          attrs: {
+                                            height: "400",
+                                            width: "100%",
+                                            src: image + "?bgcolor=%23191919",
+                                            allowfullscreen: "",
+                                            autoplay: ""
+                                          }
+                                        })
+                                      : _c("img", {
+                                          attrs: {
+                                            src: image,
+                                            alt: "",
+                                            width: "100%",
+                                            height: "auto"
+                                          }
+                                        })
+                                  ])
+                                }
+                              )
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-3" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "form-group",
+                                staticStyle: { "padding-top": "25px" }
+                              },
+                              [
+                                _vm._m(0, true),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "panelFormLabel" }, [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(project.projectName) +
+                                      "\n                                "
+                                  )
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "form-group",
+                                staticStyle: { "padding-top": "25px" }
+                              },
+                              [
+                                _vm._m(1, true),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "panelFormLabel" }, [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(project.projectDesc) +
+                                      "\n                                "
+                                  )
+                                ])
+                              ]
+                            )
+                          ])
+                        ])
+                      ]
+                    )
                   ]
                 )
               ]
@@ -86802,7 +86964,26 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "panelFormLabel" }, [
+      _vm._v(" Name\n                                    "),
+      _c("hr")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "panelFormLabel" }, [
+      _vm._v(" Description\n                                    "),
+      _c("hr")
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

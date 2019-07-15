@@ -86810,28 +86810,35 @@ var render = function() {
                   }
                 },
                 [
-                  _c("vue-load-image", [
-                    _c("img", {
-                      attrs: {
-                        slot: "image",
-                        src: project.mainImage,
-                        alt: "",
-                        width: "100%",
-                        height: "auto"
-                      },
-                      slot: "image"
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      attrs: {
-                        slot: "preloader",
-                        alt: "",
-                        src:
-                          "resumeApp/public/js/slick-master/slick/ajax-loader.gif"
-                      },
-                      slot: "preloader"
-                    })
-                  ])
+                  _c(
+                    "vue-load-image",
+                    {
+                      staticClass:
+                        "d-flex justify-content-center align-items-center"
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          slot: "image",
+                          src: project.mainImage,
+                          alt: "",
+                          width: "100%",
+                          height: "auto"
+                        },
+                        slot: "image"
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        attrs: {
+                          slot: "preloader",
+                          alt: "",
+                          src:
+                            "resumeApp/public/js/slick-master/slick/ajax-loader.gif"
+                        },
+                        slot: "preloader"
+                      })
+                    ]
+                  )
                 ],
                 1
               )
@@ -86910,59 +86917,36 @@ var render = function() {
                               staticStyle: { padding: "0" }
                             },
                             [
-                              _c("vue-load-image", [
-                                _c("img", {
-                                  attrs: {
-                                    slot: "image",
-                                    src: project.mainImage,
-                                    alt: "",
-                                    width: "100%",
-                                    height: "auto"
-                                  },
-                                  slot: "image"
-                                }),
-                                _vm._v(" "),
-                                _c("img", {
-                                  attrs: {
-                                    slot: "preloader",
-                                    src:
-                                      "resumeApp/public/js/slick-master/slick/ajax-loader.gif"
-                                  },
-                                  slot: "preloader"
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _vm._l(
-                                _vm.getProjectImages(project.images),
-                                function(image, index) {
-                                  return _c("div", { key: index + "a" }, [
-                                    image.includes("embed")
-                                      ? _c("iframe", {
-                                          staticStyle: {
-                                            margin: "0px auto",
-                                            display: "block"
-                                          },
-                                          attrs: {
-                                            height: "400",
-                                            width: "100%",
-                                            src: image + "?bgcolor=%23191919",
-                                            allowfullscreen: "",
-                                            autoplay: ""
-                                          }
-                                        })
-                                      : _c("img", {
-                                          attrs: {
-                                            src: image,
-                                            alt: "",
-                                            width: "100%",
-                                            height: "auto"
-                                          }
-                                        })
-                                  ])
-                                }
+                              _c(
+                                "vue-load-image",
+                                {
+                                  staticClass:
+                                    "d-flex justify-content-center align-items-center"
+                                },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      slot: "image",
+                                      src: project.mainImage,
+                                      alt: "",
+                                      width: "100%",
+                                      height: "auto"
+                                    },
+                                    slot: "image"
+                                  }),
+                                  _vm._v(" "),
+                                  _c("img", {
+                                    attrs: {
+                                      slot: "preloader",
+                                      src:
+                                        "resumeApp/public/js/slick-master/slick/ajax-loader.gif"
+                                    },
+                                    slot: "preloader"
+                                  })
+                                ]
                               )
                             ],
-                            2
+                            1
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-3" }, [

@@ -76,7 +76,9 @@ class HomeController extends Controller
         $homeFreelancersData = UserData::where('home_page_freelancer',true)->get();
         $homeFreelancers = [] ;
         foreach ($homeFreelancersData as $data){
-            $homeFreelancers[] = User::with('userData','projects')->where('id',$data->user_id)->first();
+            $homeFreelancers[] = User::with(['userData','projects'=>function($query) {
+                return $query->limit(5);
+            }])->where('id',$data->user_id)->first();
         }
 
 

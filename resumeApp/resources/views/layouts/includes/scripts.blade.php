@@ -111,7 +111,7 @@
         dots: true,
         arrows:false,
         slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToScroll: 1,
         responsive: [
             {
                 breakpoint: 786,

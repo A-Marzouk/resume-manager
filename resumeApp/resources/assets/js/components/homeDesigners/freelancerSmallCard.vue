@@ -17,7 +17,7 @@
                             {{freelancer.firstName}}
                         </div>
                         <div class="jobTitle" id="animatedText">
-                            {{freelancer.user_data.jobTitle}}
+                            {{ freelancer.user_data.home_page_freelancer ? 'UI Designer' : freelancer.user_data.jobTitle }}
                         </div>
                     </div>
                 </div>

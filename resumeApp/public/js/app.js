@@ -14286,7 +14286,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(304);
+module.exports = __webpack_require__(305);
 
 
 /***/ }),
@@ -14715,7 +14715,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
     }
 });
 
-__webpack_require__(303);
+__webpack_require__(304);
 
 /***/ }),
 /* 16 */
@@ -85735,7 +85735,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(291)
 /* template */
-var __vue_template__ = __webpack_require__(302)
+var __vue_template__ = __webpack_require__(303)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -85973,7 +85973,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(295)
 /* template */
-var __vue_template__ = __webpack_require__(301)
+var __vue_template__ = __webpack_require__(302)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -86059,7 +86059,7 @@ exports.push([module.i, "\n.projectsSection[data-v-e70ddbcc] {\n  width: calc(10
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hireAgent__ = __webpack_require__(296);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hireAgent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__hireAgent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image__ = __webpack_require__(301);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_load_image__);
 //
 //
@@ -86581,6 +86581,17 @@ if (false) {
 /* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/*!
+ * vue-load-image v0.1.7
+ * (c) 2019 Lee Sangwon <john0152@naver.com>
+ * Released under the MIT License.
+ */
+!function(t,e){if(true)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var r=e();for(var n in r)("object"==typeof exports?exports:t)[n]=r[n]}}(window,function(){return function(t){var e={};function r(n){if(e[n])return e[n].exports;var o=e[n]={i:n,l:!1,exports:{}};return t[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.m=t,r.c=e,r.d=function(t,e,n){r.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},r.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},r.t=function(t,e){if(1&e&&(t=r(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var o in t)r.d(n,o,function(e){return t[e]}.bind(null,o));return n},r.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return r.d(e,"a",e),e},r.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},r.p="",r(r.s=0)}([function(t,e,r){"use strict";r.r(e);var n="pending",o="loading",s="loaded",i="failed";var a=function(t,e,r,n,o,s,i,a){var u,d="function"==typeof t?t.options:t;if(e&&(d.render=e,d.staticRenderFns=r,d._compiled=!0),n&&(d.functional=!0),s&&(d._scopeId="data-v-"+s),i?(u=function(t){(t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),o&&o.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(i)},d._ssrRegister=u):o&&(u=a?function(){o.call(this,this.$root.$options.shadowRoot)}:o),u)if(d.functional){d._injectStyles=u;var l=d.render;d.render=function(t,e){return u.call(e),l(t,e)}}else{var c=d.beforeCreate;d.beforeCreate=c?[].concat(c,u):[u]}return{exports:t,options:d}}({data:function(){return{status:null,img:null,src:null}},created:function(){this.src=this.$slots.image[0].data.attrs.src||this.$slots.image[0].data.attrs["data-src"],this.src?(this.status=o,this.createLoader()):this.status=n},updated:function(){var t=this.$slots.image[0].data.attrs.src||this.$slots.image[0].data.attrs["data-src"];this.status!==o||this.img?this.src!==t&&(this.src=t,this.createLoader()):this.createLoader()},watch:{src:function(t){this.status=t?o:n}},methods:{createLoader:function(){this.destroyLoader(),this.img=new Image,this.img.onload=this.handleLoad,this.img.onerror=this.handleError,this.img.src=this.src},destroyLoader:function(){this.img&&(this.img.onload=null,this.img.onerror=null,this.img=null)},handleLoad:function(){this.destroyLoader(),this.status=s,this.$emit("onLoad")},handleError:function(t){this.destroyLoader(),this.status=i,this.$emit("onError",t)}}},function(){var t=this.$createElement;return(this._self._c||t)("div",{staticClass:"vue-load-image"},["loaded"===this.status?this._t("image"):"failed"===this.status?this._t("error"):"loading"===this.status?this._t("preloader"):this._e()],2)},[],!1,null,null,null);a.options.__file="VueLoadImage.vue";var u=a.exports;e.default=u}])});
+
+/***/ }),
+/* 302 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var render = function() {
   var this$1 = this
   var _vm = this
@@ -86632,7 +86643,11 @@ var render = function() {
                     [
                       _vm._v(
                         "\n                          " +
-                          _vm._s(_vm.freelancer.user_data.jobTitle) +
+                          _vm._s(
+                            _vm.freelancer.user_data.home_page_freelancer
+                              ? "UI Designer"
+                              : _vm.freelancer.user_data.jobTitle
+                          ) +
                           "\n                      "
                       )
                     ]
@@ -87005,7 +87020,7 @@ if (false) {
 }
 
 /***/ }),
-/* 302 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -87339,44 +87354,60 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    !_vm.customSearch
-      ? _c(
-          "div",
-          { staticClass: "agentsContainer" },
-          _vm._l(_vm.freelancers, function(freelancer) {
-            return _c("freelancer-card-small", {
-              key: freelancer.id + freelancer.firstName,
-              attrs: { freelancer: freelancer }
-            })
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: !_vm.customSearch,
+            expression: "!customSearch"
+          }
+        ],
+        staticClass: "agentsContainer"
+      },
+      _vm._l(_vm.freelancers, function(freelancer) {
+        return _c("freelancer-card-small", {
+          key: freelancer.id + freelancer.firstName,
+          attrs: { freelancer: freelancer }
+        })
+      })
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.customSearch,
+            expression: "customSearch"
+          }
+        ],
+        staticClass: "agentsContainer"
+      },
+      [
+        _vm._l(_vm.results, function(agent) {
+          return _c("freelancer-card-small", {
+            key: agent.id + agent.firstName,
+            attrs: { freelancer: agent }
           })
-        )
-      : _c(
-          "div",
-          { staticClass: "agentsContainer" },
-          [
-            _vm._l(_vm.results, function(agent) {
-              return _c("freelancer-card-small", {
-                key: agent.id + agent.firstName,
-                attrs: { freelancer: agent }
-              })
-            }),
-            _vm._v(" "),
-            _vm.results.length < 1
-              ? _c("div", [
-                  _c(
-                    "div",
-                    { staticClass: "mainSection__content__description" },
-                    [
-                      _vm._v(
-                        "\n                Please choose search parameters\n            "
-                      )
-                    ]
-                  )
-                ])
-              : _vm._e()
-          ],
-          2
-        )
+        }),
+        _vm._v(" "),
+        _vm.results.length < 1
+          ? _c("div", [
+              _c("div", { staticClass: "mainSection__content__description" }, [
+                _vm._v(
+                  "\n                Please choose search parameters\n            "
+                )
+              ])
+            ])
+          : _vm._e()
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = []
@@ -87390,7 +87421,7 @@ if (false) {
 }
 
 /***/ }),
-/* 303 */
+/* 304 */
 /***/ (function(module, exports) {
 
 var status = $('#record_status'),
@@ -87669,24 +87700,10 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 /***/ }),
-/* 304 */
+/* 305 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 305 */,
-/* 306 */,
-/* 307 */,
-/* 308 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*!
- * vue-load-image v0.1.7
- * (c) 2019 Lee Sangwon <john0152@naver.com>
- * Released under the MIT License.
- */
-!function(t,e){if(true)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var r=e();for(var n in r)("object"==typeof exports?exports:t)[n]=r[n]}}(window,function(){return function(t){var e={};function r(n){if(e[n])return e[n].exports;var o=e[n]={i:n,l:!1,exports:{}};return t[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.m=t,r.c=e,r.d=function(t,e,n){r.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},r.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},r.t=function(t,e){if(1&e&&(t=r(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var o in t)r.d(n,o,function(e){return t[e]}.bind(null,o));return n},r.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return r.d(e,"a",e),e},r.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},r.p="",r(r.s=0)}([function(t,e,r){"use strict";r.r(e);var n="pending",o="loading",s="loaded",i="failed";var a=function(t,e,r,n,o,s,i,a){var u,d="function"==typeof t?t.options:t;if(e&&(d.render=e,d.staticRenderFns=r,d._compiled=!0),n&&(d.functional=!0),s&&(d._scopeId="data-v-"+s),i?(u=function(t){(t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),o&&o.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(i)},d._ssrRegister=u):o&&(u=a?function(){o.call(this,this.$root.$options.shadowRoot)}:o),u)if(d.functional){d._injectStyles=u;var l=d.render;d.render=function(t,e){return u.call(e),l(t,e)}}else{var c=d.beforeCreate;d.beforeCreate=c?[].concat(c,u):[u]}return{exports:t,options:d}}({data:function(){return{status:null,img:null,src:null}},created:function(){this.src=this.$slots.image[0].data.attrs.src||this.$slots.image[0].data.attrs["data-src"],this.src?(this.status=o,this.createLoader()):this.status=n},updated:function(){var t=this.$slots.image[0].data.attrs.src||this.$slots.image[0].data.attrs["data-src"];this.status!==o||this.img?this.src!==t&&(this.src=t,this.createLoader()):this.createLoader()},watch:{src:function(t){this.status=t?o:n}},methods:{createLoader:function(){this.destroyLoader(),this.img=new Image,this.img.onload=this.handleLoad,this.img.onerror=this.handleError,this.img.src=this.src},destroyLoader:function(){this.img&&(this.img.onload=null,this.img.onerror=null,this.img=null)},handleLoad:function(){this.destroyLoader(),this.status=s,this.$emit("onLoad")},handleError:function(t){this.destroyLoader(),this.status=i,this.$emit("onError",t)}}},function(){var t=this.$createElement;return(this._self._c||t)("div",{staticClass:"vue-load-image"},["loaded"===this.status?this._t("image"):"failed"===this.status?this._t("error"):"loading"===this.status?this._t("preloader"):this._e()],2)},[],!1,null,null,null);a.options.__file="VueLoadImage.vue";var u=a.exports;e.default=u}])});
 
 /***/ })
 /******/ ]);

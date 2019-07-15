@@ -85,10 +85,10 @@
                                   <img :src="project.mainImage" alt="" width="100%" slot="image" height="auto">
                                   <img slot="preloader" src="resumeApp/public/js/slick-master/slick/ajax-loader.gif"/>
                               </vue-load-image>
-                              <!--<div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">-->
-                                  <!--<iframe v-if="image.includes('embed')" height="400" width="100%" :src="image+'?bgcolor=%23191919'" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>-->
-                                  <!--<img v-else :src="image" alt="" width="100%" height="auto">-->
-                              <!--</div>-->
+                              <div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">
+                                  <iframe v-if="image.includes('embed')" height="400" width="100%" :src="image+'?bgcolor=%23191919'" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>
+                                  <img v-else :src="image" alt="" width="100%" height="auto">
+                              </div>
                           </div>
                           <div class="col-md-3">
                               <div class="form-group" style="padding-top: 25px;">

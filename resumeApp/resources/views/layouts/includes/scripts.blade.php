@@ -108,6 +108,7 @@
 
     $('.projectsSection').slick({
         lazyLoad: 'ondemand',
+        infinite: false,
         dots: true,
         arrows:false,
         slidesToShow: 3,

@@ -8,6 +8,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload);
 
 $.ajaxSetup({
     headers: {

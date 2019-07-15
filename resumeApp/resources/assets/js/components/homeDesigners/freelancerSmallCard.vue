@@ -14,7 +14,7 @@
                 <div class="freelancerCardRight">
                     <div class="nameArea">
                         <div class="nameCard">
-                            {{freelancer.user_data.name}}
+                            {{freelancer.firstName}}
                         </div>
                         <div class="jobTitle" id="animatedText">
                             {{freelancer.user_data.jobTitle}}
@@ -48,9 +48,12 @@
     </div>
 
     <div v-show="!showHire" class="projectsSection">
-        <div  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center" style="height: 175px; overflow: hidden;">
+        <div  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center" style="height: 175px; padding: 0 5px 0 5px; overflow: hidden;">
             <a  href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >
-                <img :src="project.mainImage" alt="" style="width:100%; max-width: 250px; padding: 5px; min-height: 175px;">
+                <vue-load-image>
+                    <img :src="project.mainImage" alt="" width="100%" slot="image" height="auto">
+                    <img  alt="" slot="preloader" src="resumeApp/public/js/slick-master/slick/ajax-loader.gif"/>
+                </vue-load-image>
             </a>
         </div>
     </div>
@@ -78,12 +81,14 @@
                   <div class="modal-body" style="padding: 0;">
                       <div class="row">
                           <div class="col-md-9" style="padding: 0;">
-                              <img :src="project.mainImage" alt=""
-                                   width="100%" height="auto">
-                              <div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">
-                                  <iframe v-if="image.includes('embed')" height="400" width="100%" :src="image+'?bgcolor=%23191919'" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>
-                                  <img v-else :src="image" alt="" width="100%" height="auto">
-                              </div>
+                              <vue-load-image>
+                                  <img :src="project.mainImage" alt="" width="100%" slot="image" height="auto">
+                                  <img slot="preloader" src="resumeApp/public/js/slick-master/slick/ajax-loader.gif"/>
+                              </vue-load-image>
+                              <!--<div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">-->
+                                  <!--<iframe v-if="image.includes('embed')" height="400" width="100%" :src="image+'?bgcolor=%23191919'" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>-->
+                                  <!--<img v-else :src="image" alt="" width="100%" height="auto">-->
+                              <!--</div>-->
                           </div>
                           <div class="col-md-3">
                               <div class="form-group" style="padding-top: 25px;">
@@ -114,13 +119,16 @@
 </template>
 <script>
 import hireAgent from './hireAgent'
+import VueLoadImage from 'vue-load-image'
+
 // Receives the users from laravel using props
 export default {
     props: [
         'freelancer'
     ],
     components: {
-        'hire-agent': hireAgent
+        'hire-agent': hireAgent,
+        'vue-load-image': VueLoadImage
     },
 
     data(){

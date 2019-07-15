@@ -86059,6 +86059,8 @@ exports.push([module.i, "\n.projectsSection[data-v-e70ddbcc] {\n  width: calc(10
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hireAgent__ = __webpack_require__(296);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hireAgent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__hireAgent__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_load_image__);
 //
 //
 //
@@ -86173,13 +86175,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+
+
 
 
 // Receives the users from laravel using props
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['freelancer'],
     components: {
-        'hire-agent': __WEBPACK_IMPORTED_MODULE_0__hireAgent___default.a
+        'hire-agent': __WEBPACK_IMPORTED_MODULE_0__hireAgent___default.a,
+        'vue-load-image': __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default.a
     },
 
     data: function data() {
@@ -86611,7 +86621,7 @@ var render = function() {
                   _c("div", { staticClass: "nameCard" }, [
                     _vm._v(
                       "\n                          " +
-                        _vm._s(_vm.freelancer.user_data.name) +
+                        _vm._s(_vm.freelancer.firstName) +
                         "\n                      "
                     )
                   ]),
@@ -86767,7 +86777,11 @@ var render = function() {
             {
               key: index,
               staticClass: "d-flex justify-content-center",
-              staticStyle: { height: "175px", overflow: "hidden" }
+              staticStyle: {
+                height: "175px",
+                padding: "0 5px 0 5px",
+                overflow: "hidden"
+              }
             },
             [
               _c(
@@ -86781,16 +86795,30 @@ var render = function() {
                   }
                 },
                 [
-                  _c("img", {
-                    staticStyle: {
-                      width: "100%",
-                      "max-width": "250px",
-                      padding: "5px",
-                      "min-height": "175px"
-                    },
-                    attrs: { src: project.mainImage, alt: "" }
-                  })
-                ]
+                  _c("vue-load-image", [
+                    _c("img", {
+                      attrs: {
+                        slot: "image",
+                        src: project.mainImage,
+                        alt: "",
+                        width: "100%",
+                        height: "auto"
+                      },
+                      slot: "image"
+                    }),
+                    _vm._v(" "),
+                    _c("img", {
+                      attrs: {
+                        slot: "preloader",
+                        alt: "",
+                        src:
+                          "resumeApp/public/js/slick-master/slick/ajax-loader.gif"
+                      },
+                      slot: "preloader"
+                    })
+                  ])
+                ],
+                1
               )
             ]
           )
@@ -86867,46 +86895,29 @@ var render = function() {
                               staticStyle: { padding: "0" }
                             },
                             [
-                              _c("img", {
-                                attrs: {
-                                  src: project.mainImage,
-                                  alt: "",
-                                  width: "100%",
-                                  height: "auto"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _vm._l(
-                                _vm.getProjectImages(project.images),
-                                function(image, index) {
-                                  return _c("div", { key: index + "a" }, [
-                                    image.includes("embed")
-                                      ? _c("iframe", {
-                                          staticStyle: {
-                                            margin: "0px auto",
-                                            display: "block"
-                                          },
-                                          attrs: {
-                                            height: "400",
-                                            width: "100%",
-                                            src: image + "?bgcolor=%23191919",
-                                            allowfullscreen: "",
-                                            autoplay: ""
-                                          }
-                                        })
-                                      : _c("img", {
-                                          attrs: {
-                                            src: image,
-                                            alt: "",
-                                            width: "100%",
-                                            height: "auto"
-                                          }
-                                        })
-                                  ])
-                                }
-                              )
+                              _c("vue-load-image", [
+                                _c("img", {
+                                  attrs: {
+                                    slot: "image",
+                                    src: project.mainImage,
+                                    alt: "",
+                                    width: "100%",
+                                    height: "auto"
+                                  },
+                                  slot: "image"
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  attrs: {
+                                    slot: "preloader",
+                                    src:
+                                      "resumeApp/public/js/slick-master/slick/ajax-loader.gif"
+                                  },
+                                  slot: "preloader"
+                                })
+                              ])
                             ],
-                            2
+                            1
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-3" }, [
@@ -87662,6 +87673,20 @@ if (navigator.mediaDevices.getUserMedia) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 305 */,
+/* 306 */,
+/* 307 */,
+/* 308 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * vue-load-image v0.1.7
+ * (c) 2019 Lee Sangwon <john0152@naver.com>
+ * Released under the MIT License.
+ */
+!function(t,e){if(true)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var r=e();for(var n in r)("object"==typeof exports?exports:t)[n]=r[n]}}(window,function(){return function(t){var e={};function r(n){if(e[n])return e[n].exports;var o=e[n]={i:n,l:!1,exports:{}};return t[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}return r.m=t,r.c=e,r.d=function(t,e,n){r.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},r.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},r.t=function(t,e){if(1&e&&(t=r(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(r.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var o in t)r.d(n,o,function(e){return t[e]}.bind(null,o));return n},r.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return r.d(e,"a",e),e},r.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},r.p="",r(r.s=0)}([function(t,e,r){"use strict";r.r(e);var n="pending",o="loading",s="loaded",i="failed";var a=function(t,e,r,n,o,s,i,a){var u,d="function"==typeof t?t.options:t;if(e&&(d.render=e,d.staticRenderFns=r,d._compiled=!0),n&&(d.functional=!0),s&&(d._scopeId="data-v-"+s),i?(u=function(t){(t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),o&&o.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(i)},d._ssrRegister=u):o&&(u=a?function(){o.call(this,this.$root.$options.shadowRoot)}:o),u)if(d.functional){d._injectStyles=u;var l=d.render;d.render=function(t,e){return u.call(e),l(t,e)}}else{var c=d.beforeCreate;d.beforeCreate=c?[].concat(c,u):[u]}return{exports:t,options:d}}({data:function(){return{status:null,img:null,src:null}},created:function(){this.src=this.$slots.image[0].data.attrs.src||this.$slots.image[0].data.attrs["data-src"],this.src?(this.status=o,this.createLoader()):this.status=n},updated:function(){var t=this.$slots.image[0].data.attrs.src||this.$slots.image[0].data.attrs["data-src"];this.status!==o||this.img?this.src!==t&&(this.src=t,this.createLoader()):this.createLoader()},watch:{src:function(t){this.status=t?o:n}},methods:{createLoader:function(){this.destroyLoader(),this.img=new Image,this.img.onload=this.handleLoad,this.img.onerror=this.handleError,this.img.src=this.src},destroyLoader:function(){this.img&&(this.img.onload=null,this.img.onerror=null,this.img=null)},handleLoad:function(){this.destroyLoader(),this.status=s,this.$emit("onLoad")},handleError:function(t){this.destroyLoader(),this.status=i,this.$emit("onError",t)}}},function(){var t=this.$createElement;return(this._self._c||t)("div",{staticClass:"vue-load-image"},["loaded"===this.status?this._t("image"):"failed"===this.status?this._t("error"):"loading"===this.status?this._t("preloader"):this._e()],2)},[],!1,null,null,null);a.options.__file="VueLoadImage.vue";var u=a.exports;e.default=u}])});
 
 /***/ })
 /******/ ]);

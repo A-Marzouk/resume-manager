@@ -14308,7 +14308,11 @@ __webpack_require__(16);
 window.Vue = __webpack_require__(41);
 
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_lazyload__["a" /* default */]);
+Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_lazyload__["a" /* default */], {
+    preLoad: 1.3,
+    loading: 'resumeApp/public/images/spinner-load.gif',
+    attempt: 1
+});
 
 $.ajaxSetup({
     headers: {

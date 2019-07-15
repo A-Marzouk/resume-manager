@@ -14,7 +14,7 @@
                 <div class="freelancerCardRight">
                     <div class="nameArea">
                         <div class="nameCard">
-                            {{freelancer.user_data.name}}
+                            {{freelancer.firstName}}
                         </div>
                         <div class="jobTitle" id="animatedText">
                             {{freelancer.user_data.jobTitle}}
@@ -80,10 +80,10 @@
                           <div class="col-md-9" style="padding: 0;">
                               <img :src="project.mainImage" alt=""
                                    width="100%" height="auto">
-                              <div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">
-                                  <iframe v-if="image.includes('embed')" height="400" width="100%" :src="image+'?bgcolor=%23191919'" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>
-                                  <img v-else :src="image" alt="" width="100%" height="auto">
-                              </div>
+                              <!--<div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">-->
+                                  <!--<iframe v-if="image.includes('embed')" height="400" width="100%" :src="image+'?bgcolor=%23191919'" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>-->
+                                  <!--<img v-else :src="image" alt="" width="100%" height="auto">-->
+                              <!--</div>-->
                           </div>
                           <div class="col-md-3">
                               <div class="form-group" style="padding-top: 25px;">

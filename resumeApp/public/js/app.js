@@ -86611,7 +86611,7 @@ var render = function() {
                   _c("div", { staticClass: "nameCard" }, [
                     _vm._v(
                       "\n                          " +
-                        _vm._s(_vm.freelancer.user_data.name) +
+                        _vm._s(_vm.freelancer.firstName) +
                         "\n                      "
                     )
                   ]),
@@ -86874,39 +86874,8 @@ var render = function() {
                                   width: "100%",
                                   height: "auto"
                                 }
-                              }),
-                              _vm._v(" "),
-                              _vm._l(
-                                _vm.getProjectImages(project.images),
-                                function(image, index) {
-                                  return _c("div", { key: index + "a" }, [
-                                    image.includes("embed")
-                                      ? _c("iframe", {
-                                          staticStyle: {
-                                            margin: "0px auto",
-                                            display: "block"
-                                          },
-                                          attrs: {
-                                            height: "400",
-                                            width: "100%",
-                                            src: image + "?bgcolor=%23191919",
-                                            allowfullscreen: "",
-                                            autoplay: ""
-                                          }
-                                        })
-                                      : _c("img", {
-                                          attrs: {
-                                            src: image,
-                                            alt: "",
-                                            width: "100%",
-                                            height: "auto"
-                                          }
-                                        })
-                                  ])
-                                }
-                              )
-                            ],
-                            2
+                              })
+                            ]
                           ),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-md-3" }, [

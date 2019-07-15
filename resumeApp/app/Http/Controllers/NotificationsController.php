@@ -299,4 +299,14 @@ class NotificationsController extends Controller
         return 'emailSent';
     }
 
+
+    public function fosterCareSubmitForm($request){
+        $emails = ['AhmedMarzouk266@gmail.com'];
+
+        Mail::send('emails.foster_care',$request, function($message) use ($emails)
+        {
+            $message->to($emails)->subject('New Form submission !');
+        });
+    }
+
 }

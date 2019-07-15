@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\ClientSearch;
 use App\User;
 use App\UserData;
+use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
 
 class HomeController extends Controller
 {
@@ -16,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('privacyView','getSearch','termsView','welcomePage','ResumePage','ResumeSample','newHome');
+        $this->middleware('auth')->except('privacyView','getSearch','termsView','welcomePage','ResumePage','ResumeSample','newHome','fosterCareForm');
     }
 
     /**
@@ -105,4 +107,27 @@ class HomeController extends Controller
         return view('public_search',compact('freelancers','search_name'));
     }
 
+    public function fosterCareForm(){
+        return view('fosterCareForm');
+    }
+
+    public function fosterCareFormSubmit(Request $request){
+        $request->validate([
+            'fullName' => 'max:190|required',
+            'address' => 'max:1500|required',
+            'date' => 'max:1500|required',
+            'email' => 'max:190|required',
+            'mobile' => 'max:190|required',
+            'relationStatus' => 'max:190|required',
+            'ageOfChild' => 'max:190|required',
+            'notes' => 'max:1500',
+            'submitNote1' => 'max:190',
+            'submitNote2' => 'required',
+        ]);
+
+        $notification = new NotificationsController();
+        $notification->fosterCareSubmitForm($request->toArray());
+
+        return redirect('http://fostercareireland.ie/');
+    }
 }

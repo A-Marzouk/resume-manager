@@ -48,14 +48,12 @@
     </div>
 
     <div v-show="!showHire" class="projectsSection">
-        <div  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center" style="height: 175px; padding: 0 5px 0 5px; overflow: hidden;">
+        <div  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center" style="height: 175px !important; padding: 0 5px 0 5px; overflow: hidden;">
             <a  href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >
-                <!--<vue-load-image>-->
-                    <!--<img :src="project.mainImage" alt="" width="100%" slot="image" height="auto">-->
-                    <!--<img  alt="" slot="preloader" src="resumeApp/public/js/slick-master/slick/ajax-loader.gif"/>-->
-                <!--</vue-load-image>-->
-
-                <img v-lazy="project.mainImage" alt="" width="100%" slot="image" height="auto">
+                <vue-load-image>
+                    <img :src="project.mainImage" alt="" width="100%" slot="image" height="auto">
+                    <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
+                </vue-load-image>
 
             </a>
         </div>
@@ -79,20 +77,19 @@
 
       <div  v-for="(project,index) in freelancer.projects" :key="index + project.id" class="modal fade" :id="'project_modal_'+project.id" tabindex="-1" role="dialog" aria-labelledby="certificate" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document" style="">
-              <div class="modal-content modal-mobile-resume" data-dismiss="modal"
+              <div class="modal-content modal-mobile-resume-new-homepage" data-dismiss="modal"
                    aria-label="Close">
                   <div class="modal-body" style="padding: 0;">
                       <div class="row">
                           <div class="col-md-9" style="padding: 0;">
-                              <!--<vue-load-image>-->
-                                  <!--<img :src="project.mainImage" alt="" width="100%" slot="image" height="auto">-->
-                                  <!--<img slot="preloader" src="resumeApp/public/js/slick-master/slick/ajax-loader.gif"/>-->
-                              <!--</vue-load-image>-->
+                              <vue-load-image>
+                                  <img :src="project.mainImage" alt="" width="100%" slot="image" height="auto">
+                                  <img slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
+                              </vue-load-image>
                               <!--<div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">-->
                                   <!--<iframe v-if="image.includes('embed')" height="400" width="100%" :src="image+'?bgcolor=%23191919'" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>-->
                                   <!--<img v-else :src="image" alt="" width="100%" height="auto">-->
                               <!--</div>-->
-                              <img v-lazy="project.mainImage" alt="" width="100%" slot="image" height="auto">
 
                           </div>
                           <div class="col-md-3">
@@ -166,7 +163,7 @@ export default {
 <style lang="scss" scoped>
     .projectsSection{
         width: calc(100% - 342px);
-        height:175px;
+        height:175px !important;
         .slick-dots {
             bottom: -5px !important;
         }

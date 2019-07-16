@@ -8,13 +8,6 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-import VueLazyload from 'vue-lazyload'
-
-Vue.use(VueLazyload, {
-    preLoad: 1.3,
-    loading: 'resumeApp/public/images/spinner-load.gif',
-    attempt: 1
-});
 
 $.ajaxSetup({
     headers: {

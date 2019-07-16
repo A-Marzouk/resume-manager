@@ -27,7 +27,18 @@
 
     margin: 0;
     padding: 0;
+
 }
+
+.projectsSection  .slick-list{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 175px;
+}
+
 .slick-list:focus
 {
     outline: none;

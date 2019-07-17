@@ -43,7 +43,7 @@
           </div>
         <div class="btns">
             <div class="col-12 NoDecor no-flex">
-                <a class="btn-block summaryBtn" href="javascript:;" @click="payment" id="hireMeBtn">Summary</a>
+                <a class="btn-block summaryBtn" :href=" '/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks " id="hireMeBtn">Summary</a>
             </div>
             <div class="col-12 NoDecor">
                 <a href="javascript:void(0)" class="btn-block cancelBtn cancelBooking" @click="cancel">Cancel</a>
@@ -64,12 +64,7 @@
         }
     },
     methods: {
-        payment () {
 
-            let {hours, weeks, freelancer} = this;
-
-            hours && weeks && window.location.replace(`/stripe/hire?freelancerID=${freelancer.id}&hours=${hours}&weeks=${weeks}`)
-        }
     }
   }
 </script>
@@ -154,6 +149,10 @@
             @media (max-width: 990px) {
                 padding: 3px 10px;
             }
+        }
+
+        .summaryBtn:hover{
+            color: white;
         }
 
         .summaryBtn,

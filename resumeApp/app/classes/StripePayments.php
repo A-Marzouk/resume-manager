@@ -174,6 +174,18 @@ class StripePayments
         $freelancer  = User::where('id',request()->freelancerID)->first();
         $hours       = request()->hours;
         $weeks      = request()->weeks;
+        if(!is_numeric($hours)){
+            $hours = (int) filter_var($hours, FILTER_SANITIZE_NUMBER_INT);
+            $freelancer->userData->update([
+                'availableHours' => $hours
+            ]);
+        }
+
+        if(!is_numeric($freelancer->userData->salary)){
+            $freelancer->userData->update([
+                'salary' => 5
+            ]);
+        }
         $amountToPay = ( $freelancer->userData->salary + 5 ) * 100 * intval($hours);
 
         return view('payment',compact('freelancer','hours','amountToPay','weeks'));

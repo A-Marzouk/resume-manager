@@ -230,7 +230,7 @@
                                                         </span>
                                                     </div>
                                                     <div>
-                                                        <span style="font-weight: 500;">No. hours per week: </span>{{Math.ceil(user.data.available_hours_per_week)}} hours
+                                                        <span style="font-weight: 500;">No. hours per week: </span>{{Math.ceil(user.agent.available_hours_per_week)}} hours
                                                     </div>
                                                 </div>
                                                 <div class="invisiblty" style="padding-top: 40px;">

@@ -391,8 +391,3 @@ Route::get('/resume_sample/{username}','HomeController@ResumeSample');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/{username}','HomeController@ResumePage');
 
-// temp routes :
-
-Route::get('/fostercare/apply','HomeController@fosterCareForm')->name('fostercare');
-Route::post('/fostercare/apply','HomeController@fosterCareFormSubmit')->name('fostercare.submit');
-

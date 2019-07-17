@@ -58357,6 +58357,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -58364,7 +58375,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             activeTab: 'campaign-manager',
             selection: 'disapprove',
             disapproveStatus: 'process',
-            notificationMessage: ''
+            notificationMessage: '',
+            typeOfAddedAgent: 'business-support'
         };
     },
 
@@ -58998,7 +59010,171 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(10)
+    _c(
+      "div",
+      {
+        staticClass: "modal fade centered-modal",
+        attrs: {
+          id: "add-agent",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "remove-modal",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content border-0" }, [
+              _c("div", { staticClass: "modal-body campaign-team-modal" }, [
+                _c("div", [
+                  _c("div", { staticClass: "modal-question" }, [
+                    _vm._v(
+                      "\n                           Which agent do you want to add ?\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-answer radio-options" }, [
+                    _c("div", { staticClass: "col-12" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "form-check-label checkBoxContainer disapprove-text",
+                          attrs: { id: "defaultRadio" }
+                        },
+                        [
+                          _c("input", {
+                            staticClass: "form-check-input",
+                            attrs: { type: "radio", name: "disapprove" },
+                            on: {
+                              click: function($event) {
+                                _vm.typeOfAddedAgent = "business-support"
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "checkmark make-circle" }),
+                          _vm._v(
+                            "\n                                    Business support\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-12" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "form-check-label checkBoxContainer disapprove-text"
+                        },
+                        [
+                          _c("input", {
+                            staticClass: "form-check-input",
+                            attrs: { type: "radio", name: "disapprove" },
+                            on: {
+                              click: function($event) {
+                                _vm.typeOfAddedAgent = "designer"
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "checkmark make-circle" }),
+                          _vm._v(
+                            "\n                                    Designer\n                                "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-12" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "form-check-label checkBoxContainer disapprove-text"
+                        },
+                        [
+                          _c("input", {
+                            staticClass: "form-check-input",
+                            attrs: { type: "radio", name: "disapprove" },
+                            on: {
+                              click: function($event) {
+                                _vm.typeOfAddedAgent = "behance-designer"
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "checkmark make-circle" }),
+                          _vm._v(
+                            "\n                                    Import from "
+                          ),
+                          _c("a", { attrs: { href: "https://behance.net" } }, [
+                            _vm._v("Behance.net")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-12" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass:
+                            "form-check-label checkBoxContainer disapprove-text"
+                        },
+                        [
+                          _c("input", {
+                            staticClass: "form-check-input",
+                            attrs: { type: "radio", name: "disapprove" },
+                            on: {
+                              click: function($event) {
+                                _vm.typeOfAddedAgent = "developer"
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "checkmark make-circle" }),
+                          _vm._v(
+                            "\n                                    Developer\n                                "
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "modal-btn-wrapper flex-row-mobile" },
+                    [
+                      _vm._m(10),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "button-base blue-button-a" }, [
+                        _c(
+                          "a",
+                          {
+                            staticStyle: { width: "106px" },
+                            attrs: {
+                              href:
+                                "/admin/register-agent?agent=" +
+                                _vm.typeOfAddedAgent
+                            }
+                          },
+                          [_vm._v("Continue")]
+                        )
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -59380,130 +59556,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "modal fade centered-modal",
-        attrs: {
-          id: "add-agent",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "remove-modal",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content border-0" }, [
-              _c("div", { staticClass: "modal-body campaign-team-modal" }, [
-                _c("div", [
-                  _c("div", { staticClass: "modal-question" }, [
-                    _vm._v(
-                      "\n                           Which agent do you want to add ?\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-answer radio-options" }, [
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "form-check-label checkBoxContainer disapprove-text",
-                          attrs: { id: "defaultRadio" }
-                        },
-                        [
-                          _c("input", {
-                            staticClass: "form-check-input",
-                            attrs: { type: "radio", name: "disapprove" }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "checkmark make-circle" }),
-                          _vm._v(
-                            " business support\n                                "
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "form-check-label checkBoxContainer disapprove-text"
-                        },
-                        [
-                          _c("input", {
-                            staticClass: "form-check-input",
-                            attrs: { type: "radio", name: "disapprove" }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "checkmark make-circle" }),
-                          _vm._v(" designer\n                                ")
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-12" }, [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "form-check-label checkBoxContainer disapprove-text"
-                        },
-                        [
-                          _c("input", {
-                            staticClass: "form-check-input",
-                            attrs: { type: "radio", name: "disapprove" }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "checkmark make-circle" }),
-                          _vm._v(" developer\n                                ")
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "modal-btn-wrapper flex-row-mobile" },
-                    [
-                      _c("div", { staticClass: "button-base white-button-a" }, [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href: "javascript:void(0)",
-                              "data-dismiss": "modal"
-                            }
-                          },
-                          [_vm._v("CANCEL")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "button-base blue-button-a" }, [
-                        _c(
-                          "a",
-                          {
-                            staticStyle: { width: "106px" },
-                            attrs: { href: "/admin/register-agent" }
-                          },
-                          [_vm._v("Continue")]
-                        )
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "button-base white-button-a" }, [
+      _c(
+        "a",
+        { attrs: { href: "javascript:void(0)", "data-dismiss": "modal" } },
+        [_vm._v("CANCEL")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -69548,6 +69607,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return {
             personalData: {
                 name: '',
+                profession_id: '',
                 surname: '',
                 gender: '',
                 phone: '',
@@ -69736,6 +69796,20 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             },
 
             deep: true
+        }
+    },
+    mounted: function mounted() {
+        var agentType = this.$route.query.agent;
+        switch (agentType) {
+            case 'business-support':
+                this.personalData.profession_id = 1;
+                break;
+            case 'developer':
+                this.personalData.profession_id = 2;
+                break;
+            case 'designer':
+                this.personalData.profession_id = 3;
+                break;
         }
     }
 });
@@ -73486,6 +73560,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -73666,16 +73751,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        updateUserHourlyRate: function updateUserHourlyRate(user_id, rate) {
+        setSkillEditField: function setSkillEditField(user_id, value) {
             var _this3 = this;
+
+            var agents = this.selectedAgents;
+            $.each(agents, function (i) {
+                if (agents[i].id === user_id) {
+                    agents[i].is_skill_edited = value;
+                    if (value === false) {
+                        var technologies = agents[i].agent.technologies;
+                        _this3.updateUserSkills(user_id, technologies);
+                    }
+                }
+            });
+        },
+        updateUserHourlyRate: function updateUserHourlyRate(user_id, rate) {
+            var _this4 = this;
 
             var data = {
                 'user_id': user_id,
                 'hourly_rate': rate
             };
             axios.post('/admin/agent/rate/update', data).then(function (response) {
+                var notificationMessage = "Successfully updated agent";
+                _this4.$emit('showPositiveNotification', notificationMessage);
+                console.log(response);
+            });
+        },
+        updateUserSkills: function updateUserSkills(user_id, technologies) {
+            var _this5 = this;
+
+            var data = {
+                'user_id': user_id,
+                'technologies': technologies
+            };
+            axios.post('/admin/agent/technologies/update', data).then(function (response) {
                 var notificationMessage = 'Successfully updated agent';
-                _this3.$emit('showPositiveNotification', notificationMessage);
+                _this5.$emit('showPositiveNotification', notificationMessage);
                 console.log(response);
             });
         }
@@ -73864,7 +73976,7 @@ var render = function() {
                       "\n                            Filter :\n                            "
                     ),
                     _vm.filter === "show_all"
-                      ? _c("span", [_vm._v("All applications")])
+                      ? _c("span", [_vm._v("All agents")])
                       : _vm._e(),
                     _vm._v(" "),
                     _vm.filter === "show_new"
@@ -73905,7 +74017,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                                Show all applications\n                            "
+                          "\n                                Show all agents\n                            "
                         )
                       ]
                     ),
@@ -74038,7 +74150,63 @@ var render = function() {
         [
           _c("div", { staticClass: "table invoices-table applicants-table" }, [
             _c("table", [
-              _vm._m(1),
+              _c("thead", [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("FULL NAME")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [
+                    _vm._v("HOURLY RATE")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.activeTab !== "business-support",
+                          expression: "activeTab !== 'business-support' "
+                        }
+                      ],
+                      attrs: { scope: "col" }
+                    },
+                    [_vm._v("MAIN SKILL")]
+                  ),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("STATUS")]),
+                  _vm._v(" "),
+                  _c(
+                    "th",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.activeTab === "business-support",
+                          expression: "activeTab === 'business-support' "
+                        }
+                      ],
+                      staticClass: "align-items-center stage-column",
+                      staticStyle: { "padding-right": "30px", display: "flex" },
+                      attrs: { scope: "col" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            STAGE\n                            "
+                      ),
+                      _c("img", {
+                        attrs: {
+                          src: "/images/admin/arrows.svg",
+                          alt: "arrow down"
+                        }
+                      })
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -74196,6 +74364,112 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.activeTab !== "business-support",
+                                expression: "activeTab !== 'business-support'"
+                              }
+                            ]
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "invoice-service d-flex align-items-center base-text hour-text",
+                                staticStyle: { "font-weight": "normal" }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "show",
+                                        rawName: "v-show",
+                                        value: !user.is_skill_edited,
+                                        expression: "!user.is_skill_edited"
+                                      }
+                                    ],
+                                    staticStyle: {
+                                      overflow: "hidden",
+                                      "max-width": "120px"
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(user.agent.technologies))]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: user.agent.technologies,
+                                      expression: "user.agent.technologies"
+                                    },
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: user.is_skill_edited,
+                                      expression: "user.is_skill_edited"
+                                    }
+                                  ],
+                                  staticStyle: { width: "120px" },
+                                  attrs: { type: "text" },
+                                  domProps: { value: user.agent.technologies },
+                                  on: {
+                                    blur: function($event) {
+                                      _vm.setSkillEditField(user.id, false)
+                                    },
+                                    keyup: function($event) {
+                                      if (
+                                        !("button" in $event) &&
+                                        _vm._k(
+                                          $event.keyCode,
+                                          "enter",
+                                          13,
+                                          $event.key,
+                                          "Enter"
+                                        )
+                                      ) {
+                                        return null
+                                      }
+                                      _vm.setSkillEditField(user.id, false)
+                                    },
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        user.agent,
+                                        "technologies",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("img", {
+                                  attrs: {
+                                    src: "/images/admin/edit_24px.svg",
+                                    alt: "edit arrow"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.setSkillEditField(user.id, true)
+                                    }
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
                         _c("td", [
                           _c(
                             "div",
@@ -74216,7 +74490,7 @@ var render = function() {
                                       " (+" +
                                       _vm._s(
                                         Math.ceil(
-                                          user.data.available_hours_per_week
+                                          user.agent.available_hours_per_week
                                         )
                                       ) +
                                       " h/week)\n                                        "
@@ -74227,7 +74501,21 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _vm._m(2, true)
+                        _c(
+                          "td",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.activeTab === "business-support",
+                                expression: "activeTab === 'business-support' "
+                              }
+                            ],
+                            staticClass: "no-decoration stage-select "
+                          },
+                          [_vm._m(1, true)]
+                        )
                       ]),
                       _vm._v(" "),
                       _c(
@@ -74296,7 +74584,7 @@ var render = function() {
                                     ]
                                   ),
                                   _vm._v(" "),
-                                  _vm._m(3, true)
+                                  _vm._m(2, true)
                                 ]
                               ),
                               _vm._v(" "),
@@ -74414,7 +74702,7 @@ var render = function() {
                                             ]
                                           ),
                                           _vm._v(" "),
-                                          _vm._m(4, true)
+                                          _vm._m(3, true)
                                         ])
                                       ])
                                     ]),
@@ -74557,7 +74845,7 @@ var render = function() {
                                       ]
                                     ),
                                     _vm._v(" "),
-                                    _vm._m(5, true)
+                                    _vm._m(4, true)
                                   ]
                                 )
                               ])
@@ -74958,46 +75246,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("FULL NAME")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("HOURLY RATE")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("STATUS")]),
-        _vm._v(" "),
-        _c(
-          "th",
-          {
-            staticClass: "d-flex align-items-center stage-column",
-            staticStyle: { "padding-right": "30px" },
-            attrs: { scope: "col" }
-          },
-          [
-            _vm._v(
-              "\n                            STAGE\n                            "
-            ),
-            _c("img", {
-              attrs: { src: "/images/admin/arrows.svg", alt: "arrow down" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "no-decoration stage-select " }, [
-      _c("a", { attrs: { href: "javascript:void(0)" } }, [
-        _vm._v("\n                                        v1   "),
-        _c("img", {
-          attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
-        })
-      ])
+    return _c("a", { attrs: { href: "javascript:void(0)" } }, [
+      _vm._v("\n                                        v1   "),
+      _c("img", {
+        attrs: { src: "/images/admin/down_arrow.png", alt: "arrow down" }
+      })
     ])
   },
   function() {

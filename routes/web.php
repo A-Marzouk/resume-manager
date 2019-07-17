@@ -55,12 +55,13 @@ Route::prefix('admin')->group(function (){
 
     // update agent :
     Route::post('/agent/rate/update','AdminsController@updateAgentsHourlyRate')->name('update.agent.rate.from.admin');
+    Route::post('/agent/technologies/update','AdminsController@updateAgentsTechnologies')->name('update.agent.skills.from.admin');
 
     Route::get('/agent/update/{user_id}/personal','AdminsController@showEditPersonalInfo')->name('view.agent.update.personal');
     Route::get('/agent/update/professional','AdminsController@showEditProfessionalInfo')->name('view.agent.update.professional');
     Route::get('/agent/update/resume','AdminsController@showEditResumeInfo')->name('view.agent.update.resume');
 
-    Route::post('/agent/update','AdminsController@editAgent')->name('view.agent.update.personal');
+    Route::post('/agent/update','AdminsController@editAgent')->name('agent.update');
 
 
 

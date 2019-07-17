@@ -86,6 +86,7 @@ class AdminsController extends Controller
             if($user->data->profession->name === $professionName){
                 $user->is_details_opened = false;
                 $user->is_edited = false;
+                $user->is_skill_edited = false;
                 $Agents [] = $user ;
             }
         }
@@ -123,7 +124,7 @@ class AdminsController extends Controller
                 'voice_character'          => $request->professionalData['voice'],
             ],
             'user_data' => [
-                'profession_id'         => 1, // business-support
+                'profession_id'         => $request->personalData['profession_id'], // business-support, developer, designer
                 'currency_id'           => 1, // usd
                 'timezone'              => 1,
                 // personal data
@@ -162,6 +163,15 @@ class AdminsController extends Controller
         $user = User::find($request->user_id);
         return $user->agent()->update([
             'hourly_rate' => $request->hourly_rate
+        ]);
+    }
+
+    // update agent's technologies
+
+    public function updateAgentsTechnologies(Request $request){
+        $user = User::find($request->user_id);
+        return $user->agent()->update([
+            'technologies' => $request->technologies
         ]);
     }
 

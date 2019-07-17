@@ -65,7 +65,7 @@
                             <img src="/images/admin/filter.svg" alt="">
                             <div>
                                 Filter :
-                                <span v-if="filter=== 'show_all' ">All applications</span>
+                                <span v-if="filter=== 'show_all' ">All agents</span>
                                 <span v-if="filter=== 'show_new' ">New applications</span>
                                 <span v-if="filter=== 'show_in_process' ">In process</span>
                             </div>
@@ -73,7 +73,7 @@
                         <div class="select-popup" v-show="showFilterSelection" style="margin-top:-45px;">
                             <ul class="select-popup-list">
                                 <li @click="selectFilter('show_all')">
-                                    Show all applications
+                                    Show all agents
                                 </li>
                                 <li @click="selectFilter('show_new')">
                                     Show new applications
@@ -108,6 +108,7 @@
             </div>
 
             <div style="padding-left:24px; padding-right:24px;">
+
                 <div class="table invoices-table applicants-table">
                     <table>
                         <thead>
@@ -115,8 +116,9 @@
                             <th scope="col">FULL NAME</th>
                             <th scope="col"></th>
                             <th scope="col">HOURLY RATE</th>
+                            <th scope="col" v-show="activeTab !== 'business-support' ">MAIN SKILL</th>
                             <th scope="col">STATUS</th>
-                            <th scope="col" class="d-flex align-items-center stage-column" style="padding-right: 30px;">
+                            <th scope="col" v-show="activeTab === 'business-support' " class="align-items-center stage-column" style="padding-right: 30px; display:flex;">
                                 STAGE
                                 <img src="/images/admin/arrows.svg" alt="arrow down">
                             </th>
@@ -145,14 +147,21 @@
                                             <img src="/images/admin/edit_24px.svg" alt="edit arrow" @click="setEditField(user.id, true)">
                                         </div>
                                     </td>
+                                    <td v-show="activeTab !== 'business-support'">
+                                        <div class="invoice-service d-flex align-items-center base-text hour-text"  style="font-weight: normal;">
+                                            <div v-show="!user.is_skill_edited" style=" overflow: hidden; max-width: 120px;">{{user.agent.technologies}}</div>
+                                            <input type="text" style="width: 120px;"  v-model="user.agent.technologies" v-show="user.is_skill_edited" @blur="setSkillEditField(user.id, false)" @keyup.enter="setSkillEditField(user.id, false)" >
+                                            <img src="/images/admin/edit_24px.svg" alt="edit arrow" @click="setSkillEditField(user.id, true)">
+                                        </div>
+                                    </td>
                                     <td>
                                         <div class="invoice-amount base-text">
                                             <span :class="{ 'available-text' : user.status == 4 , 'new-text' : user.status < 4}">
-                                                {{userStatus[user.status]}} (+{{Math.ceil(user.data.available_hours_per_week)}} h/week)
+                                                {{userStatus[user.status]}} (+{{Math.ceil(user.agent.available_hours_per_week)}} h/week)
                                             </span>
                                         </div>
                                     </td>
-                                    <td class="no-decoration stage-select ">
+                                    <td class="no-decoration stage-select " v-show="activeTab === 'business-support' ">
                                         <a href="javascript:void(0)">
                                             v1   <img src="/images/admin/down_arrow.png" alt="arrow down">
                                         </a>
@@ -329,8 +338,10 @@
                 </div>
 
             </div>
-            </div>
+
+
         </div>
+    </div>
 </template>
 
 <script>
@@ -512,12 +523,39 @@
                 });
 
             },
+
+
+            setSkillEditField(user_id,value){
+                let agents = this.selectedAgents;
+                $.each(agents, (i) => {
+                    if (agents[i].id === user_id) {
+                        agents[i].is_skill_edited = value;
+                        if(value === false){
+                            let technologies =  agents[i].agent.technologies ;
+                            this.updateUserSkills(user_id, technologies) ;
+                        }
+                    }
+                });
+
+            },
             updateUserHourlyRate(user_id,rate){
                 let data = {
                     'user_id' : user_id,
                     'hourly_rate': rate
                 };
                 axios.post('/admin/agent/rate/update',data).then( (response) => {
+                    let notificationMessage = "Successfully updated agent" ;
+                    this.$emit('showPositiveNotification',notificationMessage);
+                    console.log(response) ;
+                });
+            },
+
+            updateUserSkills(user_id,technologies){
+                let data = {
+                    'user_id' : user_id,
+                    'technologies': technologies
+                };
+                axios.post('/admin/agent/technologies/update',data).then( (response) => {
                     let notificationMessage = 'Successfully updated agent' ;
                     this.$emit('showPositiveNotification',notificationMessage);
                     console.log(response) ;

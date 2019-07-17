@@ -195,6 +195,7 @@ export default {
     return{
         personalData:{
             name:'',
+            profession_id:'',
             surname:'',
             gender:'',
             phone:'',
@@ -369,6 +370,20 @@ export default {
                 this.canSubmit = isAll_filled;
             },
             deep: true
+        }
+    },
+    mounted(){
+        let agentType = this.$route.query.agent ;
+        switch (agentType) {
+            case 'business-support' :
+                this.personalData.profession_id = 1;
+                break;
+            case 'developer' :
+                this.personalData.profession_id = 2;
+                break;
+            case 'designer' :
+                this.personalData.profession_id = 3;
+                break;
         }
     }
 }

@@ -336,21 +336,32 @@
                             <div class="modal-answer radio-options">
                                 <div class="col-12">
                                     <label class="form-check-label checkBoxContainer disapprove-text" id="defaultRadio">
-                                        <input class="form-check-input" type="radio" name="disapprove">
-                                        <span class="checkmark make-circle"></span> business support
+                                        <input class="form-check-input" type="radio" name="disapprove" @click="typeOfAddedAgent = 'business-support' ">
+                                        <span class="checkmark make-circle"></span>
+                                        Business support
                                     </label>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-check-label checkBoxContainer disapprove-text">
-                                        <input class="form-check-input" type="radio" name="disapprove">
-                                        <span class="checkmark make-circle">
-                                        </span> designer
+                                        <input class="form-check-input" type="radio" name="disapprove" @click="typeOfAddedAgent = 'designer' ">
+                                        <span class="checkmark make-circle"></span>
+                                        Designer
                                     </label>
                                 </div>
+
                                 <div class="col-12">
                                     <label class="form-check-label checkBoxContainer disapprove-text">
-                                        <input class="form-check-input" type="radio" name="disapprove">
-                                        <span class="checkmark make-circle"></span> developer
+                                        <input class="form-check-input" type="radio" name="disapprove" @click="typeOfAddedAgent = 'behance-designer' ">
+                                        <span class="checkmark make-circle"></span>
+                                        Import from <a href="https://behance.net">Behance.net</a>
+                                    </label>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-check-label checkBoxContainer disapprove-text">
+                                        <input class="form-check-input" type="radio" name="disapprove" @click="typeOfAddedAgent = 'developer' ">
+                                        <span class="checkmark make-circle"></span>
+                                        Developer
                                     </label>
                                 </div>
                             </div>
@@ -360,7 +371,7 @@
                                     <a href="javascript:void(0)" data-dismiss="modal">CANCEL</a>
                                 </div>
                                 <div class="button-base blue-button-a">
-                                    <a href="/admin/register-agent" style="width:106px;">Continue</a>
+                                    <a :href="'/admin/register-agent?agent=' + typeOfAddedAgent" style="width:106px;">Continue</a>
                                 </div>
                             </div>
                         </div>
@@ -380,6 +391,7 @@
                 selection: 'disapprove',
                 disapproveStatus: 'process',
                 notificationMessage: '',
+                typeOfAddedAgent:'business-support'
             }
         },
         methods:{

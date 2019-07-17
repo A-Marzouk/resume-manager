@@ -41,10 +41,12 @@
 
       <img src="/images/home/computer.png" alt="computer" class="bottomBg">
       <div v-if="!customSearch" class="agentsContainer">
-        <freelancer-card-small v-for="freelancer in freelancers" :key="freelancer.id + freelancer.firstName" :freelancer="freelancer"></freelancer-card-small>
+        <freelancer-card-small :showPopUpProject="showPopUpProject" v-for="freelancer in freelancers" :key="freelancer.id + freelancer.firstName" :freelancer="freelancer"></freelancer-card-small>
+        <portfolio-pop-up v-show="showPopUpProject" :project="project"></portfolio-pop-up>
       </div>
       <div v-else class="agentsContainer">
-        <freelancer-card-small v-for="agent in results" :key="agent.id + agent.firstName" :freelancer="agent"></freelancer-card-small>
+        <freelancer-card-small :showPopUpProject="showPopUpProject" v-for="agent in results" :key="agent.id + agent.firstName" :freelancer="agent"></freelancer-card-small>
+        <portfolio-pop-up v-show="showPopUpProject" :project="project"></portfolio-pop-up>
       </div>
   </div>
 </template>
@@ -60,6 +62,13 @@ export default {
   data: () => ({
     results: [],
     customSearch: false,
+    project: {
+      name: '',
+      description: '',
+      link: '',
+      images: []
+    },
+    showPopUpProject: false,
     searchParams: {
       jobTitle: '',
       rate: '',

@@ -86219,7 +86219,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return imagesString.split(','); // returns an array
         },
         getResizedImage: function getResizedImage(src) {
-            var resizedSrc = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
+            return this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
         }
     }
 });

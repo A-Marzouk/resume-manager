@@ -81,13 +81,24 @@ class HomeController extends Controller
                 return $query->limit(5);
             }])->where('id',$data->user_id)->first();
         }
-//
-//        foreach ($homeFreelancers as $freelancer){
-//            // resize home page freelancer project images before showing them:
-//              $this->resizeProjectImages($freelancer->projects);
-//        }
+
 
         return view('new_home_page',compact('homeFreelancers'));
+    }
+
+    public function resizeHomePageProjectImages(){
+        $homeFreelancersData = UserData::where('home_page_freelancer',true)->get();
+        $homeFreelancers = [] ;
+        foreach ($homeFreelancersData as $data){
+            $homeFreelancers[] = User::with(['projects'=>function($query) {
+                return $query->limit(100);
+            }])->where('id',$data->user_id)->first();
+        }
+
+        foreach ($homeFreelancers as $freelancer){
+            // resize home page freelancer project images before showing them:
+              $this->resizeProjectImages($freelancer->projects);
+        }
     }
 
     protected function resizeProjectImages($projects){

@@ -2,6 +2,7 @@
 
 @section('content')
     <div id="approvedAgentProfile">
-        <approved-agent-profile></approved-agent-profile>
+
+        <approved-agent-profile user_id="{{$user_id}}"></approved-agent-profile>
     </div>
 @endsection

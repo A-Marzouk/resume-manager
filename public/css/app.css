@@ -1,3 +1,8 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 body {
   background: #f4f4f4 !important;
   overflow-x: hidden;
@@ -118,6 +123,12 @@ body {
   padding-top: 18px;
 }
 
+@media (max-width: 512px) {
+  .customNavLink {
+    font-size: 10px;
+  }
+}
+
 .customNavLink :hover {
   color: #18A6DF !important;
 }
@@ -205,6 +216,20 @@ body {
 @media (max-width: 992px) {
   .registerBtn {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .registerBtn {
+    padding: 14px 20px !important;
+  }
+}
+
+@media (max-width: 512px) {
+  .registerBtn {
+    font-size: 10px;
+    padding: 9px !important;
+    margin-left: 16px;
   }
 }
 
@@ -3369,7 +3394,7 @@ body {
   }
 
   .hideOnSm {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -3377,7 +3402,7 @@ body {
   display: none;
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 760px) {
   .showOnSm {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -3726,6 +3751,32 @@ body {
   color: white;
 }
 
+.notificationBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 38px;
+  padding-left: 50px;
+  padding-right: 57px;
+  background: #FFBA69;
+  border-radius: 4px;
+  margin-top: -32px;
+  margin-bottom: -6px;
+  z-index: inherit;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
 .freelancerChatBox {
   border: 1px lightgrey solid;
   border-radius: 15px;
@@ -3804,128 +3855,6 @@ body {
   letter-spacing: 0.5px;
   line-height: 18px;
   padding-bottom: 9px;
-}
-
-.freelancerCard.smallCard .freelancerImg {
-  width: 70px;
-  height: 70px;
-}
-
-.freelancerCard.smallCard .nameRow {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  position: relative;
-  border-radius: 5px;
-  padding: 14px;
-  height: 100%;
-}
-
-.freelancerCard.smallCard .contact {
-  position: absolute;
-  top: 20px;
-  right: 14px;
-}
-
-.freelancerCard.smallCard .jobTitle {
-  color: white;
-  font-size: 14px;
-}
-
-.freelancerCard.smallCard .payment-details {
-  font-size: 12px;
-}
-
-@media (max-width: 768px) {
-  .freelancerCard.smallCard .payment-details {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
-
-.freelancerCard.smallCard .payment-details div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  text-align: center;
-}
-
-.freelancerCard.smallCard .payment-details img,
-.freelancerCard.smallCard .payment-details span {
-  margin-right: 5px;
-}
-
-.freelancerCard.smallCard .payment-details img {
-  height: 14px;
-}
-
-.freelancerCard.smallCard .payment-highLight {
-  font-size: 14px;
-}
-
-.freelancerCard.smallCard .resumeCardRight {
-  height: 100%;
-}
-
-.freelancerCard.smallCard .resumeCardRight .hireCardBtn {
-  width: 87px;
-}
-
-@media (max-width: 768px) {
-  .freelancerCard.smallCard .resumeCardRight .hireCardBtn {
-    width: 100%;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-}
-
-.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol {
-  padding-left: 0;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  .freelancerCard.smallCard .cardRow {
-    width: 100%;
-  }
-}
-
-.freelancerCard.smallCard .hireRow {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 14px;
-  margin: 0;
-  margin-top: 15px;
-}
-
-.freelancerCard.smallCard .nameCard {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  padding-top: 0;
-  margin-bottom: 5px;
-  padding-left: 10px;
 }
 
 @media (max-width: 1240px) {
@@ -5396,6 +5325,7 @@ body {
   height: 56px;
   width: 100%;
   padding-left: 35px;
+  padding-right: 35px;
   background: #05A4F4;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5432,7 +5362,7 @@ body {
 .campaign-info-bar .campaign-info-tab {
   font-family: Roboto;
   font-style: normal;
-  margin-right: 80px !important;
+  margin-right: 64px !important;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
@@ -6817,7 +6747,7 @@ body {
 .campaign_brief_content .campaign_brief_tabs .campaign-info-bar .campaign-info-tab {
   font-family: Roboto;
   font-style: normal;
-  margin-right: 80px !important;
+  margin-right: 64px !important;
   font-weight: normal;
   font-size: 18px;
   line-height: 24px;
@@ -11588,9 +11518,25 @@ html {
   width: 201px !important;
 }
 
+@media (max-width: 768px) {
+  .logo {
+    width: 24px !important;
+    height: auto;
+  }
+}
+
 .nav-home-designers {
   width: 100%;
   padding: 0 78px !important;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.nav-home-designers .navbar-nav {
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
 }
 
 @media (max-width: 992px) {
@@ -12179,20 +12125,40 @@ html {
   border-radius: 0 60px 60px 0;
 }
 
+.agentsSection .agentsContainer__searchSelects {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.agentsSection .agentsContainer__customSelect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 .agentsSection .agentsContainer__selectContainer {
-  background: rgba(187, 217, 255, 0.3);
+  left: -15px;
   border-radius: 4px;
   padding: 15px;
   width: 286px;
   margin-bottom: 45px;
   position: relative;
-  left: -15px;
+}
+
+.agentsSection .agentsContainer__selectContainer.active {
+  background: rgba(187, 217, 255, 0.3);
 }
 
 @media (max-width: 992px) {
   .agentsSection .agentsContainer__selectContainer {
     left: 0;
     width: 266px;
+    margin-bottom: 21px;
   }
 }
 
@@ -12242,24 +12208,7 @@ html {
   }
 }
 
-.agentsSection .agentsContainer__card .freelancerCard {
-  margin: 0 !important;
-  width: 352px;
-}
-
-@media (max-width: 992px) {
-  .agentsSection .agentsContainer__card .freelancerCard {
-    width: 318px;
-  }
-}
-
-@media (max-width: 768px) {
-  .agentsSection .agentsContainer__card .freelancerCard {
-    width: 100%;
-  }
-}
-
-.agentsSection .agentsContainer__card__portfolio {
+.agentsSection .agentsContainer__portfolio {
   margin-left: 10px;
   height: 100%;
   width: calc(100% - 342px);
@@ -12271,13 +12220,14 @@ html {
 }
 
 @media (max-width: 768px) {
-  .agentsSection .agentsContainer__card__portfolio {
+  .agentsSection .agentsContainer__portfolio {
     width: 100%;
     margin-left: 0;
+    height: 170px;
   }
 }
 
-.agentsSection .agentsContainer__card__portfolio .work {
+.agentsSection .agentsContainer__portfolio .work {
   height: 175px;
   grid-row: span 1;
   min-width: 100%;
@@ -12286,18 +12236,18 @@ html {
 }
 
 @media (max-width: 992px) {
-  .agentsSection .agentsContainer__card__portfolio .work {
+  .agentsSection .agentsContainer__portfolio .work {
     grid-column: span 3;
   }
 }
 
 @media (max-width: 768px) {
-  .agentsSection .agentsContainer__card__portfolio .work {
-    grid-column: span 6;
+  .agentsSection .agentsContainer__portfolio .work {
+    display: none;
   }
 }
 
-.agentsSection .agentsContainer__card__portfolio .work img {
+.agentsSection .agentsContainer__portfolio .work img {
   height: 100%;
   position: absolute;
   top: 0;
@@ -12305,7 +12255,29 @@ html {
 }
 
 @media (max-width: 768px) {
-  .agentsSection .agentsContainer__card__portfolio .work img {
+  .agentsSection .agentsContainer__portfolio .work img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.agentsSection .agentsContainer__portfolio .slickSlide_portfolio {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .agentsSection .agentsContainer__portfolio .slickSlide_portfolio {
+    display: block;
+  }
+}
+
+.agentsSection .agentsContainer__hireContainer {
+  width: calc(100% - 330px);
+  height: 175px;
+}
+
+@media (max-width: 770px) {
+  .agentsSection .agentsContainer__hireContainer {
     width: 100%;
     height: auto;
   }
@@ -12655,13 +12627,31 @@ html {
   .newNav__links__link {
     font-size: 1rem;
   }
+}
 
+@media (max-width: 1200px) and (max-width: 768px) {
+  .newNav__links__link {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 1200px) {
   .newNav__links__link--loginBtn {
     font-size: 1rem;
     width: 150px;
     height: 36px;
   }
+}
 
+@media (max-width: 1200px) and (max-width: 768px) {
+  .newNav__links__link--loginBtn {
+    font-size: 10px;
+    width: 103px;
+    height: 13px;
+  }
+}
+
+@media (max-width: 1200px) {
   .mainSection__content__title {
     font-size: 36px;
   }

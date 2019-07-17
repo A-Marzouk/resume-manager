@@ -50,7 +50,7 @@ class CreateUserDatasTable extends Migration
             $table->text('primary_skills')->nullable();
             $table->text('char_skills')->nullable();
             $table->text('video_url')->nullable();
-            $table->integer('timezone')->unsigned()->index();
+            $table->integer('timezone')->unsigned()->index()->nullable();
             $table->longText('future_plan')->nullable();
             $table->decimal('monthly_salary', 16, 4)->nullable();
             $table->timestamp('approved_at')->nullable();
@@ -60,7 +60,6 @@ class CreateUserDatasTable extends Migration
             $table->text('avatar')->nullable();
             $table->integer('paypal_acc_number')->nullable();
 
-
             // $table->string('address_line_1')->nullable();
             // $table->string('address_line_2')->nullable();
             // $table->string('municipality')->nullable();
@@ -69,8 +68,8 @@ class CreateUserDatasTable extends Migration
             // $table->string('country_code')->nullable();
 
             $table->integer('user_id')->unsigned()->index();
-            $table->integer('profession_id')->unsigned()->index();
-            $table->integer('currency_id')->unsigned()->index();
+            $table->integer('profession_id')->unsigned()->index()->nullable();
+            $table->integer('currency_id')->unsigned()->index()->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('profession_id')->references('id')->on('professions');

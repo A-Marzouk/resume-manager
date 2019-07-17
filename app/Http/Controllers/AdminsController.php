@@ -33,12 +33,12 @@ class AdminsController extends Controller
         return view('admin-new.dashboard.dashboard');
     }
 
-    public function showApplicantProfile(){
-        return view('admin-new.dashboard.applicant_profile');
+    public function showApplicantProfile($user_id){
+        return view('admin-new.dashboard.applicant_profile',compact('user_id'));
     }
 
-    public function showApprovedAgentProfile(){
-        return view('admin-new.dashboard.approved_agent_profile');
+    public function showApprovedAgentProfile($user_id){
+        return view('admin-new.dashboard.approved_agent_profile',compact('user_id'));
     }
 
     public function showAdvancedSearchPage(){
@@ -57,6 +57,21 @@ class AdminsController extends Controller
         return view('admin-new.add_behance_designer');
     }
 
+    // edit agent views :
+
+    public function showEditPersonalInfo($user_id){
+        return view('admin-new.editAgent.editPersonalInfo',compact('user_id'));
+    }
+
+    public function showEditProfessionalInfo(){
+        return view('admin-new.editAgent.editProfessionalInfo');
+    }
+
+    public function showEditResumeInfo(){
+        return view('admin-new.editAgent.editRecordResumeInfo');
+    }
+
+
 
     // api ( fetching data from the DB )
 
@@ -70,11 +85,18 @@ class AdminsController extends Controller
         foreach ($users as $user){
             if($user->data->profession->name === $professionName){
                 $user->is_details_opened = false;
+                $user->is_edited = false;
+                $user->is_skill_edited = false;
                 $Agents [] = $user ;
             }
         }
 
         return $Agents ;
+    }
+
+    public function getAgentByID($user_id){
+        $user = User::where('id',$user_id)->with('data','agent','languages')->first();
+        return $user ;
     }
 
     public function getClients(){
@@ -100,25 +122,23 @@ class AdminsController extends Controller
                 'technologies'             => implode(',',$request->professionalData['techs']),
                 'hourly_rate'              => 5,
                 'voice_character'          => $request->professionalData['voice'],
-            ]
-        ]);
-
-        $agentData =  app(UserData::class)->createUserData([
-            'userData' => [
-                'user_id'               => $agent->user_id,
-                'profession_id'         => 1, // business-support
+            ],
+            'user_data' => [
+                'profession_id'         => $request->personalData['profession_id'], // business-support, developer, designer
                 'currency_id'           => 1, // usd
                 'timezone'              => 1,
                 // personal data
                 'first_name'            => $request->personalData['name'],
                 'last_name'             => $request->personalData['surname'],
                 'city'                  => $request->personalData['cityName'],
+                'phone'                 => $request->personalData['phone'],
                 'gender'                => $request->personalData['gender'],
                 'paypal_acc_number'     => $request->personalData['paypal'],
 //                // professional data
                 'job_title'             => $request->professionalData['primaryJob'],
             ]
         ]);
+
 
         // add languages to agent
 
@@ -137,9 +157,29 @@ class AdminsController extends Controller
 
     }
 
+    // update agent's hourly rate
+
+    public function updateAgentsHourlyRate(Request $request){
+        $user = User::find($request->user_id);
+        return $user->agent()->update([
+            'hourly_rate' => $request->hourly_rate
+        ]);
+    }
+
+    // update agent's technologies
+
+    public function updateAgentsTechnologies(Request $request){
+        $user = User::find($request->user_id);
+        return $user->agent()->update([
+            'technologies' => $request->technologies
+        ]);
+    }
+
+    public function editAgent(Request $request){
+
+    }
 
     // create client :
-
     public function createClient(Request $request){
         $client = app(User::class)->createClient([
             'user' => [

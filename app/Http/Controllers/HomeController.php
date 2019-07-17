@@ -6,6 +6,7 @@ use App\ClientSearch;
 use App\PromotedUser;
 use App\User;
 use App\UserData;
+use App\Agent;
 
 class HomeController extends Controller
 {
@@ -102,29 +103,26 @@ class HomeController extends Controller
         //     return $promotedUser->user;
         // });
 
-        $agents = array();
+        $agents = [];
+        $result = UserData::whereIn('job_title', [
+            'UX/UI designer',
+            'Illustrator',
+            'Motion designer',
+            'Digital artist'
+        ])->get();
 
-        $user1 = new User();
-        $user1->firstName = 'Jose';
-        $user1->lastName = 'Quintero';
-        $user1->id = 1;
-        $user1->userData = new UserData();
-        $user1->userData->photo = '/images/home/profile1.png';
-        $user1->userData->jobTitle = 'Web developer';
-        $user1->userData->salary = 20;
-        $user1->userData->availableHours = 40;
-
-        $user2 = new User();
-        $user2->firstName = 'Ahmed';
-        $user2->lastName = 'Marzouk';
-        $user2->id = 2;
-        $user2->userData = new UserData();
-        $user2->userData->photo = '/images/home/profile1.png';
-        $user2->userData->jobTitle = 'Fullstack Developer';
-        $user2->userData->salary = 40;
-        $user2->userData->availableHours = 40;
-
-        array_push($agents, $user1, $user2, $user1, $user2);
+        foreach ($result as $user_data) {
+            array_push($agents, [
+                'firstName' => $user_data->first_name,
+                'lastName' => $user_data->last_name,
+                'job_title' => $user_data->job_title,
+                'country' => $user_data->country,
+                'availableHours' => $user_data->available_hours_per_week,
+                'salary' => $user_data->user->agent->hourly_rate
+            ]);
+        }
+        
+        // dd($agents);
 
         return view('home_designers', ['agents' => $agents]);
     }

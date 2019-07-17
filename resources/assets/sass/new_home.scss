@@ -58,11 +58,21 @@ html {
 .logo {
   height: 35px;
   width: 201px !important;
+
+  @media (max-width: 768px) {
+    width: 24px !important;
+    height: auto;
+  }
 }
 
 .nav-home-designers {
   width: 100%;
   padding: 0 78px !important;
+  box-sizing: border-box;
+  
+  .navbar-nav {
+    flex-direction: row !important;
+  }
 
   @media (max-width: 992px) {
     padding: 0 14px !important;
@@ -503,18 +513,33 @@ html {
       }
     }
 
+    &__searchSelects {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &__customSelect {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
     &__selectContainer {
-      background: rgba($color:#BBD9FF, $alpha: 0.3);
+
+      &.active {
+        background: rgba($color:#BBD9FF, $alpha: 0.3);
+      }
+      
+      left: -15px;
       border-radius: 4px;
       padding: 15px;
       width: 286px;
       margin-bottom: 45px;
       position: relative;
-      left: -15px;
 
       @media (max-width: 992px) {
         left: 0;
         width: 266px;
+        margin-bottom: 21px;
       }
 
       @media (max-width: 576px) {
@@ -552,64 +577,69 @@ html {
         
         flex-wrap: wrap;
       }
+    }
 
-      .freelancerCard {
-        margin: 0 !important;
-        width: 352px;
-
-        @media (max-width: 992px) {
-          width: 318px;
-        }
-
-        @media (max-width: 768px) {
-          width: 100%;
-        }
-
+    &__portfolio {
+      margin-left: 10px;
+      height: 100%;
+      width: calc(100% - 342px);
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: 100%;
+      grid-auto-rows: 0;
+      grid-gap: 10px;
+  
+      @media (max-width: 768px) {
+        width: 100%;
+        margin-left: 0;
+        height: 170px;
       }
       
-      &__portfolio {
-        margin-left: 10px;
-        height: 100%;
-        width: calc(100% - 342px);
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: 100%;
-        grid-auto-rows: 0;
-        grid-gap: 10px;
+      .work {
+        height: 175px;
+        grid-row: span 1;
+        min-width: 100%;
+        position: relative;
+        grid-column: span 2;
+        
+        @media (max-width: 992px) {
+          grid-column: span 3;
+          // height: 
+        }
+  
+        @media (max-width: 768px) {
+          display: none;
+        }
+  
+        img {
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+  
+          @media (max-width: 768px) {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+
+      .slickSlide_portfolio {
+        display: none;
 
         @media (max-width: 768px) {
-          width: 100%;
-          margin-left: 0;
+          display: block;
         }
-        
-        .work {
-          height: 175px;
-          grid-row: span 1;
-          min-width: 100%;
-          position: relative;
-          grid-column: span 2;
-          
-          @media (max-width: 992px) {
-            grid-column: span 3;
-            // height: 
-          }
+      }
+    }
 
-          @media (max-width: 768px) {
-            grid-column: span 6;
-          }
+    &__hireContainer {
+      width: calc(100% - 330px);
+      height: 175px;
 
-          img {
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-
-            @media (max-width: 768px) {
-              width: 100%;
-              height: auto;
-            }
-          }
-        }
+      @media (max-width: 770px) {
+        width: 100%;
+        height: auto;
       }
     }
 
@@ -832,6 +862,7 @@ html {
 
     .logo {
       width: 240px;
+
     }
   }
 
@@ -894,10 +925,21 @@ html {
     &__links {
       &__link {
         font-size: 1rem;
+
+        @media (max-width: 768px) {
+          font-size: 10px;
+        }
+
         &--loginBtn {
           font-size: 1rem;
           width: 150px;
           height: 36px;
+
+          @media (max-width: 768px) {
+            font-size: 10px;
+            width: 103px;
+            height: 13px;
+          }
         }
       }
     }

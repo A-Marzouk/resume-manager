@@ -4,7 +4,8 @@
     <a href="javascript:;" class="selected-country" v-on:click="opened = !opened">
       <img
         class="flag-img"
-        :src="`/images/dashboard/flag.svg`"
+        style="width: 40px; height: 30px; margin:8px;"
+        :src="'/images/dashboard/flags/' + flags[selected].name + '.svg'"
         :alt="`flag ${flags[selected].name}`"
       />
       <i class="select-icon"></i>
@@ -26,7 +27,8 @@
         <!-- :src="`/images/dashboard/flag-${flag.abrev}.svg`" -->
         <img
           class="flag-img"
-          :src="`/images/dashboard/flag.svg`"
+          style="width: 40px; height: 30px; margin:8px;"
+          :src="'/images/dashboard/flags/' + flag.name.toLowerCase() + '.svg'"
           :alt="`flag ${flag.name}`"
         />
         <span class="flag-name">{{ flag.name }}</span>
@@ -62,7 +64,7 @@ export default {
         {
           value:"AG",
           code: "1268",
-          name: 'Antigua &amp; Barbuda'
+          name: 'antigua-and-barbuda'
         },
         {
           value:"AR",
@@ -147,112 +149,112 @@ export default {
         {
           value:"BO",
           code: "591",
-          name: 'Bolivia (+591)'
+          name: 'Bolivia'
         },
         {
           value:"BA",
           code: "387",
-          name: 'Bosnia Herzegovina (+387)'
+          name: 'Bosnia Herzegovina'
         },
         {
           value:"BW",
           code: "267",
-          name: 'Botswana (+267)'
+          name: 'Botswana'
         },
         {
           value:"BR",
           code: "55",
-          name: 'Brazil (+55)'
+          name: 'Brazil'
         },
         {
           value:"BN",
           code: "673",
-          name: 'Brunei (+673)'
+          name: 'Brunei'
         },
         {
           value:"BG",
           code: "359",
-          name: 'Bulgaria (+359)'
+          name: 'Bulgaria'
         },
         {
           value:"BF",
           code: "226",
-          name: 'Burkina Faso (+226)'
+          name: 'Burkina-Faso'
         },
         {
           value:"BI",
           code: "257",
-          name: 'Burundi (+257)'
+          name: 'Burundi'
         },
         {
           value:"KH",
           code: "855",
-          name: 'Cambodia (+855)'
+          name: 'Cambodia'
         },
         {
           value:"CM",
           code: "237",
-          name: 'Cameroon (+237)'
+          name: 'Cameroon'
         },
         {
           value:"CA",
           code: "1",
-          name: 'Canada (+1)'
+          name: 'Canada'
         },
         {
           value:"CV",
           code: "238",
-          name: 'Cape Verde Islands (+238)'
+          name: 'cape-verde'
         },
         {
           value:"KY",
           code: "1345",
-          name: 'Cayman Islands (+1345)'
+          name: 'Cayman-Islands'
         },
         {
           value:"CF",
           code: "236",
-          name: 'Central African Republic (+236)'
+          name: 'Central-African-Republic'
         },
         {
           value:"CL",
           code: "56",
-          name: 'Chile (+56)'
+          name: 'Chile'
         },
         {
           value:"CN",
           code: "86",
-          name: 'China (+86)'
+          name: 'China'
         },
         {
           value:"CO",
           code: "57",
-          name: 'Colombia (+57)'
+          name: 'Colombia'
         },
         {
           value:"KM",
           code: "269",
-          name: 'Comoros (+269)'
+          name: 'Comoros'
         },
         {
           value:"CG",
           code: "242",
-          name: 'Congo (+242)'
+          name: 'Congo'
         },
         {
           value:"CK",
           code: "682",
-          name: 'Cook Islands (+682)'
+          name: 'Cook-Islands)'
         },
         {
           value:"CR",
           code: "506",
-          name: 'Costa Rica (+506)'
+          name: 'Costa Rica'
         },
         {
           value:"HR",
           code: "385",
-          name: 'Croatia (+385)'
+          name: 'Croatia'
         },
         {
           value:"CU",

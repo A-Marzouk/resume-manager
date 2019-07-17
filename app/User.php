@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Media;
+use App\Models\Concerns\HasData;
 use App\Models\Concerns\HasPhoto;
 use App\Models\Enums\UserStage;
 use App\Models\Enums\UserStatus;
@@ -21,7 +22,7 @@ class User extends Authenticatable implements HasMedia
 {
     public $emptyFields;
 
-    use HasRoles, Notifiable, HasMediaTrait, HasPhoto;
+    use HasData, HasRoles, Notifiable, HasMediaTrait, HasPhoto;
 
     /**
      * The attributes that are mass assignable.
@@ -176,6 +177,7 @@ class User extends Authenticatable implements HasMedia
             if (is_array($attributes['user'])) {
                 $user = static::fill($attributes['user']);
                 $user->save();
+                $user->userData()->create(isset($attributes['user_data']) ? $attributes['user_data'] : []);
 
                 $related = $user->assignRole($classArrayKey)->{$classArrayKey}()->save(new $class($modelData));
             } else {

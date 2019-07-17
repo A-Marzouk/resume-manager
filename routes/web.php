@@ -38,19 +38,32 @@ Route::delete('users/{user}/photos', 'UserPhotoController@destroy')
 
 // admin routs :
 Route::prefix('admin')->group(function (){
-    Route::get('/applicant-profile','AdminsController@showApplicantProfile')->name('admin.front.applicant_profile');
-    Route::get('/agent-profile','AdminsController@showApprovedAgentProfile')->name('admin.front.agent_profile');
+    Route::get('/applicant-profile/{user_id}','AdminsController@showApplicantProfile')->name('admin.front.applicant_profile');
+    Route::get('/agent-profile/{user_id}','AdminsController@showApprovedAgentProfile')->name('admin.front.agent_profile');
     Route::get('/advanced-search','AdminsController@showAdvancedSearchPage')->name('admin.search');
     Route::get('/add-behance-designer','AdminsController@addBehanceDesigner')->name('add.behance.designer');
 
     // fetching data routs
     Route::get('/api/agents/{professionName}','AdminsController@getAgentsByProfessionName')->name('get.agents');
+    Route::get('/api/agent/{user_id}','AdminsController@getAgentByID')->name('get.agent.by.id');
     Route::get('/api/clients','AdminsController@getClients')->name('get.clients');
 
     // create agent :
     Route::get('/register-agent','AdminsController@showRegisterAgentPage')->name('admin.register.agent');
     Route::get('/register-agent/{any?}','AdminsController@showRegisterAgentPage')->name('admin.register.agent');
     Route::post('/agent/create','AdminsController@createAgent')->name('create.agent.from.admin');
+
+    // update agent :
+    Route::post('/agent/rate/update','AdminsController@updateAgentsHourlyRate')->name('update.agent.rate.from.admin');
+    Route::post('/agent/technologies/update','AdminsController@updateAgentsTechnologies')->name('update.agent.skills.from.admin');
+
+    Route::get('/agent/update/{user_id}/personal','AdminsController@showEditPersonalInfo')->name('view.agent.update.personal');
+    Route::get('/agent/update/professional','AdminsController@showEditProfessionalInfo')->name('view.agent.update.professional');
+    Route::get('/agent/update/resume','AdminsController@showEditResumeInfo')->name('view.agent.update.resume');
+
+    Route::post('/agent/update','AdminsController@editAgent')->name('agent.update');
+
+
 
     // create client :
     Route::get('/register-client','AdminsController@showRegisterClientPage')->name('admin.register.client');
@@ -358,6 +371,7 @@ Route::get('/freelancer/instagram/','UserDataController@dataFromInstagram');
 
 // search functions :
 Route::post('/search','SearchesController@searchFreelancers');
+Route::post('/searchAgents','SearchesController@searchAgents');
 Route::post('/save_search','SearchesController@saveSearch');
 Route::get('/search','SearchesController@showSearchPage');
 Route::post('/search_delete','SearchesController@deleteSearch');
@@ -475,3 +489,5 @@ Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-d
 Route::get('/home_test/sales', function () {
     return view('new_home_sales');
 });
+
+Route::get('/create/new_agents', 'TestController@createAgents');

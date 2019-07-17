@@ -8,6 +8,7 @@ use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
+use Intervention\Image\Facades\Image;
 
 class HomeController extends Controller
 {
@@ -81,9 +82,50 @@ class HomeController extends Controller
             }])->where('id',$data->user_id)->first();
         }
 
+        foreach ($homeFreelancers as $freelancer){
+            // resize home page freelancer project images before showing them:
+              $this->resizeProjectImages($freelancer->projects);
+        }
 
         return view('new_home_page',compact('homeFreelancers'));
     }
+
+    protected function resizeProjectImages($projects){
+        foreach ($projects as $project){
+            if(!$this->image_exists($project->mainImage) || $this->image_resized_exists($project->mainImage) ){
+                continue;
+            }
+            $img = Image::make($this->getImageSrc($project->mainImage));
+            $img->resize(225, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $imageName = str_replace("resumeApp/uploads/","",$this->getImageSrc($project->mainImage));
+            $img->save('resumeApp/uploads/resized-images/'.$imageName);
+        }
+    }
+
+    protected function getImageSrc($src){
+        if($src[0] == '/'){
+            $src = substr($src, 1);
+        }
+        return  $src;
+    }
+
+    protected function image_resized_exists($src){
+        $imageName = str_replace("resumeApp/uploads/","",$this->getImageSrc($src));
+        if(!file_exists('resumeApp/uploads/resized-images/'.$imageName)){
+            return false ;
+        }
+        return true;
+    }
+
+    protected function image_exists($src){
+        if(!file_exists($this->getImageSrc($src))){
+            return false ;
+        }
+        return true;
+    }
+
 
     public function termsView(){
         return view('terms');

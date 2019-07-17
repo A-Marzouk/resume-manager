@@ -86206,7 +86206,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return '/resumeApp/public/images/placeholder.png';
             }
 
-            if (src.charAt(0) !== 'h') {
+            if (src.charAt(0) !== '/') {
                 return '/' + src;
             }
 
@@ -86217,6 +86217,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return [];
             }
             return imagesString.split(','); // returns an array
+        },
+        getResizedImage: function getResizedImage(src) {
+            return this.getImageSrc(src).replace('/resumeApp/uploads', 'resumeApp/uploads/resized-images');
         }
     }
 });
@@ -86815,7 +86818,7 @@ var render = function() {
                     _c("img", {
                       attrs: {
                         slot: "image",
-                        src: project.mainImage,
+                        src: _vm.getResizedImage(project.mainImage),
                         alt: "",
                         width: "100%",
                         height: "auto"

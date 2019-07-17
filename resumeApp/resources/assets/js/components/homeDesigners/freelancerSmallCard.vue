@@ -51,7 +51,7 @@
         <div  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center" style="height: 175px !important; padding: 0 5px 0 5px; overflow: hidden;">
             <a  href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >
                 <vue-load-image>
-                    <img :src="project.mainImage" alt="" width="100%" slot="image" height="auto">
+                    <img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto">
                     <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
                 </vue-load-image>
 
@@ -144,7 +144,7 @@ export default {
                 return '/resumeApp/public/images/placeholder.png';
             }
 
-            if(src.charAt(0) !== 'h'){
+            if(src.charAt(0) !== '/'){
                 return '/'+src;
             }
 
@@ -155,6 +155,9 @@ export default {
                 return [] ;
             }
             return  imagesString.split(','); // returns an array
+        },
+        getResizedImage(src){
+            return this.getImageSrc(src).replace('/resumeApp/uploads','resumeApp/uploads/resized-images');
         }
     }
 }

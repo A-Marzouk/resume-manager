@@ -157,7 +157,8 @@ export default {
             return  imagesString.split(','); // returns an array
         },
         getResizedImage(src){
-            return this.getImageSrc(src).replace('/resumeApp/uploads','resumeApp/uploads/resized-images');
+            return this.getImageSrc(src);
+            // .replace('/resumeApp/uploads','resumeApp/uploads/resized-images')
         }
     }
 }

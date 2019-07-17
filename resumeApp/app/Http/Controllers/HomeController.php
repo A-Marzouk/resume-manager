@@ -81,11 +81,11 @@ class HomeController extends Controller
                 return $query->limit(5);
             }])->where('id',$data->user_id)->first();
         }
-
-        foreach ($homeFreelancers as $freelancer){
-            // resize home page freelancer project images before showing them:
-              $this->resizeProjectImages($freelancer->projects);
-        }
+//
+//        foreach ($homeFreelancers as $freelancer){
+//            // resize home page freelancer project images before showing them:
+//              $this->resizeProjectImages($freelancer->projects);
+//        }
 
         return view('new_home_page',compact('homeFreelancers'));
     }

@@ -83,7 +83,7 @@
                       <div class="row">
                           <div class="col-md-9" style="padding: 0;">
                               <vue-load-image>
-                                  <img :src="project.mainImage" alt="" width="100%" slot="image" height="auto">
+                                  <img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto">
                                   <img slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
                               </vue-load-image>
                               <!--<div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">-->

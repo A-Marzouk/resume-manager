@@ -86918,7 +86918,7 @@ var render = function() {
                                 _c("img", {
                                   attrs: {
                                     slot: "image",
-                                    src: project.mainImage,
+                                    src: _vm.getResizedImage(project.mainImage),
                                     alt: "",
                                     width: "100%",
                                     height: "auto"

@@ -74835,7 +74835,7 @@ var render = function() {
                                           _vm._v(
                                             _vm._s(
                                               Math.ceil(
-                                                user.data
+                                                user.agent
                                                   .available_hours_per_week
                                               )
                                             ) +

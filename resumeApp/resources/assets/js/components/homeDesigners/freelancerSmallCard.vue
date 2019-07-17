@@ -157,8 +157,22 @@ export default {
             return  imagesString.split(','); // returns an array
         },
         getResizedImage(src){
-            return this.getImageSrc(src);
-            // .replace('/resumeApp/uploads','resumeApp/uploads/resized-images')
+            let resizedSrc = this.getImageSrc(src).replace('/resumeApp/uploads','resumeApp/uploads/resized-images');
+            let resized    = false ;
+            $.ajax({
+                url:resizedSrc,
+                success: function()
+                {
+                    resized = true ;
+                }
+            });
+
+            if(resized){
+                return resizedSrc ;
+            }
+
+            return  this.getImageSrc(src) ;
+
         }
     }
 }

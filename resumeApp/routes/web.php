@@ -64,6 +64,7 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
     Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
     Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
+    Route::get('/edit-form','FreelancersController@showEditForm')->name('show.edit_form');
     Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
 
     Route::post('/store','UserDataController@store')->name('freelancer.data.store');
@@ -384,6 +385,7 @@ Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('pa
 
 // public routes :
 Route::get('/apply','BusinessSupportController@showRegistrationForm')->name('freelancer.register');
+Route::get('/it/apply','Auth\RegisterController@showRegistrationForm')->name('freelancer.agents.register');
 Route::get('/new-home','HomeController@newHome')->name('welcome.new');
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/jobs/view_post/{job_id}','JobsController@viewSingleJobPost')->name('jobs.view_single');

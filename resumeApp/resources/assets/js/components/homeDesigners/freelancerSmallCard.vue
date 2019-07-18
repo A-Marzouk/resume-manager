@@ -49,7 +49,7 @@
 
     <div v-show="!showHire" class="projectsSection">
         <div  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center" style="height: 175px !important; padding: 0 5px 0 5px; overflow: hidden;">
-            <a  href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >
+            <a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >
                 <vue-load-image>
                     <img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto">
                     <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
@@ -83,7 +83,7 @@
                       <div class="row">
                           <div class="col-md-9" style="padding: 0;">
                               <vue-load-image>
-                                  <img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto">
+                                  <img :src="getResizedImage(project.mainImage)" :id="'projectModalPhoto' + project.id" alt="" width="100%" slot="image" height="auto">
                                   <img slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
                               </vue-load-image>
                               <!--<div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">-->
@@ -158,6 +158,16 @@ export default {
         },
         getResizedImage(src){
             return this.getImageSrc(src).replace('/resumeApp/uploads','/resumeApp/uploads/resized-images');
+        },
+        loadHDImage(project_id){
+            let projects = this.freelancer.projects ;
+            console.log(this.freelancer.projects);
+            $.each(projects, function(i){
+                if(projects[i].id === project_id) {
+                    $('#projectModalPhoto'+project_id).attr('src',projects[i].mainImage);
+                    return false;
+                }
+            });
         }
     }
 }

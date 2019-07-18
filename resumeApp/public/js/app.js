@@ -86220,6 +86220,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getResizedImage: function getResizedImage(src) {
             return this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
+        },
+        loadHDImage: function loadHDImage(project_id) {
+            var projects = this.freelancer.projects;
+            console.log(this.freelancer.projects);
+            $.each(projects, function (i) {
+                if (projects[i].id === project_id) {
+                    $('#projectModalPhoto' + project_id).attr('src', projects[i].mainImage);
+                    return false;
+                }
+            });
         }
     }
 });
@@ -86811,6 +86821,11 @@ var render = function() {
                     href: "javascript:void(0)",
                     "data-toggle": "modal",
                     "data-target": "#project_modal_" + project.id
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.loadHDImage(project.id)
+                    }
                   }
                 },
                 [
@@ -86919,6 +86934,7 @@ var render = function() {
                                   attrs: {
                                     slot: "image",
                                     src: _vm.getResizedImage(project.mainImage),
+                                    id: "projectModalPhoto" + project.id,
                                     alt: "",
                                     width: "100%",
                                     height: "auto"

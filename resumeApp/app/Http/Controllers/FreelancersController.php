@@ -18,7 +18,11 @@ class FreelancersController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('showRegistrationForm');
+    }
+
+    public function showRegistrationForm(){
+        return view('auth.register');
     }
 
     public function form(){

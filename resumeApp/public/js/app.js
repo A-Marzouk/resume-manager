@@ -76089,7 +76089,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         getSource: function getSource(src) {
-            if (src[0] === '/') {
+            if (src[0] === '/' || src[0] === 'b') {
                 return src;
             }
             return '/' + src;

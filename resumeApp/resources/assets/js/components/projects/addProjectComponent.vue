@@ -198,7 +198,7 @@
                 }
             },
             getSource(src){
-                if(src[0] === '/'){
+                if(src[0] === '/' || src[0] === 'b' ){
                     return src ;
                 }
                 return '/'+ src ;

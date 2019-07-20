@@ -14291,8 +14291,9 @@ module.exports = __webpack_require__(305);
 
 /***/ }),
 /* 15 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -86196,7 +86197,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     data: function data() {
         return {
-            showHire: false
+            showHire: false,
+            resizedImagesList: []
         };
     },
 
@@ -86219,7 +86221,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return imagesString.split(','); // returns an array
         },
         getResizedImage: function getResizedImage(src) {
-            return this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
+            var resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
+            if (this.resizedImagesList.includes(resizedImage)) {
+                return resizedImage;
+            }
+            return this.getImageSrc(src);
+        },
+        setResizedImagesList: function setResizedImagesList() {
+            var _this = this;
+
+            var projects = this.freelancer.projects;
+            $.each(projects, function (i) {
+                var resizedImage = _this.getImageSrc(projects[i].mainImage).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
+                axios.get(resizedImage).then(function () {
+                    console.log('yeah');
+                    _this.resizedImagesList.push(resizedImage);
+                }).catch(function () {
+                    console.log('NO');
+                });
+            });
         },
         loadHDImage: function loadHDImage(project_id) {
             var projects = this.freelancer.projects;
@@ -86231,6 +86251,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         }
+    },
+
+    mounted: function mounted() {
+        this.setResizedImagesList();
     }
 });
 
@@ -86804,7 +86828,7 @@ var render = function() {
           return _c(
             "div",
             {
-              key: index,
+              key: index + "A",
               staticClass: "d-flex justify-content-center",
               staticStyle: {
                 height: "175px !important",
@@ -86831,6 +86855,7 @@ var render = function() {
                 [
                   _c("vue-load-image", [
                     _c("img", {
+                      staticStyle: { "min-height": "175px" },
                       attrs: {
                         slot: "image",
                         src: _vm.getResizedImage(project.mainImage),
@@ -87389,7 +87414,7 @@ var render = function() {
       },
       _vm._l(_vm.freelancers, function(freelancer) {
         return _c("freelancer-card-small", {
-          key: freelancer.id + freelancer.firstName,
+          key: freelancer.id + freelancer.firstName + "A",
           attrs: { freelancer: freelancer }
         })
       })

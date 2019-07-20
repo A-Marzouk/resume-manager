@@ -61,7 +61,7 @@ class SearchesController extends Controller
         // form the where array :
 
         $userDatas[]    = UserData::where($searchArray)->get();
-        return $freelancers = $this->getFilteredDesigners($userDatas);
+        return $freelancers = array_slice($this->getFilteredDesigners($userDatas), 0, 10);
 
     }
 

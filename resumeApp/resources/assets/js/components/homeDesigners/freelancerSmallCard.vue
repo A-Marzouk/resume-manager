@@ -48,10 +48,10 @@
     </div>
 
     <div v-show="!showHire" class="projectsSection">
-        <div  v-for="(project,index) in freelancer.projects" :key="index" class="d-flex justify-content-center" style="height: 175px !important; padding: 0 5px 0 5px; overflow: hidden;">
+        <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" class="d-flex justify-content-center" style="height: 175px !important; padding: 0 5px 0 5px; overflow: hidden;">
             <a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >
                 <vue-load-image>
-                    <img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto">
+                    <img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto" style="min-height:175px;">
                     <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
                 </vue-load-image>
 
@@ -136,6 +136,7 @@ export default {
     data(){
         return {
             showHire: false,
+            resizedImagesList: []
         }
     },
     methods:{
@@ -157,7 +158,25 @@ export default {
             return  imagesString.split(','); // returns an array
         },
         getResizedImage(src){
-            return this.getImageSrc(src).replace('/resumeApp/uploads','/resumeApp/uploads/resized-images');
+            let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads','/resumeApp/uploads/resized-images');
+            if(this.resizedImagesList.includes(resizedImage)){
+                return resizedImage;
+            }
+            return  this.getImageSrc(src)
+        },
+        setResizedImagesList(){
+            let projects = this.freelancer.projects ;
+            $.each(projects, (i) =>{
+                let resizedImage = this.getImageSrc(projects[i].mainImage).replace('/resumeApp/uploads','/resumeApp/uploads/resized-images');
+                axios.get(resizedImage)
+                    .then( () => {
+                        console.log('yeah');
+                        this.resizedImagesList.push(resizedImage);
+                    })
+                    .catch( () => {
+                        console.log('NO');
+                    });
+            });
         },
         loadHDImage(project_id){
             let projects = this.freelancer.projects ;
@@ -169,6 +188,10 @@ export default {
                 }
             });
         }
+    },
+
+    mounted(){
+        this.setResizedImagesList();
     }
 }
 </script>

@@ -71,6 +71,7 @@ export default {
           results: [],
           customSearch: false,
 
+
           searchParams: {
               jobTitle: '',
               salary_hour: '',

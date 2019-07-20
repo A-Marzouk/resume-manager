@@ -47,7 +47,8 @@
         </div>
     </div>
 
-    <div v-show="!showHire" class="projectsSection">
+
+    <slick v-show="!showHire" class="projectsSection" ref="slick" :options="slickOptions">
         <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" class="d-flex justify-content-center" style="height: 175px !important; padding: 0 5px 0 5px; overflow: hidden;">
             <a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >
                 <vue-load-image>
@@ -57,7 +58,7 @@
 
             </a>
         </div>
-    </div>
+    </slick>
 
     <div v-show="showHire" class="agentsContainer__hireContainer">
       <hire-agent :cancel="() => this.showHire = false" :freelancer="freelancer"></hire-agent>
@@ -122,6 +123,7 @@
 <script>
 import hireAgent from './hireAgent'
 import VueLoadImage from 'vue-load-image'
+import Slick from 'vue-slick';
 
 // Receives the users from laravel using props
 export default {
@@ -130,13 +132,32 @@ export default {
     ],
     components: {
         'hire-agent': hireAgent,
-        'vue-load-image': VueLoadImage
+        'vue-load-image': VueLoadImage,
+        Slick
     },
 
     data(){
         return {
             showHire: false,
-            resizedImagesList: []
+            resizedImagesList: [],
+
+            slickOptions: {
+                lazyLoad: 'ondemand',
+                infinite: false,
+                dots: true,
+                arrows:false,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                        breakpoint: 786,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1,
+                        }
+                    }
+                ]
+            }
         }
     },
     methods:{

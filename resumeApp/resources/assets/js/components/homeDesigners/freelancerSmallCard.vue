@@ -126,7 +126,7 @@ import VueLoadImage from 'vue-load-image'
 // Receives the users from laravel using props
 export default {
     props: [
-        'freelancer'
+        'freelancer','search'
     ],
     components: {
         'hire-agent': hireAgent,
@@ -159,7 +159,7 @@ export default {
         },
         getResizedImage(src){
             let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads','/resumeApp/uploads/resized-images');
-            if(this.resizedImagesList.includes(resizedImage)){
+            if(this.search === 'false'){
                 return resizedImage;
             }
             return  this.getImageSrc(src)
@@ -170,17 +170,14 @@ export default {
                 let resizedImage = this.getImageSrc(projects[i].mainImage).replace('/resumeApp/uploads','/resumeApp/uploads/resized-images');
                 axios.get(resizedImage)
                     .then( () => {
-                        console.log('yeah');
                         this.resizedImagesList.push(resizedImage);
                     })
                     .catch( () => {
-                        console.log('NO');
                     });
             });
         },
         loadHDImage(project_id){
             let projects = this.freelancer.projects ;
-            console.log(this.freelancer.projects);
             $.each(projects, function(i){
                 if(projects[i].id === project_id) {
                     $('#projectModalPhoto'+project_id).attr('src',projects[i].mainImage);
@@ -191,7 +188,7 @@ export default {
     },
 
     mounted(){
-        this.setResizedImagesList();
+        // this.setResizedImagesList();
     }
 }
 </script>

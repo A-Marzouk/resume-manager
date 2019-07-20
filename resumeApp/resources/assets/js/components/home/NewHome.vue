@@ -42,10 +42,10 @@
 
       <img src="/resumeApp/public/images/home/computer.png" alt="computer" class="bottomBg">
       <div v-show="!customSearch" class="agentsContainer">
-        <freelancer-card-small v-for="freelancer in freelancers" :key="freelancer.id + freelancer.firstName + 'A'" :freelancer="freelancer"></freelancer-card-small>
+        <freelancer-card-small v-for="freelancer in freelancers" :key="freelancer.id + freelancer.firstName + 'A'" :freelancer="freelancer" :search="false"></freelancer-card-small>
       </div>
       <div v-show="customSearch" class="agentsContainer">
-        <freelancer-card-small v-for="agent in results" :key="agent.id + agent.firstName" :freelancer="agent"></freelancer-card-small>
+        <freelancer-card-small v-for="agent in results" :key="agent.id + agent.firstName" :freelancer="agent" :search="true"></freelancer-card-small>
           <div v-if="results.length < 1">
               <div class="mainSection__content__description">
                   Please choose search parameters

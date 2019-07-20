@@ -86189,7 +86189,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 // Receives the users from laravel using props
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['freelancer'],
+    props: ['freelancer', 'search'],
     components: {
         'hire-agent': __WEBPACK_IMPORTED_MODULE_0__hireAgent___default.a,
         'vue-load-image': __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default.a
@@ -86222,7 +86222,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getResizedImage: function getResizedImage(src) {
             var resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
-            if (this.resizedImagesList.includes(resizedImage)) {
+            if (this.search === 'false') {
                 return resizedImage;
             }
             return this.getImageSrc(src);
@@ -86234,16 +86234,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $.each(projects, function (i) {
                 var resizedImage = _this.getImageSrc(projects[i].mainImage).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
                 axios.get(resizedImage).then(function () {
-                    console.log('yeah');
                     _this.resizedImagesList.push(resizedImage);
-                }).catch(function () {
-                    console.log('NO');
-                });
+                }).catch(function () {});
             });
         },
         loadHDImage: function loadHDImage(project_id) {
             var projects = this.freelancer.projects;
-            console.log(this.freelancer.projects);
             $.each(projects, function (i) {
                 if (projects[i].id === project_id) {
                     $('#projectModalPhoto' + project_id).attr('src', projects[i].mainImage);
@@ -86254,7 +86250,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     mounted: function mounted() {
-        this.setResizedImagesList();
+        // this.setResizedImagesList();
     }
 });
 
@@ -87415,7 +87411,7 @@ var render = function() {
       _vm._l(_vm.freelancers, function(freelancer) {
         return _c("freelancer-card-small", {
           key: freelancer.id + freelancer.firstName + "A",
-          attrs: { freelancer: freelancer }
+          attrs: { freelancer: freelancer, search: false }
         })
       })
     ),
@@ -87437,7 +87433,7 @@ var render = function() {
         _vm._l(_vm.results, function(agent) {
           return _c("freelancer-card-small", {
             key: agent.id + agent.firstName,
-            attrs: { freelancer: agent }
+            attrs: { freelancer: agent, search: true }
           })
         }),
         _vm._v(" "),

@@ -155,6 +155,13 @@ export default {
                             slidesToShow: 1,
                             slidesToScroll: 1,
                         }
+                    },
+                    {
+                        breakpoint: 991,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2,
+                        }
                     }
                 ]
             }
@@ -180,7 +187,8 @@ export default {
         },
         getResizedImage(src){
             let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads','/resumeApp/uploads/resized-images');
-            if(this.search === 'false'){
+            console.log(this.search);
+            if(this.search == false){
                 return resizedImage;
             }
             return  this.getImageSrc(src)

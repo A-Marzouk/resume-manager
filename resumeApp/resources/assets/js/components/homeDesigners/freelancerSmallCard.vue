@@ -51,10 +51,10 @@
 
 
     <slick v-show="!showHire" class="projectsSection" ref="slick" :options="slickOptions">
-        <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" class="d-flex justify-content-center" style="height: 175px !important; padding: 0 5px 0 5px; overflow: hidden;">
+        <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" class="d-flex justify-content-center" style="height: 195px !important; padding: 0 2px 0 2px; overflow: hidden;">
             <a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >
                 <vue-load-image>
-                    <img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto" style="min-height:175px;">
+                    <img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto" style="min-height:195px;">
                     <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
                 </vue-load-image>
 
@@ -225,7 +225,7 @@ export default {
             slickOptions: {
                 lazyLoad: 'ondemand',
                 infinite: false,
-                dots: true,
+                dots: false,
                 arrows:false,
                 slidesToShow: 3,
                 slidesToScroll: 1,
@@ -381,10 +381,7 @@ export default {
 <style lang="scss" scoped>
     .projectsSection{
         width: calc(100% - 342px);
-        height:175px !important;
-        .slick-dots {
-            bottom: -5px !important;
-        }
+        height:195px !important;
 
         @media (max-width: 768px) {
             width: 100%;

@@ -33,13 +33,6 @@ class NotificationsController extends Controller
     }
 
     public function contactDesignerEmail(Request $request){
-        // validate request :
-        Validator::make($request->toArray(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'body' => 'required|string|email|max:2500',
-        ]);
-
         $data = [
             'sentMessage' => $request,
             'freelancer' => User::find($request->freelancer_id)

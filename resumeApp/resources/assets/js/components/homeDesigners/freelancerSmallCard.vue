@@ -119,6 +119,14 @@
           </div>
       </div>
 
+
+      <div class="changesSavedText d-none" id="messageSent">
+            <span class="alert alert-success">
+                Message Sent
+            </span>
+      </div>
+
+
       <!-- modals contact pop-up -->
 
       <div class="modal fade" :id=" 'contact-pop-up-' + freelancer.id" role="dialog">
@@ -141,16 +149,18 @@
                                  <label class="faq-input-label">
                                      Enter your name
                                  </label>
-                                 <div class="faq-input">
+                                 <div class="faq-input d-flex flex-column align-items-start">
                                      <input type="text"  placeholder="Enter your name" v-model="message.name" required>
+                                     <small v-show="errors.name.length > 0" class="error">{{errors.name}}</small>
                                  </div>
                              </div>
                              <div class="faq-question-input">
                                  <label class="faq-input-label">
                                      Enter your email
                                  </label>
-                                 <div class="faq-input">
+                                 <div class="faq-input d-flex flex-column align-items-start">
                                      <input type="email" placeholder="Enter your email"  v-model="message.email"  required>
+                                     <small v-show="errors.email.length > 0" class="error">{{errors.email}}</small>
                                  </div>
                              </div>
                          </div>
@@ -159,8 +169,9 @@
                              <label class="faq-input-label">
                                  Enter message
                              </label>
-                             <div class="faq-input">
+                             <div class="faq-input d-flex flex-column align-items-start">
                                  <textarea type="text"  rows="2"  style="height:auto;padding:22px;"  v-model="message.body"  required>Message...</textarea>
+                                 <small v-show="errors.body.length > 0" class="error">{{errors.body}}</small>
                              </div>
                          </div>
 
@@ -235,7 +246,12 @@ export default {
                     }
                 ]
             },
-            sending:0
+            sending:0,
+            errors:{
+                'name':'',
+                'email':'',
+                'body':''
+            }
         }
     },
     methods:{
@@ -258,6 +274,10 @@ export default {
               this.sending = 1 ;
           }
 
+          if(!this.validateMessage()){
+              this.sending = 0 ;
+              return;
+          }
 
           axios.post('/message/contact-designer' , this.message)
               .then( (response) => {
@@ -273,9 +293,9 @@ export default {
                           'freelancer_id':'',
                       };
                       // show that message has been sent notification
-                      $('#messageSent').fadeIn('slow');
+                      $('#messageSent').removeClass('d-none');
                       setTimeout(function () {
-                          $('#messageSent').fadeOut();
+                          $('#messageSent').addClass('d-none');
                       },2000);
                       // return to not sending status
                       this.sending = 0 ;
@@ -284,6 +304,37 @@ export default {
               .catch((error) => {
                   console.log(error);
               });
+        },
+        validateMessage(){
+            let valid = true ;
+            if(this.message.name.length < 3 || this.message.name.length > 191){
+                this.errors.name = 'Name field should be greater than 3 chars.';
+                valid = false;
+            }else{
+                this.errors.name ='';
+            }
+            if(this.message.email.length < 3 || this.message.email.length > 191){
+                this.errors.email = 'Email field should be greater than 3 chars.';
+                valid = false;
+            }
+            else if(!this.validateEmail(this.message.email)){
+                this.errors.email = 'Please enter a valid email address.';
+                valid = false;
+            }else{
+                this.errors.email ='';
+            }
+
+            if(this.message.body.length < 3 || this.message.body.length > 191){
+                this.errors.body = 'Message field should be greater than 3 chars.';
+                valid = false;
+            }else {
+                this.errors.body ='';
+            }
+            return valid ;
+        },
+        validateEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
         },
         getProjectImages(imagesString){
             if(imagesString === null || imagesString === undefined ){
@@ -465,6 +516,12 @@ export default {
                 padding-left: 10px;
             }
         }
+    }
+
+    .error{
+        color: red;
+        font-weight: 500;
+        padding-top: 5px;
     }
 </style>
 

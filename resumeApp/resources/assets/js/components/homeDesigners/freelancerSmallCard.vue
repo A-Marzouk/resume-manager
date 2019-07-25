@@ -50,17 +50,16 @@
     </div>
 
 
-    <slick v-show="!showHire" class="projectsSection" ref="slick" :options="slickOptions">
-        <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" class="d-flex justify-content-center" style="height: 195px !important; padding: 0 2px 0 2px; overflow: hidden;">
-            <a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >
-                <vue-load-image>
-                    <img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto" style="min-height:195px;">
-                    <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
-                </vue-load-image>
-
-            </a>
-        </div>
-    </slick>
+        <slick v-show="!showHire" class="projectsSection" ref="slick" :options="slickOptions">
+            <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" class="d-flex justify-content-center" style="height: 195px !important; padding: 0 2px 0 2px; overflow: hidden;">
+                <a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >
+                    <vue-load-image>
+                        <img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto" style="min-height:195px;">
+                        <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
+                    </vue-load-image>
+                </a>
+            </div>
+        </slick>
 
     <div v-show="showHire" class="agentsContainer__hireContainer">
       <hire-agent :cancel="() => this.showHire = false" :freelancer="freelancer"></hire-agent>
@@ -135,8 +134,9 @@
               <div class="modal-content">
                   <div class="modal-body contact_pop_up">
                       <div class="d-flex justify-content-between">
-                          <div class="title">
-                              Contact the designer
+                          <div class="title d-flex justify-content-center">
+                              Send {{freelancer.firstName}} a message <img src="/resumeApp/public/images/home/emoji.png"
+                                                                           alt="smile" style="width: 36px; margin-left:15px;">
                           </div>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
@@ -226,7 +226,7 @@ export default {
                 lazyLoad: 'ondemand',
                 infinite: false,
                 dots: false,
-                arrows:false,
+                arrows:true,
                 slidesToShow: 3,
                 slidesToScroll: 1,
                 responsive: [
@@ -265,6 +265,15 @@ export default {
             }
 
             return src;
+        },
+        slideNext(){
+            console.log('next');
+            $('#slick-'+ this.freelancer.id + ' .slick-next.slick-arrow').click();
+        },
+        slidePrev(){
+            console.log('prev');
+            $('.slick-prev.slick-arrow').click();
+            $('#slick-'+ this.freelancer.id + ' .slick-prev.slick-arrow').click();
         },
         sendMessageToDesigner(){
            // waiting status
@@ -373,7 +382,7 @@ export default {
     },
 
     mounted(){
-        // this.setResizedImagesList();
+
     }
 }
 </script>

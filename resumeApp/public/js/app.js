@@ -86288,7 +86288,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 lazyLoad: 'ondemand',
                 infinite: false,
                 dots: false,
-                arrows: false,
+                arrows: true,
                 slidesToShow: 3,
                 slidesToScroll: 1,
                 responsive: [{
@@ -86325,6 +86325,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             return src;
+        },
+        slideNext: function slideNext() {
+            console.log('next');
+            $('#slick-' + this.freelancer.id + ' .slick-next.slick-arrow').click();
+        },
+        slidePrev: function slidePrev() {
+            console.log('prev');
+            $('.slick-prev.slick-arrow').click();
+            $('#slick-' + this.freelancer.id + ' .slick-prev.slick-arrow').click();
         },
         sendMessageToDesigner: function sendMessageToDesigner() {
             var _this = this;
@@ -86430,9 +86439,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
 
-    mounted: function mounted() {
-        // this.setResizedImagesList();
-    }
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -90479,7 +90486,28 @@ var render = function() {
             [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-body contact_pop_up" }, [
-                  _vm._m(3),
+                  _c("div", { staticClass: "d-flex justify-content-between" }, [
+                    _c(
+                      "div",
+                      { staticClass: "title d-flex justify-content-center" },
+                      [
+                        _vm._v(
+                          "\n                            Send " +
+                            _vm._s(_vm.freelancer.firstName) +
+                            " a message "
+                        ),
+                        _c("img", {
+                          staticStyle: { width: "36px", "margin-left": "15px" },
+                          attrs: {
+                            src: "/resumeApp/public/images/home/emoji.png",
+                            alt: "smile"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "d-flex flex-column" }, [
                     _c(
@@ -90778,26 +90806,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex justify-content-between" }, [
-      _c("div", { staticClass: "title" }, [
-        _vm._v(
-          "\n                            Contact the designer\n                        "
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true

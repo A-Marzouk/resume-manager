@@ -14,13 +14,14 @@ use App\Recording;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+
 
 class NotificationsController extends Controller
 {
     private $mailingList = [
-        'shey@123workforce.com',
         'AhmedMarzouk266@gmail.com',
-        'conor@123workforce.com',
+        'conor@123workforce.com'
     ];
 
     public function resumeEditedEmail(){
@@ -29,6 +30,26 @@ class NotificationsController extends Controller
         {
             $message->to($emails)->subject('User has updated resume !');
         });
+    }
+
+    public function contactDesignerEmail(Request $request){
+        $data = [
+            'sentMessage' => $request,
+            'freelancer' => User::find($request->freelancer_id)
+        ];
+
+        $emails = $this->mailingList;
+
+        try{
+            Mail::send('emails.messageToDesigner', $data, function($message) use ($emails)
+            {
+                $message->to($emails)->subject('Message to a designer.');
+            });
+            return 'success';
+        }
+        catch (Exception $e){
+            throw $e ;
+        }
     }
 
     public function mailApprovedUsers($users){

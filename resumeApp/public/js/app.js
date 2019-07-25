@@ -86046,7 +86046,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.projectsSection[data-v-e70ddbcc] {\n  width: calc(100% - 342px);\n  height: 175px !important;\n}\n.projectsSection .slick-dots[data-v-e70ddbcc] {\n    bottom: -5px !important;\n}\n@media (max-width: 768px) {\n.projectsSection[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.cardContainer[data-v-e70ddbcc] {\n  width: 330px;\n}\n@media (max-width: 768px) {\n.cardContainer[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n  margin: 0 !important;\n  width: 352px;\n}\n@media (max-width: 992px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 318px;\n}\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .freelancerImg[data-v-e70ddbcc] {\n    width: 70px;\n    height: 70px;\n}\n.freelancerCard.smallCard .nameRow[data-v-e70ddbcc] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    position: relative;\n    border-radius: 5px;\n    padding: 14px;\n    height: 100%;\n}\n.freelancerCard.smallCard .contact[data-v-e70ddbcc] {\n    position: absolute;\n    top: 20px;\n    right: 14px;\n}\n.freelancerCard.smallCard .jobTitle[data-v-e70ddbcc] {\n    color: white;\n    font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n    font-size: 12px;\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc]:first-child {\n      margin-right: 15px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n      text-align: center;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc],\n    .freelancerCard.smallCard .payment-details span[data-v-e70ddbcc] {\n      margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc] {\n      height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight[data-v-e70ddbcc] {\n    font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight[data-v-e70ddbcc] {\n    height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n      width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n          width: 100%;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol[data-v-e70ddbcc] {\n      padding-left: 0;\n      margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow[data-v-e70ddbcc] {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 14px;\n    margin: 0;\n    margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard[data-v-e70ddbcc] {\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: bold;\n    font-size: 18px;\n    padding-top: 0;\n    margin-bottom: 5px;\n    padding-left: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.projectsSection[data-v-e70ddbcc] {\n  width: calc(100% - 342px);\n  height: 175px !important;\n}\n.projectsSection .slick-dots[data-v-e70ddbcc] {\n    bottom: -5px !important;\n}\n@media (max-width: 768px) {\n.projectsSection[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.cardContainer[data-v-e70ddbcc] {\n  width: 330px;\n}\n@media (max-width: 768px) {\n.cardContainer[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n  margin: 0 !important;\n  width: 352px;\n}\n@media (max-width: 992px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 318px;\n}\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .freelancerImg[data-v-e70ddbcc] {\n    width: 70px;\n    height: 70px;\n}\n.freelancerCard.smallCard .nameRow[data-v-e70ddbcc] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    position: relative;\n    border-radius: 5px;\n    padding: 14px;\n    height: 100%;\n}\n.freelancerCard.smallCard .contact[data-v-e70ddbcc] {\n    position: absolute;\n    top: 20px;\n    right: 14px;\n}\n.freelancerCard.smallCard .jobTitle[data-v-e70ddbcc] {\n    color: white;\n    font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n    font-size: 12px;\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc]:first-child {\n      margin-right: 15px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n      text-align: center;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc],\n    .freelancerCard.smallCard .payment-details span[data-v-e70ddbcc] {\n      margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc] {\n      height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight[data-v-e70ddbcc] {\n    font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight[data-v-e70ddbcc] {\n    height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n      width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n          width: 100%;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol[data-v-e70ddbcc] {\n      padding-left: 0;\n      margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow[data-v-e70ddbcc] {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 14px;\n    margin: 0;\n    margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard[data-v-e70ddbcc] {\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: bold;\n    font-size: 18px;\n    padding-top: 0;\n    margin-bottom: 5px;\n    padding-left: 10px;\n}\n.error[data-v-e70ddbcc] {\n  color: red;\n  font-weight: 500;\n  padding-top: 5px;\n}\n", ""]);
 
 // exports
 
@@ -86062,6 +86062,82 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image__ = __webpack_require__(301);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_load_image__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_slick__ = __webpack_require__(302);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -86202,7 +86278,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             showHire: false,
             resizedImagesList: [],
-
+            message: {
+                'name': '',
+                'email': '',
+                'body': '',
+                'freelancer_id': this.freelancer.id
+            },
             slickOptions: {
                 lazyLoad: 'ondemand',
                 infinite: false,
@@ -86223,6 +86304,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         slidesToScroll: 2
                     }
                 }]
+            },
+            sending: 0,
+            errors: {
+                'name': '',
+                'email': '',
+                'body': ''
             }
         };
     },
@@ -86239,6 +86326,75 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             return src;
         },
+        sendMessageToDesigner: function sendMessageToDesigner() {
+            var _this = this;
+
+            // waiting status
+            if (this.sending === 1) {
+                return;
+            } else {
+                this.sending = 1;
+            }
+
+            if (!this.validateMessage()) {
+                this.sending = 0;
+                return;
+            }
+
+            axios.post('/message/contact-designer', this.message).then(function (response) {
+                console.log(response.data);
+                if (response.data === 'success') {
+                    // close modal
+                    $('.close').click();
+                    // clear input
+                    _this.message = {
+                        'name': '',
+                        'email': '',
+                        'body': '',
+                        'freelancer_id': ''
+                    };
+                    // show that message has been sent notification
+                    $('#messageSent').removeClass('d-none');
+                    setTimeout(function () {
+                        $('#messageSent').addClass('d-none');
+                    }, 2000);
+                    // return to not sending status
+                    _this.sending = 0;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
+        validateMessage: function validateMessage() {
+            var valid = true;
+            if (this.message.name.length < 3 || this.message.name.length > 191) {
+                this.errors.name = 'Name field should be greater than 3 chars.';
+                valid = false;
+            } else {
+                this.errors.name = '';
+            }
+            if (this.message.email.length < 3 || this.message.email.length > 191) {
+                this.errors.email = 'Email field should be greater than 3 chars.';
+                valid = false;
+            } else if (!this.validateEmail(this.message.email)) {
+                this.errors.email = 'Please enter a valid email address.';
+                valid = false;
+            } else {
+                this.errors.email = '';
+            }
+
+            if (this.message.body.length < 3 || this.message.body.length > 191) {
+                this.errors.body = 'Message field should be greater than 3 chars.';
+                valid = false;
+            } else {
+                this.errors.body = '';
+            }
+            return valid;
+        },
+        validateEmail: function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        },
         getProjectImages: function getProjectImages(imagesString) {
             if (imagesString === null || imagesString === undefined) {
                 return [];
@@ -86247,20 +86403,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getResizedImage: function getResizedImage(src) {
             var resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
-            console.log(this.search);
             if (this.search == false) {
                 return resizedImage;
             }
             return this.getImageSrc(src);
         },
         setResizedImagesList: function setResizedImagesList() {
-            var _this = this;
+            var _this2 = this;
 
             var projects = this.freelancer.projects;
             $.each(projects, function (i) {
-                var resizedImage = _this.getImageSrc(projects[i].mainImage).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
+                var resizedImage = _this2.getImageSrc(projects[i].mainImage).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
                 axios.get(resizedImage).then(function () {
-                    _this.resizedImagesList.push(resizedImage);
+                    _this2.resizedImagesList.push(resizedImage);
                 }).catch(function () {});
             });
         },
@@ -86607,7 +86762,7 @@ var render = function() {
                   id: "hireMeBtn"
                 }
               },
-              [_vm._v("Summary")]
+              [_vm._v("Make a booking")]
             )
           ]),
           _vm._v(" "),
@@ -89905,13 +90060,25 @@ var render = function() {
           { staticClass: "col-lg-12 col-md-12 col-12 resumeCardRight" },
           [
             _c("div", { staticClass: "nameRow cardContainer" }, [
-              _c("img", {
-                staticClass: "contact",
-                attrs: {
-                  src: "resumeApp/public/images/home/forum.svg",
-                  alt: ""
-                }
-              }),
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "javascript:void(0)",
+                    "data-toggle": "modal",
+                    "data-target": "#contact-pop-up-" + _vm.freelancer.id
+                  }
+                },
+                [
+                  _c("img", {
+                    staticClass: "contact",
+                    attrs: {
+                      src: "resumeApp/public/images/home/forum.svg",
+                      alt: ""
+                    }
+                  })
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "imageCol" }, [
                 _c("div", { staticClass: "imageContainer" }, [
@@ -90292,7 +90459,284 @@ var render = function() {
             )
           ]
         )
-      })
+      }),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: { id: "contact-pop-up-" + _vm.freelancer.id, role: "dialog" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog",
+              staticStyle: { "max-width": "950px" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-body contact_pop_up" }, [
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex flex-column" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "d-flex flex-wrap justify-content-between"
+                      },
+                      [
+                        _c("div", { staticClass: "faq-question-input" }, [
+                          _c("label", { staticClass: "faq-input-label" }, [
+                            _vm._v(
+                              "\n                                   Enter your name\n                               "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "faq-input d-flex flex-column align-items-start"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.message.name,
+                                    expression: "message.name"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "text",
+                                  placeholder: "Enter your name",
+                                  required: ""
+                                },
+                                domProps: { value: _vm.message.name },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.message,
+                                      "name",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "small",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.errors.name.length > 0,
+                                      expression: "errors.name.length > 0"
+                                    }
+                                  ],
+                                  staticClass: "error"
+                                },
+                                [_vm._v(_vm._s(_vm.errors.name))]
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "faq-question-input" }, [
+                          _c("label", { staticClass: "faq-input-label" }, [
+                            _vm._v(
+                              "\n                                   Enter your email\n                               "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "faq-input d-flex flex-column align-items-start"
+                            },
+                            [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.message.email,
+                                    expression: "message.email"
+                                  }
+                                ],
+                                attrs: {
+                                  type: "email",
+                                  placeholder: "Enter your email",
+                                  required: ""
+                                },
+                                domProps: { value: _vm.message.email },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.message,
+                                      "email",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "small",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.errors.email.length > 0,
+                                      expression: "errors.email.length > 0"
+                                    }
+                                  ],
+                                  staticClass: "error"
+                                },
+                                [_vm._v(_vm._s(_vm.errors.email))]
+                              )
+                            ]
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "faq-question-input" }, [
+                      _c("label", { staticClass: "faq-input-label" }, [
+                        _vm._v(
+                          "\n                               Enter message\n                           "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "faq-input d-flex flex-column align-items-start"
+                        },
+                        [
+                          _c(
+                            "textarea",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.message.body,
+                                  expression: "message.body"
+                                }
+                              ],
+                              staticStyle: { height: "auto", padding: "22px" },
+                              attrs: { type: "text", rows: "2", required: "" },
+                              domProps: { value: _vm.message.body },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.message,
+                                    "body",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            },
+                            [_vm._v("Message...")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "small",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value: _vm.errors.body.length > 0,
+                                  expression: "errors.body.length > 0"
+                                }
+                              ],
+                              staticClass: "error"
+                            },
+                            [_vm._v(_vm._s(_vm.errors.body))]
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "d-flex justify-content-end NoDecor" },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "sendMessageBtn",
+                            attrs: { href: "javascript:void(0)" },
+                            on: { click: _vm.sendMessageToDesigner }
+                          },
+                          [
+                            _c(
+                              "span",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.sending === 0,
+                                    expression: "sending === 0"
+                                  }
+                                ]
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                   Send a message\n                               "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.sending === 1,
+                                    expression: "sending === 1"
+                                  }
+                                ]
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                   Sending...\n                               "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ]
+          )
+        ]
+      )
     ],
     2
   )
@@ -90314,6 +90758,45 @@ var staticRenderFns = [
     return _c("label", { staticClass: "panelFormLabel" }, [
       _vm._v(" Description\n                                    "),
       _c("hr")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "changesSavedText d-none", attrs: { id: "messageSent" } },
+      [
+        _c("span", { staticClass: "alert alert-success" }, [
+          _vm._v("\n              Message Sent\n          ")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex justify-content-between" }, [
+      _c("div", { staticClass: "title" }, [
+        _vm._v(
+          "\n                            Contact the designer\n                        "
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
     ])
   }
 ]

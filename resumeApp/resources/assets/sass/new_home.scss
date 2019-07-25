@@ -87,7 +87,7 @@ html {
 .mainSection {
   display: flex;  
   align-items: space-between;
-  padding: 120px 78px;
+  padding: 50px 78px;
 
   @media (max-width: 992px) {
     padding: 64px 14px !important;
@@ -448,7 +448,7 @@ html {
 
 .agentsSection {  
   position: relative;
-  padding: 100px 78px;
+  padding: 50px 78px;
   overflow: hidden;
   width: 100%;
   background-image: url(/resumeApp/public/images/home/agentsBg-1.svg) ,  url(/resumeApp/public/images/home/pencilsBg.png);
@@ -1241,5 +1241,99 @@ html {
   display: none;
   @media only screen and (max-width: 760px) {
     display: flex;
+  }
+}
+
+.contact_pop_up{
+  padding:57px 45px 28px 45px !important;
+
+  .title{
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 27px;
+    line-height: 37px;
+    /* identical to box height */
+    color: #4A5464;
+  }
+  .faq-question-input,.faq-answer-input{
+    display: flex;
+    flex-direction: column;
+    margin-top: 36px;
+    .faq-input-label{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 24px;
+      color: #4A5464;
+    }
+    .sub-label{
+      font-size: 16px;
+      color: #7A828D;
+      padding-bottom: 15px;
+      padding-right: 38px;
+      @media (max-width:768px) {
+        font-size: 13px;
+      }
+    }
+    @media (max-width:768px) {
+      width: 100%;
+    }
+    img{
+      margin-right:38px;
+      width: fit-content;
+    }
+    .faq-input{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      input,textarea,select{
+        width: 400px;
+        border: none;
+        border-bottom: 1px solid #7A828D;
+        height: 56px;
+        background: #FBFBFB;
+        padding-left: 22px;
+        border-radius: 4px 4px 0px 0px;
+        @media (max-width:768px) {
+          width: 100%;
+        }
+      }
+      textarea{
+        width: 100%;
+      }
+      input:focus,textarea:focus,select:focus {
+        border-color: inherit;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-bottom: 1px solid #05A4F4;
+        outline: none;
+      }
+      img{
+        margin-left: -62px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .sendMessageBtn{
+    margin-top : 52px;
+    width: 235px;
+    height: 48px;
+    background: #05A4F4;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .sendMessageBtn:hover{
+    color:white;
+    text-decoration:none;
   }
 }

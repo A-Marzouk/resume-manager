@@ -1355,7 +1355,8 @@ body {
   height: 38px;
   bottom: 38px;
   right: 32px;
-  width: 173px; }
+  width: 173px;
+  z-index: 99;}
 @media only screen and (max-width: 600px) {
   .changesSavedText {
     margin-left: -85px;

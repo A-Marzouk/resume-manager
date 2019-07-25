@@ -4140,7 +4140,7 @@ html {
   -webkit-box-align: space-between;
       -ms-flex-align: space-between;
           align-items: space-between;
-  padding: 120px 78px;
+  padding: 50px 78px;
 }
 
 @media (max-width: 992px) {
@@ -4615,7 +4615,7 @@ html {
 
 .agentsSection {
   position: relative;
-  padding: 100px 78px;
+  padding: 50px 78px;
   overflow: hidden;
   width: 100%;
   background-image: url(/resumeApp/public/images/home/agentsBg-1.svg), url(/resumeApp/public/images/home/pencilsBg.png);

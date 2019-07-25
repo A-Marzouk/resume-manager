@@ -57,7 +57,7 @@
                                     </script>
                                     <div class="row text-center">
                                         <div class="col-md-10 offset-md-1" style="padding-top: 0; margin-top: 0;">
-                                            <button class="btn-block summaryBtn cursorPointerOnHover" style="padding-top: 5px;" type="submit">Checkout via Stripe</button>
+                                            <button class="btn-block summaryBtn cursorPointerOnHover" style="padding-top: 5px;" type="submit">Pay via Stripe</button>
                                         </div>
                                     </div>
                                 </form>
@@ -97,7 +97,7 @@
 
                                     <div class="row text-center" style="padding-top: 30px">
                                         <div class="col-md-10 offset-md-1" style="padding-top: 0; margin-top: 0;">
-                                            <button class="btn-block summaryBtn cursorPointerOnHover" style="padding-top: 5px;" type="submit">Checkout via PayPal</button>
+                                            <button class="btn-block summaryBtn cursorPointerOnHover" style="padding-top: 5px;" type="submit">Pay via PayPal</button>
                                         </div>
                                     </div>
                                 </form>

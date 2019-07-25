@@ -86607,7 +86607,7 @@ var render = function() {
                   id: "hireMeBtn"
                 }
               },
-              [_vm._v("Summary")]
+              [_vm._v("Make a booking")]
             )
           ]),
           _vm._v(" "),

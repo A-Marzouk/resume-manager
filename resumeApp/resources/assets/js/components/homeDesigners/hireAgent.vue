@@ -43,7 +43,7 @@
           </div>
         <div class="btns">
             <div class="col-12 NoDecor no-flex">
-                <a class="btn-block summaryBtn" :href=" '/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks " id="hireMeBtn">Summary</a>
+                <a class="btn-block summaryBtn" :href=" '/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks " id="hireMeBtn">Make a booking</a>
             </div>
             <div class="col-12 NoDecor">
                 <a href="javascript:void(0)" class="btn-block cancelBtn cancelBooking" @click="cancel">Cancel</a>

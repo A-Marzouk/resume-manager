@@ -26,6 +26,13 @@
     </span>
 </div>
 
+{{-- message Sent --}}
+<div class="changesSavedText d-none" id="messageSent">
+    <span class="alert alert-success">
+        Message Sent
+    </span>
+</div>
+
 {{-- Copied --}}
 <div class="changesSavedText d-none" id="copied">
     <span class="alert alert-success">

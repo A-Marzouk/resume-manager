@@ -178,6 +178,8 @@ Route::get('/conversation/delete/{id}','ConversationsController@deleteConversati
 Route::post('/','NotificationsController@messageToSales')->name('message.to.sales');
 Route::post('/message/freelancer','NotificationsController@messageToFreelancer')->name('message.to.freelancer');
 
+Route::post('/message/contact-designer','NotificationsController@contactDesignerEmail')->name('message.to.designer');
+
 // stripe integration
 Route::post('/stripe/payments/pay','\App\classes\StripePayments@stripePayment');
 Route::get('/stripe/hire','\App\classes\StripePayments@showHirePage');

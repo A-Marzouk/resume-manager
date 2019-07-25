@@ -126,9 +126,15 @@
               <!-- Modal content-->
               <div class="modal-content">
                   <div class="modal-body contact_pop_up">
-                      <div class="title">
-                         Contact the designer
+                      <div class="d-flex justify-content-between">
+                          <div class="title">
+                              Contact the designer
+                          </div>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
                       </div>
+
                      <div class="d-flex flex-column">
                          <div class="d-flex flex-wrap justify-content-between">
                              <div class="faq-question-input">
@@ -136,7 +142,7 @@
                                      Enter your name
                                  </label>
                                  <div class="faq-input">
-                                     <input type="text" name="name" placeholder="Enter your name" required>
+                                     <input type="text"  placeholder="Enter your name" v-model="message.name" required>
                                  </div>
                              </div>
                              <div class="faq-question-input">
@@ -144,7 +150,7 @@
                                      Enter your email
                                  </label>
                                  <div class="faq-input">
-                                     <input type="email" name="email" placeholder="Enter your email" required>
+                                     <input type="email" placeholder="Enter your email"  v-model="message.email"  required>
                                  </div>
                              </div>
                          </div>
@@ -154,12 +160,19 @@
                                  Enter message
                              </label>
                              <div class="faq-input">
-                                 <textarea type="text"  name="message" rows="2"  style="height:auto;padding:22px;" required>Message...</textarea>
+                                 <textarea type="text"  rows="2"  style="height:auto;padding:22px;"  v-model="message.body"  required>Message...</textarea>
                              </div>
                          </div>
 
                          <div class="d-flex justify-content-end NoDecor">
-                             <a href="javascript:void(0)" class="sendMessageBtn">Send a message</a>
+                             <a href="javascript:void(0)" class="sendMessageBtn" @click="sendMessageToDesigner">
+                                 <span v-show="sending === 0">
+                                     Send a message
+                                 </span>
+                                 <span v-show="sending === 1">
+                                     Sending...
+                                 </span>
+                             </a>
                          </div>
                      </div>
                   </div>
@@ -192,7 +205,12 @@ export default {
         return {
             showHire: false,
             resizedImagesList: [],
-
+            message:{
+              'name':'',
+              'email':'',
+              'body':'',
+              'freelancer_id':this.freelancer.id
+            },
             slickOptions: {
                 lazyLoad: 'ondemand',
                 infinite: false,
@@ -216,7 +234,8 @@ export default {
                         }
                     }
                 ]
-            }
+            },
+            sending:0
         }
     },
     methods:{
@@ -231,6 +250,41 @@ export default {
 
             return src;
         },
+        sendMessageToDesigner(){
+           // waiting status
+          if(this.sending === 1){
+              return;
+          }else {
+              this.sending = 1 ;
+          }
+
+
+          axios.post('/message/contact-designer' , this.message)
+              .then( (response) => {
+                  console.log(response.data);
+                  if(response.data === 'success'){
+                      // close modal
+                      $('.close').click();
+                      // clear input
+                      this.message = {
+                          'name':'',
+                          'email':'',
+                          'body':'',
+                          'freelancer_id':'',
+                      };
+                      // show that message has been sent notification
+                      $('#messageSent').fadeIn('slow');
+                      setTimeout(function () {
+                          $('#messageSent').fadeOut();
+                      },2000);
+                      // return to not sending status
+                      this.sending = 0 ;
+                  }
+              })
+              .catch((error) => {
+                  console.log(error);
+              });
+        },
         getProjectImages(imagesString){
             if(imagesString === null || imagesString === undefined ){
                 return [] ;
@@ -239,7 +293,6 @@ export default {
         },
         getResizedImage(src){
             let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads','/resumeApp/uploads/resized-images');
-            console.log(this.search);
             if(this.search == false){
                 return resizedImage;
             }

@@ -86236,6 +86236,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -86254,7 +86267,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             showHire: false,
             resizedImagesList: [],
-
+            message: {
+                'name': '',
+                'email': '',
+                'body': '',
+                'freelancer_id': this.freelancer.id
+            },
             slickOptions: {
                 lazyLoad: 'ondemand',
                 infinite: false,
@@ -86275,7 +86293,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         slidesToScroll: 2
                     }
                 }]
-            }
+            },
+            sending: 0
         };
     },
 
@@ -86291,6 +86310,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             return src;
         },
+        sendMessageToDesigner: function sendMessageToDesigner() {
+            var _this = this;
+
+            // waiting status
+            if (this.sending === 1) {
+                return;
+            } else {
+                this.sending = 1;
+            }
+
+            axios.post('/message/contact-designer', this.message).then(function (response) {
+                console.log(response.data);
+                if (response.data === 'success') {
+                    // close modal
+                    $('.close').click();
+                    // clear input
+                    _this.message = {
+                        'name': '',
+                        'email': '',
+                        'body': '',
+                        'freelancer_id': ''
+                    };
+                    // show that message has been sent notification
+                    $('#messageSent').fadeIn('slow');
+                    setTimeout(function () {
+                        $('#messageSent').fadeOut();
+                    }, 2000);
+                    // return to not sending status
+                    _this.sending = 0;
+                }
+            }).catch(function (error) {
+                console.log(error);
+            });
+        },
         getProjectImages: function getProjectImages(imagesString) {
             if (imagesString === null || imagesString === undefined) {
                 return [];
@@ -86299,20 +86352,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         getResizedImage: function getResizedImage(src) {
             var resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
-            console.log(this.search);
             if (this.search == false) {
                 return resizedImage;
             }
             return this.getImageSrc(src);
         },
         setResizedImagesList: function setResizedImagesList() {
-            var _this = this;
+            var _this2 = this;
 
             var projects = this.freelancer.projects;
             $.each(projects, function (i) {
-                var resizedImage = _this.getImageSrc(projects[i].mainImage).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
+                var resizedImage = _this2.getImageSrc(projects[i].mainImage).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
                 axios.get(resizedImage).then(function () {
-                    _this.resizedImagesList.push(resizedImage);
+                    _this2.resizedImagesList.push(resizedImage);
                 }).catch(function () {});
             });
         },
@@ -90364,7 +90416,204 @@ var render = function() {
           staticClass: "modal fade",
           attrs: { id: "contact-pop-up-" + _vm.freelancer.id, role: "dialog" }
         },
-        [_vm._m(2)]
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog",
+              staticStyle: { "max-width": "950px" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-body contact_pop_up" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "d-flex flex-column" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "d-flex flex-wrap justify-content-between"
+                      },
+                      [
+                        _c("div", { staticClass: "faq-question-input" }, [
+                          _c("label", { staticClass: "faq-input-label" }, [
+                            _vm._v(
+                              "\n                                   Enter your name\n                               "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "faq-input" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.message.name,
+                                  expression: "message.name"
+                                }
+                              ],
+                              attrs: {
+                                type: "text",
+                                placeholder: "Enter your name",
+                                required: ""
+                              },
+                              domProps: { value: _vm.message.name },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.message,
+                                    "name",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "faq-question-input" }, [
+                          _c("label", { staticClass: "faq-input-label" }, [
+                            _vm._v(
+                              "\n                                   Enter your email\n                               "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "faq-input" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.message.email,
+                                  expression: "message.email"
+                                }
+                              ],
+                              attrs: {
+                                type: "email",
+                                placeholder: "Enter your email",
+                                required: ""
+                              },
+                              domProps: { value: _vm.message.email },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.message,
+                                    "email",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "faq-question-input" }, [
+                      _c("label", { staticClass: "faq-input-label" }, [
+                        _vm._v(
+                          "\n                               Enter message\n                           "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "faq-input" }, [
+                        _c(
+                          "textarea",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.message.body,
+                                expression: "message.body"
+                              }
+                            ],
+                            staticStyle: { height: "auto", padding: "22px" },
+                            attrs: { type: "text", rows: "2", required: "" },
+                            domProps: { value: _vm.message.body },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.message,
+                                  "body",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          },
+                          [_vm._v("Message...")]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "d-flex justify-content-end NoDecor" },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "sendMessageBtn",
+                            attrs: { href: "javascript:void(0)" },
+                            on: { click: _vm.sendMessageToDesigner }
+                          },
+                          [
+                            _c(
+                              "span",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.sending === 0,
+                                    expression: "sending === 0"
+                                  }
+                                ]
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                   Send a message\n                               "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                directives: [
+                                  {
+                                    name: "show",
+                                    rawName: "v-show",
+                                    value: _vm.sending === 1,
+                                    expression: "sending === 1"
+                                  }
+                                ]
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                   Sending...\n                               "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            ]
+          )
+        ]
       )
     ],
     2
@@ -90393,102 +90642,26 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "modal-dialog", staticStyle: { "max-width": "950px" } },
-      [
-        _c("div", { staticClass: "modal-content" }, [
-          _c("div", { staticClass: "modal-body contact_pop_up" }, [
-            _c("div", { staticClass: "title" }, [
-              _vm._v(
-                "\n                       Contact the designer\n                    "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "d-flex flex-column" }, [
-              _c(
-                "div",
-                { staticClass: "d-flex flex-wrap justify-content-between" },
-                [
-                  _c("div", { staticClass: "faq-question-input" }, [
-                    _c("label", { staticClass: "faq-input-label" }, [
-                      _vm._v(
-                        "\n                                   Enter your name\n                               "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "faq-input" }, [
-                      _c("input", {
-                        attrs: {
-                          type: "text",
-                          name: "name",
-                          placeholder: "Enter your name",
-                          required: ""
-                        }
-                      })
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "faq-question-input" }, [
-                    _c("label", { staticClass: "faq-input-label" }, [
-                      _vm._v(
-                        "\n                                   Enter your email\n                               "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "faq-input" }, [
-                      _c("input", {
-                        attrs: {
-                          type: "email",
-                          name: "email",
-                          placeholder: "Enter your email",
-                          required: ""
-                        }
-                      })
-                    ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "faq-question-input" }, [
-                _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v(
-                    "\n                               Enter message\n                           "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "faq-input" }, [
-                  _c(
-                    "textarea",
-                    {
-                      staticStyle: { height: "auto", padding: "22px" },
-                      attrs: {
-                        type: "text",
-                        name: "message",
-                        rows: "2",
-                        required: ""
-                      }
-                    },
-                    [_vm._v("Message...")]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "d-flex justify-content-end NoDecor" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "sendMessageBtn",
-                    attrs: { href: "javascript:void(0)" }
-                  },
-                  [_vm._v("Send a message")]
-                )
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "d-flex justify-content-between" }, [
+      _c("div", { staticClass: "title" }, [
+        _vm._v(
+          "\n                            Contact the designer\n                        "
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
   }
 ]
 render._withStripped = true

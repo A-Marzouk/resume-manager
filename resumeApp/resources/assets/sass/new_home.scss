@@ -1337,3 +1337,36 @@ html {
     text-decoration:none;
   }
 }
+
+.projectsSection{
+  .slick-prev.slick-arrow {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+
+
+    @media (max-width:768px) {
+
+      background: lightblue;
+      border-radius: 50%;
+      padding-top: 1.5px;
+    }
+
+  }
+
+  .slick-next.slick-arrow {
+    position: absolute;
+    z-index: 2;
+    right: 10px;
+
+    @media (max-width:768px) {
+
+      background: lightblue;
+      border-radius: 50%;
+      padding-top: 1.5px;
+    }
+
+  }
+
+
+}

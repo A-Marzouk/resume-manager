@@ -86046,7 +86046,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.projectsSection[data-v-e70ddbcc] {\n  width: calc(100% - 342px);\n  height: 175px !important;\n}\n.projectsSection .slick-dots[data-v-e70ddbcc] {\n    bottom: -5px !important;\n}\n@media (max-width: 768px) {\n.projectsSection[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.cardContainer[data-v-e70ddbcc] {\n  width: 330px;\n}\n@media (max-width: 768px) {\n.cardContainer[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n  margin: 0 !important;\n  width: 352px;\n}\n@media (max-width: 992px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 318px;\n}\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .freelancerImg[data-v-e70ddbcc] {\n    width: 70px;\n    height: 70px;\n}\n.freelancerCard.smallCard .nameRow[data-v-e70ddbcc] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    position: relative;\n    border-radius: 5px;\n    padding: 14px;\n    height: 100%;\n}\n.freelancerCard.smallCard .contact[data-v-e70ddbcc] {\n    position: absolute;\n    top: 20px;\n    right: 14px;\n}\n.freelancerCard.smallCard .jobTitle[data-v-e70ddbcc] {\n    color: white;\n    font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n    font-size: 12px;\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc]:first-child {\n      margin-right: 15px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n      text-align: center;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc],\n    .freelancerCard.smallCard .payment-details span[data-v-e70ddbcc] {\n      margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc] {\n      height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight[data-v-e70ddbcc] {\n    font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight[data-v-e70ddbcc] {\n    height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n      width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n          width: 100%;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol[data-v-e70ddbcc] {\n      padding-left: 0;\n      margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow[data-v-e70ddbcc] {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 14px;\n    margin: 0;\n    margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard[data-v-e70ddbcc] {\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: bold;\n    font-size: 18px;\n    padding-top: 0;\n    margin-bottom: 5px;\n    padding-left: 10px;\n}\n.error[data-v-e70ddbcc] {\n  color: red;\n  font-weight: 500;\n  padding-top: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.projectsSection[data-v-e70ddbcc] {\n  width: calc(100% - 342px);\n  height: 195px !important;\n}\n@media (max-width: 768px) {\n.projectsSection[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.cardContainer[data-v-e70ddbcc] {\n  width: 330px;\n}\n@media (max-width: 768px) {\n.cardContainer[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n  margin: 0 !important;\n  width: 352px;\n}\n@media (max-width: 992px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 318px;\n}\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .freelancerImg[data-v-e70ddbcc] {\n    width: 70px;\n    height: 70px;\n}\n.freelancerCard.smallCard .nameRow[data-v-e70ddbcc] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    position: relative;\n    border-radius: 5px;\n    padding: 14px;\n    height: 100%;\n}\n.freelancerCard.smallCard .contact[data-v-e70ddbcc] {\n    position: absolute;\n    top: 20px;\n    right: 14px;\n}\n.freelancerCard.smallCard .jobTitle[data-v-e70ddbcc] {\n    color: white;\n    font-size: 14px;\n}\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n    font-size: 12px;\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc]:first-child {\n      margin-right: 15px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .payment-details[data-v-e70ddbcc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n}\n}\n.freelancerCard.smallCard .payment-details div[data-v-e70ddbcc] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -ms-flex-wrap: wrap;\n          flex-wrap: wrap;\n      text-align: center;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc],\n    .freelancerCard.smallCard .payment-details span[data-v-e70ddbcc] {\n      margin-right: 5px;\n}\n.freelancerCard.smallCard .payment-details img[data-v-e70ddbcc] {\n      height: 14px;\n}\n.freelancerCard.smallCard .payment-highLight[data-v-e70ddbcc] {\n    font-size: 14px;\n}\n.freelancerCard.smallCard .resumeCardRight[data-v-e70ddbcc] {\n    height: 100%;\n}\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n      width: 87px;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .resumeCardRight .hireCardBtn[data-v-e70ddbcc] {\n          width: 100%;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n}\n}\n.freelancerCard.smallCard .resumeCardRight .nameRow .imageCol[data-v-e70ddbcc] {\n      padding-left: 0;\n      margin: 0;\n}\n@media (max-width: 768px) {\n.freelancerCard.smallCard .cardRow[data-v-e70ddbcc] {\n      width: 100%;\n}\n}\n.freelancerCard.smallCard .hireRow[data-v-e70ddbcc] {\n    width: 100%;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 14px;\n    margin: 0;\n    margin-top: 15px;\n}\n.freelancerCard.smallCard .nameCard[data-v-e70ddbcc] {\n    font-family: Roboto;\n    font-style: normal;\n    font-weight: bold;\n    font-size: 18px;\n    padding-top: 0;\n    margin-bottom: 5px;\n    padding-left: 10px;\n}\n.error[data-v-e70ddbcc] {\n  color: red;\n  font-weight: 500;\n  padding-top: 5px;\n}\n", ""]);
 
 // exports
 
@@ -86287,8 +86287,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             slickOptions: {
                 lazyLoad: 'ondemand',
                 infinite: false,
-                dots: true,
-                arrows: false,
+                dots: false,
+                arrows: true,
                 slidesToShow: 3,
                 slidesToScroll: 1,
                 responsive: [{
@@ -86325,6 +86325,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
 
             return src;
+        },
+        slideNext: function slideNext() {
+            console.log('next');
+            $('#slick-' + this.freelancer.id + ' .slick-next.slick-arrow').click();
+        },
+        slidePrev: function slidePrev() {
+            console.log('prev');
+            $('.slick-prev.slick-arrow').click();
+            $('#slick-' + this.freelancer.id + ' .slick-prev.slick-arrow').click();
         },
         sendMessageToDesigner: function sendMessageToDesigner() {
             var _this = this;
@@ -86430,9 +86439,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
 
-    mounted: function mounted() {
-        // this.setResizedImagesList();
-    }
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -90260,8 +90267,8 @@ var render = function() {
               key: index + "A",
               staticClass: "d-flex justify-content-center",
               staticStyle: {
-                height: "175px !important",
-                padding: "0 5px 0 5px",
+                height: "195px !important",
+                padding: "0 2px 0 2px",
                 overflow: "hidden"
               }
             },
@@ -90284,7 +90291,7 @@ var render = function() {
                 [
                   _c("vue-load-image", [
                     _c("img", {
-                      staticStyle: { "min-height": "175px" },
+                      staticStyle: { "min-height": "195px" },
                       attrs: {
                         slot: "image",
                         src: _vm.getResizedImage(project.mainImage),
@@ -90479,7 +90486,28 @@ var render = function() {
             [
               _c("div", { staticClass: "modal-content" }, [
                 _c("div", { staticClass: "modal-body contact_pop_up" }, [
-                  _vm._m(3),
+                  _c("div", { staticClass: "d-flex justify-content-between" }, [
+                    _c(
+                      "div",
+                      { staticClass: "title d-flex justify-content-center" },
+                      [
+                        _vm._v(
+                          "\n                            Send " +
+                            _vm._s(_vm.freelancer.firstName) +
+                            " a message "
+                        ),
+                        _c("img", {
+                          staticStyle: { width: "36px", "margin-left": "15px" },
+                          attrs: {
+                            src: "/resumeApp/public/images/home/emoji.png",
+                            alt: "smile"
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._m(3)
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "d-flex flex-column" }, [
                     _c(
@@ -90778,26 +90806,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex justify-content-between" }, [
-      _c("div", { staticClass: "title" }, [
-        _vm._v(
-          "\n                            Contact the designer\n                        "
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   }
 ]
 render._withStripped = true

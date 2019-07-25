@@ -5683,3 +5683,31 @@ html {
   text-decoration: none;
 }
 
+.projectsSection .slick-prev.slick-arrow {
+  position: absolute;
+  z-index: 2;
+  left: 10px;
+}
+
+@media (max-width: 768px) {
+  .projectsSection .slick-prev.slick-arrow {
+    background: lightblue;
+    border-radius: 50%;
+    padding-top: 1.5px;
+  }
+}
+
+.projectsSection .slick-next.slick-arrow {
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .projectsSection .slick-next.slick-arrow {
+    background: lightblue;
+    border-radius: 50%;
+    padding-top: 1.5px;
+  }
+}
+

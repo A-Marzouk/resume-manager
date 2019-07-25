@@ -5,7 +5,9 @@
     <div class="freelancerCard smallCard">
         <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
             <div class="nameRow cardContainer">
-                <img src="resumeApp/public/images/home/forum.svg" alt="" class="contact">
+                <a href="javascript:void(0)" data-toggle="modal" :data-target="'#contact-pop-up-'+ freelancer.id">
+                    <img src="resumeApp/public/images/home/forum.svg" alt="" class="contact">
+                </a>
                 <div class="imageCol">
                     <div class="imageContainer">
                         <img :src="freelancer.user_data.photo" alt="freelancer" class="freelancerImg">
@@ -116,6 +118,56 @@
               </div>
           </div>
       </div>
+
+      <!-- modals contact pop-up -->
+
+      <div class="modal fade" :id=" 'contact-pop-up-' + freelancer.id" role="dialog">
+          <div class="modal-dialog" style="max-width:950px;">
+              <!-- Modal content-->
+              <div class="modal-content">
+                  <div class="modal-body contact_pop_up">
+                      <div class="title">
+                         Contact the designer
+                      </div>
+                     <div class="d-flex flex-column">
+                         <div class="d-flex flex-wrap justify-content-between">
+                             <div class="faq-question-input">
+                                 <label class="faq-input-label">
+                                     Enter your name
+                                 </label>
+                                 <div class="faq-input">
+                                     <input type="text" name="name" placeholder="Enter your name" required>
+                                 </div>
+                             </div>
+                             <div class="faq-question-input">
+                                 <label class="faq-input-label">
+                                     Enter your email
+                                 </label>
+                                 <div class="faq-input">
+                                     <input type="email" name="email" placeholder="Enter your email" required>
+                                 </div>
+                             </div>
+                         </div>
+
+                         <div class="faq-question-input">
+                             <label class="faq-input-label">
+                                 Enter message
+                             </label>
+                             <div class="faq-input">
+                                 <textarea type="text"  name="message" rows="2"  style="height:auto;padding:22px;" required>Message...</textarea>
+                             </div>
+                         </div>
+
+                         <div class="d-flex justify-content-end NoDecor">
+                             <a href="javascript:void(0)" class="sendMessageBtn">Send a message</a>
+                         </div>
+                     </div>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
 
   </div>
 

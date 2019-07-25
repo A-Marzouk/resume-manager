@@ -86184,6 +86184,58 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -89905,13 +89957,25 @@ var render = function() {
           { staticClass: "col-lg-12 col-md-12 col-12 resumeCardRight" },
           [
             _c("div", { staticClass: "nameRow cardContainer" }, [
-              _c("img", {
-                staticClass: "contact",
-                attrs: {
-                  src: "resumeApp/public/images/home/forum.svg",
-                  alt: ""
-                }
-              }),
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: "javascript:void(0)",
+                    "data-toggle": "modal",
+                    "data-target": "#contact-pop-up-" + _vm.freelancer.id
+                  }
+                },
+                [
+                  _c("img", {
+                    staticClass: "contact",
+                    attrs: {
+                      src: "resumeApp/public/images/home/forum.svg",
+                      alt: ""
+                    }
+                  })
+                ]
+              ),
               _vm._v(" "),
               _c("div", { staticClass: "imageCol" }, [
                 _c("div", { staticClass: "imageContainer" }, [
@@ -90292,7 +90356,16 @@ var render = function() {
             )
           ]
         )
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: { id: "contact-pop-up-" + _vm.freelancer.id, role: "dialog" }
+        },
+        [_vm._m(2)]
+      )
     ],
     2
   )
@@ -90315,6 +90388,107 @@ var staticRenderFns = [
       _vm._v(" Description\n                                    "),
       _c("hr")
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal-dialog", staticStyle: { "max-width": "950px" } },
+      [
+        _c("div", { staticClass: "modal-content" }, [
+          _c("div", { staticClass: "modal-body contact_pop_up" }, [
+            _c("div", { staticClass: "title" }, [
+              _vm._v(
+                "\n                       Contact the designer\n                    "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex flex-column" }, [
+              _c(
+                "div",
+                { staticClass: "d-flex flex-wrap justify-content-between" },
+                [
+                  _c("div", { staticClass: "faq-question-input" }, [
+                    _c("label", { staticClass: "faq-input-label" }, [
+                      _vm._v(
+                        "\n                                   Enter your name\n                               "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "faq-input" }, [
+                      _c("input", {
+                        attrs: {
+                          type: "text",
+                          name: "name",
+                          placeholder: "Enter your name",
+                          required: ""
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-question-input" }, [
+                    _c("label", { staticClass: "faq-input-label" }, [
+                      _vm._v(
+                        "\n                                   Enter your email\n                               "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "faq-input" }, [
+                      _c("input", {
+                        attrs: {
+                          type: "email",
+                          name: "email",
+                          placeholder: "Enter your email",
+                          required: ""
+                        }
+                      })
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "faq-question-input" }, [
+                _c("label", { staticClass: "faq-input-label" }, [
+                  _vm._v(
+                    "\n                               Enter message\n                           "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "faq-input" }, [
+                  _c(
+                    "textarea",
+                    {
+                      staticStyle: { height: "auto", padding: "22px" },
+                      attrs: {
+                        type: "text",
+                        name: "message",
+                        rows: "2",
+                        required: ""
+                      }
+                    },
+                    [_vm._v("Message...")]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "d-flex justify-content-end NoDecor" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "sendMessageBtn",
+                    attrs: { href: "javascript:void(0)" }
+                  },
+                  [_vm._v("Send a message")]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

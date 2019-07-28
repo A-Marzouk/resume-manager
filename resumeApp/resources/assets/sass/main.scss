@@ -1832,13 +1832,21 @@ body {
   border-radius: 5px;
   height: 43px;
   background-color: #476DDD;
-  padding-top: 12px;
   color: #FFFFFF;
   font-family: Roboto;
   font-size: 14px;
   font-weight: bold;
   line-height: 16px;
-  text-align: center; }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whiteOnHover{
+  a:hover{
+    color: white;
+  }
+}
 
 .paymentAndCard {
   margin-left: 9.07%; }

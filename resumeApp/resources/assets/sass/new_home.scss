@@ -1370,3 +1370,45 @@ html {
 
 
 }
+
+.newHomePage{
+  margin-left: 10px;
+  margin-right: 10px;
+  justify-content: center;
+  @media only screen and (max-device-width: 768px) {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  //@media only screen and (min-device-width: 1440px) and (max-device-width: 2500px) {
+  //  justify-content: space-between !important;
+  //}
+  .freelancerCard{
+    box-shadow: 0 11px 16px -7px lightgrey ;
+    margin: 1%;
+    .nameRow{
+      max-height: 158px !important;
+    }
+
+    //@media only screen and (min-device-width: 1440px) and (max-device-width: 1900px) {
+    //  width: 680px ;
+    //  .workCard{
+    //    min-width: 325px;
+    //  }
+    //  .nameRow{
+    //    max-height: 160px !important;
+    //  }
+    //  .nameArea {
+    //    display: flex;
+    //    flex-wrap: wrap;
+    //    flex-direction: column;
+    //    align-items: center;
+    //    margin-left: 42px;
+    //    margin-top: 18px;
+    //    div{
+    //      padding: 0;
+    //      margin: 0;
+    //    }
+    //  }
+    //}
+  }
+}

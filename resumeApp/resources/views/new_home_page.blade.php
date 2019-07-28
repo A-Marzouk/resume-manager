@@ -23,19 +23,20 @@
     </div>
 
     <div id="newHomeComponent">
-
-
+        <new-home-component :freelancers="{{ json_encode($homeFreelancers) }}" ></new-home-component>
     </div>
 
     @if(count($homeFreelancers) >= 1)
-        <div class="d-flex flex-wrap newHomePage">
-            @foreach($homeFreelancers as $freelancer)
+        <div class="agentsContainer" id="featuredDesignersResume">
+            <div class="d-flex flex-wrap newHomePage">
+                @foreach($homeFreelancers as $freelancer)
                     @if($freelancer->userData->short_resume == 0)
                         @include('freelancer_card')
                     @else
                         @include('custom_resume.freelancer_card_custom')
                     @endif
-            @endforeach
+                @endforeach
+            </div>
         </div>
     @endif
 

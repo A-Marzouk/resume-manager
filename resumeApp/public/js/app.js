@@ -85947,6 +85947,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/search-designers', this.searchParams).then(function (response) {
                 _this.results = response.data;
             });
+        },
+        showSearchDesignersSection: function showSearchDesignersSection() {
+            var featuredDesignersResume = $('#featuredDesignersResume');
+            featuredDesignersResume.addClass('d-none');
+
+            this.customSearch = true;
+        },
+        hideSearchDesignersSection: function hideSearchDesignersSection() {
+            var featuredDesignersResume = $('#featuredDesignersResume');
+            featuredDesignersResume.removeClass('d-none');
+            this.customSearch = false;
         }
     },
 
@@ -90864,11 +90875,7 @@ var render = function() {
         {
           staticClass: "btn-first",
           class: { active: !_vm.customSearch },
-          on: {
-            click: function($event) {
-              _vm.customSearch = false
-            }
-          }
+          on: { click: _vm.hideSearchDesignersSection }
         },
         [_vm._v("Featured designers")]
       ),
@@ -90878,11 +90885,7 @@ var render = function() {
         {
           staticClass: "btn-second",
           class: { active: _vm.customSearch },
-          on: {
-            click: function($event) {
-              _vm.customSearch = true
-            }
-          }
+          on: { click: _vm.showSearchDesignersSection }
         },
         [_vm._v("Search designers")]
       )
@@ -91164,26 +91167,16 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.customSearch,
-            expression: "!customSearch"
-          }
-        ],
-        staticClass: "agentsContainer"
-      },
-      _vm._l(_vm.freelancers, function(freelancer) {
-        return _c("freelancer-card-small", {
-          key: freelancer.id + freelancer.firstName + "A",
-          attrs: { freelancer: freelancer, search: false }
-        })
-      })
-    ),
+    _c("div", {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: !_vm.customSearch,
+          expression: "!customSearch"
+        }
+      ]
+    }),
     _vm._v(" "),
     _c(
       "div",

@@ -2550,13 +2550,24 @@ body {
   border-radius: 5px;
   height: 43px;
   background-color: #476DDD;
-  padding-top: 12px;
   color: #FFFFFF;
   font-family: Roboto;
   font-size: 14px;
   font-weight: bold;
   line-height: 16px;
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.whiteOnHover a:hover {
+  color: white;
 }
 
 .paymentAndCard {
@@ -5709,5 +5720,30 @@ html {
     border-radius: 50%;
     padding-top: 1.5px;
   }
+}
+
+.newHomePage {
+  margin-left: 10px;
+  margin-right: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media only screen and (max-device-width: 768px) {
+  .newHomePage {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.newHomePage .freelancerCard {
+  -webkit-box-shadow: 0 11px 16px -7px lightgrey;
+          box-shadow: 0 11px 16px -7px lightgrey;
+  margin: 1%;
+}
+
+.newHomePage .freelancerCard .nameRow {
+  max-height: 158px !important;
 }
 

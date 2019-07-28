@@ -46,10 +46,10 @@
     </div>
     <div class="row" style="border-top: 1px solid #EBEDEF;">
         <div class="col-md-4 offset-md-2 col-12 NoDecor" style="padding-top: 17px;">
-            <a href="javascript:void(0)" class="btn btn-block cancelBtn cancelBooking" id="cancelBooking{{$freelancer->id}}{{$value['id']}}">Cancel Booking</a>
+            <a href="javascript:void(0)" class="btn d-flex btn-block cancelBtn cancelBooking" id="cancelBooking{{$freelancer->id}}{{$value['id']}}">Cancel Booking</a>
         </div>
-        <div class="col-md-4 col-12 NoDecor" style="padding-top: 17px; padding-bottom: 30px;">
-            <a class="btn btn-block summaryBtn" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours={{$freelancer->userData->availableHours}}&weeks=4" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}">Booking Summary</a>
+        <div class="col-md-4 col-12 NoDecor whiteOnHover" style="padding-top: 17px; padding-bottom: 30px;">
+            <a class="btn d-flex btn-block summaryBtn" href="/stripe/hire?freelancerID={{$freelancer->id}}&hours={{$freelancer->userData->availableHours}}&weeks=4" id="hireMeBtn{{$freelancer->id}}{{$value['id']}}">Booking Summary</a>
         </div>
     </div>
 </div>

@@ -5,8 +5,8 @@
       <img class="agentsBg-3" src="/resumeApp/public/images/home/agentsBg-3.svg" alt="">
       <img src="/resumeApp/public/images/home/pencilsBg.png" alt="" class="pencilsBg">
       <div class="agentsContainer__searchTools">
-        <button @click="customSearch = false" class="btn-first" :class="{active: !customSearch}">Featured designers</button>
-        <button @click="customSearch = true" class="btn-second" :class="{active: customSearch}">Search designers</button>
+        <button @click="hideSearchDesignersSection" class="btn-first" :class="{active: !customSearch}">Featured designers</button>
+        <button @click="showSearchDesignersSection" class="btn-second" :class="{active: customSearch}">Search designers</button>
       </div>
 
       <div class="agentsContainer__searchSelects">
@@ -41,8 +41,8 @@
       </div>
 
       <img src="/resumeApp/public/images/home/computer.png" alt="computer" class="bottomBg">
-      <div v-show="!customSearch" class="agentsContainer">
-        <freelancer-card-small v-for="freelancer in freelancers" :key="freelancer.id + freelancer.firstName + 'A'" :freelancer="freelancer" :search="false"></freelancer-card-small>
+      <div v-show="!customSearch" >
+        <!--<freelancer-card-small v-for="freelancer in freelancers" :key="freelancer.id + freelancer.firstName + 'A'" :freelancer="freelancer" :search="false"></freelancer-card-small>-->
       </div>
       <div v-show="customSearch" class="agentsContainer">
         <freelancer-card-small v-for="agent in results" :key="agent.id + agent.firstName" :freelancer="agent" :search="true"></freelancer-card-small>
@@ -154,6 +154,18 @@ export default {
               this.results = response.data;
           });
       },
+        showSearchDesignersSection(){
+          let featuredDesignersResume = $('#featuredDesignersResume') ;
+            featuredDesignersResume.addClass('d-none');
+
+            this.customSearch = true;
+
+        },
+        hideSearchDesignersSection(){
+          let featuredDesignersResume = $('#featuredDesignersResume') ;
+            featuredDesignersResume.removeClass('d-none');
+            this.customSearch = false;
+        }
     },
 
 

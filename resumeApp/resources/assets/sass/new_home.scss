@@ -448,7 +448,7 @@ html {
 
 .agentsSection {  
   position: relative;
-  padding: 50px 78px;
+  padding: 50px 78px 10px 78px;
   overflow: hidden;
   width: 100%;
   background-image: url(/resumeApp/public/images/home/agentsBg-1.svg) ,  url(/resumeApp/public/images/home/pencilsBg.png);
@@ -1374,6 +1374,7 @@ html {
 .newHomePage{
   margin-left: 10px;
   margin-right: 10px;
+  background: aliceblue;
   justify-content: center;
   @media only screen and (max-device-width: 768px) {
     margin-left: 10px;

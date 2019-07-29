@@ -1342,11 +1342,10 @@ html {
   .slick-prev.slick-arrow {
     position: absolute;
     z-index: 2;
-    left: 10px;
+    left: 25px;
 
 
     @media (max-width:768px) {
-
       background: lightblue;
       border-radius: 50%;
       padding-top: 1.5px;
@@ -1357,7 +1356,7 @@ html {
   .slick-next.slick-arrow {
     position: absolute;
     z-index: 2;
-    right: 10px;
+    right: 25px;
 
     @media (max-width:768px) {
 
@@ -1366,6 +1365,11 @@ html {
       padding-top: 1.5px;
     }
 
+  }
+
+  .slick-dots{
+    padding-right: 40px;
+    bottom: -18px;
   }
 
 

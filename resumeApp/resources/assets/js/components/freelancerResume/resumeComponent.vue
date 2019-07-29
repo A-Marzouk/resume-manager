@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="d-flex flex-wrap justify-content-center">
         <div class="freelancerCard">
 
             <div class="row">
@@ -55,7 +55,7 @@
                                     <div class="col-md-4" style="padding: 0;">
 
                                         <div class="row text-center cardRow NoDecor">
-                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)">
+                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
                                                 Hire me
                                             </a>
                                         </div>
@@ -112,7 +112,7 @@
 
                             <div class="col-12" style="padding: 10px 20px 16px 20px;">
                                 <div class="text-center cardRow NoDecor">
-                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)">
+                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
                                         Hire me
                                     </a>
                                 </div>
@@ -159,7 +159,7 @@
                         <!-- end of nav row-->
 
                         <!-- portfolio section -->
-                        <slick class="projectsSection" ref="slick" :options="slickOptions">
+                        <slick class="projectsSection" ref="slick" :options="slickOptions"  v-show="!hire">
                             <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" >
                                 <!-- class="d-flex justify-content-center" style="height: 250px !important; padding: 0 2px 0 2px; overflow: hidden;" -->
 
@@ -167,7 +167,7 @@
                                     <div class="workImg">
                                         <a href="javascript:void(0)"
                                             style="outline: none;"
-                                            data-toggle="modal" :data-target="'#project_modal_'+project.id" >
+                                            data-toggle="modal" :data-target="'#project_modal_'+project.id" @click="loadHDImage(project.id)">
 
                                             <vue-load-image class="d-flex justify-content-center align-items-center">
                                                 <img :src="getResizedImage(project.mainImage)" alt="" width="260" slot="image">
@@ -204,7 +204,7 @@
                     </div>
 
                     <!-- hire section -->
-                        <div class="d-none">
+                        <div v-show="hire">
                             <div style="border-top: 1px solid #EBEDEF; ">
                             <div class="row">
                                 <div class="offset-md-4 col-md-4 col-12">
@@ -213,11 +213,11 @@
                                     </div>
                                     <div class="hoursBtn NoDecor">
                                         <a href="javascript:void(0)">
-                                            <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
+                                            <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus" @click="subtractHours">
                                         </a>
-                                        <span>{{freelancer.user_data.availableHours}}</span> hours
+                                        <span>{{hours}}</span> hours
                                         <a href="javascript:void(0)">
-                                            <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
+                                            <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus" @click="addHours" >
                                         </a>
                                     </div>
                                 </div>
@@ -229,11 +229,11 @@
                                     </div>
                                     <div class="hoursBtn NoDecor">
                                         <a href="javascript:void(0)">
-                                            <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus">
+                                            <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus" @click="subtractWeeks">
                                         </a>
-                                        <span>4</span> weeks
+                                        <span>{{weeks}}</span> weeks
                                         <a href="javascript:void(0)">
-                                            <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus">
+                                            <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus" @click="addWeeks">
                                         </a>
                                     </div>
                                 </div>
@@ -253,10 +253,10 @@
                             </div>
                             <div class="row" style="border-top: 1px solid #EBEDEF;">
                                 <div class="col-md-4 offset-md-2 col-12 NoDecor" style="padding-top: 17px;">
-                                    <a href="javascript:void(0)" class="justify-content-center d-flex btn-block cancelBtn">Cancel Booking</a>
+                                    <a href="javascript:void(0)" class="justify-content-center d-flex btn-block cancelBtn" @click="hideHireSection">Cancel Booking</a>
                                 </div>
                                 <div class="col-md-4 col-12 NoDecor whiteOnHover" style="padding-top: 17px; padding-bottom: 30px;">
-                                    <a class="btn d-flex btn-block summaryBtn" :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + freelancer.user_data.availableHours + '&weeks=4' ">Booking Summary</a>
+                                    <a class="btn d-flex btn-block summaryBtn" :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks ">Booking Summary</a>
                                 </div>
                             </div>
                         </div>
@@ -317,7 +317,7 @@
     import VueLoadImage from 'vue-load-image'
 
     export default {
-        props:['freelancer'],
+        props:['freelancer','hire','search'],
         components:{
             'vue-load-image': VueLoadImage,
             Slick
@@ -350,6 +350,8 @@
                         }
                     ]
                 },
+                weeks:4,
+                hours: this.freelancer.user_data.availableHours
             }
         },
         methods:{
@@ -380,6 +382,24 @@
                     }
                 });
             },
+            showHireSection(freelancer_id){
+              this.hire = true ;
+            },
+            hideHireSection(){
+                this.hire = false ;
+            },
+            addHours(){
+                this.hours++ ;
+            },
+            subtractHours(){
+                this.hours-- ;
+            },
+            addWeeks(){
+                this.weeks++ ;
+            },
+            subtractWeeks(){
+                this.weeks-- ;
+            },
         },
         mounted() {
 
@@ -396,6 +416,8 @@
     .freelancerCard{
         margin-bottom: 12px;
         padding-bottom: 12px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .slick-dots {

@@ -5697,7 +5697,7 @@ html {
 .projectsSection .slick-prev.slick-arrow {
   position: absolute;
   z-index: 2;
-  left: 25px;
+  left: 45px;
 }
 
 @media (max-width: 768px) {
@@ -5711,7 +5711,7 @@ html {
 .projectsSection .slick-next.slick-arrow {
   position: absolute;
   z-index: 2;
-  right: 25px;
+  right: 40px;
 }
 
 @media (max-width: 768px) {

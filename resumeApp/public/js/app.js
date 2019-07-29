@@ -91817,6 +91817,89 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -91840,13 +91923,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     breakpoint: 786,
                     settings: {
                         slidesToShow: 1,
-                        slidesToScroll: 1
+                        slidesToScroll: 1,
+                        arrows: false
                     }
                 }, {
                     breakpoint: 991,
                     settings: {
                         slidesToShow: 2,
-                        slidesToScroll: 2
+                        slidesToScroll: 2,
+                        arrows: false
                     }
                 }]
             }
@@ -91866,7 +91951,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return '/resumeApp/public/images/placeholder.png';
             }
 
-            if (src.charAt(0) !== '/') {
+            if (src.charAt(0) !== '/' && src.charAt(0) !== 'h') {
                 return '/' + src;
             }
 
@@ -91923,7 +92008,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.projectsSection[data-v-641e834a] {\n  margin-top: 18px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n.freelancerCard[data-v-641e834a] {\n  margin-bottom: 1%;\n  padding-bottom: 12px;\n}\n.slick-dots[data-v-641e834a] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n", ""]);
+exports.push([module.i, "\n.projectsSection[data-v-641e834a] {\n  margin-top: 15px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n.freelancerCard[data-v-641e834a] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n}\n.slick-dots[data-v-641e834a] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n", ""]);
 
 // exports
 
@@ -91945,9 +92030,30 @@ var render = function() {
             "div",
             { staticClass: "col-lg-12 col-md-12 col-12 resumeCardRight" },
             [
-              _c("div", [
+              _c("div", { staticClass: "showOnlyOnmd" }, [
                 _c("div", { staticClass: "row nameRow" }, [
-                  _vm._m(0),
+                  _c("div", { staticClass: "col-lg-2 col-6 imageCol" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "imageContainer",
+                        staticStyle: { padding: "10px" }
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "freelancerImg",
+                          attrs: {
+                            src: _vm.getImageSrc(
+                              _vm.freelancer.user_data.photo
+                            ),
+                            alt: "freelancer",
+                            width: "120",
+                            height: "120"
+                          }
+                        })
+                      ]
+                    )
+                  ]),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -92032,9 +92138,12 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "col-lg-7 col-md-8 freelancerCardRight" },
+                    {
+                      staticClass:
+                        "col-lg-7 col-md-8 freelancerCardRight d-flex align-items-center"
+                    },
                     [
-                      _c("div", { staticClass: "row hireRow" }, [
+                      _c("div", { staticClass: "row hireRow w-100" }, [
                         _c(
                           "div",
                           {
@@ -92101,18 +92210,212 @@ var render = function() {
                           ]
                         ),
                         _vm._v(" "),
-                        _vm._m(1)
+                        _vm._m(0)
                       ])
                     ]
                   )
                 ])
               ]),
               _vm._v(" "),
+              _c("div", { staticClass: "showOnlyOnsm" }, [
+                _c("div", { staticClass: "row cardMainInfo_mob" }, [
+                  _c("div", { staticClass: "col-6" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "imageContainer",
+                        staticStyle: { padding: "20px 10px 10px 10px" }
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "freelancerImg",
+                          attrs: {
+                            src: _vm.getImageSrc(
+                              _vm.freelancer.user_data.photo
+                            ),
+                            alt: "freelancer",
+                            width: "120",
+                            height: "120"
+                          }
+                        })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-6 resumeCardRight" }, [
+                    _c("div", { staticClass: "nameArea" }, [
+                      _c("div", { staticClass: "nameCard" }, [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(_vm.freelancer.firstName) +
+                            "\n                                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "jobTitle",
+                          staticStyle: {
+                            "font-size": "17px",
+                            "padding-left": "0",
+                            color: "#c1d1ff"
+                          },
+                          attrs: { id: "animatedText" + _vm.freelancer.id }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(_vm.freelancer.user_data.jobTitle) +
+                              "\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "text-left",
+                          staticStyle: {
+                            "font-size": "15px",
+                            color: "white",
+                            "padding-top": "5px"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "cardLabel",
+                              staticStyle: {
+                                "font-weight": "300",
+                                "font-size": "14px"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "Hourly rate :\n                                        "
+                              ),
+                              _c(
+                                "span",
+                                { staticStyle: { "font-weight": "bold" } },
+                                [
+                                  _vm._v(
+                                    "\n                                            $ " +
+                                      _vm._s(_vm.freelancer.user_data.salary) +
+                                      "\n                                        "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "text-left",
+                          staticStyle: {
+                            "font-size": "15px",
+                            color: "white",
+                            "padding-top": "5px"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "cardLabel",
+                              staticStyle: {
+                                "font-weight": "300",
+                                "font-size": "14px"
+                              }
+                            },
+                            [
+                              _vm._v("Availability :  "),
+                              _c(
+                                "span",
+                                { staticStyle: { "font-weight": "bold" } },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.freelancer.user_data.availableHours
+                                    ) + "h/week"
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "d-none",
+                          attrs: { id: "welcomeText" + _vm.freelancer.id }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Hi, I am " +
+                              _vm._s(_vm.freelancer.firstName) +
+                              ", I am a " +
+                              _vm._s(_vm.freelancer.user_data.jobTitle) +
+                              ", How can I help\n                                    you ?\n                                "
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-6",
+                        staticStyle: {
+                          "margin-top": "-39px",
+                          "padding-left": "28px"
+                        }
+                      },
+                      [
+                        _c(
+                          "form",
+                          {
+                            attrs: {
+                              action: "/chat-room/start_conversation",
+                              method: "post"
+                            }
+                          },
+                          [
+                            _c("input", {
+                              attrs: { type: "hidden", name: "freelancer_id" },
+                              domProps: { value: _vm.freelancer.id }
+                            }),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "tap-to-chat cursorPointerOnHover",
+                              staticStyle: {
+                                background: "none",
+                                border: "none",
+                                outline: "none"
+                              },
+                              attrs: { type: "submit", value: "TAP TO CHAT" }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ])
+              ]),
+              _vm._v(" "),
               _c(
                 "div",
                 [
-                  _vm._m(2),
-                  _vm._v(" "),
                   _c(
                     "slick",
                     {
@@ -92121,69 +92424,109 @@ var render = function() {
                       attrs: { options: _vm.slickOptions }
                     },
                     _vm._l(_vm.freelancer.projects, function(project, index) {
-                      return _c(
-                        "div",
-                        {
-                          key: index + "A",
-                          staticClass: "d-flex justify-content-center",
-                          staticStyle: {
-                            height: "250px !important",
-                            padding: "0 2px 0 2px",
-                            overflow: "hidden"
-                          }
-                        },
-                        [
-                          _c("div", [
-                            _c(
-                              "a",
-                              {
-                                staticStyle: { outline: "0" },
-                                attrs: {
-                                  href: "javascript:void(0)",
-                                  "data-toggle": "modal",
-                                  "data-target": "#project_modal_" + project.id
-                                },
-                                on: {
-                                  click: function($event) {
-                                    _vm.loadHDImage(project.id)
+                      return _c("div", { key: index + "A" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "workCard",
+                            staticStyle: {
+                              margin: "10px",
+                              "margin-bottom": "0px"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "workImg" }, [
+                              _c(
+                                "a",
+                                {
+                                  staticStyle: { outline: "none" },
+                                  attrs: {
+                                    href: "javascript:void(0)",
+                                    "data-toggle": "modal",
+                                    "data-target":
+                                      "#project_modal_" + project.id
                                   }
-                                }
-                              },
-                              [
-                                _c("vue-load-image", [
-                                  _c("img", {
+                                },
+                                [
+                                  _c(
+                                    "vue-load-image",
+                                    {
+                                      staticClass:
+                                        "d-flex justify-content-center align-items-center"
+                                    },
+                                    [
+                                      _c("img", {
+                                        attrs: {
+                                          slot: "image",
+                                          src: _vm.getResizedImage(
+                                            project.mainImage
+                                          ),
+                                          alt: "",
+                                          width: "260"
+                                        },
+                                        slot: "image"
+                                      }),
+                                      _vm._v(" "),
+                                      _c("img", {
+                                        staticStyle: {
+                                          width: "100px",
+                                          height: "100px"
+                                        },
+                                        attrs: {
+                                          slot: "preloader",
+                                          alt: "",
+                                          src:
+                                            "/resumeApp/public/images/spinner-load.gif"
+                                        },
+                                        slot: "preloader"
+                                      })
+                                    ]
+                                  )
+                                ],
+                                1
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "workTitle" }, [
+                              _c("div", { staticClass: "row" }, [
+                                _c("div", { staticClass: "col-md-10 col-9" }, [
+                                  _vm._v(
+                                    "\n                                            " +
+                                      _vm._s(project.projectName) +
+                                      "\n                                        "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "col-md-1 col-1",
                                     staticStyle: {
-                                      "min-height": "250px",
-                                      "border-radius": "10px"
+                                      outline: "none",
+                                      "margin-left": "16px"
                                     },
                                     attrs: {
-                                      slot: "image",
-                                      src: _vm.getResizedImage(
-                                        project.mainImage
-                                      ),
-                                      alt: "",
-                                      width: "100%",
-                                      height: "auto"
-                                    },
-                                    slot: "image"
-                                  }),
-                                  _vm._v(" "),
-                                  _c("img", {
-                                    attrs: {
-                                      slot: "preloader",
-                                      alt: "",
-                                      src:
-                                        "/resumeApp/public/images/spinner-load.gif"
-                                    },
-                                    slot: "preloader"
-                                  })
-                                ])
-                              ],
-                              1
-                            )
-                          ])
-                        ]
-                      )
+                                      href: "javascript:void(0)",
+                                      "data-toggle": "modal",
+                                      "data-target":
+                                        "#project_modal_" + project.id
+                                    }
+                                  },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        src:
+                                          "/resumeApp/public/images/newResume/link.png",
+                                        alt: "view work"
+                                      }
+                                    })
+                                  ]
+                                )
+                              ])
+                            ])
+                          ]
+                        )
+                      ])
                     })
                   )
                 ],
@@ -92207,7 +92550,7 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "hoursBtn NoDecor" }, [
-                            _vm._m(3),
+                            _vm._m(2),
                             _vm._v(" "),
                             _c("span", [
                               _vm._v(
@@ -92217,13 +92560,13 @@ var render = function() {
                             _vm._v(
                               " hours\n                                    "
                             ),
-                            _vm._m(4)
+                            _vm._m(3)
                           ])
                         ]
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(5),
+                    _vm._m(4),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -92294,7 +92637,7 @@ var render = function() {
                         staticStyle: { "border-top": "1px solid #EBEDEF" }
                       },
                       [
-                        _vm._m(6),
+                        _vm._m(5),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -92412,7 +92755,7 @@ var render = function() {
                                 staticStyle: { "padding-top": "25px" }
                               },
                               [
-                                _vm._m(7, true),
+                                _vm._m(6, true),
                                 _c("br"),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "panelFormLabel" }, [
@@ -92432,7 +92775,7 @@ var render = function() {
                                 staticStyle: { "padding-top": "25px" }
                               },
                               [
-                                _vm._m(8, true),
+                                _vm._m(7, true),
                                 _c("br"),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "panelFormLabel" }, [
@@ -92464,28 +92807,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-2 col-6 imageCol" }, [
-      _c(
-        "div",
-        { staticClass: "imageContainer", staticStyle: { padding: "10px" } },
-        [
-          _c("img", {
-            staticClass: "freelancerImg",
-            attrs: {
-              src: "/resumeApp/public/images/no-foto.png",
-              alt: "freelancer",
-              width: "120",
-              height: "120"
-            }
-          })
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "div",
       { staticClass: "col-md-4", staticStyle: { padding: "0" } },
@@ -92511,51 +92832,29 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row navRow" }, [
-      _c(
-        "div",
-        {
-          staticClass: "col-md-2 offset-md-3 col-4 text-center",
-          staticStyle: { "border-right": "1px solid #EBEDEF" }
-        },
-        [
-          _c("div", { staticClass: "navTab showPortfolio active NoDecor" }, [
-            _c("a", { attrs: { href: "javascript:void(0)" } }, [
+    return _c(
+      "div",
+      {
+        staticClass: "col-12",
+        staticStyle: { padding: "10px 20px 16px 20px" }
+      },
+      [
+        _c("div", { staticClass: "text-center cardRow NoDecor" }, [
+          _c(
+            "a",
+            {
+              staticClass: "hireCardBtn btn-block showHireSection",
+              attrs: { href: "javascript:void(0)" }
+            },
+            [
               _vm._v(
-                "\n                                    Portfolio\n                                "
+                "\n                                    Hire me\n                                "
               )
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "col-md-2 col-4 text-center",
-          staticStyle: { "border-right": "1px solid #EBEDEF" }
-        },
-        [
-          _c("div", { staticClass: "navTab showWork NoDecor" }, [
-            _c("a", { attrs: { href: "javascript:void(0)" } }, [
-              _vm._v(
-                "\n                                    Work\n                                "
-              )
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-2 col-4 text-center" }, [
-        _c("div", { staticClass: "navTab showEducation NoDecor" }, [
-          _c("a", { attrs: { href: "javascript:void(0)" } }, [
-            _vm._v(
-              "\n                                    Education\n                                "
-            )
-          ])
+            ]
+          )
         ])
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this

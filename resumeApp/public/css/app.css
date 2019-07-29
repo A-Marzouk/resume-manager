@@ -5697,7 +5697,7 @@ html {
 .projectsSection .slick-prev.slick-arrow {
   position: absolute;
   z-index: 2;
-  left: 10px;
+  left: 45px;
 }
 
 @media (max-width: 768px) {
@@ -5711,7 +5711,7 @@ html {
 .projectsSection .slick-next.slick-arrow {
   position: absolute;
   z-index: 2;
-  right: 10px;
+  right: 40px;
 }
 
 @media (max-width: 768px) {
@@ -5720,6 +5720,11 @@ html {
     border-radius: 50%;
     padding-top: 1.5px;
   }
+}
+
+.projectsSection .slick-dots {
+  padding-right: 40px;
+  bottom: -18px;
 }
 
 .newHomePage {

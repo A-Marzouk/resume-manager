@@ -41,9 +41,7 @@
             @endforeach
     @else
         <?
-        $workExamples_all =\App\Project::where([
-            'user_id'=>$freelancer->id
-        ])->orderBy('order','ASC')->get();
+        $workExamples_all = $freelancer->projects ;
 
         $workExamples = [] ;
         foreach ($workExamples_all as $work){

@@ -43,9 +43,12 @@
       <img src="/resumeApp/public/images/home/computer.png" alt="computer" class="bottomBg">
       <div v-show="!customSearch" >
         <!--<freelancer-card-small v-for="freelancer in freelancers" :key="freelancer.id + freelancer.firstName + 'A'" :freelancer="freelancer" :search="false"></freelancer-card-small>-->
+        <freelancer-resume v-for="freelancer in freelancers" :key="freelancer.id + freelancer.firstName + 'A'" :freelancer="freelancer" :hire="false" :search="false"></freelancer-resume>
+
       </div>
       <div v-show="customSearch" class="agentsContainer">
-        <freelancer-card-small v-for="agent in results" :key="agent.id + agent.firstName" :freelancer="agent" :search="true"></freelancer-card-small>
+        <!--<freelancer-card-small v-for="agent in results" :key="agent.id + agent.firstName" :freelancer="agent" :search="true"></freelancer-card-small>-->
+          <freelancer-resume v-for="agent in results" :key="agent.id + agent.firstName + 'B'" :freelancer="agent" :hire="false" :search="true"></freelancer-resume>
           <div v-if="results.length < 1">
               <div class="mainSection__content__description">
                   Please choose search parameters
@@ -58,10 +61,12 @@
 
 <script>
 import freelancerCardSmall from '../../components/homeDesigners/freelancerSmallCard'
+import freelancerResume    from '../freelancerResume/resumeComponent'
 
 export default {
     components: {
-    freelancerCardSmall
+        freelancerCardSmall,
+        'freelancer-resume' : freelancerResume
     },
 
     props: ['freelancers'],

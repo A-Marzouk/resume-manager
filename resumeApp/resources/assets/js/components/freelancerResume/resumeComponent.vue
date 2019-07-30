@@ -121,8 +121,8 @@
                     <!-- end of main card info -->
                 </div>
 
-                    <transition name="">
-                        <div v-show="!hire">
+                    <transition name="slide-fade">
+                        <div v-show="portfolio">
                             <!-- portfolio section -->
                             <slick class="projectsSection" :id="'portfolio_section_' + freelancer.id" ref="slick" :options="slickOptions">
                                 <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" >
@@ -188,7 +188,7 @@
                     </transition>
 
 
-                    <transition name="">
+                    <transition name="slide-fade-left">
                         <div v-show="hire">
                             <div style="border-top: 1px solid #EBEDEF; ">
                                 <div class="row">
@@ -338,7 +338,8 @@
                     ]
                 },
                 weeks:4,
-                hours: this.freelancer.user_data.availableHours.replace(/[^0-9]/g,'')
+                hours: this.freelancer.user_data.availableHours.replace(/[^0-9]/g,'') ,
+                portfolio : !this.hire
             }
         },
         methods:{
@@ -370,13 +371,19 @@
                 });
             },
             showHireSection(freelancer_id){
-                this.hire = true ;
+                setTimeout( () => {
+                    this.hire = true ;
+                },800);
+                this.portfolio = false ;
             },
             hideHireSection(){
-                this.$nextTick(() => {
-                    this.$refs.slick.reSlick();
-                });
                 this.hire = false ;
+                setTimeout( () => {
+                    this.portfolio = true ;
+                    this.$nextTick(() => {
+                        this.$refs.slick.reSlick();
+                    });
+                },800);
             },
             addHours(){
                 this.hours++ ;
@@ -430,11 +437,13 @@
         padding-bottom: 12px;
         margin-left: 10px;
         margin-right: 10px;
+        min-height: 600px ;
         @media only screen and (max-width: 1200px) {
             width: 910px;
         }
         @media only screen and (max-width: 786px) {
             width: 710px;
+            min-height: 645px;
         }
         @media only screen and (max-width: 500px) {
             width: 315px;
@@ -453,22 +462,37 @@
     }
 
     .fade-enter-active, .fade-leave-active {
-        transition: opacity 1s;
+        transition: opacity .7s;
     }
 
     .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
         opacity: 0;
     }
 
+
     .slide-fade-enter-active {
-        transition: all .3s ease;
+        transition: all .7s ease;
     }
     .slide-fade-leave-active {
-        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        transition: all .7s cubic-bezier(1.0, 0.5, 0.8, 1.0);
     }
     .slide-fade-enter, .slide-fade-leave-to
         /* .slide-fade-leave-active below version 2.1.8 */ {
         transform: translateX(10px);
+        opacity: 0;
+    }
+
+
+
+    .slide-fade-left-enter-active {
+        transition: all .7s ease;
+    }
+    .slide-fade-left-leave-active {
+        transition: all .7s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-left-enter, .slide-fade-left-leave-to
+        /* .slide-fade-leave-active below version 2.1.8 */ {
+        transform: translateX(-10px);
         opacity: 0;
     }
 

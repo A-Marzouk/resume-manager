@@ -90935,7 +90935,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.projectsSection[data-v-641e834a] {\n  margin-top: 15px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-641e834a] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-641e834a] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-641e834a] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-641e834a] {\n      width: 710px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-641e834a] {\n      width: 315px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-641e834a] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-641e834a] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-641e834a], .fade-leave-active[data-v-641e834a] {\n  -webkit-transition: opacity 1s;\n  transition: opacity 1s;\n}\n.fade-enter[data-v-641e834a], .fade-leave-to[data-v-641e834a] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-641e834a] {\n  -webkit-transition: all .3s ease;\n  transition: all .3s ease;\n}\n.slide-fade-leave-active[data-v-641e834a] {\n  -webkit-transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-641e834a], .slide-fade-leave-to[data-v-641e834a] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.projectsSection[data-v-641e834a] {\n  margin-top: 15px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-641e834a] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-641e834a] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  min-height: 600px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-641e834a] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-641e834a] {\n      width: 710px;\n      min-height: 645px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-641e834a] {\n      width: 315px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-641e834a] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-641e834a] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-641e834a], .fade-leave-active[data-v-641e834a] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-641e834a], .fade-leave-to[data-v-641e834a] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-641e834a] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-641e834a] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-641e834a], .slide-fade-leave-to[data-v-641e834a] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-641e834a] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-641e834a] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-641e834a], .slide-fade-left-leave-to[data-v-641e834a] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -91286,7 +91286,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }]
             },
             weeks: 4,
-            hours: this.freelancer.user_data.availableHours.replace(/[^0-9]/g, '')
+            hours: this.freelancer.user_data.availableHours.replace(/[^0-9]/g, ''),
+            portfolio: !this.hire
         };
     },
 
@@ -91319,15 +91320,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         showHireSection: function showHireSection(freelancer_id) {
-            this.hire = true;
-        },
-        hideHireSection: function hideHireSection() {
             var _this = this;
 
-            this.$nextTick(function () {
-                _this.$refs.slick.reSlick();
-            });
+            setTimeout(function () {
+                _this.hire = true;
+            }, 800);
+            this.portfolio = false;
+        },
+        hideHireSection: function hideHireSection() {
+            var _this2 = this;
+
             this.hire = false;
+            setTimeout(function () {
+                _this2.portfolio = true;
+                _this2.$nextTick(function () {
+                    _this2.$refs.slick.reSlick();
+                });
+            }, 800);
         },
         addHours: function addHours() {
             this.hours++;
@@ -91837,7 +91846,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("transition", { attrs: { name: "" } }, [
+              _c("transition", { attrs: { name: "slide-fade" } }, [
                 _c(
                   "div",
                   {
@@ -91845,8 +91854,8 @@ var render = function() {
                       {
                         name: "show",
                         rawName: "v-show",
-                        value: !_vm.hire,
-                        expression: "!hire"
+                        value: _vm.portfolio,
+                        expression: "portfolio"
                       }
                     ]
                   },
@@ -92055,7 +92064,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("transition", { attrs: { name: "" } }, [
+              _c("transition", { attrs: { name: "slide-fade-left" } }, [
                 _c(
                   "div",
                   {

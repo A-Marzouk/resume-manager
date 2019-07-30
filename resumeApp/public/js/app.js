@@ -91335,6 +91335,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.portfolio = true;
                 _this2.$nextTick(function () {
                     _this2.$refs.slick.reSlick();
+                    _this2.slideNumber = 1;
                 });
             }, 800);
         },

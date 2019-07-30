@@ -382,6 +382,7 @@
                     this.portfolio = true ;
                     this.$nextTick(() => {
                         this.$refs.slick.reSlick();
+                        this.slideNumber = 1 ;
                     });
                 },800);
             },

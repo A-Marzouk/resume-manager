@@ -6,280 +6,249 @@
 
                 <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
                     <div class="showOnlyOnmd">
-                        <!-- main card info -->
-                        <div class="row nameRow">
-                            <div class="col-lg-2 col-6 imageCol">
-                                <div class="imageContainer" style="padding: 10px;">
-                                    <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer" class="freelancerImg"
-                                         width="120" height="120">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-6 freelancerCardLeft">
-                                <div class="nameArea">
-                                    <div class="nameCard">
-                                        {{freelancer.firstName}}
-                                    </div>
-                                    <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;" :id="'animatedText'+freelancer.id">
-                                        {{freelancer.user_data.jobTitle}}
-                                    </div>
-
-                                    <form action="/chat-room/start_conversation" method="post">
-                                        <input type="hidden" name="freelancer_id" :value="freelancer.id">
-                                        <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
-                                    </form>
-
-
-                                    <div :id="'welcomeText'+freelancer.id" class="d-none">
-                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How can I help
-                                        you ?
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-lg-7 col-md-8 freelancerCardRight d-flex align-items-center">
-
-                                <div class="row hireRow w-100">
-                                    <div  class="col-md-4 text-center" style="font-size: 15px; color: white;" >
-                                        <span style="font-weight: bold;">
-                                            {{freelancer.user_data.salary}}
-                                        </span>
-                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
-                                    </div>
-
-                                    <div class="col-md-4 text-center"  style="font-size: 15px; color: white;">
-                                        <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}} hours</span>
-                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly Availability</div>
-                                    </div>
-
-                                    <div class="col-md-4" style="padding: 0;">
-
-                                        <div class="row text-center cardRow NoDecor">
-                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
-                                                Hire me
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
+                    <!-- main card info -->
+                    <div class="row nameRow">
+                        <div class="col-lg-2 col-6 imageCol">
+                            <div class="imageContainer" style="padding: 10px;">
+                                <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer" class="freelancerImg"
+                                     width="120" height="120">
                             </div>
                         </div>
-                        <!-- end of main card info -->
+                        <div class="col-lg-3 col-md-4 col-6 freelancerCardLeft">
+                            <div class="nameArea">
+                                <div class="nameCard">
+                                    {{freelancer.firstName}}
+                                </div>
+                                <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;" :id="'animatedText'+freelancer.id">
+                                    {{freelancer.user_data.jobTitle}}
+                                </div>
+
+                                <form action="/chat-room/start_conversation" method="post">
+                                    <input type="hidden" name="freelancer_id" :value="freelancer.id">
+                                    <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
+                                </form>
+
+
+                                <div :id="'welcomeText'+freelancer.id" class="d-none">
+                                    Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How can I help
+                                    you ?
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-7 col-md-8 freelancerCardRight d-flex align-items-center">
+
+                            <div class="row hireRow w-100">
+                                <div  class="col-md-4 text-center" style="font-size: 15px; color: white;" >
+                                    <span style="font-weight: bold;">
+                                        {{freelancer.user_data.salary}}
+                                    </span>
+                                    <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
+                                </div>
+
+                                <div class="col-md-4 text-center"  style="font-size: 15px; color: white;">
+                                    <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}} hours</span>
+                                    <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly Availability</div>
+                                </div>
+
+                                <div class="col-md-4" style="padding: 0;">
+
+                                    <div class="row text-center cardRow NoDecor">
+                                        <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
+                                            Hire me
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
+                    <!-- end of main card info -->
+                </div>
 
 
                     <div class="showOnlyOnsm">
-                        <!-- main card info -->
-                        <div class="row cardMainInfo_mob">
-                            <div class="col-6">
-                                <div class="imageContainer" style="padding: 20px 10px 10px 10px;">
-                                    <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer" class="freelancerImg"
-                                         width="120" height="120">
-                                </div>
+                    <!-- main card info -->
+                    <div class="row cardMainInfo_mob">
+                        <div class="col-6">
+                            <div class="imageContainer" style="padding: 20px 10px 10px 10px;">
+                                <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer" class="freelancerImg"
+                                     width="120" height="120">
                             </div>
-                            <div class="col-6 resumeCardRight">
-                                <div class="nameArea">
-                                    <div class="nameCard">
-                                        {{freelancer.firstName}}
-                                    </div>
-                                    <div class="jobTitle" style="font-size: 17px; padding-left: 0; color: #c1d1ff" :id="'animatedText' + freelancer.id">
-                                        {{freelancer.user_data.jobTitle}}
-                                    </div>
-                                    <div  class="text-left" style="font-size: 15px; color: white; padding-top: 5px;" >
-                                        <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Hourly rate :
-                                            <span style="font-weight: bold;">
-                                                $ {{freelancer.user_data.salary}}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="text-left"  style="font-size: 15px; color: white; padding-top: 5px;">
-                                        <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}}h/week</span></div>
-                                    </div>
-                                    <div :id="'welcomeText'+freelancer.id" class="d-none">
-                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How can I help
-                                        you ?
+                        </div>
+                        <div class="col-6 resumeCardRight">
+                            <div class="nameArea">
+                                <div class="nameCard">
+                                    {{freelancer.firstName}}
+                                </div>
+                                <div class="jobTitle" style="font-size: 17px; padding-left: 0; color: #c1d1ff" :id="'animatedText' + freelancer.id">
+                                    {{freelancer.user_data.jobTitle}}
+                                </div>
+                                <div  class="text-left" style="font-size: 15px; color: white; padding-top: 5px;" >
+                                    <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Hourly rate :
+                                        <span style="font-weight: bold;">
+                                            $ {{freelancer.user_data.salary}}
+                                        </span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6" style="margin-top: -39px; padding-left: 28px;">
-                                    <form action="/chat-room/start_conversation" method="post">
-                                        <input type="hidden" name="freelancer_id" :value="freelancer.id">
-                                        <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
-                                    </form>
+                                <div class="text-left"  style="font-size: 15px; color: white; padding-top: 5px;">
+                                    <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}}h/week</span></div>
                                 </div>
-                            </div>
-
-                            <div class="col-12" style="padding: 10px 20px 16px 20px;">
-                                <div class="text-center cardRow NoDecor">
-                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
-                                        Hire me
-                                    </a>
+                                <div :id="'welcomeText'+freelancer.id" class="d-none">
+                                    Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How can I help
+                                    you ?
                                 </div>
                             </div>
                         </div>
-                        <!-- end of main card info -->
+                        <div class="row">
+                            <div class="col-6" style="margin-top: -39px; padding-left: 28px;">
+                                <form action="/chat-room/start_conversation" method="post">
+                                    <input type="hidden" name="freelancer_id" :value="freelancer.id">
+                                    <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-12" style="padding: 10px 20px 16px 20px;">
+                            <div class="text-center cardRow NoDecor">
+                                <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
+                                    Hire me
+                                </a>
+                            </div>
+                        </div>
                     </div>
+                    <!-- end of main card info -->
+                </div>
 
+                    <transition name="">
+                        <div v-show="!hire">
+                            <!-- portfolio section -->
+                            <slick class="projectsSection" :id="'portfolio_section_' + freelancer.id" ref="slick" :options="slickOptions">
+                                <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" >
+                                    <!-- class="d-flex justify-content-center" style="height: 250px !important; padding: 0 2px 0 2px; overflow: hidden;" -->
 
-                    <!-- skills -->
-                        <!-- later added -->
-                    <!-- end of skills -->
+                                    <div class="workCard" style="margin:10px; margin-bottom: 0px;">
+                                        <div class="workImg">
+                                            <a href="javascript:void(0)"
+                                               style="outline: none;"
+                                               data-toggle="modal" :data-target="'#project_modal_'+project.id" @click="loadHDImage(project.id)">
 
-
-                    <div>
-
-                        <!-- nav row -->
-                            <!--<div class="row navRow">-->
-                            <!--<div class="col-md-2 offset-md-3 col-4 text-center" style="border-right:1px solid #EBEDEF;">-->
-                                <!--<div class="navTab showPortfolio active NoDecor">-->
-                                    <!--<a href="javascript:void(0)">-->
-                                        <!--Portfolio-->
-                                    <!--</a>-->
-                                <!--</div>-->
-                            <!--</div>-->
-
-                            <!--<div class="col-md-2 col-4 text-center" style="border-right:1px solid #EBEDEF;">-->
-                                <!--<div class="navTab showWork NoDecor">-->
-                                    <!--<a href="javascript:void(0)">-->
-                                        <!--Work-->
-                                    <!--</a>-->
-                                <!--</div>-->
-                            <!--</div>-->
-
-                            <!--<div class="col-md-2 col-4 text-center">-->
-                                <!--<div class="navTab showEducation NoDecor">-->
-                                    <!--<a href="javascript:void(0)">-->
-                                        <!--Education-->
-                                    <!--</a>-->
-                                <!--</div>-->
-                            <!--</div>-->
-
-                        <!--</div>-->
-                        <!-- end of nav row-->
-
-                        <!-- portfolio section -->
-                        <slick class="projectsSection" :id="'portfolio_section_' + freelancer.id" ref="slick" :options="slickOptions"  v-show="!hire">
-                            <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" >
-                                <!-- class="d-flex justify-content-center" style="height: 250px !important; padding: 0 2px 0 2px; overflow: hidden;" -->
-
-                                <div class="workCard" style="margin:10px; margin-bottom: 0px;">
-                                    <div class="workImg">
-                                        <a href="javascript:void(0)"
-                                            style="outline: none;"
-                                            data-toggle="modal" :data-target="'#project_modal_'+project.id" @click="loadHDImage(project.id)">
-
-                                            <vue-load-image class="d-flex justify-content-center align-items-center">
-                                                <img :src="getResizedImage(project.mainImage)" alt="" width="260" slot="image">
-                                                <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif" style="width: 100px; height: 100px;" />
-                                            </vue-load-image>
-                                        </a>
-                                    </div>
-                                    <div class="workTitle">
-                                        <div class="row">
-                                            <div class="col-md-10 col-9">
-                                                {{project.projectName}}
+                                                <vue-load-image class="d-flex justify-content-center align-items-center">
+                                                    <img :src="getResizedImage(project.mainImage)" alt="" width="260" slot="image">
+                                                    <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif" style="width: 100px; height: 100px;" />
+                                                </vue-load-image>
+                                            </a>
+                                        </div>
+                                        <div class="workTitle">
+                                            <div class="row">
+                                                <div class="col-md-10 col-9">
+                                                    {{project.projectName}}
+                                                </div>
+                                                <a class="col-md-1 col-1" href="javascript:void(0)"
+                                                   data-toggle="modal" :data-target="'#project_modal_'+project.id"
+                                                   style="outline: none; margin-left: 16px;">
+                                                    <img src="/resumeApp/public/images/newResume/link.png"
+                                                         alt="view work">
+                                                </a>
                                             </div>
-                                            <a class="col-md-1 col-1" href="javascript:void(0)"
-                                               data-toggle="modal" :data-target="'#project_modal_'+project.id"
-                                               style="outline: none; margin-left: 16px;">
-                                                <img src="/resumeApp/public/images/newResume/link.png"
-                                                     alt="view work">
+                                        </div>
+                                    </div>
+
+                                    <!--<div>-->
+                                    <!--<a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >-->
+                                    <!--<vue-load-image>-->
+                                    <!--<img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto" style="min-height:250px; border-radius:10px;">-->
+                                    <!--<img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>-->
+                                    <!--</vue-load-image>-->
+                                    <!--</a>-->
+                                    <!--</div>-->
+                                </div>
+                            </slick>
+
+                            <div class="row carouselControls" style="width: 100%;">
+                                <div class=" col-12 text-center NoDecor">
+                                    <a href="javascript:void(0)" class="cardLabel_interviews noScroll" @click="slidePrev"
+                                       style="color:#697786;">
+                                        <img src="/resumeApp/resources/assets/images/left_arrow.png"
+                                             alt="prev" width="15px">
+                                    </a>
+
+                                    <span class="jobTitle" style="padding: 0 5px 0 5px"> <span>{{slideNumber}}</span> / <span> {{numberOfSlides}} </span></span>
+
+                                    <a href="javascript:void(0)" role="button" data-slide="next" class="cardLabel_interviews noScroll" @click="slideNext"
+                                       style="color:#697786;">
+                                        <img src="/resumeApp/resources/assets/images/right_arrow.png"
+                                             alt="next" width="15px">
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- end of portfolio section -->
+                        </div>
+                    </transition>
+
+
+                    <transition name="">
+                        <div v-show="hire">
+                            <div style="border-top: 1px solid #EBEDEF; ">
+                                <div class="row">
+                                    <div class="offset-md-4 col-md-4 col-12">
+                                        <div class="hireText">
+                                            Select the number of Hours you need per week:
+                                        </div>
+                                        <div class="hoursBtn NoDecor">
+                                            <a href="javascript:void(0)">
+                                                <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus" @click="subtractHours">
+                                            </a>
+                                            <span>{{hours}}</span> hours
+                                            <a href="javascript:void(0)">
+                                                <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus" @click="addHours" >
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="offset-md-4 col-md-4 col-12">
+                                        <div class="hireText">
+                                            How many weeks would you like to book for?
+                                        </div>
+                                        <div class="hoursBtn NoDecor">
+                                            <a href="javascript:void(0)">
+                                                <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus" @click="subtractWeeks">
+                                            </a>
+                                            <span>{{weeks}}</span> weeks
+                                            <a href="javascript:void(0)">
+                                                <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus" @click="addWeeks">
                                             </a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!--<div>-->
-                                    <!--<a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >-->
-                                        <!--<vue-load-image>-->
-                                            <!--<img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto" style="min-height:250px; border-radius:10px;">-->
-                                            <!--<img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>-->
-                                        <!--</vue-load-image>-->
-                                    <!--</a>-->
-                                <!--</div>-->
-                            </div>
-                        </slick>
-
-                        <div class="row carouselControls" style="width: 100%;">
-                            <div class=" col-12 text-center NoDecor">
-                                <a href="javascript:void(0)" class="cardLabel_interviews noScroll" @click="slidePrev"
-                                   style="color:#697786;">
-                                    <img src="/resumeApp/resources/assets/images/left_arrow.png"
-                                         alt="prev" width="15px">
-                                </a>
-
-                                <span class="jobTitle" style="padding: 0 5px 0 5px"> <span>{{slideNumber}}</span> / <span> {{numberOfSlides}} </span></span>
-
-                                <a href="javascript:void(0)" role="button" data-slide="next" class="cardLabel_interviews noScroll" @click="slideNext"
-                                   style="color:#697786;">
-                                    <img src="/resumeApp/resources/assets/images/right_arrow.png"
-                                         alt="next" width="15px">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- end of portfolio section -->
-                    </div>
-
-                    <!-- hire section -->
-                        <div v-show="hire">
-                            <div style="border-top: 1px solid #EBEDEF; ">
-                            <div class="row">
-                                <div class="offset-md-4 col-md-4 col-12">
-                                    <div class="hireText">
-                                        Select the number of Hours you need per week:
-                                    </div>
-                                    <div class="hoursBtn NoDecor">
-                                        <a href="javascript:void(0)">
-                                            <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus" @click="subtractHours">
-                                        </a>
-                                        <span>{{hours}}</span> hours
-                                        <a href="javascript:void(0)">
-                                            <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus" @click="addHours" >
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="offset-md-4 col-md-4 col-12">
-                                    <div class="hireText">
-                                        How many weeks would you like to book for?
-                                    </div>
-                                    <div class="hoursBtn NoDecor">
-                                        <a href="javascript:void(0)">
-                                            <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus" @click="subtractWeeks">
-                                        </a>
-                                        <span>{{weeks}}</span> weeks
-                                        <a href="javascript:void(0)">
-                                            <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus" @click="addWeeks">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row" style="padding-top:50px; padding-bottom: 50px;">
-                                <div class="offset-md-2 col-12 col-md-8" style="border-top: 1px solid #EBEDEF;">
-                                    <div class="row">
-                                        <div class="col-md-2 col-4 text-left jobTitle" style="font-size: 12px; color: #30323D;">
-                                            Monthly rate
-                                        </div>
-                                        <div class="col-md-2 col-3 offset-5 offset-md-8 text-right jobTitle" style="font-weight: bold;font-size: 12px; color: #30323D;">
-                                            {{freelancer.user_data.salary_month}} $
+                                <div class="row" style="padding-top:50px; padding-bottom: 50px;">
+                                    <div class="offset-md-2 col-12 col-md-8" style="border-top: 1px solid #EBEDEF;">
+                                        <div class="row">
+                                            <div class="col-md-2 col-4 text-left jobTitle" style="font-size: 12px; color: #30323D;">
+                                                Monthly rate
+                                            </div>
+                                            <div class="col-md-2 col-3 offset-5 offset-md-8 text-right jobTitle" style="font-weight: bold;font-size: 12px; color: #30323D;">
+                                                {{freelancer.user_data.salary_month}} $
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row" style="border-top: 1px solid #EBEDEF;">
-                                <div class="col-md-4 offset-md-2 col-12 NoDecor" style="padding-top: 17px;">
-                                    <a href="javascript:void(0)" class="justify-content-center d-flex btn-block cancelBtn" @click="hideHireSection">Cancel Booking</a>
-                                </div>
-                                <div class="col-md-4 col-12 NoDecor whiteOnHover" style="padding-top: 17px; padding-bottom: 30px;">
-                                    <a class="btn d-flex btn-block summaryBtn" :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks ">Booking Summary</a>
+                                <div class="row" style="border-top: 1px solid #EBEDEF;">
+                                    <div class="col-md-4 offset-md-2 col-12 NoDecor" style="padding-top: 17px;">
+                                        <a href="javascript:void(0)" class="justify-content-center d-flex btn-block cancelBtn" @click="hideHireSection">Cancel Booking</a>
+                                    </div>
+                                    <div class="col-md-4 col-12 NoDecor whiteOnHover" style="padding-top: 17px; padding-bottom: 30px;">
+                                        <a class="btn d-flex btn-block summaryBtn" :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks ">Booking Summary</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                    <!-- end of hire section -->
+                    </transition>
+
+
                 </div>
 
             </div>
@@ -348,7 +317,7 @@
                     lazyLoad: 'ondemand',
                     infinite: false,
                     dots: false,
-                    arrows: true,
+                    arrows: false,
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     responsive: [
@@ -401,9 +370,12 @@
                 });
             },
             showHireSection(freelancer_id){
-              this.hire = true ;
+                this.hire = true ;
             },
             hideHireSection(){
+                this.$nextTick(() => {
+                    this.$refs.slick.reSlick();
+                });
                 this.hire = false ;
             },
             addHours(){
@@ -419,13 +391,13 @@
                 this.weeks-- ;
             },
             slidePrev(){
-                $('#portfolio_section_' + this.freelancer.id + ' .slick-prev.slick-arrow').click();
+                this.$refs.slick.prev();
                 if(this.slideNumber-1 > 0){
                     this.slideNumber-- ;
                 }
             },
             slideNext(){
-                $('#portfolio_section_' + this.freelancer.id + ' .slick-next.slick-arrow').click();
+                this.$refs.slick.next();
                 if(this.slideNumber+1 <= this.calculateNumberOfSlides() ){
                     this.slideNumber++ ;
                 }
@@ -478,6 +450,26 @@
     .slick-dots {
         display: flex;
         justify-content: center;
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 1s;
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+        /* .slide-fade-leave-active below version 2.1.8 */ {
+        transform: translateX(10px);
+        opacity: 0;
     }
 
 </style>

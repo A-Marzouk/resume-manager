@@ -90935,7 +90935,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.projectsSection[data-v-641e834a] {\n  margin-top: 15px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n.freelancerCard[data-v-641e834a] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n}\n.slick-dots[data-v-641e834a] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n", ""]);
+exports.push([module.i, "\n.projectsSection[data-v-641e834a] {\n  margin-top: 15px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-641e834a] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-641e834a] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-641e834a] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-641e834a] {\n      width: 710px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-641e834a] {\n      width: 315px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-641e834a] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-641e834a] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n", ""]);
 
 // exports
 
@@ -91292,9 +91292,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }, {
                     breakpoint: 991,
                     settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        dots: false
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false
                     }
                 }]
             },

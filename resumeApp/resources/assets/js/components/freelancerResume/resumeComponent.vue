@@ -343,9 +343,9 @@
                         {
                             breakpoint: 991,
                             settings: {
-                                slidesToShow: 2,
-                                slidesToScroll: 2,
-                                dots: false,
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
+                                arrows: false,
                             }
                         }
                     ]
@@ -412,12 +412,30 @@
         margin-top: 15px;
         padding: 20px;
         margin-bottom: 18px;
+        @media only screen and (max-width: 500px) {
+            padding: 2px;
+        }
     }
     .freelancerCard{
         margin-bottom: 12px;
         padding-bottom: 12px;
         margin-left: 10px;
         margin-right: 10px;
+        @media only screen and (max-width: 1200px) {
+            width: 910px;
+        }
+        @media only screen and (max-width: 786px) {
+            width: 710px;
+        }
+        @media only screen and (max-width: 500px) {
+            width: 315px;
+        }
+    }
+
+    .workCard{
+        @media only screen and (max-width: 500px) {
+            min-width:290px;
+        }
     }
 
     .slick-dots {

@@ -160,7 +160,7 @@ export default {
           });
       },
         showSearchDesignersSection(){
-          
+
           this.updateSearch();
           let featuredDesignersResume = $('#featuredDesignersResume') ;
             featuredDesignersResume.addClass('d-none');

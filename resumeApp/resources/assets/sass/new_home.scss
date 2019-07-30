@@ -1344,6 +1344,10 @@ html {
     z-index: 2;
     left: 45px;
 
+    @media only screen and (max-width: 500px) {
+      left: 25px;
+    }
+
 
     @media (max-width:768px) {
       background: lightblue;
@@ -1357,6 +1361,11 @@ html {
     position: absolute;
     z-index: 2;
     right: 40px;
+
+
+    @media only screen and (max-width: 500px) {
+      right: 25px;
+    }
 
     @media (max-width:768px) {
 

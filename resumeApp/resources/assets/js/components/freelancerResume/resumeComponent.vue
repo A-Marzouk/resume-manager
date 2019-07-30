@@ -159,7 +159,7 @@
                         <!-- end of nav row-->
 
                         <!-- portfolio section -->
-                        <slick class="projectsSection" ref="slick" :options="slickOptions"  v-show="!hire">
+                        <slick class="projectsSection" :id="'portfolio_section_' + freelancer.id" ref="slick" :options="slickOptions"  v-show="!hire">
                             <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" >
                                 <!-- class="d-flex justify-content-center" style="height: 250px !important; padding: 0 2px 0 2px; overflow: hidden;" -->
 
@@ -200,6 +200,24 @@
                                 <!--</div>-->
                             </div>
                         </slick>
+
+                        <div class="row carouselControls" style="width: 100%;">
+                            <div class=" col-12 text-center NoDecor">
+                                <a href="javascript:void(0)" class="cardLabel_interviews noScroll" @click="slidePrev"
+                                   style="color:#697786;">
+                                    <img src="/resumeApp/resources/assets/images/left_arrow.png"
+                                         alt="prev" width="15px">
+                                </a>
+
+                                <span class="jobTitle" style="padding: 0 5px 0 5px"> <span>{{slideNumber}}</span> / <span> {{numberOfSlides}} </span></span>
+
+                                <a href="javascript:void(0)" role="button" data-slide="next" class="cardLabel_interviews noScroll" @click="slideNext"
+                                   style="color:#697786;">
+                                    <img src="/resumeApp/resources/assets/images/right_arrow.png"
+                                         alt="next" width="15px">
+                                </a>
+                            </div>
+                        </div>
                         <!-- end of portfolio section -->
                     </div>
 
@@ -324,11 +342,13 @@
         },
         data(){
             return {
+                slideNumber : 1 ,
+                numberOfSlides : this.calculateNumberOfSlides() ,
                 slickOptions: {
                     lazyLoad: 'ondemand',
                     infinite: false,
-                    dots: true,
-                    arrows:true,
+                    dots: false,
+                    arrows: true,
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     responsive: [
@@ -337,7 +357,6 @@
                             settings: {
                                 slidesToShow: 1,
                                 slidesToScroll: 1,
-                                dots: false,
                             }
                         },
                         {
@@ -345,7 +364,6 @@
                             settings: {
                                 slidesToShow: 1,
                                 slidesToScroll: 1,
-                                arrows: false,
                             }
                         }
                     ]
@@ -400,6 +418,25 @@
             subtractWeeks(){
                 this.weeks-- ;
             },
+            slidePrev(){
+                $('#portfolio_section_' + this.freelancer.id + ' .slick-prev.slick-arrow').click();
+                if(this.slideNumber-1 > 0){
+                    this.slideNumber-- ;
+                }
+            },
+            slideNext(){
+                $('#portfolio_section_' + this.freelancer.id + ' .slick-next.slick-arrow').click();
+                if(this.slideNumber+1 <= this.calculateNumberOfSlides() ){
+                    this.slideNumber++ ;
+                }
+            },
+            calculateNumberOfSlides(){
+                var width = $(window).width();
+                if(width < 991){
+                    return (this.freelancer.projects.length) ;
+                }
+                return (Math.ceil(this.freelancer.projects.length / 2)) ;
+            }
         },
         mounted() {
 

@@ -5695,43 +5695,11 @@ html {
 }
 
 .projectsSection .slick-prev.slick-arrow {
-  position: absolute;
-  z-index: 2;
-  left: 45px;
-}
-
-@media only screen and (max-width: 500px) {
-  .projectsSection .slick-prev.slick-arrow {
-    left: 25px;
-  }
-}
-
-@media (max-width: 768px) {
-  .projectsSection .slick-prev.slick-arrow {
-    background: lightblue;
-    border-radius: 50%;
-    padding-top: 1.5px;
-  }
+  display: none;
 }
 
 .projectsSection .slick-next.slick-arrow {
-  position: absolute;
-  z-index: 2;
-  right: 40px;
-}
-
-@media only screen and (max-width: 500px) {
-  .projectsSection .slick-next.slick-arrow {
-    right: 25px;
-  }
-}
-
-@media (max-width: 768px) {
-  .projectsSection .slick-next.slick-arrow {
-    background: lightblue;
-    border-radius: 50%;
-    padding-top: 1.5px;
-  }
+  display: none;
 }
 
 .projectsSection .slick-dots {

@@ -91263,6 +91263,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -91275,10 +91293,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
+            slideNumber: 1,
+            numberOfSlides: this.calculateNumberOfSlides(),
             slickOptions: {
                 lazyLoad: 'ondemand',
                 infinite: false,
-                dots: true,
+                dots: false,
                 arrows: true,
                 slidesToShow: 2,
                 slidesToScroll: 2,
@@ -91286,15 +91306,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     breakpoint: 786,
                     settings: {
                         slidesToShow: 1,
-                        slidesToScroll: 1,
-                        dots: false
+                        slidesToScroll: 1
                     }
                 }, {
                     breakpoint: 991,
                     settings: {
                         slidesToShow: 1,
-                        slidesToScroll: 1,
-                        arrows: false
+                        slidesToScroll: 1
                     }
                 }]
             },
@@ -91348,6 +91366,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         subtractWeeks: function subtractWeeks() {
             this.weeks--;
+        },
+        slidePrev: function slidePrev() {
+            $('#portfolio_section_' + this.freelancer.id + ' .slick-prev.slick-arrow').click();
+            if (this.slideNumber - 1 > 0) {
+                this.slideNumber--;
+            }
+        },
+        slideNext: function slideNext() {
+            $('#portfolio_section_' + this.freelancer.id + ' .slick-next.slick-arrow').click();
+            if (this.slideNumber + 1 <= this.calculateNumberOfSlides()) {
+                this.slideNumber++;
+            }
+        },
+        calculateNumberOfSlides: function calculateNumberOfSlides() {
+            var width = $(window).width();
+            if (width < 991) {
+                return this.freelancer.projects.length;
+            }
+            return Math.ceil(this.freelancer.projects.length / 2);
         }
     },
     mounted: function mounted() {}
@@ -91842,7 +91879,10 @@ var render = function() {
                       ],
                       ref: "slick",
                       staticClass: "projectsSection",
-                      attrs: { options: _vm.slickOptions }
+                      attrs: {
+                        id: "portfolio_section_" + _vm.freelancer.id,
+                        options: _vm.slickOptions
+                      }
                     },
                     _vm._l(_vm.freelancer.projects, function(project, index) {
                       return _c("div", { key: index + "A" }, [
@@ -91954,6 +91994,80 @@ var render = function() {
                         )
                       ])
                     })
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "row carouselControls",
+                      staticStyle: { width: "100%" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: " col-12 text-center NoDecor" },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "cardLabel_interviews noScroll",
+                              staticStyle: { color: "#697786" },
+                              attrs: { href: "javascript:void(0)" },
+                              on: { click: _vm.slidePrev }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  src:
+                                    "/resumeApp/resources/assets/images/left_arrow.png",
+                                  alt: "prev",
+                                  width: "15px"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "jobTitle",
+                              staticStyle: { padding: "0 5px 0 5px" }
+                            },
+                            [
+                              _c("span", [_vm._v(_vm._s(_vm.slideNumber))]),
+                              _vm._v(" / "),
+                              _c("span", [
+                                _vm._v(" " + _vm._s(_vm.numberOfSlides) + " ")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "cardLabel_interviews noScroll",
+                              staticStyle: { color: "#697786" },
+                              attrs: {
+                                href: "javascript:void(0)",
+                                role: "button",
+                                "data-slide": "next"
+                              },
+                              on: { click: _vm.slideNext }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  src:
+                                    "/resumeApp/resources/assets/images/right_arrow.png",
+                                  alt: "next",
+                                  width: "15px"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      )
+                    ]
                   )
                 ],
                 1

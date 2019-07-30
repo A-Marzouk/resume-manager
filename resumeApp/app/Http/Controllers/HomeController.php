@@ -80,7 +80,7 @@ class HomeController extends Controller
         $homeFreelancers = [] ;
         foreach ($homeFreelancersData as $data){
             $homeFreelancers[] = User::with(['userData','projects'=>function($query) {
-                return $query->limit(5);
+                return $query->limit(20);
             }])->where('id',$data->user_id)->first();
         }
 

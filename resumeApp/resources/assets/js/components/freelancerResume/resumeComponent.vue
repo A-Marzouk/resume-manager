@@ -48,7 +48,7 @@
                                     </div>
 
                                     <div class="col-md-4 text-center"  style="font-size: 15px; color: white;">
-                                        <span style="font-weight: bold;">{{freelancer.user_data.availableHours}} hours</span>
+                                        <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}} hours</span>
                                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly Availability</div>
                                     </div>
 
@@ -93,7 +93,7 @@
                                         </div>
                                     </div>
                                     <div class="text-left"  style="font-size: 15px; color: white; padding-top: 5px;">
-                                        <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span style="font-weight: bold;">{{freelancer.user_data.availableHours}}h/week</span></div>
+                                        <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}}h/week</span></div>
                                     </div>
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
                                         Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How can I help
@@ -351,7 +351,7 @@
                     ]
                 },
                 weeks:4,
-                hours: this.freelancer.user_data.availableHours
+                hours: this.freelancer.user_data.availableHours.replace(/[^0-9]/g,'')
             }
         },
         methods:{

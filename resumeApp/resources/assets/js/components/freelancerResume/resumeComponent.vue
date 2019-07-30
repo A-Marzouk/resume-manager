@@ -330,14 +330,14 @@
                     dots: true,
                     arrows:true,
                     slidesToShow: 2,
-                    slidesToScroll: 1,
+                    slidesToScroll: 2,
                     responsive: [
                         {
                             breakpoint: 786,
                             settings: {
                                 slidesToShow: 1,
                                 slidesToScroll: 1,
-                                arrows:false,
+                                dots: false,
                             }
                         },
                         {
@@ -345,7 +345,7 @@
                             settings: {
                                 slidesToShow: 2,
                                 slidesToScroll: 2,
-                                arrows:false,
+                                dots: false,
                             }
                         }
                     ]

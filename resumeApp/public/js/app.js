@@ -91281,20 +91281,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 dots: true,
                 arrows: true,
                 slidesToShow: 2,
-                slidesToScroll: 1,
+                slidesToScroll: 2,
                 responsive: [{
                     breakpoint: 786,
                     settings: {
                         slidesToShow: 1,
                         slidesToScroll: 1,
-                        arrows: false
+                        dots: false
                     }
                 }, {
                     breakpoint: 991,
                     settings: {
                         slidesToShow: 2,
                         slidesToScroll: 2,
-                        arrows: false
+                        dots: false
                     }
                 }]
             },

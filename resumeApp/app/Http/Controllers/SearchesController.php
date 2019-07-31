@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use App\ClientSearch;
+use App\Skill;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
@@ -64,22 +65,15 @@ class SearchesController extends Controller
         return $freelancers = array_slice($this->getFilteredDesigners($userDatas), 0, 10);
 
     }
-
-
-
     public function getFilteredDesigners($userDatas){
         $freelancers = [] ;
         foreach ($userDatas as $userData){
             foreach ($userData as $data){
-                $freelancer = User::with('userData','projects')->where([
+                $freelancer = User::with('userData','projects','skills')->where([
                     ['id','=',$data->user_id],
-                    ['profession','=','designer']
+                    ['profession','=','Designer']
                 ])->first();
-                if(empty($freelancer)){
-                    // delete user data if there is no user related to it !
-                    $noUserData = UserData::where('user_id',$data->user_id)->first();
-                    $noUserData->delete();
-                }else{
+                if(!empty($freelancer)){
                     $freelancers[] = $freelancer ;
                 }
             }
@@ -87,6 +81,92 @@ class SearchesController extends Controller
 
         return array_unique($freelancers);
     }
+
+
+    public function searchDevelopers(Request $request){
+        $searchArray = [] ;
+        $userDatas   = [] ;
+
+        // jobTitle :
+        if(isset($request->jobTitle)){
+            // save filter in session :
+
+            $jobTitleInput = $request->jobTitle ;
+            $jobTitleArr   = explode(' ',$jobTitleInput);
+            foreach ($jobTitleArr as $jobTitleWord){
+                $searchArray [] = ['jobTitle','like','%'.$jobTitleWord.'%'] ;
+            }
+        }
+
+        // country :
+        if(isset($request->country)){
+            // save filter in session :
+            $searchArray[] = ['country','like','%'.$request->country.'%'];
+        }
+
+
+        // available_hours :
+        if(isset($request->available_hours)){
+            // save filter in session :
+            $searchArray[] = ['availableHours','>=',intval($request->available_hours)];
+        }
+
+        // salary_hour :
+        if(isset($request->salary_hour)){
+            // save filter in session :
+            $searchArray[] = ['salary','<=',intval($request->salary_hour)];
+            $searchArray[] = ['salary','!=',0];
+        }
+
+        // form the where array :
+
+        $userDatas[]    = UserData::where($searchArray)->get();
+        $freelancers    = $this->getFilteredDevelopers($userDatas);
+
+        // search skills:
+
+        if(isset($request->skills) && !empty($request->skills)){
+            $result  = [] ;
+            foreach ($freelancers as $freelancer){
+                $skills = strtolower(implode(' ',Skill::where('user_id', $freelancer->id)->pluck('skill_title')->toArray()));
+                $contains = str_contains($skills, $this->multiExplode([' ',',','-'],strtolower($request->skills)));
+                if($contains){
+                    $result[] = $freelancer;
+                }
+            }
+
+            return array_slice($result,0,10) ;
+        }
+
+
+        return array_slice($freelancers,0,10) ;
+    }
+
+    private function multiExplode($delimiters,$string) {
+        return explode($delimiters[0],strtr($string,array_combine(array_slice($delimiters,1),array_fill(0,count($delimiters)-1,array_shift($delimiters)))));
+    }
+    public function getFilteredDevelopers($userDatas){
+        $freelancers = [] ;
+        foreach ($userDatas as $userData){
+            foreach ($userData as $data){
+                $freelancer = User::with('userData','projects','skills')->where([
+                    ['id','=',$data->user_id],
+                    ['profession','=','Developer']
+                ])->first();
+                if(!empty($freelancer)){
+                    $freelancers[] = $freelancer ;
+                }
+            }
+        }
+
+        return array_unique($freelancers);
+    }
+
+
+
+
+
+
 
 
     public function searchFreelancers(Request $request){
@@ -220,11 +300,7 @@ class SearchesController extends Controller
         foreach ($userDatas as $userData){
             foreach ($userData as $data){
                 $freelancer = User::with('pojects')->where('id',$data->user_id)->first();
-                if(empty($freelancer)){
-                    // delete user data if there is no user related to it !
-                    $noUserData = UserData::where('user_id',$data->user_id)->first();
-                    $noUserData->delete();
-                }else{
+                if(!empty($freelancer)){
                     $freelancers[] = $freelancer ;
                 }
             }

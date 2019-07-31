@@ -294,6 +294,7 @@ Route::get('/freelancer/instagram/','UserDataController@dataFromInstagram');
 // search functions :
 Route::post('/search','SearchesController@searchFreelancers');
 Route::post('/search-designers','SearchesController@searchDesigners');
+Route::post('/search-developers','SearchesController@searchDevelopers');
 Route::post('/save_search','SearchesController@saveSearch');
 Route::get('/search','SearchesController@showSearchPage');
 Route::post('/search_delete','SearchesController@deleteSearch');

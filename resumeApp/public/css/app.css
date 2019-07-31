@@ -4804,7 +4804,8 @@ html {
   }
 }
 
-.agentsSection .agentsContainer__selectContainer select {
+.agentsSection .agentsContainer__selectContainer select,
+.agentsSection .agentsContainer__selectContainer input {
   background: #FFFFFF;
   width: 100%;
   font-size: 22px;
@@ -4817,13 +4818,15 @@ html {
 }
 
 @media (max-width: 992px) {
-  .agentsSection .agentsContainer__selectContainer select {
+  .agentsSection .agentsContainer__selectContainer select,
+  .agentsSection .agentsContainer__selectContainer input {
     font-size: 16px;
   }
 }
 
 @media (max-width: 768px) {
-  .agentsSection .agentsContainer__selectContainer select {
+  .agentsSection .agentsContainer__selectContainer select,
+  .agentsSection .agentsContainer__selectContainer input {
     font-size: 14px;
   }
 }

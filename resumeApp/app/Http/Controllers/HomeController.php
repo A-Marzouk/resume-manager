@@ -77,15 +77,23 @@ class HomeController extends Controller
     public function newHome(){
         // homepage freelancers
         $homeFreelancersData = UserData::where('home_page_freelancer',true)->get();
-        $homeFreelancers = [] ;
+        $featuredDesigners = [] ;
+        $featuredDevelopers = [] ;
+
         foreach ($homeFreelancersData as $data){
-            $homeFreelancers[] = User::with(['userData','projects'=>function($query) {
+            $freelancer = User::with(['userData','skills','projects'=>function($query) {
                 return $query->limit(10);
             }])->where('id',$data->user_id)->first();
+
+            if($freelancer->profession === 'Developer'){
+                $featuredDevelopers[] = $freelancer ;
+            }elseif($freelancer->profession === 'Designer'){
+                $featuredDesigners[]  = $freelancer ;
+            }
         }
 
 
-        return view('new_home_page',compact('homeFreelancers'));
+        return view('new_home_page',compact('featuredDevelopers','featuredDesigners'));
     }
 
     public function resizeHomePageProjectImages(){

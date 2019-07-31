@@ -314,6 +314,7 @@
                 slideNumber : 1 ,
                 numberOfSlides : this.calculateNumberOfSlides() ,
                 slickOptions: {
+                    lazyLoad: 'ondemand',
                     infinite: false,
                     dots: false,
                     arrows: false,
@@ -385,14 +386,6 @@
                     });
                 },800);
             },
-            updateSlick(){
-                this.$nextTick(() => {
-                    if(this.$refs.slick !== undefined){
-                        this.$refs.slick.reSlick();
-                        this.slideNumber = 1 ;
-                    }
-                });
-            },
             addHours(){
                 this.hours++ ;
             },
@@ -427,9 +420,6 @@
         },
         mounted() {
 
-        },
-        created: function() {
-            this.$parent.$on('update', this.updateSlick);
         }
     }
 </script>

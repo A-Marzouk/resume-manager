@@ -61,8 +61,8 @@
         <img src="/resumeApp/public/images/home/computer.png" alt="computer" class="bottomBg">
         <div v-show="!searchDesignersSection" class="agentsContainer">              <!-- search developers -->
 
-                <freelancer-resume v-for="developer in featuredDevelopers" :key="developer.id + developer.firstName + 'A'"
-                                   :freelancer="developer" :hire="false" :search="false"></freelancer-resume>
+                <freelancer-resume-long v-for="developer in featuredDevelopers" :key="developer.id + developer.firstName + 'A'"
+                                   :freelancer="developer" :hire="false" :search="false"></freelancer-resume-long>
 
             <div v-if="featuredDevelopers.length < 1">
                 <div class="mainSection__content__description">

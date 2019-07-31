@@ -92939,7 +92939,7 @@ var render = function() {
       },
       [
         _vm._l(_vm.featuredDevelopers, function(developer) {
-          return _c("freelancer-resume", {
+          return _c("freelancer-resume-long", {
             key: developer.id + developer.firstName + "A",
             attrs: { freelancer: developer, hire: false, search: false }
           })
@@ -93707,7 +93707,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             slideNumber: 1,
             numberOfSlides: this.calculateNumberOfSlides(),
             slickOptions: {
-                lazyLoad: 'ondemand',
                 infinite: false,
                 dots: false,
                 arrows: false,
@@ -93781,6 +93780,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 });
             }, 800);
         },
+        updateSlick: function updateSlick() {
+            var _this3 = this;
+
+            this.$nextTick(function () {
+                if (_this3.$refs.slick !== undefined) {
+                    _this3.$refs.slick.reSlick();
+                    _this3.slideNumber = 1;
+                }
+            });
+        },
         addHours: function addHours() {
             this.hours++;
         },
@@ -93813,7 +93822,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return Math.ceil(this.freelancer.projects.length / 2);
         }
     },
-    mounted: function mounted() {}
+    mounted: function mounted() {},
+
+    created: function created() {
+        this.$parent.$on('update', this.updateSlick);
+    }
 });
 
 /***/ }),
@@ -93868,9 +93881,9 @@ var render = function() {
                       _c("div", { staticClass: "nameArea" }, [
                         _c("div", { staticClass: "nameCard" }, [
                           _vm._v(
-                            "\n                                " +
+                            "\n                                    " +
                               _vm._s(_vm.freelancer.firstName) +
-                              "\n                            "
+                              "\n                                "
                           )
                         ]),
                         _vm._v(" "),
@@ -93887,9 +93900,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                " +
+                              "\n                                    " +
                                 _vm._s(_vm.freelancer.user_data.jobTitle) +
-                                "\n                            "
+                                "\n                                "
                             )
                           ]
                         ),
@@ -93928,11 +93941,11 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                Hi, I am " +
+                              "\n                                    Hi, I am " +
                                 _vm._s(_vm.freelancer.firstName) +
                                 ", I am a " +
                                 _vm._s(_vm.freelancer.user_data.jobTitle) +
-                                ", How can I help\n                                you ?\n                            "
+                                ", How can I help\n                                    you ?\n                                "
                             )
                           ]
                         )
@@ -94044,7 +94057,7 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                                        Hire me\n                                    "
+                                      "\n                                            Hire me\n                                        "
                                     )
                                   ]
                                 )
@@ -94087,9 +94100,9 @@ var render = function() {
                     _c("div", { staticClass: "nameArea" }, [
                       _c("div", { staticClass: "nameCard" }, [
                         _vm._v(
-                          "\n                                " +
+                          "\n                                    " +
                             _vm._s(_vm.freelancer.firstName) +
-                            "\n                            "
+                            "\n                                "
                         )
                       ]),
                       _vm._v(" "),
@@ -94106,9 +94119,9 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                                " +
+                            "\n                                    " +
                               _vm._s(_vm.freelancer.user_data.jobTitle) +
-                              "\n                            "
+                              "\n                                "
                           )
                         ]
                       ),
@@ -94135,7 +94148,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "Hourly rate :\n                                    "
+                                "Hourly rate :\n                                        "
                               ),
                               _c(
                                 "span",
@@ -94202,11 +94215,11 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                                Hi, I am " +
+                            "\n                                    Hi, I am " +
                               _vm._s(_vm.freelancer.firstName) +
                               ", I am a " +
                               _vm._s(_vm.freelancer.user_data.jobTitle) +
-                              ", How can I help\n                                you ?\n                            "
+                              ", How can I help\n                                    you ?\n                                "
                           )
                         ]
                       )
@@ -94278,7 +94291,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                Hire me\n                            "
+                                "\n                                    Hire me\n                                "
                               )
                             ]
                           )

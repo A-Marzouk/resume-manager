@@ -6,120 +6,120 @@
 
                 <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
                     <div class="showOnlyOnmd">
-                    <!-- main card info -->
-                    <div class="row nameRow">
-                        <div class="col-lg-2 col-6 imageCol">
-                            <div class="imageContainer" style="padding: 10px;">
-                                <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer" class="freelancerImg"
-                                     width="120" height="120">
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-6 freelancerCardLeft">
-                            <div class="nameArea">
-                                <div class="nameCard">
-                                    {{freelancer.firstName}}
-                                </div>
-                                <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;" :id="'animatedText'+freelancer.id">
-                                    {{freelancer.user_data.jobTitle}}
-                                </div>
-
-                                <form action="/chat-room/start_conversation" method="post">
-                                    <input type="hidden" name="freelancer_id" :value="freelancer.id">
-                                    <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
-                                </form>
-
-
-                                <div :id="'welcomeText'+freelancer.id" class="d-none">
-                                    Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How can I help
-                                    you ?
+                        <!-- main card info -->
+                        <div class="row nameRow">
+                            <div class="col-lg-2 col-6 imageCol">
+                                <div class="imageContainer" style="padding: 10px;">
+                                    <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer" class="freelancerImg"
+                                         width="120" height="120">
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-lg-3 col-md-4 col-6 freelancerCardLeft">
+                                <div class="nameArea">
+                                    <div class="nameCard">
+                                        {{freelancer.firstName}}
+                                    </div>
+                                    <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;" :id="'animatedText'+freelancer.id">
+                                        {{freelancer.user_data.jobTitle}}
+                                    </div>
+
+                                    <form action="/chat-room/start_conversation" method="post">
+                                        <input type="hidden" name="freelancer_id" :value="freelancer.id">
+                                        <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
+                                    </form>
 
 
-                        <div class="col-lg-7 col-md-8 freelancerCardRight d-flex align-items-center">
+                                    <div :id="'welcomeText'+freelancer.id" class="d-none">
+                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How can I help
+                                        you ?
+                                    </div>
+                                </div>
+                            </div>
 
-                            <div class="row hireRow w-100">
-                                <div  class="col-md-4 text-center" style="font-size: 15px; color: white;" >
+
+                            <div class="col-lg-7 col-md-8 freelancerCardRight d-flex align-items-center">
+
+                                <div class="row hireRow w-100">
+                                    <div  class="col-md-4 text-center" style="font-size: 15px; color: white;" >
                                     <span style="font-weight: bold;">
                                         {{freelancer.user_data.salary}}
                                     </span>
-                                    <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
-                                </div>
+                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
+                                    </div>
 
-                                <div class="col-md-4 text-center"  style="font-size: 15px; color: white;">
-                                    <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}} hours</span>
-                                    <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly Availability</div>
-                                </div>
+                                    <div class="col-md-4 text-center"  style="font-size: 15px; color: white;">
+                                        <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}} hours</span>
+                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly Availability</div>
+                                    </div>
 
-                                <div class="col-md-4" style="padding: 0;">
+                                    <div class="col-md-4" style="padding: 0;">
 
-                                    <div class="row text-center cardRow NoDecor">
-                                        <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
-                                            Hire me
-                                        </a>
+                                        <div class="row text-center cardRow NoDecor">
+                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
+                                                Hire me
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
+                        <!-- end of main card info -->
                     </div>
-                    <!-- end of main card info -->
-                </div>
 
 
                     <div class="showOnlyOnsm">
-                    <!-- main card info -->
-                    <div class="row cardMainInfo_mob">
-                        <div class="col-6">
-                            <div class="imageContainer" style="padding: 20px 10px 10px 10px;">
-                                <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer" class="freelancerImg"
-                                     width="120" height="120">
+                        <!-- main card info -->
+                        <div class="row cardMainInfo_mob">
+                            <div class="col-6">
+                                <div class="imageContainer" style="padding: 20px 10px 10px 10px;">
+                                    <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer" class="freelancerImg"
+                                         width="120" height="120">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-6 resumeCardRight">
-                            <div class="nameArea">
-                                <div class="nameCard">
-                                    {{freelancer.firstName}}
-                                </div>
-                                <div class="jobTitle" style="font-size: 17px; padding-left: 0; color: #c1d1ff" :id="'animatedText' + freelancer.id">
-                                    {{freelancer.user_data.jobTitle}}
-                                </div>
-                                <div  class="text-left" style="font-size: 15px; color: white; padding-top: 5px;" >
-                                    <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Hourly rate :
-                                        <span style="font-weight: bold;">
+                            <div class="col-6 resumeCardRight">
+                                <div class="nameArea">
+                                    <div class="nameCard">
+                                        {{freelancer.firstName}}
+                                    </div>
+                                    <div class="jobTitle" style="font-size: 17px; padding-left: 0; color: #c1d1ff" :id="'animatedText' + freelancer.id">
+                                        {{freelancer.user_data.jobTitle}}
+                                    </div>
+                                    <div  class="text-left" style="font-size: 15px; color: white; padding-top: 5px;" >
+                                        <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Hourly rate :
+                                            <span style="font-weight: bold;">
                                             $ {{freelancer.user_data.salary}}
                                         </span>
+                                        </div>
+                                    </div>
+                                    <div class="text-left"  style="font-size: 15px; color: white; padding-top: 5px;">
+                                        <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}}h/week</span></div>
+                                    </div>
+                                    <div :id="'welcomeText'+freelancer.id" class="d-none">
+                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How can I help
+                                        you ?
                                     </div>
                                 </div>
-                                <div class="text-left"  style="font-size: 15px; color: white; padding-top: 5px;">
-                                    <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}}h/week</span></div>
-                                </div>
-                                <div :id="'welcomeText'+freelancer.id" class="d-none">
-                                    Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How can I help
-                                    you ?
+                            </div>
+                            <div class="row">
+                                <div class="col-6" style="margin-top: -39px; padding-left: 28px;">
+                                    <form action="/chat-room/start_conversation" method="post">
+                                        <input type="hidden" name="freelancer_id" :value="freelancer.id">
+                                        <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
+                                    </form>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6" style="margin-top: -39px; padding-left: 28px;">
-                                <form action="/chat-room/start_conversation" method="post">
-                                    <input type="hidden" name="freelancer_id" :value="freelancer.id">
-                                    <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
-                                </form>
-                            </div>
-                        </div>
 
-                        <div class="col-12" style="padding: 10px 20px 16px 20px;">
-                            <div class="text-center cardRow NoDecor">
-                                <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
-                                    Hire me
-                                </a>
+                            <div class="col-12" style="padding: 10px 20px 16px 20px;">
+                                <div class="text-center cardRow NoDecor">
+                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
+                                        Hire me
+                                    </a>
+                                </div>
                             </div>
                         </div>
+                        <!-- end of main card info -->
                     </div>
-                    <!-- end of main card info -->
-                </div>
 
                     <transition name="slide-fade">
                         <div v-show="portfolio">
@@ -314,7 +314,6 @@
                 slideNumber : 1 ,
                 numberOfSlides : this.calculateNumberOfSlides() ,
                 slickOptions: {
-                    lazyLoad: 'ondemand',
                     infinite: false,
                     dots: false,
                     arrows: false,
@@ -386,6 +385,14 @@
                     });
                 },800);
             },
+            updateSlick(){
+                this.$nextTick(() => {
+                    if(this.$refs.slick !== undefined){
+                        this.$refs.slick.reSlick();
+                        this.slideNumber = 1 ;
+                    }
+                });
+            },
             addHours(){
                 this.hours++ ;
             },
@@ -420,6 +427,9 @@
         },
         mounted() {
 
+        },
+        created: function() {
+            this.$parent.$on('update', this.updateSlick);
         }
     }
 </script>

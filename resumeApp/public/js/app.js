@@ -92658,6 +92658,52 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.searchDesignersSection,
+              expression: "!searchDesignersSection"
+            }
+          ],
+          staticClass: "agentsContainer__selectContainer",
+          class: { active: _vm.activeBox === "skills" }
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.searchParams.skills,
+                expression: "searchParams.skills"
+              }
+            ],
+            attrs: {
+              type: "text",
+              name: "skills",
+              placeholder: "Languages, Frameworks.."
+            },
+            domProps: { value: _vm.searchParams.skills },
+            on: {
+              focus: function($event) {
+                _vm.activeBox = "skills"
+              },
+              change: _vm.searchDesigners,
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.searchParams, "skills", $event.target.value)
+              }
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
       _c("div", { staticClass: "agentsContainer__customSelect" }, [
         _c(
           "div",
@@ -92865,52 +92911,6 @@ var render = function() {
               ],
               2
             )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: !_vm.searchDesignersSection,
-                expression: "!searchDesignersSection"
-              }
-            ],
-            staticClass: "agentsContainer__selectContainer",
-            class: { active: _vm.activeBox === "skills" }
-          },
-          [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.searchParams.skills,
-                  expression: "searchParams.skills"
-                }
-              ],
-              attrs: {
-                type: "text",
-                name: "skills",
-                placeholder: "Languages, Frameworks.."
-              },
-              domProps: { value: _vm.searchParams.skills },
-              on: {
-                focus: function($event) {
-                  _vm.activeBox = "skills"
-                },
-                change: _vm.searchDesigners,
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.searchParams, "skills", $event.target.value)
-                }
-              }
-            })
           ]
         )
       ])
@@ -93377,7 +93377,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.projectsSection[data-v-7ebcb177] {\n  margin-top: 15px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-7ebcb177] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-7ebcb177] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  min-height: 600px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-7ebcb177] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-7ebcb177] {\n      width: 710px;\n      min-height: 645px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-7ebcb177] {\n      width: 315px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-7ebcb177] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-7ebcb177] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-7ebcb177], .fade-leave-active[data-v-7ebcb177] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-7ebcb177], .fade-leave-to[data-v-7ebcb177] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-7ebcb177] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-7ebcb177] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-7ebcb177], .slide-fade-leave-to[data-v-7ebcb177] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-7ebcb177] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-7ebcb177] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-7ebcb177], .slide-fade-left-leave-to[data-v-7ebcb177] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.projectsSection[data-v-7ebcb177] {\n  margin-top: 1px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-7ebcb177] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-7ebcb177] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  min-height: 600px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-7ebcb177] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-7ebcb177] {\n      width: 710px;\n      min-height: 645px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-7ebcb177] {\n      width: 315px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-7ebcb177] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-7ebcb177] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-7ebcb177], .fade-leave-active[data-v-7ebcb177] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-7ebcb177], .fade-leave-to[data-v-7ebcb177] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-7ebcb177] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-7ebcb177] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-7ebcb177], .slide-fade-leave-to[data-v-7ebcb177] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-7ebcb177] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-7ebcb177] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-7ebcb177], .slide-fade-left-leave-to[data-v-7ebcb177] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -93391,6 +93391,82 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_load_image__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -93706,6 +93782,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             slideNumber: 1,
             numberOfSlides: this.calculateNumberOfSlides(),
+            skills: this.freelancer.skills,
             slickOptions: {
                 infinite: false,
                 dots: false,
@@ -93739,6 +93816,94 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return resizedImage;
             }
             return this.getImageSrc(src);
+        },
+        getSkillIconSrc: function getSkillIconSrc(skill_title) {
+            var arrayOfSkillImages = {
+                'ui design': '/resumeApp/resources/assets/images/skills_icons/user_interface.png',
+                'ux design': '/resumeApp/resources/assets/images/skills_icons/user_experience.png',
+                'logo design': '/resumeApp/resources/assets/images/skills_icons/logo_design.png',
+                'animation': '/resumeApp/resources/assets/images/skills_icons/animation.jpg',
+                'motion graphics': '/resumeApp/resources/assets/images/skills_icons/motion_graphics.png',
+                'illustration': '/resumeApp/resources/assets/images/skills_icons/illustration.png',
+                'advertising': '/resumeApp/resources/assets/images/skills_icons/advertising.png',
+                'branding': '/resumeApp/resources/assets/images/skills_icons/branding.png',
+                'brochure Design': '/resumeApp/resources/assets/images/skills_icons/brochure_design.png',
+                'website design': '/resumeApp/resources/assets/images/skills_icons/web_design.png',
+                'game designer': '/resumeApp/resources/assets/images/skills_icons/game_designer.png',
+                'character design': '/resumeApp/resources/assets/images/skills_icons/character_design.png',
+                'digital painting': '/resumeApp/resources/assets/images/skills_icons/digital_painting.png',
+                'creative director': '/resumeApp/resources/assets/images/skills_icons/creative_director.png',
+                'html / css': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                // 2-
+
+                'adobe after effects': '/resumeApp/resources/assets/images/skills_icons/AE.png',
+                'sketch': '/resumeApp/resources/assets/images/skills_icons/Sketch.png',
+                'adobe illustrator': '/resumeApp/resources/assets/images/skills_icons/Illustrator.png',
+                'adobe xd': '/resumeApp/resources/assets/images/skills_icons/AdobeXD.png',
+                'photoshop': '/resumeApp/resources/assets/images/skills_icons/Photoshop.png',
+                'autocad': '/resumeApp/resources/assets/images/skills_icons/autocad.png',
+                'solidworks': '/resumeApp/resources/assets/images/skills_icons/solid_works.png',
+                'adobe flash': '/resumeApp/resources/assets/images/skills_icons/adobe_flash.png',
+                'digital drawing Tablet': '/resumeApp/resources/assets/images/skills_icons/digital_drawing_tablet.png',
+                'adobe indesign': '/resumeApp/resources/assets/images/skills_icons/indesign.png',
+                'coreldraw': '/resumeApp/resources/assets/images/skills_icons/corel_draw.png',
+                '3d max': '/resumeApp/resources/assets/images/skills_icons/3d_max.png',
+
+                // developer :
+                // 1-
+                'javascript': '/resumeApp/resources/assets/images/skills_icons/javascript.png',
+                'sql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+                'java': 'resumeApp/resources/assets/images/skills_icons/java.png',
+                'c#': '/resumeApp/resources/assets/images/skills_icons/c#.png',
+                'python': '/resumeApp/resources/assets/images/skills_icons/python.png',
+                'php': '/resumeApp/resources/assets/images/skills_icons/php.png',
+                'c++': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
+                'c': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
+                'typescript': '/resumeApp/resources/assets/images/skills_icons/typescript.png',
+                'ruby': '/resumeApp/resources/assets/images/skills_icons/ruby.png',
+                'objective-C': '/resumeApp/resources/assets/images/skills_icons/objective_c.png',
+                'swift': '/resumeApp/resources/assets/images/skills_icons/swift.png',
+                'vb.net': '/resumeApp/resources/assets/images/skills_icons/vb_net.png',
+                'go': '/resumeApp/resources/assets/images/skills_icons/go.png',
+                'perl': '/resumeApp/resources/assets/images/skills_icons/perl.png',
+                'scala': '/resumeApp/resources/assets/images/skills_icons/scala.png',
+                'groovy': '/resumeApp/resources/assets/images/skills_icons/groovy.png',
+                'assembly': '/resumeApp/resources/assets/images/skills_icons/assembly.png',
+                'coffeescript': '/resumeApp/resources/assets/images/skills_icons/coffeeScript.png',
+                'vba': '/resumeApp/resources/assets/images/skills_icons/vba.png',
+                'r': '/resumeApp/resources/assets/images/skills_icons/r_lang.png',
+                'matlab': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
+                'visual basic 6': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
+                'lua': '/resumeApp/resources/assets/images/skills_icons/lua.png',
+                'haskell': '/resumeApp/resources/assets/images/skills_icons/haskell.png',
+                'html': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                'css': '/resumeApp/resources/assets/images/skills_icons/CSS.png',
+
+                //2-
+                'angularjs': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
+                'angular.js': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
+                'node.js': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
+                'nodejs': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
+                '.net Core': '/resumeApp/resources/assets/images/skills_icons/netcore.png',
+                'react': '/resumeApp/resources/assets/images/skills_icons/react.png',
+                'cordova': '/resumeApp/resources/assets/images/skills_icons/cordava.png',
+                'firebase': '',
+                'xamarin': '',
+                'hadoop': '/resumeApp/resources/assets/images/skills_icons/hadoop.png',
+                'spark': '/resumeApp/resources/assets/images/skills_icons/spark.png',
+                'mysql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+                'sql server': '/resumeApp/resources/assets/images/skills_icons/sql server.png',
+                'postgresql': '/resumeApp/resources/assets/images/skills_icons/postgreSQL.png',
+                'sqlite': '/resumeApp/resources/assets/images/skills_icons/SQLite.png',
+                'mongodb': '/resumeApp/resources/assets/images/skills_icons/mongoDB.png',
+                'oracle': '/resumeApp/resources/assets/images/skills_icons/Oracle.png',
+                'redis': '/resumeApp/resources/assets/images/skills_icons/redis.png',
+                'cassandra': '/resumeApp/resources/assets/images/skills_icons/cassandra.png'
+            };
+            if (arrayOfSkillImages.hasOwnProperty(skill_title.toLowerCase())) {
+                return arrayOfSkillImages[skill_title.toLowerCase()];
+            }
+            return '/resumeApp/resources/assets/images/skills_icons/skill.png';
         },
         getImageSrc: function getImageSrc(src) {
             if (!src) {
@@ -93820,6 +93985,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return this.freelancer.projects.length;
             }
             return Math.ceil(this.freelancer.projects.length / 2);
+        },
+        highlightSkill: function highlightSkill(skill, percent) {
+            console.log(skill.skill_title);
+            $('#skillImage_' + skill.id).css('filter', 'grayscale(' + percent + '%)');
         }
     },
     mounted: function mounted() {},
@@ -94301,6 +94470,430 @@ var render = function() {
                   )
                 ])
               ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticStyle: { "border-bottom": "1px solid lightgray" },
+                  attrs: { id: "nav-taps-resume" }
+                },
+                [
+                  _c(
+                    "ul",
+                    { staticClass: "nav nav-tabs", attrs: { role: "tablist" } },
+                    [
+                      _c("li", { staticClass: "nav-item" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "nav-link text-center active",
+                            attrs: {
+                              href: "#languagesTab" + _vm.freelancer.id,
+                              role: "tab",
+                              "data-toggle": "tab"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Programming Languages\n                            "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", { staticClass: "nav-item" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "nav-link text-center",
+                            attrs: {
+                              href: "#databases" + _vm.freelancer.id,
+                              role: "tab",
+                              "data-toggle": "tab"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Frameworks / Databases\n                            "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", { staticClass: "nav-item" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "nav-link text-center",
+                            attrs: {
+                              href: "#skillsTab" + _vm.freelancer.id,
+                              role: "tab",
+                              "data-toggle": "tab"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Design Skills\n                            "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("li", { staticClass: "nav-item" }, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "nav-link text-center",
+                            attrs: {
+                              href: "#software" + _vm.freelancer.id,
+                              role: "tab",
+                              "data-toggle": "tab"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                Software\n                            "
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "tab-content" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane active firstItem",
+                        attrs: {
+                          role: "tabpanel",
+                          id: "languagesTab" + _vm.freelancer.id
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "row",
+                            staticStyle: {
+                              "padding-top": "17px",
+                              "padding-bottom": "16px",
+                              background: "#fdfdfd"
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "col-md-12  text-center" },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "skillsCard" },
+                                  _vm._l(_vm.skills, function(skill, index) {
+                                    return _c(
+                                      "span",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "show",
+                                            rawName: "v-show",
+                                            value: skill.type === "programming",
+                                            expression:
+                                              "skill.type === 'programming'"
+                                          }
+                                        ],
+                                        key: index,
+                                        staticClass: "highlightSkill",
+                                        on: {
+                                          mouseover: function($event) {
+                                            _vm.highlightSkill(skill, 0)
+                                          },
+                                          mouseleave: function($event) {
+                                            _vm.highlightSkill(skill, 100)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("img", {
+                                          staticStyle: {
+                                            width: "17px",
+                                            "padding-bottom": "3px"
+                                          },
+                                          attrs: {
+                                            src: _vm.getSkillIconSrc(
+                                              skill.skill_title
+                                            ),
+                                            alt: "skill",
+                                            id: "skillImage_" + skill.id
+                                          }
+                                        }),
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(skill.skill_title) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    )
+                                  })
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane ",
+                        attrs: {
+                          role: "tabpanel",
+                          id: "databases" + _vm.freelancer.id
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "row",
+                            staticStyle: {
+                              "padding-top": "17px",
+                              "padding-bottom": "16px",
+                              background: "#fdfdfd"
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "col-md-12  text-center" },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "skillsCard" },
+                                  _vm._l(_vm.skills, function(skill, index) {
+                                    return _c(
+                                      "span",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "show",
+                                            rawName: "v-show",
+                                            value: skill.type === "frameworks",
+                                            expression:
+                                              "skill.type === 'frameworks'"
+                                          }
+                                        ],
+                                        key: index,
+                                        staticClass: "highlightSkill",
+                                        on: {
+                                          mouseover: function($event) {
+                                            _vm.highlightSkill(skill, 0)
+                                          },
+                                          mouseleave: function($event) {
+                                            _vm.highlightSkill(skill, 100)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("img", {
+                                          staticStyle: {
+                                            width: "17px",
+                                            "padding-bottom": "3px"
+                                          },
+                                          attrs: {
+                                            src: _vm.getSkillIconSrc(
+                                              skill.skill_title
+                                            ),
+                                            alt: "skill",
+                                            id: "skillImage_" + skill.id
+                                          }
+                                        }),
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(skill.skill_title) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    )
+                                  })
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane",
+                        attrs: {
+                          role: "tabpanel",
+                          id: "skillsTab" + _vm.freelancer.id
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "row",
+                            staticStyle: {
+                              "padding-top": "17px",
+                              "padding-bottom": "16px",
+                              background: "#fdfdfd"
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "col-md-12  text-center" },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "skillsCard" },
+                                  _vm._l(_vm.skills, function(skill, index) {
+                                    return _c(
+                                      "span",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "show",
+                                            rawName: "v-show",
+                                            value: skill.type === "design",
+                                            expression:
+                                              "skill.type === 'design'"
+                                          }
+                                        ],
+                                        key: index,
+                                        staticClass: "highlightSkill",
+                                        on: {
+                                          mouseover: function($event) {
+                                            _vm.highlightSkill(skill, 0)
+                                          },
+                                          mouseleave: function($event) {
+                                            _vm.highlightSkill(skill, 100)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("img", {
+                                          staticStyle: {
+                                            width: "17px",
+                                            "padding-bottom": "3px"
+                                          },
+                                          attrs: {
+                                            src: _vm.getSkillIconSrc(
+                                              skill.skill_title
+                                            ),
+                                            alt: "skill",
+                                            id: "skillImage_" + skill.id
+                                          }
+                                        }),
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(skill.skill_title) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    )
+                                  })
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "tab-pane",
+                        attrs: {
+                          role: "tabpanel",
+                          id: "software" + _vm.freelancer.id
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "row",
+                            staticStyle: {
+                              "padding-top": "17px",
+                              "padding-bottom": "16px",
+                              background: "#fdfdfd"
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "col-md-12  text-center" },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "skillsCard" },
+                                  _vm._l(_vm.skills, function(skill, index) {
+                                    return _c(
+                                      "span",
+                                      {
+                                        directives: [
+                                          {
+                                            name: "show",
+                                            rawName: "v-show",
+                                            value: skill.type === "software",
+                                            expression:
+                                              "skill.type === 'software'"
+                                          }
+                                        ],
+                                        key: index,
+                                        staticClass: "highlightSkill",
+                                        attrs: {
+                                          id: "skillContainer" + skill.id
+                                        },
+                                        on: {
+                                          mouseover: function($event) {
+                                            _vm.highlightSkill(skill, 0)
+                                          },
+                                          mouseleave: function($event) {
+                                            _vm.highlightSkill(skill, 100)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("img", {
+                                          staticStyle: {
+                                            width: "17px",
+                                            "padding-bottom": "3px"
+                                          },
+                                          attrs: {
+                                            src: _vm.getSkillIconSrc(
+                                              skill.skill_title
+                                            ),
+                                            alt: "skill",
+                                            id: "skillImage_" + skill.id
+                                          }
+                                        }),
+                                        _vm._v(
+                                          "\n                                                " +
+                                            _vm._s(skill.skill_title) +
+                                            "\n                                            "
+                                        )
+                                      ]
+                                    )
+                                  })
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              ),
               _vm._v(" "),
               _c("transition", { attrs: { name: "slide-fade" } }, [
                 _c(

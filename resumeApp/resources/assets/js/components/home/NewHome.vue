@@ -23,6 +23,10 @@
                     </option>
                 </select>
             </div>
+            <div v-show="!searchDesignersSection" class="agentsContainer__selectContainer" :class="{active: activeBox === 'skills'}">
+                <input type="text" name="skills" v-model="searchParams.skills" @focus="activeBox = 'skills'"
+                       @change="searchDesigners" placeholder="Languages, Frameworks.."/>
+            </div>
             <div class="agentsContainer__customSelect">
                 <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'rate'}">
                     <select name="rate" v-model="searchParams.salary_hour" @focus="activeBox = 'rate'"
@@ -50,10 +54,6 @@
                                 :key="country + index">{{country}}
                         </option>
                     </select>
-                </div>
-                <div v-show="!searchDesignersSection" class="agentsContainer__selectContainer" :class="{active: activeBox === 'skills'}">
-                    <input type="text" name="skills" v-model="searchParams.skills" @focus="activeBox = 'skills'"
-                            @change="searchDesigners" placeholder="Languages, Frameworks.."/>
                 </div>
             </div>
         </div>

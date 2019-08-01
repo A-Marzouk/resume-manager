@@ -135,7 +135,7 @@
                                                data-toggle="modal" :data-target="'#project_modal_'+project.id" @click="loadHDImage(project.id)">
 
                                                 <vue-load-image class="d-flex justify-content-center align-items-center">
-                                                    <img :src="getResizedImage(project.mainImage)" alt="" width="260" slot="image">
+                                                    <img :src="getImageSrc(project.mainImage)" alt="" width="260" slot="image">
                                                     <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif" style="width: 100px; height: 100px;" />
                                                 </vue-load-image>
                                             </a>
@@ -263,7 +263,7 @@
                         <div class="row">
                             <div class="col-md-9" style="padding: 0;">
                                 <vue-load-image>
-                                    <img :src="getResizedImage(project.mainImage)" :id="'projectModalPhoto' + project.id" alt="" width="100%" slot="image" height="auto">
+                                    <img :src="getImageSrc(project.mainImage)" :id="'projectModalPhoto' + project.id" alt="" width="100%" slot="image" height="auto">
                                     <img slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
                                 </vue-load-image>
                                 <!--<div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">-->

@@ -6,7 +6,6 @@
             <th scope="col">#</th>
             <th scope="col">Search name</th>
             <th scope="col">Client's email</th>
-            <th scope="col">Link</th>
         </tr>
         </thead>
         <tbody>
@@ -16,10 +15,10 @@
             <tr>
                 <th scope="row">
                 {{$i}}
-                <th scope="row">{{$search->name}}</th>
-                <th scope="row">{{App\Client::where('id',$search->client_id)->first()->email}}</th>
-                <td><a href="/search/{{$search->id}}" target="_blank">View</a>
+                <td><a href="/search/{{$search->id}}" target="_blank">{{$search->name}}</a>
                 </td>
+                <th scope="row">{{App\Client::where('id',$search->client_id)->first()->email}}</th>
+
             </tr>
         @endif
 

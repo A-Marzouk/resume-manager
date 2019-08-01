@@ -17,6 +17,10 @@
 
             <div class="tab-content" style="min-height: 400px;">
                 @include('admin.includes.home')
+
+                @include('admin.includes.searches')
+
+
                 @if(in_array('Freelancers',$permissions))
                     @include('admin.includes.freelancers')
                 @endif
@@ -44,6 +48,8 @@
                 @if(in_array('Jobs',$permissions))
                     @include('admin.includes.jobs_posts')
                 @endif
+
+
             </div>
         </div>
     </div>

@@ -73,7 +73,7 @@
         @endif
         @if(in_array('Public search links',$permissions))
             <li class="col-md-12">
-                <a class="btn btn-block btn-outline-dark" href="#search_links"  style="margin-bottom: 6px;">
+                <a class="btn btn-block btn-outline-dark" href="#search_links"  style="margin-bottom: 6px;" data-toggle="tab">
                     Public search links
                 </a>
             </li>

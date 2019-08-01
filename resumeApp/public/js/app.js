@@ -84836,7 +84836,7 @@ var render = function() {
                                         _c("img", {
                                           attrs: {
                                             slot: "image",
-                                            src: _vm.getResizedImage(
+                                            src: _vm.getImageSrc(
                                               project.mainImage
                                             ),
                                             alt: "",
@@ -85309,7 +85309,7 @@ var render = function() {
                                 _c("img", {
                                   attrs: {
                                     slot: "image",
-                                    src: _vm.getResizedImage(project.mainImage),
+                                    src: _vm.getImageSrc(project.mainImage),
                                     id: "projectModalPhoto" + project.id,
                                     alt: "",
                                     width: "100%",
@@ -93258,7 +93258,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return Math.ceil(this.freelancer.projects.length / 2);
         },
         highlightSkill: function highlightSkill(skill, percent) {
-            console.log(skill.skill_title);
+            console.log(skill.skill_title, percent);
             $('#skillImage_' + skill.id).css('filter', 'grayscale(' + percent + '%)');
         }
     },
@@ -93955,7 +93955,7 @@ var render = function() {
                                               "skill.type === 'frameworks'"
                                           }
                                         ],
-                                        key: index,
+                                        key: index + "M",
                                         staticClass: "highlightSkill",
                                         on: {
                                           mouseover: function($event) {
@@ -94230,7 +94230,7 @@ var render = function() {
                                         _c("img", {
                                           attrs: {
                                             slot: "image",
-                                            src: _vm.getResizedImage(
+                                            src: _vm.getImageSrc(
                                               project.mainImage
                                             ),
                                             alt: "",
@@ -94703,7 +94703,7 @@ var render = function() {
                                 _c("img", {
                                   attrs: {
                                     slot: "image",
-                                    src: _vm.getResizedImage(project.mainImage),
+                                    src: _vm.getImageSrc(project.mainImage),
                                     id: "projectModalPhoto" + project.id,
                                     alt: "",
                                     width: "100%",

@@ -2,7 +2,7 @@
     <div>
         <div>
             <div>
-                <div class="col-12 col-md-6 pt-4" v-show="freelancers.length > 0">
+                <div class="col-12 col-md-6 pb-4 pt-0" v-show="freelancers.length > 0">
                     <span class="panelFormLabel" style="padding-bottom:10px;">Save search to client :</span>
                     <form @submit.prevent="saveSearch">
                         <div class="form-group">

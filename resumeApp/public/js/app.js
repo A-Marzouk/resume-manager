@@ -85437,7 +85437,7 @@ var render = function() {
                 expression: "freelancers.length > 0"
               }
             ],
-            staticClass: "col-12 col-md-6 pt-4"
+            staticClass: "col-12 col-md-6 pb-4 pt-0"
           },
           [
             _c(

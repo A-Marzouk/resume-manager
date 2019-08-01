@@ -3,13 +3,14 @@
 @section('content')
 
     <!-- Success Messages  -->
-    <div style="padding-top: 20px;">
-        @if(session()->has('successMessage'))
+    @if(session()->has('successMessage'))
+        <div style="padding-top: 20px;">
             <div class="alert alert-success" id="successMessage">
                 {{ session()->get('successMessage') }}
             </div>
-        @endif
-    </div>
+        </div>
+    @endif
+
 
     <div id="searchFreelancers">
         <search-freelancers></search-freelancers>

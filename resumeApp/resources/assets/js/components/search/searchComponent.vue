@@ -35,15 +35,8 @@
                         <input type="text" class="form-control" id="job_title" placeholder="Keywords.." name="jobTitle"
                                v-model="searchParams.jobTitle" @change="updateSearch">
                     </div>
-
                     <div class="form-group col-md-12">
-                        <label for="skills_search" class="panelFormLabel">Skills, frameworks</label>
-                        <input type="text" class="form-control" id="skills_search" placeholder="" name="skills"
-                               v-model="searchParams.skills" @change="updateSearch">
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <label for="languages" class="panelFormLabel">Languages</label>
+                        <label for="languages" class="panelFormLabel">Languages (en,ru...)</label>
                         <input type="text" class="form-control" id="languages" placeholder="" name="language"
                                v-model="searchParams.language" @change="updateSearch">
                     </div>
@@ -71,6 +64,14 @@
                         <input type="text" class="form-control" id="salary_hour" placeholder="" name="salary_hour"
                                v-model="searchParams.salary_hour" @change="updateSearch">
                     </div>
+
+
+                    <div class="form-group col-md-12">
+                        <label for="skills_search" class="panelFormLabel">Skills</label>
+                        <input type="text" class="form-control" id="skills_search" placeholder="" name="skills"
+                               v-model="searchParams.skills" @change="updateSearch">
+                    </div>
+
 
                     <div class="form-group col-md-12">
                         <label for="primary_skills" class="panelFormLabel"> Technologies / Frameworks   </label>

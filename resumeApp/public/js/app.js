@@ -83729,6 +83729,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -85638,47 +85639,8 @@ var render = function() {
             _c("div", { staticClass: "form-group col-md-12" }, [
               _c(
                 "label",
-                {
-                  staticClass: "panelFormLabel",
-                  attrs: { for: "skills_search" }
-                },
-                [_vm._v("Skills, frameworks")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.searchParams.skills,
-                    expression: "searchParams.skills"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "skills_search",
-                  placeholder: "",
-                  name: "skills"
-                },
-                domProps: { value: _vm.searchParams.skills },
-                on: {
-                  change: _vm.updateSearch,
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.searchParams, "skills", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-12" }, [
-              _c(
-                "label",
                 { staticClass: "panelFormLabel", attrs: { for: "languages" } },
-                [_vm._v("Languages")]
+                [_vm._v("Languages (en,ru...)")]
               ),
               _vm._v(" "),
               _c("input", {
@@ -85863,6 +85825,45 @@ var render = function() {
                       "salary_hour",
                       $event.target.value
                     )
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-12" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "panelFormLabel",
+                  attrs: { for: "skills_search" }
+                },
+                [_vm._v("Skills")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.searchParams.skills,
+                    expression: "searchParams.skills"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "skills_search",
+                  placeholder: "",
+                  name: "skills"
+                },
+                domProps: { value: _vm.searchParams.skills },
+                on: {
+                  change: _vm.updateSearch,
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.searchParams, "skills", $event.target.value)
                   }
                 }
               })

@@ -1,5 +1,32 @@
 <template>
     <div>
+        <div>
+            <div>
+                <div class="col-12 col-md-6 pt-4" v-show="freelancers.length > 0">
+                    <span class="panelFormLabel" style="padding-bottom:10px;">Save search to client :</span>
+                    <form @submit.prevent="saveSearch">
+                        <div class="form-group">
+                            <select class="custom-select" id="client_email" name="client_email" v-model="selectedClient" required>
+                                <option value="" selected disabled>-- Client email --</option>
+                                <option v-for="client in clients " :value="client.email">{{client.email}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="search_name" class="panelFormLabel">Search name</label>
+                            <input type="text" class="form-control" id="search_name" placeholder="" name="search_name" v-model="searchName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-primary" id="saveSearchBtn">Save search</button>
+                        </div>
+                    </form>
+                    <div v-show="savedSearchLink">
+                        <a class="panelFormLabel" :href="savedSearchLink" target="_blank">Generated public link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-2 searchFreelancers">
                 <form method="post" action="" class="row" @submit.prevent="updateSearch">
@@ -10,7 +37,7 @@
                     </div>
 
                     <div class="form-group col-md-12">
-                        <label for="skills_search" class="panelFormLabel">Key skills</label>
+                        <label for="skills_search" class="panelFormLabel">Skills, frameworks</label>
                         <input type="text" class="form-control" id="skills_search" placeholder="" name="skills"
                                v-model="searchParams.skills" @change="updateSearch">
                     </div>
@@ -47,50 +74,30 @@
 
                     <div class="form-group col-md-12">
                         <label for="primary_skills" class="panelFormLabel"> Technologies / Frameworks   </label>
-                        <input type="text" class="form-control" id="primary_skills" placeholder="" 
+                        <input type="text" class="form-control" id="primary_skills" placeholder=""
                                name="primary_skills" v-model="searchParams.primary_skills" @change="updateSearch">
                     </div>
                 </form>
-
                 <hr>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div>
                     <div class="panelFormLabel">Search Results : {{freelancers.length}}</div>
                 </div><br/>
-                <freelancers-list :freelancers="freelancers"></freelancers-list>
-            </div>
-            <div class="col-md-2">
-                <div v-show="freelancers.length > 0">
-                    <span class="panelFormLabel" style="padding-bottom:10px;">Save search to client :</span>
-                    <form @submit.prevent="saveSearch">
-                        <div class="form-group">
-                            <select class="custom-select" id="client_email" name="client_email" v-model="selectedClient" required>
-                                <option value="" selected disabled>-- Client email --</option>
-                                <option v-for="client in clients " :value="client.email">{{client.email}}</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="search_name" class="panelFormLabel">Search name</label>
-                            <input type="text" class="form-control" id="search_name" placeholder="" name="search_name" v-model="searchName" required>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-outline-primary" id="saveSearchBtn">Save search</button>
-                        </div>
-                    </form>
-                    <div v-show="savedSearchLink">
-                        <a class="panelFormLabel" :href="savedSearchLink" target="_blank">Generated public link</a>
-                    </div>
-                </div>
+                <freelancer-resume v-for="developer in freelancers" :key="developer.id + developer.firstName + 'A'" :freelancer="developer" :hire="false" :search="false"></freelancer-resume>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import freelancerResume from '../freelancerResume/resumeComponent'
+
     export default {
+        components: {
+            'freelancer-resume': freelancerResume
+        },
+
         data() {
             return{
                 searchParams:{

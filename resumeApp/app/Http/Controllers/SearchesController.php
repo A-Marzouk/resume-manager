@@ -270,36 +270,15 @@ class SearchesController extends Controller
         $userDatas[]    = UserData::where($searchArray)->get();
         $freelancers = $this->getFilteredFreelancers($userDatas);
 
-        $dataForFreelancerCard = [] ;
-        // make a freelancer array with only the needed data for vue js :
-        $i=0;
-        foreach ($freelancers as $freelancer){
-            $dataForFreelancerCard[$i] =[
-                'id'=>$freelancer->id,
-                'photo'=>$freelancer->userData->photo,
-                'firstName'=>$freelancer->firstName,
-                'lastName'=>$freelancer->lastName,
-                'username'=>$freelancer->username,
-                'profession'=>$freelancer->profession,
-                'jobTitle'=>$freelancer->userData->jobTitle,
-                'name'=>$freelancer->firstName . ' ' . $freelancer->lastName,
-                'design_skills_checkbox'=>$freelancer->userData->design_skills_checkbox,
-                'salary'=>$freelancer->userData->salary,
-                'availableHours'=>$freelancer->userData->availableHours,
-            ];
-            $i++;
-        }
 
-        return $dataForFreelancerCard;
-
-        return view('admin.search',compact('freelancers'));
+        return $freelancers ;
     }
 
     public function getFilteredFreelancers($userDatas){
         $freelancers = [] ;
         foreach ($userDatas as $userData){
             foreach ($userData as $data){
-                $freelancer = User::with('pojects')->where('id',$data->user_id)->first();
+                $freelancer = User::with('projects','skills','userData')->where('id',$data->user_id)->first();
                 if(!empty($freelancer)){
                     $freelancers[] = $freelancer ;
                 }

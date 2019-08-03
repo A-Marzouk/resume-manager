@@ -93082,6 +93082,52 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -93097,6 +93143,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             slideNumber: 1,
             numberOfSlides: this.calculateNumberOfSlides(),
             skills: this.freelancer.skills,
+            worksHistory: this.freelancer.works_history,
+            educationsHistory: this.freelancer.educations_history,
             currentTab: 'portfolio',
             slickOptions: {
                 infinite: false,
@@ -93141,6 +93189,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.$refs.slick.reSlick();
                 });
             }
+        },
+        getDate: function getDate(date) {
+            var workDate = new Date(date);
+            var dd = workDate.getDate();
+            var mm = workDate.getMonth() + 1; //January is 0!
+
+            var yyyy = workDate.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+
+            return dd + '/' + mm + '/' + yyyy;
         },
         getSkillIconSrc: function getSkillIconSrc(skill_title) {
             var arrayOfSkillImages = {
@@ -94545,8 +94608,102 @@ var render = function() {
                         ]
                       },
                       [
-                        _vm._v(
-                          "\n                            work\n                        "
+                        _c(
+                          "div",
+                          {
+                            staticClass: "row",
+                            staticStyle: { "padding-top": "35px" }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "col-12 educationSection" },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "aboutText" },
+                                  _vm._l(_vm.worksHistory, function(
+                                    work,
+                                    index
+                                  ) {
+                                    return _c(
+                                      "div",
+                                      { key: index + "V", staticClass: "row" },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-md-12 aboutSubText"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "title work" },
+                                              [
+                                                _c("span", {
+                                                  staticClass: "circle"
+                                                }),
+                                                _vm._v(
+                                                  "\n                                                    " +
+                                                    _vm._s(work.job_title) +
+                                                    "\n                                                "
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              { staticClass: "company" },
+                                              [_vm._v(_vm._s(work.company))]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("div", { staticClass: "year" }, [
+                                              _c(
+                                                "span",
+                                                { staticClass: "work" },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                        " +
+                                                      _vm._s(
+                                                        _vm.getDate(
+                                                          work.date_from
+                                                        )
+                                                      ) +
+                                                      "\n                                                        "
+                                                  ),
+                                                  work.currently_working
+                                                    ? _c("span", [
+                                                        _vm._v(" - Present ")
+                                                      ])
+                                                    : _c("span", [
+                                                        _vm._v(
+                                                          " - " +
+                                                            _vm._s(
+                                                              _vm.getDate(
+                                                                work.date_to
+                                                              )
+                                                            )
+                                                        )
+                                                      ])
+                                                ]
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("div", { staticClass: "desc" }, [
+                                              _vm._v(
+                                                _vm._s(work.job_description)
+                                              )
+                                            ])
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  })
+                                )
+                              ]
+                            )
+                          ]
                         )
                       ]
                     ),
@@ -94564,8 +94721,98 @@ var render = function() {
                         ]
                       },
                       [
-                        _vm._v(
-                          "\n                            education\n                        "
+                        _c(
+                          "div",
+                          {
+                            staticClass: "row",
+                            staticStyle: { "padding-top": "35px" }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "col-12 educationSection" },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "aboutText" },
+                                  _vm._l(_vm.educationsHistory, function(
+                                    education,
+                                    index
+                                  ) {
+                                    return _c(
+                                      "div",
+                                      { key: index + "E", staticClass: "row" },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "col-md-12 aboutSubText"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              { staticClass: "title work" },
+                                              [
+                                                _c("span", {
+                                                  staticClass: "circle"
+                                                }),
+                                                _vm._v(
+                                                  "\n                                                    " +
+                                                    _vm._s(
+                                                      education.school_title
+                                                    ) +
+                                                    "\n                                                "
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("div", { staticClass: "year" }, [
+                                              _c(
+                                                "span",
+                                                { staticClass: "work" },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                        " +
+                                                      _vm._s(
+                                                        _vm.getDate(
+                                                          education.date_from
+                                                        )
+                                                      ) +
+                                                      "\n                                                        "
+                                                  ),
+                                                  education.currently_learning
+                                                    ? _c("span", [
+                                                        _vm._v(" - Present ")
+                                                      ])
+                                                    : _c("span", [
+                                                        _vm._v(
+                                                          " - " +
+                                                            _vm._s(
+                                                              _vm.getDate(
+                                                                education.date_to
+                                                              )
+                                                            )
+                                                        )
+                                                      ])
+                                                ]
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("div", { staticClass: "desc" }, [
+                                              _vm._v(
+                                                _vm._s(education.description)
+                                              )
+                                            ])
+                                          ]
+                                        )
+                                      ]
+                                    )
+                                  })
+                                )
+                              ]
+                            )
+                          ]
                         )
                       ]
                     )

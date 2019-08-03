@@ -293,12 +293,58 @@
 
                             <div v-show="currentTab === 'work'">
                                 <!-- work section -->
-                                work
+
+                                <div class="row" style="padding-top: 35px;">
+                                    <div class="col-12 educationSection">
+                                        <div class="aboutText">
+                                            <div class="row" v-for="(work, index) in worksHistory" :key="index + 'V'">
+                                                <div class="col-md-12 aboutSubText">
+                                                    <div class="title work">
+                                                        <span class="circle"></span>
+                                                        {{work.job_title}}
+                                                    </div>
+                                                    <div class="company">{{work.company}}</div>
+                                                    <div class="year">
+                                                        <span class="work">
+                                                            {{getDate(work.date_from)}}
+                                                            <span v-if="work.currently_working"> - Present </span>
+                                                            <span v-else > - {{getDate(work.date_to)}}</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="desc">{{work.job_description}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div v-show="currentTab === 'education'">
                                 <!-- education section -->
-                                education
+
+                                <div class="row" style="padding-top: 35px;">
+                                    <div class="col-12 educationSection">
+                                        <div class="aboutText">
+                                            <div class="row" v-for="(education, index) in educationsHistory" :key="index + 'E'">
+                                                <div class="col-md-12 aboutSubText">
+                                                    <div class="title work">
+                                                        <span class="circle"></span>
+                                                        {{education.school_title}}
+                                                    </div>
+                                                    <div class="year">
+                                                        <span class="work">
+                                                            {{getDate(education.date_from)}}
+                                                            <span v-if="education.currently_learning"> - Present </span>
+                                                            <span v-else > - {{getDate(education.date_to)}}</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="desc">{{education.description}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- end of portfolio section -->
@@ -432,6 +478,8 @@
                 slideNumber : 1 ,
                 numberOfSlides : this.calculateNumberOfSlides(),
                 skills: this.freelancer.skills,
+                worksHistory: this.freelancer.works_history,
+                educationsHistory: this.freelancer.educations_history,
                 currentTab: 'portfolio',
                 slickOptions: {
                     infinite: false,
@@ -476,6 +524,21 @@
                         this.$refs.slick.reSlick();
                     });
                 }
+            },
+            getDate(date){
+                let workDate = new Date(date);
+                let dd = workDate.getDate();
+                let mm = workDate.getMonth() + 1; //January is 0!
+
+                let yyyy = workDate.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+
+                return dd + '/' + mm + '/' + yyyy;
             },
             getSkillIconSrc(skill_title){
                 let arrayOfSkillImages = {

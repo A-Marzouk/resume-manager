@@ -69,7 +69,7 @@ class SearchesController extends Controller
         $freelancers = [] ;
         foreach ($userDatas as $userData){
             foreach ($userData as $data){
-                $freelancer = User::with('userData','projects','skills')->where([
+                $freelancer = User::with('userData','projects','skills','worksHistory','educationsHistory')->where([
                     ['id','=',$data->user_id],
                     ['profession','=','Designer']
                 ])->first();
@@ -149,7 +149,7 @@ class SearchesController extends Controller
         $freelancers = [] ;
         foreach ($userDatas as $userData){
             foreach ($userData as $data){
-                $freelancer = User::with('userData','projects','skills')->where([
+                $freelancer = User::with('userData','projects','skills','worksHistory','educationsHistory')->where([
                     ['id','=',$data->user_id],
                     ['profession','=','Developer']
                 ])->first();
@@ -278,7 +278,7 @@ class SearchesController extends Controller
         $freelancers = [] ;
         foreach ($userDatas as $userData){
             foreach ($userData as $data){
-                $freelancer = User::with('projects','skills','userData')->where('id',$data->user_id)->first();
+                $freelancer = User::with('projects','skills','userData','worksHistory','educationsHistory')->where('id',$data->user_id)->first();
                 if(!empty($freelancer)){
                     $freelancers[] = $freelancer ;
                 }

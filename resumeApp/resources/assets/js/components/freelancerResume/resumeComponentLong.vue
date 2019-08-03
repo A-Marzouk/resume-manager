@@ -704,7 +704,6 @@
                 return (Math.ceil(this.freelancer.projects.length / 2)) ;
             },
             highlightSkill(skill,percent){
-                console.log(skill.skill_title, percent);
                 $('#skillImage_' + skill.id).css('filter', 'grayscale('+ percent + '%)');
             }
         },

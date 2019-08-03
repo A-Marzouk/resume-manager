@@ -93375,7 +93375,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return Math.ceil(this.freelancer.projects.length / 2);
         },
         highlightSkill: function highlightSkill(skill, percent) {
-            console.log(skill.skill_title, percent);
             $('#skillImage_' + skill.id).css('filter', 'grayscale(' + percent + '%)');
         }
     },

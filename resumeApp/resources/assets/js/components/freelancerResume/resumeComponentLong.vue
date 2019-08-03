@@ -121,7 +121,7 @@
                         <!-- end of main card info -->
                     </div>
 
-                    <div id="nav-taps-resume" style="border-bottom:1px solid lightgray;">
+                    <div id="nav-taps-resume">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link text-center active" :href="'#languagesTab' + freelancer.id" role="tab" data-toggle="tab">
@@ -199,66 +199,154 @@
 
                     <transition name="slide-fade">
                         <div v-show="portfolio">
+                            <!-- nav row section -->
+
+                            <div class="row navRow">
+                                <div class="col-md-2 offset-md-3 col-4 text-center" style="border-right:1px solid #EBEDEF;" @click="setTab('portfolio')">
+                                    <div class="navTab NoDecor" :class="{active: currentTab === 'portfolio' }">
+                                        <a href="javascript:void(0)">
+                                            Portfolio
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 col-4 text-center" style="border-right:1px solid #EBEDEF;" @click="setTab('work')">
+                                    <div class="navTab NoDecor" :class="{active: currentTab === 'work' }">
+                                        <a href="javascript:void(0)">
+                                            Work
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 col-4 text-center" @click="setTab('education')">
+                                    <div class="navTab NoDecor" :class="{active: currentTab === 'education' }">
+                                        <a href="javascript:void(0)">
+                                            Education
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- portfolio section -->
-                            <slick class="projectsSection" :id="'portfolio_section_' + freelancer.id" ref="slick" :options="slickOptions">
-                                <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" >
-                                    <!-- class="d-flex justify-content-center" style="height: 250px !important; padding: 0 2px 0 2px; overflow: hidden;" -->
 
-                                    <div class="workCard" style="margin:10px; margin-bottom: 0px;">
-                                        <div class="workImg">
-                                            <a href="javascript:void(0)"
-                                               style="outline: none;"
-                                               data-toggle="modal" :data-target="'#project_modal_'+project.id" @click="loadHDImage(project.id)">
+                            <div v-show="currentTab === 'portfolio'">
+                                <slick class="projectsSection" :id="'portfolio_section_' + freelancer.id" ref="slick" :options="slickOptions">
+                                    <div  v-for="(project,index) in freelancer.projects" :key="index + 'A'" >
+                                        <!-- class="d-flex justify-content-center" style="height: 250px !important; padding: 0 2px 0 2px; overflow: hidden;" -->
 
-                                                <vue-load-image class="d-flex justify-content-center align-items-center">
-                                                    <img :src="getImageSrc(project.mainImage)" alt="" width="260" slot="image">
-                                                    <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif" style="width: 100px; height: 100px;" />
-                                                </vue-load-image>
-                                            </a>
-                                        </div>
-                                        <div class="workTitle">
-                                            <div class="row">
-                                                <div class="col-md-10 col-9">
-                                                    {{project.projectName}}
-                                                </div>
-                                                <a class="col-md-1 col-1" href="javascript:void(0)"
-                                                   data-toggle="modal" :data-target="'#project_modal_'+project.id"
-                                                   style="outline: none; margin-left: 16px;">
-                                                    <img src="/resumeApp/public/images/newResume/link.png"
-                                                         alt="view work">
+                                        <div class="workCard" style="margin:10px; margin-bottom: 0px;">
+                                            <div class="workImg">
+                                                <a href="javascript:void(0)"
+                                                   style="outline: none;"
+                                                   data-toggle="modal" :data-target="'#project_modal_'+project.id" @click="loadHDImage(project.id)">
+
+                                                    <vue-load-image class="d-flex justify-content-center align-items-center">
+                                                        <img :src="getImageSrc(project.mainImage)" alt="" width="260" slot="image">
+                                                        <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif" style="width: 100px; height: 100px;" />
+                                                    </vue-load-image>
                                                 </a>
+                                            </div>
+                                            <div class="workTitle">
+                                                <div class="row">
+                                                    <div class="col-md-10 col-9">
+                                                        {{project.projectName}}
+                                                    </div>
+                                                    <a class="col-md-1 col-1" href="javascript:void(0)"
+                                                       data-toggle="modal" :data-target="'#project_modal_'+project.id"
+                                                       style="outline: none; margin-left: 16px;">
+                                                        <img src="/resumeApp/public/images/newResume/link.png"
+                                                             alt="view work">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--<div>-->
+                                        <!--<a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >-->
+                                        <!--<vue-load-image>-->
+                                        <!--<img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto" style="min-height:250px; border-radius:10px;">-->
+                                        <!--<img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>-->
+                                        <!--</vue-load-image>-->
+                                        <!--</a>-->
+                                        <!--</div>-->
+                                    </div>
+                                </slick>
+
+                                <div class="row carouselControls" style="width: 100%;">
+                                    <div class=" col-12 text-center NoDecor">
+                                        <a href="javascript:void(0)" class="cardLabel_interviews noScroll" @click="slidePrev"
+                                           style="color:#697786;">
+                                            <img src="/resumeApp/resources/assets/images/left_arrow.png"
+                                                 alt="prev" width="15px">
+                                        </a>
+
+                                        <span class="jobTitle" style="padding: 0 5px 0 5px"> <span>{{slideNumber}}</span> / <span> {{numberOfSlides}} </span></span>
+
+                                        <a href="javascript:void(0)" role="button" data-slide="next" class="cardLabel_interviews noScroll" @click="slideNext"
+                                           style="color:#697786;">
+                                            <img src="/resumeApp/resources/assets/images/right_arrow.png"
+                                                 alt="next" width="15px">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div v-show="currentTab === 'work'">
+                                <!-- work section -->
+
+                                <div class="row" style="padding-top: 35px;">
+                                    <div class="col-12 educationSection">
+                                        <div class="aboutText">
+                                            <div class="row" v-for="(work, index) in worksHistory" :key="index + 'V'">
+                                                <div class="col-md-12 aboutSubText">
+                                                    <div class="title work">
+                                                        <span class="circle"></span>
+                                                        {{work.job_title}}
+                                                    </div>
+                                                    <div class="company">{{work.company}}</div>
+                                                    <div class="year">
+                                                        <span class="work">
+                                                            {{getDate(work.date_from)}}
+                                                            <span v-if="work.currently_working"> - Present </span>
+                                                            <span v-else > - {{getDate(work.date_to)}}</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="desc">{{work.job_description}}</div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!--<div>-->
-                                    <!--<a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >-->
-                                    <!--<vue-load-image>-->
-                                    <!--<img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto" style="min-height:250px; border-radius:10px;">-->
-                                    <!--<img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>-->
-                                    <!--</vue-load-image>-->
-                                    <!--</a>-->
-                                    <!--</div>-->
                                 </div>
-                            </slick>
 
-                            <div class="row carouselControls" style="width: 100%;">
-                                <div class=" col-12 text-center NoDecor">
-                                    <a href="javascript:void(0)" class="cardLabel_interviews noScroll" @click="slidePrev"
-                                       style="color:#697786;">
-                                        <img src="/resumeApp/resources/assets/images/left_arrow.png"
-                                             alt="prev" width="15px">
-                                    </a>
+                            </div>
 
-                                    <span class="jobTitle" style="padding: 0 5px 0 5px"> <span>{{slideNumber}}</span> / <span> {{numberOfSlides}} </span></span>
+                            <div v-show="currentTab === 'education'">
+                                <!-- education section -->
 
-                                    <a href="javascript:void(0)" role="button" data-slide="next" class="cardLabel_interviews noScroll" @click="slideNext"
-                                       style="color:#697786;">
-                                        <img src="/resumeApp/resources/assets/images/right_arrow.png"
-                                             alt="next" width="15px">
-                                    </a>
+                                <div class="row" style="padding-top: 35px;">
+                                    <div class="col-12 educationSection">
+                                        <div class="aboutText">
+                                            <div class="row" v-for="(education, index) in educationsHistory" :key="index + 'E'">
+                                                <div class="col-md-12 aboutSubText">
+                                                    <div class="title work">
+                                                        <span class="circle"></span>
+                                                        {{education.school_title}}
+                                                    </div>
+                                                    <div class="year">
+                                                        <span class="work">
+                                                            {{getDate(education.date_from)}}
+                                                            <span v-if="education.currently_learning"> - Present </span>
+                                                            <span v-else > - {{getDate(education.date_to)}}</span>
+                                                        </span>
+                                                    </div>
+                                                    <div class="desc">{{education.description}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                             <!-- end of portfolio section -->
                         </div>
                     </transition>
@@ -390,6 +478,9 @@
                 slideNumber : 1 ,
                 numberOfSlides : this.calculateNumberOfSlides(),
                 skills: this.freelancer.skills,
+                worksHistory: this.freelancer.works_history,
+                educationsHistory: this.freelancer.educations_history,
+                currentTab: 'portfolio',
                 slickOptions: {
                     infinite: false,
                     dots: false,
@@ -425,6 +516,29 @@
                     return resizedImage;
                 }
                 return  this.getImageSrc(src)
+            },
+            setTab(tabName){
+                this.currentTab = tabName ;
+                if(tabName === 'portfolio'){
+                    this.$nextTick(() => {
+                        this.$refs.slick.reSlick();
+                    });
+                }
+            },
+            getDate(date){
+                let workDate = new Date(date);
+                let dd = workDate.getDate();
+                let mm = workDate.getMonth() + 1; //January is 0!
+
+                let yyyy = workDate.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+
+                return dd + '/' + mm + '/' + yyyy;
             },
             getSkillIconSrc(skill_title){
                 let arrayOfSkillImages = {
@@ -590,7 +704,6 @@
                 return (Math.ceil(this.freelancer.projects.length / 2)) ;
             },
             highlightSkill(skill,percent){
-                console.log(skill.skill_title, percent);
                 $('#skillImage_' + skill.id).css('filter', 'grayscale('+ percent + '%)');
             }
         },
@@ -617,16 +730,17 @@
         padding-bottom: 12px;
         margin-left: 10px;
         margin-right: 10px;
-        min-height: 600px ;
+        height: 730px ;
         @media only screen and (max-width: 1200px) {
             width: 910px;
         }
         @media only screen and (max-width: 786px) {
             width: 710px;
-            min-height: 645px;
+            height: 815px;
         }
         @media only screen and (max-width: 500px) {
             width: 315px;
+            height: 785px ;
         }
     }
 

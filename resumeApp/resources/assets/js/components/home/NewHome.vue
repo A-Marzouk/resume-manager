@@ -59,7 +59,7 @@
         </div>
 
         <img src="/resumeApp/public/images/home/computer.png" alt="computer" class="bottomBg">
-        <div v-show="!searchDesignersSection" class="agentsContainer">              <!-- search developers -->
+        <div v-show="!searchDesignersSection" class="" >              <!-- search developers -->
 
                 <freelancer-resume-long v-for="developer in featuredDevelopers" :key="developer.id + developer.firstName + 'A'"
                                    :freelancer="developer" :hire="false" :search="false"></freelancer-resume-long>
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <div v-show="searchDesignersSection" class="agentsContainer">
+        <div v-show="searchDesignersSection" class="">
                 <freelancer-resume v-for="designer in featuredDesigners" :key="designer.id + designer.firstName + 'B'" :freelancer="designer"
                                    :hire="false" :search="true"></freelancer-resume>
 

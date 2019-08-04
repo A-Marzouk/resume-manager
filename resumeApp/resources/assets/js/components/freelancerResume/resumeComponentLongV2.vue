@@ -4,7 +4,7 @@
             <div class="freelancerCard" style="margin-bottom: -16px; height: auto;">
                 <div class="row actionRow">
                     <div class="importBtn importBtn_upload NoDecor">
-                        <a href="javascript:void(0)" style="outline: none;">
+                        <a href="javascript:void(0)" style="outline: none;" @click="showReferencesSection">
                             References / Testimonials
                         </a>
                     </div>
@@ -66,7 +66,7 @@
                                     <div class="col-md-4" style="padding: 0;">
 
                                         <div class="row text-center cardRow NoDecor">
-                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
+                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection()">
                                                 Hire me
                                             </a>
                                         </div>
@@ -123,7 +123,7 @@
 
                             <div class="col-12" style="padding: 10px 20px 16px 20px;">
                                 <div class="text-center cardRow NoDecor">
-                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection(freelancer.id)">
+                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection()">
                                         Hire me
                                     </a>
                                 </div>
@@ -363,52 +363,56 @@
                         </div>
                     </transition>
 
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div  v-for="(project,index) in freelancer.projects" :key="index + project.id" class="modal fade" :id="'project_modal_'+project.id" tabindex="-1" role="dialog" aria-labelledby="certificate" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document" style="">
-                <div class="modal-content modal-mobile-resume-new-homepage" data-dismiss="modal"
-                     aria-label="Close">
-                    <div class="modal-body" style="padding: 0;">
-                        <div class="row">
-                            <div class="col-md-9" style="padding: 0;">
-                                <vue-load-image>
-                                    <img :src="getImageSrc(project.mainImage)" :id="'projectModalPhoto' + project.id" alt="" width="100%" slot="image" height="auto">
-                                    <img slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
-                                </vue-load-image>
-                                <!--<div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">-->
-                                <!--<iframe v-if="image.includes('embed')" height="400" width="100%" :src="image+'?bgcolor=%23191919'" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>-->
-                                <!--<img v-else :src="image" alt="" width="100%" height="auto">-->
-                                <!--</div>-->
-
+                    <transition name="slide-fade-left">
+                        <!--references content-->
+                        <div v-show="showReferences">
+                            <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
+                                <div class="col-lg-11 col-11 text-left" style="padding: 25px 0 0 20px;">
+                                     <span>
+                                         <img src="/resumeApp/public/images/comment-512.png"
+                                              alt="" style="padding-right: 14px; width: 34px;">
+                                        <span class="audioText" style="color: #4E75E8;">  References & Testimonials</span>
+                                    </span>
+                                </div>
+                                <div class="col-lg-1 col-1 text-center NoDecor" style="padding: 24px 0 0 0;">
+                                    <a href="javascript:void(0)" @click="hideReferencesSection" class="audioText audioDismiss" style="color: #4E75E8; font-size: large;" > x </a>
+                                </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="form-group" style="padding-top: 25px;">
-                                    <label class="panelFormLabel"> Name
-                                        <hr>
-                                    </label><br/>
-                                    <div class="panelFormLabel">
-                                        {{project.projectName}}
+                            <div style="padding-bottom: 35px;">
+
+                                <div class="row" v-for="(reference, index) in references" :key="index + 'R'">
+                                    <div class="col-md-12 aboutSubText">
+                                        <div class="title work">
+                                            <span class="circle"></span>
+                                            {{reference.title}}
+                                        </div>
+                                        <div class="year">
+                                            <span class="work">
+                                                {{reference.company}}
+                                            </span>
+                                                            </div>
+                                                            <div class="year">
+                                            <span class="work">
+                                                {{reference.email}}
+                                            </span>
+                                                            </div>
+                                                            <div class="year">
+                                            <span class="work">
+                                                {{reference.phone}}
+                                            </span>
+                                        </div>
+                                        <div class="desc">{{reference.details}}</div>
                                     </div>
                                 </div>
-                                <div class="form-group" style="padding-top: 25px;">
-                                    <label class="panelFormLabel"> Description
-                                        <hr>
-                                    </label><br/>
-                                    <div class="panelFormLabel">
-                                        {{project.projectDesc}}
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
-                    </div>
+                    </transition>
+
                 </div>
+
             </div>
+
         </div>
 
     </div>
@@ -431,6 +435,7 @@
                 skills: this.freelancer.skills,
                 worksHistory: this.freelancer.works_history,
                 educationsHistory: this.freelancer.educations_history,
+                references: this.freelancer.references,
                 currentTab: 'skills',
                 slickOptions: {
                     infinite: false,
@@ -457,7 +462,8 @@
                 },
                 weeks:4,
                 hours: this.freelancer.user_data.availableHours.replace(/[^0-9]/g,'') ,
-                portfolio : !this.hire
+                portfolio : !this.hire,
+                showReferences : false,
             }
         },
         methods:{
@@ -599,20 +605,35 @@
                     }
                 });
             },
-            showHireSection(freelancer_id){
+            showHireSection(){
                 setTimeout( () => {
                     this.hire = true ;
                 },800);
                 this.portfolio = false ;
+                this.showReferences = false ;
+            },
+
+            showReferencesSection(){
+                setTimeout( () => {
+                    this.showReferences = true ;
+                },800);
+                this.portfolio = false ;
+                this.hire = false ;
+
+            },
+
+            hideReferencesSection(){
+                this.hire = false ;
+                this.showReferences = false ;
+                setTimeout( () => {
+                    this.portfolio = true ;
+                },800);
             },
             hideHireSection(){
                 this.hire = false ;
+                this.showReferences = false ;
                 setTimeout( () => {
                     this.portfolio = true ;
-                    this.$nextTick(() => {
-                        this.$refs.slick.reSlick();
-                        this.slideNumber = 1 ;
-                    });
                 },800);
             },
             updateSlick(){

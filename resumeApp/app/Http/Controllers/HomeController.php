@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('privacyView','getSearch','termsView','welcomePage','ResumePage','ResumeSample','newHome','fosterCareForm');
+        $this->middleware('auth')->except('privacyView','getSearch','termsView','welcomePage','ResumePage','ResumePageV2','ResumeSample','newHome','fosterCareForm');
     }
 
     /**
@@ -46,6 +46,14 @@ class HomeController extends Controller
         } else{
             return view('resume', compact('user','profession','primarySkills','charSkills','user1'));
         }
+    }
+
+
+    public function ResumePageV2($username){
+        $freelancer = User::with(['userData','skills','worksHistory','educationsHistory','projects'=>function($query) {
+            return $query->limit(10);
+        }])->where('username',$username)->first();
+        return view('freelancerResume.resumeLongV2', compact('freelancer'));
     }
 
     public function ResumeSample($username){

@@ -396,6 +396,7 @@ Route::get('/search/{search_id}','HomeController@getSearch')->name('public.searc
 Route::get('/workforce/terms_and_conditions','HomeController@termsView')->name('terms');
 Route::get('/workforce/privacy_policy','HomeController@privacyView')->name('privacy');
 Route::get('/resume_sample/{username}','HomeController@ResumeSample');
+Route::get('/v2/{username}','HomeController@ResumePageV2');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/{username}','HomeController@ResumePage');
 

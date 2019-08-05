@@ -154,7 +154,7 @@
                             <!-- portfolio section -->
 
                             <div v-show="currentTab === 'skills'">
-                                <div id="nav-taps-resume" style="padding-top: 40px;">
+                                <div id="nav-taps-resume" style="padding-top:2px">
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link text-center active" :href="'#languagesTab' + freelancer.id" role="tab" data-toggle="tab">
@@ -182,48 +182,48 @@
                                         <div role="tabpanel" class="tab-pane active firstItem" :id="'languagesTab' + freelancer.id">
                                             <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                        <span class="skillscard d-flex justify-content-around">
-                                                <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'programming'" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
-                                                </span>
-                                        </span>
+                                                    <div class="skillscard d-flex flex-column align-items-start">
+                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'programming'" class="highlightSkill">
+                                                            <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                            {{skill.skill_title}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane " :id="'databases' + freelancer.id">
                                             <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                        <span class="skillscard d-flex justify-content-around">
-                                                <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index + 'M'" v-show="skill.type === 'frameworks'" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
-                                                </span>
-                                        </span>
+                                                    <div class="skillscard d-flex flex-column align-items-start">
+                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index + 'M'" v-show="skill.type === 'frameworks'" class="highlightSkill">
+                                                            <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                            {{skill.skill_title}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane" :id="'skillsTab' + freelancer.id">
                                             <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                        <span class="skillscard d-flex justify-content-around">
-                                                <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'design'" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
-                                                </span>
-                                        </span>
+                                                    <div class="skillscard d-flex flex-column align-items-start">
+                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'design'" class="highlightSkill">
+                                                            <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                            {{skill.skill_title}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane" :id="'software' + freelancer.id">
                                             <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                        <span class="skillscard d-flex justify-content-around">
-                                                <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)"  v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'software'" :id="'skillContainer'+skill.id" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
-                                                </span>
-                                        </span>
+                                                    <div class="skillscard d-flex flex-column align-items-start">
+                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)"  v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'software'" :id="'skillContainer'+skill.id" class="highlightSkill">
+                                                            <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                            {{skill.skill_title}}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -234,7 +234,7 @@
                             <div v-show="currentTab === 'work'">
                                 <!-- work section -->
 
-                                <div class="row" style="padding-top: 35px;">
+                                <div class="row" style="padding-top: 10px;">
                                     <div class="col-12 educationSection">
                                         <div class="aboutText">
                                             <div class="row" v-for="(work, index) in worksHistory" :key="index + 'V'">
@@ -263,7 +263,7 @@
                             <div v-show="currentTab === 'education'">
                                 <!-- education section -->
 
-                                <div class="row" style="padding-top: 35px;">
+                                <div class="row" style="padding-top: 10px;">
                                     <div class="col-12 educationSection">
                                         <div class="aboutText">
                                             <div class="row" v-for="(education, index) in educationsHistory" :key="index + 'E'">
@@ -714,5 +714,14 @@
         align-items: center;
         padding:0;
     }
+
+    .skillscard{
+        padding-left: 35px;
+        padding-top: 15px;
+        div{
+            padding-top:20px;
+        }
+    }
+
 
 </style>

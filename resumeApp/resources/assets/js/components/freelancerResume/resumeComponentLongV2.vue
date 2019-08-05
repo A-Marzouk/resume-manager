@@ -165,7 +165,7 @@
                             <!-- portfolio section -->
 
                             <div v-show="currentTab === 'skills'">
-                                <div id="nav-taps-resume" style="padding-top: 40px;">
+                                <div id="nav-taps-resume" style="padding-top:2px">
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link text-center active" :href="'#languagesTab' + freelancer.id" role="tab" data-toggle="tab">
@@ -245,7 +245,7 @@
                             <div v-show="currentTab === 'work'">
                                 <!-- work section -->
 
-                                <div class="row" style="padding-top: 35px;">
+                                <div class="row" style="padding-top: 10px;">
                                     <div class="col-12 educationSection">
                                         <div class="aboutText">
                                             <div class="row" v-for="(work, index) in worksHistory" :key="index + 'V'">
@@ -274,7 +274,7 @@
                             <div v-show="currentTab === 'education'">
                                 <!-- education section -->
 
-                                <div class="row" style="padding-top: 35px;">
+                                <div class="row" style="padding-top: 10px;">
                                     <div class="col-12 educationSection">
                                         <div class="aboutText">
                                             <div class="row" v-for="(education, index) in educationsHistory" :key="index + 'E'">

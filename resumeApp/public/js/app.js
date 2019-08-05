@@ -60178,7 +60178,7 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticStyle: { "padding-top": "40px" },
+                          staticStyle: { "padding-top": "2px" },
                           attrs: { id: "nav-taps-resume" }
                         },
                         [
@@ -60664,7 +60664,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "row",
-                          staticStyle: { "padding-top": "35px" }
+                          staticStyle: { "padding-top": "10px" }
                         },
                         [
                           _c(
@@ -60771,7 +60771,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "row",
-                          staticStyle: { "padding-top": "35px" }
+                          staticStyle: { "padding-top": "10px" }
                         },
                         [
                           _c(
@@ -98593,7 +98593,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.projectsSection[data-v-3431b16d] {\n  margin-top: 1px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-3431b16d] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-3431b16d] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  height: 730px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 710px;\n      height: 815px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 315px;\n      height: 785px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-3431b16d] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-3431b16d], .fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-3431b16d], .fade-leave-to[data-v-3431b16d] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-3431b16d], .slide-fade-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-3431b16d], .slide-fade-left-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n.importBtn[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0;\n}\n.importBtn a[data-v-3431b16d]:hover {\n    color: white;\n}\n", ""]);
+exports.push([module.i, "\n.projectsSection[data-v-3431b16d] {\n  margin-top: 1px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-3431b16d] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-3431b16d] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  height: 730px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 710px;\n      height: 815px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 315px;\n      height: 785px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-3431b16d] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-3431b16d], .fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-3431b16d], .fade-leave-to[data-v-3431b16d] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-3431b16d], .slide-fade-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-3431b16d], .slide-fade-left-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n.importBtn[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0;\n}\n.importBtn a[data-v-3431b16d]:hover {\n    color: white;\n}\n.skillscard[data-v-3431b16d] {\n  padding-left: 35px;\n  padding-top: 15px;\n}\n.skillscard div[data-v-3431b16d] {\n    padding-top: 20px;\n}\n", ""]);
 
 // exports
 
@@ -99820,7 +99820,7 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticStyle: { "padding-top": "40px" },
+                          staticStyle: { "padding-top": "2px" },
                           attrs: { id: "nav-taps-resume" }
                         },
                         [
@@ -99936,17 +99936,17 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "skillscard d-flex flex-column align-items-start"
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -99988,9 +99988,9 @@ var render = function() {
                                                   }
                                                 }),
                                                 _vm._v(
-                                                  "\n                                                " +
+                                                  "\n                                                        " +
                                                     _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    "\n                                                    "
                                                 )
                                               ]
                                             )
@@ -100029,17 +100029,17 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "skillscard d-flex flex-column align-items-start"
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -100081,9 +100081,9 @@ var render = function() {
                                                   }
                                                 }),
                                                 _vm._v(
-                                                  "\n                                                " +
+                                                  "\n                                                        " +
                                                     _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    "\n                                                    "
                                                 )
                                               ]
                                             )
@@ -100122,17 +100122,17 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "skillscard d-flex flex-column align-items-start"
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -100173,9 +100173,9 @@ var render = function() {
                                                   }
                                                 }),
                                                 _vm._v(
-                                                  "\n                                                " +
+                                                  "\n                                                        " +
                                                     _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    "\n                                                    "
                                                 )
                                               ]
                                             )
@@ -100214,17 +100214,17 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "skillscard d-flex flex-column align-items-start"
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -100269,9 +100269,9 @@ var render = function() {
                                                   }
                                                 }),
                                                 _vm._v(
-                                                  "\n                                                " +
+                                                  "\n                                                        " +
                                                     _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    "\n                                                    "
                                                 )
                                               ]
                                             )
@@ -100306,7 +100306,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "row",
-                          staticStyle: { "padding-top": "35px" }
+                          staticStyle: { "padding-top": "10px" }
                         },
                         [
                           _c(
@@ -100413,7 +100413,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "row",
-                          staticStyle: { "padding-top": "35px" }
+                          staticStyle: { "padding-top": "10px" }
                         },
                         [
                           _c(

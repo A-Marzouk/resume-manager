@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex flex-wrap justify-content-center">
+    <div>
         <div class="marginMobile-0">
             <div class="freelancerCard" style="margin-bottom: -16px; height: auto;">
                 <div class="row actionRow">
@@ -414,7 +414,6 @@
             </div>
 
         </div>
-
     </div>
 </template>
 

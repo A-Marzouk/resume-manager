@@ -58866,7 +58866,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.projectsSection[data-v-02b9d253] {\n  margin-top: 1px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-02b9d253] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-02b9d253] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  height: 730px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 710px;\n      height: 815px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 315px;\n      height: 785px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-02b9d253] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-02b9d253] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-02b9d253], .fade-leave-active[data-v-02b9d253] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-02b9d253], .fade-leave-to[data-v-02b9d253] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-02b9d253] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-02b9d253] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-02b9d253], .slide-fade-leave-to[data-v-02b9d253] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-02b9d253] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-02b9d253] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-02b9d253], .slide-fade-left-leave-to[data-v-02b9d253] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n.importBtn[data-v-02b9d253] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0;\n}\n.importBtn a[data-v-02b9d253]:hover {\n    color: white;\n}\n", ""]);
+exports.push([module.i, "\n.projectsSection[data-v-02b9d253] {\n  margin-top: 1px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-02b9d253] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-02b9d253] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  height: 730px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 710px;\n      height: 815px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 315px;\n      height: 785px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-02b9d253] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-02b9d253] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-02b9d253], .fade-leave-active[data-v-02b9d253] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-02b9d253], .fade-leave-to[data-v-02b9d253] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-02b9d253] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-02b9d253] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-02b9d253], .slide-fade-leave-to[data-v-02b9d253] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-02b9d253] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-02b9d253] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-02b9d253], .slide-fade-left-leave-to[data-v-02b9d253] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n.importBtn[data-v-02b9d253] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0;\n}\n.importBtn a[data-v-02b9d253]:hover {\n    color: white;\n}\n.tab-pane[data-v-02b9d253] {\n  height: 541px;\n  overflow: auto;\n}\n@media only screen and (max-width: 500px) {\n.tab-pane[data-v-02b9d253] {\n      width: 315px;\n      height: 420px;\n}\n}\n.skills[data-v-02b9d253],\n.skills .skill[data-v-02b9d253],\n.skills .skill .skill-title[data-v-02b9d253],\n.skills .skill .skill-bar[data-v-02b9d253] {\n  width: 100%;\n  float: left;\n}\n.skills[data-v-02b9d253] {\n  padding: 0px 15px 10px 15px;\n}\n.skills .skill[data-v-02b9d253] {\n  margin-bottom: 30px;\n}\n.skills .skill .skill-title[data-v-02b9d253] {\n  color: #808080;\n  margin-bottom: 15px;\n  font-weight: 400;\n  font-size: 14px;\n}\n.skills .skill .skill-bar[data-v-02b9d253] {\n  width: 0;\n  height: 6px;\n  background: #f0f0f0;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills.active .skill .skill-bar[data-v-02b9d253] {\n  width: 100%;\n}\n.skills .skill .skill-bar span[data-v-02b9d253] {\n  float: left;\n  width: 0%;\n  background: #1D91F2;\n  height: 6px;\n  position: relative;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills .skill .skill-bar span b[data-v-02b9d253] {\n  float: left;\n  width: 100%;\n  position: relative;\n  text-align: right;\n  opacity: 0;\n  font-size: 14px;\n  color: #1D91F2;\n  font-weight: 400;\n  top: -13px;\n}\n.container[data-v-02b9d253] {\n  width: 100%;\n  max-width: 600px;\n  padding: 0 15px;\n  margin: 0 auto;\n}\n", ""]);
 
 // exports
 
@@ -58880,6 +58880,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_load_image__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -59565,9 +59601,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         highlightSkill: function highlightSkill(skill, percent) {
             $('#skillImage_' + skill.id).css('filter', 'grayscale(' + percent + '%)');
+        },
+        skillsBar: function skillsBar() {
+            $(".skills").addClass("active");
+            $(".skills .skill .skill-bar span").each(function () {
+                $(this).animate({
+                    "width": $(this).parent().attr("data-bar") + "%"
+                }, 1000);
+            });
+            setTimeout(function () {
+                $(".skills .skill .skill-bar span b").animate({ "opacity": "1" }, 1000);
+            }, 2000);
+            console.log('ran');
+        },
+        getSkillBarRandom: function getSkillBarRandom(min, max) {
+            return Math.random() * (max - min) + min;
         }
     },
-    mounted: function mounted() {},
+    mounted: function mounted() {
+        this.skillsBar();
+    },
 
     created: function created() {
         this.$parent.$on('update', this.updateSlick);
@@ -60178,7 +60231,7 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticStyle: { "padding-top": "40px" },
+                          staticStyle: { "padding-top": "2px" },
                           attrs: { id: "nav-taps-resume" }
                         },
                         [
@@ -60294,17 +60347,20 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -60318,7 +60374,8 @@ var render = function() {
                                                   }
                                                 ],
                                                 key: index,
-                                                staticClass: "highlightSkill",
+                                                staticClass:
+                                                  "highlightSkill skills",
                                                 on: {
                                                   mouseover: function($event) {
                                                     _vm.highlightSkill(skill, 0)
@@ -60332,23 +60389,61 @@ var render = function() {
                                                 }
                                               },
                                               [
-                                                _c("img", {
-                                                  staticStyle: {
-                                                    width: "17px",
-                                                    "padding-bottom": "3px"
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
                                                   },
-                                                  attrs: {
-                                                    src: _vm.getSkillIconSrc(
-                                                      skill.skill_title
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
                                                     ),
-                                                    alt: "skill",
-                                                    id: "skillImage_" + skill.id
-                                                  }
-                                                }),
-                                                _vm._v(
-                                                  "\n                                                " +
-                                                    _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar": _vm.getSkillBarRandom(
+                                                            70,
+                                                            100
+                                                          )
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
                                                 )
                                               ]
                                             )
@@ -60387,17 +60482,20 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -60410,8 +60508,9 @@ var render = function() {
                                                       "skill.type === 'frameworks'"
                                                   }
                                                 ],
-                                                key: index + "M",
-                                                staticClass: "highlightSkill",
+                                                key: index,
+                                                staticClass:
+                                                  "highlightSkill skills",
                                                 on: {
                                                   mouseover: function($event) {
                                                     _vm.highlightSkill(skill, 0)
@@ -60425,23 +60524,61 @@ var render = function() {
                                                 }
                                               },
                                               [
-                                                _c("img", {
-                                                  staticStyle: {
-                                                    width: "17px",
-                                                    "padding-bottom": "3px"
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
                                                   },
-                                                  attrs: {
-                                                    src: _vm.getSkillIconSrc(
-                                                      skill.skill_title
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
                                                     ),
-                                                    alt: "skill",
-                                                    id: "skillImage_" + skill.id
-                                                  }
-                                                }),
-                                                _vm._v(
-                                                  "\n                                                " +
-                                                    _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar": _vm.getSkillBarRandom(
+                                                            70,
+                                                            100
+                                                          )
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
                                                 )
                                               ]
                                             )
@@ -60480,17 +60617,20 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -60503,7 +60643,8 @@ var render = function() {
                                                   }
                                                 ],
                                                 key: index,
-                                                staticClass: "highlightSkill",
+                                                staticClass:
+                                                  "highlightSkill skills",
                                                 on: {
                                                   mouseover: function($event) {
                                                     _vm.highlightSkill(skill, 0)
@@ -60517,23 +60658,61 @@ var render = function() {
                                                 }
                                               },
                                               [
-                                                _c("img", {
-                                                  staticStyle: {
-                                                    width: "17px",
-                                                    "padding-bottom": "3px"
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
                                                   },
-                                                  attrs: {
-                                                    src: _vm.getSkillIconSrc(
-                                                      skill.skill_title
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
                                                     ),
-                                                    alt: "skill",
-                                                    id: "skillImage_" + skill.id
-                                                  }
-                                                }),
-                                                _vm._v(
-                                                  "\n                                                " +
-                                                    _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar": _vm.getSkillBarRandom(
+                                                            70,
+                                                            100
+                                                          )
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
                                                 )
                                               ]
                                             )
@@ -60572,17 +60751,20 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -60595,11 +60777,8 @@ var render = function() {
                                                   }
                                                 ],
                                                 key: index,
-                                                staticClass: "highlightSkill",
-                                                attrs: {
-                                                  id:
-                                                    "skillContainer" + skill.id
-                                                },
+                                                staticClass:
+                                                  "highlightSkill skills",
                                                 on: {
                                                   mouseover: function($event) {
                                                     _vm.highlightSkill(skill, 0)
@@ -60613,23 +60792,61 @@ var render = function() {
                                                 }
                                               },
                                               [
-                                                _c("img", {
-                                                  staticStyle: {
-                                                    width: "17px",
-                                                    "padding-bottom": "3px"
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
                                                   },
-                                                  attrs: {
-                                                    src: _vm.getSkillIconSrc(
-                                                      skill.skill_title
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
                                                     ),
-                                                    alt: "skill",
-                                                    id: "skillImage_" + skill.id
-                                                  }
-                                                }),
-                                                _vm._v(
-                                                  "\n                                                " +
-                                                    _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar": _vm.getSkillBarRandom(
+                                                            70,
+                                                            100
+                                                          )
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
                                                 )
                                               ]
                                             )
@@ -60664,7 +60881,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "row",
-                          staticStyle: { "padding-top": "35px" }
+                          staticStyle: { "padding-top": "10px" }
                         },
                         [
                           _c(
@@ -60771,7 +60988,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "row",
-                          staticStyle: { "padding-top": "35px" }
+                          staticStyle: { "padding-top": "10px" }
                         },
                         [
                           _c(
@@ -98593,7 +98810,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.projectsSection[data-v-3431b16d] {\n  margin-top: 1px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-3431b16d] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-3431b16d] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  height: 730px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 710px;\n      height: 815px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 315px;\n      height: 785px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-3431b16d] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-3431b16d], .fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-3431b16d], .fade-leave-to[data-v-3431b16d] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-3431b16d], .slide-fade-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-3431b16d], .slide-fade-left-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n.importBtn[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0;\n}\n.importBtn a[data-v-3431b16d]:hover {\n    color: white;\n}\n", ""]);
+exports.push([module.i, "\n.projectsSection[data-v-3431b16d] {\n  margin-top: 1px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-3431b16d] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-3431b16d] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  height: 730px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 710px;\n      height: 815px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 315px;\n      height: 785px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-3431b16d] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-3431b16d], .fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-3431b16d], .fade-leave-to[data-v-3431b16d] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-3431b16d], .slide-fade-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-3431b16d], .slide-fade-left-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n.importBtn[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0;\n}\n.importBtn a[data-v-3431b16d]:hover {\n    color: white;\n}\n.skillscard[data-v-3431b16d] {\n  padding-left: 35px;\n  padding-top: 15px;\n}\n.tab-pane[data-v-3431b16d] {\n  height: 541px;\n  overflow: auto;\n}\n.skills[data-v-3431b16d],\n.skills .skill[data-v-3431b16d],\n.skills .skill .skill-title[data-v-3431b16d],\n.skills .skill .skill-bar[data-v-3431b16d] {\n  width: 100%;\n  float: left;\n}\n.skills[data-v-3431b16d] {\n  padding: 0px 15px 10px 15px;\n}\n.skills .skill[data-v-3431b16d] {\n  margin-bottom: 30px;\n}\n.skills .skill .skill-title[data-v-3431b16d] {\n  color: #808080;\n  margin-bottom: 15px;\n  font-weight: 400;\n  font-size: 14px;\n}\n.skills .skill .skill-bar[data-v-3431b16d] {\n  width: 0;\n  height: 6px;\n  background: #f0f0f0;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills.active .skill .skill-bar[data-v-3431b16d] {\n  width: 100%;\n}\n.skills .skill .skill-bar span[data-v-3431b16d] {\n  float: left;\n  width: 0%;\n  background: #1D91F2;\n  height: 6px;\n  position: relative;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills .skill .skill-bar span b[data-v-3431b16d] {\n  float: left;\n  width: 100%;\n  position: relative;\n  text-align: right;\n  opacity: 0;\n  font-size: 14px;\n  color: #1D91F2;\n  font-weight: 400;\n  top: -13px;\n}\n.container[data-v-3431b16d] {\n  width: 100%;\n  max-width: 600px;\n  padding: 0 15px;\n  margin: 0 auto;\n}\n", ""]);
 
 // exports
 
@@ -98607,6 +98824,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_load_image__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -99236,9 +99489,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         highlightSkill: function highlightSkill(skill, percent) {
             $('#skillImage_' + skill.id).css('filter', 'grayscale(' + percent + '%)');
+        },
+        skillsBar: function skillsBar() {
+            $(".skills").addClass("active");
+            $(".skills .skill .skill-bar span").each(function () {
+                $(this).animate({
+                    "width": $(this).parent().attr("data-bar") + "%"
+                }, 1000);
+            });
+            setTimeout(function () {
+                $(".skills .skill .skill-bar span b").animate({ "opacity": "1" }, 1000);
+            }, 2000);
+            console.log('ran');
+        },
+        getSkillBarRandom: function getSkillBarRandom(min, max) {
+            return Math.random() * (max - min) + min;
         }
     },
-    mounted: function mounted() {},
+    mounted: function mounted() {
+        this.skillsBar();
+    },
 
     created: function created() {
         this.$parent.$on('update', this.updateSlick);
@@ -99820,7 +100090,7 @@ var render = function() {
                       _c(
                         "div",
                         {
-                          staticStyle: { "padding-top": "40px" },
+                          staticStyle: { "padding-top": "2px" },
                           attrs: { id: "nav-taps-resume" }
                         },
                         [
@@ -99936,17 +100206,20 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -99960,7 +100233,8 @@ var render = function() {
                                                   }
                                                 ],
                                                 key: index,
-                                                staticClass: "highlightSkill",
+                                                staticClass:
+                                                  "highlightSkill skills",
                                                 on: {
                                                   mouseover: function($event) {
                                                     _vm.highlightSkill(skill, 0)
@@ -99974,23 +100248,61 @@ var render = function() {
                                                 }
                                               },
                                               [
-                                                _c("img", {
-                                                  staticStyle: {
-                                                    width: "17px",
-                                                    "padding-bottom": "3px"
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
                                                   },
-                                                  attrs: {
-                                                    src: _vm.getSkillIconSrc(
-                                                      skill.skill_title
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
                                                     ),
-                                                    alt: "skill",
-                                                    id: "skillImage_" + skill.id
-                                                  }
-                                                }),
-                                                _vm._v(
-                                                  "\n                                                " +
-                                                    _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar": _vm.getSkillBarRandom(
+                                                            70,
+                                                            100
+                                                          )
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
                                                 )
                                               ]
                                             )
@@ -100029,17 +100341,20 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -100052,8 +100367,9 @@ var render = function() {
                                                       "skill.type === 'frameworks'"
                                                   }
                                                 ],
-                                                key: index + "M",
-                                                staticClass: "highlightSkill",
+                                                key: index,
+                                                staticClass:
+                                                  "highlightSkill skills",
                                                 on: {
                                                   mouseover: function($event) {
                                                     _vm.highlightSkill(skill, 0)
@@ -100067,23 +100383,61 @@ var render = function() {
                                                 }
                                               },
                                               [
-                                                _c("img", {
-                                                  staticStyle: {
-                                                    width: "17px",
-                                                    "padding-bottom": "3px"
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
                                                   },
-                                                  attrs: {
-                                                    src: _vm.getSkillIconSrc(
-                                                      skill.skill_title
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
                                                     ),
-                                                    alt: "skill",
-                                                    id: "skillImage_" + skill.id
-                                                  }
-                                                }),
-                                                _vm._v(
-                                                  "\n                                                " +
-                                                    _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar": _vm.getSkillBarRandom(
+                                                            70,
+                                                            100
+                                                          )
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
                                                 )
                                               ]
                                             )
@@ -100122,17 +100476,20 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -100145,7 +100502,8 @@ var render = function() {
                                                   }
                                                 ],
                                                 key: index,
-                                                staticClass: "highlightSkill",
+                                                staticClass:
+                                                  "highlightSkill skills",
                                                 on: {
                                                   mouseover: function($event) {
                                                     _vm.highlightSkill(skill, 0)
@@ -100159,23 +100517,61 @@ var render = function() {
                                                 }
                                               },
                                               [
-                                                _c("img", {
-                                                  staticStyle: {
-                                                    width: "17px",
-                                                    "padding-bottom": "3px"
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
                                                   },
-                                                  attrs: {
-                                                    src: _vm.getSkillIconSrc(
-                                                      skill.skill_title
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
                                                     ),
-                                                    alt: "skill",
-                                                    id: "skillImage_" + skill.id
-                                                  }
-                                                }),
-                                                _vm._v(
-                                                  "\n                                                " +
-                                                    _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar": _vm.getSkillBarRandom(
+                                                            70,
+                                                            100
+                                                          )
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
                                                 )
                                               ]
                                             )
@@ -100214,17 +100610,20 @@ var render = function() {
                                       { staticClass: "col-md-12  text-center" },
                                       [
                                         _c(
-                                          "span",
+                                          "div",
                                           {
                                             staticClass:
-                                              "skillscard d-flex justify-content-around"
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
                                           },
                                           _vm._l(_vm.skills, function(
                                             skill,
                                             index
                                           ) {
                                             return _c(
-                                              "span",
+                                              "div",
                                               {
                                                 directives: [
                                                   {
@@ -100237,11 +100636,8 @@ var render = function() {
                                                   }
                                                 ],
                                                 key: index,
-                                                staticClass: "highlightSkill",
-                                                attrs: {
-                                                  id:
-                                                    "skillContainer" + skill.id
-                                                },
+                                                staticClass:
+                                                  "highlightSkill skills",
                                                 on: {
                                                   mouseover: function($event) {
                                                     _vm.highlightSkill(skill, 0)
@@ -100255,23 +100651,61 @@ var render = function() {
                                                 }
                                               },
                                               [
-                                                _c("img", {
-                                                  staticStyle: {
-                                                    width: "17px",
-                                                    "padding-bottom": "3px"
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
                                                   },
-                                                  attrs: {
-                                                    src: _vm.getSkillIconSrc(
-                                                      skill.skill_title
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
                                                     ),
-                                                    alt: "skill",
-                                                    id: "skillImage_" + skill.id
-                                                  }
-                                                }),
-                                                _vm._v(
-                                                  "\n                                                " +
-                                                    _vm._s(skill.skill_title) +
-                                                    "\n                                            "
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar": _vm.getSkillBarRandom(
+                                                            70,
+                                                            100
+                                                          )
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
                                                 )
                                               ]
                                             )
@@ -100306,7 +100740,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "row",
-                          staticStyle: { "padding-top": "35px" }
+                          staticStyle: { "padding-top": "10px" }
                         },
                         [
                           _c(
@@ -100413,7 +100847,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "row",
-                          staticStyle: { "padding-top": "35px" }
+                          staticStyle: { "padding-top": "10px" }
                         },
                         [
                           _c(

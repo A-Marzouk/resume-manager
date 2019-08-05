@@ -397,6 +397,7 @@ Route::get('/workforce/terms_and_conditions','HomeController@termsView')->name('
 Route::get('/workforce/privacy_policy','HomeController@privacyView')->name('privacy');
 Route::get('/resume_sample/{username}','HomeController@ResumeSample');
 Route::get('/v2/{username}','HomeController@ResumePageV2');
+Route::get('/v2/short/{username}','HomeController@ResumePageShortV2');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/{username}','HomeController@ResumePage');
 

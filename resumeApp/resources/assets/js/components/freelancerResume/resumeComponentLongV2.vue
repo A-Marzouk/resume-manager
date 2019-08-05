@@ -193,48 +193,84 @@
                                         <div role="tabpanel" class="tab-pane active firstItem" :id="'languagesTab' + freelancer.id">
                                             <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                        <span class="skillscard d-flex justify-content-around">
-                                                <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'programming'" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
-                                                </span>
-                                        </span>
+                                                    <div class="d-flex flex-column align-items-start" style="padding-top: 15px;">
+                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'programming'" class="highlightSkill skills">
+                                                            <!-- skill -->
+                                                            <div class="skill text-left">
+                                                                <!-- title -->
+                                                                <div class="skill-title">
+                                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                                    {{skill.skill_title}}
+                                                                </div>
+                                                                <!-- bar -->
+                                                                <div class="skill-bar" :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                            </div>
+                                                            <!-- #skill -->
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane " :id="'databases' + freelancer.id">
                                             <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                        <span class="skillscard d-flex justify-content-around">
-                                                <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index + 'M'" v-show="skill.type === 'frameworks'" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
-                                                </span>
-                                        </span>
+                                                    <div class="d-flex flex-column align-items-start" style="padding-top: 15px;">
+                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'frameworks'" class="highlightSkill skills">
+                                                            <!-- skill -->
+                                                            <div class="skill text-left">
+                                                                <!-- title -->
+                                                                <div class="skill-title">
+                                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                                    {{skill.skill_title}}
+                                                                </div>
+                                                                <!-- bar -->
+                                                                <div class="skill-bar"  :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                            </div>
+                                                            <!-- #skill -->
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane" :id="'skillsTab' + freelancer.id">
                                             <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                        <span class="skillscard d-flex justify-content-around">
-                                                <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'design'" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
-                                                </span>
-                                        </span>
+                                                    <div class="d-flex flex-column align-items-start" style="padding-top: 15px;">
+                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'design'" class="highlightSkill skills">
+                                                            <!-- skill -->
+                                                            <div class="skill text-left">
+                                                                <!-- title -->
+                                                                <div class="skill-title">
+                                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                                    {{skill.skill_title}}
+                                                                </div>
+                                                                <!-- bar -->
+                                                                <div class="skill-bar"  :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                            </div>
+                                                            <!-- #skill -->
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane" :id="'software' + freelancer.id">
                                             <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                        <span class="skillscard d-flex justify-content-around">
-                                                <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)"  v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'software'" :id="'skillContainer'+skill.id" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
-                                                </span>
-                                        </span>
+                                                    <div class="d-flex flex-column align-items-start" style="padding-top: 15px;">
+                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'software'" class="highlightSkill skills">
+                                                            <!-- skill -->
+                                                            <div class="skill text-left">
+                                                                <!-- title -->
+                                                                <div class="skill-title">
+                                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                                    {{skill.skill_title}}
+                                                                </div>
+                                                                <!-- bar -->
+                                                                <div class="skill-bar"  :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                            </div>
+                                                            <!-- #skill -->
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -676,10 +712,26 @@
             },
             highlightSkill(skill,percent){
                 $('#skillImage_' + skill.id).css('filter', 'grayscale('+ percent + '%)');
+            },
+            skillsBar(){
+                $(".skills").addClass("active");
+                $(".skills .skill .skill-bar span").each(function() {
+                    $(this).animate({
+                        "width": $(this).parent().attr("data-bar") + "%"
+                    }, 1000);
+                });
+                setTimeout(function() {
+                    $(".skills .skill .skill-bar span b").animate({"opacity":"1"},1000);
+                }, 2000);
+                console.log('ran');
+            },
+            getSkillBarRandom(min, max) {
+                return Math.random() * (max - min) + min;
             }
+
         },
         mounted() {
-
+            this.skillsBar();
         },
         created: function() {
             this.$parent.$on('update', this.updateSlick);
@@ -770,5 +822,84 @@
         align-items: center;
         padding:0;
     }
+
+
+    .tab-pane{
+        height: 541px;
+        overflow: auto;
+        @media only screen and (max-width: 500px) {
+            width: 315px;
+            height: 420px;
+        }
+    }
+
+    // skills bar css :
+
+    .skills,
+    .skills .skill,
+    .skills .skill .skill-title,
+    .skills .skill .skill-bar {
+        width: 100%;
+        float: left;
+    }
+
+    .skills {
+        padding: 0px 15px 10px 15px;
+    }
+
+    .skills .skill {
+        margin-bottom: 30px;
+    }
+
+    .skills .skill .skill-title {
+        color: #808080;
+        margin-bottom: 15px;
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    .skills .skill .skill-bar {
+        width: 0;
+        height: 6px;
+        background: #f0f0f0;
+        transition: 1s cubic-bezier(1, 0, .5, 1);
+        -webkit-transition: 1s cubic-bezier(1, 0, .5, 1);
+        -ms-transition: 1s cubic-bezier(1, 0, .5, 1);
+    }
+
+    .skills.active .skill .skill-bar {
+        width: 100%;
+    }
+
+    .skills .skill .skill-bar span {
+        float: left;
+        width: 0%;
+        background: #1D91F2;
+        height: 6px;
+        position: relative;
+        transition: 1s cubic-bezier(1, 0, .5, 1);
+        -webkit-transition: 1s cubic-bezier(1, 0, .5, 1);
+        -ms-transition: 1s cubic-bezier(1, 0, .5, 1);
+    }
+
+    .skills .skill .skill-bar span b {
+        float: left;
+        width: 100%;
+        position: relative;
+        text-align: right;
+        opacity: 0;
+        font-size: 14px;
+        color: #1D91F2;
+        font-weight: 400;
+        top: -13px;
+    }
+
+    .container{
+        width: 100%;
+        max-width: 600px;
+        padding:0 15px;
+        margin:0 auto;
+    }
+
 
 </style>

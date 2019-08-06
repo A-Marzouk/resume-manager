@@ -897,5 +897,18 @@
         margin:0 auto;
     }
 
+    .educationSection{
+        @media only screen and (max-width: 500px) {
+            padding-left: 0;
+            padding-right: 5px;
+        }
+    }
+
+    .aboutText{
+        @media only screen and (max-width: 500px) {
+            padding-left: 0;
+        }
+    }
+
 
 </style>

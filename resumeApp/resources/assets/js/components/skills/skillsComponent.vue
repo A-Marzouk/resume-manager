@@ -38,7 +38,7 @@
                                     style="margin-right: 10px; background: whitesmoke;border-radius: 10px; margin-top:5px; margin-bottom:5px;"
                                >
                                    <b style="color: #697786;font-family: Roboto;font-size: 16px;font-weight: 300;line-height: 24px;">
-                                       {{skill.skill_title}}
+                                       {{skill.skill_title}} <br/> {{skill.percentage}}%
                                        <button type="button" class="close" style="padding: 2px; outline: none;" @click="deleteSkill(skill)">
                                            <span aria-hidden="true">&times;</span>
                                        </button>
@@ -56,11 +56,13 @@
                                            style=" background:white url('/resumeApp/resources/assets/images/add_skill.png')  no-repeat right .75rem center;
                                         background-size: 15px 15px;"
                                     >
+
+                                    <input type="number" min="50" max="100" step="10" placeholder="Percentage %" class="form-control" v-model="currSkill.percentage" required>
                                 </div>
                             </form>
                         </div>
                         <div class="col-md-1">
-                            <a href="javascript:void(0)" v-show="currSkill.skill_title.length > 0" id="addSKillBtn" @click="addSkill" class="btn btn-outline-dark">Add</a>
+                            <a href="javascript:void(0)" v-show="currSkill.skill_title.length > 0 && currSkill.percentage.length > 0" id="addSKillBtn" @click="addSkill" class="btn btn-outline-dark">Add</a>
                         </div>
                     </div>
                 </div>
@@ -77,7 +79,8 @@
                 skills:[],
                 currSkill:{
                     skill_title:'',
-                    type:''
+                    type:'',
+                    percentage:'',
                 },
                 currType:''
             }
@@ -116,18 +119,21 @@
                 axios.post('/freelancer/addskill',
                     {
                         skill_title : this.currSkill.skill_title,
-                        type: this.currType
+                        type: this.currType,
+                        percentage: this.currSkill.percentage
                     }
                     ).then( (response) => {
                     let newSkill = {
                         id:response.data.id,
                         skill_title : this.currSkill.skill_title,
-                        type :this.currType
+                        type :this.currType,
+                        percentage :this.currSkill.percentage
                     };
 
                     this.skills.push(newSkill);
                     // clear input :
                     this.currSkill.skill_title = '';
+                    this.currSkill.percentage = '';
                     // enable the input :
                     $('#skill_title').attr('disabled',false);
                     $('#skill_title').css('background-color','white');

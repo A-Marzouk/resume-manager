@@ -203,7 +203,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                                <div class="skill-bar" :data-bar="skill.percentage"><span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -224,7 +224,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar"  :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                                <div class="skill-bar"  :data-bar="skill.percentage"><span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -245,7 +245,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar"  :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                                <div class="skill-bar"  :data-bar="skill.percentage"><span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -266,7 +266,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar"  :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                                <div class="skill-bar"  :data-bar="skill.percentage"><span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -725,10 +725,6 @@
                 }, 2000);
                 console.log('ran');
             },
-            getSkillBarRandom(min, max) {
-                return Math.random() * (max - min) + min;
-            }
-
         },
         mounted() {
             this.skillsBar();

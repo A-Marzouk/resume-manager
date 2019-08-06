@@ -603,7 +603,7 @@ body {
 .aboutSubText .year .circle:before {
   background: white;
   color: white;
-  padding: 0 3px 0 3px;
+  padding: 0 3px 0 4px;
   font-size: 11px;
 }
 
@@ -625,7 +625,7 @@ body {
 .aboutSubText .title .circle:before {
   background: white;
   color: white;
-  padding: 0 3px 0 3px;
+  padding: 0 3px 0 4px;
   font-size: 11px;
 }
 

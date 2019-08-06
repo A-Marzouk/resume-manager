@@ -286,9 +286,9 @@
                                         <div class="aboutText">
                                             <div class="row" v-for="(work, index) in worksHistory" :key="index + 'V'">
                                                 <div class="col-md-12 aboutSubText">
-                                                    <div class="title work">
+                                                    <div class="title work d-flex">
                                                         <span class="circle"></span>
-                                                        {{work.job_title}}
+                                                        <span  class="seduHeader" >{{work.job_title}}</span>
                                                     </div>
                                                     <div class="company">{{work.company}}</div>
                                                     <div class="year">
@@ -315,9 +315,11 @@
                                         <div class="aboutText">
                                             <div class="row" v-for="(education, index) in educationsHistory" :key="index + 'E'">
                                                 <div class="col-md-12 aboutSubText">
-                                                    <div class="title work">
+                                                    <div class="title work d-flex">
                                                         <span class="circle"></span>
-                                                        {{education.school_title}}
+                                                        <span class="seduHeader">
+                                                            {{education.school_title}}
+                                                        </span>
                                                     </div>
                                                     <div class="year">
                                                         <span class="work">
@@ -907,6 +909,13 @@
     .aboutText{
         @media only screen and (max-width: 500px) {
             padding-left: 0;
+        }
+    }
+
+    .seduHeader{
+        padding-left: 6px;
+        @media only screen and (max-width: 500px) {
+            padding-left:5px;
         }
     }
 

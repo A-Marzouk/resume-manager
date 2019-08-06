@@ -33,6 +33,7 @@ class SkillsController extends Controller
         $skill->user_id = $currentUser->id;
         $skill->skill_title = $request->skill_title;
         $skill->type = $request->type;
+        $skill->percentage = $request->percentage;
         if(isset($request->icon)) {
             $skill->icon = $request->icon;
         }

@@ -17537,13 +17537,13 @@ module.exports = Cancel;
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(269)
+  __webpack_require__(274)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(271)
+var __vue_script__ = __webpack_require__(276)
 /* template */
-var __vue_template__ = __webpack_require__(272)
+var __vue_template__ = __webpack_require__(277)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -17586,7 +17586,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(18);
-module.exports = __webpack_require__(321);
+module.exports = __webpack_require__(326);
 
 
 /***/ }),
@@ -17631,109 +17631,109 @@ Vue.component('chat-composer', __webpack_require__(66));
 
 // resume component
 Vue.component('freelancer-resume-long-v2', __webpack_require__(71));
-Vue.component('freelancer-resume-short-v2', __webpack_require__(325));
+Vue.component('freelancer-resume-short-v2', __webpack_require__(76));
 
-Vue.component('faq-list', __webpack_require__(76));
+Vue.component('faq-list', __webpack_require__(81));
 
 // works
-Vue.component('works-list', __webpack_require__(81));
-Vue.component('work-history', __webpack_require__(86));
-Vue.component('add-work-modal', __webpack_require__(89));
+Vue.component('works-list', __webpack_require__(86));
+Vue.component('work-history', __webpack_require__(91));
+Vue.component('add-work-modal', __webpack_require__(94));
 
 // educations
-Vue.component('educations-list', __webpack_require__(92));
-Vue.component('education-history', __webpack_require__(97));
-Vue.component('add-education-modal', __webpack_require__(100));
+Vue.component('educations-list', __webpack_require__(97));
+Vue.component('education-history', __webpack_require__(102));
+Vue.component('add-education-modal', __webpack_require__(105));
 
 // invoices
-Vue.component('invoices-list', __webpack_require__(103));
-Vue.component('invoice-component', __webpack_require__(108));
-Vue.component('add-invoice-modal', __webpack_require__(111));
-Vue.component('add-invoice-shift-modal', __webpack_require__(114));
+Vue.component('invoices-list', __webpack_require__(108));
+Vue.component('invoice-component', __webpack_require__(113));
+Vue.component('add-invoice-modal', __webpack_require__(116));
+Vue.component('add-invoice-shift-modal', __webpack_require__(119));
 
 // services
-Vue.component('services-list', __webpack_require__(119));
-Vue.component('service-component', __webpack_require__(124));
-Vue.component('add-invoice-service-modal', __webpack_require__(127));
+Vue.component('services-list', __webpack_require__(124));
+Vue.component('service-component', __webpack_require__(129));
+Vue.component('add-invoice-service-modal', __webpack_require__(132));
 
 // bookings calendar :
-Vue.component('bookings-calendar', __webpack_require__(130));
+Vue.component('bookings-calendar', __webpack_require__(135));
 
 // campaign briefs
-Vue.component('cbriefs-list', __webpack_require__(135));
-Vue.component('cbrief-component', __webpack_require__(140));
-Vue.component('add-cbrief-modal', __webpack_require__(143));
-Vue.component('add-service-modal', __webpack_require__(146));
+Vue.component('cbriefs-list', __webpack_require__(140));
+Vue.component('cbrief-component', __webpack_require__(145));
+Vue.component('add-cbrief-modal', __webpack_require__(148));
+Vue.component('add-service-modal', __webpack_require__(151));
 
 // recordings
-Vue.component('records-list', __webpack_require__(151));
-Vue.component('record-component', __webpack_require__(156));
-Vue.component('add-record-modal', __webpack_require__(159));
+Vue.component('records-list', __webpack_require__(156));
+Vue.component('record-component', __webpack_require__(161));
+Vue.component('add-record-modal', __webpack_require__(164));
 
 //agents:
-Vue.component('agents-list', __webpack_require__(162));
-Vue.component('agent-component', __webpack_require__(167));
-Vue.component('add-agent-modal', __webpack_require__(170));
-Vue.component('add-agent-record-modal', __webpack_require__(173));
+Vue.component('agents-list', __webpack_require__(167));
+Vue.component('agent-component', __webpack_require__(172));
+Vue.component('add-agent-modal', __webpack_require__(175));
+Vue.component('add-agent-record-modal', __webpack_require__(178));
 
 // references
-Vue.component('references-list', __webpack_require__(176));
-Vue.component('reference-component', __webpack_require__(181));
-Vue.component('add-reference-modal', __webpack_require__(184));
+Vue.component('references-list', __webpack_require__(181));
+Vue.component('reference-component', __webpack_require__(186));
+Vue.component('add-reference-modal', __webpack_require__(189));
 
 // jobs
-Vue.component('jobs-list', __webpack_require__(187));
-Vue.component('job-post', __webpack_require__(192));
-Vue.component('add-job-modal', __webpack_require__(195));
+Vue.component('jobs-list', __webpack_require__(192));
+Vue.component('job-post', __webpack_require__(197));
+Vue.component('add-job-modal', __webpack_require__(200));
 
 // skills
-Vue.component('skills-list', __webpack_require__(198));
+Vue.component('skills-list', __webpack_require__(203));
 
 // record while register
-Vue.component('record-input', __webpack_require__(203));
+Vue.component('record-input', __webpack_require__(208));
 
 // terms bar component
-Vue.component('terms-bar', __webpack_require__(208));
+Vue.component('terms-bar', __webpack_require__(213));
 
 // current Subscriptions Componet
-Vue.component('current-subscriptions', __webpack_require__(213));
+Vue.component('current-subscriptions', __webpack_require__(218));
 
 // agent terms bar component
-Vue.component('agent-terms-bar', __webpack_require__(218));
+Vue.component('agent-terms-bar', __webpack_require__(223));
 
 // projects
-Vue.component('projects-list', __webpack_require__(223));
-Vue.component('project-detail', __webpack_require__(228));
-Vue.component('add-project-modal', __webpack_require__(231));
+Vue.component('projects-list', __webpack_require__(228));
+Vue.component('project-detail', __webpack_require__(233));
+Vue.component('add-project-modal', __webpack_require__(236));
 
 // campaigns
-Vue.component('campaigns-list', __webpack_require__(234));
-Vue.component('campaign-component', __webpack_require__(239));
-Vue.component('add-campaign-modal', __webpack_require__(242));
-Vue.component('update-members-modal', __webpack_require__(245));
-Vue.component('add-shift-modal', __webpack_require__(250));
+Vue.component('campaigns-list', __webpack_require__(239));
+Vue.component('campaign-component', __webpack_require__(244));
+Vue.component('add-campaign-modal', __webpack_require__(247));
+Vue.component('update-members-modal', __webpack_require__(250));
+Vue.component('add-shift-modal', __webpack_require__(255));
 // campaign activity logs:
-Vue.component('activity-logs', __webpack_require__(255));
+Vue.component('activity-logs', __webpack_require__(260));
 // campaign timeTable:
-Vue.component('campaign-timetable', __webpack_require__(260));
+Vue.component('campaign-timetable', __webpack_require__(265));
 
 // search components :
-Vue.component('search-freelancers', __webpack_require__(265));
-Vue.component('freelancer-card', __webpack_require__(274));
-Vue.component('freelancers-list', __webpack_require__(277));
+Vue.component('search-freelancers', __webpack_require__(270));
+Vue.component('freelancer-card', __webpack_require__(279));
+Vue.component('freelancers-list', __webpack_require__(282));
 
 // chat room:
-Vue.component('new-chat', __webpack_require__(282));
+Vue.component('new-chat', __webpack_require__(287));
 
 // chat room:
-Vue.component('business-support-users', __webpack_require__(285));
+Vue.component('business-support-users', __webpack_require__(290));
 
 //
-Vue.component('send-emails', __webpack_require__(290));
-Vue.component('send-invitations', __webpack_require__(295));
+Vue.component('send-emails', __webpack_require__(295));
+Vue.component('send-invitations', __webpack_require__(300));
 
 // new home vue component
-Vue.component('new-home-component', __webpack_require__(300));
+Vue.component('new-home-component', __webpack_require__(305));
 
 if ($("#newHomeComponent").length !== 0) {
     var newHomeComponent = new Vue({
@@ -18031,7 +18031,7 @@ window.Echo.channel('conversations').listen('UpdateMessageCount', function (e) {
     }
 });
 
-__webpack_require__(320);
+__webpack_require__(325);
 
 /***/ }),
 /* 19 */
@@ -58866,7 +58866,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.projectsSection[data-v-02b9d253] {\n  margin-top: 1px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-02b9d253] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-02b9d253] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  height: 730px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 710px;\n      height: 815px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 315px;\n      height: 785px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-02b9d253] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-02b9d253] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-02b9d253], .fade-leave-active[data-v-02b9d253] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-02b9d253], .fade-leave-to[data-v-02b9d253] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-02b9d253] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-02b9d253] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-02b9d253], .slide-fade-leave-to[data-v-02b9d253] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-02b9d253] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-02b9d253] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-02b9d253], .slide-fade-left-leave-to[data-v-02b9d253] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n.importBtn[data-v-02b9d253] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0;\n}\n.importBtn a[data-v-02b9d253]:hover {\n    color: white;\n}\n.tab-pane[data-v-02b9d253] {\n  height: 541px;\n  overflow: auto;\n}\n@media only screen and (max-width: 500px) {\n.tab-pane[data-v-02b9d253] {\n      width: 315px;\n      height: 420px;\n}\n}\n.skills[data-v-02b9d253],\n.skills .skill[data-v-02b9d253],\n.skills .skill .skill-title[data-v-02b9d253],\n.skills .skill .skill-bar[data-v-02b9d253] {\n  width: 100%;\n  float: left;\n}\n.skills[data-v-02b9d253] {\n  padding: 0px 15px 10px 15px;\n}\n.skills .skill[data-v-02b9d253] {\n  margin-bottom: 30px;\n}\n.skills .skill .skill-title[data-v-02b9d253] {\n  color: #808080;\n  margin-bottom: 15px;\n  font-weight: 400;\n  font-size: 14px;\n}\n.skills .skill .skill-bar[data-v-02b9d253] {\n  width: 0;\n  height: 6px;\n  background: #f0f0f0;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills.active .skill .skill-bar[data-v-02b9d253] {\n  width: 100%;\n}\n.skills .skill .skill-bar span[data-v-02b9d253] {\n  float: left;\n  width: 0%;\n  background: #1D91F2;\n  height: 6px;\n  position: relative;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills .skill .skill-bar span b[data-v-02b9d253] {\n  float: left;\n  width: 100%;\n  position: relative;\n  text-align: right;\n  opacity: 0;\n  font-size: 14px;\n  color: #1D91F2;\n  font-weight: 400;\n  top: -13px;\n}\n.container[data-v-02b9d253] {\n  width: 100%;\n  max-width: 600px;\n  padding: 0 15px;\n  margin: 0 auto;\n}\n", ""]);
+exports.push([module.i, "\n.projectsSection[data-v-02b9d253] {\n  margin-top: 1px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-02b9d253] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-02b9d253] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  height: 730px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 710px;\n      height: 815px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-02b9d253] {\n      width: 315px;\n      height: 785px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-02b9d253] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-02b9d253] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-02b9d253], .fade-leave-active[data-v-02b9d253] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-02b9d253], .fade-leave-to[data-v-02b9d253] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-02b9d253] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-02b9d253] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-02b9d253], .slide-fade-leave-to[data-v-02b9d253] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-02b9d253] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-02b9d253] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-02b9d253], .slide-fade-left-leave-to[data-v-02b9d253] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n.importBtn[data-v-02b9d253] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0;\n}\n.importBtn a[data-v-02b9d253]:hover {\n    color: white;\n}\n.tab-pane[data-v-02b9d253] {\n  height: 541px;\n  overflow: auto;\n}\n@media only screen and (max-width: 500px) {\n.tab-pane[data-v-02b9d253] {\n      width: 315px;\n      height: 420px;\n}\n}\n.skills[data-v-02b9d253],\n.skills .skill[data-v-02b9d253],\n.skills .skill .skill-title[data-v-02b9d253],\n.skills .skill .skill-bar[data-v-02b9d253] {\n  width: 100%;\n  float: left;\n}\n.skills[data-v-02b9d253] {\n  padding: 0px 15px 10px 15px;\n}\n.skills .skill[data-v-02b9d253] {\n  margin-bottom: 30px;\n}\n.skills .skill .skill-title[data-v-02b9d253] {\n  color: #808080;\n  margin-bottom: 15px;\n  font-weight: 400;\n  font-size: 14px;\n}\n.skills .skill .skill-bar[data-v-02b9d253] {\n  width: 0;\n  height: 6px;\n  background: #f0f0f0;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills.active .skill .skill-bar[data-v-02b9d253] {\n  width: 100%;\n}\n.skills .skill .skill-bar span[data-v-02b9d253] {\n  float: left;\n  width: 0%;\n  background: #1D91F2;\n  height: 6px;\n  position: relative;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills .skill .skill-bar span b[data-v-02b9d253] {\n  float: left;\n  width: 100%;\n  position: relative;\n  text-align: right;\n  opacity: 0;\n  font-size: 14px;\n  color: #1D91F2;\n  font-weight: 400;\n  top: -13px;\n}\n.container[data-v-02b9d253] {\n  width: 100%;\n  max-width: 600px;\n  padding: 0 15px;\n  margin: 0 auto;\n}\n@media only screen and (max-width: 500px) {\n.educationSection[data-v-02b9d253] {\n    padding-left: 0;\n    padding-right: 5px;\n}\n}\n@media only screen and (max-width: 500px) {\n.aboutText[data-v-02b9d253] {\n    padding-left: 0;\n}\n}\n.seduHeader[data-v-02b9d253] {\n  padding-left: 6px;\n}\n@media only screen and (max-width: 500px) {\n.seduHeader[data-v-02b9d253] {\n      padding-left: 5px;\n}\n}\n", ""]);
 
 // exports
 
@@ -58880,6 +58880,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_load_image__);
+//
+//
 //
 //
 //
@@ -59613,9 +59615,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 $(".skills .skill .skill-bar span b").animate({ "opacity": "1" }, 1000);
             }, 2000);
             console.log('ran');
-        },
-        getSkillBarRandom: function getSkillBarRandom(min, max) {
-            return Math.random() * (max - min) + min;
         }
     },
     mounted: function mounted() {
@@ -60435,10 +60434,8 @@ var render = function() {
                                                         staticClass:
                                                           "skill-bar",
                                                         attrs: {
-                                                          "data-bar": _vm.getSkillBarRandom(
-                                                            70,
-                                                            100
-                                                          )
+                                                          "data-bar":
+                                                            skill.percentage
                                                         }
                                                       },
                                                       [_c("span")]
@@ -60570,10 +60567,8 @@ var render = function() {
                                                         staticClass:
                                                           "skill-bar",
                                                         attrs: {
-                                                          "data-bar": _vm.getSkillBarRandom(
-                                                            70,
-                                                            100
-                                                          )
+                                                          "data-bar":
+                                                            skill.percentage
                                                         }
                                                       },
                                                       [_c("span")]
@@ -60704,10 +60699,8 @@ var render = function() {
                                                         staticClass:
                                                           "skill-bar",
                                                         attrs: {
-                                                          "data-bar": _vm.getSkillBarRandom(
-                                                            70,
-                                                            100
-                                                          )
+                                                          "data-bar":
+                                                            skill.percentage
                                                         }
                                                       },
                                                       [_c("span")]
@@ -60838,10 +60831,8 @@ var render = function() {
                                                         staticClass:
                                                           "skill-bar",
                                                         attrs: {
-                                                          "data-bar": _vm.getSkillBarRandom(
-                                                            70,
-                                                            100
-                                                          )
+                                                          "data-bar":
+                                                            skill.percentage
                                                         }
                                                       },
                                                       [_c("span")]
@@ -60904,15 +60895,18 @@ var render = function() {
                                         [
                                           _c(
                                             "div",
-                                            { staticClass: "title work" },
+                                            {
+                                              staticClass: "title work d-flex"
+                                            },
                                             [
                                               _c("span", {
                                                 staticClass: "circle"
                                               }),
-                                              _vm._v(
-                                                "\n                                                    " +
-                                                  _vm._s(work.job_title) +
-                                                  "\n                                                "
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                { staticClass: "seduHeader" },
+                                                [_vm._v(_vm._s(work.job_title))]
                                               )
                                             ]
                                           ),
@@ -61014,17 +61008,26 @@ var render = function() {
                                         [
                                           _c(
                                             "div",
-                                            { staticClass: "title work" },
+                                            {
+                                              staticClass: "title work d-flex"
+                                            },
                                             [
                                               _c("span", {
                                                 staticClass: "circle"
                                               }),
-                                              _vm._v(
-                                                "\n                                                    " +
-                                                  _vm._s(
-                                                    education.school_title
-                                                  ) +
-                                                  "\n                                                "
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                { staticClass: "seduHeader" },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                        " +
+                                                      _vm._s(
+                                                        education.school_title
+                                                      ) +
+                                                      "\n                                                    "
+                                                  )
+                                                ]
                                               )
                                             ]
                                           ),
@@ -61519,6 +61522,2504 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
+var __vue_scopeId__ = "data-v-3431b16d"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\freelancerResume\\resumeComponentShortV2.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3431b16d", Component.options)
+  } else {
+    hotAPI.reload("data-v-3431b16d", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(78);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("d3f14e5a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3431b16d\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resumeComponentShortV2.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3431b16d\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resumeComponentShortV2.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.projectsSection[data-v-3431b16d] {\n  margin-top: 1px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-3431b16d] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-3431b16d] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  height: 730px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 710px;\n      height: 815px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 315px;\n      height: 785px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-3431b16d] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-3431b16d], .fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-3431b16d], .fade-leave-to[data-v-3431b16d] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-3431b16d], .slide-fade-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-3431b16d], .slide-fade-left-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n.importBtn[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0;\n}\n.importBtn a[data-v-3431b16d]:hover {\n    color: white;\n}\n.skillscard[data-v-3431b16d] {\n  padding-left: 35px;\n  padding-top: 15px;\n}\n.tab-pane[data-v-3431b16d] {\n  height: 541px;\n  overflow: auto;\n}\n.skills[data-v-3431b16d],\n.skills .skill[data-v-3431b16d],\n.skills .skill .skill-title[data-v-3431b16d],\n.skills .skill .skill-bar[data-v-3431b16d] {\n  width: 100%;\n  float: left;\n}\n.skills[data-v-3431b16d] {\n  padding: 0px 15px 10px 15px;\n}\n.skills .skill[data-v-3431b16d] {\n  margin-bottom: 30px;\n}\n.skills .skill .skill-title[data-v-3431b16d] {\n  color: #808080;\n  margin-bottom: 15px;\n  font-weight: 400;\n  font-size: 14px;\n}\n.skills .skill .skill-bar[data-v-3431b16d] {\n  width: 0;\n  height: 6px;\n  background: #f0f0f0;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills.active .skill .skill-bar[data-v-3431b16d] {\n  width: 100%;\n}\n.skills .skill .skill-bar span[data-v-3431b16d] {\n  float: left;\n  width: 0%;\n  background: #1D91F2;\n  height: 6px;\n  position: relative;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills .skill .skill-bar span b[data-v-3431b16d] {\n  float: left;\n  width: 100%;\n  position: relative;\n  text-align: right;\n  opacity: 0;\n  font-size: 14px;\n  color: #1D91F2;\n  font-weight: 400;\n  top: -13px;\n}\n.container[data-v-3431b16d] {\n  width: 100%;\n  max-width: 600px;\n  padding: 0 15px;\n  margin: 0 auto;\n}\n.seduHeader[data-v-3431b16d] {\n  padding-left: 6px;\n}\n@media only screen and (max-width: 500px) {\n.seduHeader[data-v-3431b16d] {\n      padding-left: 5px;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_load_image__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['freelancer', 'hire', 'search'],
+    components: {
+        'vue-load-image': __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default.a,
+        Slick: __WEBPACK_IMPORTED_MODULE_0_vue_slick__["a" /* default */]
+    },
+    data: function data() {
+        return {
+            slideNumber: 1,
+            numberOfSlides: this.calculateNumberOfSlides(),
+            skills: this.freelancer.skills,
+            worksHistory: this.freelancer.works_history,
+            educationsHistory: this.freelancer.educations_history,
+            references: this.freelancer.references,
+            currentTab: 'skills',
+            slickOptions: {
+                infinite: false,
+                dots: false,
+                arrows: false,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                responsive: [{
+                    breakpoint: 786,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }, {
+                    breakpoint: 991,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }]
+            },
+            weeks: 4,
+            hours: this.freelancer.user_data.availableHours.replace(/[^0-9]/g, ''),
+            portfolio: !this.hire,
+            showReferences: false
+        };
+    },
+
+    methods: {
+        getResizedImage: function getResizedImage(src) {
+            var resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
+            if (this.search == false) {
+                return resizedImage;
+            }
+            return this.getImageSrc(src);
+        },
+        setTab: function setTab(tabName) {
+            var _this = this;
+
+            this.currentTab = tabName;
+            if (tabName === 'portfolio') {
+                this.$nextTick(function () {
+                    _this.$refs.slick.reSlick();
+                });
+            }
+        },
+        getDate: function getDate(date) {
+            var workDate = new Date(date);
+            var dd = workDate.getDate();
+            var mm = workDate.getMonth() + 1; //January is 0!
+
+            var yyyy = workDate.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+
+            return dd + '/' + mm + '/' + yyyy;
+        },
+        getSkillIconSrc: function getSkillIconSrc(skill_title) {
+            var arrayOfSkillImages = {
+                'ui design': '/resumeApp/resources/assets/images/skills_icons/user_interface.png',
+                'ux design': '/resumeApp/resources/assets/images/skills_icons/user_experience.png',
+                'logo design': '/resumeApp/resources/assets/images/skills_icons/logo_design.png',
+                'animation': '/resumeApp/resources/assets/images/skills_icons/animation.jpg',
+                'motion graphics': '/resumeApp/resources/assets/images/skills_icons/motion_graphics.png',
+                'illustration': '/resumeApp/resources/assets/images/skills_icons/illustration.png',
+                'advertising': '/resumeApp/resources/assets/images/skills_icons/advertising.png',
+                'branding': '/resumeApp/resources/assets/images/skills_icons/branding.png',
+                'brochure Design': '/resumeApp/resources/assets/images/skills_icons/brochure_design.png',
+                'website design': '/resumeApp/resources/assets/images/skills_icons/web_design.png',
+                'game designer': '/resumeApp/resources/assets/images/skills_icons/game_designer.png',
+                'character design': '/resumeApp/resources/assets/images/skills_icons/character_design.png',
+                'digital painting': '/resumeApp/resources/assets/images/skills_icons/digital_painting.png',
+                'creative director': '/resumeApp/resources/assets/images/skills_icons/creative_director.png',
+                'html / css': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                // 2-
+
+                'adobe after effects': '/resumeApp/resources/assets/images/skills_icons/AE.png',
+                'sketch': '/resumeApp/resources/assets/images/skills_icons/Sketch.png',
+                'adobe illustrator': '/resumeApp/resources/assets/images/skills_icons/Illustrator.png',
+                'adobe xd': '/resumeApp/resources/assets/images/skills_icons/AdobeXD.png',
+                'photoshop': '/resumeApp/resources/assets/images/skills_icons/Photoshop.png',
+                'autocad': '/resumeApp/resources/assets/images/skills_icons/autocad.png',
+                'solidworks': '/resumeApp/resources/assets/images/skills_icons/solid_works.png',
+                'adobe flash': '/resumeApp/resources/assets/images/skills_icons/adobe_flash.png',
+                'digital drawing Tablet': '/resumeApp/resources/assets/images/skills_icons/digital_drawing_tablet.png',
+                'adobe indesign': '/resumeApp/resources/assets/images/skills_icons/indesign.png',
+                'coreldraw': '/resumeApp/resources/assets/images/skills_icons/corel_draw.png',
+                '3d max': '/resumeApp/resources/assets/images/skills_icons/3d_max.png',
+
+                // developer :
+                // 1-
+                'javascript': '/resumeApp/resources/assets/images/skills_icons/javascript.png',
+                'sql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+                'java': 'resumeApp/resources/assets/images/skills_icons/java.png',
+                'c#': '/resumeApp/resources/assets/images/skills_icons/c#.png',
+                'python': '/resumeApp/resources/assets/images/skills_icons/python.png',
+                'php': '/resumeApp/resources/assets/images/skills_icons/php.png',
+                'c++': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
+                'c': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
+                'typescript': '/resumeApp/resources/assets/images/skills_icons/typescript.png',
+                'ruby': '/resumeApp/resources/assets/images/skills_icons/ruby.png',
+                'objective-C': '/resumeApp/resources/assets/images/skills_icons/objective_c.png',
+                'swift': '/resumeApp/resources/assets/images/skills_icons/swift.png',
+                'vb.net': '/resumeApp/resources/assets/images/skills_icons/vb_net.png',
+                'go': '/resumeApp/resources/assets/images/skills_icons/go.png',
+                'perl': '/resumeApp/resources/assets/images/skills_icons/perl.png',
+                'scala': '/resumeApp/resources/assets/images/skills_icons/scala.png',
+                'groovy': '/resumeApp/resources/assets/images/skills_icons/groovy.png',
+                'assembly': '/resumeApp/resources/assets/images/skills_icons/assembly.png',
+                'coffeescript': '/resumeApp/resources/assets/images/skills_icons/coffeeScript.png',
+                'vba': '/resumeApp/resources/assets/images/skills_icons/vba.png',
+                'r': '/resumeApp/resources/assets/images/skills_icons/r_lang.png',
+                'matlab': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
+                'visual basic 6': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
+                'lua': '/resumeApp/resources/assets/images/skills_icons/lua.png',
+                'haskell': '/resumeApp/resources/assets/images/skills_icons/haskell.png',
+                'html': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                'css': '/resumeApp/resources/assets/images/skills_icons/CSS.png',
+
+                //2-
+                'angularjs': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
+                'angular.js': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
+                'node.js': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
+                'nodejs': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
+                '.net Core': '/resumeApp/resources/assets/images/skills_icons/netcore.png',
+                'react': '/resumeApp/resources/assets/images/skills_icons/react.png',
+                'cordova': '/resumeApp/resources/assets/images/skills_icons/cordava.png',
+                'firebase': '',
+                'xamarin': '',
+                'hadoop': '/resumeApp/resources/assets/images/skills_icons/hadoop.png',
+                'spark': '/resumeApp/resources/assets/images/skills_icons/spark.png',
+                'mysql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+                'sql server': '/resumeApp/resources/assets/images/skills_icons/sql server.png',
+                'postgresql': '/resumeApp/resources/assets/images/skills_icons/postgreSQL.png',
+                'sqlite': '/resumeApp/resources/assets/images/skills_icons/SQLite.png',
+                'mongodb': '/resumeApp/resources/assets/images/skills_icons/mongoDB.png',
+                'oracle': '/resumeApp/resources/assets/images/skills_icons/Oracle.png',
+                'redis': '/resumeApp/resources/assets/images/skills_icons/redis.png',
+                'cassandra': '/resumeApp/resources/assets/images/skills_icons/cassandra.png'
+            };
+            if (arrayOfSkillImages.hasOwnProperty(skill_title.toLowerCase())) {
+                return arrayOfSkillImages[skill_title.toLowerCase()];
+            }
+            return '/resumeApp/resources/assets/images/skills_icons/skill.png';
+        },
+        getImageSrc: function getImageSrc(src) {
+            if (!src) {
+                return '/resumeApp/public/images/placeholder.png';
+            }
+
+            if (src.charAt(0) !== '/' && src.charAt(0) !== 'h') {
+                return '/' + src;
+            }
+
+            return src;
+        },
+        loadHDImage: function loadHDImage(project_id) {
+            var projects = this.freelancer.projects;
+            $.each(projects, function (i) {
+                if (projects[i].id === project_id) {
+                    $('#projectModalPhoto' + project_id).attr('src', projects[i].mainImage);
+                    return false;
+                }
+            });
+        },
+        showHireSection: function showHireSection() {
+            var _this2 = this;
+
+            setTimeout(function () {
+                _this2.hire = true;
+            }, 800);
+            this.portfolio = false;
+            this.showReferences = false;
+        },
+        showReferencesSection: function showReferencesSection() {
+            var _this3 = this;
+
+            setTimeout(function () {
+                _this3.showReferences = true;
+            }, 800);
+            this.portfolio = false;
+            this.hire = false;
+        },
+        hideReferencesSection: function hideReferencesSection() {
+            var _this4 = this;
+
+            this.hire = false;
+            this.showReferences = false;
+            setTimeout(function () {
+                _this4.portfolio = true;
+            }, 800);
+        },
+        hideHireSection: function hideHireSection() {
+            var _this5 = this;
+
+            this.hire = false;
+            this.showReferences = false;
+            setTimeout(function () {
+                _this5.portfolio = true;
+            }, 800);
+        },
+        updateSlick: function updateSlick() {
+            var _this6 = this;
+
+            this.$nextTick(function () {
+                if (_this6.$refs.slick !== undefined) {
+                    _this6.$refs.slick.reSlick();
+                    _this6.slideNumber = 1;
+                }
+            });
+        },
+        addHours: function addHours() {
+            this.hours++;
+        },
+        subtractHours: function subtractHours() {
+            this.hours--;
+        },
+        addWeeks: function addWeeks() {
+            this.weeks++;
+        },
+        subtractWeeks: function subtractWeeks() {
+            this.weeks--;
+        },
+        slidePrev: function slidePrev() {
+            this.$refs.slick.prev();
+            if (this.slideNumber - 1 > 0) {
+                this.slideNumber--;
+            }
+        },
+        slideNext: function slideNext() {
+            this.$refs.slick.next();
+            if (this.slideNumber + 1 <= this.calculateNumberOfSlides()) {
+                this.slideNumber++;
+            }
+        },
+        calculateNumberOfSlides: function calculateNumberOfSlides() {
+            var width = $(window).width();
+            if (width < 991) {
+                return this.freelancer.projects.length;
+            }
+            return Math.ceil(this.freelancer.projects.length / 2);
+        },
+        highlightSkill: function highlightSkill(skill, percent) {
+            $('#skillImage_' + skill.id).css('filter', 'grayscale(' + percent + '%)');
+        },
+        skillsBar: function skillsBar() {
+            $(".skills").addClass("active");
+            $(".skills .skill .skill-bar span").each(function () {
+                $(this).animate({
+                    "width": $(this).parent().attr("data-bar") + "%"
+                }, 1000);
+            });
+            setTimeout(function () {
+                $(".skills .skill .skill-bar span b").animate({ "opacity": "1" }, 1000);
+            }, 2000);
+            console.log('ran');
+        }
+    },
+    mounted: function mounted() {
+        this.skillsBar();
+    },
+
+    created: function created() {
+        this.$parent.$on('update', this.updateSlick);
+    }
+});
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "freelancerCard" }, [
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-lg-12 col-md-12 col-12 resumeCardRight" },
+          [
+            _c("div", { staticClass: "showOnlyOnmd" }, [
+              _c("div", { staticClass: "row nameRow" }, [
+                _c("div", { staticClass: "col-lg-2 col-6 imageCol" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "imageContainer",
+                      staticStyle: { padding: "10px" }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "freelancerImg",
+                        attrs: {
+                          src: _vm.getImageSrc(_vm.freelancer.user_data.photo),
+                          alt: "freelancer",
+                          width: "120",
+                          height: "120"
+                        }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-lg-3 col-md-4 col-6 freelancerCardLeft" },
+                  [
+                    _c("div", { staticClass: "nameArea" }, [
+                      _c("div", { staticClass: "nameCard" }, [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(_vm.freelancer.firstName) +
+                            "\n                                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "jobTitle",
+                          staticStyle: {
+                            color: "white",
+                            "font-size": "14px",
+                            "padding-top": "7px"
+                          },
+                          attrs: { id: "animatedText" + _vm.freelancer.id }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    " +
+                              _vm._s(_vm.freelancer.user_data.jobTitle) +
+                              "\n                                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "form",
+                        {
+                          attrs: {
+                            action: "/chat-room/start_conversation",
+                            method: "post"
+                          }
+                        },
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "freelancer_id" },
+                            domProps: { value: _vm.freelancer.id }
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "tap-to-chat cursorPointerOnHover",
+                            staticStyle: {
+                              background: "none",
+                              border: "none",
+                              outline: "none"
+                            },
+                            attrs: { type: "submit", value: "TAP TO CHAT" }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "d-none",
+                          attrs: { id: "welcomeText" + _vm.freelancer.id }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Hi, I am " +
+                              _vm._s(_vm.freelancer.firstName) +
+                              ", I am a " +
+                              _vm._s(_vm.freelancer.user_data.jobTitle) +
+                              ", How can I help\n                                    you ?\n                                "
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "col-lg-7 col-md-8 freelancerCardRight d-flex align-items-center"
+                  },
+                  [
+                    _c("div", { staticClass: "row hireRow w-100" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-md-4 text-center",
+                          staticStyle: { "font-size": "15px", color: "white" }
+                        },
+                        [
+                          _c(
+                            "span",
+                            { staticStyle: { "font-weight": "bold" } },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(_vm.freelancer.user_data.salary) +
+                                  "\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "cardLabel",
+                              staticStyle: {
+                                "font-size": "13px",
+                                "font-weight": "normal"
+                              }
+                            },
+                            [_vm._v("Hourly rate")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-md-4 text-center",
+                          staticStyle: { "font-size": "15px", color: "white" }
+                        },
+                        [
+                          _c(
+                            "span",
+                            { staticStyle: { "font-weight": "bold" } },
+                            [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.freelancer.user_data.availableHours.replace(
+                                    /[^0-9]/g,
+                                    ""
+                                  )
+                                ) + " hours"
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "cardLabel",
+                              staticStyle: {
+                                "font-size": "13px",
+                                "font-weight": "normal"
+                              }
+                            },
+                            [_vm._v("Weekly Availability")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "col-md-4",
+                          staticStyle: { padding: "0" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "row text-center cardRow NoDecor" },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "hireCardBtn btn-block showHireSection",
+                                  attrs: { href: "javascript:void(0)" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.showHireSection()
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                            Hire me\n                                        "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "showOnlyOnsm" }, [
+              _c("div", { staticClass: "row cardMainInfo_mob" }, [
+                _c("div", { staticClass: "col-6" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "imageContainer",
+                      staticStyle: { padding: "20px 10px 10px 10px" }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "freelancerImg",
+                        attrs: {
+                          src: _vm.getImageSrc(_vm.freelancer.user_data.photo),
+                          alt: "freelancer",
+                          width: "120",
+                          height: "120"
+                        }
+                      })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6 resumeCardRight" }, [
+                  _c("div", { staticClass: "nameArea" }, [
+                    _c("div", { staticClass: "nameCard" }, [
+                      _vm._v(
+                        "\n                                    " +
+                          _vm._s(_vm.freelancer.firstName) +
+                          "\n                                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "jobTitle",
+                        staticStyle: {
+                          "font-size": "17px",
+                          "padding-left": "0",
+                          color: "#c1d1ff"
+                        },
+                        attrs: { id: "animatedText" + _vm.freelancer.id }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(_vm.freelancer.user_data.jobTitle) +
+                            "\n                                "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "text-left",
+                        staticStyle: {
+                          "font-size": "15px",
+                          color: "white",
+                          "padding-top": "5px"
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "cardLabel",
+                            staticStyle: {
+                              "font-weight": "300",
+                              "font-size": "14px"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "Hourly rate :\n                                        "
+                            ),
+                            _c(
+                              "span",
+                              { staticStyle: { "font-weight": "bold" } },
+                              [
+                                _vm._v(
+                                  "\n                                        $ " +
+                                    _vm._s(_vm.freelancer.user_data.salary) +
+                                    "\n                                    "
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "text-left",
+                        staticStyle: {
+                          "font-size": "15px",
+                          color: "white",
+                          "padding-top": "5px"
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "cardLabel",
+                            staticStyle: {
+                              "font-weight": "300",
+                              "font-size": "14px"
+                            }
+                          },
+                          [
+                            _vm._v("Availability :  "),
+                            _c(
+                              "span",
+                              { staticStyle: { "font-weight": "bold" } },
+                              [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.freelancer.user_data.availableHours.replace(
+                                      /[^0-9]/g,
+                                      ""
+                                    )
+                                  ) + "h/week"
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "d-none",
+                        attrs: { id: "welcomeText" + _vm.freelancer.id }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                    Hi, I am " +
+                            _vm._s(_vm.freelancer.firstName) +
+                            ", I am a " +
+                            _vm._s(_vm.freelancer.user_data.jobTitle) +
+                            ", How can I help\n                                    you ?\n                                "
+                        )
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-6",
+                      staticStyle: {
+                        "margin-top": "-39px",
+                        "padding-left": "28px"
+                      }
+                    },
+                    [
+                      _c(
+                        "form",
+                        {
+                          attrs: {
+                            action: "/chat-room/start_conversation",
+                            method: "post"
+                          }
+                        },
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "freelancer_id" },
+                            domProps: { value: _vm.freelancer.id }
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "tap-to-chat cursorPointerOnHover",
+                            staticStyle: {
+                              background: "none",
+                              border: "none",
+                              outline: "none"
+                            },
+                            attrs: { type: "submit", value: "TAP TO CHAT" }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-12",
+                    staticStyle: { padding: "10px 20px 16px 20px" }
+                  },
+                  [
+                    _c("div", { staticClass: "text-center cardRow NoDecor" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "hireCardBtn btn-block showHireSection",
+                          attrs: { href: "javascript:void(0)" },
+                          on: {
+                            click: function($event) {
+                              _vm.showHireSection()
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                    Hire me\n                                "
+                          )
+                        ]
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("transition", { attrs: { name: "slide-fade" } }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.portfolio,
+                      expression: "portfolio"
+                    }
+                  ]
+                },
+                [
+                  _c("div", { staticClass: "row navRow" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-2 offset-md-3 col-4 text-center",
+                        staticStyle: { "border-right": "1px solid #EBEDEF" },
+                        on: {
+                          click: function($event) {
+                            _vm.setTab("skills")
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "navTab NoDecor",
+                            class: { active: _vm.currentTab === "skills" }
+                          },
+                          [
+                            _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                              _vm._v(
+                                "\n                                        Skills\n                                    "
+                              )
+                            ])
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-2 col-4 text-center",
+                        staticStyle: { "border-right": "1px solid #EBEDEF" },
+                        on: {
+                          click: function($event) {
+                            _vm.setTab("work")
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "navTab NoDecor",
+                            class: { active: _vm.currentTab === "work" }
+                          },
+                          [
+                            _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                              _vm._v(
+                                "\n                                        Work\n                                    "
+                              )
+                            ])
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-md-2 col-4 text-center",
+                        on: {
+                          click: function($event) {
+                            _vm.setTab("education")
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "navTab NoDecor",
+                            class: { active: _vm.currentTab === "education" }
+                          },
+                          [
+                            _c("a", { attrs: { href: "javascript:void(0)" } }, [
+                              _vm._v(
+                                "\n                                        Education\n                                    "
+                              )
+                            ])
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.currentTab === "skills",
+                          expression: "currentTab === 'skills'"
+                        }
+                      ]
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticStyle: { "padding-top": "2px" },
+                          attrs: { id: "nav-taps-resume" }
+                        },
+                        [
+                          _c(
+                            "ul",
+                            {
+                              staticClass: "nav nav-tabs",
+                              attrs: { role: "tablist" }
+                            },
+                            [
+                              _c("li", { staticClass: "nav-item" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "nav-link text-center active",
+                                    attrs: {
+                                      href: "#languagesTab" + _vm.freelancer.id,
+                                      role: "tab",
+                                      "data-toggle": "tab"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            Programming Languages\n                                        "
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("li", { staticClass: "nav-item" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "nav-link text-center",
+                                    attrs: {
+                                      href: "#databases" + _vm.freelancer.id,
+                                      role: "tab",
+                                      "data-toggle": "tab"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            Frameworks / Databases\n                                        "
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("li", { staticClass: "nav-item" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "nav-link text-center",
+                                    attrs: {
+                                      href: "#skillsTab" + _vm.freelancer.id,
+                                      role: "tab",
+                                      "data-toggle": "tab"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            Design Skills\n                                        "
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("li", { staticClass: "nav-item" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "nav-link text-center",
+                                    attrs: {
+                                      href: "#software" + _vm.freelancer.id,
+                                      role: "tab",
+                                      "data-toggle": "tab"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            Software\n                                        "
+                                    )
+                                  ]
+                                )
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "tab-content" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "tab-pane active firstItem",
+                                attrs: {
+                                  role: "tabpanel",
+                                  id: "languagesTab" + _vm.freelancer.id
+                                }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "row",
+                                    staticStyle: {
+                                      "padding-top": "17px",
+                                      "padding-bottom": "16px",
+                                      background: "#fdfdfd"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-md-12  text-center" },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
+                                          },
+                                          _vm._l(_vm.skills, function(
+                                            skill,
+                                            index
+                                          ) {
+                                            return _c(
+                                              "div",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "show",
+                                                    rawName: "v-show",
+                                                    value:
+                                                      skill.type ===
+                                                      "programming",
+                                                    expression:
+                                                      "skill.type === 'programming'"
+                                                  }
+                                                ],
+                                                key: index,
+                                                staticClass:
+                                                  "highlightSkill skills",
+                                                on: {
+                                                  mouseover: function($event) {
+                                                    _vm.highlightSkill(skill, 0)
+                                                  },
+                                                  mouseleave: function($event) {
+                                                    _vm.highlightSkill(
+                                                      skill,
+                                                      100
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar":
+                                                            skill.percentage
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "tab-pane ",
+                                attrs: {
+                                  role: "tabpanel",
+                                  id: "databases" + _vm.freelancer.id
+                                }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "row",
+                                    staticStyle: {
+                                      "padding-top": "17px",
+                                      "padding-bottom": "16px",
+                                      background: "#fdfdfd"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-md-12  text-center" },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
+                                          },
+                                          _vm._l(_vm.skills, function(
+                                            skill,
+                                            index
+                                          ) {
+                                            return _c(
+                                              "div",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "show",
+                                                    rawName: "v-show",
+                                                    value:
+                                                      skill.type ===
+                                                      "frameworks",
+                                                    expression:
+                                                      "skill.type === 'frameworks'"
+                                                  }
+                                                ],
+                                                key: index,
+                                                staticClass:
+                                                  "highlightSkill skills",
+                                                on: {
+                                                  mouseover: function($event) {
+                                                    _vm.highlightSkill(skill, 0)
+                                                  },
+                                                  mouseleave: function($event) {
+                                                    _vm.highlightSkill(
+                                                      skill,
+                                                      100
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar":
+                                                            skill.percentage
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "tab-pane",
+                                attrs: {
+                                  role: "tabpanel",
+                                  id: "skillsTab" + _vm.freelancer.id
+                                }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "row",
+                                    staticStyle: {
+                                      "padding-top": "17px",
+                                      "padding-bottom": "16px",
+                                      background: "#fdfdfd"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-md-12  text-center" },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
+                                          },
+                                          _vm._l(_vm.skills, function(
+                                            skill,
+                                            index
+                                          ) {
+                                            return _c(
+                                              "div",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "show",
+                                                    rawName: "v-show",
+                                                    value:
+                                                      skill.type === "design",
+                                                    expression:
+                                                      "skill.type === 'design'"
+                                                  }
+                                                ],
+                                                key: index,
+                                                staticClass:
+                                                  "highlightSkill skills",
+                                                on: {
+                                                  mouseover: function($event) {
+                                                    _vm.highlightSkill(skill, 0)
+                                                  },
+                                                  mouseleave: function($event) {
+                                                    _vm.highlightSkill(
+                                                      skill,
+                                                      100
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar":
+                                                            skill.percentage
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "tab-pane",
+                                attrs: {
+                                  role: "tabpanel",
+                                  id: "software" + _vm.freelancer.id
+                                }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "row",
+                                    staticStyle: {
+                                      "padding-top": "17px",
+                                      "padding-bottom": "16px",
+                                      background: "#fdfdfd"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-md-12  text-center" },
+                                      [
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "d-flex flex-column align-items-start",
+                                            staticStyle: {
+                                              "padding-top": "15px"
+                                            }
+                                          },
+                                          _vm._l(_vm.skills, function(
+                                            skill,
+                                            index
+                                          ) {
+                                            return _c(
+                                              "div",
+                                              {
+                                                directives: [
+                                                  {
+                                                    name: "show",
+                                                    rawName: "v-show",
+                                                    value:
+                                                      skill.type === "software",
+                                                    expression:
+                                                      "skill.type === 'software'"
+                                                  }
+                                                ],
+                                                key: index,
+                                                staticClass:
+                                                  "highlightSkill skills",
+                                                on: {
+                                                  mouseover: function($event) {
+                                                    _vm.highlightSkill(skill, 0)
+                                                  },
+                                                  mouseleave: function($event) {
+                                                    _vm.highlightSkill(
+                                                      skill,
+                                                      100
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
+                                                  {
+                                                    staticClass:
+                                                      "skill text-left"
+                                                  },
+                                                  [
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-title"
+                                                      },
+                                                      [
+                                                        _c("img", {
+                                                          staticStyle: {
+                                                            width: "17px",
+                                                            "padding-bottom":
+                                                              "3px"
+                                                          },
+                                                          attrs: {
+                                                            src: _vm.getSkillIconSrc(
+                                                              skill.skill_title
+                                                            ),
+                                                            alt: "skill",
+                                                            id:
+                                                              "skillImage_" +
+                                                              skill.id
+                                                          }
+                                                        }),
+                                                        _vm._v(
+                                                          "\n                                                                " +
+                                                            _vm._s(
+                                                              skill.skill_title
+                                                            ) +
+                                                            "\n                                                            "
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "div",
+                                                      {
+                                                        staticClass:
+                                                          "skill-bar",
+                                                        attrs: {
+                                                          "data-bar":
+                                                            skill.percentage
+                                                        }
+                                                      },
+                                                      [_c("span")]
+                                                    )
+                                                  ]
+                                                )
+                                              ]
+                                            )
+                                          })
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.currentTab === "work",
+                          expression: "currentTab === 'work'"
+                        }
+                      ]
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "row",
+                          staticStyle: { "padding-top": "10px" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "col-12 educationSection" },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "aboutText" },
+                                _vm._l(_vm.worksHistory, function(work, index) {
+                                  return _c(
+                                    "div",
+                                    { key: index + "V", staticClass: "row" },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "col-md-12 aboutSubText"
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "title work d-flex"
+                                            },
+                                            [
+                                              _c("span", {
+                                                staticClass: "circle"
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                { staticClass: "seduHeader" },
+                                                [_vm._v(_vm._s(work.job_title))]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "company" },
+                                            [_vm._v(_vm._s(work.company))]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("div", { staticClass: "year" }, [
+                                            _c(
+                                              "span",
+                                              { staticClass: "work" },
+                                              [
+                                                _vm._v(
+                                                  "\n                                                        " +
+                                                    _vm._s(
+                                                      _vm.getDate(
+                                                        work.date_from
+                                                      )
+                                                    ) +
+                                                    "\n                                                        "
+                                                ),
+                                                work.currently_working
+                                                  ? _c("span", [
+                                                      _vm._v(" - Present ")
+                                                    ])
+                                                  : _c("span", [
+                                                      _vm._v(
+                                                        " - " +
+                                                          _vm._s(
+                                                            _vm.getDate(
+                                                              work.date_to
+                                                            )
+                                                          )
+                                                      )
+                                                    ])
+                                              ]
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("div", { staticClass: "desc" }, [
+                                            _vm._v(_vm._s(work.job_description))
+                                          ])
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                })
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.currentTab === "education",
+                          expression: "currentTab === 'education'"
+                        }
+                      ]
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "row",
+                          staticStyle: { "padding-top": "10px" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "col-12 educationSection" },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "aboutText" },
+                                _vm._l(_vm.educationsHistory, function(
+                                  education,
+                                  index
+                                ) {
+                                  return _c(
+                                    "div",
+                                    { key: index + "E", staticClass: "row" },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "col-md-12 aboutSubText"
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "title work d-flex"
+                                            },
+                                            [
+                                              _c("span", {
+                                                staticClass: "circle"
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                { staticClass: "seduHeader" },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                    " +
+                                                      _vm._s(
+                                                        education.school_title
+                                                      ) +
+                                                      "\n                                                    "
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("div", { staticClass: "year" }, [
+                                            _c(
+                                              "span",
+                                              { staticClass: "work" },
+                                              [
+                                                _vm._v(
+                                                  "\n                                                        " +
+                                                    _vm._s(
+                                                      _vm.getDate(
+                                                        education.date_from
+                                                      )
+                                                    ) +
+                                                    "\n                                                        "
+                                                ),
+                                                education.currently_learning
+                                                  ? _c("span", [
+                                                      _vm._v(" - Present ")
+                                                    ])
+                                                  : _c("span", [
+                                                      _vm._v(
+                                                        " - " +
+                                                          _vm._s(
+                                                            _vm.getDate(
+                                                              education.date_to
+                                                            )
+                                                          )
+                                                      )
+                                                    ])
+                                              ]
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("div", { staticClass: "desc" }, [
+                                            _vm._v(
+                                              _vm._s(education.description)
+                                            )
+                                          ])
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                })
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("transition", { attrs: { name: "slide-fade-left" } }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.hire,
+                      expression: "hire"
+                    }
+                  ]
+                },
+                [
+                  _c(
+                    "div",
+                    { staticStyle: { "border-top": "1px solid #EBEDEF" } },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          { staticClass: "offset-md-4 col-md-4 col-12" },
+                          [
+                            _c("div", { staticClass: "hireText" }, [
+                              _vm._v(
+                                "\n                                        Select the number of Hours you need per week:\n                                    "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "hoursBtn NoDecor" }, [
+                              _c(
+                                "a",
+                                { attrs: { href: "javascript:void(0)" } },
+                                [
+                                  _c("img", {
+                                    staticStyle: {
+                                      width: "18px",
+                                      "padding-right": "8px"
+                                    },
+                                    attrs: {
+                                      src:
+                                        "/resumeApp/public/images/newResume/minus.png",
+                                      alt: "minus"
+                                    },
+                                    on: { click: _vm.subtractHours }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("span", [_vm._v(_vm._s(_vm.hours))]),
+                              _vm._v(
+                                " hours\n                                        "
+                              ),
+                              _c(
+                                "a",
+                                { attrs: { href: "javascript:void(0)" } },
+                                [
+                                  _c("img", {
+                                    staticStyle: {
+                                      width: "18px",
+                                      "padding-left": "8px"
+                                    },
+                                    attrs: {
+                                      src:
+                                        "/resumeApp/public/images/newResume/plus.png",
+                                      alt: "plus"
+                                    },
+                                    on: { click: _vm.addHours }
+                                  })
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          { staticClass: "offset-md-4 col-md-4 col-12" },
+                          [
+                            _c("div", { staticClass: "hireText" }, [
+                              _vm._v(
+                                "\n                                        How many weeks would you like to book for?\n                                    "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "hoursBtn NoDecor" }, [
+                              _c(
+                                "a",
+                                { attrs: { href: "javascript:void(0)" } },
+                                [
+                                  _c("img", {
+                                    staticStyle: {
+                                      width: "18px",
+                                      "padding-right": "8px"
+                                    },
+                                    attrs: {
+                                      src:
+                                        "/resumeApp/public/images/newResume/minus.png",
+                                      alt: "minus"
+                                    },
+                                    on: { click: _vm.subtractWeeks }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("span", [_vm._v(_vm._s(_vm.weeks))]),
+                              _vm._v(
+                                " weeks\n                                        "
+                              ),
+                              _c(
+                                "a",
+                                { attrs: { href: "javascript:void(0)" } },
+                                [
+                                  _c("img", {
+                                    staticStyle: {
+                                      width: "18px",
+                                      "padding-left": "8px"
+                                    },
+                                    attrs: {
+                                      src:
+                                        "/resumeApp/public/images/newResume/plus.png",
+                                      alt: "plus"
+                                    },
+                                    on: { click: _vm.addWeeks }
+                                  })
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "row",
+                          staticStyle: {
+                            "padding-top": "50px",
+                            "padding-bottom": "50px"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "offset-md-2 col-12 col-md-8",
+                              staticStyle: { "border-top": "1px solid #EBEDEF" }
+                            },
+                            [
+                              _c("div", { staticClass: "row" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "col-md-2 col-4 text-left jobTitle",
+                                    staticStyle: {
+                                      "font-size": "12px",
+                                      color: "#30323D"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            Monthly rate\n                                        "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "col-md-2 col-3 offset-5 offset-md-8 text-right jobTitle",
+                                    staticStyle: {
+                                      "font-weight": "bold",
+                                      "font-size": "12px",
+                                      color: "#30323D"
+                                    }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                            " +
+                                        _vm._s(
+                                          _vm.freelancer.user_data.salary_month
+                                        ) +
+                                        " $\n                                        "
+                                    )
+                                  ]
+                                )
+                              ])
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "row",
+                          staticStyle: { "border-top": "1px solid #EBEDEF" }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-md-4 offset-md-2 col-12 NoDecor",
+                              staticStyle: { "padding-top": "17px" }
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "justify-content-center d-flex btn-block cancelBtn",
+                                  attrs: { href: "javascript:void(0)" },
+                                  on: { click: _vm.hideHireSection }
+                                },
+                                [_vm._v("Cancel Booking")]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-md-4 col-12 NoDecor whiteOnHover",
+                              staticStyle: {
+                                "padding-top": "17px",
+                                "padding-bottom": "30px"
+                              }
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass:
+                                    "btn d-flex btn-block summaryBtn",
+                                  attrs: {
+                                    href:
+                                      "/stripe/hire?freelancerID=" +
+                                      _vm.freelancer.id +
+                                      "&hours=" +
+                                      _vm.hours +
+                                      "&weeks=" +
+                                      _vm.weeks
+                                  }
+                                },
+                                [_vm._v("Booking Summary")]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ],
+          1
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3431b16d", module.exports)
+  }
+}
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(82)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(84)
+/* template */
+var __vue_template__ = __webpack_require__(85)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
 var __vue_scopeId__ = "data-v-22725779"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
@@ -61552,13 +64053,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 77 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(78);
+var content = __webpack_require__(83);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -61578,7 +64079,7 @@ if(false) {
 }
 
 /***/ }),
-/* 78 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -61592,7 +64093,7 @@ exports.push([module.i, "\n.pre-formatted[data-v-22725779] {\n    white-space: p
 
 
 /***/ }),
-/* 79 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61700,7 +64201,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 80 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -61817,19 +64318,19 @@ if (false) {
 }
 
 /***/ }),
-/* 81 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(82)
+  __webpack_require__(87)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(84)
+var __vue_script__ = __webpack_require__(89)
 /* template */
-var __vue_template__ = __webpack_require__(85)
+var __vue_template__ = __webpack_require__(90)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -61868,13 +64369,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 82 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(83);
+var content = __webpack_require__(88);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -61894,7 +64395,7 @@ if(false) {
 }
 
 /***/ }),
-/* 83 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -61908,7 +64409,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 84 */
+/* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62054,7 +64555,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 85 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -62271,15 +64772,15 @@ if (false) {
 }
 
 /***/ }),
-/* 86 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(87)
+var __vue_script__ = __webpack_require__(92)
 /* template */
-var __vue_template__ = __webpack_require__(88)
+var __vue_template__ = __webpack_require__(93)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -62318,7 +64819,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 87 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62337,7 +64838,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 88 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -62357,15 +64858,15 @@ if (false) {
 }
 
 /***/ }),
-/* 89 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(90)
+var __vue_script__ = __webpack_require__(95)
 /* template */
-var __vue_template__ = __webpack_require__(91)
+var __vue_template__ = __webpack_require__(96)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -62404,7 +64905,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 90 */
+/* 95 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -62496,7 +64997,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 91 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -62905,19 +65406,19 @@ if (false) {
 }
 
 /***/ }),
-/* 92 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(93)
+  __webpack_require__(98)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(95)
+var __vue_script__ = __webpack_require__(100)
 /* template */
-var __vue_template__ = __webpack_require__(96)
+var __vue_template__ = __webpack_require__(101)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -62956,13 +65457,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 93 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(94);
+var content = __webpack_require__(99);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -62982,7 +65483,7 @@ if(false) {
 }
 
 /***/ }),
-/* 94 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -62996,7 +65497,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 95 */
+/* 100 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63141,7 +65642,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 96 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -63355,15 +65856,15 @@ if (false) {
 }
 
 /***/ }),
-/* 97 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(98)
+var __vue_script__ = __webpack_require__(103)
 /* template */
-var __vue_template__ = __webpack_require__(99)
+var __vue_template__ = __webpack_require__(104)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -63402,7 +65903,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 98 */
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63421,7 +65922,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 99 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -63441,15 +65942,15 @@ if (false) {
 }
 
 /***/ }),
-/* 100 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(101)
+var __vue_script__ = __webpack_require__(106)
 /* template */
-var __vue_template__ = __webpack_require__(102)
+var __vue_template__ = __webpack_require__(107)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -63488,7 +65989,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 101 */
+/* 106 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63576,7 +66077,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 102 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -63959,19 +66460,19 @@ if (false) {
 }
 
 /***/ }),
-/* 103 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(104)
+  __webpack_require__(109)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(106)
+var __vue_script__ = __webpack_require__(111)
 /* template */
-var __vue_template__ = __webpack_require__(107)
+var __vue_template__ = __webpack_require__(112)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -64010,13 +66511,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 104 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(105);
+var content = __webpack_require__(110);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -64036,7 +66537,7 @@ if(false) {
 }
 
 /***/ }),
-/* 105 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -64050,7 +66551,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 106 */
+/* 111 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64344,7 +66845,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 107 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -64891,15 +67392,15 @@ if (false) {
 }
 
 /***/ }),
-/* 108 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(109)
+var __vue_script__ = __webpack_require__(114)
 /* template */
-var __vue_template__ = __webpack_require__(110)
+var __vue_template__ = __webpack_require__(115)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -64938,7 +67439,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 109 */
+/* 114 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64957,7 +67458,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 110 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -64977,15 +67478,15 @@ if (false) {
 }
 
 /***/ }),
-/* 111 */
+/* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(112)
+var __vue_script__ = __webpack_require__(117)
 /* template */
-var __vue_template__ = __webpack_require__(113)
+var __vue_template__ = __webpack_require__(118)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -65024,7 +67525,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 112 */
+/* 117 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65300,7 +67801,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 113 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -66564,19 +69065,19 @@ if (false) {
 }
 
 /***/ }),
-/* 114 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(115)
+  __webpack_require__(120)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(117)
+var __vue_script__ = __webpack_require__(122)
 /* template */
-var __vue_template__ = __webpack_require__(118)
+var __vue_template__ = __webpack_require__(123)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -66615,13 +69116,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 115 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(116);
+var content = __webpack_require__(121);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -66641,7 +69142,7 @@ if(false) {
 }
 
 /***/ }),
-/* 116 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -66655,7 +69156,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 117 */
+/* 122 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -66768,7 +69269,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 118 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67164,19 +69665,19 @@ if (false) {
 }
 
 /***/ }),
-/* 119 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(120)
+  __webpack_require__(125)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(122)
+var __vue_script__ = __webpack_require__(127)
 /* template */
-var __vue_template__ = __webpack_require__(123)
+var __vue_template__ = __webpack_require__(128)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -67215,13 +69716,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 120 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(121);
+var content = __webpack_require__(126);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -67241,7 +69742,7 @@ if(false) {
 }
 
 /***/ }),
-/* 121 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -67255,7 +69756,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 122 */
+/* 127 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -67502,7 +70003,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 123 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -68027,15 +70528,15 @@ if (false) {
 }
 
 /***/ }),
-/* 124 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(125)
+var __vue_script__ = __webpack_require__(130)
 /* template */
-var __vue_template__ = __webpack_require__(126)
+var __vue_template__ = __webpack_require__(131)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -68074,7 +70575,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 125 */
+/* 130 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68093,7 +70594,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 126 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -68113,15 +70614,15 @@ if (false) {
 }
 
 /***/ }),
-/* 127 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(128)
+var __vue_script__ = __webpack_require__(133)
 /* template */
-var __vue_template__ = __webpack_require__(129)
+var __vue_template__ = __webpack_require__(134)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -68160,7 +70661,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 128 */
+/* 133 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -68386,7 +70887,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 129 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -69295,19 +71796,19 @@ if (false) {
 }
 
 /***/ }),
-/* 130 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(131)
+  __webpack_require__(136)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(133)
+var __vue_script__ = __webpack_require__(138)
 /* template */
-var __vue_template__ = __webpack_require__(134)
+var __vue_template__ = __webpack_require__(139)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -69346,13 +71847,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 131 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(132);
+var content = __webpack_require__(137);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -69372,7 +71873,7 @@ if(false) {
 }
 
 /***/ }),
-/* 132 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -69386,7 +71887,7 @@ exports.push([module.i, "\n.monthBox{\n    margin: 10px;\n}\n.dayBox{\n   margin
 
 
 /***/ }),
-/* 133 */
+/* 138 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69574,7 +72075,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 134 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -69921,19 +72422,19 @@ if (false) {
 }
 
 /***/ }),
-/* 135 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(136)
+  __webpack_require__(141)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(138)
+var __vue_script__ = __webpack_require__(143)
 /* template */
-var __vue_template__ = __webpack_require__(139)
+var __vue_template__ = __webpack_require__(144)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -69972,13 +72473,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 136 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(137);
+var content = __webpack_require__(142);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -69998,7 +72499,7 @@ if(false) {
 }
 
 /***/ }),
-/* 137 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -70012,7 +72513,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 138 */
+/* 143 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70367,7 +72868,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 139 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -70872,15 +73373,15 @@ if (false) {
 }
 
 /***/ }),
-/* 140 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(141)
+var __vue_script__ = __webpack_require__(146)
 /* template */
-var __vue_template__ = __webpack_require__(142)
+var __vue_template__ = __webpack_require__(147)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -70919,7 +73420,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 141 */
+/* 146 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -70938,7 +73439,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 142 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -70958,15 +73459,15 @@ if (false) {
 }
 
 /***/ }),
-/* 143 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(144)
+var __vue_script__ = __webpack_require__(149)
 /* template */
-var __vue_template__ = __webpack_require__(145)
+var __vue_template__ = __webpack_require__(150)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -71005,7 +73506,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 144 */
+/* 149 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71197,7 +73698,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 145 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -72627,19 +75128,19 @@ if (false) {
 }
 
 /***/ }),
-/* 146 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(147)
+  __webpack_require__(152)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(149)
+var __vue_script__ = __webpack_require__(154)
 /* template */
-var __vue_template__ = __webpack_require__(150)
+var __vue_template__ = __webpack_require__(155)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -72678,13 +75179,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 147 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(148);
+var content = __webpack_require__(153);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -72704,7 +75205,7 @@ if(false) {
 }
 
 /***/ }),
-/* 148 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -72718,7 +75219,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 149 */
+/* 154 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72836,7 +75337,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 150 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73210,19 +75711,19 @@ if (false) {
 }
 
 /***/ }),
-/* 151 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(152)
+  __webpack_require__(157)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(154)
+var __vue_script__ = __webpack_require__(159)
 /* template */
-var __vue_template__ = __webpack_require__(155)
+var __vue_template__ = __webpack_require__(160)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73261,13 +75762,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 152 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(153);
+var content = __webpack_require__(158);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -73287,7 +75788,7 @@ if(false) {
 }
 
 /***/ }),
-/* 153 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -73301,7 +75802,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 154 */
+/* 159 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73461,7 +75962,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 155 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73676,15 +76177,15 @@ if (false) {
 }
 
 /***/ }),
-/* 156 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(157)
+var __vue_script__ = __webpack_require__(162)
 /* template */
-var __vue_template__ = __webpack_require__(158)
+var __vue_template__ = __webpack_require__(163)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73723,7 +76224,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 157 */
+/* 162 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73742,7 +76243,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 158 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73762,15 +76263,15 @@ if (false) {
 }
 
 /***/ }),
-/* 159 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(160)
+var __vue_script__ = __webpack_require__(165)
 /* template */
-var __vue_template__ = __webpack_require__(161)
+var __vue_template__ = __webpack_require__(166)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73809,7 +76310,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 160 */
+/* 165 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73975,7 +76476,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 161 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74505,19 +77006,19 @@ if (false) {
 }
 
 /***/ }),
-/* 162 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(163)
+  __webpack_require__(168)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(165)
+var __vue_script__ = __webpack_require__(170)
 /* template */
-var __vue_template__ = __webpack_require__(166)
+var __vue_template__ = __webpack_require__(171)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74556,13 +77057,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 163 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(164);
+var content = __webpack_require__(169);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -74582,7 +77083,7 @@ if(false) {
 }
 
 /***/ }),
-/* 164 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -74596,7 +77097,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 165 */
+/* 170 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74822,7 +77323,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 166 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -75201,15 +77702,15 @@ if (false) {
 }
 
 /***/ }),
-/* 167 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(168)
+var __vue_script__ = __webpack_require__(173)
 /* template */
-var __vue_template__ = __webpack_require__(169)
+var __vue_template__ = __webpack_require__(174)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -75248,7 +77749,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 168 */
+/* 173 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75267,7 +77768,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 169 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -75287,15 +77788,15 @@ if (false) {
 }
 
 /***/ }),
-/* 170 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(171)
+var __vue_script__ = __webpack_require__(176)
 /* template */
-var __vue_template__ = __webpack_require__(172)
+var __vue_template__ = __webpack_require__(177)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -75334,7 +77835,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 171 */
+/* 176 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75432,7 +77933,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 172 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -75849,15 +78350,15 @@ if (false) {
 }
 
 /***/ }),
-/* 173 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(174)
+var __vue_script__ = __webpack_require__(179)
 /* template */
-var __vue_template__ = __webpack_require__(175)
+var __vue_template__ = __webpack_require__(180)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -75896,7 +78397,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 174 */
+/* 179 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76034,7 +78535,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 175 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -76366,19 +78867,19 @@ if (false) {
 }
 
 /***/ }),
-/* 176 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(177)
+  __webpack_require__(182)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(179)
+var __vue_script__ = __webpack_require__(184)
 /* template */
-var __vue_template__ = __webpack_require__(180)
+var __vue_template__ = __webpack_require__(185)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -76417,13 +78918,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 177 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(178);
+var content = __webpack_require__(183);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -76443,7 +78944,7 @@ if(false) {
 }
 
 /***/ }),
-/* 178 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -76457,7 +78958,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 179 */
+/* 184 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76598,7 +79099,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 180 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -76792,15 +79293,15 @@ if (false) {
 }
 
 /***/ }),
-/* 181 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(182)
+var __vue_script__ = __webpack_require__(187)
 /* template */
-var __vue_template__ = __webpack_require__(183)
+var __vue_template__ = __webpack_require__(188)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -76839,7 +79340,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 182 */
+/* 187 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76858,7 +79359,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 183 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -76878,15 +79379,15 @@ if (false) {
 }
 
 /***/ }),
-/* 184 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(185)
+var __vue_script__ = __webpack_require__(190)
 /* template */
-var __vue_template__ = __webpack_require__(186)
+var __vue_template__ = __webpack_require__(191)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -76925,7 +79426,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 185 */
+/* 190 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77012,7 +79513,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 186 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -77328,19 +79829,19 @@ if (false) {
 }
 
 /***/ }),
-/* 187 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(188)
+  __webpack_require__(193)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(190)
+var __vue_script__ = __webpack_require__(195)
 /* template */
-var __vue_template__ = __webpack_require__(191)
+var __vue_template__ = __webpack_require__(196)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -77379,13 +79880,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 188 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(189);
+var content = __webpack_require__(194);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -77405,7 +79906,7 @@ if(false) {
 }
 
 /***/ }),
-/* 189 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -77419,7 +79920,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 190 */
+/* 195 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77591,7 +80092,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 191 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -77855,15 +80356,15 @@ if (false) {
 }
 
 /***/ }),
-/* 192 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(193)
+var __vue_script__ = __webpack_require__(198)
 /* template */
-var __vue_template__ = __webpack_require__(194)
+var __vue_template__ = __webpack_require__(199)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -77902,7 +80403,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 193 */
+/* 198 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -77921,7 +80422,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 194 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -77941,15 +80442,15 @@ if (false) {
 }
 
 /***/ }),
-/* 195 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(196)
+var __vue_script__ = __webpack_require__(201)
 /* template */
-var __vue_template__ = __webpack_require__(197)
+var __vue_template__ = __webpack_require__(202)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -77988,7 +80489,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 196 */
+/* 201 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78111,7 +80612,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 197 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -78516,19 +81017,19 @@ if (false) {
 }
 
 /***/ }),
-/* 198 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(199)
+  __webpack_require__(204)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(201)
+var __vue_script__ = __webpack_require__(206)
 /* template */
-var __vue_template__ = __webpack_require__(202)
+var __vue_template__ = __webpack_require__(207)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -78567,13 +81068,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 199 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(200);
+var content = __webpack_require__(205);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -78593,7 +81094,7 @@ if(false) {
 }
 
 /***/ }),
-/* 200 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -78607,11 +81108,13 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 201 */
+/* 206 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -78691,7 +81194,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             skills: [],
             currSkill: {
                 skill_title: '',
-                type: ''
+                type: '',
+                percentage: ''
             },
             currType: ''
         };
@@ -78733,17 +81237,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // post data :
             axios.post('/freelancer/addskill', {
                 skill_title: this.currSkill.skill_title,
-                type: this.currType
+                type: this.currType,
+                percentage: this.currSkill.percentage
             }).then(function (response) {
                 var newSkill = {
                     id: response.data.id,
                     skill_title: _this3.currSkill.skill_title,
-                    type: _this3.currType
+                    type: _this3.currType,
+                    percentage: _this3.currSkill.percentage
                 };
 
                 _this3.skills.push(newSkill);
                 // clear input :
                 _this3.currSkill.skill_title = '';
+                _this3.currSkill.percentage = '';
                 // enable the input :
                 $('#skill_title').attr('disabled', false);
                 $('#skill_title').css('background-color', 'white');
@@ -78765,7 +81272,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 202 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -78971,7 +81478,13 @@ var render = function() {
                                 _vm._v(
                                   "\n                                   " +
                                     _vm._s(skill.skill_title) +
-                                    "\n                                   "
+                                    " "
+                                ),
+                                _c("br"),
+                                _vm._v(
+                                  " " +
+                                    _vm._s(skill.percentage) +
+                                    "%\n                                   "
                                 ),
                                 _c(
                                   "button",
@@ -79057,6 +81570,39 @@ var render = function() {
                               )
                             }
                           }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.currSkill.percentage,
+                              expression: "currSkill.percentage"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "number",
+                            min: "50",
+                            max: "100",
+                            step: "10",
+                            placeholder: "Percentage %",
+                            required: ""
+                          },
+                          domProps: { value: _vm.currSkill.percentage },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.currSkill,
+                                "percentage",
+                                $event.target.value
+                              )
+                            }
+                          }
                         })
                       ])
                     ]
@@ -79071,8 +81617,11 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.currSkill.skill_title.length > 0,
-                          expression: "currSkill.skill_title.length > 0"
+                          value:
+                            _vm.currSkill.skill_title.length > 0 &&
+                            _vm.currSkill.percentage.length > 0,
+                          expression:
+                            "currSkill.skill_title.length > 0 && currSkill.percentage.length > 0"
                         }
                       ],
                       staticClass: "btn btn-outline-dark",
@@ -79101,19 +81650,19 @@ if (false) {
 }
 
 /***/ }),
-/* 203 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(204)
+  __webpack_require__(209)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(206)
+var __vue_script__ = __webpack_require__(211)
 /* template */
-var __vue_template__ = __webpack_require__(207)
+var __vue_template__ = __webpack_require__(212)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -79152,13 +81701,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 204 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(205);
+var content = __webpack_require__(210);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -79178,7 +81727,7 @@ if(false) {
 }
 
 /***/ }),
-/* 205 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -79192,7 +81741,7 @@ exports.push([module.i, "\n.loader {\n    border: 15px solid lightblue;\n    bor
 
 
 /***/ }),
-/* 206 */
+/* 211 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -79549,7 +82098,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 207 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -80413,19 +82962,19 @@ if (false) {
 }
 
 /***/ }),
-/* 208 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(209)
+  __webpack_require__(214)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(211)
+var __vue_script__ = __webpack_require__(216)
 /* template */
-var __vue_template__ = __webpack_require__(212)
+var __vue_template__ = __webpack_require__(217)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -80464,13 +83013,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 209 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(210);
+var content = __webpack_require__(215);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -80490,7 +83039,7 @@ if(false) {
 }
 
 /***/ }),
-/* 210 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -80504,7 +83053,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 211 */
+/* 216 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80573,7 +83122,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 212 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -80677,19 +83226,19 @@ if (false) {
 }
 
 /***/ }),
-/* 213 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(214)
+  __webpack_require__(219)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(216)
+var __vue_script__ = __webpack_require__(221)
 /* template */
-var __vue_template__ = __webpack_require__(217)
+var __vue_template__ = __webpack_require__(222)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -80728,13 +83277,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 214 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(215);
+var content = __webpack_require__(220);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -80754,7 +83303,7 @@ if(false) {
 }
 
 /***/ }),
-/* 215 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -80768,7 +83317,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 216 */
+/* 221 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -80887,7 +83436,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 217 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -81099,19 +83648,19 @@ if (false) {
 }
 
 /***/ }),
-/* 218 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(219)
+  __webpack_require__(224)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(221)
+var __vue_script__ = __webpack_require__(226)
 /* template */
-var __vue_template__ = __webpack_require__(222)
+var __vue_template__ = __webpack_require__(227)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -81150,13 +83699,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 219 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(220);
+var content = __webpack_require__(225);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -81176,7 +83725,7 @@ if(false) {
 }
 
 /***/ }),
-/* 220 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -81190,7 +83739,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 
 /***/ }),
-/* 221 */
+/* 226 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81259,7 +83808,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 222 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -81370,19 +83919,19 @@ if (false) {
 }
 
 /***/ }),
-/* 223 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(224)
+  __webpack_require__(229)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(226)
+var __vue_script__ = __webpack_require__(231)
 /* template */
-var __vue_template__ = __webpack_require__(227)
+var __vue_template__ = __webpack_require__(232)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -81421,13 +83970,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 224 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(225);
+var content = __webpack_require__(230);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -81447,7 +83996,7 @@ if(false) {
 }
 
 /***/ }),
-/* 225 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -81461,7 +84010,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 226 */
+/* 231 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81610,7 +84159,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 227 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -81789,15 +84338,15 @@ if (false) {
 }
 
 /***/ }),
-/* 228 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(229)
+var __vue_script__ = __webpack_require__(234)
 /* template */
-var __vue_template__ = __webpack_require__(230)
+var __vue_template__ = __webpack_require__(235)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -81836,7 +84385,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 229 */
+/* 234 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -81855,7 +84404,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 230 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -81875,15 +84424,15 @@ if (false) {
 }
 
 /***/ }),
-/* 231 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(232)
+var __vue_script__ = __webpack_require__(237)
 /* template */
-var __vue_template__ = __webpack_require__(233)
+var __vue_template__ = __webpack_require__(238)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -81922,7 +84471,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 232 */
+/* 237 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82135,7 +84684,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 233 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -82777,19 +85326,19 @@ if (false) {
 }
 
 /***/ }),
-/* 234 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(235)
+  __webpack_require__(240)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(237)
+var __vue_script__ = __webpack_require__(242)
 /* template */
-var __vue_template__ = __webpack_require__(238)
+var __vue_template__ = __webpack_require__(243)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -82828,13 +85377,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 235 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(236);
+var content = __webpack_require__(241);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -82854,7 +85403,7 @@ if(false) {
 }
 
 /***/ }),
-/* 236 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -82868,7 +85417,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 237 */
+/* 242 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83163,7 +85712,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 238 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -83713,15 +86262,15 @@ if (false) {
 }
 
 /***/ }),
-/* 239 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(240)
+var __vue_script__ = __webpack_require__(245)
 /* template */
-var __vue_template__ = __webpack_require__(241)
+var __vue_template__ = __webpack_require__(246)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -83760,7 +86309,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 240 */
+/* 245 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83779,7 +86328,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 241 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -83799,15 +86348,15 @@ if (false) {
 }
 
 /***/ }),
-/* 242 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(243)
+var __vue_script__ = __webpack_require__(248)
 /* template */
-var __vue_template__ = __webpack_require__(244)
+var __vue_template__ = __webpack_require__(249)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -83846,7 +86395,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 243 */
+/* 248 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83972,7 +86521,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 244 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -84362,19 +86911,19 @@ if (false) {
 }
 
 /***/ }),
-/* 245 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(246)
+  __webpack_require__(251)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(248)
+var __vue_script__ = __webpack_require__(253)
 /* template */
-var __vue_template__ = __webpack_require__(249)
+var __vue_template__ = __webpack_require__(254)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -84413,13 +86962,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 246 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(247);
+var content = __webpack_require__(252);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -84439,7 +86988,7 @@ if(false) {
 }
 
 /***/ }),
-/* 247 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -84453,7 +87002,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 248 */
+/* 253 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -84621,7 +87170,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 249 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -84969,19 +87518,19 @@ if (false) {
 }
 
 /***/ }),
-/* 250 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(251)
+  __webpack_require__(256)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(253)
+var __vue_script__ = __webpack_require__(258)
 /* template */
-var __vue_template__ = __webpack_require__(254)
+var __vue_template__ = __webpack_require__(259)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -85020,13 +87569,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 251 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(252);
+var content = __webpack_require__(257);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -85046,7 +87595,7 @@ if(false) {
 }
 
 /***/ }),
-/* 252 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -85060,7 +87609,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 253 */
+/* 258 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85160,7 +87709,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 254 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -85439,19 +87988,19 @@ if (false) {
 }
 
 /***/ }),
-/* 255 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(256)
+  __webpack_require__(261)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(258)
+var __vue_script__ = __webpack_require__(263)
 /* template */
-var __vue_template__ = __webpack_require__(259)
+var __vue_template__ = __webpack_require__(264)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -85490,13 +88039,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 256 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(257);
+var content = __webpack_require__(262);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -85516,7 +88065,7 @@ if(false) {
 }
 
 /***/ }),
-/* 257 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -85530,7 +88079,7 @@ exports.push([module.i, "\n.memberImg{\n    width: 150px;\n    height: 150px;\n 
 
 
 /***/ }),
-/* 258 */
+/* 263 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -85663,7 +88212,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 259 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -85866,19 +88415,19 @@ if (false) {
 }
 
 /***/ }),
-/* 260 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(261)
+  __webpack_require__(266)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(263)
+var __vue_script__ = __webpack_require__(268)
 /* template */
-var __vue_template__ = __webpack_require__(264)
+var __vue_template__ = __webpack_require__(269)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -85917,13 +88466,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 261 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(262);
+var content = __webpack_require__(267);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -85943,7 +88492,7 @@ if(false) {
 }
 
 /***/ }),
-/* 262 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -85957,7 +88506,7 @@ exports.push([module.i, "\n.memberImg{\n    width: 150px;\n    height: 150px;\n 
 
 
 /***/ }),
-/* 263 */
+/* 268 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -86085,7 +88634,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 264 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -86275,19 +88824,19 @@ if (false) {
 }
 
 /***/ }),
-/* 265 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(266)
+  __webpack_require__(271)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(268)
+var __vue_script__ = __webpack_require__(273)
 /* template */
-var __vue_template__ = __webpack_require__(273)
+var __vue_template__ = __webpack_require__(278)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -86326,13 +88875,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 266 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(267);
+var content = __webpack_require__(272);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -86352,7 +88901,7 @@ if(false) {
 }
 
 /***/ }),
-/* 267 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -86366,7 +88915,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 268 */
+/* 273 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -86550,13 +89099,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 269 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(270);
+var content = __webpack_require__(275);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -86576,7 +89125,7 @@ if(false) {
 }
 
 /***/ }),
-/* 270 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -86590,7 +89139,7 @@ exports.push([module.i, "\n.projectsSection[data-v-641e834a] {\n  margin-top: 15
 
 
 /***/ }),
-/* 271 */
+/* 276 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -87037,7 +89586,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 272 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -88153,7 +90702,7 @@ if (false) {
 }
 
 /***/ }),
-/* 273 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -88703,15 +91252,15 @@ if (false) {
 }
 
 /***/ }),
-/* 274 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(275)
+var __vue_script__ = __webpack_require__(280)
 /* template */
-var __vue_template__ = __webpack_require__(276)
+var __vue_template__ = __webpack_require__(281)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -88750,7 +91299,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 275 */
+/* 280 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -88769,7 +91318,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 276 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -88789,19 +91338,19 @@ if (false) {
 }
 
 /***/ }),
-/* 277 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(278)
+  __webpack_require__(283)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(280)
+var __vue_script__ = __webpack_require__(285)
 /* template */
-var __vue_template__ = __webpack_require__(281)
+var __vue_template__ = __webpack_require__(286)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -88840,13 +91389,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 278 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(279);
+var content = __webpack_require__(284);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -88866,7 +91415,7 @@ if(false) {
 }
 
 /***/ }),
-/* 279 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -88880,7 +91429,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 280 */
+/* 285 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -88962,7 +91511,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 281 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -89166,15 +91715,15 @@ if (false) {
 }
 
 /***/ }),
-/* 282 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(283)
+var __vue_script__ = __webpack_require__(288)
 /* template */
-var __vue_template__ = __webpack_require__(284)
+var __vue_template__ = __webpack_require__(289)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -89213,7 +91762,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 283 */
+/* 288 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -89616,7 +92165,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 284 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -90389,19 +92938,19 @@ if (false) {
 }
 
 /***/ }),
-/* 285 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(286)
+  __webpack_require__(291)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(288)
+var __vue_script__ = __webpack_require__(293)
 /* template */
-var __vue_template__ = __webpack_require__(289)
+var __vue_template__ = __webpack_require__(294)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -90440,13 +92989,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 286 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(287);
+var content = __webpack_require__(292);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -90466,7 +93015,7 @@ if(false) {
 }
 
 /***/ }),
-/* 287 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -90480,7 +93029,7 @@ exports.push([module.i, "\n.loader {\n    border: 15px solid lightblue;\n    bor
 
 
 /***/ }),
-/* 288 */
+/* 293 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -90921,7 +93470,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 289 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -92218,19 +94767,19 @@ if (false) {
 }
 
 /***/ }),
-/* 290 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(291)
+  __webpack_require__(296)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(293)
+var __vue_script__ = __webpack_require__(298)
 /* template */
-var __vue_template__ = __webpack_require__(294)
+var __vue_template__ = __webpack_require__(299)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -92269,13 +94818,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 291 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(292);
+var content = __webpack_require__(297);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -92295,7 +94844,7 @@ if(false) {
 }
 
 /***/ }),
-/* 292 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -92309,7 +94858,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 293 */
+/* 298 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -92501,7 +95050,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 294 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -92792,19 +95341,19 @@ if (false) {
 }
 
 /***/ }),
-/* 295 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(296)
+  __webpack_require__(301)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(298)
+var __vue_script__ = __webpack_require__(303)
 /* template */
-var __vue_template__ = __webpack_require__(299)
+var __vue_template__ = __webpack_require__(304)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -92843,13 +95392,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 296 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(297);
+var content = __webpack_require__(302);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -92869,7 +95418,7 @@ if(false) {
 }
 
 /***/ }),
-/* 297 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -92883,7 +95432,7 @@ exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-
 
 
 /***/ }),
-/* 298 */
+/* 303 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -93010,7 +95559,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 299 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -93380,19 +95929,19 @@ if (false) {
 }
 
 /***/ }),
-/* 300 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(301)
+  __webpack_require__(306)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(303)
+var __vue_script__ = __webpack_require__(308)
 /* template */
-var __vue_template__ = __webpack_require__(319)
+var __vue_template__ = __webpack_require__(324)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -93431,13 +95980,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 301 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(302);
+var content = __webpack_require__(307);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -93457,7 +96006,7 @@ if(false) {
 }
 
 /***/ }),
-/* 302 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -93471,16 +96020,16 @@ exports.push([module.i, "\n*[data-v-92252b4e]:focus {\n    outline: 0;\n}\n.list
 
 
 /***/ }),
-/* 303 */
+/* 308 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard__ = __webpack_require__(304);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard__ = __webpack_require__(309);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__freelancerResume_resumeComponent__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__freelancerResume_resumeComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__freelancerResume_resumeComponent__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong__ = __webpack_require__(319);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong__);
 //
 //
@@ -93680,19 +96229,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 304 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(305)
+  __webpack_require__(310)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(307)
+var __vue_script__ = __webpack_require__(312)
 /* template */
-var __vue_template__ = __webpack_require__(313)
+var __vue_template__ = __webpack_require__(318)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -93731,13 +96280,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 305 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(306);
+var content = __webpack_require__(311);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -93757,7 +96306,7 @@ if(false) {
 }
 
 /***/ }),
-/* 306 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -93771,12 +96320,12 @@ exports.push([module.i, "\n.projectsSection[data-v-e70ddbcc] {\n  width: calc(10
 
 
 /***/ }),
-/* 307 */
+/* 312 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hireAgent__ = __webpack_require__(308);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hireAgent__ = __webpack_require__(313);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__hireAgent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__hireAgent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_load_image__);
@@ -94162,19 +96711,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 308 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(309)
+  __webpack_require__(314)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(311)
+var __vue_script__ = __webpack_require__(316)
 /* template */
-var __vue_template__ = __webpack_require__(312)
+var __vue_template__ = __webpack_require__(317)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -94213,13 +96762,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 309 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(310);
+var content = __webpack_require__(315);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -94239,7 +96788,7 @@ if(false) {
 }
 
 /***/ }),
-/* 310 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -94253,7 +96802,7 @@ exports.push([module.i, "\n.hireContainer[data-v-21c3e717] {\n  display: -webkit
 
 
 /***/ }),
-/* 311 */
+/* 316 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -94328,7 +96877,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 312 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -94519,7 +97068,7 @@ if (false) {
 }
 
 /***/ }),
-/* 313 */
+/* 318 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -95300,19 +97849,19 @@ if (false) {
 }
 
 /***/ }),
-/* 314 */
+/* 319 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(315)
+  __webpack_require__(320)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(317)
+var __vue_script__ = __webpack_require__(322)
 /* template */
-var __vue_template__ = __webpack_require__(318)
+var __vue_template__ = __webpack_require__(323)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -95351,13 +97900,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 315 */
+/* 320 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(316);
+var content = __webpack_require__(321);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -95377,7 +97926,7 @@ if(false) {
 }
 
 /***/ }),
-/* 316 */
+/* 321 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -95391,7 +97940,7 @@ exports.push([module.i, "\n.projectsSection[data-v-7ebcb177] {\n  margin-top: 1p
 
 
 /***/ }),
-/* 317 */
+/* 322 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -96122,7 +98671,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 318 */
+/* 323 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -97981,7 +100530,7 @@ if (false) {
 }
 
 /***/ }),
-/* 319 */
+/* 324 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -98437,7 +100986,7 @@ if (false) {
 }
 
 /***/ }),
-/* 320 */
+/* 325 */
 /***/ (function(module, exports) {
 
 var status = $('#record_status'),
@@ -98716,2508 +101265,10 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 
 /***/ }),
-/* 321 */
+/* 326 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 322 */,
-/* 323 */,
-/* 324 */,
-/* 325 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(326)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(328)
-/* template */
-var __vue_template__ = __webpack_require__(329)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-3431b16d"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\freelancerResume\\resumeComponentShortV2.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3431b16d", Component.options)
-  } else {
-    hotAPI.reload("data-v-3431b16d", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 326 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(327);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("d3f14e5a", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3431b16d\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resumeComponentShortV2.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3431b16d\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resumeComponentShortV2.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 327 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.projectsSection[data-v-3431b16d] {\n  margin-top: 1px;\n  padding: 20px;\n  margin-bottom: 18px;\n}\n@media only screen and (max-width: 500px) {\n.projectsSection[data-v-3431b16d] {\n      padding: 2px;\n}\n}\n.freelancerCard[data-v-3431b16d] {\n  margin-bottom: 12px;\n  padding-bottom: 12px;\n  margin-left: 10px;\n  margin-right: 10px;\n  height: 730px;\n}\n@media only screen and (max-width: 1200px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 910px;\n}\n}\n@media only screen and (max-width: 786px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 710px;\n      height: 815px;\n}\n}\n@media only screen and (max-width: 500px) {\n.freelancerCard[data-v-3431b16d] {\n      width: 315px;\n      height: 785px;\n}\n}\n@media only screen and (max-width: 500px) {\n.workCard[data-v-3431b16d] {\n    min-width: 290px;\n}\n}\n.slick-dots[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.fade-enter-active[data-v-3431b16d], .fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: opacity .7s;\n  transition: opacity .7s;\n}\n.fade-enter[data-v-3431b16d], .fade-leave-to[data-v-3431b16d] {\n  opacity: 0;\n}\n.slide-fade-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-enter[data-v-3431b16d], .slide-fade-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(10px);\n          transform: translateX(10px);\n  opacity: 0;\n}\n.slide-fade-left-enter-active[data-v-3431b16d] {\n  -webkit-transition: all .7s ease;\n  transition: all .7s ease;\n}\n.slide-fade-left-leave-active[data-v-3431b16d] {\n  -webkit-transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);\n}\n.slide-fade-left-enter[data-v-3431b16d], .slide-fade-left-leave-to[data-v-3431b16d] {\n  -webkit-transform: translateX(-10px);\n          transform: translateX(-10px);\n  opacity: 0;\n}\n.importBtn[data-v-3431b16d] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  padding: 0;\n}\n.importBtn a[data-v-3431b16d]:hover {\n    color: white;\n}\n.skillscard[data-v-3431b16d] {\n  padding-left: 35px;\n  padding-top: 15px;\n}\n.tab-pane[data-v-3431b16d] {\n  height: 541px;\n  overflow: auto;\n}\n.skills[data-v-3431b16d],\n.skills .skill[data-v-3431b16d],\n.skills .skill .skill-title[data-v-3431b16d],\n.skills .skill .skill-bar[data-v-3431b16d] {\n  width: 100%;\n  float: left;\n}\n.skills[data-v-3431b16d] {\n  padding: 0px 15px 10px 15px;\n}\n.skills .skill[data-v-3431b16d] {\n  margin-bottom: 30px;\n}\n.skills .skill .skill-title[data-v-3431b16d] {\n  color: #808080;\n  margin-bottom: 15px;\n  font-weight: 400;\n  font-size: 14px;\n}\n.skills .skill .skill-bar[data-v-3431b16d] {\n  width: 0;\n  height: 6px;\n  background: #f0f0f0;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills.active .skill .skill-bar[data-v-3431b16d] {\n  width: 100%;\n}\n.skills .skill .skill-bar span[data-v-3431b16d] {\n  float: left;\n  width: 0%;\n  background: #1D91F2;\n  height: 6px;\n  position: relative;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills .skill .skill-bar span b[data-v-3431b16d] {\n  float: left;\n  width: 100%;\n  position: relative;\n  text-align: right;\n  opacity: 0;\n  font-size: 14px;\n  color: #1D91F2;\n  font-weight: 400;\n  top: -13px;\n}\n.container[data-v-3431b16d] {\n  width: 100%;\n  max-width: 600px;\n  padding: 0 15px;\n  margin: 0 auto;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 328 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_load_image__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['freelancer', 'hire', 'search'],
-    components: {
-        'vue-load-image': __WEBPACK_IMPORTED_MODULE_1_vue_load_image___default.a,
-        Slick: __WEBPACK_IMPORTED_MODULE_0_vue_slick__["a" /* default */]
-    },
-    data: function data() {
-        return {
-            slideNumber: 1,
-            numberOfSlides: this.calculateNumberOfSlides(),
-            skills: this.freelancer.skills,
-            worksHistory: this.freelancer.works_history,
-            educationsHistory: this.freelancer.educations_history,
-            references: this.freelancer.references,
-            currentTab: 'skills',
-            slickOptions: {
-                infinite: false,
-                dots: false,
-                arrows: false,
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                responsive: [{
-                    breakpoint: 786,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }, {
-                    breakpoint: 991,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }]
-            },
-            weeks: 4,
-            hours: this.freelancer.user_data.availableHours.replace(/[^0-9]/g, ''),
-            portfolio: !this.hire,
-            showReferences: false
-        };
-    },
-
-    methods: {
-        getResizedImage: function getResizedImage(src) {
-            var resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
-            if (this.search == false) {
-                return resizedImage;
-            }
-            return this.getImageSrc(src);
-        },
-        setTab: function setTab(tabName) {
-            var _this = this;
-
-            this.currentTab = tabName;
-            if (tabName === 'portfolio') {
-                this.$nextTick(function () {
-                    _this.$refs.slick.reSlick();
-                });
-            }
-        },
-        getDate: function getDate(date) {
-            var workDate = new Date(date);
-            var dd = workDate.getDate();
-            var mm = workDate.getMonth() + 1; //January is 0!
-
-            var yyyy = workDate.getFullYear();
-            if (dd < 10) {
-                dd = '0' + dd;
-            }
-            if (mm < 10) {
-                mm = '0' + mm;
-            }
-
-            return dd + '/' + mm + '/' + yyyy;
-        },
-        getSkillIconSrc: function getSkillIconSrc(skill_title) {
-            var arrayOfSkillImages = {
-                'ui design': '/resumeApp/resources/assets/images/skills_icons/user_interface.png',
-                'ux design': '/resumeApp/resources/assets/images/skills_icons/user_experience.png',
-                'logo design': '/resumeApp/resources/assets/images/skills_icons/logo_design.png',
-                'animation': '/resumeApp/resources/assets/images/skills_icons/animation.jpg',
-                'motion graphics': '/resumeApp/resources/assets/images/skills_icons/motion_graphics.png',
-                'illustration': '/resumeApp/resources/assets/images/skills_icons/illustration.png',
-                'advertising': '/resumeApp/resources/assets/images/skills_icons/advertising.png',
-                'branding': '/resumeApp/resources/assets/images/skills_icons/branding.png',
-                'brochure Design': '/resumeApp/resources/assets/images/skills_icons/brochure_design.png',
-                'website design': '/resumeApp/resources/assets/images/skills_icons/web_design.png',
-                'game designer': '/resumeApp/resources/assets/images/skills_icons/game_designer.png',
-                'character design': '/resumeApp/resources/assets/images/skills_icons/character_design.png',
-                'digital painting': '/resumeApp/resources/assets/images/skills_icons/digital_painting.png',
-                'creative director': '/resumeApp/resources/assets/images/skills_icons/creative_director.png',
-                'html / css': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
-                // 2-
-
-                'adobe after effects': '/resumeApp/resources/assets/images/skills_icons/AE.png',
-                'sketch': '/resumeApp/resources/assets/images/skills_icons/Sketch.png',
-                'adobe illustrator': '/resumeApp/resources/assets/images/skills_icons/Illustrator.png',
-                'adobe xd': '/resumeApp/resources/assets/images/skills_icons/AdobeXD.png',
-                'photoshop': '/resumeApp/resources/assets/images/skills_icons/Photoshop.png',
-                'autocad': '/resumeApp/resources/assets/images/skills_icons/autocad.png',
-                'solidworks': '/resumeApp/resources/assets/images/skills_icons/solid_works.png',
-                'adobe flash': '/resumeApp/resources/assets/images/skills_icons/adobe_flash.png',
-                'digital drawing Tablet': '/resumeApp/resources/assets/images/skills_icons/digital_drawing_tablet.png',
-                'adobe indesign': '/resumeApp/resources/assets/images/skills_icons/indesign.png',
-                'coreldraw': '/resumeApp/resources/assets/images/skills_icons/corel_draw.png',
-                '3d max': '/resumeApp/resources/assets/images/skills_icons/3d_max.png',
-
-                // developer :
-                // 1-
-                'javascript': '/resumeApp/resources/assets/images/skills_icons/javascript.png',
-                'sql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
-                'java': 'resumeApp/resources/assets/images/skills_icons/java.png',
-                'c#': '/resumeApp/resources/assets/images/skills_icons/c#.png',
-                'python': '/resumeApp/resources/assets/images/skills_icons/python.png',
-                'php': '/resumeApp/resources/assets/images/skills_icons/php.png',
-                'c++': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
-                'c': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
-                'typescript': '/resumeApp/resources/assets/images/skills_icons/typescript.png',
-                'ruby': '/resumeApp/resources/assets/images/skills_icons/ruby.png',
-                'objective-C': '/resumeApp/resources/assets/images/skills_icons/objective_c.png',
-                'swift': '/resumeApp/resources/assets/images/skills_icons/swift.png',
-                'vb.net': '/resumeApp/resources/assets/images/skills_icons/vb_net.png',
-                'go': '/resumeApp/resources/assets/images/skills_icons/go.png',
-                'perl': '/resumeApp/resources/assets/images/skills_icons/perl.png',
-                'scala': '/resumeApp/resources/assets/images/skills_icons/scala.png',
-                'groovy': '/resumeApp/resources/assets/images/skills_icons/groovy.png',
-                'assembly': '/resumeApp/resources/assets/images/skills_icons/assembly.png',
-                'coffeescript': '/resumeApp/resources/assets/images/skills_icons/coffeeScript.png',
-                'vba': '/resumeApp/resources/assets/images/skills_icons/vba.png',
-                'r': '/resumeApp/resources/assets/images/skills_icons/r_lang.png',
-                'matlab': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
-                'visual basic 6': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
-                'lua': '/resumeApp/resources/assets/images/skills_icons/lua.png',
-                'haskell': '/resumeApp/resources/assets/images/skills_icons/haskell.png',
-                'html': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
-                'css': '/resumeApp/resources/assets/images/skills_icons/CSS.png',
-
-                //2-
-                'angularjs': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
-                'angular.js': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
-                'node.js': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
-                'nodejs': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
-                '.net Core': '/resumeApp/resources/assets/images/skills_icons/netcore.png',
-                'react': '/resumeApp/resources/assets/images/skills_icons/react.png',
-                'cordova': '/resumeApp/resources/assets/images/skills_icons/cordava.png',
-                'firebase': '',
-                'xamarin': '',
-                'hadoop': '/resumeApp/resources/assets/images/skills_icons/hadoop.png',
-                'spark': '/resumeApp/resources/assets/images/skills_icons/spark.png',
-                'mysql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
-                'sql server': '/resumeApp/resources/assets/images/skills_icons/sql server.png',
-                'postgresql': '/resumeApp/resources/assets/images/skills_icons/postgreSQL.png',
-                'sqlite': '/resumeApp/resources/assets/images/skills_icons/SQLite.png',
-                'mongodb': '/resumeApp/resources/assets/images/skills_icons/mongoDB.png',
-                'oracle': '/resumeApp/resources/assets/images/skills_icons/Oracle.png',
-                'redis': '/resumeApp/resources/assets/images/skills_icons/redis.png',
-                'cassandra': '/resumeApp/resources/assets/images/skills_icons/cassandra.png'
-            };
-            if (arrayOfSkillImages.hasOwnProperty(skill_title.toLowerCase())) {
-                return arrayOfSkillImages[skill_title.toLowerCase()];
-            }
-            return '/resumeApp/resources/assets/images/skills_icons/skill.png';
-        },
-        getImageSrc: function getImageSrc(src) {
-            if (!src) {
-                return '/resumeApp/public/images/placeholder.png';
-            }
-
-            if (src.charAt(0) !== '/' && src.charAt(0) !== 'h') {
-                return '/' + src;
-            }
-
-            return src;
-        },
-        loadHDImage: function loadHDImage(project_id) {
-            var projects = this.freelancer.projects;
-            $.each(projects, function (i) {
-                if (projects[i].id === project_id) {
-                    $('#projectModalPhoto' + project_id).attr('src', projects[i].mainImage);
-                    return false;
-                }
-            });
-        },
-        showHireSection: function showHireSection() {
-            var _this2 = this;
-
-            setTimeout(function () {
-                _this2.hire = true;
-            }, 800);
-            this.portfolio = false;
-            this.showReferences = false;
-        },
-        showReferencesSection: function showReferencesSection() {
-            var _this3 = this;
-
-            setTimeout(function () {
-                _this3.showReferences = true;
-            }, 800);
-            this.portfolio = false;
-            this.hire = false;
-        },
-        hideReferencesSection: function hideReferencesSection() {
-            var _this4 = this;
-
-            this.hire = false;
-            this.showReferences = false;
-            setTimeout(function () {
-                _this4.portfolio = true;
-            }, 800);
-        },
-        hideHireSection: function hideHireSection() {
-            var _this5 = this;
-
-            this.hire = false;
-            this.showReferences = false;
-            setTimeout(function () {
-                _this5.portfolio = true;
-            }, 800);
-        },
-        updateSlick: function updateSlick() {
-            var _this6 = this;
-
-            this.$nextTick(function () {
-                if (_this6.$refs.slick !== undefined) {
-                    _this6.$refs.slick.reSlick();
-                    _this6.slideNumber = 1;
-                }
-            });
-        },
-        addHours: function addHours() {
-            this.hours++;
-        },
-        subtractHours: function subtractHours() {
-            this.hours--;
-        },
-        addWeeks: function addWeeks() {
-            this.weeks++;
-        },
-        subtractWeeks: function subtractWeeks() {
-            this.weeks--;
-        },
-        slidePrev: function slidePrev() {
-            this.$refs.slick.prev();
-            if (this.slideNumber - 1 > 0) {
-                this.slideNumber--;
-            }
-        },
-        slideNext: function slideNext() {
-            this.$refs.slick.next();
-            if (this.slideNumber + 1 <= this.calculateNumberOfSlides()) {
-                this.slideNumber++;
-            }
-        },
-        calculateNumberOfSlides: function calculateNumberOfSlides() {
-            var width = $(window).width();
-            if (width < 991) {
-                return this.freelancer.projects.length;
-            }
-            return Math.ceil(this.freelancer.projects.length / 2);
-        },
-        highlightSkill: function highlightSkill(skill, percent) {
-            $('#skillImage_' + skill.id).css('filter', 'grayscale(' + percent + '%)');
-        },
-        skillsBar: function skillsBar() {
-            $(".skills").addClass("active");
-            $(".skills .skill .skill-bar span").each(function () {
-                $(this).animate({
-                    "width": $(this).parent().attr("data-bar") + "%"
-                }, 1000);
-            });
-            setTimeout(function () {
-                $(".skills .skill .skill-bar span b").animate({ "opacity": "1" }, 1000);
-            }, 2000);
-            console.log('ran');
-        },
-        getSkillBarRandom: function getSkillBarRandom(min, max) {
-            return Math.random() * (max - min) + min;
-        }
-    },
-    mounted: function mounted() {
-        this.skillsBar();
-    },
-
-    created: function created() {
-        this.$parent.$on('update', this.updateSlick);
-    }
-});
-
-/***/ }),
-/* 329 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "freelancerCard" }, [
-      _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-lg-12 col-md-12 col-12 resumeCardRight" },
-          [
-            _c("div", { staticClass: "showOnlyOnmd" }, [
-              _c("div", { staticClass: "row nameRow" }, [
-                _c("div", { staticClass: "col-lg-2 col-6 imageCol" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "imageContainer",
-                      staticStyle: { padding: "10px" }
-                    },
-                    [
-                      _c("img", {
-                        staticClass: "freelancerImg",
-                        attrs: {
-                          src: _vm.getImageSrc(_vm.freelancer.user_data.photo),
-                          alt: "freelancer",
-                          width: "120",
-                          height: "120"
-                        }
-                      })
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-lg-3 col-md-4 col-6 freelancerCardLeft" },
-                  [
-                    _c("div", { staticClass: "nameArea" }, [
-                      _c("div", { staticClass: "nameCard" }, [
-                        _vm._v(
-                          "\n                                    " +
-                            _vm._s(_vm.freelancer.firstName) +
-                            "\n                                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "jobTitle",
-                          staticStyle: {
-                            color: "white",
-                            "font-size": "14px",
-                            "padding-top": "7px"
-                          },
-                          attrs: { id: "animatedText" + _vm.freelancer.id }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(_vm.freelancer.user_data.jobTitle) +
-                              "\n                                "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "form",
-                        {
-                          attrs: {
-                            action: "/chat-room/start_conversation",
-                            method: "post"
-                          }
-                        },
-                        [
-                          _c("input", {
-                            attrs: { type: "hidden", name: "freelancer_id" },
-                            domProps: { value: _vm.freelancer.id }
-                          }),
-                          _vm._v(" "),
-                          _c("input", {
-                            staticClass: "tap-to-chat cursorPointerOnHover",
-                            staticStyle: {
-                              background: "none",
-                              border: "none",
-                              outline: "none"
-                            },
-                            attrs: { type: "submit", value: "TAP TO CHAT" }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "d-none",
-                          attrs: { id: "welcomeText" + _vm.freelancer.id }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    Hi, I am " +
-                              _vm._s(_vm.freelancer.firstName) +
-                              ", I am a " +
-                              _vm._s(_vm.freelancer.user_data.jobTitle) +
-                              ", How can I help\n                                    you ?\n                                "
-                          )
-                        ]
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "col-lg-7 col-md-8 freelancerCardRight d-flex align-items-center"
-                  },
-                  [
-                    _c("div", { staticClass: "row hireRow w-100" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-md-4 text-center",
-                          staticStyle: { "font-size": "15px", color: "white" }
-                        },
-                        [
-                          _c(
-                            "span",
-                            { staticStyle: { "font-weight": "bold" } },
-                            [
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(_vm.freelancer.user_data.salary) +
-                                  "\n                                "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "cardLabel",
-                              staticStyle: {
-                                "font-size": "13px",
-                                "font-weight": "normal"
-                              }
-                            },
-                            [_vm._v("Hourly rate")]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-md-4 text-center",
-                          staticStyle: { "font-size": "15px", color: "white" }
-                        },
-                        [
-                          _c(
-                            "span",
-                            { staticStyle: { "font-weight": "bold" } },
-                            [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.freelancer.user_data.availableHours.replace(
-                                    /[^0-9]/g,
-                                    ""
-                                  )
-                                ) + " hours"
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "cardLabel",
-                              staticStyle: {
-                                "font-size": "13px",
-                                "font-weight": "normal"
-                              }
-                            },
-                            [_vm._v("Weekly Availability")]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "col-md-4",
-                          staticStyle: { padding: "0" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "row text-center cardRow NoDecor" },
-                            [
-                              _c(
-                                "a",
-                                {
-                                  staticClass:
-                                    "hireCardBtn btn-block showHireSection",
-                                  attrs: { href: "javascript:void(0)" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.showHireSection()
-                                    }
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                                            Hire me\n                                        "
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ])
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "showOnlyOnsm" }, [
-              _c("div", { staticClass: "row cardMainInfo_mob" }, [
-                _c("div", { staticClass: "col-6" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "imageContainer",
-                      staticStyle: { padding: "20px 10px 10px 10px" }
-                    },
-                    [
-                      _c("img", {
-                        staticClass: "freelancerImg",
-                        attrs: {
-                          src: _vm.getImageSrc(_vm.freelancer.user_data.photo),
-                          alt: "freelancer",
-                          width: "120",
-                          height: "120"
-                        }
-                      })
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-6 resumeCardRight" }, [
-                  _c("div", { staticClass: "nameArea" }, [
-                    _c("div", { staticClass: "nameCard" }, [
-                      _vm._v(
-                        "\n                                    " +
-                          _vm._s(_vm.freelancer.firstName) +
-                          "\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "jobTitle",
-                        staticStyle: {
-                          "font-size": "17px",
-                          "padding-left": "0",
-                          color: "#c1d1ff"
-                        },
-                        attrs: { id: "animatedText" + _vm.freelancer.id }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                    " +
-                            _vm._s(_vm.freelancer.user_data.jobTitle) +
-                            "\n                                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "text-left",
-                        staticStyle: {
-                          "font-size": "15px",
-                          color: "white",
-                          "padding-top": "5px"
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "cardLabel",
-                            staticStyle: {
-                              "font-weight": "300",
-                              "font-size": "14px"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "Hourly rate :\n                                        "
-                            ),
-                            _c(
-                              "span",
-                              { staticStyle: { "font-weight": "bold" } },
-                              [
-                                _vm._v(
-                                  "\n                                        $ " +
-                                    _vm._s(_vm.freelancer.user_data.salary) +
-                                    "\n                                    "
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "text-left",
-                        staticStyle: {
-                          "font-size": "15px",
-                          color: "white",
-                          "padding-top": "5px"
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "cardLabel",
-                            staticStyle: {
-                              "font-weight": "300",
-                              "font-size": "14px"
-                            }
-                          },
-                          [
-                            _vm._v("Availability :  "),
-                            _c(
-                              "span",
-                              { staticStyle: { "font-weight": "bold" } },
-                              [
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.freelancer.user_data.availableHours.replace(
-                                      /[^0-9]/g,
-                                      ""
-                                    )
-                                  ) + "h/week"
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "d-none",
-                        attrs: { id: "welcomeText" + _vm.freelancer.id }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                    Hi, I am " +
-                            _vm._s(_vm.freelancer.firstName) +
-                            ", I am a " +
-                            _vm._s(_vm.freelancer.user_data.jobTitle) +
-                            ", How can I help\n                                    you ?\n                                "
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "col-6",
-                      staticStyle: {
-                        "margin-top": "-39px",
-                        "padding-left": "28px"
-                      }
-                    },
-                    [
-                      _c(
-                        "form",
-                        {
-                          attrs: {
-                            action: "/chat-room/start_conversation",
-                            method: "post"
-                          }
-                        },
-                        [
-                          _c("input", {
-                            attrs: { type: "hidden", name: "freelancer_id" },
-                            domProps: { value: _vm.freelancer.id }
-                          }),
-                          _vm._v(" "),
-                          _c("input", {
-                            staticClass: "tap-to-chat cursorPointerOnHover",
-                            staticStyle: {
-                              background: "none",
-                              border: "none",
-                              outline: "none"
-                            },
-                            attrs: { type: "submit", value: "TAP TO CHAT" }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-12",
-                    staticStyle: { padding: "10px 20px 16px 20px" }
-                  },
-                  [
-                    _c("div", { staticClass: "text-center cardRow NoDecor" }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "hireCardBtn btn-block showHireSection",
-                          attrs: { href: "javascript:void(0)" },
-                          on: {
-                            click: function($event) {
-                              _vm.showHireSection()
-                            }
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                    Hire me\n                                "
-                          )
-                        ]
-                      )
-                    ])
-                  ]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("transition", { attrs: { name: "slide-fade" } }, [
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.portfolio,
-                      expression: "portfolio"
-                    }
-                  ]
-                },
-                [
-                  _c("div", { staticClass: "row navRow" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-2 offset-md-3 col-4 text-center",
-                        staticStyle: { "border-right": "1px solid #EBEDEF" },
-                        on: {
-                          click: function($event) {
-                            _vm.setTab("skills")
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "navTab NoDecor",
-                            class: { active: _vm.currentTab === "skills" }
-                          },
-                          [
-                            _c("a", { attrs: { href: "javascript:void(0)" } }, [
-                              _vm._v(
-                                "\n                                        Skills\n                                    "
-                              )
-                            ])
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-2 col-4 text-center",
-                        staticStyle: { "border-right": "1px solid #EBEDEF" },
-                        on: {
-                          click: function($event) {
-                            _vm.setTab("work")
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "navTab NoDecor",
-                            class: { active: _vm.currentTab === "work" }
-                          },
-                          [
-                            _c("a", { attrs: { href: "javascript:void(0)" } }, [
-                              _vm._v(
-                                "\n                                        Work\n                                    "
-                              )
-                            ])
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-md-2 col-4 text-center",
-                        on: {
-                          click: function($event) {
-                            _vm.setTab("education")
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "navTab NoDecor",
-                            class: { active: _vm.currentTab === "education" }
-                          },
-                          [
-                            _c("a", { attrs: { href: "javascript:void(0)" } }, [
-                              _vm._v(
-                                "\n                                        Education\n                                    "
-                              )
-                            ])
-                          ]
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.currentTab === "skills",
-                          expression: "currentTab === 'skills'"
-                        }
-                      ]
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticStyle: { "padding-top": "2px" },
-                          attrs: { id: "nav-taps-resume" }
-                        },
-                        [
-                          _c(
-                            "ul",
-                            {
-                              staticClass: "nav nav-tabs",
-                              attrs: { role: "tablist" }
-                            },
-                            [
-                              _c("li", { staticClass: "nav-item" }, [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "nav-link text-center active",
-                                    attrs: {
-                                      href: "#languagesTab" + _vm.freelancer.id,
-                                      role: "tab",
-                                      "data-toggle": "tab"
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            Programming Languages\n                                        "
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("li", { staticClass: "nav-item" }, [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "nav-link text-center",
-                                    attrs: {
-                                      href: "#databases" + _vm.freelancer.id,
-                                      role: "tab",
-                                      "data-toggle": "tab"
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            Frameworks / Databases\n                                        "
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("li", { staticClass: "nav-item" }, [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "nav-link text-center",
-                                    attrs: {
-                                      href: "#skillsTab" + _vm.freelancer.id,
-                                      role: "tab",
-                                      "data-toggle": "tab"
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            Design Skills\n                                        "
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("li", { staticClass: "nav-item" }, [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "nav-link text-center",
-                                    attrs: {
-                                      href: "#software" + _vm.freelancer.id,
-                                      role: "tab",
-                                      "data-toggle": "tab"
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            Software\n                                        "
-                                    )
-                                  ]
-                                )
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "tab-content" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass: "tab-pane active firstItem",
-                                attrs: {
-                                  role: "tabpanel",
-                                  id: "languagesTab" + _vm.freelancer.id
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "row",
-                                    staticStyle: {
-                                      "padding-top": "17px",
-                                      "padding-bottom": "16px",
-                                      background: "#fdfdfd"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      { staticClass: "col-md-12  text-center" },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "d-flex flex-column align-items-start",
-                                            staticStyle: {
-                                              "padding-top": "15px"
-                                            }
-                                          },
-                                          _vm._l(_vm.skills, function(
-                                            skill,
-                                            index
-                                          ) {
-                                            return _c(
-                                              "div",
-                                              {
-                                                directives: [
-                                                  {
-                                                    name: "show",
-                                                    rawName: "v-show",
-                                                    value:
-                                                      skill.type ===
-                                                      "programming",
-                                                    expression:
-                                                      "skill.type === 'programming'"
-                                                  }
-                                                ],
-                                                key: index,
-                                                staticClass:
-                                                  "highlightSkill skills",
-                                                on: {
-                                                  mouseover: function($event) {
-                                                    _vm.highlightSkill(skill, 0)
-                                                  },
-                                                  mouseleave: function($event) {
-                                                    _vm.highlightSkill(
-                                                      skill,
-                                                      100
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "skill text-left"
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "skill-title"
-                                                      },
-                                                      [
-                                                        _c("img", {
-                                                          staticStyle: {
-                                                            width: "17px",
-                                                            "padding-bottom":
-                                                              "3px"
-                                                          },
-                                                          attrs: {
-                                                            src: _vm.getSkillIconSrc(
-                                                              skill.skill_title
-                                                            ),
-                                                            alt: "skill",
-                                                            id:
-                                                              "skillImage_" +
-                                                              skill.id
-                                                          }
-                                                        }),
-                                                        _vm._v(
-                                                          "\n                                                                " +
-                                                            _vm._s(
-                                                              skill.skill_title
-                                                            ) +
-                                                            "\n                                                            "
-                                                        )
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "skill-bar",
-                                                        attrs: {
-                                                          "data-bar": _vm.getSkillBarRandom(
-                                                            70,
-                                                            100
-                                                          )
-                                                        }
-                                                      },
-                                                      [_c("span")]
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          })
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "tab-pane ",
-                                attrs: {
-                                  role: "tabpanel",
-                                  id: "databases" + _vm.freelancer.id
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "row",
-                                    staticStyle: {
-                                      "padding-top": "17px",
-                                      "padding-bottom": "16px",
-                                      background: "#fdfdfd"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      { staticClass: "col-md-12  text-center" },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "d-flex flex-column align-items-start",
-                                            staticStyle: {
-                                              "padding-top": "15px"
-                                            }
-                                          },
-                                          _vm._l(_vm.skills, function(
-                                            skill,
-                                            index
-                                          ) {
-                                            return _c(
-                                              "div",
-                                              {
-                                                directives: [
-                                                  {
-                                                    name: "show",
-                                                    rawName: "v-show",
-                                                    value:
-                                                      skill.type ===
-                                                      "frameworks",
-                                                    expression:
-                                                      "skill.type === 'frameworks'"
-                                                  }
-                                                ],
-                                                key: index,
-                                                staticClass:
-                                                  "highlightSkill skills",
-                                                on: {
-                                                  mouseover: function($event) {
-                                                    _vm.highlightSkill(skill, 0)
-                                                  },
-                                                  mouseleave: function($event) {
-                                                    _vm.highlightSkill(
-                                                      skill,
-                                                      100
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "skill text-left"
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "skill-title"
-                                                      },
-                                                      [
-                                                        _c("img", {
-                                                          staticStyle: {
-                                                            width: "17px",
-                                                            "padding-bottom":
-                                                              "3px"
-                                                          },
-                                                          attrs: {
-                                                            src: _vm.getSkillIconSrc(
-                                                              skill.skill_title
-                                                            ),
-                                                            alt: "skill",
-                                                            id:
-                                                              "skillImage_" +
-                                                              skill.id
-                                                          }
-                                                        }),
-                                                        _vm._v(
-                                                          "\n                                                                " +
-                                                            _vm._s(
-                                                              skill.skill_title
-                                                            ) +
-                                                            "\n                                                            "
-                                                        )
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "skill-bar",
-                                                        attrs: {
-                                                          "data-bar": _vm.getSkillBarRandom(
-                                                            70,
-                                                            100
-                                                          )
-                                                        }
-                                                      },
-                                                      [_c("span")]
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          })
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "tab-pane",
-                                attrs: {
-                                  role: "tabpanel",
-                                  id: "skillsTab" + _vm.freelancer.id
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "row",
-                                    staticStyle: {
-                                      "padding-top": "17px",
-                                      "padding-bottom": "16px",
-                                      background: "#fdfdfd"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      { staticClass: "col-md-12  text-center" },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "d-flex flex-column align-items-start",
-                                            staticStyle: {
-                                              "padding-top": "15px"
-                                            }
-                                          },
-                                          _vm._l(_vm.skills, function(
-                                            skill,
-                                            index
-                                          ) {
-                                            return _c(
-                                              "div",
-                                              {
-                                                directives: [
-                                                  {
-                                                    name: "show",
-                                                    rawName: "v-show",
-                                                    value:
-                                                      skill.type === "design",
-                                                    expression:
-                                                      "skill.type === 'design'"
-                                                  }
-                                                ],
-                                                key: index,
-                                                staticClass:
-                                                  "highlightSkill skills",
-                                                on: {
-                                                  mouseover: function($event) {
-                                                    _vm.highlightSkill(skill, 0)
-                                                  },
-                                                  mouseleave: function($event) {
-                                                    _vm.highlightSkill(
-                                                      skill,
-                                                      100
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "skill text-left"
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "skill-title"
-                                                      },
-                                                      [
-                                                        _c("img", {
-                                                          staticStyle: {
-                                                            width: "17px",
-                                                            "padding-bottom":
-                                                              "3px"
-                                                          },
-                                                          attrs: {
-                                                            src: _vm.getSkillIconSrc(
-                                                              skill.skill_title
-                                                            ),
-                                                            alt: "skill",
-                                                            id:
-                                                              "skillImage_" +
-                                                              skill.id
-                                                          }
-                                                        }),
-                                                        _vm._v(
-                                                          "\n                                                                " +
-                                                            _vm._s(
-                                                              skill.skill_title
-                                                            ) +
-                                                            "\n                                                            "
-                                                        )
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "skill-bar",
-                                                        attrs: {
-                                                          "data-bar": _vm.getSkillBarRandom(
-                                                            70,
-                                                            100
-                                                          )
-                                                        }
-                                                      },
-                                                      [_c("span")]
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          })
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "tab-pane",
-                                attrs: {
-                                  role: "tabpanel",
-                                  id: "software" + _vm.freelancer.id
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "row",
-                                    staticStyle: {
-                                      "padding-top": "17px",
-                                      "padding-bottom": "16px",
-                                      background: "#fdfdfd"
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      { staticClass: "col-md-12  text-center" },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              "d-flex flex-column align-items-start",
-                                            staticStyle: {
-                                              "padding-top": "15px"
-                                            }
-                                          },
-                                          _vm._l(_vm.skills, function(
-                                            skill,
-                                            index
-                                          ) {
-                                            return _c(
-                                              "div",
-                                              {
-                                                directives: [
-                                                  {
-                                                    name: "show",
-                                                    rawName: "v-show",
-                                                    value:
-                                                      skill.type === "software",
-                                                    expression:
-                                                      "skill.type === 'software'"
-                                                  }
-                                                ],
-                                                key: index,
-                                                staticClass:
-                                                  "highlightSkill skills",
-                                                on: {
-                                                  mouseover: function($event) {
-                                                    _vm.highlightSkill(skill, 0)
-                                                  },
-                                                  mouseleave: function($event) {
-                                                    _vm.highlightSkill(
-                                                      skill,
-                                                      100
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "skill text-left"
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "skill-title"
-                                                      },
-                                                      [
-                                                        _c("img", {
-                                                          staticStyle: {
-                                                            width: "17px",
-                                                            "padding-bottom":
-                                                              "3px"
-                                                          },
-                                                          attrs: {
-                                                            src: _vm.getSkillIconSrc(
-                                                              skill.skill_title
-                                                            ),
-                                                            alt: "skill",
-                                                            id:
-                                                              "skillImage_" +
-                                                              skill.id
-                                                          }
-                                                        }),
-                                                        _vm._v(
-                                                          "\n                                                                " +
-                                                            _vm._s(
-                                                              skill.skill_title
-                                                            ) +
-                                                            "\n                                                            "
-                                                        )
-                                                      ]
-                                                    ),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "skill-bar",
-                                                        attrs: {
-                                                          "data-bar": _vm.getSkillBarRandom(
-                                                            70,
-                                                            100
-                                                          )
-                                                        }
-                                                      },
-                                                      [_c("span")]
-                                                    )
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          })
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ])
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.currentTab === "work",
-                          expression: "currentTab === 'work'"
-                        }
-                      ]
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "row",
-                          staticStyle: { "padding-top": "10px" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "col-12 educationSection" },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: "aboutText" },
-                                _vm._l(_vm.worksHistory, function(work, index) {
-                                  return _c(
-                                    "div",
-                                    { key: index + "V", staticClass: "row" },
-                                    [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "col-md-12 aboutSubText"
-                                        },
-                                        [
-                                          _c(
-                                            "div",
-                                            { staticClass: "title work" },
-                                            [
-                                              _c("span", {
-                                                staticClass: "circle"
-                                              }),
-                                              _vm._v(
-                                                "\n                                                    " +
-                                                  _vm._s(work.job_title) +
-                                                  "\n                                                "
-                                              )
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "div",
-                                            { staticClass: "company" },
-                                            [_vm._v(_vm._s(work.company))]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("div", { staticClass: "year" }, [
-                                            _c(
-                                              "span",
-                                              { staticClass: "work" },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                        " +
-                                                    _vm._s(
-                                                      _vm.getDate(
-                                                        work.date_from
-                                                      )
-                                                    ) +
-                                                    "\n                                                        "
-                                                ),
-                                                work.currently_working
-                                                  ? _c("span", [
-                                                      _vm._v(" - Present ")
-                                                    ])
-                                                  : _c("span", [
-                                                      _vm._v(
-                                                        " - " +
-                                                          _vm._s(
-                                                            _vm.getDate(
-                                                              work.date_to
-                                                            )
-                                                          )
-                                                      )
-                                                    ])
-                                              ]
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("div", { staticClass: "desc" }, [
-                                            _vm._v(_vm._s(work.job_description))
-                                          ])
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                })
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.currentTab === "education",
-                          expression: "currentTab === 'education'"
-                        }
-                      ]
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "row",
-                          staticStyle: { "padding-top": "10px" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "col-12 educationSection" },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: "aboutText" },
-                                _vm._l(_vm.educationsHistory, function(
-                                  education,
-                                  index
-                                ) {
-                                  return _c(
-                                    "div",
-                                    { key: index + "E", staticClass: "row" },
-                                    [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "col-md-12 aboutSubText"
-                                        },
-                                        [
-                                          _c(
-                                            "div",
-                                            { staticClass: "title work" },
-                                            [
-                                              _c("span", {
-                                                staticClass: "circle"
-                                              }),
-                                              _vm._v(
-                                                "\n                                                    " +
-                                                  _vm._s(
-                                                    education.school_title
-                                                  ) +
-                                                  "\n                                                "
-                                              )
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("div", { staticClass: "year" }, [
-                                            _c(
-                                              "span",
-                                              { staticClass: "work" },
-                                              [
-                                                _vm._v(
-                                                  "\n                                                        " +
-                                                    _vm._s(
-                                                      _vm.getDate(
-                                                        education.date_from
-                                                      )
-                                                    ) +
-                                                    "\n                                                        "
-                                                ),
-                                                education.currently_learning
-                                                  ? _c("span", [
-                                                      _vm._v(" - Present ")
-                                                    ])
-                                                  : _c("span", [
-                                                      _vm._v(
-                                                        " - " +
-                                                          _vm._s(
-                                                            _vm.getDate(
-                                                              education.date_to
-                                                            )
-                                                          )
-                                                      )
-                                                    ])
-                                              ]
-                                            )
-                                          ]),
-                                          _vm._v(" "),
-                                          _c("div", { staticClass: "desc" }, [
-                                            _vm._v(
-                                              _vm._s(education.description)
-                                            )
-                                          ])
-                                        ]
-                                      )
-                                    ]
-                                  )
-                                })
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("transition", { attrs: { name: "slide-fade-left" } }, [
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.hire,
-                      expression: "hire"
-                    }
-                  ]
-                },
-                [
-                  _c(
-                    "div",
-                    { staticStyle: { "border-top": "1px solid #EBEDEF" } },
-                    [
-                      _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          { staticClass: "offset-md-4 col-md-4 col-12" },
-                          [
-                            _c("div", { staticClass: "hireText" }, [
-                              _vm._v(
-                                "\n                                        Select the number of Hours you need per week:\n                                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "hoursBtn NoDecor" }, [
-                              _c(
-                                "a",
-                                { attrs: { href: "javascript:void(0)" } },
-                                [
-                                  _c("img", {
-                                    staticStyle: {
-                                      width: "18px",
-                                      "padding-right": "8px"
-                                    },
-                                    attrs: {
-                                      src:
-                                        "/resumeApp/public/images/newResume/minus.png",
-                                      alt: "minus"
-                                    },
-                                    on: { click: _vm.subtractHours }
-                                  })
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("span", [_vm._v(_vm._s(_vm.hours))]),
-                              _vm._v(
-                                " hours\n                                        "
-                              ),
-                              _c(
-                                "a",
-                                { attrs: { href: "javascript:void(0)" } },
-                                [
-                                  _c("img", {
-                                    staticStyle: {
-                                      width: "18px",
-                                      "padding-left": "8px"
-                                    },
-                                    attrs: {
-                                      src:
-                                        "/resumeApp/public/images/newResume/plus.png",
-                                      alt: "plus"
-                                    },
-                                    on: { click: _vm.addHours }
-                                  })
-                                ]
-                              )
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _c(
-                          "div",
-                          { staticClass: "offset-md-4 col-md-4 col-12" },
-                          [
-                            _c("div", { staticClass: "hireText" }, [
-                              _vm._v(
-                                "\n                                        How many weeks would you like to book for?\n                                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "hoursBtn NoDecor" }, [
-                              _c(
-                                "a",
-                                { attrs: { href: "javascript:void(0)" } },
-                                [
-                                  _c("img", {
-                                    staticStyle: {
-                                      width: "18px",
-                                      "padding-right": "8px"
-                                    },
-                                    attrs: {
-                                      src:
-                                        "/resumeApp/public/images/newResume/minus.png",
-                                      alt: "minus"
-                                    },
-                                    on: { click: _vm.subtractWeeks }
-                                  })
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("span", [_vm._v(_vm._s(_vm.weeks))]),
-                              _vm._v(
-                                " weeks\n                                        "
-                              ),
-                              _c(
-                                "a",
-                                { attrs: { href: "javascript:void(0)" } },
-                                [
-                                  _c("img", {
-                                    staticStyle: {
-                                      width: "18px",
-                                      "padding-left": "8px"
-                                    },
-                                    attrs: {
-                                      src:
-                                        "/resumeApp/public/images/newResume/plus.png",
-                                      alt: "plus"
-                                    },
-                                    on: { click: _vm.addWeeks }
-                                  })
-                                ]
-                              )
-                            ])
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "row",
-                          staticStyle: {
-                            "padding-top": "50px",
-                            "padding-bottom": "50px"
-                          }
-                        },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "offset-md-2 col-12 col-md-8",
-                              staticStyle: { "border-top": "1px solid #EBEDEF" }
-                            },
-                            [
-                              _c("div", { staticClass: "row" }, [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-md-2 col-4 text-left jobTitle",
-                                    staticStyle: {
-                                      "font-size": "12px",
-                                      color: "#30323D"
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            Monthly rate\n                                        "
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-md-2 col-3 offset-5 offset-md-8 text-right jobTitle",
-                                    staticStyle: {
-                                      "font-weight": "bold",
-                                      "font-size": "12px",
-                                      color: "#30323D"
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            " +
-                                        _vm._s(
-                                          _vm.freelancer.user_data.salary_month
-                                        ) +
-                                        " $\n                                        "
-                                    )
-                                  ]
-                                )
-                              ])
-                            ]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "row",
-                          staticStyle: { "border-top": "1px solid #EBEDEF" }
-                        },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "col-md-4 offset-md-2 col-12 NoDecor",
-                              staticStyle: { "padding-top": "17px" }
-                            },
-                            [
-                              _c(
-                                "a",
-                                {
-                                  staticClass:
-                                    "justify-content-center d-flex btn-block cancelBtn",
-                                  attrs: { href: "javascript:void(0)" },
-                                  on: { click: _vm.hideHireSection }
-                                },
-                                [_vm._v("Cancel Booking")]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "col-md-4 col-12 NoDecor whiteOnHover",
-                              staticStyle: {
-                                "padding-top": "17px",
-                                "padding-bottom": "30px"
-                              }
-                            },
-                            [
-                              _c(
-                                "a",
-                                {
-                                  staticClass:
-                                    "btn d-flex btn-block summaryBtn",
-                                  attrs: {
-                                    href:
-                                      "/stripe/hire?freelancerID=" +
-                                      _vm.freelancer.id +
-                                      "&hours=" +
-                                      _vm.hours +
-                                      "&weeks=" +
-                                      _vm.weeks
-                                  }
-                                },
-                                [_vm._v("Booking Summary")]
-                              )
-                            ]
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]
-              )
-            ])
-          ],
-          1
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3431b16d", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

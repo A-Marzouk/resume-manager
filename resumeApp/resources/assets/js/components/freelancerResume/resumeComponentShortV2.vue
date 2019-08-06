@@ -192,7 +192,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                                <div class="skill-bar" :data-bar="skill.percentage"><span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -213,7 +213,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar"  :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                                <div class="skill-bar"  :data-bar="skill.percentage"><span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -234,7 +234,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar"  :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                                <div class="skill-bar"  :data-bar="skill.percentage"><span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -255,7 +255,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar"  :data-bar="getSkillBarRandom(70,100)"><span></span></div>
+                                                                <div class="skill-bar"  :data-bar="skill.percentage"><span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -275,9 +275,9 @@
                                         <div class="aboutText">
                                             <div class="row" v-for="(work, index) in worksHistory" :key="index + 'V'">
                                                 <div class="col-md-12 aboutSubText">
-                                                    <div class="title work">
+                                                    <div class="title work d-flex">
                                                         <span class="circle"></span>
-                                                        {{work.job_title}}
+                                                        <span  class="seduHeader" >{{work.job_title}}</span>
                                                     </div>
                                                     <div class="company">{{work.company}}</div>
                                                     <div class="year">
@@ -304,9 +304,11 @@
                                         <div class="aboutText">
                                             <div class="row" v-for="(education, index) in educationsHistory" :key="index + 'E'">
                                                 <div class="col-md-12 aboutSubText">
-                                                    <div class="title work">
+                                                    <div class="title work d-flex">
                                                         <span class="circle"></span>
+                                                        <span  class="seduHeader" >
                                                         {{education.school_title}}
+                                                        </span>
                                                     </div>
                                                     <div class="year">
                                                         <span class="work">
@@ -668,9 +670,6 @@
                     $(".skills .skill .skill-bar span b").animate({"opacity":"1"},1000);
                 }, 2000);
                 console.log('ran');
-            },
-             getSkillBarRandom(min, max) {
-                return Math.random() * (max - min) + min;
             }
 
         },
@@ -844,6 +843,14 @@
         max-width: 600px;
         padding:0 15px;
         margin:0 auto;
+    }
+
+
+    .seduHeader{
+        padding-left: 6px;
+        @media only screen and (max-width: 500px) {
+            padding-left:5px;
+        }
     }
 
 

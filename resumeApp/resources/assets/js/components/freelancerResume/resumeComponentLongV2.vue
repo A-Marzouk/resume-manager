@@ -21,7 +21,8 @@
                         <div class="row nameRow">
                             <div class="col-lg-2 col-6 imageCol">
                                 <div class="imageContainer" style="padding: 10px;">
-                                    <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer" class="freelancerImg"
+                                    <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer"
+                                         class="freelancerImg"
                                          width="120" height="120">
                                 </div>
                             </div>
@@ -30,18 +31,22 @@
                                     <div class="nameCard">
                                         {{freelancer.firstName}}
                                     </div>
-                                    <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;" :id="'animatedText'+freelancer.id">
+                                    <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;"
+                                         :id="'animatedText'+freelancer.id">
                                         {{freelancer.user_data.jobTitle}}
                                     </div>
 
                                     <form action="/chat-room/start_conversation" method="post">
                                         <input type="hidden" name="freelancer_id" :value="freelancer.id">
-                                        <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
+                                        <input type="submit" value="TAP TO CHAT"
+                                               class="tap-to-chat cursorPointerOnHover"
+                                               style="background: none; border:none; outline: none;">
                                     </form>
 
 
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
-                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How can I help
+                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How
+                                        can I help
                                         you ?
                                     </div>
                                 </div>
@@ -51,22 +56,27 @@
                             <div class="col-lg-7 col-md-8 freelancerCardRight d-flex align-items-center">
 
                                 <div class="row hireRow w-100">
-                                    <div  class="col-md-4 text-center" style="font-size: 15px; color: white;" >
+                                    <div class="col-md-4 text-center" style="font-size: 15px; color: white;">
                                     <span style="font-weight: bold;">
                                         {{freelancer.user_data.salary}}
                                     </span>
-                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
+                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly
+                                            rate
+                                        </div>
                                     </div>
 
-                                    <div class="col-md-4 text-center"  style="font-size: 15px; color: white;">
+                                    <div class="col-md-4 text-center" style="font-size: 15px; color: white;">
                                         <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}} hours</span>
-                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly Availability</div>
+                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly
+                                            Availability
+                                        </div>
                                     </div>
 
                                     <div class="col-md-4" style="padding: 0;">
 
                                         <div class="row text-center cardRow NoDecor">
-                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection()">
+                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)"
+                                               @click="showHireSection()">
                                                 Hire me
                                             </a>
                                         </div>
@@ -84,7 +94,8 @@
                         <div class="row cardMainInfo_mob">
                             <div class="col-6">
                                 <div class="imageContainer" style="padding: 20px 10px 10px 10px;">
-                                    <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer" class="freelancerImg"
+                                    <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer"
+                                         class="freelancerImg"
                                          width="120" height="120">
                                 </div>
                             </div>
@@ -93,21 +104,25 @@
                                     <div class="nameCard">
                                         {{freelancer.firstName}}
                                     </div>
-                                    <div class="jobTitle" style="font-size: 17px; padding-left: 0; color: #c1d1ff" :id="'animatedText' + freelancer.id">
+                                    <div class="jobTitle" style="font-size: 17px; padding-left: 0; color: #c1d1ff"
+                                         :id="'animatedText' + freelancer.id">
                                         {{freelancer.user_data.jobTitle}}
                                     </div>
-                                    <div  class="text-left" style="font-size: 15px; color: white; padding-top: 5px;" >
+                                    <div class="text-left" style="font-size: 15px; color: white; padding-top: 5px;">
                                         <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Hourly rate :
                                             <span style="font-weight: bold;">
                                             $ {{freelancer.user_data.salary}}
                                         </span>
                                         </div>
                                     </div>
-                                    <div class="text-left"  style="font-size: 15px; color: white; padding-top: 5px;">
-                                        <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}}h/week</span></div>
+                                    <div class="text-left" style="font-size: 15px; color: white; padding-top: 5px;">
+                                        <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :
+                                            <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}}h/week</span>
+                                        </div>
                                     </div>
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
-                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How can I help
+                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How
+                                        can I help
                                         you ?
                                     </div>
                                 </div>
@@ -116,14 +131,17 @@
                                 <div class="col-6" style="margin-top: -39px; padding-left: 28px;">
                                     <form action="/chat-room/start_conversation" method="post">
                                         <input type="hidden" name="freelancer_id" :value="freelancer.id">
-                                        <input type="submit"  value="TAP TO CHAT" class="tap-to-chat cursorPointerOnHover" style="background: none; border:none; outline: none;">
+                                        <input type="submit" value="TAP TO CHAT"
+                                               class="tap-to-chat cursorPointerOnHover"
+                                               style="background: none; border:none; outline: none;">
                                     </form>
                                 </div>
                             </div>
 
                             <div class="col-12" style="padding: 10px 20px 16px 20px;">
                                 <div class="text-center cardRow NoDecor">
-                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="showHireSection()">
+                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)"
+                                       @click="showHireSection()">
                                         Hire me
                                     </a>
                                 </div>
@@ -137,7 +155,8 @@
                             <!-- nav row section -->
 
                             <div class="row navRow">
-                                <div class="col-md-2 offset-md-3 col-4 text-center" style="border-right:1px solid #EBEDEF;" @click="setTab('skills')">
+                                <div class="col-md-2 offset-md-3 col-4 text-center"
+                                     style="border-right:1px solid #EBEDEF;" @click="setTab('skills')">
                                     <div class="navTab NoDecor" :class="{active: currentTab === 'skills' }">
                                         <a href="javascript:void(0)">
                                             Skills
@@ -145,7 +164,8 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-2 col-4 text-center" style="border-right:1px solid #EBEDEF;" @click="setTab('work')">
+                                <div class="col-md-2 col-4 text-center" style="border-right:1px solid #EBEDEF;"
+                                     @click="setTab('work')">
                                     <div class="navTab NoDecor" :class="{active: currentTab === 'work' }">
                                         <a href="javascript:void(0)">
                                             Work
@@ -168,42 +188,56 @@
                                 <div id="nav-taps-resume" style="padding-top:2px">
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link text-center active" :href="'#languagesTab' + freelancer.id" role="tab" data-toggle="tab">
+                                            <a class="nav-link text-center active"
+                                               :href="'#languagesTab' + freelancer.id" role="tab" data-toggle="tab">
                                                 Programming Languages
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link text-center" :href="'#databases' + freelancer.id " role="tab" data-toggle="tab">
+                                            <a class="nav-link text-center" :href="'#databases' + freelancer.id "
+                                               role="tab" data-toggle="tab">
                                                 Frameworks / Databases
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link text-center" :href="'#skillsTab' + freelancer.id " role="tab" data-toggle="tab">
+                                            <a class="nav-link text-center" :href="'#skillsTab' + freelancer.id "
+                                               role="tab" data-toggle="tab">
                                                 Design Skills
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link text-center" :href="'#software' + freelancer.id " role="tab" data-toggle="tab">
+                                            <a class="nav-link text-center" :href="'#software' + freelancer.id "
+                                               role="tab" data-toggle="tab">
                                                 Software
                                             </a>
                                         </li>
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane active firstItem" :id="'languagesTab' + freelancer.id">
-                                            <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
+                                        <div role="tabpanel" class="tab-pane active firstItem"
+                                             :id="'languagesTab' + freelancer.id">
+                                            <div class="row"
+                                                 style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                                    <div class="d-flex flex-column align-items-start" style="padding-top: 15px;">
-                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'programming'" class="highlightSkill skills">
+                                                    <div class="d-flex flex-column align-items-start"
+                                                         style="padding-top: 15px;">
+                                                        <div @mouseover="highlightSkill(skill,0)"
+                                                             @mouseleave="highlightSkill(skill,100)"
+                                                             v-for="(skill,index) in skills" :key="index"
+                                                             v-show="skill.type === 'programming'"
+                                                             class="highlightSkill skills">
                                                             <!-- skill -->
                                                             <div class="skill text-left">
                                                                 <!-- title -->
                                                                 <div class="skill-title">
-                                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                                    <img style="width: 17px;padding-bottom: 3px;"
+                                                                         :src="getSkillIconSrc(skill.skill_title)"
+                                                                         alt="skill" :id="'skillImage_' + skill.id">
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage"><span></span></div>
+                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                    <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -212,19 +246,28 @@
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane " :id="'databases' + freelancer.id">
-                                            <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
+                                            <div class="row"
+                                                 style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                                    <div class="d-flex flex-column align-items-start" style="padding-top: 15px;">
-                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'frameworks'" class="highlightSkill skills">
+                                                    <div class="d-flex flex-column align-items-start"
+                                                         style="padding-top: 15px;">
+                                                        <div @mouseover="highlightSkill(skill,0)"
+                                                             @mouseleave="highlightSkill(skill,100)"
+                                                             v-for="(skill,index) in skills" :key="index"
+                                                             v-show="skill.type === 'frameworks'"
+                                                             class="highlightSkill skills">
                                                             <!-- skill -->
                                                             <div class="skill text-left">
                                                                 <!-- title -->
                                                                 <div class="skill-title">
-                                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                                    <img style="width: 17px;padding-bottom: 3px;"
+                                                                         :src="getSkillIconSrc(skill.skill_title)"
+                                                                         alt="skill" :id="'skillImage_' + skill.id">
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar"  :data-bar="skill.percentage"><span></span></div>
+                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                    <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -233,19 +276,28 @@
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane" :id="'skillsTab' + freelancer.id">
-                                            <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
+                                            <div class="row"
+                                                 style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                                    <div class="d-flex flex-column align-items-start" style="padding-top: 15px;">
-                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'design'" class="highlightSkill skills">
+                                                    <div class="d-flex flex-column align-items-start"
+                                                         style="padding-top: 15px;">
+                                                        <div @mouseover="highlightSkill(skill,0)"
+                                                             @mouseleave="highlightSkill(skill,100)"
+                                                             v-for="(skill,index) in skills" :key="index"
+                                                             v-show="skill.type === 'design'"
+                                                             class="highlightSkill skills">
                                                             <!-- skill -->
                                                             <div class="skill text-left">
                                                                 <!-- title -->
                                                                 <div class="skill-title">
-                                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                                    <img style="width: 17px;padding-bottom: 3px;"
+                                                                         :src="getSkillIconSrc(skill.skill_title)"
+                                                                         alt="skill" :id="'skillImage_' + skill.id">
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar"  :data-bar="skill.percentage"><span></span></div>
+                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                    <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -254,19 +306,28 @@
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane" :id="'software' + freelancer.id">
-                                            <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
+                                            <div class="row"
+                                                 style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                                 <div class="col-md-12  text-center">
-                                                    <div class="d-flex flex-column align-items-start" style="padding-top: 15px;">
-                                                        <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'software'" class="highlightSkill skills">
+                                                    <div class="d-flex flex-column align-items-start"
+                                                         style="padding-top: 15px;">
+                                                        <div @mouseover="highlightSkill(skill,0)"
+                                                             @mouseleave="highlightSkill(skill,100)"
+                                                             v-for="(skill,index) in skills" :key="index"
+                                                             v-show="skill.type === 'software'"
+                                                             class="highlightSkill skills">
                                                             <!-- skill -->
                                                             <div class="skill text-left">
                                                                 <!-- title -->
                                                                 <div class="skill-title">
-                                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
+                                                                    <img style="width: 17px;padding-bottom: 3px;"
+                                                                         :src="getSkillIconSrc(skill.skill_title)"
+                                                                         alt="skill" :id="'skillImage_' + skill.id">
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar"  :data-bar="skill.percentage"><span></span></div>
+                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                    <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
                                                         </div>
@@ -288,14 +349,14 @@
                                                 <div class="col-md-12 aboutSubText">
                                                     <div class="title work d-flex">
                                                         <span class="circle"></span>
-                                                        <span  class="seduHeader" >{{work.job_title}}</span>
+                                                        <span class="seduHeader">{{work.job_title}}</span>
                                                     </div>
                                                     <div class="company">{{work.company}}</div>
                                                     <div class="year">
                                                         <span class="work">
                                                             {{getDate(work.date_from)}}
                                                             <span v-if="work.currently_working"> - Present </span>
-                                                            <span v-else > - {{getDate(work.date_to)}}</span>
+                                                            <span v-else> - {{getDate(work.date_to)}}</span>
                                                         </span>
                                                     </div>
                                                     <div class="desc">{{work.job_description}}</div>
@@ -305,19 +366,28 @@
 
                                                 <!-- portfolio section -->
                                                 <div class="w-100">
-                                                    <slick class="projectsSection" ref="slickSlide" :id="work.id" :options="slickOptions">
-                                                        <div  v-for="(project,index) in work.projects" :key="index + 'A'" >
+                                                    <slick class="projectsSection" ref="slickSlide" :id="work.id"
+                                                           :options="slickOptions">
+                                                        <div v-for="(project,index) in work.projects"
+                                                             :key="index + 'A'">
                                                             <!-- class="d-flex justify-content-center" style="height: 250px !important; padding: 0 2px 0 2px; overflow: hidden;" -->
 
-                                                            <div class="workCard" style="margin:10px; margin-bottom: 0px;">
+                                                            <div class="workCard"
+                                                                 style="margin:10px; margin-bottom: 0px;">
                                                                 <div class="workImg">
                                                                     <a href="javascript:void(0)"
                                                                        style="outline: none;"
-                                                                       data-toggle="modal" :data-target="'#project_modal_'+project.id" @click="loadHDImage(project.id)">
+                                                                       data-toggle="modal"
+                                                                       :data-target="'#project_modal_'+project.id"
+                                                                       @click="loadHDImage(project.id)">
 
-                                                                        <vue-load-image class="d-flex justify-content-center align-items-center">
-                                                                            <img :src="getImageSrc(project.mainImage)" alt="" width="260" slot="image">
-                                                                            <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif" style="width: 100px; height: 100px;" />
+                                                                        <vue-load-image
+                                                                                class="d-flex justify-content-center align-items-center">
+                                                                            <img :src="getImageSrc(project.mainImage)"
+                                                                                 alt="" width="260" slot="image">
+                                                                            <img alt="" slot="preloader"
+                                                                                 src="/resumeApp/public/images/spinner-load.gif"
+                                                                                 style="width: 100px; height: 100px;"/>
                                                                         </vue-load-image>
                                                                     </a>
                                                                 </div>
@@ -326,8 +396,10 @@
                                                                         <div class="col-md-10 col-9">
                                                                             {{project.projectName}}
                                                                         </div>
-                                                                        <a class="col-md-1 col-1" href="javascript:void(0)"
-                                                                           data-toggle="modal" :data-target="'#project_modal_'+project.id"
+                                                                        <a class="col-md-1 col-1"
+                                                                           href="javascript:void(0)"
+                                                                           data-toggle="modal"
+                                                                           :data-target="'#project_modal_'+project.id"
                                                                            style="outline: none; margin-left: 16px;">
                                                                             <img src="/resumeApp/public/images/newResume/link.png"
                                                                                  alt="view work">
@@ -347,9 +419,12 @@
                                                         </div>
                                                     </slick>
 
-                                                    <div class="row carouselControls" style="width: 100%;" v-show="work.projects.length > 0">
+                                                    <div class="row carouselControls" style="width: 100%;"
+                                                         v-show="work.projects.length > 0">
                                                         <div class=" col-12 text-center NoDecor">
-                                                            <a href="javascript:void(0)" class="cardLabel_interviews noScroll" @click="slidePrev(index)"
+                                                            <a href="javascript:void(0)"
+                                                               class="cardLabel_interviews noScroll"
+                                                               @click="slidePrev(index)"
                                                                style="color:#697786;">
                                                                 <img src="/resumeApp/resources/assets/images/left_arrow.png"
                                                                      alt="prev" width="15px">
@@ -357,7 +432,9 @@
 
                                                             <span class="jobTitle" style="padding: 0 5px 0 5px"> <span>{{slides[index].number}}</span> / <span> {{calculateNumberOfRelatedSlides( work.projects.length)}} </span></span>
 
-                                                            <a href="javascript:void(0)" role="button" data-slide="next" class="cardLabel_interviews noScroll" @click="slideNext(index,work.projects.length)"
+                                                            <a href="javascript:void(0)" role="button" data-slide="next"
+                                                               class="cardLabel_interviews noScroll"
+                                                               @click="slideNext(index,work.projects.length)"
                                                                style="color:#697786;">
                                                                 <img src="/resumeApp/resources/assets/images/right_arrow.png"
                                                                      alt="next" width="15px">
@@ -380,7 +457,8 @@
                                 <div class="row" style="padding-top: 10px;">
                                     <div class="col-12 educationSection">
                                         <div class="aboutText">
-                                            <div class="row" v-for="(education, index) in educationsHistory" :key="index + 'E'">
+                                            <div class="row" v-for="(education, index) in educationsHistory"
+                                                 :key="index + 'E'">
                                                 <div class="col-md-12 aboutSubText">
                                                     <div class="title work d-flex">
                                                         <span class="circle"></span>
@@ -392,7 +470,7 @@
                                                         <span class="work">
                                                             {{getDate(education.date_from)}}
                                                             <span v-if="education.currently_learning"> - Present </span>
-                                                            <span v-else > - {{getDate(education.date_to)}}</span>
+                                                            <span v-else> - {{getDate(education.date_to)}}</span>
                                                         </span>
                                                     </div>
                                                     <div class="desc">{{education.description}}</div>
@@ -418,11 +496,15 @@
                                         </div>
                                         <div class="hoursBtn NoDecor">
                                             <a href="javascript:void(0)">
-                                                <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus" @click="subtractHours">
+                                                <img src="/resumeApp/public/images/newResume/minus.png"
+                                                     style="width: 18px; padding-right: 8px;" alt="minus"
+                                                     @click="subtractHours">
                                             </a>
                                             <span>{{hours}}</span> hours
                                             <a href="javascript:void(0)">
-                                                <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus" @click="addHours" >
+                                                <img src="/resumeApp/public/images/newResume/plus.png"
+                                                     style="width: 18px; padding-left: 8px;" alt="plus"
+                                                     @click="addHours">
                                             </a>
                                         </div>
                                     </div>
@@ -434,11 +516,15 @@
                                         </div>
                                         <div class="hoursBtn NoDecor">
                                             <a href="javascript:void(0)">
-                                                <img src="/resumeApp/public/images/newResume/minus.png" style="width: 18px; padding-right: 8px;" alt="minus" @click="subtractWeeks">
+                                                <img src="/resumeApp/public/images/newResume/minus.png"
+                                                     style="width: 18px; padding-right: 8px;" alt="minus"
+                                                     @click="subtractWeeks">
                                             </a>
                                             <span>{{weeks}}</span> weeks
                                             <a href="javascript:void(0)">
-                                                <img src="/resumeApp/public/images/newResume/plus.png" style="width: 18px; padding-left: 8px;" alt="plus" @click="addWeeks">
+                                                <img src="/resumeApp/public/images/newResume/plus.png"
+                                                     style="width: 18px; padding-left: 8px;" alt="plus"
+                                                     @click="addWeeks">
                                             </a>
                                         </div>
                                     </div>
@@ -447,10 +533,12 @@
                                 <div class="row" style="padding-top:50px; padding-bottom: 50px;">
                                     <div class="offset-md-2 col-12 col-md-8" style="border-top: 1px solid #EBEDEF;">
                                         <div class="row">
-                                            <div class="col-md-2 col-4 text-left jobTitle" style="font-size: 12px; color: #30323D;">
+                                            <div class="col-md-2 col-4 text-left jobTitle"
+                                                 style="font-size: 12px; color: #30323D;">
                                                 Monthly rate
                                             </div>
-                                            <div class="col-md-2 col-3 offset-5 offset-md-8 text-right jobTitle" style="font-weight: bold;font-size: 12px; color: #30323D;">
+                                            <div class="col-md-2 col-3 offset-5 offset-md-8 text-right jobTitle"
+                                                 style="font-weight: bold;font-size: 12px; color: #30323D;">
                                                 {{freelancer.user_data.salary_month}} $
                                             </div>
                                         </div>
@@ -458,10 +546,15 @@
                                 </div>
                                 <div class="row" style="border-top: 1px solid #EBEDEF;">
                                     <div class="col-md-4 offset-md-2 col-12 NoDecor" style="padding-top: 17px;">
-                                        <a href="javascript:void(0)" class="justify-content-center d-flex btn-block cancelBtn" @click="hideHireSection">Cancel Booking</a>
+                                        <a href="javascript:void(0)"
+                                           class="justify-content-center d-flex btn-block cancelBtn"
+                                           @click="hideHireSection">Cancel Booking</a>
                                     </div>
-                                    <div class="col-md-4 col-12 NoDecor whiteOnHover" style="padding-top: 17px; padding-bottom: 30px;">
-                                        <a class="btn d-flex btn-block summaryBtn" :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks ">Booking Summary</a>
+                                    <div class="col-md-4 col-12 NoDecor whiteOnHover"
+                                         style="padding-top: 17px; padding-bottom: 30px;">
+                                        <a class="btn d-flex btn-block summaryBtn"
+                                           :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks ">Booking
+                                            Summary</a>
                                     </div>
                                 </div>
                             </div>
@@ -476,11 +569,13 @@
                                      <span>
                                          <img src="/resumeApp/public/images/comment-512.png"
                                               alt="" style="padding-right: 14px; width: 34px;">
-                                        <span class="audioText" style="color: #4E75E8;">  References & Testimonials</span>
+                                        <span class="audioText"
+                                              style="color: #4E75E8;">  References & Testimonials</span>
                                     </span>
                                 </div>
                                 <div class="col-lg-1 col-1 text-center NoDecor" style="padding: 24px 0 0 0;">
-                                    <a href="javascript:void(0)" @click="hideReferencesSection" class="audioText audioDismiss" style="color: #4E75E8; font-size: large;" > x </a>
+                                    <a href="javascript:void(0)" @click="hideReferencesSection"
+                                       class="audioText audioDismiss" style="color: #4E75E8; font-size: large;"> x </a>
                                 </div>
                             </div>
                             <div style="padding-bottom: 35px;">
@@ -495,13 +590,13 @@
                                             <span class="work">
                                                 {{reference.company}}
                                             </span>
-                                                            </div>
-                                                            <div class="year">
+                                        </div>
+                                        <div class="year">
                                             <span class="work">
                                                 {{reference.email}}
                                             </span>
-                                                            </div>
-                                                            <div class="year">
+                                        </div>
+                                        <div class="year">
                                             <span class="work">
                                                 {{reference.phone}}
                                             </span>
@@ -520,8 +615,10 @@
 
         </div>
 
-        <div v-for="(work,index) in freelancer.works_history" :key="index + work.id" >
-            <div  v-for="(project,index) in work.projects" :key="index + project.id" class="modal fade" :id="'project_modal_'+project.id" tabindex="-1" role="dialog" aria-labelledby="certificate" aria-hidden="true">
+        <div v-for="(work,index) in freelancer.works_history" :key="index + work.id">
+            <div v-for="(project,index) in work.projects" :key="index + project.id" class="modal fade"
+                 :id="'project_modal_'+project.id" tabindex="-1" role="dialog" aria-labelledby="certificate"
+                 aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document" style="">
                     <div class="modal-content modal-mobile-resume-new-homepage" data-dismiss="modal"
                          aria-label="Close">
@@ -529,7 +626,9 @@
                             <div class="row">
                                 <div class="col-md-9" style="padding: 0;">
                                     <vue-load-image>
-                                        <img :src="getImageSrc(project.mainImage)" :id="'projectModalPhoto' + project.id" alt="" width="100%" slot="image" height="auto">
+                                        <img :src="getImageSrc(project.mainImage)"
+                                             :id="'projectModalPhoto' + project.id" alt="" width="100%" slot="image"
+                                             height="auto">
                                         <img slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
                                     </vue-load-image>
                                     <!--<div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">-->
@@ -561,7 +660,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
     </div>
@@ -572,15 +670,15 @@
     import VueLoadImage from 'vue-load-image'
 
     export default {
-        props:['freelancer','hire','search'],
-        components:{
+        props: ['freelancer', 'hire', 'search'],
+        components: {
             'vue-load-image': VueLoadImage,
             Slick
         },
-        data(){
+        data() {
             return {
-                slides:[],
-                numberOfSlides : this.calculateNumberOfSlides(),
+                slides: [],
+                numberOfSlides: this.calculateNumberOfSlides(),
                 skills: this.freelancer.skills,
                 worksHistory: this.freelancer.works_history,
                 educationsHistory: this.freelancer.educations_history,
@@ -609,29 +707,29 @@
                         }
                     ]
                 },
-                weeks:4,
-                hours: this.freelancer.user_data.availableHours.replace(/[^0-9]/g,'') ,
-                portfolio : !this.hire,
-                showReferences : false,
+                weeks: 4,
+                hours: this.freelancer.user_data.availableHours.replace(/[^0-9]/g, ''),
+                portfolio: !this.hire,
+                showReferences: false,
             }
         },
-        methods:{
-            getResizedImage(src){
-                let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads','/resumeApp/uploads/resized-images');
-                if(this.search == false){
+        methods: {
+            getResizedImage(src) {
+                let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
+                if (this.search == false) {
                     return resizedImage;
                 }
-                return  this.getImageSrc(src);
+                return this.getImageSrc(src);
             },
-            setTab(tabName){
-                this.currentTab = tabName ;
-                if(tabName === 'work'){
+            setTab(tabName) {
+                this.currentTab = tabName;
+                if (tabName === 'work') {
                     this.$nextTick(() => {
                         this.updateSlick();
                     });
                 }
             },
-            getDate(date){
+            getDate(date) {
                 let workDate = new Date(date);
                 let dd = workDate.getDate();
                 let mm = workDate.getMonth() + 1; //January is 0!
@@ -646,15 +744,15 @@
 
                 return dd + '/' + mm + '/' + yyyy;
             },
-            getSkillIconSrc(skill_title){
+            getSkillIconSrc(skill_title) {
                 let arrayOfSkillImages = {
-                    'ui design' : '/resumeApp/resources/assets/images/skills_icons/user_interface.png',
-                    'ux design' : '/resumeApp/resources/assets/images/skills_icons/user_experience.png',
-                    'logo design' : '/resumeApp/resources/assets/images/skills_icons/logo_design.png',
-                    'animation' : '/resumeApp/resources/assets/images/skills_icons/animation.jpg',
-                    'motion graphics' : '/resumeApp/resources/assets/images/skills_icons/motion_graphics.png',
-                    'illustration' : '/resumeApp/resources/assets/images/skills_icons/illustration.png',
-                    'advertising' : '/resumeApp/resources/assets/images/skills_icons/advertising.png',
+                    'ui design': '/resumeApp/resources/assets/images/skills_icons/user_interface.png',
+                    'ux design': '/resumeApp/resources/assets/images/skills_icons/user_experience.png',
+                    'logo design': '/resumeApp/resources/assets/images/skills_icons/logo_design.png',
+                    'animation': '/resumeApp/resources/assets/images/skills_icons/animation.jpg',
+                    'motion graphics': '/resumeApp/resources/assets/images/skills_icons/motion_graphics.png',
+                    'illustration': '/resumeApp/resources/assets/images/skills_icons/illustration.png',
+                    'advertising': '/resumeApp/resources/assets/images/skills_icons/advertising.png',
                     'branding': '/resumeApp/resources/assets/images/skills_icons/branding.png',
                     'brochure Design': '/resumeApp/resources/assets/images/skills_icons/brochure_design.png',
                     'website design': '/resumeApp/resources/assets/images/skills_icons/web_design.png',
@@ -665,187 +763,187 @@
                     'html / css': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
                     // 2-
 
-                    'adobe after effects':'/resumeApp/resources/assets/images/skills_icons/AE.png',
-                    'sketch':'/resumeApp/resources/assets/images/skills_icons/Sketch.png',
-                    'adobe illustrator':'/resumeApp/resources/assets/images/skills_icons/Illustrator.png',
-                    'adobe xd':'/resumeApp/resources/assets/images/skills_icons/AdobeXD.png',
-                    'photoshop':'/resumeApp/resources/assets/images/skills_icons/Photoshop.png',
-                    'autocad':'/resumeApp/resources/assets/images/skills_icons/autocad.png',
-                    'solidworks':'/resumeApp/resources/assets/images/skills_icons/solid_works.png',
-                    'adobe flash':'/resumeApp/resources/assets/images/skills_icons/adobe_flash.png',
-                    'digital drawing Tablet':'/resumeApp/resources/assets/images/skills_icons/digital_drawing_tablet.png',
-                    'adobe indesign':'/resumeApp/resources/assets/images/skills_icons/indesign.png',
-                    'coreldraw':'/resumeApp/resources/assets/images/skills_icons/corel_draw.png',
-                    '3d max':'/resumeApp/resources/assets/images/skills_icons/3d_max.png',
+                    'adobe after effects': '/resumeApp/resources/assets/images/skills_icons/AE.png',
+                    'sketch': '/resumeApp/resources/assets/images/skills_icons/Sketch.png',
+                    'adobe illustrator': '/resumeApp/resources/assets/images/skills_icons/Illustrator.png',
+                    'adobe xd': '/resumeApp/resources/assets/images/skills_icons/AdobeXD.png',
+                    'photoshop': '/resumeApp/resources/assets/images/skills_icons/Photoshop.png',
+                    'autocad': '/resumeApp/resources/assets/images/skills_icons/autocad.png',
+                    'solidworks': '/resumeApp/resources/assets/images/skills_icons/solid_works.png',
+                    'adobe flash': '/resumeApp/resources/assets/images/skills_icons/adobe_flash.png',
+                    'digital drawing Tablet': '/resumeApp/resources/assets/images/skills_icons/digital_drawing_tablet.png',
+                    'adobe indesign': '/resumeApp/resources/assets/images/skills_icons/indesign.png',
+                    'coreldraw': '/resumeApp/resources/assets/images/skills_icons/corel_draw.png',
+                    '3d max': '/resumeApp/resources/assets/images/skills_icons/3d_max.png',
 
                     // developer :
                     // 1-
-                    'javascript' :'/resumeApp/resources/assets/images/skills_icons/javascript.png',
-                    'sql':'/resumeApp/resources/assets/images/skills_icons/mysql.png',
-                    'java':'resumeApp/resources/assets/images/skills_icons/java.png',
-                    'c#':'/resumeApp/resources/assets/images/skills_icons/c#.png',
-                    'python':'/resumeApp/resources/assets/images/skills_icons/python.png',
-                    'php':'/resumeApp/resources/assets/images/skills_icons/php.png',
-                    'c++':'/resumeApp/resources/assets/images/skills_icons/c_language.png',
-                    'c':'/resumeApp/resources/assets/images/skills_icons/c_language.png',
-                    'typescript':'/resumeApp/resources/assets/images/skills_icons/typescript.png',
-                    'ruby':'/resumeApp/resources/assets/images/skills_icons/ruby.png',
-                    'objective-C':'/resumeApp/resources/assets/images/skills_icons/objective_c.png',
-                    'swift':'/resumeApp/resources/assets/images/skills_icons/swift.png',
-                    'vb.net':'/resumeApp/resources/assets/images/skills_icons/vb_net.png',
-                    'go':'/resumeApp/resources/assets/images/skills_icons/go.png',
-                    'perl':'/resumeApp/resources/assets/images/skills_icons/perl.png',
-                    'scala':'/resumeApp/resources/assets/images/skills_icons/scala.png',
-                    'groovy':'/resumeApp/resources/assets/images/skills_icons/groovy.png',
-                    'assembly':'/resumeApp/resources/assets/images/skills_icons/assembly.png',
-                    'coffeescript':'/resumeApp/resources/assets/images/skills_icons/coffeeScript.png',
-                    'vba':'/resumeApp/resources/assets/images/skills_icons/vba.png',
-                    'r':'/resumeApp/resources/assets/images/skills_icons/r_lang.png',
-                    'matlab':'/resumeApp/resources/assets/images/skills_icons/matlab.png',
-                    'visual basic 6':'/resumeApp/resources/assets/images/skills_icons/matlab.png',
-                    'lua':'/resumeApp/resources/assets/images/skills_icons/lua.png',
-                    'haskell':'/resumeApp/resources/assets/images/skills_icons/haskell.png',
-                    'html':'/resumeApp/resources/assets/images/skills_icons/HTML.png',
-                    'css':'/resumeApp/resources/assets/images/skills_icons/CSS.png',
+                    'javascript': '/resumeApp/resources/assets/images/skills_icons/javascript.png',
+                    'sql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+                    'java': 'resumeApp/resources/assets/images/skills_icons/java.png',
+                    'c#': '/resumeApp/resources/assets/images/skills_icons/c#.png',
+                    'python': '/resumeApp/resources/assets/images/skills_icons/python.png',
+                    'php': '/resumeApp/resources/assets/images/skills_icons/php.png',
+                    'c++': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
+                    'c': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
+                    'typescript': '/resumeApp/resources/assets/images/skills_icons/typescript.png',
+                    'ruby': '/resumeApp/resources/assets/images/skills_icons/ruby.png',
+                    'objective-C': '/resumeApp/resources/assets/images/skills_icons/objective_c.png',
+                    'swift': '/resumeApp/resources/assets/images/skills_icons/swift.png',
+                    'vb.net': '/resumeApp/resources/assets/images/skills_icons/vb_net.png',
+                    'go': '/resumeApp/resources/assets/images/skills_icons/go.png',
+                    'perl': '/resumeApp/resources/assets/images/skills_icons/perl.png',
+                    'scala': '/resumeApp/resources/assets/images/skills_icons/scala.png',
+                    'groovy': '/resumeApp/resources/assets/images/skills_icons/groovy.png',
+                    'assembly': '/resumeApp/resources/assets/images/skills_icons/assembly.png',
+                    'coffeescript': '/resumeApp/resources/assets/images/skills_icons/coffeeScript.png',
+                    'vba': '/resumeApp/resources/assets/images/skills_icons/vba.png',
+                    'r': '/resumeApp/resources/assets/images/skills_icons/r_lang.png',
+                    'matlab': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
+                    'visual basic 6': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
+                    'lua': '/resumeApp/resources/assets/images/skills_icons/lua.png',
+                    'haskell': '/resumeApp/resources/assets/images/skills_icons/haskell.png',
+                    'html': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                    'css': '/resumeApp/resources/assets/images/skills_icons/CSS.png',
 
                     //2-
-                    'angularjs' : '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
-                    'angular.js' : '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
-                    'node.js' : '/resumeApp/resources/assets/images/skills_icons/node_js.png',
-                    'nodejs' : '/resumeApp/resources/assets/images/skills_icons/node_js.png',
-                    '.net Core' : '/resumeApp/resources/assets/images/skills_icons/netcore.png',
-                    'react' : '/resumeApp/resources/assets/images/skills_icons/react.png',
-                    'cordova' : '/resumeApp/resources/assets/images/skills_icons/cordava.png',
-                    'firebase' : '',
-                    'xamarin' : '',
-                    'hadoop' : '/resumeApp/resources/assets/images/skills_icons/hadoop.png',
-                    'spark' : '/resumeApp/resources/assets/images/skills_icons/spark.png',
-                    'mysql' : '/resumeApp/resources/assets/images/skills_icons/mysql.png',
-                    'sql server' : '/resumeApp/resources/assets/images/skills_icons/sql server.png',
-                    'postgresql' : '/resumeApp/resources/assets/images/skills_icons/postgreSQL.png',
-                    'sqlite' : '/resumeApp/resources/assets/images/skills_icons/SQLite.png',
-                    'mongodb' : '/resumeApp/resources/assets/images/skills_icons/mongoDB.png',
-                    'oracle' : '/resumeApp/resources/assets/images/skills_icons/Oracle.png',
-                    'redis' : '/resumeApp/resources/assets/images/skills_icons/redis.png',
-                    'cassandra' : '/resumeApp/resources/assets/images/skills_icons/cassandra.png'
+                    'angularjs': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
+                    'angular.js': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
+                    'node.js': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
+                    'nodejs': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
+                    '.net Core': '/resumeApp/resources/assets/images/skills_icons/netcore.png',
+                    'react': '/resumeApp/resources/assets/images/skills_icons/react.png',
+                    'cordova': '/resumeApp/resources/assets/images/skills_icons/cordava.png',
+                    'firebase': '',
+                    'xamarin': '',
+                    'hadoop': '/resumeApp/resources/assets/images/skills_icons/hadoop.png',
+                    'spark': '/resumeApp/resources/assets/images/skills_icons/spark.png',
+                    'mysql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+                    'sql server': '/resumeApp/resources/assets/images/skills_icons/sql server.png',
+                    'postgresql': '/resumeApp/resources/assets/images/skills_icons/postgreSQL.png',
+                    'sqlite': '/resumeApp/resources/assets/images/skills_icons/SQLite.png',
+                    'mongodb': '/resumeApp/resources/assets/images/skills_icons/mongoDB.png',
+                    'oracle': '/resumeApp/resources/assets/images/skills_icons/Oracle.png',
+                    'redis': '/resumeApp/resources/assets/images/skills_icons/redis.png',
+                    'cassandra': '/resumeApp/resources/assets/images/skills_icons/cassandra.png'
                 };
-                if(arrayOfSkillImages.hasOwnProperty(skill_title.toLowerCase())){
-                    return arrayOfSkillImages[skill_title.toLowerCase()] ;
+                if (arrayOfSkillImages.hasOwnProperty(skill_title.toLowerCase())) {
+                    return arrayOfSkillImages[skill_title.toLowerCase()];
                 }
-                return '/resumeApp/resources/assets/images/skills_icons/skill.png' ;
+                return '/resumeApp/resources/assets/images/skills_icons/skill.png';
             },
-            getImageSrc(src){
-                if(!src){
+            getImageSrc(src) {
+                if (!src) {
                     return '/resumeApp/public/images/placeholder.png';
                 }
 
-                if(src.charAt(0) !== '/' && src.charAt(0) !== 'h'){
-                    return '/'+src;
+                if (src.charAt(0) !== '/' && src.charAt(0) !== 'h') {
+                    return '/' + src;
                 }
 
                 return src;
             },
-            loadHDImage(project_id){
-                let projects = this.freelancer.projects ;
-                $.each(projects, function(i){
-                    if(projects[i].id === project_id) {
-                        $('#projectModalPhoto'+project_id).attr('src',projects[i].mainImage);
+            loadHDImage(project_id) {
+                let projects = this.freelancer.projects;
+                $.each(projects, function (i) {
+                    if (projects[i].id === project_id) {
+                        $('#projectModalPhoto' + project_id).attr('src', projects[i].mainImage);
                         return false;
                     }
                 });
             },
-            showHireSection(){
-                setTimeout( () => {
-                    this.hire = true ;
-                },800);
-                this.portfolio = false ;
-                this.showReferences = false ;
+            showHireSection() {
+                setTimeout(() => {
+                    this.hire = true;
+                }, 800);
+                this.portfolio = false;
+                this.showReferences = false;
             },
 
-            showReferencesSection(){
-                setTimeout( () => {
-                    this.showReferences = true ;
-                },800);
-                this.portfolio = false ;
-                this.hire = false ;
+            showReferencesSection() {
+                setTimeout(() => {
+                    this.showReferences = true;
+                }, 800);
+                this.portfolio = false;
+                this.hire = false;
 
             },
 
-            hideReferencesSection(){
-                this.hire = false ;
-                this.showReferences = false ;
-                setTimeout( () => {
-                    this.portfolio = true ;
-                },800);
+            hideReferencesSection() {
+                this.hire = false;
+                this.showReferences = false;
+                setTimeout(() => {
+                    this.portfolio = true;
+                }, 800);
             },
-            hideHireSection(){
-                this.hire = false ;
-                this.showReferences = false ;
-                setTimeout( () => {
-                    this.portfolio = true ;
-                },800);
+            hideHireSection() {
+                this.hire = false;
+                this.showReferences = false;
+                setTimeout(() => {
+                    this.portfolio = true;
+                }, 800);
             },
-            updateSlick(){
+            updateSlick() {
                 this.$nextTick(() => {
                     $.each(this.$refs.slickSlide, (i) => {
-                        if(this.$refs.slickSlide[i] !== undefined){
+                        if (this.$refs.slickSlide[i] !== undefined) {
                             this.$refs.slickSlide[i].reSlick();
                         }
                     });
                 });
             },
-            addHours(){
-                this.hours++ ;
+            addHours() {
+                this.hours++;
             },
-            subtractHours(){
-                this.hours-- ;
+            subtractHours() {
+                this.hours--;
             },
-            addWeeks(){
-                this.weeks++ ;
+            addWeeks() {
+                this.weeks++;
             },
-            subtractWeeks(){
-                this.weeks-- ;
+            subtractWeeks() {
+                this.weeks--;
             },
-            slidePrev(i){
+            slidePrev(i) {
                 this.$refs.slickSlide[i].prev();
-                if(this.slides[i].number -1 > 0){
-                    this.slides[i].number-- ;
+                if (this.slides[i].number - 1 > 0) {
+                    this.slides[i].number--;
                 }
             },
-            slideNext(i,maxprojects){
+            slideNext(i, maxprojects) {
                 this.$refs.slickSlide[i].next();
-                if(this.slides[i].number+1 <= this.calculateNumberOfRelatedSlides(maxprojects) ){
-                    this.slides[i].number++ ;
+                if (this.slides[i].number + 1 <= this.calculateNumberOfRelatedSlides(maxprojects)) {
+                    this.slides[i].number++;
                 }
             },
-            calculateNumberOfSlides(){
-                let numberOfProjects =  this.freelancer.projects.length ;
+            calculateNumberOfSlides() {
+                let numberOfProjects = this.freelancer.projects.length;
                 var width = $(window).width();
-                if(width < 991){
-                    return (numberOfProjects) ;
+                if (width < 991) {
+                    return (numberOfProjects);
                 }
-                return (Math.ceil(numberOfProjects / 2)) ;
+                return (Math.ceil(numberOfProjects / 2));
             },
 
-            calculateNumberOfRelatedSlides(numberOfProjects){
+            calculateNumberOfRelatedSlides(numberOfProjects) {
                 var width = $(window).width();
-                if(width < 991){
-                    return (numberOfProjects) ;
+                if (width < 991) {
+                    return (numberOfProjects);
                 }
-                return (Math.ceil(numberOfProjects / 2)) ;
+                return (Math.ceil(numberOfProjects / 2));
             },
-            highlightSkill(skill,percent){
-                $('#skillImage_' + skill.id).css('filter', 'grayscale('+ percent + '%)');
+            highlightSkill(skill, percent) {
+                $('#skillImage_' + skill.id).css('filter', 'grayscale(' + percent + '%)');
             },
-            skillsBar(){
+            skillsBar() {
                 $(".skills").addClass("active");
-                $(".skills .skill .skill-bar span").each(function() {
+                $(".skills .skill .skill-bar span").each(function () {
                     $(this).animate({
                         "width": $(this).parent().attr("data-bar") + "%"
                     }, 1000);
                 });
-                setTimeout(function() {
-                    $(".skills .skill .skill-bar span b").animate({"opacity":"1"},1000);
+                setTimeout(function () {
+                    $(".skills .skill .skill-bar span b").animate({"opacity": "1"}, 1000);
                 }, 2000);
                 console.log('ran');
             },
@@ -855,21 +953,21 @@
 
 
         },
-        created: function() {
+        created: function () {
             this.$parent.$on('update', this.updateSlick);
             // create slides :
             $.each(this.freelancer.works_history, (i) => {
-                this.slides.push( {
+                this.slides.push({
                     id: i,
-                    number:1
-                }) ;
+                    number: 1
+                });
             });
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .projectsSection{
+    .projectsSection {
         margin-top: 1px;
         padding: 20px;
         margin-bottom: 18px;
@@ -877,12 +975,13 @@
             padding: 2px;
         }
     }
-    .freelancerCard{
+
+    .freelancerCard {
         margin-bottom: 12px;
         padding-bottom: 12px;
         margin-left: 10px;
         margin-right: 10px;
-        height: 730px ;
+        height: 730px;
         @media only screen and (max-width: 1200px) {
             width: 910px;
         }
@@ -892,16 +991,16 @@
         }
         @media only screen and (max-width: 500px) {
             width: 315px;
-            height: 785px ;
+            height: 785px;
         }
     }
 
-    .workCard{
+    .workCard {
         @media only screen and (max-width: 500px) {
-            min-width:290px;
+            min-width: 290px;
         }
 
-        min-width:375px;
+        min-width: 375px;
     }
 
     .slick-dots {
@@ -913,7 +1012,8 @@
         transition: opacity .7s;
     }
 
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
+    {
         opacity: 0;
     }
 
@@ -921,41 +1021,47 @@
     .slide-fade-enter-active {
         transition: all .7s ease;
     }
+
     .slide-fade-leave-active {
         transition: all .7s cubic-bezier(1.0, 0.5, 0.8, 1.0);
     }
+
     .slide-fade-enter, .slide-fade-leave-to
-        /* .slide-fade-leave-active below version 2.1.8 */ {
+        /* .slide-fade-leave-active below version 2.1.8 */
+    {
         transform: translateX(10px);
         opacity: 0;
     }
 
 
-
     .slide-fade-left-enter-active {
         transition: all .7s ease;
     }
+
     .slide-fade-left-leave-active {
         transition: all .7s cubic-bezier(1.0, 0.5, 0.8, 1.0);
     }
+
     .slide-fade-left-enter, .slide-fade-left-leave-to
-        /* .slide-fade-leave-active below version 2.1.8 */ {
+        /* .slide-fade-leave-active below version 2.1.8 */
+    {
         transform: translateX(-10px);
         opacity: 0;
     }
 
-    .importBtn{
-        a:hover{
+    .importBtn {
+        a:hover {
             color: white;
         }
+
         display: flex;
         justify-content: center;
         align-items: center;
-        padding:0;
+        padding: 0;
     }
 
 
-    .tab-pane{
+    .tab-pane {
         height: 541px;
         overflow: auto;
         @media only screen and (max-width: 500px) {
@@ -1025,14 +1131,14 @@
         top: -13px;
     }
 
-    .container{
+    .container {
         width: 100%;
         max-width: 600px;
-        padding:0 15px;
-        margin:0 auto;
+        padding: 0 15px;
+        margin: 0 auto;
     }
 
-    .educationSection{
+    .educationSection {
         height: 506px;
         overflow: auto;
         @media only screen and (max-width: 500px) {
@@ -1045,16 +1151,16 @@
         }
     }
 
-    .aboutText{
+    .aboutText {
         @media only screen and (max-width: 500px) {
             padding-left: 0;
         }
     }
 
-    .seduHeader{
+    .seduHeader {
         padding-left: 6px;
         @media only screen and (max-width: 500px) {
-            padding-left:5px;
+            padding-left: 5px;
         }
     }
 

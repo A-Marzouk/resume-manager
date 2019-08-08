@@ -45,6 +45,18 @@
                                             </select>
                                         </div>
 
+                                         <div class="form-group col-md-12">
+                                            <label for="order" class="panelFormLabel">Choose related work experience</label>
+                                             <select  class="custom-select" name="relatedWorkID" v-model="toBeEditedProject.work_history_id" required>
+                                                 <option value="null">-- select related work --</option>
+                                                 <option v-for="(work,index) in worksHistory" :value="work.id">
+                                                     {{work.job_title}}
+                                                 </option>
+                                             </select>
+                                        </div>
+
+
+
                                         <div class="form-group col-md-12">
                                             <div class="custom-file" style="padding-top: 5px;">
                                                 <input type="file" id="mainImage" ref="file" class="custom-file-input panelFormInput" name="mainImage" @change="handleFile" accept="image/*">
@@ -105,6 +117,7 @@
             return{
                 form_data:{},
                 canAddImage:false,
+                worksHistory:[],
             }
         },
         methods:{
@@ -117,6 +130,7 @@
                 this.form_data.append('projectDesc',this.toBeEditedProject.projectDesc||'');
                 this.form_data.append('isActive',this.toBeEditedProject.isActive||'');
                 this.form_data.append('order',this.toBeEditedProject.order||'');
+                this.form_data.append('relatedWorkID',this.toBeEditedProject.work_history_id||'');
 
                 if(this.canAddImage){
                     let mainImage = this.$refs.file.files[0];
@@ -202,10 +216,19 @@
                     return src ;
                 }
                 return '/'+ src ;
-            }
+            },
+            getCurrentWorks() {
+                axios.get('/freelancer/workshistory').then(
+                    (response) => {
+                        this.worksHistory =  response.data;
+                        console.log(response.data);
+                    }
+                );
+            },
 
     },
         mounted(){
+            this.getCurrentWorks();
         }
     }
 </script>

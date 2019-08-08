@@ -84052,6 +84052,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             projects: [],
+            worksHistory: [],
             canAddProject: true,
             toBeEditedProject: {
                 'id': '',
@@ -84576,13 +84577,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['toBeEditedProject'],
     data: function data() {
         return {
             form_data: {},
-            canAddImage: false
+            canAddImage: false,
+            worksHistory: []
         };
     },
 
@@ -84598,6 +84612,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.form_data.append('projectDesc', this.toBeEditedProject.projectDesc || '');
             this.form_data.append('isActive', this.toBeEditedProject.isActive || '');
             this.form_data.append('order', this.toBeEditedProject.order || '');
+            this.form_data.append('relatedWorkID', this.toBeEditedProject.work_history_id || '');
 
             if (this.canAddImage) {
                 var mainImage = this.$refs.file.files[0];
@@ -84678,9 +84693,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return src;
             }
             return '/' + src;
+        },
+        getCurrentWorks: function getCurrentWorks() {
+            var _this2 = this;
+
+            axios.get('/freelancer/workshistory').then(function (response) {
+                _this2.worksHistory = response.data;
+                console.log(response.data);
+            });
         }
     },
-    mounted: function mounted() {}
+    mounted: function mounted() {
+        this.getCurrentWorks();
+    }
 });
 
 /***/ }),
@@ -85005,6 +85030,83 @@ var render = function() {
                                     [_vm._v(_vm._s(index))]
                                   )
                                 })
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group col-md-12" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "panelFormLabel",
+                                  attrs: { for: "order" }
+                                },
+                                [_vm._v("Choose related work experience")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value:
+                                        _vm.toBeEditedProject.work_history_id,
+                                      expression:
+                                        "toBeEditedProject.work_history_id"
+                                    }
+                                  ],
+                                  staticClass: "custom-select",
+                                  attrs: {
+                                    name: "relatedWorkID",
+                                    required: ""
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.toBeEditedProject,
+                                        "work_history_id",
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("option", { attrs: { value: "null" } }, [
+                                    _vm._v("-- select related work --")
+                                  ]),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.worksHistory, function(
+                                    work,
+                                    index
+                                  ) {
+                                    return _c(
+                                      "option",
+                                      { domProps: { value: work.id } },
+                                      [
+                                        _vm._v(
+                                          "\n                                                 " +
+                                            _vm._s(work.job_title) +
+                                            "\n                                             "
+                                        )
+                                      ]
+                                    )
+                                  })
+                                ],
+                                2
                               )
                             ]),
                             _vm._v(" "),

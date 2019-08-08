@@ -22,4 +22,8 @@ class WorkHistory extends Model
     public function freelancer(){
         return $this->belongsTo(User::class);
     }
+
+    public function projects(){
+        return $this->hasMany(Project::class);
+    }
 }

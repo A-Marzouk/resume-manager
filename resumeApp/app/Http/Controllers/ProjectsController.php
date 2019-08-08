@@ -46,6 +46,7 @@ class ProjectsController extends Controller
         $project->link = $request->link;
         $project->isActive = $request->isActive;
         $project->order = $request->order;
+        $project->work_history_id = $request->relatedWorkID;
         if(isset($request->mainImage)){
             $path  = Upload::projectPhoto('','mainImage','');
             $project->mainImage = '/'. $path ;

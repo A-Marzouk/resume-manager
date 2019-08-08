@@ -22,4 +22,8 @@ class Project extends Model
     public function freelancer(){
         return $this->belongsTo(User::class);
     }
+
+    public function workHistory(){
+        return $this->belongsTo(WorkHistory::class,'work_history_id');
+    }
 }

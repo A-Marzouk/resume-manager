@@ -579,22 +579,7 @@
         },
         data(){
             return {
-                slides:[
-                    {
-                        id:0,
-                        number:1,
-                    }, {
-                        id:1,
-                        number:1,
-                    }, {
-                        id:2,
-                        number:1,
-                    },
-                    {
-                        id:3,
-                        number:1,
-                    },
-                ],
+                slides:[],
                 numberOfSlides : this.calculateNumberOfSlides(),
                 skills: this.freelancer.skills,
                 worksHistory: this.freelancer.works_history,
@@ -867,9 +852,18 @@
         },
         mounted() {
             this.skillsBar();
+
+
         },
         created: function() {
             this.$parent.$on('update', this.updateSlick);
+            // create slides :
+            $.each(this.freelancer.works_history, (i) => {
+                this.slides.push( {
+                    id: i,
+                    number:1
+                }) ;
+            });
         }
     }
 </script>
@@ -1062,6 +1056,11 @@
         @media only screen and (max-width: 500px) {
             padding-left:5px;
         }
+    }
+
+    .carouselControls {
+        padding-top: 0;
+        padding-bottom: 20px;
     }
 
 

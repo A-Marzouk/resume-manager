@@ -300,6 +300,73 @@
                                                     </div>
                                                     <div class="desc">{{work.job_description}}</div>
                                                 </div>
+
+                                                <!-- related projects list -->
+
+                                                <!-- portfolio section -->
+                                                <div class="w-100">
+                                                    <slick class="projectsSection" ref="slickSlide" :id="work.id" :options="slickOptions">
+                                                        <div  v-for="(project,index) in work.projects" :key="index + 'A'" >
+                                                            <!-- class="d-flex justify-content-center" style="height: 250px !important; padding: 0 2px 0 2px; overflow: hidden;" -->
+
+                                                            <div class="workCard" style="margin:10px; margin-bottom: 0px;">
+                                                                <div class="workImg">
+                                                                    <a href="javascript:void(0)"
+                                                                       style="outline: none;"
+                                                                       data-toggle="modal" :data-target="'#project_modal_'+project.id" @click="loadHDImage(project.id)">
+
+                                                                        <vue-load-image class="d-flex justify-content-center align-items-center">
+                                                                            <img :src="getImageSrc(project.mainImage)" alt="" width="260" slot="image">
+                                                                            <img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif" style="width: 100px; height: 100px;" />
+                                                                        </vue-load-image>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="workTitle">
+                                                                    <div class="row">
+                                                                        <div class="col-md-10 col-9">
+                                                                            {{project.projectName}}
+                                                                        </div>
+                                                                        <a class="col-md-1 col-1" href="javascript:void(0)"
+                                                                           data-toggle="modal" :data-target="'#project_modal_'+project.id"
+                                                                           style="outline: none; margin-left: 16px;">
+                                                                            <img src="/resumeApp/public/images/newResume/link.png"
+                                                                                 alt="view work">
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--<div>-->
+                                                            <!--<a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >-->
+                                                            <!--<vue-load-image>-->
+                                                            <!--<img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto" style="min-height:250px; border-radius:10px;">-->
+                                                            <!--<img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>-->
+                                                            <!--</vue-load-image>-->
+                                                            <!--</a>-->
+                                                            <!--</div>-->
+                                                        </div>
+                                                    </slick>
+
+                                                    <div class="row carouselControls" style="width: 100%;">
+                                                        <div class=" col-12 text-center NoDecor">
+                                                            <a href="javascript:void(0)" class="cardLabel_interviews noScroll" @click="slidePrev(index)"
+                                                               style="color:#697786;">
+                                                                <img src="/resumeApp/resources/assets/images/left_arrow.png"
+                                                                     alt="prev" width="15px">
+                                                            </a>
+
+                                                            <span class="jobTitle" style="padding: 0 5px 0 5px"> <span>{{slides[index].number}}</span> / <span> {{calculateNumberOfRelatedSlides( work.projects.length)}} </span></span>
+
+                                                            <a href="javascript:void(0)" role="button" data-slide="next" class="cardLabel_interviews noScroll" @click="slideNext(index,work.projects.length)"
+                                                               style="color:#697786;">
+                                                                <img src="/resumeApp/resources/assets/images/right_arrow.png"
+                                                                     alt="next" width="15px">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- end of portfolio section -->
                                             </div>
                                         </div>
                                     </div>
@@ -452,6 +519,51 @@
             </div>
 
         </div>
+
+        <div v-for="(work,index) in freelancer.works_history" :key="index + work.id" >
+            <div  v-for="(project,index) in work.projects" :key="index + project.id" class="modal fade" :id="'project_modal_'+project.id" tabindex="-1" role="dialog" aria-labelledby="certificate" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document" style="">
+                    <div class="modal-content modal-mobile-resume-new-homepage" data-dismiss="modal"
+                         aria-label="Close">
+                        <div class="modal-body" style="padding: 0;">
+                            <div class="row">
+                                <div class="col-md-9" style="padding: 0;">
+                                    <vue-load-image>
+                                        <img :src="getImageSrc(project.mainImage)" :id="'projectModalPhoto' + project.id" alt="" width="100%" slot="image" height="auto">
+                                        <img slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
+                                    </vue-load-image>
+                                    <!--<div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">-->
+                                    <!--<iframe v-if="image.includes('embed')" height="400" width="100%" :src="image+'?bgcolor=%23191919'" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>-->
+                                    <!--<img v-else :src="image" alt="" width="100%" height="auto">-->
+                                    <!--</div>-->
+
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group" style="padding-top: 25px;">
+                                        <label class="panelFormLabel"> Name
+                                            <hr>
+                                        </label><br/>
+                                        <div class="panelFormLabel">
+                                            {{project.projectName}}
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="padding-top: 25px;">
+                                        <label class="panelFormLabel"> Description
+                                            <hr>
+                                        </label><br/>
+                                        <div class="panelFormLabel">
+                                            {{project.projectDesc}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </template>
 
@@ -467,7 +579,7 @@
         },
         data(){
             return {
-                slideNumber : 1 ,
+                slides:[],
                 numberOfSlides : this.calculateNumberOfSlides(),
                 skills: this.freelancer.skills,
                 worksHistory: this.freelancer.works_history,
@@ -509,13 +621,13 @@
                 if(this.search == false){
                     return resizedImage;
                 }
-                return  this.getImageSrc(src)
+                return  this.getImageSrc(src);
             },
             setTab(tabName){
                 this.currentTab = tabName ;
-                if(tabName === 'portfolio'){
+                if(tabName === 'work'){
                     this.$nextTick(() => {
-                        this.$refs.slick.reSlick();
+                        this.updateSlick();
                     });
                 }
             },
@@ -675,10 +787,11 @@
             },
             updateSlick(){
                 this.$nextTick(() => {
-                    if(this.$refs.slick !== undefined){
-                        this.$refs.slick.reSlick();
-                        this.slideNumber = 1 ;
-                    }
+                    $.each(this.$refs.slickSlide, (i) => {
+                        if(this.$refs.slickSlide[i] !== undefined){
+                            this.$refs.slickSlide[i].reSlick();
+                        }
+                    });
                 });
             },
             addHours(){
@@ -693,24 +806,33 @@
             subtractWeeks(){
                 this.weeks-- ;
             },
-            slidePrev(){
-                this.$refs.slick.prev();
-                if(this.slideNumber-1 > 0){
-                    this.slideNumber-- ;
+            slidePrev(i){
+                this.$refs.slickSlide[i].prev();
+                if(this.slides[i].number -1 > 0){
+                    this.slides[i].number-- ;
                 }
             },
-            slideNext(){
-                this.$refs.slick.next();
-                if(this.slideNumber+1 <= this.calculateNumberOfSlides() ){
-                    this.slideNumber++ ;
+            slideNext(i,maxprojects){
+                this.$refs.slickSlide[i].next();
+                if(this.slides[i].number+1 <= this.calculateNumberOfRelatedSlides(maxprojects) ){
+                    this.slides[i].number++ ;
                 }
             },
             calculateNumberOfSlides(){
+                let numberOfProjects =  this.freelancer.projects.length ;
                 var width = $(window).width();
                 if(width < 991){
-                    return (this.freelancer.projects.length) ;
+                    return (numberOfProjects) ;
                 }
-                return (Math.ceil(this.freelancer.projects.length / 2)) ;
+                return (Math.ceil(numberOfProjects / 2)) ;
+            },
+
+            calculateNumberOfRelatedSlides(numberOfProjects){
+                var width = $(window).width();
+                if(width < 991){
+                    return (numberOfProjects) ;
+                }
+                return (Math.ceil(numberOfProjects / 2)) ;
             },
             highlightSkill(skill,percent){
                 $('#skillImage_' + skill.id).css('filter', 'grayscale('+ percent + '%)');
@@ -730,9 +852,18 @@
         },
         mounted() {
             this.skillsBar();
+
+
         },
         created: function() {
             this.$parent.$on('update', this.updateSlick);
+            // create slides :
+            $.each(this.freelancer.works_history, (i) => {
+                this.slides.push( {
+                    id: i,
+                    number:1
+                }) ;
+            });
         }
     }
 </script>
@@ -769,6 +900,8 @@
         @media only screen and (max-width: 500px) {
             min-width:290px;
         }
+
+        min-width:375px;
     }
 
     .slick-dots {
@@ -900,6 +1033,12 @@
     }
 
     .educationSection{
+        height: 506px;
+        overflow: auto;
+        @media only screen and (max-width: 500px) {
+            width: 315px;
+            height: 420px;
+        }
         @media only screen and (max-width: 500px) {
             padding-left: 0;
             padding-right: 5px;
@@ -917,6 +1056,11 @@
         @media only screen and (max-width: 500px) {
             padding-left:5px;
         }
+    }
+
+    .carouselControls {
+        padding-top: 0;
+        padding-bottom: 20px;
     }
 
 

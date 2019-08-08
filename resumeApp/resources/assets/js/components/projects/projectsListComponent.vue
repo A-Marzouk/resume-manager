@@ -35,6 +35,7 @@
         data() {
             return {
                 projects: [],
+                worksHistory: [],
                 canAddProject:true,
                 toBeEditedProject:{
                     'id':'',

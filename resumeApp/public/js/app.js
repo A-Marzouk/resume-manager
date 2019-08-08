@@ -61352,6 +61352,16 @@ var render = function() {
                                             _c(
                                               "div",
                                               {
+                                                directives: [
+                                                  {
+                                                    name: "show",
+                                                    rawName: "v-show",
+                                                    value:
+                                                      work.projects.length > 0,
+                                                    expression:
+                                                      "work.projects.length > 0"
+                                                  }
+                                                ],
                                                 staticClass:
                                                   "row carouselControls",
                                                 staticStyle: { width: "100%" }

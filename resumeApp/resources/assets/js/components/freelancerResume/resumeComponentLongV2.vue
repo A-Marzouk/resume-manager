@@ -347,7 +347,7 @@
                                                         </div>
                                                     </slick>
 
-                                                    <div class="row carouselControls" style="width: 100%;">
+                                                    <div class="row carouselControls" style="width: 100%;" v-show="work.projects.length > 0">
                                                         <div class=" col-12 text-center NoDecor">
                                                             <a href="javascript:void(0)" class="cardLabel_interviews noScroll" @click="slidePrev(index)"
                                                                style="color:#697786;">

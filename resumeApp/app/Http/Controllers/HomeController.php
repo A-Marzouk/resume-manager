@@ -50,14 +50,14 @@ class HomeController extends Controller
 
 
     public function ResumePageV2($username){
-        $freelancer = User::with(['userData','skills','worksHistory','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::with(['userData','skills','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
         }])->where('username',$username)->first();
         return view('freelancerResume.resumeLongV2', compact('freelancer'));
     }
 
     public function ResumePageShortV2($username){
-        $freelancer = User::with(['userData','skills','worksHistory','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::with(['userData','skills','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
         }])->where('username',$username)->first();
         return view('freelancerResume.resumeShortV2', compact('freelancer'));

@@ -944,6 +944,7 @@
 
         min-width: 375px;
     }
+
     .slick-dots {
         display: flex;
         justify-content: center;
@@ -1094,6 +1095,11 @@
         }
     }
 
+    .aboutText {
+        @media only screen and (max-width: 500px) {
+            padding-left: 0;
+        }
+    }
 
     .seduHeader {
         padding-left: 6px;

@@ -66146,7 +66146,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.toBeEditedWork = editedWork;
         },
         checkMaxWorks: function checkMaxWorks() {
-            if (this.works.length > 4) {
+            if (this.works.length > 10) {
                 this.canAdd = false;
             } else {
                 this.canAdd = true;
@@ -67234,7 +67234,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.toBeEditedEducation = editedEducation;
         },
         checkMaxEducations: function checkMaxEducations() {
-            if (this.educations.length > 4) {
+            if (this.educations.length > 10) {
                 this.canAdd = false;
             } else {
                 this.canAdd = true;
@@ -81664,7 +81664,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.toBeEditedJob = editedJob;
         },
         checkMaxJobs: function checkMaxJobs() {
-            if (this.jobs.length > 4) {
+            if (this.jobs.length > 10) {
                 this.canAdd = false;
             } else {
                 this.canAdd = true;

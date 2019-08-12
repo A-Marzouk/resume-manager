@@ -40,7 +40,7 @@ if(!isset($value['id'])){
     <div class="row container">
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
         <div class="col-md-2">
-            <a target="_blank" class="btn btn-outline-primary" href="/{{$username}}">Link to resume </a>
+            <a target="_blank" class="btn btn-outline-primary" href="/v2/{{$username}}">Link to resume </a>
         </div>
 
         <div class="col-md-2">

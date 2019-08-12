@@ -68,7 +68,7 @@
                 @endif
             </td>
             <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Open form</a></td>
-            <td><a class="btn btn-default btn-sm" href="/{{$user->username}}">Open Resume</a></td>
+            <td><a class="btn btn-default btn-sm" href="/v2/{{$user->username}}">Open Resume</a></td>
         </tr>
 
 

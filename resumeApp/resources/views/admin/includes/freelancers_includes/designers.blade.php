@@ -43,7 +43,7 @@
                 </label>
             </th>
             <td>{{$user->firstName}} {{$user->lastName}}</td>
-            <td><a href="/{{$user->username}}" target="_blank">Resume</a></td>
+            <td><a href="/v2/{{$user->username}}" target="_blank">Resume</a></td>
             <td>{{$user->userData->salary ?? 0}} / {{ $user->userData->salary_month ?? 0}}</td>
             <td><a class="btn btn-primary btn-sm" href="{{route('logInAsUser',$user->id)}}">Open form</a>
             </td>

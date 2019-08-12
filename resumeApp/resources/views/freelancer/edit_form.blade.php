@@ -17,7 +17,7 @@ $freelancer = auth()->user();
     <div class="container m-auto infoBar container">
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
         <div class="col-md-2 offset-md-10">
-            <a target="_blank" href="{{$username}}">Link to resume </a>
+            <a target="_blank" href="/v2/{{$username}}">Link to resume </a>
         </div>
         <? endif; ?>
     </div>

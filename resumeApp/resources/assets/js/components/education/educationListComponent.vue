@@ -116,7 +116,7 @@
             },
 
             checkMaxEducations(){
-                if(this.educations.length > 4){
+                if(this.educations.length > 10){
                     this.canAdd =  false;
                 }else{
                     this.canAdd = true;

@@ -124,7 +124,7 @@
             },
 
             checkMaxJobs(){
-                if(this.jobs.length > 4){
+                if(this.jobs.length > 10){
                     this.canAdd =  false;
                 }else{
                     this.canAdd = true;

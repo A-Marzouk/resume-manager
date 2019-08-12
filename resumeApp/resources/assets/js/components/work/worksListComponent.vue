@@ -116,7 +116,7 @@
             },
 
             checkMaxWorks(){
-                if(this.works.length > 4){
+                if(this.works.length > 10){
                     this.canAdd =  false;
                 }else{
                     this.canAdd = true;

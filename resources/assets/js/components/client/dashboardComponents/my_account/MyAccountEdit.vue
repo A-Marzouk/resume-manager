@@ -449,7 +449,7 @@ export default {
       },
       noErrorsContact () {
             let valid = true
-            let contactFormat = /[0-9]{1,3}-[0-9]{7}/
+            let contactFormat = /\+[0-9]{1,3}[0-9]{7}/
 
             if (this.client.contact.trim() === '') {
                 // Empty field
@@ -458,14 +458,14 @@ export default {
             } else if (!contactFormat.test(this.client.contact)) {
                 // Review the regExp
                 valid = false
-                this.errors.contact = 'This not a valid contact number format'
+                this.errors.contact = 'This not a valid contact number format (ex. +3803112343)'
             } else this.errors.contact = ''
             
             return valid
         },
       noErrorsSecondContact () {
             let valid = true
-            let contactFormat = /[0-9]{1,3}-[0-9]{7}/
+            let contactFormat = /\+[0-9]{1,3}[0-9]{7}/
 
             if (this.client.secondContact.trim() === '') {
                 // Empty field
@@ -474,7 +474,7 @@ export default {
             } else if (!contactFormat.test(this.client.secondContact)) {
                 // Review the regExp
                 valid = false
-                this.errors.secondContact = 'This not a valid contact number format'
+                this.errors.secondContact = 'This not a valid contact number format (ex. +3803112343)'
             } else this.errors.secondContact = ''
             
             return valid

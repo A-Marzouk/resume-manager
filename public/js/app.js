@@ -83175,7 +83175,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         noErrorsContact: function noErrorsContact() {
             var valid = true;
-            var contactFormat = /[0-9]{1,3}-[0-9]{7}/;
+            var contactFormat = /\+[0-9]{1,3}[0-9]{7}/;
 
             if (this.client.contact.trim() === '') {
                 // Empty field
@@ -83184,14 +83184,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else if (!contactFormat.test(this.client.contact)) {
                 // Review the regExp
                 valid = false;
-                this.errors.contact = 'This not a valid contact number format';
+                this.errors.contact = 'This not a valid contact number format (ex. +3803112343)';
             } else this.errors.contact = '';
 
             return valid;
         },
         noErrorsSecondContact: function noErrorsSecondContact() {
             var valid = true;
-            var contactFormat = /[0-9]{1,3}-[0-9]{7}/;
+            var contactFormat = /\+[0-9]{1,3}[0-9]{7}/;
 
             if (this.client.secondContact.trim() === '') {
                 // Empty field
@@ -83200,7 +83200,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else if (!contactFormat.test(this.client.secondContact)) {
                 // Review the regExp
                 valid = false;
-                this.errors.secondContact = 'This not a valid contact number format';
+                this.errors.secondContact = 'This not a valid contact number format (ex. +3803112343)';
             } else this.errors.secondContact = '';
 
             return valid;
@@ -101386,7 +101386,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         noErrorsPhone: function noErrorsPhone() {
             var valid = true;
-            var phoneFormat = /[0-9]{1,3}-[0-9]{7}/;
+            var phoneFormat = /\+[0-9]{1,3}[0-9]{7}/;
 
             if (this.personalData.phone.trim() === '') {
                 // Empty field
@@ -101395,7 +101395,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             } else if (!phoneFormat.test(this.personalData.phone)) {
                 // Review the regExp
                 valid = false;
-                this.errors.phone = 'This not a valid phone number format';
+                this.errors.phone = 'This not a valid phone number format (ex. +3801354334)';
             } else this.errors.phone = '';
 
             return valid;
@@ -101741,7 +101741,7 @@ var render = function() {
                   attrs: {
                     type: "text",
                     name: "phone",
-                    placeholder: "123-3534634"
+                    placeholder: "+1233534634"
                   },
                   domProps: { value: _vm.personalData.phone },
                   on: {

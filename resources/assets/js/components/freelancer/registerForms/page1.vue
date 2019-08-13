@@ -62,7 +62,7 @@
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.phone}">
                     <flag-dropdown>
-                        <input type="text" name="phone" placeholder="123-3534634" v-model="personalData.phone">
+                        <input type="text" name="phone" placeholder="+1233534634" v-model="personalData.phone">
                         <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="personalData.phone.length > 0">
                     </flag-dropdown>                    
                 </div>
@@ -285,7 +285,7 @@ export default {
       },
       noErrorsPhone () {
             let valid = true
-            let phoneFormat = /[0-9]{1,3}-[0-9]{7}/
+            let phoneFormat = /\+[0-9]{1,3}[0-9]{7}/
 
             if (this.personalData.phone.trim() === '') {
                 // Empty field
@@ -294,7 +294,7 @@ export default {
             } else if (!phoneFormat.test(this.personalData.phone)) {
                 // Review the regExp
                 valid = false
-                this.errors.phone = 'This not a valid phone number format'
+                this.errors.phone = 'This not a valid phone number format (ex. +3801354334)'
             } else this.errors.phone = ''
             
             return valid

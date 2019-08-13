@@ -18,7 +18,7 @@
             </div>
             <div class="form-inline my-2 my-lg-0 name">
                 <div class="logoutButton">
-                    <a href="javascript:void(0)" @click="logoutClient">
+                    <a href="/logout">
                         <img src="/images/client/log_out.png" alt="logout">
                     </a>
                 </div>
@@ -271,14 +271,6 @@
                 if(!tabs.includes(this.activeTab)){
                     this.activeTab = 'campaign-manager';
                 }
-            },
-            logoutClient(){
-                axios.post('client/logout').then( (response)=>{
-                    if(response.data.status === 'success'){
-                        // redirect to dashboard
-                        window.location.href = '/' ;
-                    }
-                });
             }
         },
         mounted(){

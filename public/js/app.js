@@ -81180,14 +81180,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (!tabs.includes(this.activeTab)) {
                 this.activeTab = 'campaign-manager';
             }
-        },
-        logoutClient: function logoutClient() {
-            axios.post('client/logout').then(function (response) {
-                if (response.data.status === 'success') {
-                    // redirect to dashboard
-                    window.location.href = '/';
-                }
-            });
         }
     },
     mounted: function mounted() {
@@ -81204,45 +81196,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "nav",
-      {
-        staticClass: "navbar navbar-light fixed-top dashboard_navbar",
-        attrs: { id: "sideNav" }
-      },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _vm._m(1),
-        _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-inline my-2 my-lg-0" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-inline my-2 my-lg-0 name" }, [
-          _c("div", { staticClass: "logoutButton" }, [
-            _c(
-              "a",
-              {
-                attrs: { href: "javascript:void(0)" },
-                on: { click: _vm.logoutClient }
-              },
-              [
-                _c("img", {
-                  attrs: { src: "/images/client/log_out.png", alt: "logout" }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _vm._v("\n                Ahmed R. Marzouk\n            ")
-          ]),
-          _vm._v(" "),
-          _vm._m(3)
-        ])
-      ]
-    ),
+    _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "js-side-nav-container side-nav-container" }, [
       _c("div", { staticClass: "js-side-nav side-nav" }, [
@@ -81251,7 +81205,7 @@ var render = function() {
           attrs: { href: "javascript:void(0)", id: "close-menu" }
         }),
         _vm._v(" "),
-        _vm._m(4),
+        _vm._m(1),
         _vm._v(" "),
         _c("div", { staticClass: "dashboard_content" }, [
           _c(
@@ -81407,7 +81361,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(5)
+        _vm._m(2)
       ])
     ]),
     _vm._v(" "),
@@ -81563,7 +81517,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(6)
+    _vm._m(3)
   ])
 }
 var staticRenderFns = [
@@ -81572,49 +81526,68 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "a",
+      "nav",
       {
-        staticClass: "js-menu-open menu-open",
-        attrs: { href: "javascript:void(0)", id: "menu-open-icon" }
+        staticClass: "navbar navbar-light fixed-top dashboard_navbar",
+        attrs: { id: "sideNav" }
       },
-      [_c("img", { attrs: { src: "/images/client/Group.png", alt: "menu" } })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "js-menu-close d-none",
-        attrs: { href: "javascript:void(0)" }
-      },
-      [_c("img", { attrs: { src: "/images/client/close.png", alt: "menu" } })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "navbar-brand", attrs: { href: "/client" } },
       [
-        _c("img", {
-          staticStyle: { width: "177px" },
-          attrs: { src: "/images/client/logo_123.png", alt: "logout" }
-        })
+        _c(
+          "a",
+          {
+            staticClass: "js-menu-open menu-open",
+            attrs: { href: "javascript:void(0)", id: "menu-open-icon" }
+          },
+          [
+            _c("img", {
+              attrs: { src: "/images/client/Group.png", alt: "menu" }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "js-menu-close d-none",
+            attrs: { href: "javascript:void(0)" }
+          },
+          [
+            _c("img", {
+              attrs: { src: "/images/client/close.png", alt: "menu" }
+            })
+          ]
+        ),
+        _vm._v(" "),
+        _c("a", { staticClass: "navbar-brand", attrs: { href: "/client" } }, [
+          _c("img", {
+            staticStyle: { width: "177px" },
+            attrs: { src: "/images/client/logo_123.png", alt: "logout" }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-inline my-2 my-lg-0" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-inline my-2 my-lg-0 name" }, [
+          _c("div", { staticClass: "logoutButton" }, [
+            _c("a", { attrs: { href: "/logout" } }, [
+              _c("img", {
+                attrs: { src: "/images/client/log_out.png", alt: "logout" }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", [
+            _vm._v("\n                Ahmed R. Marzouk\n            ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "avatar" }, [
+            _c("img", {
+              attrs: { src: "/images/client/dummy.png", alt: "logout" }
+            })
+          ])
+        ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "avatar" }, [
-      _c("img", { attrs: { src: "/images/client/dummy.png", alt: "logout" } })
-    ])
   },
   function() {
     var _vm = this
@@ -90351,7 +90324,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         } else {
           _this.errors = ['Something went wrong. Please try again.'];
         }
-      });;
+      });
     },
     clearInput: function clearInput(inputName) {
       this.formData[inputName] = '';

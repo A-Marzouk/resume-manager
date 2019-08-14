@@ -21,9 +21,8 @@
                 @include('admin.includes.searches')
 
 
-                @if(in_array('Freelancers',$permissions))
-                    @include('admin.includes.freelancers')
-                @endif
+
+                @include('admin.includes.freelancers')
 
                 @if(in_array('Subscriptions',$permissions))
                     @include('admin.includes.subscriptions')

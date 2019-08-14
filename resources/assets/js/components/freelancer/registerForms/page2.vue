@@ -232,7 +232,8 @@ export default {
 
       },
       addToTechs (e) {
-          if (e.key == ',') {
+          console.log(e)
+          if (e.key == ',' || e.key === ' ' || e.key === 'Enter') {
             e.preventDefault()
             this.professionalData.techs.push(this.inputTechs)
             this.inputTechs = ''

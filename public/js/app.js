@@ -65922,6 +65922,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    handleSelected: { type: Function }
+  },
   data: function data() {
     return {
       flags: [{
@@ -66784,6 +66787,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       selected: 0,
       opened: false
     };
+  },
+
+  watch: {
+    selected: function selected(value) {
+      this.handleSelected(value);
+    }
+  },
+  mounted: function mounted() {
+    this.handleSelected(this.flags[0].value);
   }
 });
 
@@ -101308,6 +101320,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 name: '',
                 surname: '',
                 gender: '',
+                phoneLocation: '',
                 phone: '',
                 email: '',
                 timeZone: '',
@@ -101319,6 +101332,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 name: '',
                 surname: '',
                 gender: '',
+                phoneLocation: '',
                 phone: '',
                 email: '',
                 timeZone: '',
@@ -101386,7 +101400,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         noErrorsPhone: function noErrorsPhone() {
             var valid = true;
-            var phoneFormat = /\+[0-9]{1,3}[0-9]{7}/;
+            var phoneFormat = /[0-9]{7,10}/;
 
             if (this.personalData.phone.trim() === '') {
                 // Empty field
@@ -101454,6 +101468,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         },
         clearInput: function clearInput(name) {
             this.personalData[name] = '';
+        },
+        flagHandler: function flagHandler(value) {
+            this.personalData.phoneLocation = value;
         }
     },
     watch: {
@@ -101728,52 +101745,56 @@ var render = function() {
               class: { "error-input": _vm.errors.phone }
             },
             [
-              _c("flag-dropdown", [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.personalData.phone,
-                      expression: "personalData.phone"
-                    }
-                  ],
-                  attrs: {
-                    type: "text",
-                    name: "phone",
-                    placeholder: "+1233534634"
-                  },
-                  domProps: { value: _vm.personalData.phone },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+              _c(
+                "flag-dropdown",
+                { attrs: { handleSelected: _vm.flagHandler } },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.personalData.phone,
+                        expression: "personalData.phone"
                       }
-                      _vm.$set(_vm.personalData, "phone", $event.target.value)
+                    ],
+                    attrs: {
+                      type: "text",
+                      name: "phone",
+                      placeholder: "3534634"
+                    },
+                    domProps: { value: _vm.personalData.phone },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.personalData, "phone", $event.target.value)
+                      }
                     }
-                  }
-                }),
-                _vm._v(" "),
-                _c("img", {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.personalData.phone.length > 0,
-                      expression: "personalData.phone.length > 0"
+                  }),
+                  _vm._v(" "),
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.personalData.phone.length > 0,
+                        expression: "personalData.phone.length > 0"
+                      }
+                    ],
+                    attrs: {
+                      src: "/images/client/campaign_activity/close_black.png",
+                      alt: "delete icon"
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.clearInput("phone")
+                      }
                     }
-                  ],
-                  attrs: {
-                    src: "/images/client/campaign_activity/close_black.png",
-                    alt: "delete icon"
-                  },
-                  on: {
-                    click: function($event) {
-                      _vm.clearInput("phone")
-                    }
-                  }
-                })
-              ])
+                  })
+                ]
+              )
             ],
             1
           ),
@@ -102811,7 +102832,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             }
         },
         addToTechs: function addToTechs(e) {
-            if (e.key == ',') {
+            console.log(e);
+            if (e.key == ',' || e.key === ' ' || e.key === 'Enter') {
                 e.preventDefault();
                 this.professionalData.techs.push(this.inputTechs);
                 this.inputTechs = '';

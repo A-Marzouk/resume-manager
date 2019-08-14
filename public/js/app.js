@@ -102833,8 +102833,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             }
         },
         onlyNumeric: function onlyNumeric(e) {
-            console.log(e);
-            if (e.key !== 'Backspace' && e.key !== 'Delete' && e.key < 37 && e.key > 40 && (e.keyCode < 48 || e.keyCode > 57)) e.preventDefault();
+            if (e.key !== 'Backspace' && e.key !== 'Delete' && (e.key < 37 || e.key > 40) && (e.keyCode < 48 || e.keyCode > 57)) e.preventDefault();
         },
         addToTechs: function addToTechs(e) {
             // Remove supp and del key

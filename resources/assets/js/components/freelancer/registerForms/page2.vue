@@ -233,10 +233,9 @@ export default {
 
       },
       onlyNumeric (e) {
-          console.log(e)
           if (e.key !== 'Backspace' &&
             e.key !== 'Delete' &&
-            (e.key < 37 && e.key > 40) &&
+            (e.key < 37 || e.key > 40) &&
             (e.keyCode < 48 || e.keyCode > 57)
         ) e.preventDefault()
       },

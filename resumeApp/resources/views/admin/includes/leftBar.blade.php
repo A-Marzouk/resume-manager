@@ -6,13 +6,13 @@
                 Home
             </a>
         </li>
-        @if(in_array('Freelancers',$permissions))
+
             <li class="col-md-12">
                 <a class="btn btn-block btn-outline-primary" href="#freelancers"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">
                     Freelancers
                 </a>
             </li>
-        @endif
+
         @if(in_array('Clients and invoices',$permissions))
             <li class="col-md-12">
                 <a class="btn btn-block btn-outline-primary" href="#clients"  style="margin-bottom: 6px;" role="tab" data-toggle="tab">

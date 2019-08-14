@@ -53,7 +53,8 @@
                 <div class="faq-input"  :class="{ 'error-input' : errors.voice}">
                     <select class="form-control" id="voice" name="voice" style="height: 50px;" v-model="professionalData.voice">
                         <option value="" selected="selected">Select your voice character</option>
-                        <option value="voice1">Voice character 1</option>
+                        <option value="warm">Warm voice</option>
+                        <option value="professional">Professional voice</option>
                     </select>
                 </div>
                 <div class="error" v-if="showErrors && errors.voice">
@@ -65,7 +66,7 @@
                     Specify available hours per week hoursPerWeek
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.hoursPerWeek}">
-                    <input type="text" name="hoursPerWeek" placeholder="25" v-model="professionalData.hoursPerWeek">
+                    <input v-on:keydown="onlyNumeric" type="text" name="hoursPerWeek" placeholder="25" v-model="professionalData.hoursPerWeek">
                     <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('hoursPerWeek')" alt="delete icon" v-show="professionalData.hoursPerWeek.length > 0">
                 </div>
                 <div class="error" v-if="showErrors && errors.hoursPerWeek">
@@ -231,8 +232,16 @@ export default {
         }
 
       },
-      addToTechs (e) {
+      onlyNumeric (e) {
           console.log(e)
+          if (e.key !== 'Backspace' &&
+            e.key !== 'Delete' &&
+            (e.key < 37 && e.key > 40) &&
+            (e.keyCode < 48 || e.keyCode > 57)
+        ) e.preventDefault()
+      },
+      addToTechs (e) {
+          // Remove supp and del key
           if (e.key == ',' || e.key === ' ' || e.key === 'Enter') {
             e.preventDefault()
             this.professionalData.techs.push(this.inputTechs)

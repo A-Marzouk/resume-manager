@@ -102728,6 +102728,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['changeStep', 'getData'],
@@ -102831,8 +102832,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                 this.showErrors = true;
             }
         },
-        addToTechs: function addToTechs(e) {
+        onlyNumeric: function onlyNumeric(e) {
             console.log(e);
+            if (e.key !== 'Backspace' && e.key !== 'Delete' && e.key < 37 && e.key > 40 && (e.keyCode < 48 || e.keyCode > 57)) e.preventDefault();
+        },
+        addToTechs: function addToTechs(e) {
+            // Remove supp and del key
             if (e.key == ',' || e.key === ' ' || e.key === 'Enter') {
                 e.preventDefault();
                 this.professionalData.techs.push(this.inputTechs);
@@ -103117,8 +103122,12 @@ var render = function() {
                     _vm._v("Select your voice character")
                   ]),
                   _vm._v(" "),
-                  _c("option", { attrs: { value: "voice1" } }, [
-                    _vm._v("Voice character 1")
+                  _c("option", { attrs: { value: "warm" } }, [
+                    _vm._v("Warm voice")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "professional" } }, [
+                    _vm._v("Professional voice")
                   ])
                 ]
               )
@@ -103166,6 +103175,7 @@ var render = function() {
                 },
                 domProps: { value: _vm.professionalData.hoursPerWeek },
                 on: {
+                  keydown: _vm.onlyNumeric,
                   input: function($event) {
                     if ($event.target.composing) {
                       return

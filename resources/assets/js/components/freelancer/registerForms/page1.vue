@@ -61,8 +61,8 @@
                     Enter your phone number
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.phone}">
-                    <flag-dropdown>
-                        <input type="text" name="phone" placeholder="+1233534634" v-model="personalData.phone">
+                    <flag-dropdown :handleSelected="flagHandler">
+                        <input type="text" name="phone" placeholder="3534634" v-model="personalData.phone">
                         <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="personalData.phone.length > 0">
                     </flag-dropdown>                    
                 </div>
@@ -197,6 +197,7 @@ export default {
             name:'',
             surname:'',
             gender:'',
+            phoneLocation: '',
             phone:'',
             email:'',
             timeZone:'',
@@ -207,7 +208,8 @@ export default {
 				errors: {
 					name:'',
 					surname:'',
-					gender:'',
+                    gender:'',
+                    phoneLocation: '',
 					phone:'',
 					email:'',
 					timeZone:'',
@@ -285,7 +287,7 @@ export default {
       },
       noErrorsPhone () {
             let valid = true
-            let phoneFormat = /\+[0-9]{1,3}[0-9]{7}/
+            let phoneFormat = /[0-9]{7,10}/
 
             if (this.personalData.phone.trim() === '') {
                 // Empty field
@@ -353,6 +355,9 @@ export default {
         },
         clearInput(name) {
             this.personalData[name] = ''
+        },
+        flagHandler (value) {
+            this.personalData.phoneLocation = value
         }
   },
   watch: {

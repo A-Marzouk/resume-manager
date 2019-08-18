@@ -29,8 +29,13 @@
         }
     }
 
-    if(auth()->guard('client')->guest()){
+    if(currentUser() === null ){
         $isClient = false;
+    }
+    if(currentUser() !== null){
+        if(currentClient() === null){
+            $isClient = false;
+        }
     }
 
 ?>
@@ -73,24 +78,13 @@
                         <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal" style="padding-left: 30px; padding-right: 30px;">{{ __('Log in') }}</a>
                     </li>
                 <? else: ?>
-                    <a class="nav-item nav-link customNavLink" href="/chat-room" style="color:#0290D8;">
-                        Messaging
-                        <span id="MessagingClient{{Auth::guard('client')->user()->id}}" class="unread" style="margin-left: 0;">
-                            {{Auth::guard('client')->user()->unreadMessages()}}
-                        </span>
-                    </a>
                     <a class="nav-item nav-link customNavLink" href="/client">
-                        {{ Auth::guard('client')->user()->name }}
+                        {{ currentClient()->contact}}
                     </a>
-                    <a class="nav-item nav-link customNavLink" href="{{ route('client.logout') }}"
-                       onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                    <a class="nav-item nav-link customNavLink" href="/logout">
+                        Logout
                     </a>
 
-                    <form id="logout-form" action="{{ route('client.logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
                 <? endif;?>
             </ul>
         </div>

@@ -82728,7 +82728,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -83044,10 +83044,79 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
+            user: {},
             client: {
                 name: 'Ahmed Marzouk',
                 agency: 'The best agency',
@@ -83084,6 +83153,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
+        getCurrentClient: function getCurrentClient() {
+            var _this = this;
+
+            axios.get('/client/current').then(function (response) {
+                // response is user with client relationship
+                _this.user = response.data;
+            });
+        },
         nextStep: function nextStep(e) {
             e.preventDefault();
             // this.canSubmit = true
@@ -83296,6 +83373,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             deep: true
         }
+    },
+    mounted: function mounted() {
+        this.getCurrentClient();
     }
 });
 
@@ -83316,7 +83396,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "account-edit-section" }, [
           _c("div", { staticClass: "account-edit-section-heading" }, [
-            _vm._v("\n          BASIC INFORMATION\n        ")
+            _vm._v("\n                    BASIC INFORMATION\n                ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "account-edit-section-inputs" }, [
@@ -83325,7 +83405,9 @@ var render = function() {
               { staticClass: "faq-question-input account-edit-input" },
               [
                 _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v("\n              Enter your agency name\n            ")
+                  _vm._v(
+                    "\n                            Enter your agency name\n                        "
+                  )
                 ]),
                 _vm._v(" "),
                 _c(
@@ -83385,9 +83467,9 @@ var render = function() {
                 _vm.showErrors && _vm.errors.agency
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                " +
+                        "\n                            " +
                           _vm._s(_vm.errors.agency) +
-                          "\n            "
+                          "\n                        "
                       )
                     ])
                   : _vm._e()
@@ -83400,7 +83482,7 @@ var render = function() {
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v(
-                    "\n                Enter name of contact person\n              "
+                    "\n                            Enter name of contact person\n                        "
                   )
                 ]),
                 _vm._v(" "),
@@ -83461,9 +83543,9 @@ var render = function() {
                 _vm.showErrors && _vm.errors.name
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                  " +
+                        "\n                            " +
                           _vm._s(_vm.errors.name) +
-                          "\n              "
+                          "\n                        "
                       )
                     ])
                   : _vm._e()
@@ -83476,7 +83558,7 @@ var render = function() {
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v(
-                    "\n                  Enter contact phone\n                "
+                    "\n                            Enter contact phone\n                        "
                   )
                 ]),
                 _vm._v(" "),
@@ -83537,9 +83619,9 @@ var render = function() {
                 _vm.showErrors && _vm.errors.contact
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                  " +
+                        "\n                            " +
                           _vm._s(_vm.errors.contact) +
-                          "\n                "
+                          "\n                        "
                       )
                     ])
                   : _vm._e()
@@ -83552,7 +83634,7 @@ var render = function() {
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v(
-                    "\n                              Select your time zone\n                          "
+                    "\n                            Select your time zone\n                        "
                   )
                 ]),
                 _vm._v(" "),
@@ -83614,7 +83696,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                              "(GMT -5:00)\n                                    Eastern Time (US & Canada), Bogota, Lima\n                                "
                             )
                           ]
                         ),
@@ -83629,7 +83711,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                              "(GMT -6:00)\n                                    Central Time (US & Canada), Mexico City\n                                "
                             )
                           ]
                         ),
@@ -83641,7 +83723,11 @@ var render = function() {
                               value: "(GMT -7:00) Mountain Time (US & Canada)"
                             }
                           },
-                          [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
+                          [
+                            _vm._v(
+                              "(GMT -7:00) Mountain Time\n                                    (US & Canada)\n                                "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -83651,7 +83737,11 @@ var render = function() {
                               value: "(GMT -8:00) Pacific Time (US & Canada)"
                             }
                           },
-                          [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                          [
+                            _vm._v(
+                              "(GMT -8:00) Pacific Time (US\n                                    & Canada)\n                                "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -83669,7 +83759,11 @@ var render = function() {
                           {
                             attrs: { value: "(GMT -12:00) Eniwetok, Kwajalein" }
                           },
-                          [_vm._v("(GMT -12:00) Eniwetok, Kwajalein")]
+                          [
+                            _vm._v(
+                              "(GMT -12:00) Eniwetok, Kwajalein\n                                "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -83679,7 +83773,11 @@ var render = function() {
                               value: "(GMT -11:00) Midway Island, Samoa"
                             }
                           },
-                          [_vm._v("(GMT -11:00) Midway Island, Samoa")]
+                          [
+                            _vm._v(
+                              "(GMT -11:00) Midway Island,\n                                    Samoa\n                                "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -83707,7 +83805,11 @@ var render = function() {
                               value: "(GMT -8:00) Pacific Time (US & Canada)"
                             }
                           },
-                          [_vm._v("(GMT -8:00) Pacific Time (US & Canada)")]
+                          [
+                            _vm._v(
+                              "(GMT -8:00) Pacific Time (US\n                                    & Canada)\n                                "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -83717,7 +83819,11 @@ var render = function() {
                               value: "(GMT -7:00) Mountain Time (US & Canada)"
                             }
                           },
-                          [_vm._v("(GMT -7:00) Mountain Time (US & Canada)")]
+                          [
+                            _vm._v(
+                              "(GMT -7:00) Mountain Time\n                                    (US & Canada)\n                                "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -83730,7 +83836,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                              "(GMT -6:00)\n                                    Central Time (US & Canada), Mexico City\n                                "
                             )
                           ]
                         ),
@@ -83745,7 +83851,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                              "(GMT -5:00)\n                                    Eastern Time (US & Canada), Bogota, Lima\n                                "
                             )
                           ]
                         ),
@@ -83766,7 +83872,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                              "(GMT -4:00)\n                                    Atlantic Time (Canada), Caracas, La Paz\n                                "
                             )
                           ]
                         ),
@@ -83787,7 +83893,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
+                              "(GMT -3:00) Brazil,\n                                    Buenos Aires, Georgetown\n                                "
                             )
                           ]
                         ),
@@ -83805,7 +83911,11 @@ var render = function() {
                               value: "(GMT -1:00) Azores, Cape Verde Islands"
                             }
                           },
-                          [_vm._v("(GMT -1:00) Azores, Cape Verde Islands")]
+                          [
+                            _vm._v(
+                              "(GMT -1:00) Azores, Cape\n                                    Verde Islands\n                                "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -83818,7 +83928,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                              "(GMT\n                                    +0:00) Western Europe Time, London, Lisbon, Casablanca\n                                "
                             )
                           ]
                         ),
@@ -83833,7 +83943,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
+                              "(GMT +1:00)\n                                    Brussels, Copenhagen, Madrid, Paris\n                                "
                             )
                           ]
                         ),
@@ -83845,7 +83955,11 @@ var render = function() {
                               value: "(GMT +2:00) Kaliningrad, South Africa"
                             }
                           },
-                          [_vm._v("(GMT +2:00) Kaliningrad, South Africa")]
+                          [
+                            _vm._v(
+                              "(GMT +2:00) Kaliningrad, South\n                                    Africa\n                                "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -83858,7 +83972,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                              "(GMT +3:00)\n                                    Baghdad, Riyadh, Moscow, St. Petersburg\n                                "
                             )
                           ]
                         ),
@@ -83879,7 +83993,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
+                              "(GMT +4:00) Abu Dhabi,\n                                    Muscat, Baku, Tbilisi\n                                "
                             )
                           ]
                         ),
@@ -83900,7 +84014,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                              "(GMT +5:00)\n                                    Ekaterinburg, Islamabad, Karachi, Tashkent\n                                "
                             )
                           ]
                         ),
@@ -83915,7 +84029,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
+                              "(GMT +5:30) Bombay,\n                                    Calcutta, Madras, New Delhi\n                                "
                             )
                           ]
                         ),
@@ -83925,7 +84039,11 @@ var render = function() {
                           {
                             attrs: { value: "(GMT +5:45) Kathmandu, Pokhara" }
                           },
-                          [_vm._v("(GMT +5:45) Kathmandu, Pokhara")]
+                          [
+                            _vm._v(
+                              "(GMT +5:45) Kathmandu, Pokhara\n                                "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -83935,7 +84053,11 @@ var render = function() {
                               value: "(GMT +6:00) Almaty, Dhaka, Colombo"
                             }
                           },
-                          [_vm._v("(GMT +6:00) Almaty, Dhaka, Colombo")]
+                          [
+                            _vm._v(
+                              "(GMT +6:00) Almaty, Dhaka,\n                                    Colombo\n                                "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -83951,7 +84073,11 @@ var render = function() {
                               value: "(GMT +7:00) Bangkok, Hanoi, Jakarta"
                             }
                           },
-                          [_vm._v("(GMT +7:00) Bangkok, Hanoi, Jakarta")]
+                          [
+                            _vm._v(
+                              "(GMT +7:00) Bangkok, Hanoi,\n                                    Jakarta\n                                "
+                            )
+                          ]
                         ),
                         _vm._v(" "),
                         _c(
@@ -83964,7 +84090,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                              "(GMT +8:00)\n                                    Beijing, Perth, Singapore, Hong Kong\n                                "
                             )
                           ]
                         ),
@@ -83985,7 +84111,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                              "(GMT +9:00) Tokyo,\n                                    Seoul, Osaka, Sapporo, Yakutsk\n                                "
                             )
                           ]
                         ),
@@ -84006,7 +84132,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                              "(GMT +10:00)\n                                    Eastern Australia, Guam, Vladivostok\n                                "
                             )
                           ]
                         ),
@@ -84027,7 +84153,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                              "(GMT +11:00)\n                                    Magadan, Solomon Islands, New Caledonia\n                                "
                             )
                           ]
                         ),
@@ -84048,7 +84174,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                              "(GMT +12:00)\n                                    Auckland, Wellington, Fiji, Kamchatka\n                                "
                             )
                           ]
                         ),
@@ -84072,7 +84198,11 @@ var render = function() {
                               value: "(GMT +14:00) Line Islands, Tokelau"
                             }
                           },
-                          [_vm._v("(GMT +14:00) Line Islands, Tokelau")]
+                          [
+                            _vm._v(
+                              "(GMT +14:00) Line Islands,\n                                    Tokelau\n                                "
+                            )
+                          ]
                         )
                       ]
                     )
@@ -84082,9 +84212,9 @@ var render = function() {
                 _vm.showErrors && _vm.errors.timeZone
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                              " +
+                        "\n                            " +
                           _vm._s(_vm.errors.timeZone) +
-                          "\n                          "
+                          "\n                        "
                       )
                     ])
                   : _vm._e()
@@ -84097,7 +84227,7 @@ var render = function() {
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v(
-                    "\n                        Email address of accounts dept\n                      "
+                    "\n                            Email address of accounts dept\n                        "
                   )
                 ]),
                 _vm._v(" "),
@@ -84160,9 +84290,9 @@ var render = function() {
             _vm.showErrors && _vm.errors.email
               ? _c("div", { staticClass: "error" }, [
                   _vm._v(
-                    "\n                              " +
+                    "\n                        " +
                       _vm._s(_vm.errors.email) +
-                      "\n                          "
+                      "\n                    "
                   )
                 ])
               : _vm._e()
@@ -84182,7 +84312,7 @@ var render = function() {
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v(
-                    "\n                        Enter your company website\n                      "
+                    "\n                        Enter your company website\n                    "
                   )
                 ]),
                 _vm._v(" "),
@@ -84243,9 +84373,9 @@ var render = function() {
                 _vm.showErrors && _vm.errors.website
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                          " +
+                        "\n                        " +
                           _vm._s(_vm.errors.website) +
-                          "\n                      "
+                          "\n                    "
                       )
                     ])
                   : _vm._e()
@@ -84258,7 +84388,7 @@ var render = function() {
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v(
-                    "\n                          Enter your Skype ID\n                        "
+                    "\n                        Enter your Skype ID\n                    "
                   )
                 ]),
                 _vm._v(" "),
@@ -84319,9 +84449,9 @@ var render = function() {
                 _vm.showErrors && _vm.errors.skype
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                          " +
+                        "\n                        " +
                           _vm._s(_vm.errors.skype) +
-                          "\n                      "
+                          "\n                    "
                       )
                     ])
                   : _vm._e()
@@ -84334,7 +84464,7 @@ var render = function() {
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v(
-                    "\n                            Enter second contact person\n                          "
+                    "\n                        Enter second contact person\n                    "
                   )
                 ]),
                 _vm._v(" "),
@@ -84399,9 +84529,9 @@ var render = function() {
                 _vm.showErrors && _vm.errors.secondContactName
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                          " +
+                        "\n                        " +
                           _vm._s(_vm.errors.secondContactName) +
-                          "\n                      "
+                          "\n                    "
                       )
                     ])
                   : _vm._e()
@@ -84414,7 +84544,7 @@ var render = function() {
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v(
-                    "\n                              Enter second contact phone\n                            "
+                    "\n                        Enter second contact phone\n                    "
                   )
                 ]),
                 _vm._v(" "),
@@ -84479,9 +84609,9 @@ var render = function() {
                 _vm.showErrors && _vm.errors.secondContact
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                                " +
+                        "\n                        " +
                           _vm._s(_vm.errors.secondContact) +
-                          "\n                            "
+                          "\n                    "
                       )
                     ])
                   : _vm._e()
@@ -84492,9 +84622,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "account-edit-section" }, [
           _c("div", { staticClass: "account-edit-section-heading" }, [
-            _vm._v(
-              "\n                              PREFERRED CONTACT\n                            "
-            )
+            _vm._v("\n                    PREFERRED CONTACT\n                ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "account-edit-section-inputs flex" }, [
@@ -84504,13 +84632,13 @@ var render = function() {
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v(
-                    "\n                                  Choose your preferred contact\n                                "
+                    "\n                            Choose your preferred contact\n                        "
                   )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "faq-input-label sub-label" }, [
                   _vm._v(
-                    "\n                                  Please state here the preferred way that you would like to communicate with your agent.\n                                "
+                    "\n                            Please state here the preferred way that you would like to communicate with your agent.\n                        "
                   )
                 ]),
                 _vm._v(" "),
@@ -84636,9 +84764,7 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "account-edit-section sub-section" }, [
           _c("div", { staticClass: "account-edit-section-heading" }, [
-            _vm._v(
-              "\n                                  PASSWORD\n                                "
-            )
+            _vm._v("\n                    PASSWORD\n                ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "account-edit-section-inputs" }, [
@@ -84648,7 +84774,7 @@ var render = function() {
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v(
-                    "\n                                      Write a new password\n                                    "
+                    "\n                            Write a new password\n                        "
                   )
                 ]),
                 _vm._v(" "),
@@ -84709,9 +84835,9 @@ var render = function() {
                 _vm.showErrors && _vm.errors.password
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                                        " +
+                        "\n                            " +
                           _vm._s(_vm.errors.password) +
-                          "\n                                    "
+                          "\n                        "
                       )
                     ])
                   : _vm._e()
@@ -84724,7 +84850,7 @@ var render = function() {
               [
                 _c("label", { staticClass: "faq-input-label" }, [
                   _vm._v(
-                    "\n                                        Repeat your new password\n                                      "
+                    "\n                            Repeat your new password\n                        "
                   )
                 ]),
                 _vm._v(" "),
@@ -84785,9 +84911,9 @@ var render = function() {
                 _vm.showErrors && _vm.errors.password2
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
-                        "\n                                          " +
+                        "\n                            " +
                           _vm._s(_vm.errors.password2) +
-                          "\n                                      "
+                          "\n                        "
                       )
                     ])
                   : _vm._e()
@@ -84804,9 +84930,7 @@ var render = function() {
           },
           [
             _c("a", { staticClass: "btn-primary", attrs: { href: "#" } }, [
-              _vm._v(
-                "\n                                          APPLY EDITS\n                                      "
-              )
+              _vm._v("\n                    APPLY EDITS\n                ")
             ])
           ]
         )
@@ -84829,7 +84953,7 @@ var staticRenderFns = [
               attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })
           ]),
-          _vm._v("\n        ACCOUNT INFORMATION\n      ")
+          _vm._v("\n                ACCOUNT INFORMATION\n            ")
         ])
       ]
     )
@@ -84852,7 +84976,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n                      EDIT ACCOUNT INFORMATION\n                  "
+              "\n                    EDIT ACCOUNT INFORMATION\n                "
             )
           ])
         ])

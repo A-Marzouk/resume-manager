@@ -101,11 +101,11 @@
                 <div class="img-container">
                     <div class="faq-input" :class="{ 'error-input' : errors.lang}">
                         <div v-on:click='professionalData.lang = "en"' class="lang">
-                            <img src="/images/client/add_agent/language/english_icon.png">
+                            <img :src="`/images/client/add_agent/language/${professionalData.lang === 'en' ? 'english_icon-selected': 'english_icon'}.png`">
                             <span>English</span>
                         </div>
                         <div v-on:click='professionalData.lang = "es"' class="lang">
-                            <img src="/images/client/add_agent/language/spanish_icon.png">
+                            <img :src="`/images/client/add_agent/language/${professionalData.lang === 'es' ? 'spanish_icon-selected': 'spanish_icon'}.png`">
                             <span>Spanish</span>
                         </div>
                     </div>

@@ -103359,7 +103359,11 @@ var render = function() {
                     _c("img", {
                       attrs: {
                         src:
-                          "/images/client/add_agent/language/english_icon.png"
+                          "/images/client/add_agent/language/" +
+                          (_vm.professionalData.lang === "en"
+                            ? "english_icon-selected"
+                            : "english_icon") +
+                          ".png"
                       }
                     }),
                     _vm._v(" "),
@@ -103381,7 +103385,11 @@ var render = function() {
                     _c("img", {
                       attrs: {
                         src:
-                          "/images/client/add_agent/language/spanish_icon.png"
+                          "/images/client/add_agent/language/" +
+                          (_vm.professionalData.lang === "es"
+                            ? "spanish_icon-selected"
+                            : "spanish_icon") +
+                          ".png"
                       }
                     }),
                     _vm._v(" "),

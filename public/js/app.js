@@ -82728,7 +82728,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -82739,11 +82739,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
 //
 //
 //
@@ -83134,21 +83129,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
             canSubmit: false,
             errors: {
-                name: '',
                 agency: '',
                 contact: '',
+                agency_phone: '',
+                timezone: '',
+                department_email: '',
+
                 website: '',
-                secondContact: '',
-                secondContactName: '',
-                skype: '',
-                timeZone: '',
-                email: '',
-                preferred1: '',
-                preferred2: '',
+                skype_id: '',
+                second_contact: '',
+                second_contact_phone: '',
+
+                preferred_contact: '',
                 password: '',
-                password2: ''
+                password_confirmation: ''
             },
-            showErrors: false
+            showErrors: false,
+            password: '',
+            password_confirmation: ''
         };
     },
 
@@ -83163,10 +83161,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         nextStep: function nextStep(e) {
             e.preventDefault();
-            // this.canSubmit = true
             if (this.noErrors()) {
                 // send data tu server
-            } else this.showErrors = true;
+                alert('will submit data');
+            } else {
+                this.showErrors = true;
+                // scroll to the section with errors :
+                $('html, body').animate({
+                    scrollTop: $(this.getErrorSectionID()).offset().top - 45
+                }, 1000);
+            }
         },
         noErrors: function noErrors() {
             var noErrorsName = this.noErrorsName();
@@ -83178,30 +83182,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var noErrorsAgency = this.noErrorsAgency();
             var noErrorsTimeZone = this.noErrorsTimeZone();
             var noErrorsWebSite = this.noErrorsWebSite();
-            var noErrorsPreferred1 = this.noErrorsPreferred1();
             var noErrorsPassword = this.noErrorsPassword();
-            var noErrorsPassword2 = this.noErrorsPassword2();
 
-            return noErrorsName && noErrorsContact && noErrorsSecondContact && noErrorsSecondContactName && noErrorsPreferred1 && noErrorsEmail && noErrorsSkype && noErrorsAgency && noErrorsTimeZone && noErrorsWebSite && noErrorsPassword && noErrorsPassword2;
+            return noErrorsName && noErrorsContact && noErrorsSecondContact && noErrorsSecondContactName && noErrorsEmail && noErrorsSkype && noErrorsAgency && noErrorsTimeZone && noErrorsWebSite && noErrorsPassword;
         },
         noErrorsPassword: function noErrorsPassword() {
             var valid = true;
 
             // Empty field
-            if (this.client.password.trim() === '') {
+            if (this.password.trim() !== this.password_confirmation.trim()) {
                 valid = false;
-                this.errors.password = 'Please, enter your password';
-            } else this.errors.password = '';
-            // Invalid characters (?)
-            return valid;
-        },
-        noErrorsPassword2: function noErrorsPassword2() {
-            var valid = true;
-
-            if (this.client.password2 !== this.client.password) {
-                valid = false;
-                this.errors.password2 = 'The passwords doesn\'t match';
-            } else this.errors.password2 = '';
+                this.errors.password = 'Password doesn\'t match';
+            } else {
+                this.errors.password = '';
+            }
 
             return valid;
         },
@@ -83209,21 +83203,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var valid = true;
 
             // Empty field
-            if (this.client.name.trim() === '') {
+            if (this.user.client.contact.trim() === '') {
                 valid = false;
-                this.errors.name = 'Please, enter your name';
-            } else this.errors.name = '';
-            // Invalid characters (?)
-            return valid;
-        },
-        noErrorsPreferred1: function noErrorsPreferred1() {
-            var valid = true;
-
-            // Empty field
-            if (this.client.preferred1.trim() === '') {
-                valid = false;
-                this.errors.preferred1 = 'Please, enter at least one preferred contact option';
-            } else this.errors.preferred1 = '';
+                this.errors.contact = 'Please, enter your name';
+            } else this.errors.contact = '';
             // Invalid characters (?)
             return valid;
         },
@@ -83231,9 +83214,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var valid = true;
 
             // Empty field
-            if (this.client.agency.trim() === '') {
+            if (this.user.client.agency.trim() === '') {
                 valid = false;
-                this.errors.agency = 'Please, enter your agency';
+                this.errors.agency = 'Please enter agency name.';
             } else this.errors.agency = '';
 
             // Invalid characters (?)
@@ -83242,43 +83225,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         noErrorsSecondContactName: function noErrorsSecondContactName() {
             var valid = true;
 
-            if (this.client.secondContactName.trim() === '') {
+            if (this.user.client.second_contact.trim() === '') {
                 // Empty field
                 valid = false;
-                this.errors.contact = 'Please enter your contact number';
-            } else this.errors.contact = '';
+                this.errors.second_contact = 'Please enter name';
+            } else this.errors.second_contact = '';
 
             return valid;
         },
         noErrorsContact: function noErrorsContact() {
             var valid = true;
-            var contactFormat = /[0-9]{1,3}-[0-9]{7}/;
+            var contactFormat = /[0-9]{7,12}/;
 
-            if (this.client.contact.trim() === '') {
+            if (this.user.client.agency_phone.trim() === '') {
                 // Empty field
                 valid = false;
-                this.errors.contact = 'Please enter your contact number';
-            } else if (!contactFormat.test(this.client.contact)) {
+                this.errors.agency_phone = 'Please enter agency phone number';
+            } else if (!contactFormat.test(this.user.client.agency_phone)) {
                 // Review the regExp
                 valid = false;
-                this.errors.contact = 'This not a valid contact number format';
-            } else this.errors.contact = '';
+                this.errors.agency_phone = 'This not a valid contact number format';
+            } else this.errors.agency_phone = '';
 
             return valid;
         },
         noErrorsSecondContact: function noErrorsSecondContact() {
             var valid = true;
-            var contactFormat = /[0-9]{1,3}-[0-9]{7}/;
+            var contactFormat = /[0-9]{7,12}/;
 
-            if (this.client.secondContact.trim() === '') {
+            if (this.user.client.second_contact_phone.trim() === '') {
                 // Empty field
                 valid = false;
-                this.errors.secondContact = 'Please enter your contact number';
-            } else if (!contactFormat.test(this.client.secondContact)) {
+                this.errors.second_contact_phone = 'Please enter your contact number';
+            } else if (!contactFormat.test(this.user.client.second_contact_phone)) {
                 // Review the regExp
                 valid = false;
-                this.errors.secondContact = 'This not a valid contact number format';
-            } else this.errors.secondContact = '';
+                this.errors.second_contact_phone = 'This not a valid contact number format';
+            } else this.errors.second_contact_phone = '';
 
             return valid;
         },
@@ -83286,52 +83269,82 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var valid = true;
             var emailFormat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
-            if (this.client.email.trim() === '') {
+            if (this.user.client.department_email.trim() === '') {
                 // Empty field
                 valid = false;
-                this.errors.email = 'Please, enter your email';
-            } else if (!emailFormat.test(this.client.email)) {
+                this.errors.department_email = 'Please, enter your email';
+            } else if (!emailFormat.test(this.user.client.department_email)) {
                 valid = false;
-                this.errors.email = 'This email not has a valid format. Please check again';
-            } else this.errors.email = '';
+                this.errors.department_email = 'This email not has a valid format. Please check again';
+            } else this.errors.department_email = '';
 
             return valid;
         },
         noErrorsTimeZone: function noErrorsTimeZone() {
             var valid = true;
 
-            if (this.client.timeZone.trim() === '') {
+            if (this.user.timezone.trim() === '') {
                 // Empty field
                 valid = false;
-                this.errors.timeZone = 'Please, select a time zone';
-            } else this.errors.timeZone = '';
+                this.errors.timezone = 'Please, select a time zone';
+            } else this.errors.timezone = '';
 
             return valid;
         },
         noErrorsWebSite: function noErrorsWebSite() {
             var valid = true;
 
-            if (this.client.webSite.trim() === '') {
+            if (this.user.client.website.trim() === '') {
                 // Empty field
                 valid = false;
-                this.errors.webSite = 'Please, enter a city';
-            } else this.errors.webSite = '';
+                this.errors.website = 'Please, enter a city';
+            } else this.errors.website = '';
 
             return valid;
         },
         noErrorsSkype: function noErrorsSkype() {
             var valid = true;
 
-            if (this.client.skype.trim() === '') {
+            if (this.user.client.skype_id.trim() === '') {
                 // Empty field
                 valid = false;
-                this.errors.skype = 'Please, enter your skype id';
-            } else this.errors.skype = '';
+                this.errors.skype_id = 'Please, enter your skype id';
+            } else this.errors.skype_id = '';
 
             return valid;
         },
         clearInput: function clearInput(name) {
-            this.client[name] = '';
+            if (this.user.client[name] !== undefined) {
+                this.user.client[name] = '';
+            } else if (this.user[name] !== undefined) {
+                this.user[name] = '';
+            } else {
+                this.password_confirmation = '';
+            }
+        },
+        getErrorSectionID: function getErrorSectionID() {
+            var errors = this.errors;
+            var sectionID = '';
+            var sectionOne = ['agency', 'contact', 'agency_phone', 'timezone', 'department_email'];
+            var sectionTwo = ['website', 'skype_id', 'second_contact', 'second_contact_phone'];
+            var sectionThree = ['preferred_contact', 'password'];
+
+            $.each(errors, function (i) {
+                if (errors[i].length > 0) {
+                    if (sectionOne.includes(i)) {
+                        sectionID = '#formSectionOne';
+                        return false;
+                    } else if (sectionTwo.includes(i)) {
+                        sectionID = '#formSectionTwo';
+                        return false;
+                    } else {
+                        sectionID = '#formSectionThree';
+                        return false;
+                    }
+                }
+            });
+
+            return sectionID;
         }
     },
     watch: {
@@ -83394,916 +83407,959 @@ var render = function() {
       _c("div", { staticClass: "account-info-edit dashboard-box" }, [
         _vm._m(1),
         _vm._v(" "),
-        _c("div", { staticClass: "account-edit-section" }, [
-          _c("div", { staticClass: "account-edit-section-heading" }, [
-            _vm._v("\n                    BASIC INFORMATION\n                ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section-inputs" }, [
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v(
-                    "\n                            Enter your agency name\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.agency }
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.client.agency,
-                          expression: "client.agency"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      },
-                      domProps: { value: _vm.client.agency },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.client, "agency", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.client.agency.length > 0,
-                          expression: "client.agency.length > 0"
-                        }
-                      ],
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.clearInput("agency")
-                        }
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.showErrors && _vm.errors.agency
-                  ? _c("div", { staticClass: "error" }, [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.errors.agency) +
-                          "\n                        "
-                      )
-                    ])
-                  : _vm._e()
-              ]
-            ),
+        _c(
+          "div",
+          {
+            staticClass: "account-edit-section",
+            attrs: { id: "formSectionOne" }
+          },
+          [
+            _c("div", { staticClass: "account-edit-section-heading" }, [
+              _vm._v(
+                "\n                    BASIC INFORMATION\n                "
+              )
+            ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v(
-                    "\n                            Enter name of contact person\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.name }
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.client.name,
-                          expression: "client.name"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        name: "name",
-                        placeholder: "Enter your ..."
-                      },
-                      domProps: { value: _vm.client.name },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.client, "name", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.client.name.length > 0,
-                          expression: "client.name.length > 0"
-                        }
-                      ],
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.clearInput("name")
-                        }
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.showErrors && _vm.errors.name
-                  ? _c("div", { staticClass: "error" }, [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.errors.name) +
-                          "\n                        "
-                      )
-                    ])
-                  : _vm._e()
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v(
-                    "\n                            Enter contact phone\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.contact }
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.client.contact,
-                          expression: "client.contact"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        name: "contact",
-                        placeholder: "Enter your ..."
-                      },
-                      domProps: { value: _vm.client.contact },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.client, "contact", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.client.contact.length > 0,
-                          expression: "client.contact.length > 0"
-                        }
-                      ],
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.clearInput("contact")
-                        }
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.showErrors && _vm.errors.contact
-                  ? _c("div", { staticClass: "error" }, [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.errors.contact) +
-                          "\n                        "
-                      )
-                    ])
-                  : _vm._e()
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v(
-                    "\n                            Select your time zone\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.timeZone }
-                  },
-                  [
-                    _c(
-                      "select",
-                      {
+            _c("div", { staticClass: "account-edit-section-inputs" }, [
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter your agency name\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.agency }
+                    },
+                    [
+                      _c("input", {
                         directives: [
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.client.timeZone,
-                            expression: "client.timeZone"
+                            value: _vm.user.client.agency,
+                            expression: "user.client.agency"
                           }
                         ],
-                        staticClass: "form-control",
-                        staticStyle: { height: "50px" },
-                        attrs: { id: "timeZone", name: "timeZone" },
+                        attrs: {
+                          type: "text",
+                          name: "faq",
+                          placeholder: "Agency name"
+                        },
+                        domProps: { value: _vm.user.client.agency },
                         on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
                             _vm.$set(
-                              _vm.client,
-                              "timeZone",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
+                              _vm.user.client,
+                              "agency",
+                              $event.target.value
                             )
                           }
                         }
-                      },
-                      [
-                        _c(
-                          "option",
-                          { attrs: { value: "", selected: "selected" } },
-                          [_vm._v("Select your timezone")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        directives: [
                           {
-                            attrs: {
-                              value:
-                                "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -5:00)\n                                    Eastern Time (US & Canada), Bogota, Lima\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT -6:00) Central Time (US & Canada), Mexico City"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -6:00)\n                                    Central Time (US & Canada), Mexico City\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value: "(GMT -7:00) Mountain Time (US & Canada)"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -7:00) Mountain Time\n                                    (US & Canada)\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value: "(GMT -8:00) Pacific Time (US & Canada)"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -8:00) Pacific Time (US\n                                    & Canada)\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT -9:00) Alaska" } },
-                          [_vm._v("(GMT -9:00) Alaska")]
-                        ),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("--------------")
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: { value: "(GMT -12:00) Eniwetok, Kwajalein" }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -12:00) Eniwetok, Kwajalein\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value: "(GMT -11:00) Midway Island, Samoa"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -11:00) Midway Island,\n                                    Samoa\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT -10:00) Hawaii" } },
-                          [_vm._v("(GMT -10:00) Hawaii")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT -9:30) Taiohae" } },
-                          [_vm._v("(GMT -9:30) Taiohae")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT -9:00) Alaska" } },
-                          [_vm._v("(GMT -9:00) Alaska")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value: "(GMT -8:00) Pacific Time (US & Canada)"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -8:00) Pacific Time (US\n                                    & Canada)\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value: "(GMT -7:00) Mountain Time (US & Canada)"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -7:00) Mountain Time\n                                    (US & Canada)\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT -6:00) Central Time (US & Canada), Mexico City"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -6:00)\n                                    Central Time (US & Canada), Mexico City\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -5:00)\n                                    Eastern Time (US & Canada), Bogota, Lima\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT -4:30) Caracas" } },
-                          [_vm._v("(GMT -4:30) Caracas")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -4:00)\n                                    Atlantic Time (Canada), Caracas, La Paz\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT -3:30) Newfoundland" } },
-                          [_vm._v("(GMT -3:30) Newfoundland")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -3:00) Brazil,\n                                    Buenos Aires, Georgetown\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT -2:00) Mid-Atlantic" } },
-                          [_vm._v("(GMT -2:00) Mid-Atlantic")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value: "(GMT -1:00) Azores, Cape Verde Islands"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT -1:00) Azores, Cape\n                                    Verde Islands\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT\n                                    +0:00) Western Europe Time, London, Lisbon, Casablanca\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +1:00)\n                                    Brussels, Copenhagen, Madrid, Paris\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value: "(GMT +2:00) Kaliningrad, South Africa"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +2:00) Kaliningrad, South\n                                    Africa\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +3:00)\n                                    Baghdad, Riyadh, Moscow, St. Petersburg\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT +3:30) Tehran" } },
-                          [_vm._v("(GMT +3:30) Tehran")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +4:00) Abu Dhabi,\n                                    Muscat, Baku, Tbilisi\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT +4:30) Kabul" } },
-                          [_vm._v("(GMT +4:30) Kabul")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +5:00)\n                                    Ekaterinburg, Islamabad, Karachi, Tashkent\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +5:30) Bombay,\n                                    Calcutta, Madras, New Delhi\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: { value: "(GMT +5:45) Kathmandu, Pokhara" }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +5:45) Kathmandu, Pokhara\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value: "(GMT +6:00) Almaty, Dhaka, Colombo"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +6:00) Almaty, Dhaka,\n                                    Colombo\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT +6:30) Yangon, Mandalay" } },
-                          [_vm._v("(GMT +6:30) Yangon, Mandalay")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value: "(GMT +7:00) Bangkok, Hanoi, Jakarta"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +7:00) Bangkok, Hanoi,\n                                    Jakarta\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +8:00)\n                                    Beijing, Perth, Singapore, Hong Kong\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT +8:45) Eucla" } },
-                          [_vm._v("(GMT +8:45) Eucla")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +9:00) Tokyo,\n                                    Seoul, Osaka, Sapporo, Yakutsk\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT +9:30) Adelaide, Darwin" } },
-                          [_vm._v("(GMT +9:30) Adelaide, Darwin")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +10:00)\n                                    Eastern Australia, Guam, Vladivostok\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT +10:30) Lord Howe Island" } },
-                          [_vm._v("(GMT +10:30) Lord Howe Island")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +11:00)\n                                    Magadan, Solomon Islands, New Caledonia\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT +11:30) Norfolk Island" } },
-                          [_vm._v("(GMT +11:30) Norfolk Island")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value:
-                                "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +12:00)\n                                    Auckland, Wellington, Fiji, Kamchatka\n                                "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT +12:45) Chatham Islands" } },
-                          [_vm._v("(GMT +12:45) Chatham Islands")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          { attrs: { value: "(GMT +13:00) Apia, Nukualofa" } },
-                          [_vm._v("(GMT +13:00) Apia, Nukualofa")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "option",
-                          {
-                            attrs: {
-                              value: "(GMT +14:00) Line Islands, Tokelau"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "(GMT +14:00) Line Islands,\n                                    Tokelau\n                                "
-                            )
-                          ]
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.user.client.agency.length > 0,
+                            expression: "user.client.agency.length > 0"
+                          }
+                        ],
+                        attrs: {
+                          src:
+                            "/images/client/campaign_activity/close_black.png",
+                          alt: "delete icon"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.clearInput("agency")
+                          }
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.showErrors && _vm.errors.agency
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.agency) +
+                            "\n                        "
                         )
-                      ]
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter name of contact person\n                        "
                     )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm.showErrors && _vm.errors.timeZone
-                  ? _c("div", { staticClass: "error" }, [
-                      _vm._v(
-                        "\n                            " +
-                          _vm._s(_vm.errors.timeZone) +
-                          "\n                        "
-                      )
-                    ])
-                  : _vm._e()
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v(
-                    "\n                            Email address of accounts dept\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.email }
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.client.email,
-                          expression: "client.email"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      },
-                      domProps: { value: _vm.client.email },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.contact }
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.user.client.contact,
+                            expression: "user.client.contact"
                           }
-                          _vm.$set(_vm.client, "email", $event.target.value)
+                        ],
+                        attrs: {
+                          type: "text",
+                          name: "name",
+                          placeholder: "Contact person"
+                        },
+                        domProps: { value: _vm.user.client.contact },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.user.client,
+                              "contact",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      directives: [
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.user.client.contact.length > 0,
+                            expression: "user.client.contact.length > 0"
+                          }
+                        ],
+                        attrs: {
+                          src:
+                            "/images/client/campaign_activity/close_black.png",
+                          alt: "delete icon"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.clearInput("contact")
+                          }
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.showErrors && _vm.errors.contact
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.contact) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Enter contact phone\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.agency_phone }
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.user.client.agency_phone,
+                            expression: "user.client.agency_phone"
+                          }
+                        ],
+                        attrs: {
+                          type: "text",
+                          name: "contact",
+                          placeholder: "Contact phone"
+                        },
+                        domProps: { value: _vm.user.client.agency_phone },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.user.client,
+                              "agency_phone",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.user.client.agency_phone.length > 0,
+                            expression: "user.client.agency_phone.length > 0"
+                          }
+                        ],
+                        attrs: {
+                          src:
+                            "/images/client/campaign_activity/close_black.png",
+                          alt: "delete icon"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.clearInput("agency_phone")
+                          }
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.showErrors && _vm.errors.agency_phone
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.agency_phone) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Select your time zone\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.timezone }
+                    },
+                    [
+                      _c(
+                        "select",
                         {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.client.email.length > 0,
-                          expression: "client.email.length > 0"
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.user.timezone,
+                              expression: "user.timezone"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          staticStyle: { height: "50px" },
+                          attrs: { id: "timezone", name: "timezone" },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.user,
+                                "timezone",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            { attrs: { value: "", selected: "selected" } },
+                            [_vm._v("Select your timezone")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -5:00)\n                                    Eastern Time (US & Canada), Bogota, Lima\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -6:00)\n                                    Central Time (US & Canada), Mexico City\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "(GMT -7:00) Mountain Time (US & Canada)"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -7:00) Mountain Time\n                                    (US & Canada)\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "(GMT -8:00) Pacific Time (US & Canada)"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -8:00) Pacific Time (US\n                                    & Canada)\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "(GMT -9:00) Alaska" } },
+                            [_vm._v("(GMT -9:00) Alaska")]
+                          ),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("--------------")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "(GMT -12:00) Eniwetok, Kwajalein"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -12:00) Eniwetok, Kwajalein\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "(GMT -11:00) Midway Island, Samoa"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -11:00) Midway Island,\n                                    Samoa\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "(GMT -10:00) Hawaii" } },
+                            [_vm._v("(GMT -10:00) Hawaii")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "(GMT -9:30) Taiohae" } },
+                            [_vm._v("(GMT -9:30) Taiohae")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "(GMT -9:00) Alaska" } },
+                            [_vm._v("(GMT -9:00) Alaska")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "(GMT -8:00) Pacific Time (US & Canada)"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -8:00) Pacific Time (US\n                                    & Canada)\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "(GMT -7:00) Mountain Time (US & Canada)"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -7:00) Mountain Time\n                                    (US & Canada)\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT -6:00) Central Time (US & Canada), Mexico City"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -6:00)\n                                    Central Time (US & Canada), Mexico City\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -5:00)\n                                    Eastern Time (US & Canada), Bogota, Lima\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "(GMT -4:30) Caracas" } },
+                            [_vm._v("(GMT -4:30) Caracas")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -4:00)\n                                    Atlantic Time (Canada), Caracas, La Paz\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "(GMT -3:30) Newfoundland" } },
+                            [_vm._v("(GMT -3:30) Newfoundland")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT -3:00) Brazil, Buenos Aires, Georgetown"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -3:00) Brazil,\n                                    Buenos Aires, Georgetown\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "(GMT -2:00) Mid-Atlantic" } },
+                            [_vm._v("(GMT -2:00) Mid-Atlantic")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "(GMT -1:00) Azores, Cape Verde Islands"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT -1:00) Azores, Cape\n                                    Verde Islands\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT\n                                    +0:00) Western Europe Time, London, Lisbon, Casablanca\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT +1:00) Brussels, Copenhagen, Madrid, Paris"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +1:00)\n                                    Brussels, Copenhagen, Madrid, Paris\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "(GMT +2:00) Kaliningrad, South Africa"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +2:00) Kaliningrad, South\n                                    Africa\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +3:00)\n                                    Baghdad, Riyadh, Moscow, St. Petersburg\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "(GMT +3:30) Tehran" } },
+                            [_vm._v("(GMT +3:30) Tehran")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +4:00) Abu Dhabi,\n                                    Muscat, Baku, Tbilisi\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "(GMT +4:30) Kabul" } },
+                            [_vm._v("(GMT +4:30) Kabul")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +5:00)\n                                    Ekaterinburg, Islamabad, Karachi, Tashkent\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT +5:30) Bombay, Calcutta, Madras, New Delhi"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +5:30) Bombay,\n                                    Calcutta, Madras, New Delhi\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: { value: "(GMT +5:45) Kathmandu, Pokhara" }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +5:45) Kathmandu, Pokhara\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "(GMT +6:00) Almaty, Dhaka, Colombo"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +6:00) Almaty, Dhaka,\n                                    Colombo\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: { value: "(GMT +6:30) Yangon, Mandalay" }
+                            },
+                            [_vm._v("(GMT +6:30) Yangon, Mandalay")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "(GMT +7:00) Bangkok, Hanoi, Jakarta"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +7:00) Bangkok, Hanoi,\n                                    Jakarta\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT +8:00) Beijing, Perth, Singapore, Hong Kong"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +8:00)\n                                    Beijing, Perth, Singapore, Hong Kong\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "(GMT +8:45) Eucla" } },
+                            [_vm._v("(GMT +8:45) Eucla")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +9:00) Tokyo,\n                                    Seoul, Osaka, Sapporo, Yakutsk\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: { value: "(GMT +9:30) Adelaide, Darwin" }
+                            },
+                            [_vm._v("(GMT +9:30) Adelaide, Darwin")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT +10:00) Eastern Australia, Guam, Vladivostok"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +10:00)\n                                    Eastern Australia, Guam, Vladivostok\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: { value: "(GMT +10:30) Lord Howe Island" }
+                            },
+                            [_vm._v("(GMT +10:30) Lord Howe Island")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT +11:00) Magadan, Solomon Islands, New Caledonia"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +11:00)\n                                    Magadan, Solomon Islands, New Caledonia\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "(GMT +11:30) Norfolk Island" } },
+                            [_vm._v("(GMT +11:30) Norfolk Island")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value:
+                                  "(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +12:00)\n                                    Auckland, Wellington, Fiji, Kamchatka\n                                "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: { value: "(GMT +12:45) Chatham Islands" }
+                            },
+                            [_vm._v("(GMT +12:45) Chatham Islands")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: { value: "(GMT +13:00) Apia, Nukualofa" }
+                            },
+                            [_vm._v("(GMT +13:00) Apia, Nukualofa")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: {
+                                value: "(GMT +14:00) Line Islands, Tokelau"
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "(GMT +14:00) Line Islands,\n                                    Tokelau\n                                "
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.showErrors && _vm.errors.timezone
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.timezone) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Email address of accounts dept\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.department_email }
+                    },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.user.client.department_email,
+                            expression: "user.client.department_email"
+                          }
+                        ],
+                        attrs: {
+                          type: "text",
+                          name: "faq",
+                          placeholder: "Email of accounts dept"
+                        },
+                        domProps: { value: _vm.user.client.department_email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.user.client,
+                              "department_email",
+                              $event.target.value
+                            )
+                          }
                         }
-                      ],
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.clearInput("email")
+                      }),
+                      _vm._v(" "),
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.user.client.department_email.length > 0,
+                            expression:
+                              "user.client.department_email.length > 0"
+                          }
+                        ],
+                        attrs: {
+                          src:
+                            "/images/client/campaign_activity/close_black.png",
+                          alt: "delete icon"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.clearInput("department_email")
+                          }
                         }
-                      }
-                    })
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _vm.showErrors && _vm.errors.email
-              ? _c("div", { staticClass: "error" }, [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(_vm.errors.email) +
-                      "\n                    "
-                  )
-                ])
-              : _vm._e()
-          ])
-        ]),
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.showErrors && _vm.errors.department_email
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.department_email) +
+                            "\n                        "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              )
+            ])
+          ]
+        ),
         _vm._v(" "),
         _c(
           "div",
           {
             staticClass:
-              "account-edit-section flex-row flex-wrap justify-content-between sub-section"
+              "account-edit-section flex-row flex-wrap justify-content-between sub-section",
+            attrs: { id: "formSectionTwo" }
           },
           [
             _c(
@@ -84328,22 +84384,26 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.client.website,
-                          expression: "client.website"
+                          value: _vm.user.client.website,
+                          expression: "user.client.website"
                         }
                       ],
                       attrs: {
                         type: "text",
                         name: "faq",
-                        placeholder: "Enter your ..."
+                        placeholder: "Company website"
                       },
-                      domProps: { value: _vm.client.website },
+                      domProps: { value: _vm.user.client.website },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(_vm.client, "website", $event.target.value)
+                          _vm.$set(
+                            _vm.user.client,
+                            "website",
+                            $event.target.value
+                          )
                         }
                       }
                     }),
@@ -84353,8 +84413,8 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.client.website.length > 0,
-                          expression: "client.website.length > 0"
+                          value: _vm.user.client.website.length > 0,
+                          expression: "user.client.website.length > 0"
                         }
                       ],
                       attrs: {
@@ -84396,7 +84456,7 @@ var render = function() {
                   "div",
                   {
                     staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.skype }
+                    class: { "error-input": _vm.errors.skype_id }
                   },
                   [
                     _c("input", {
@@ -84404,22 +84464,26 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.client.skype,
-                          expression: "client.skype"
+                          value: _vm.user.client.skype_id,
+                          expression: "user.client.skype_id"
                         }
                       ],
                       attrs: {
                         type: "text",
                         name: "faq",
-                        placeholder: "Enter your ..."
+                        placeholder: "Skype ID"
                       },
-                      domProps: { value: _vm.client.skype },
+                      domProps: { value: _vm.user.client.skype_id },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(_vm.client, "skype", $event.target.value)
+                          _vm.$set(
+                            _vm.user.client,
+                            "skype_id",
+                            $event.target.value
+                          )
                         }
                       }
                     }),
@@ -84429,8 +84493,8 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.client.skype.length > 0,
-                          expression: "client.skype.length > 0"
+                          value: _vm.user.client.skype_id.length > 0,
+                          expression: "user.client.skype_id.length > 0"
                         }
                       ],
                       attrs: {
@@ -84439,18 +84503,18 @@ var render = function() {
                       },
                       on: {
                         click: function($event) {
-                          _vm.clearInput("skype")
+                          _vm.clearInput("skype_id")
                         }
                       }
                     })
                   ]
                 ),
                 _vm._v(" "),
-                _vm.showErrors && _vm.errors.skype
+                _vm.showErrors && _vm.errors.skype_id
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
                         "\n                        " +
-                          _vm._s(_vm.errors.skype) +
+                          _vm._s(_vm.errors.skype_id) +
                           "\n                    "
                       )
                     ])
@@ -84472,7 +84536,7 @@ var render = function() {
                   "div",
                   {
                     staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.secondContactName }
+                    class: { "error-input": _vm.errors.second_contact }
                   },
                   [
                     _c("input", {
@@ -84480,24 +84544,24 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.client.secondContactName,
-                          expression: "client.secondContactName"
+                          value: _vm.user.client.second_contact,
+                          expression: "user.client.second_contact"
                         }
                       ],
                       attrs: {
                         type: "text",
                         name: "faq",
-                        placeholder: "Enter your ..."
+                        placeholder: "Second contact name"
                       },
-                      domProps: { value: _vm.client.secondContactName },
+                      domProps: { value: _vm.user.client.second_contact },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.client,
-                            "secondContactName",
+                            _vm.user.client,
+                            "second_contact",
                             $event.target.value
                           )
                         }
@@ -84509,8 +84573,8 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.client.secondContactName.length > 0,
-                          expression: "client.secondContactName.length > 0"
+                          value: _vm.user.client.second_contact.length > 0,
+                          expression: "user.client.second_contact.length > 0"
                         }
                       ],
                       attrs: {
@@ -84519,18 +84583,18 @@ var render = function() {
                       },
                       on: {
                         click: function($event) {
-                          _vm.clearInput("secondContactName")
+                          _vm.clearInput("second_contact")
                         }
                       }
                     })
                   ]
                 ),
                 _vm._v(" "),
-                _vm.showErrors && _vm.errors.secondContactName
+                _vm.showErrors && _vm.errors.second_contact
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
                         "\n                        " +
-                          _vm._s(_vm.errors.secondContactName) +
+                          _vm._s(_vm.errors.second_contact) +
                           "\n                    "
                       )
                     ])
@@ -84552,7 +84616,7 @@ var render = function() {
                   "div",
                   {
                     staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.secondContact }
+                    class: { "error-input": _vm.errors.second_contact_phone }
                   },
                   [
                     _c("input", {
@@ -84560,24 +84624,24 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.client.secondContact,
-                          expression: "client.secondContact"
+                          value: _vm.user.client.second_contact_phone,
+                          expression: "user.client.second_contact_phone"
                         }
                       ],
                       attrs: {
                         type: "text",
                         name: "faq",
-                        placeholder: "Enter your ..."
+                        placeholder: "Second contact phone"
                       },
-                      domProps: { value: _vm.client.secondContact },
+                      domProps: { value: _vm.user.client.second_contact_phone },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.client,
-                            "secondContact",
+                            _vm.user.client,
+                            "second_contact_phone",
                             $event.target.value
                           )
                         }
@@ -84589,8 +84653,10 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.client.secondContact.length > 0,
-                          expression: "client.secondContact.length > 0"
+                          value:
+                            _vm.user.client.second_contact_phone.length > 0,
+                          expression:
+                            "user.client.second_contact_phone.length > 0"
                         }
                       ],
                       attrs: {
@@ -84599,18 +84665,18 @@ var render = function() {
                       },
                       on: {
                         click: function($event) {
-                          _vm.clearInput("secondContact")
+                          _vm.clearInput("second_contact_phone")
                         }
                       }
                     })
                   ]
                 ),
                 _vm._v(" "),
-                _vm.showErrors && _vm.errors.secondContact
+                _vm.showErrors && _vm.errors.second_contact_phone
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
                         "\n                        " +
-                          _vm._s(_vm.errors.secondContact) +
+                          _vm._s(_vm.errors.second_contact_phone) +
                           "\n                    "
                       )
                     ])
@@ -84620,147 +84686,113 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "account-edit-section" }, [
-          _c("div", { staticClass: "account-edit-section-heading" }, [
-            _vm._v("\n                    PREFERRED CONTACT\n                ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "account-edit-section-inputs flex" }, [
-            _c(
-              "div",
-              { staticClass: "faq-question-input account-edit-input" },
-              [
-                _c("label", { staticClass: "faq-input-label" }, [
-                  _vm._v(
-                    "\n                            Choose your preferred contact\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "faq-input-label sub-label" }, [
-                  _vm._v(
-                    "\n                            Please state here the preferred way that you would like to communicate with your agent.\n                        "
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.preferred1 }
-                  },
-                  [
-                    _c("input", {
-                      directives: [
+        _c(
+          "div",
+          {
+            staticClass: "account-edit-section",
+            attrs: { id: "formSectionThree" }
+          },
+          [
+            _c("div", { staticClass: "account-edit-section-heading" }, [
+              _vm._v(
+                "\n                    PREFERRED CONTACT\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "account-edit-section-inputs flex" }, [
+              _c(
+                "div",
+                { staticClass: "faq-question-input account-edit-input" },
+                [
+                  _c("label", { staticClass: "faq-input-label" }, [
+                    _vm._v(
+                      "\n                            Choose your preferred contact\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "faq-input-label sub-label" }, [
+                    _vm._v(
+                      "\n                            Please state here the preferred way that you would like to communicate with your agent.\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "faq-input",
+                      class: { "error-input": _vm.errors.preferred_contact }
+                    },
+                    [
+                      _c(
+                        "select",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.client.preferred1,
-                          expression: "client.preferred1"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      },
-                      domProps: { value: _vm.client.preferred1 },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.user.client.preferred_contact,
+                              expression: "user.client.preferred_contact"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          staticStyle: { height: "50px" },
+                          attrs: {
+                            id: "preferred_contact",
+                            name: "preferred_contact"
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.user.client,
+                                "preferred_contact",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
                           }
-                          _vm.$set(
-                            _vm.client,
-                            "preferred1",
-                            $event.target.value
+                        },
+                        [
+                          _c(
+                            "option",
+                            { attrs: { value: "", selected: "selected" } },
+                            [_vm._v("Select contact method")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "email", selected: "selected" } },
+                            [_vm._v("Email")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "phone", selected: "selected" } },
+                            [_vm._v("Phone")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "skype", selected: "selected" } },
+                            [_vm._v("Skype")]
                           )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.client.preferred1.length > 0,
-                          expression: "client.preferred1.length > 0"
-                        }
-                      ],
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.clearInput("preferred1")
-                        }
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "faq-input mt-4",
-                    class: { "error-input": _vm.errors.preferred2 }
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.client.preferred2,
-                          expression: "client.preferred2"
-                        }
-                      ],
-                      attrs: {
-                        type: "text",
-                        name: "faq",
-                        placeholder: "Enter your ..."
-                      },
-                      domProps: { value: _vm.client.preferred2 },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.client,
-                            "preferred2",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("img", {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.client.preferred2.length > 0,
-                          expression: "client.preferred2.length > 0"
-                        }
-                      ],
-                      attrs: {
-                        src: "/images/client/campaign_activity/close_black.png",
-                        alt: "delete icon"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.clearInput("preferred2")
-                        }
-                      }
-                    })
-                  ]
-                )
-              ]
-            )
-          ])
-        ]),
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ])
+          ]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "account-edit-section sub-section" }, [
           _c("div", { staticClass: "account-edit-section-heading" }, [
@@ -84790,22 +84822,22 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.client.password,
-                          expression: "client.password"
+                          value: _vm.password,
+                          expression: "password"
                         }
                       ],
                       attrs: {
                         type: "password",
                         name: "faq",
-                        placeholder: "Enter your ..."
+                        placeholder: "*********"
                       },
-                      domProps: { value: _vm.client.password },
+                      domProps: { value: _vm.password },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(_vm.client, "password", $event.target.value)
+                          _vm.password = $event.target.value
                         }
                       }
                     }),
@@ -84815,8 +84847,8 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.client.password.length > 0,
-                          expression: "client.password.length > 0"
+                          value: _vm.password.length > 0,
+                          expression: "password.length > 0"
                         }
                       ],
                       attrs: {
@@ -84825,7 +84857,7 @@ var render = function() {
                       },
                       on: {
                         click: function($event) {
-                          _vm.clearInput("password")
+                          _vm.password = ""
                         }
                       }
                     })
@@ -84858,7 +84890,7 @@ var render = function() {
                   "div",
                   {
                     staticClass: "faq-input",
-                    class: { "error-input": _vm.errors.password2 }
+                    class: { "error-input": _vm.errors.password_confirmation }
                   },
                   [
                     _c("input", {
@@ -84866,22 +84898,22 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.client.password2,
-                          expression: "client.password2"
+                          value: _vm.password_confirmation,
+                          expression: "password_confirmation"
                         }
                       ],
                       attrs: {
                         type: "password",
                         name: "faq",
-                        placeholder: "Enter your ..."
+                        placeholder: "*********"
                       },
-                      domProps: { value: _vm.client.password2 },
+                      domProps: { value: _vm.password_confirmation },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(_vm.client, "password2", $event.target.value)
+                          _vm.password_confirmation = $event.target.value
                         }
                       }
                     }),
@@ -84891,8 +84923,8 @@ var render = function() {
                         {
                           name: "show",
                           rawName: "v-show",
-                          value: _vm.client.password2.length > 0,
-                          expression: "client.password2.length > 0"
+                          value: _vm.password_confirmation.length > 0,
+                          expression: "password_confirmation.length > 0"
                         }
                       ],
                       attrs: {
@@ -84901,18 +84933,18 @@ var render = function() {
                       },
                       on: {
                         click: function($event) {
-                          _vm.clearInput("password2")
+                          _vm.password_confirmation = ""
                         }
                       }
                     })
                   ]
                 ),
                 _vm._v(" "),
-                _vm.showErrors && _vm.errors.password2
+                _vm.showErrors && _vm.errors.password_confirmation
                   ? _c("div", { staticClass: "error" }, [
                       _vm._v(
                         "\n                            " +
-                          _vm._s(_vm.errors.password2) +
+                          _vm._s(_vm.errors.password_confirmation) +
                           "\n                        "
                       )
                     ])
@@ -84924,14 +84956,17 @@ var render = function() {
         _vm._v(" "),
         _c(
           "div",
-          {
-            staticClass: "account-edit-section-edit-btn no-decoration",
-            class: { "disabled-btn": !_vm.canSubmit }
-          },
+          { staticClass: "account-edit-section-edit-btn no-decoration" },
           [
-            _c("a", { staticClass: "btn-primary", attrs: { href: "#" } }, [
-              _vm._v("\n                    APPLY EDITS\n                ")
-            ])
+            _c(
+              "a",
+              {
+                staticClass: "btn-primary",
+                attrs: { href: "javascript:void(0)" },
+                on: { click: _vm.nextStep }
+              },
+              [_vm._v("\n                    APPLY EDITS\n                ")]
+            )
           ]
         )
       ])

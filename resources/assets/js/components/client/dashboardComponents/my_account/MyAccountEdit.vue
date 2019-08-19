@@ -18,7 +18,7 @@
                     </span>
                     </div>
                 </div>
-                <div class="account-edit-section">
+                <div class="account-edit-section" id="formSectionOne">
                     <div class="account-edit-section-heading">
                         BASIC INFORMATION
                     </div>
@@ -32,11 +32,11 @@
                             >
                                 <input type="text"
                                        name="faq"
-                                       placeholder="Enter your ..."
-                                       v-model="client.agency">
+                                       placeholder="Agency name"
+                                       v-model="user.client.agency">
                                 <img src="/images/client/campaign_activity/close_black.png"
                                      alt="delete icon"
-                                     v-show="client.agency.length > 0"
+                                     v-show="user.client.agency.length > 0"
                                      @click="clearInput('agency')"
                                 >
                             </div>
@@ -49,32 +49,14 @@
                                 Enter name of contact person
                             </label>
                             <div class="faq-input"
-                                 :class="{ 'error-input' : errors.name}"
+                                 :class="{ 'error-input' : errors.contact}"
                             >
                                 <input type="text"
                                        name="name"
-                                       v-model="client.name"
-                                       placeholder="Enter your ...">
+                                       v-model="user.client.contact"
+                                       placeholder="Contact person">
                                 <img src="/images/client/campaign_activity/close_black.png" alt="delete icon"
-                                     v-show="client.name.length > 0"
-                                     @click="clearInput('name')"
-                                >
-                            </div>
-                            <div class="error" v-if="showErrors && errors.name">
-                                {{errors.name}}
-                            </div>
-                        </div>
-                        <div class="faq-question-input account-edit-input">
-                            <label class="faq-input-label">
-                                Enter contact phone
-                            </label>
-                            <div class="faq-input" :class="{ 'error-input' : errors.contact}">
-                                <input type="text"
-                                       name="contact"
-                                       v-model="client.contact"
-                                       placeholder="Enter your ...">
-                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon"
-                                     v-show="client.contact.length > 0"
+                                     v-show="user.client.contact.length > 0"
                                      @click="clearInput('contact')"
                                 >
                             </div>
@@ -84,11 +66,29 @@
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
+                                Enter contact phone
+                            </label>
+                            <div class="faq-input" :class="{ 'error-input' : errors.agency_phone}">
+                                <input type="text"
+                                       name="contact"
+                                       v-model="user.client.agency_phone"
+                                       placeholder="Contact phone">
+                                <img src="/images/client/campaign_activity/close_black.png" alt="delete icon"
+                                     v-show="user.client.agency_phone.length > 0"
+                                     @click="clearInput('agency_phone')"
+                                >
+                            </div>
+                            <div class="error" v-if="showErrors && errors.agency_phone">
+                                {{errors.agency_phone}}
+                            </div>
+                        </div>
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
                                 Select your time zone
                             </label>
-                            <div class="faq-input" :class="{ 'error-input' : errors.timeZone}">
-                                <select class="form-control" id="timeZone" name="timeZone" style="height: 50px;"
-                                        v-model="client.timeZone">
+                            <div class="faq-input" :class="{ 'error-input' : errors.timezone}">
+                                <select class="form-control" id="timezone" name="timezone" style="height: 50px;"
+                                        v-model="user.timezone">
                                     <option value="" selected="selected">Select your timezone</option>
                                     <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00)
                                         Eastern Time (US & Canada), Bogota, Lima
@@ -194,29 +194,30 @@
                                     </option>
                                 </select>
                             </div>
-                            <div class="error" v-if="showErrors && errors.timeZone">
-                                {{errors.timeZone}}
+                            <div class="error" v-if="showErrors && errors.timezone">
+                                {{errors.timezone}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
                                 Email address of accounts dept
                             </label>
-                            <div class="faq-input" :class="{ 'error-input' : errors.email}">
+                            <div class="faq-input" :class="{ 'error-input' : errors.department_email}">
                                 <input type="text"
                                        name="faq"
-                                       v-model="client.email"
-                                       placeholder="Enter your ...">
-                                <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('email')"
-                                     alt="delete icon" v-show="client.email.length > 0">
+                                       v-model="user.client.department_email"
+                                       placeholder="Email of accounts dept">
+                                <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('department_email')"
+                                     alt="delete icon" v-show="user.client.department_email.length > 0">
+                            </div>
+                            <div class="error" v-if="showErrors && errors.department_email">
+                                {{errors.department_email}}
                             </div>
                         </div>
-                        <div class="error" v-if="showErrors && errors.email">
-                            {{errors.email}}
-                        </div>
+
                     </div>
                 </div>
-                <div class="account-edit-section flex-row flex-wrap justify-content-between sub-section">
+                <div class="account-edit-section flex-row flex-wrap justify-content-between sub-section" id="formSectionTwo">
                     <div class="faq-question-input account-edit-input">
                         <label class="faq-input-label">
                             Enter your company website
@@ -224,11 +225,11 @@
                         <div class="faq-input" :class="{ 'error-input' : errors.website}">
                             <input type="text"
                                    name="faq"
-                                   placeholder="Enter your ..."
-                                   v-model="client.website"
+                                   placeholder="Company website"
+                                   v-model="user.client.website"
                             >
                             <img src="/images/client/campaign_activity/close_black.png"
-                                 @click="clearInput('website')" alt="delete icon" v-show="client.website.length > 0">
+                                 @click="clearInput('website')" alt="delete icon" v-show="user.client.website.length > 0">
                         </div>
                         <div class="error" v-if="showErrors && errors.website">
                             {{errors.website}}
@@ -238,57 +239,57 @@
                         <label class="faq-input-label">
                             Enter your Skype ID
                         </label>
-                        <div class="faq-input" :class="{ 'error-input' : errors.skype}">
+                        <div class="faq-input" :class="{ 'error-input' : errors.skype_id}">
                             <input type="text"
                                    name="faq"
-                                   placeholder="Enter your ..."
-                                   v-model="client.skype"
+                                   placeholder="Skype ID"
+                                   v-model="user.client.skype_id"
                             >
                             <img src="/images/client/campaign_activity/close_black.png"
-                                 @click="clearInput('skype')" alt="delete icon" v-show="client.skype.length > 0">
+                                 @click="clearInput('skype_id')" alt="delete icon" v-show="user.client.skype_id.length > 0">
                         </div>
-                        <div class="error" v-if="showErrors && errors.skype">
-                            {{errors.skype}}
+                        <div class="error" v-if="showErrors && errors.skype_id">
+                            {{errors.skype_id}}
                         </div>
                     </div>
                     <div class="faq-question-input account-edit-input">
                         <label class="faq-input-label">
                             Enter second contact person
                         </label>
-                        <div class="faq-input" :class="{ 'error-input' : errors.secondContactName}">
+                        <div class="faq-input" :class="{ 'error-input' : errors.second_contact}">
                             <input type="text"
                                    name="faq"
-                                   placeholder="Enter your ..."
-                                   v-model="client.secondContactName">
+                                   placeholder="Second contact name"
+                                   v-model="user.client.second_contact">
                             <img src="/images/client/campaign_activity/close_black.png"
-                                 @click="clearInput('secondContactName')" alt="delete icon"
-                                 v-show="client.secondContactName.length > 0"
+                                 @click="clearInput('second_contact')" alt="delete icon"
+                                 v-show="user.client.second_contact.length > 0"
                             >
                         </div>
-                        <div class="error" v-if="showErrors && errors.secondContactName">
-                            {{errors.secondContactName}}
+                        <div class="error" v-if="showErrors && errors.second_contact">
+                            {{errors.second_contact}}
                         </div>
                     </div>
                     <div class="faq-question-input account-edit-input">
                         <label class="faq-input-label">
                             Enter second contact phone
                         </label>
-                        <div class="faq-input" :class="{ 'error-input' : errors.secondContact}">
+                        <div class="faq-input" :class="{ 'error-input' : errors.second_contact_phone}">
                             <input type="text"
                                    name="faq"
-                                   placeholder="Enter your ..."
-                                   v-model="client.secondContact">
+                                   placeholder="Second contact phone"
+                                   v-model="user.client.second_contact_phone">
                             <img src="/images/client/campaign_activity/close_black.png"
-                                 @click="clearInput('secondContact')" alt="delete icon"
-                                 v-show="client.secondContact.length > 0"
+                                 @click="clearInput('second_contact_phone')" alt="delete icon"
+                                 v-show="user.client.second_contact_phone.length > 0"
                             >
                         </div>
-                        <div class="error" v-if="showErrors && errors.secondContact">
-                            {{errors.secondContact}}
+                        <div class="error" v-if="showErrors && errors.second_contact_phone">
+                            {{errors.second_contact_phone}}
                         </div>
                     </div>
                 </div>
-                <div class="account-edit-section">
+                <div class="account-edit-section" id="formSectionThree">
                     <div class="account-edit-section-heading">
                         PREFERRED CONTACT
                     </div>
@@ -300,24 +301,18 @@
                             <div class="faq-input-label sub-label">
                                 Please state here the preferred way that you would like to communicate with your agent.
                             </div>
-                            <div class="faq-input" :class="{ 'error-input' : errors.preferred1}">
-                                <input type="text"
-                                       name="faq"
-                                       placeholder="Enter your ..."
-                                       v-model="client.preferred1">
-                                <img src="/images/client/campaign_activity/close_black.png"
-                                     @click="clearInput('preferred1')" alt="delete icon"
-                                     v-show="client.preferred1.length > 0">
+
+                            <div class="faq-input" :class="{ 'error-input' : errors.preferred_contact}">
+                                <select class="form-control" id="preferred_contact" name="preferred_contact" style="height: 50px;"
+                                        v-model="user.client.preferred_contact">
+                                    <option value="" selected="selected">Select contact method</option>
+                                    <option value="email" selected="selected">Email</option>
+                                    <option value="phone" selected="selected">Phone</option>
+                                    <option value="skype" selected="selected">Skype</option>
+
+                                </select>
                             </div>
-                            <div class="faq-input mt-4" :class="{ 'error-input' : errors.preferred2}">
-                                <input type="text"
-                                       name="faq"
-                                       placeholder="Enter your ..."
-                                       v-model="client.preferred2">
-                                <img src="/images/client/campaign_activity/close_black.png"
-                                     @click="clearInput('preferred2')" alt="delete icon"
-                                     v-show="client.preferred2.length > 0">
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -333,11 +328,11 @@
                             <div class="faq-input" :class="{ 'error-input' : errors.password}">
                                 <input type="password"
                                        name="faq"
-                                       placeholder="Enter your ..."
-                                       v-model="client.password">
+                                       placeholder="*********"
+                                       v-model="password">
                                 <img src="/images/client/campaign_activity/close_black.png"
-                                     @click="clearInput('password')" alt="delete icon"
-                                     v-show="client.password.length > 0">
+                                     @click="password = ''" alt="delete icon"
+                                     v-show="password.length > 0">
                             </div>
                             <div class="error" v-if="showErrors && errors.password">
                                 {{errors.password}}
@@ -347,23 +342,23 @@
                             <label class="faq-input-label">
                                 Repeat your new password
                             </label>
-                            <div class="faq-input" :class="{ 'error-input' : errors.password2}">
+                            <div class="faq-input" :class="{ 'error-input' : errors.password_confirmation}">
                                 <input type="password"
                                        name="faq"
-                                       placeholder="Enter your ..."
-                                       v-model="client.password2">
+                                       placeholder="*********"
+                                       v-model="password_confirmation">
                                 <img src="/images/client/campaign_activity/close_black.png"
-                                     @click="clearInput('password2')" alt="delete icon"
-                                     v-show="client.password2.length > 0">
+                                     @click="password_confirmation = ''" alt="delete icon"
+                                     v-show="password_confirmation.length > 0">
                             </div>
-                            <div class="error" v-if="showErrors && errors.password2">
-                                {{errors.password2}}
+                            <div class="error" v-if="showErrors && errors.password_confirmation">
+                                {{errors.password_confirmation}}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
-                    <a class="btn-primary" href="#">
+                <div class="account-edit-section-edit-btn no-decoration">
+                    <a class="btn-primary" href="javascript:void(0)" @click="nextStep">
                         APPLY EDITS
                     </a>
                 </div>
@@ -393,21 +388,24 @@
                 },
                 canSubmit: false,
                 errors: {
-                    name: '',
                     agency: '',
                     contact: '',
+                    agency_phone: '',
+                    timezone: '',
+                    department_email: '',
+
                     website: '',
-                    secondContact: '',
-                    secondContactName: '',
-                    skype: '',
-                    timeZone: '',
-                    email: '',
-                    preferred1: '',
-                    preferred2: '',
+                    skype_id: '',
+                    second_contact: '',
+                    second_contact_phone: '',
+
+                    preferred_contact: '',
                     password: '',
-                    password2: ''
+                    password_confirmation: ''
                 },
-                showErrors: false
+                showErrors: false,
+                password: '',
+                password_confirmation:''
             }
         },
         methods: {
@@ -420,13 +418,18 @@
             },
 
             nextStep(e) {
-                e.preventDefault()
-                // this.canSubmit = true
+                e.preventDefault();
                 if (this.noErrors()) {
                     // send data tu server
-                } else
-                    this.showErrors = true
-
+                    alert('will submit data');
+                }
+                else{
+                    this.showErrors = true;
+                    // scroll to the section with errors :
+                    $('html, body').animate({
+                        scrollTop: $(this.getErrorSectionID()).offset().top - 45
+                    }, 1000);
+                }
             },
             noErrors() {
                 let noErrorsName = this.noErrorsName()
@@ -438,174 +441,187 @@
                 let noErrorsAgency = this.noErrorsAgency()
                 let noErrorsTimeZone = this.noErrorsTimeZone()
                 let noErrorsWebSite = this.noErrorsWebSite()
-                let noErrorsPreferred1 = this.noErrorsPreferred1()
                 let noErrorsPassword = this.noErrorsPassword()
-                let noErrorsPassword2 = this.noErrorsPassword2()
 
                 return (
                     noErrorsName &&
                     noErrorsContact &&
                     noErrorsSecondContact &&
                     noErrorsSecondContactName &&
-                    noErrorsPreferred1 &&
                     noErrorsEmail &&
                     noErrorsSkype &&
                     noErrorsAgency &&
                     noErrorsTimeZone &&
                     noErrorsWebSite &&
-                    noErrorsPassword &&
-                    noErrorsPassword2
+                    noErrorsPassword
                 )
             },
             noErrorsPassword() {
-                let valid = true
+                let valid = true ;
 
                 // Empty field
-                if (this.client.password.trim() === '') {
-                    valid = false
-                    this.errors.password = 'Please, enter your password'
-                } else this.errors.password = ''
-                // Invalid characters (?)
-                return valid
-            },
-            noErrorsPassword2() {
-                let valid = true
-
-                if (this.client.password2 !== this.client.password) {
-                    valid = false
-                    this.errors.password2 = 'The passwords doesn\'t match'
-                } else this.errors.password2 = ''
+                if (this.password.trim() !== this.password_confirmation.trim() ) {
+                    valid = false ;
+                    this.errors.password = 'Password doesn\'t match' ;
+                }
+                else {
+                    this.errors.password = '';
+                }
 
                 return valid
             },
             noErrorsName() {
-                let valid = true
+                let valid = true;
 
                 // Empty field
-                if (this.client.name.trim() === '') {
-                    valid = false
-                    this.errors.name = 'Please, enter your name'
-                } else this.errors.name = ''
+                if (this.user.client.contact.trim() === '') {
+                    valid = false;
+                    this.errors.contact = 'Please, enter your name'
+                } else this.errors.contact = '';
                 // Invalid characters (?)
                 return valid
-            },
-            noErrorsPreferred1() {
-                let valid = true
-
-                // Empty field
-                if (this.client.preferred1.trim() === '') {
-                    valid = false
-                    this.errors.preferred1 = 'Please, enter at least one preferred contact option'
-                } else this.errors.preferred1 = ''
-                // Invalid characters (?)
-                return valid
-
             },
             noErrorsAgency() {
-                let valid = true
+                let valid = true ;
 
                 // Empty field
-                if (this.client.agency.trim() === '') {
-                    valid = false
-                    this.errors.agency = 'Please, enter your agency'
-                } else this.errors.agency = ''
+                if (this.user.client.agency.trim() === '') {
+                    valid = false ;
+                    this.errors.agency = 'Please enter agency name.'
+                } else this.errors.agency = '';
 
                 // Invalid characters (?)
                 return valid
             },
             noErrorsSecondContactName() {
-                let valid = true
+                let valid = true;
 
-                if (this.client.secondContactName.trim() === '') {
+                if (this.user.client.second_contact.trim() === '') {
                     // Empty field
-                    valid = false
-                    this.errors.contact = 'Please enter your contact number'
-                } else this.errors.contact = ''
+                    valid = false;
+                    this.errors.second_contact = 'Please enter name'
+                } else this.errors.second_contact = '';
 
                 return valid
             },
             noErrorsContact() {
-                let valid = true
-                let contactFormat = /[0-9]{1,3}-[0-9]{7}/
+                let valid = true;
+                let contactFormat = /[0-9]{7,12}/;
 
-                if (this.client.contact.trim() === '') {
+                if (this.user.client.agency_phone.trim() === '') {
                     // Empty field
-                    valid = false
-                    this.errors.contact = 'Please enter your contact number'
-                } else if (!contactFormat.test(this.client.contact)) {
+                    valid = false ;
+                    this.errors.agency_phone = 'Please enter agency phone number'
+                } else if (!contactFormat.test(this.user.client.agency_phone)) {
                     // Review the regExp
-                    valid = false
-                    this.errors.contact = 'This not a valid contact number format'
-                } else this.errors.contact = ''
+                    valid = false ;
+                    this.errors.agency_phone = 'This not a valid contact number format'
+                } else this.errors.agency_phone = '';
 
                 return valid
             },
             noErrorsSecondContact() {
-                let valid = true
-                let contactFormat = /[0-9]{1,3}-[0-9]{7}/
+                let valid = true;
+                let contactFormat = /[0-9]{7,12}/;
 
-                if (this.client.secondContact.trim() === '') {
+                if (this.user.client.second_contact_phone.trim() === '') {
                     // Empty field
-                    valid = false
-                    this.errors.secondContact = 'Please enter your contact number'
-                } else if (!contactFormat.test(this.client.secondContact)) {
+                    valid = false;
+                    this.errors.second_contact_phone = 'Please enter your contact number'
+                } else if (!contactFormat.test(this.user.client.second_contact_phone)) {
                     // Review the regExp
-                    valid = false
-                    this.errors.secondContact = 'This not a valid contact number format'
-                } else this.errors.secondContact = ''
+                    valid = false;
+                    this.errors.second_contact_phone = 'This not a valid contact number format'
+                } else this.errors.second_contact_phone = '';
 
                 return valid
             },
             noErrorsEmail() {
-                let valid = true
-                let emailFormat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+                let valid = true;
+                let emailFormat = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
-                if (this.client.email.trim() === '') {
+                if (this.user.client.department_email.trim() === '') {
                     // Empty field
-                    valid = false
-                    this.errors.email = 'Please, enter your email'
-                } else if (!emailFormat.test(this.client.email)) {
-                    valid = false
-                    this.errors.email = 'This email not has a valid format. Please check again'
-                } else this.errors.email = ''
+                    valid = false;
+                    this.errors.department_email = 'Please, enter your email'
+                } else if (!emailFormat.test(this.user.client.department_email)) {
+                    valid = false;
+                    this.errors.department_email = 'This email not has a valid format. Please check again'
+                } else this.errors.department_email = '';
 
                 return valid
             },
             noErrorsTimeZone() {
-                let valid = true
+                let valid = true;
 
-                if (this.client.timeZone.trim() === '') {
+                if (this.user.timezone.trim() === '') {
                     // Empty field
-                    valid = false
-                    this.errors.timeZone = 'Please, select a time zone'
-                } else this.errors.timeZone = ''
+                    valid = false;
+                    this.errors.timezone = 'Please, select a time zone'
+                } else this.errors.timezone = '';
 
                 return valid
             },
             noErrorsWebSite() {
-                let valid = true
+                let valid = true;
 
-                if (this.client.webSite.trim() === '') {
+                if (this.user.client.website.trim() === '') {
                     // Empty field
-                    valid = false
-                    this.errors.webSite = 'Please, enter a city'
-                } else this.errors.webSite = ''
+                    valid = false;
+                    this.errors.website = 'Please, enter a city';
+                } else this.errors.website = '';
 
                 return valid
             },
             noErrorsSkype() {
-                let valid = true
+                let valid = true;
 
-                if (this.client.skype.trim() === '') {
+                if (this.user.client.skype_id.trim() === '') {
                     // Empty field
-                    valid = false
-                    this.errors.skype = 'Please, enter your skype id'
-                } else this.errors.skype = ''
+                    valid = false;
+                    this.errors.skype_id = 'Please, enter your skype id'
+                } else this.errors.skype_id = '';
 
                 return valid
             },
             clearInput(name) {
-                this.client[name] = ''
+                if(this.user.client[name] !== undefined){
+                    this.user.client[name] = '' ;
+                }
+                else if (this.user[name] !== undefined){
+                    this.user[name] = '' ;
+                }
+                else{
+                    this.password_confirmation = '' ;
+                }
+            },
+            getErrorSectionID(){
+                let errors  = this.errors ;
+                let sectionID = '' ;
+                let sectionOne   = ['agency','contact','agency_phone','timezone','department_email'] ;
+                let sectionTwo   = ['website','skype_id','second_contact','second_contact_phone'] ;
+                let sectionThree = ['preferred_contact','password'] ;
+
+                $.each(errors, function(i) {
+                    if(errors[i].length > 0){
+                        if (sectionOne.includes(i)){
+                            sectionID = '#formSectionOne' ;
+                            return false;
+                        }
+                        else if(sectionTwo.includes(i)){
+                            sectionID = '#formSectionTwo' ;
+                            return false;
+                        }
+                        else {
+                            sectionID = '#formSectionThree' ;
+                            return false;
+                        }
+                    }
+                });
+
+                return sectionID ;
+
+
             }
         },
         watch: {
@@ -616,7 +632,7 @@
                     let isAll_filled = true;
                     for (const key of keys) {
                         if (this.client[key].trim().length < 1) {
-                            isAll_filled = false
+                            isAll_filled = false;
                             break
                         }
                     }

@@ -103619,18 +103619,55 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['changeStep', 'getData'],
     data: function data() {
         return {
             resumeData: {
-                voiceRecorder: '',
-                resumeFile: ''
+                voiceRecord: null,
+                resumeFile: null
             },
+            mediaRecorder: null,
+            audioChunks: null,
             typeOfRecording: 'file',
             canSubmit: true,
-            errors: [],
+            recording: false,
+            timer: {
+                seconds: 0,
+                minutes: 0
+            },
+            errors: {
+                voiceRecord: '',
+                resumeFile: ''
+            },
             showErrors: false
         };
     },
@@ -103645,44 +103682,72 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             } else {
                 this.showErrors = true;
             }
+        },
+        handleChange: function handleChange(e) {
+            var type = e.target.files[0].type.split('/')[0];
+            var size = e.target.files[0].size;
+
+            if (type !== 'audio') {
+                this.showErrors = true;
+                this.errors.voiceRecord = 'This file is not an audio file';
+                e.target.files.pop();
+            } else if (size > 45 * 8 * 10000) {
+                this.showErrors = true;
+                this.errors.voiceRecord = 'The file size is greater than 45 MB';
+                e.target.files.pop();
+            }
+
+            this.resumeData.voiceRecord = e.target.files[0];
+        },
+        startRecording: function startRecording() {
+            this.recording = true;
+            var _this = this;
+
+            navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+                _this.mediaRecorder = new MediaRecorder(stream);
+                _this.mediaRecorder.start();
+
+                _this.audioChunks = [];
+
+                _this.mediaRecorder.addEventListener("dataavailable", function (event) {
+                    _this.audioChunks.push(event.data);
+                });
+
+                _this.mediaRecorder.addEventListener("stop", function () {
+                    var audioBlob = new Blob(_this.audioChunks);
+                    var audioUrl = URL.createObjectURL(audioBlob);
+                    var audio = new Audio(audioUrl);
+                    audio.play();
+                });
+
+                _this.startTimerRecorder();
+
+                setTimeout(function () {
+                    _this.stopRecording();
+                }, 1000 * 90);
+            });
+        },
+        stopRecording: function stopRecording() {
+            this.recording = false;
+            this.timer.seconds = 0;
+            this.timer.minutes = 0;
+            this.mediaRecorder.stop();
+        },
+        startTimerRecorder: function startTimerRecorder() {
+            var _this = this;
+            setInterval(function () {
+                _this.timer.seconds++;
+
+                if (seconds > 60) {
+                    _this.timer.seconds = 0;
+                    _this.timer.minutes++;
+                }
+            }, 1000);
         }
     },
     watch: {
         resumeData: {
-            handler: function handler() {
-                // check if all resumeData values are filled
-                var values = Object.values(this.resumeData);
-                var isAll_filled = true;
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
-
-                try {
-                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var value = _step.value;
-
-                        if (value.trim() !== '') {
-                            isAll_filled = false;
-                            break;
-                        }
-                    }
-                } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                            _iterator.return();
-                        }
-                    } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
-                        }
-                    }
-                }
-
-                this.canSubmit = isAll_filled;
-            },
+            handler: function handler() {},
 
             deep: true
         }
@@ -103809,7 +103874,7 @@ var render = function() {
                   "div",
                   {
                     staticClass: "fake-radio-option",
-                    class: { checked: _vm.typeOfRecording === "recording" }
+                    class: { checked: _vm.typeOfRecording === "record" }
                   },
                   [_c("div", { staticClass: "inner-circle" })]
                 ),
@@ -103824,7 +103889,7 @@ var render = function() {
                   domProps: { checked: _vm.typeOfRecording === "recording" },
                   on: {
                     click: function($event) {
-                      _vm.typeOfRecording = "recording"
+                      _vm.typeOfRecording = "record"
                     }
                   }
                 }),
@@ -103844,7 +103909,27 @@ var render = function() {
                 staticClass: "account-edit-section-edit-btn no-decoration",
                 class: { "disabled-btn": !_vm.canSubmit }
               },
-              [_vm._m(1)]
+              [
+                _c("div", { staticClass: "fake-file-input btn" }, [
+                  _c("input", {
+                    attrs: { type: "file", id: "voiceRecorder" },
+                    on: { change: _vm.handleChange }
+                  }),
+                  _vm._v(
+                    "\n                  \n                  UPLOAD A FILE\n\n              "
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.showErrors && _vm.errors.voiceRecord
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v(
+                        "\n                  " +
+                          _vm._s(_vm.errors.voiceRecord) +
+                          "\n              "
+                      )
+                    ])
+                  : _vm._e()
+              ]
             )
           : _vm.typeOfRecording === "link"
             ? _c(
@@ -103865,7 +103950,17 @@ var render = function() {
                         }
                       })
                     ]
-                  )
+                  ),
+                  _vm._v(" "),
+                  _vm.showErrors && _vm.errors.voiceRecord
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                  " +
+                            _vm._s(_vm.errors.voiceRecord) +
+                            "\n              "
+                        )
+                      ])
+                    : _vm._e()
                 ]
               )
             : _c(
@@ -103878,10 +103973,93 @@ var render = function() {
                       staticClass: "faq-input",
                       class: { "error-input": _vm.errors.primaryJob }
                     },
-                    [_vm._m(2)]
-                  )
+                    [
+                      !_vm.recording
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "recording-button",
+                              attrs: { href: "javascript:;" },
+                              on: { click: _vm.startRecording }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  src: "/images/icons/mic_record.svg",
+                                  alt: ""
+                                }
+                              }),
+                              _vm._v(
+                                "\n                      START RECORDING\n                  "
+                              )
+                            ]
+                          )
+                        : _c(
+                            "a",
+                            {
+                              staticClass: "recording-button",
+                              attrs: { href: "javascript:;" },
+                              on: { click: _vm.stopRecording }
+                            },
+                            [
+                              _c("img", {
+                                attrs: {
+                                  src: "/images/icons/mic_record.svg",
+                                  alt: ""
+                                }
+                              }),
+                              _vm._v(
+                                "\n                      STOP RECORDING\n\n                      "
+                              ),
+                              _c("span", [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.timer.minutes < 10
+                                      ? "0" + _vm.timer.minutes
+                                      : _vm.timer.minutes
+                                  )
+                                )
+                              ]),
+                              _vm._v(":\n                      "),
+                              _c("span", [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.timer.seconds < 10
+                                      ? "0" + _vm.timer.seconds
+                                      : _vm.timer.seconds
+                                  )
+                                )
+                              ])
+                            ]
+                          )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm.showErrors && _vm.errors.voiceRecord
+                    ? _c("div", { staticClass: "error" }, [
+                        _vm._v(
+                          "\n                  " +
+                            _vm._s(_vm.errors.voiceRecord) +
+                            "\n              "
+                        )
+                      ])
+                    : _vm._e()
                 ]
-              )
+              ),
+        _vm._v(" "),
+        _vm.resumeData.voiceRecord
+          ? _c("div", { staticClass: "file-details" }, [
+              _c("p", [_vm._v(_vm._s(_vm.resumeData.voiceRecord.name))]),
+              _vm._v(" "),
+              _c("b", [
+                _vm._v(
+                  _vm._s(
+                    (_vm.resumeData.voiceRecord.size * 0.000008).toFixed(2)
+                  ) + " MB"
+                )
+              ])
+            ])
+          : _vm._e()
       ])
     ]),
     _vm._v(" "),
@@ -103891,7 +104069,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "account-edit-section-inputs" }, [
-        _vm._m(3),
+        _vm._m(1),
         _vm._v(" "),
         _c(
           "div",
@@ -103899,7 +104077,30 @@ var render = function() {
             staticClass: "account-edit-section-edit-btn no-decoration",
             class: { "disabled-btn": !_vm.canSubmit }
           },
-          [_vm._m(4)]
+          [
+            _c("div", { staticClass: "fake-file-input btn" }, [
+              _c(
+                "input",
+                _vm._b(
+                  { attrs: { type: "file", id: "resumeFile" } },
+                  "input",
+                  _vm.resumeData.voiceRecord,
+                  false
+                )
+              ),
+              _vm._v("\n                  UPLOAD A FILE\n              ")
+            ]),
+            _vm._v(" "),
+            _vm.showErrors && _vm.errors.resumeFile
+              ? _c("div", { staticClass: "error" }, [
+                  _vm._v(
+                    "\n                  " +
+                      _vm._s(_vm.errors.voiceRecord) +
+                      "\n              "
+                  )
+                ])
+              : _vm._e()
+          ]
         )
       ])
     ]),
@@ -103955,28 +104156,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "fake-file-input btn" }, [
-      _c("input", { attrs: { type: "file", id: "voiceRecorder" } }),
-      _vm._v("\n                  UPLOAD A FILE\n              ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "recording-button", attrs: { href: "javascript:;" } },
-      [
-        _c("img", { attrs: { src: "/images/icons/mic_record.svg", alt: "" } }),
-        _vm._v("\n                      START RECORDING\n                  ")
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "div",
       { staticClass: "faq-question-input account-edit-input faq-description" },
@@ -103988,15 +104167,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "fake-file-input btn" }, [
-      _c("input", { attrs: { type: "file", id: "resumeFile" } }),
-      _vm._v("\n                  UPLOAD A FILE\n              ")
-    ])
   }
 ]
 render._withStripped = true

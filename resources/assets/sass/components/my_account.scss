@@ -569,9 +569,7 @@
   height: 100%;
   width: 100%;
   position: absolute;
-}
-
-#dropzone {
+  margin-top: 20px;
 
   a {
     background-color: $l-blue;
@@ -590,11 +588,11 @@
     }
   }
 
-  &.dz-remove {
-    color: $l-blue;
-    background-color: #fff;
-    border: 2px solid $l-blue;
-    margin-top: 20px;
+  .dz-remove {
+    color: $l-blue !important;
+    background-color: #fff !important;
+    border: 2px solid $l-blue !important;
+    margin-top: 30px;
     position: absolute;
     bottom: 10px;
     // height: 60px;

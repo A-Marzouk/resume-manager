@@ -104113,15 +104113,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             resumeData: {
                 profilePicture: ''
             },
-            canSubmit: true,
-            errors: []
+            canSubmit: false,
+            errors: [],
+            dropzone: document.getElementById('dropzoneProfilePicture')
         };
     },
 
     methods: {
         nextStep: function nextStep(e) {
             e.preventDefault();
-            this.canSubmit = true;
+            // this.canSubmit = true
+
             if (this.canSubmit) {
                 this.getData({ resumeData: _extends({}, this.resumeData) });
                 this.changeStep(5);
@@ -104133,46 +104135,43 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     watch: {
         resumeData: {
-            handler: function handler() {
-                // check if all resumeData values are filled
-                var values = Object.values(this.resumeData);
-                var isAll_filled = true;
-                var _iteratorNormalCompletion = true;
-                var _didIteratorError = false;
-                var _iteratorError = undefined;
-
-                try {
-                    for (var _iterator = values[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                        var value = _step.value;
-
-                        if (value.trim() !== '') {
-                            isAll_filled = false;
-                            break;
-                        }
-                    }
-                } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                } finally {
-                    try {
-                        if (!_iteratorNormalCompletion && _iterator.return) {
-                            _iterator.return();
-                        }
-                    } finally {
-                        if (_didIteratorError) {
-                            throw _iteratorError;
-                        }
-                    }
-                }
-
-                this.canSubmit = isAll_filled;
-            },
+            handler: function handler() {},
 
             deep: true
         }
     },
     mounted: function mounted() {
         this.changeStep(4);
+        var component = this;
+
+        if (document.getElementById("dropzoneProfilePicture")) {
+            var dropzone = new Dropzone("#dropzoneProfilePicture", {
+                maxFilesize: 45,
+                maxFiles: 1,
+                dictDefaultMessage: '',
+                dictRemoveFile: 'DELETE THE PHOTO',
+                url: '/myUrl',
+                paramName: 'photo',
+                addRemoveLinks: true,
+                init: function init() {
+                    this.on('addedfile', function (file) {
+                        component.canSubmit = true;
+                        $('.dz-message').hide();
+                        $('.dz-input').hide();
+                    });
+
+                    this.on('error', function (error) {
+                        return console.log(error);
+                    });
+
+                    this.on('removedfile', function (file) {
+                        component.canSubmit = false;
+                        $('.dz-message').show();
+                        $('.dz-input').show();
+                    });
+                }
+            });
+        }
     }
 });
 
@@ -104200,7 +104199,10 @@ var render = function() {
           {
             staticClass:
               "account-edit-section-edit-btn no-decoration picture-box",
-            class: { "disabled-btn": !_vm.canSubmit },
+            class: {
+              "disabled-btn": !_vm.canSubmit,
+              "file-upload": _vm.canSubmit
+            },
             attrs: { id: "dropbox" }
           },
           [
@@ -104220,7 +104222,10 @@ var render = function() {
               _vm._v("Maximum allowed size is 45 MB")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "dropzone", attrs: { id: "dropzone" } })
+            _c("div", {
+              staticClass: "dropzone",
+              attrs: { id: "dropzoneProfilePicture" }
+            })
           ]
         )
       ])

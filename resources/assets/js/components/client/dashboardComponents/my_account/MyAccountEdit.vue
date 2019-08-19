@@ -420,8 +420,13 @@
             nextStep(e) {
                 e.preventDefault();
                 if (this.noErrors()) {
-                    // send data tu server
-                    alert('will submit data');
+                  axios.post('/client/update',this.user)
+                      .then( (response) => {
+                          console.log(response.data);
+                      })
+                      .catch( (error) => {
+                          console.log(error)
+                      });
                 }
                 else{
                     this.showErrors = true;

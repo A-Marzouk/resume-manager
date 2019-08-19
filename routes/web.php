@@ -136,6 +136,9 @@ Route::prefix('client')->group(function (){
 // get current client :
     Route::get('/current','ClientsController@getCurrentClient')->name('get.current.client');
 
+// update client (from client dashboard)
+    Route::post('/update', 'ClientsController@updateClient');
+
 
 });
 

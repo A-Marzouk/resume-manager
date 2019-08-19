@@ -134,4 +134,17 @@ class ClientsController extends Controller
     public function showClientSearchPage(){
         return view('client.search');
     }
+
+    public function updateClient(Request $request){
+        $user =  User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'client');
+        })->where('id',$request->id)->with('client')->first();
+
+        $user->update(
+            $request->toArray()
+        );
+
+
+        return $user ;
+    }
 }

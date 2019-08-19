@@ -104433,12 +104433,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         noErrors: function noErrors() {
             var noErrorPassword = this.noErrorPassword();
-            var passwordsMatch = this.password === this.passwordConf;
+            var passwordsMatch = this.passwords.password === this.passwords.passwordConf;
+
+            if (!passwordsMatch) this.errors.passwordConf = 'The passwords doesn\'t match';
 
             return noErrorPassword && passwordsMatch;
         },
         noErrorPassword: function noErrorPassword() {
             var valid = true;
+            var alphaNumericRegex = /[^A-Za-z0-9]+/g;
 
             if (this.passwords.password.trim().length < 1) {
                 valid = false;
@@ -104446,6 +104449,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else if (this.passwords.password.length < 6) {
                 valid = false;
                 this.errors.password = 'The password must have at least 8 characters';
+            } else if (alphaNumericRegex.test(this.passwords.password)) {
+                valid = false;
+                this.errors.password = 'Only use alpha numeric characters';
             } else this.errors.password = '';
 
             return valid;

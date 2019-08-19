@@ -70,7 +70,9 @@ export default {
   methods: {
       noErrors () {
           let noErrorPassword = this.noErrorPassword()
-          let passwordsMatch = this.password === this.passwordConf
+          let passwordsMatch = this.passwords.password === this.passwords.passwordConf
+
+          if (!passwordsMatch) this.errors.passwordConf = 'The passwords doesn\'t match'
 
           return (
               noErrorPassword &&
@@ -79,6 +81,7 @@ export default {
       },
       noErrorPassword () {
           let valid = true
+          let alphaNumericRegex = /[^A-Za-z0-9]+/g
 
           if (this.passwords.password.trim().length < 1) {
               valid = false
@@ -86,6 +89,9 @@ export default {
           } else if (this.passwords.password.length < 6) {
               valid = false
               this.errors.password = 'The password must have at least 8 characters'
+          } else if (alphaNumericRegex.test(this.passwords.password)) {
+              valid = false
+              this.errors.password = 'Only use alpha numeric characters'
           } else this.errors.password = ''
 
           return valid

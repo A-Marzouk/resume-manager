@@ -38,6 +38,9 @@
 </template>
 <script>
 export default {
+  props: {
+    handleSelected: { type: Function }
+  },
   data () {
     return {
       flags: [
@@ -1115,6 +1118,14 @@ export default {
       selected: 0,
       opened: false,
     }
+  },
+  watch: {
+    selected: function (value) {
+      this.handleSelected(value)
+    }
+  },
+  mounted () {
+    this.handleSelected(this.flags[0].value)
   }
 }
 </script>

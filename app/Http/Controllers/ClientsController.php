@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Affiliate;
 use App\Client;
 use App\Owner;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,7 @@ class ClientsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:client');
+        $this->middleware('role:client');
     }
 
     public function index(){
@@ -73,6 +74,13 @@ class ClientsController extends Controller
 
     }
 
+
+    public function getCurrentClient(){
+       return User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'client');
+        })->where('id',currentClient()->user_id)->with('client')->first();
+    }
+
     public function hasAgreed(){
         $currClient = auth()->guard('client')->user();
         if($currClient->agree_with_terms == true){
@@ -125,5 +133,33 @@ class ClientsController extends Controller
 
     public function showClientSearchPage(){
         return view('client.search');
+    }
+
+    public function updateClient(Request $request){
+        $user =  User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'client');
+        })->where('id',$request->id)->with('client')->first();
+
+        if(isset($request->password) && !empty($request->password)){
+            $this->validate($request, [
+                'password' => 'confirmed|min:7',
+            ]);
+        }
+
+
+        $requestArray = $request->toArray() ;
+        $user->update(
+            $requestArray
+        );
+
+        $user->client->update(
+            $requestArray['client']
+        );
+
+        return [
+            'user' => $user,
+            'status' => 'success',
+        ] ;
+
     }
 }

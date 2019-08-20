@@ -18,11 +18,13 @@ class ClientLoginController extends Controller
 
     public function login(Request $request){
         // check if is already logged in
+
         if(Auth::guard('client')->check()){
             return [
                 'status' => 'success',
             ];
         }
+
 
         $validator = $this->validator($request->all());
         if ($validator->fails())
@@ -34,15 +36,7 @@ class ClientLoginController extends Controller
         }
 
 
-        // attempt to log in as client
-        $loginAttempt = Auth::guard('client')->attempt(['email'=> $request->email,'password'=>$request->password] , $request->filled('remember'));
-        // if success : log them in
-        if($loginAttempt) {
-            return [
-                'status' => 'success',
-                'redirect' => '/client',
-            ];
-        }
+
 
         // attempt to log in as freelancer
         $loginAttemptFreelancer = Auth::guard()->attempt(['email'=> $request->email,'password'=>$request->password] , $request->filled('remember'));
@@ -50,9 +44,11 @@ class ClientLoginController extends Controller
         if($loginAttemptFreelancer) {
             return [
                 'status' => 'success',
-                'redirect' => '/freelancer',
+                'redirect' => '/dashboard',
             ];
         }
+
+
 
         // if un successful redirect them back :
          $response['email'] = ['Your e-mail or password is not correct'];

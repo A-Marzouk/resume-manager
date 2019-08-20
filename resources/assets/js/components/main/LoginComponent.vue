@@ -108,7 +108,7 @@ export default {
           } else {
             this.errors = ['Something went wrong. Please try again.'];
           }
-        });;
+        });
     },
     clearInput(inputName) {
       this.formData[inputName] = '';

@@ -1,5 +1,4 @@
 <script type="text/javascript" src="/js/dropzone.js"></script>
-<script type="text/javascript" src="/js/app.js"></script>
 <script
 src="https://code.jquery.com/jquery-3.3.1.min.js"
 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -8,6 +7,7 @@ crossorigin="anonymous"></script>
 src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
 integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
 crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/app.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
 <script>
@@ -128,8 +128,6 @@ crossorigin="anonymous"></script>
                 }
             });
         }
-
-
     });
 
     $('.single-item').slick({

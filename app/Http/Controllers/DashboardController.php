@@ -12,7 +12,7 @@ class DashboardController extends Controller
             case currentUser()->is_agent:
                 return redirect()->route('freelancer.dashboard');
             case currentUser()->is_client:
-                return redirect()->route('welcome');
+                return redirect()->route('client.dashboard');
         }
     }
 }

@@ -131,6 +131,15 @@ Route::prefix('client')->group(function (){
 // client agreements :
     Route::get('/agreement','ClientsController@viewClientAgreement')->name('client.agreement');
     Route::get('/privacy_policy','ClientsController@viewClientPrivacyPolicy')->name('client.agreement');
+
+
+// get current client :
+    Route::get('/current','ClientsController@getCurrentClient')->name('get.current.client');
+
+// update client (from client dashboard)
+    Route::post('/update', 'ClientsController@updateClient');
+
+
 });
 
 Route::prefix('freelancer')->group(function (){
@@ -140,12 +149,14 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/campaign','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
     Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
-    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
-     Route::get('/','FreelancersController@showEditForm')->name('show.edit_form');
+//    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
     Route::get('/account/service-agreement','FreelancersController@viewFreelancerServiceAgreement')->name('service.agreement');
     Route::get('/account/privacy-agreement','FreelancersController@viewFreelancerPrivacyAgreement')->name('privacy.agreement');
 
     // frontend routes
+    Route::get('/',function (){
+        return redirect(route('freelancer.dashboard'));
+    })->name('show.edit_form');
     Route::get('/dashboard/{any?}','FreelancersController@index')->name('freelancer.dashboard');
     
     Route::post('/store','UserDataController@store')->name('freelancer.data.store');
@@ -467,7 +478,7 @@ Route::get('dashboard', 'DashboardController@showDashboard')
 // Authentication Routes...
 // Route::get('login', 'Auth\LoginController@showLoginForm')
 //     ->name('login');
-Route::post('login', 'Auth\LoginController@login')
+Route::post('login', 'Auth\ClientLoginController@login')
     ->name('login');
 Route::get('logout', 'Auth\LoginController@logout')
     ->name('logout');

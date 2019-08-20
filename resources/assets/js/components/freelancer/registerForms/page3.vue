@@ -106,13 +106,13 @@
                     <input v-on:change="handleResume" v-bind="resumeData.resumeFile" type="file" id="resumeFile" />
                     UPLOAD A FILE
                 </div>
-                <div v-if="resumeData.resumeFile" class="file-details">
-                    <p>{{ resumeData.resumeFile.name }}</p>
-                    <b>{{ (resumeData.resumeFile.size / 10000).toFixed(2) }} MB</b>
-                </div>
-                <div class="error" v-if="showErrors && errors.resumeFile">
-                    {{errors.resumeFile}}
-                </div>
+            </div>
+            <div v-if="resumeData.resumeFile" class="file-details">
+                <p>{{ resumeData.resumeFile.name }}</p>
+                <b>{{ (resumeData.resumeFile.size / 10000).toFixed(2) }} MB</b>
+            </div>
+            <div class="error" v-if="showErrors && errors.resumeFile">
+                {{errors.resumeFile}}
             </div>
         </div>
     </div>
@@ -124,6 +124,7 @@
   </div>
 </template>
 <script>
+
 export default {
     props: ['changeStep', 'getData'],
   data () {
@@ -177,6 +178,7 @@ export default {
           }
 
             this.resumeData.voiceRecord = e.target.files[0]
+            this.errors.voiceRecord = ''
         
       },
       startRecording () {
@@ -197,16 +199,19 @@ export default {
                 _this.mediaRecorder.addEventListener("stop", () => {
                     const audioBlob = new Blob(_this.audioChunks);
                     const audioUrl = URL.createObjectURL(audioBlob);
+
                     const audio = new Audio(audioUrl)
-                    console.log(audio)
                     audio.play()
+                    _this.resumeData.voiceRecord = audioBlob
+                    _this.resumeData.voiceRecord.name = 'Resume voice record'
+                    _this.errors.voiceRecord = ''
                 });
 
                 _this.startTimerRecorder()
 
                 _this.timer.timeout = setTimeout(() => {
                     _this.stopRecording()
-                }, 1000 * 90)
+                }, 1000 * 120)
             });
       },
       stopRecording() {

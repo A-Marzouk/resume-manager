@@ -49,7 +49,10 @@ export default {
             profilePicture: ''
         },
         canSubmit: false,
-        errors:[],
+        showErrors: false,
+        errors: {
+            photo: ''
+        },
         dropzone: document.getElementById('dropzoneProfilePicture')
     }
   },
@@ -69,25 +72,22 @@ export default {
       }
   },
   watch: {
-        resumeData: {
-            handler(){
-                
-            },
-            deep: true
-        }
     },
     mounted () {
         this.changeStep(4)
         let component = this
 
         if (document.getElementById("dropzoneProfilePicture")) {
-            let dropzone = new Dropzone("#dropzoneProfilePicture", {
+            component.dropzone = new Dropzone("#dropzoneProfilePicture", {
                 maxFilesize: 45,
                 maxFiles: 1,
                 dictDefaultMessage: '',
                 dictRemoveFile: 'DELETE THE PHOTO',
                 url: '/myUrl',
                 paramName: 'photo',
+                parallelUploads: '1',
+                acceptedFiles: 'image/*',
+                uploadMultiple: false,
                 addRemoveLinks: true,
                 init: function () {
                     this.on('addedfile', (file) => {
@@ -95,14 +95,24 @@ export default {
                         $('.dz-message').hide()
                         $('.dz-input').hide()
                     })
+
+                    this.on('dragend', (event) => {
+                        console.log(event)
+                    })
     
-                    this.on('error', (error) => console.log(error))
+                    // this.on('error', (error) => console.log(error))
     
                     this.on('removedfile', (file) => {
                         component.canSubmit = false
                         $('.dz-message').show()
                         $('.dz-input').show()
                     })
+                },
+                maxfilesexceeded: function(file) {
+                    this.removeFile(file)
+                    component.canSubmit = true
+                    $('.dz-message').hide()
+                    $('.dz-input').hide()
                 }
             });
         }

@@ -30,17 +30,16 @@ class User extends Authenticatable implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'firstName',
-        'lastName',
         'email',
         'password',
         'username',
-        'profession',
-        'token',
-        'phone',
-        'whatsapp',
-        'skype',
-        'cv_src',
+        'referral_code',
+        'status',
+        'reviewed_at',
+        'stage',
+        'timezone',
+        'agreed_with_service_agreement_at',
+        'agreed_with_privacy_agreement_at',
     ];
 
     /**

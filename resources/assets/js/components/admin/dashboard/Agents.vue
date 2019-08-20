@@ -546,7 +546,6 @@
                 axios.post('/admin/agent/rate/update',data).then( (response) => {
                     let notificationMessage = "Successfully updated agent" ;
                     this.$emit('showPositiveNotification',notificationMessage);
-                    console.log(response) ;
                 });
             },
 

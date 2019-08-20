@@ -134,4 +134,32 @@ class ClientsController extends Controller
     public function showClientSearchPage(){
         return view('client.search');
     }
+
+    public function updateClient(Request $request){
+        $user =  User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'client');
+        })->where('id',$request->id)->with('client')->first();
+
+        if(isset($request->password) && !empty($request->password)){
+            $this->validate($request, [
+                'password' => 'confirmed|min:7',
+            ]);
+        }
+
+
+        $requestArray = $request->toArray() ;
+        $user->update(
+            $requestArray
+        );
+
+        $user->client->update(
+            $requestArray['client']
+        );
+
+        return [
+            'user' => $user,
+            'status' => 'success',
+        ] ;
+
+    }
 }

@@ -207,7 +207,8 @@
                                        name="faq"
                                        v-model="user.client.department_email"
                                        placeholder="Email of accounts dept">
-                                <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('department_email')"
+                                <img src="/images/client/campaign_activity/close_black.png"
+                                     @click="clearInput('department_email')"
                                      alt="delete icon" v-show="user.client.department_email.length > 0">
                             </div>
                             <div class="error" v-if="showErrors && errors.department_email">
@@ -217,7 +218,8 @@
 
                     </div>
                 </div>
-                <div class="account-edit-section flex-row flex-wrap justify-content-between sub-section" id="formSectionTwo">
+                <div class="account-edit-section flex-row flex-wrap justify-content-between sub-section"
+                     id="formSectionTwo">
                     <div class="faq-question-input account-edit-input">
                         <label class="faq-input-label">
                             Enter your company website
@@ -229,7 +231,8 @@
                                    v-model="user.client.website"
                             >
                             <img src="/images/client/campaign_activity/close_black.png"
-                                 @click="clearInput('website')" alt="delete icon" v-show="user.client.website.length > 0">
+                                 @click="clearInput('website')" alt="delete icon"
+                                 v-show="user.client.website.length > 0">
                         </div>
                         <div class="error" v-if="showErrors && errors.website">
                             {{errors.website}}
@@ -246,7 +249,8 @@
                                    v-model="user.client.skype_id"
                             >
                             <img src="/images/client/campaign_activity/close_black.png"
-                                 @click="clearInput('skype_id')" alt="delete icon" v-show="user.client.skype_id.length > 0">
+                                 @click="clearInput('skype_id')" alt="delete icon"
+                                 v-show="user.client.skype_id.length > 0">
                         </div>
                         <div class="error" v-if="showErrors && errors.skype_id">
                             {{errors.skype_id}}
@@ -303,7 +307,8 @@
                             </div>
 
                             <div class="faq-input" :class="{ 'error-input' : errors.preferred_contact}">
-                                <select class="form-control" id="preferred_contact" name="preferred_contact" style="height: 50px;"
+                                <select class="form-control" id="preferred_contact" name="preferred_contact"
+                                        style="height: 50px;"
                                         v-model="user.client.preferred_contact">
                                     <option value="" selected="selected">Select contact method</option>
                                     <option value="email" selected="selected">Email</option>
@@ -370,7 +375,7 @@
     export default {
         data() {
             return {
-                user:{},
+                user: {},
                 client: {
                     name: 'Ahmed Marzouk',
                     agency: 'The best agency',
@@ -405,30 +410,33 @@
                 },
                 showErrors: false,
                 password: '',
-                password_confirmation:''
+                password_confirmation: ''
             }
         },
         methods: {
 
-            getCurrentClient(){
-                axios.get('/client/current').then( (response) => {
+            getCurrentClient() {
+                axios.get('/client/current').then((response) => {
                     // response is user with client relationship
-                    this.user = response.data ;
+                    this.user = response.data;
                 });
             },
 
             nextStep(e) {
                 e.preventDefault();
                 if (this.noErrors()) {
-                  axios.post('/client/update',this.user)
-                      .then( (response) => {
-                          console.log(response.data);
-                      })
-                      .catch( (error) => {
-                          console.log(error)
-                      });
-                }
-                else{
+
+                    this.user.password = this.password;
+                    this.user.password_confirmation = this.password_confirmation;
+
+                    axios.post('/client/update', this.user)
+                        .then((response) => {
+                            console.log(response.data);
+                        })
+                        .catch((error) => {
+                            console.log(error)
+                        });
+                } else {
                     this.showErrors = true;
                     // scroll to the section with errors :
                     $('html, body').animate({
@@ -462,14 +470,13 @@
                 )
             },
             noErrorsPassword() {
-                let valid = true ;
+                let valid = true;
 
                 // Empty field
-                if (this.password.trim() !== this.password_confirmation.trim() ) {
-                    valid = false ;
-                    this.errors.password = 'Password doesn\'t match' ;
-                }
-                else {
+                if (this.password.trim() !== this.password_confirmation.trim()) {
+                    valid = false;
+                    this.errors.password = 'Password doesn\'t match';
+                } else {
                     this.errors.password = '';
                 }
 
@@ -487,11 +494,11 @@
                 return valid
             },
             noErrorsAgency() {
-                let valid = true ;
+                let valid = true;
 
                 // Empty field
                 if (this.user.client.agency.trim() === '') {
-                    valid = false ;
+                    valid = false;
                     this.errors.agency = 'Please enter agency name.'
                 } else this.errors.agency = '';
 
@@ -515,11 +522,11 @@
 
                 if (this.user.client.agency_phone.trim() === '') {
                     // Empty field
-                    valid = false ;
+                    valid = false;
                     this.errors.agency_phone = 'Please enter agency phone number'
                 } else if (!contactFormat.test(this.user.client.agency_phone)) {
                     // Review the regExp
-                    valid = false ;
+                    valid = false;
                     this.errors.agency_phone = 'This not a valid contact number format'
                 } else this.errors.agency_phone = '';
 
@@ -590,41 +597,37 @@
                 return valid
             },
             clearInput(name) {
-                if(this.user.client[name] !== undefined){
-                    this.user.client[name] = '' ;
-                }
-                else if (this.user[name] !== undefined){
-                    this.user[name] = '' ;
-                }
-                else{
-                    this.password_confirmation = '' ;
+                if (this.user.client[name] !== undefined) {
+                    this.user.client[name] = '';
+                } else if (this.user[name] !== undefined) {
+                    this.user[name] = '';
+                } else {
+                    this.password_confirmation = '';
                 }
             },
-            getErrorSectionID(){
-                let errors  = this.errors ;
-                let sectionID = '' ;
-                let sectionOne   = ['agency','contact','agency_phone','timezone','department_email'] ;
-                let sectionTwo   = ['website','skype_id','second_contact','second_contact_phone'] ;
-                let sectionThree = ['preferred_contact','password'] ;
+            getErrorSectionID() {
+                let errors = this.errors;
+                let sectionID = '';
+                let sectionOne = ['agency', 'contact', 'agency_phone', 'timezone', 'department_email'];
+                let sectionTwo = ['website', 'skype_id', 'second_contact', 'second_contact_phone'];
+                let sectionThree = ['preferred_contact', 'password'];
 
-                $.each(errors, function(i) {
-                    if(errors[i].length > 0){
-                        if (sectionOne.includes(i)){
-                            sectionID = '#formSectionOne' ;
+                $.each(errors, function (i) {
+                    if (errors[i].length > 0) {
+                        if (sectionOne.includes(i)) {
+                            sectionID = '#formSectionOne';
                             return false;
-                        }
-                        else if(sectionTwo.includes(i)){
-                            sectionID = '#formSectionTwo' ;
+                        } else if (sectionTwo.includes(i)) {
+                            sectionID = '#formSectionTwo';
                             return false;
-                        }
-                        else {
-                            sectionID = '#formSectionThree' ;
+                        } else {
+                            sectionID = '#formSectionThree';
                             return false;
                         }
                     }
                 });
 
-                return sectionID ;
+                return sectionID;
 
 
             }
@@ -646,8 +649,8 @@
                 deep: true
             }
         },
-        mounted(){
-            this.getCurrentClient() ;
+        mounted() {
+            this.getCurrentClient();
         }
     }
 </script>

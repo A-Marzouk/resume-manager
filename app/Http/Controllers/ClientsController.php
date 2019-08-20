@@ -140,9 +140,12 @@ class ClientsController extends Controller
             $query->where('name', '=', 'client');
         })->where('id',$request->id)->with('client')->first();
 
-        $this->validate($request, [
-            'password' => 'confirmed|min:7',
-        ]);
+        if(isset($request->password) && !empty($request->password)){
+            $this->validate($request, [
+                'password' => 'confirmed|min:7',
+            ]);
+        }
+
 
         $requestArray = $request->toArray() ;
         $user->update(

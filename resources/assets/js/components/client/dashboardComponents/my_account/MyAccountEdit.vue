@@ -9,6 +9,14 @@
                     ACCOUNT INFORMATION
                 </div>
             </nav>
+            <div class="notificationBar" id="notificationBar" style="display:none; position: fixed;width: inherit;">
+                <div>
+                    {{notificationMessage}}
+                </div>
+                <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                    x
+                </a>
+            </div>
             <div class="account-info-edit dashboard-box">
                 <div class="account-info-edit-heading dashboard-box-heading">
                     <div class="left">
@@ -410,7 +418,8 @@
                 },
                 showErrors: false,
                 password: '',
-                password_confirmation: ''
+                password_confirmation: '',
+                notificationMessage:''
             }
         },
         methods: {
@@ -431,7 +440,12 @@
 
                     axios.post('/client/update', this.user)
                         .then((response) => {
-                            console.log(response.data);
+                            // show a saved changes message
+                            this.notificationMessage = 'Successfully updated !' ;
+                            $('#notificationBar').fadeIn(600);
+                            setTimeout(()=>{
+                                $('#notificationBar').fadeOut(1500);
+                            },4000);
                         })
                         .catch((error) => {
                             console.log(error)
@@ -443,6 +457,9 @@
                         scrollTop: $(this.getErrorSectionID()).offset().top - 45
                     }, 1000);
                 }
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
             },
             noErrors() {
                 let noErrorsName = this.noErrorsName()
@@ -655,4 +672,11 @@
     }
 </script>
 <style scoped>
+    .notificationBar{
+        margin-top: -8px;
+        z-index: 2;
+    }
+    .account-info-edit{
+
+    }
 </style>

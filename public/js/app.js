@@ -103646,6 +103646,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['changeStep', 'getData'],
@@ -103662,7 +103666,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             recording: false,
             timer: {
                 seconds: 0,
-                minutes: 0
+                minutes: 0,
+                interval: null,
+                timeout: null
             },
             errors: {
                 voiceRecord: '',
@@ -103717,12 +103723,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     var audioBlob = new Blob(_this.audioChunks);
                     var audioUrl = URL.createObjectURL(audioBlob);
                     var audio = new Audio(audioUrl);
+                    console.log(audio);
                     audio.play();
                 });
 
                 _this.startTimerRecorder();
 
-                setTimeout(function () {
+                _this.timer.timeout = setTimeout(function () {
                     _this.stopRecording();
                 }, 1000 * 90);
             });
@@ -103731,11 +103738,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             this.recording = false;
             this.timer.seconds = 0;
             this.timer.minutes = 0;
+            clearInterval(this.timer.interval);
+            clearTimeout(this.timer.timeout);
             this.mediaRecorder.stop();
         },
         startTimerRecorder: function startTimerRecorder() {
             var _this = this;
-            setInterval(function () {
+            _this.timer.interval = setInterval(function () {
                 _this.timer.seconds++;
 
                 if (seconds > 60) {
@@ -103743,6 +103752,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     _this.timer.minutes++;
                 }
             }, 1000);
+        },
+        handleResume: function handleResume(_ref) {
+            var target = _ref.target;
+
+            var extension = target.files[0].type.split('/')[1];
+
+            if (extension !== 'pdf') {
+                // Remove file
+                target.value = null;
+                this.showErrors = true;
+                this.errors.resumeFile = 'Only .pdf files are allowed';
+            } else {
+                this.errors.resumeFile = '';
+                this.resumeData.resumeFile = target.files[0];
+            }
         }
     },
     watch: {
@@ -104082,20 +104106,37 @@ var render = function() {
               _c(
                 "input",
                 _vm._b(
-                  { attrs: { type: "file", id: "resumeFile" } },
+                  {
+                    attrs: { type: "file", id: "resumeFile" },
+                    on: { change: _vm.handleResume }
+                  },
                   "input",
-                  _vm.resumeData.voiceRecord,
+                  _vm.resumeData.resumeFile,
                   false
                 )
               ),
               _vm._v("\n                  UPLOAD A FILE\n              ")
             ]),
             _vm._v(" "),
+            _vm.resumeData.resumeFile
+              ? _c("div", { staticClass: "file-details" }, [
+                  _c("p", [_vm._v(_vm._s(_vm.resumeData.resumeFile.name))]),
+                  _vm._v(" "),
+                  _c("b", [
+                    _vm._v(
+                      _vm._s(
+                        (_vm.resumeData.resumeFile.size / 10000).toFixed(2)
+                      ) + " MB"
+                    )
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _vm.showErrors && _vm.errors.resumeFile
               ? _c("div", { staticClass: "error" }, [
                   _vm._v(
                     "\n                  " +
-                      _vm._s(_vm.errors.voiceRecord) +
+                      _vm._s(_vm.errors.resumeFile) +
                       "\n              "
                   )
                 ])

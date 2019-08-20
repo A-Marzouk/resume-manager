@@ -103,11 +103,15 @@
             </div>
             <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
                 <div class="fake-file-input btn" >
-                    <input v-bind="resumeData.voiceRecord" type="file" id="resumeFile" />
+                    <input v-on:change="handleResume" v-bind="resumeData.resumeFile" type="file" id="resumeFile" />
                     UPLOAD A FILE
                 </div>
+                <div v-if="resumeData.resumeFile" class="file-details">
+                    <p>{{ resumeData.resumeFile.name }}</p>
+                    <b>{{ (resumeData.resumeFile.size / 10000).toFixed(2) }} MB</b>
+                </div>
                 <div class="error" v-if="showErrors && errors.resumeFile">
-                    {{errors.voiceRecord}}
+                    {{errors.resumeFile}}
                 </div>
             </div>
         </div>
@@ -135,7 +139,9 @@ export default {
         recording: false,
         timer: {
             seconds: 0,
-            minutes: 0
+            minutes: 0,
+            interval: null,
+            timeout: null
         },
         errors: {
             voiceRecord: '',
@@ -192,12 +198,13 @@ export default {
                     const audioBlob = new Blob(_this.audioChunks);
                     const audioUrl = URL.createObjectURL(audioBlob);
                     const audio = new Audio(audioUrl)
+                    console.log(audio)
                     audio.play()
                 });
 
                 _this.startTimerRecorder()
 
-                setTimeout(() => {
+                _this.timer.timeout = setTimeout(() => {
                     _this.stopRecording()
                 }, 1000 * 90)
             });
@@ -206,11 +213,13 @@ export default {
           this.recording = false
           this.timer.seconds = 0
           this.timer.minutes = 0
+          clearInterval(this.timer.interval)
+          clearTimeout(this.timer.timeout)
           this.mediaRecorder.stop()
       },
       startTimerRecorder () {
           let _this = this
-          setInterval(function () {
+          _this.timer.interval = setInterval(function () {
               _this.timer.seconds++
 
               if (seconds > 60) {
@@ -218,6 +227,19 @@ export default {
                   _this.timer.minutes++
               }
           }, 1000)
+      },
+      handleResume ({ target }) {
+          let extension = target.files[0].type.split('/')[1]
+
+          if (extension !== 'pdf') {
+              // Remove file
+              target.value = null
+              this.showErrors = true
+              this.errors.resumeFile = 'Only .pdf files are allowed'
+          } else {
+              this.errors.resumeFile = ''
+              this.resumeData.resumeFile = target.files[0]
+          }
       }
   },
   watch: {

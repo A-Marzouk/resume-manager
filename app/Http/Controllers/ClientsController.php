@@ -140,10 +140,14 @@ class ClientsController extends Controller
             $query->where('name', '=', 'client');
         })->where('id',$request->id)->with('client')->first();
 
+        $requestArray = $request->toArray() ;
         $user->update(
-            $request->toArray()
+            $requestArray
         );
 
+        $user->client->update(
+            $requestArray['client']
+        );
 
         return $user ;
     }

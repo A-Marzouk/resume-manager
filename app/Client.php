@@ -18,7 +18,7 @@ class Client extends Model
     protected $guard = 'client';
 
     protected $fillable = [
-        'agency_phone', 'department_email', 'website', 'skype_id', 'signature', 'second_contact', 'second_contact_phone', 'preferred_contact', 'contact',
+        'agency','agency_phone', 'department_email', 'website', 'skype_id', 'signature', 'second_contact', 'second_contact_phone', 'preferred_contact', 'contact',
     ];
 
     /**

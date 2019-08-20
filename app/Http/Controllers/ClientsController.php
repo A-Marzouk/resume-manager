@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Affiliate;
 use App\Client;
 use App\Owner;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -71,6 +72,13 @@ class ClientsController extends Controller
     public function campaignAddAgent(){
         return view('client.add_agent_view');
 
+    }
+
+
+    public function getCurrentClient(){
+       return User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'client');
+        })->where('id',currentClient()->user_id)->with('client')->first();
     }
 
     public function hasAgreed(){

@@ -97415,7 +97415,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -97555,50 +97555,64 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      faqs: [{
-        id: 1,
-        opened: false,
-        question: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-        answer: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-      }, {
-        id: 2,
-        opened: false,
-        question: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-        answer: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-      }, {
-        id: 3,
-        opened: false,
-        question: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-        answer: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-      }, {
-        id: 4,
-        opened: false,
-        question: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-        answer: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-      }]
-    };
-  },
+    data: function data() {
+        return {
+            faqs: [{
+                id: 1,
+                opened: false,
+                question: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                answer: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            }, {
+                id: 2,
+                opened: false,
+                question: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                answer: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            }, {
+                id: 3,
+                opened: false,
+                question: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                answer: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            }, {
+                id: 4,
+                opened: false,
+                question: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
+                answer: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            }],
 
-  methods: {
-    toggleAnswer: function toggleAnswer(faq_id) {
-      var faqs = this.faqs;
-      $.each(faqs, function (i) {
-        if (faqs[i].id === faq_id) {
-          faqs[i].opened = !faqs[i].opened;
-          if (faqs[i].opened) {
-            $('#toggleIcon_' + faq_id).css('transform', 'rotate(180deg)');
-          } else {
-            $('#toggleIcon_' + faq_id).css('transform', 'rotate(0deg)');
-          }
+            user: {}
+        };
+    },
+
+    methods: {
+        toggleAnswer: function toggleAnswer(faq_id) {
+            var faqs = this.faqs;
+            $.each(faqs, function (i) {
+                if (faqs[i].id === faq_id) {
+                    faqs[i].opened = !faqs[i].opened;
+                    if (faqs[i].opened) {
+                        $('#toggleIcon_' + faq_id).css('transform', 'rotate(180deg)');
+                    } else {
+                        $('#toggleIcon_' + faq_id).css('transform', 'rotate(0deg)');
+                    }
+                }
+            });
+        },
+        getCurrentClient: function getCurrentClient() {
+            var _this = this;
+
+            axios.get('/client/current').then(function (response) {
+                _this.user = response.data;
+            });
         }
-      });
+    },
+    mounted: function mounted() {
+        this.getCurrentClient();
     }
-  },
-  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -97610,12 +97624,141 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "my-account" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "account-info dashboard-box" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-content-wrapper" }, [
+        _c("div", { staticClass: "account-info-content" }, [
+          _c("div", { staticClass: "acc-info-content-heading" }, [
+            _c("div", { staticClass: "acc-info-item" }, [
+              _c("img", {
+                attrs: {
+                  src: "/images/client/my_account/name.png",
+                  alt: "name icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("span", [
+                _vm._v(
+                  "\n                            " +
+                    _vm._s(_vm.user.client.contact) +
+                    "\n                        "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "acc-info-timezone" }, [
+              _vm._v("\n                        GMT -8\n                    ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/client/my_account/agency.png",
+                alt: "agency icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { staticStyle: { color: "#4A5464" } }, [
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.user.client.agency) +
+                  " - agency\n                    "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("hr", { staticStyle: { width: "100%", margin: "21px 0" } }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "acc-info-content-item",
+              staticStyle: { "margin-top": "0" }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "/images/client/my_account/phone_number.png",
+                  alt: "phone icon"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(_vm.user.client.agency_phone) +
+                    "\n                    "
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "acc-info-content-item" }, [
+            _c("img", {
+              attrs: {
+                src: "/images/client/my_account/email.png",
+                alt: "email icon"
+              }
+            }),
+            _vm._v(" "),
+            _c("div", [
+              _vm._v("\n                        " + _vm._s(_vm.user.email)),
+              _c("br"),
+              _vm._v(
+                "\n                        " +
+                  _vm._s(_vm.user.client.department_email) +
+                  " (account dept)\n                    "
+              )
+            ])
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
-    _vm._m(1),
+    _c("div", { staticClass: "contracts dashboard-box" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { staticClass: "account-info-content-wrapper" }, [
+        _c("div", { staticClass: "account-info-content p-0" }, [
+          _c("div", { staticClass: "agreement" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "left no-decoration" }, [
+              _c(
+                "a",
+                { attrs: { href: "/client/account/privacy-agreement" } },
+                [
+                  _vm.user.agreed_with_privacy_agreement_at === null
+                    ? _c("span", [_vm._v("COMPLETE AGREEMENT")])
+                    : _c("span", [_vm._v("SHOW AGREEMENT")])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "agreement" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "left no-decoration" }, [
+              _c(
+                "a",
+                { attrs: { href: "/client/account/service-agreement" } },
+                [
+                  _vm.user.agreed_with_service_agreement_at === null
+                    ? _c("span", [_vm._v("COMPLETE AGREEMENT")])
+                    : _c("span", [_vm._v("SHOW AGREEMENT")])
+                ]
+              )
+            ])
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "faqs dashboard-box" }, [
-      _vm._m(2),
+      _vm._m(4),
       _vm._v(" "),
       _c(
         "div",
@@ -97637,9 +97780,9 @@ var render = function() {
                     _c("div", { staticClass: "faq-item" }, [
                       _c("div", { staticClass: "faq-item-question" }, [
                         _vm._v(
-                          "\n                " +
+                          "\n                                " +
                             _vm._s(faq.question) +
-                            "\n              "
+                            "\n                            "
                         )
                       ]),
                       _vm._v(" "),
@@ -97658,9 +97801,9 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                " +
+                            "\n                                " +
                               _vm._s(faq.answer) +
-                              "\n              "
+                              "\n                            "
                           )
                         ]
                       )
@@ -97695,8 +97838,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "account-info dashboard-box" }, [
-      _c("div", { staticClass: "account-info-heading dashboard-box-heading" }, [
+    return _c(
+      "div",
+      { staticClass: "account-info-heading dashboard-box-heading" },
+      [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
@@ -97707,7 +97852,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n                      YOUR ACCOUNT INFORMATION\n                  "
+              "\n                    YOUR ACCOUNT INFORMATION\n                "
             )
           ])
         ]),
@@ -97719,93 +97864,20 @@ var staticRenderFns = [
               staticClass: "normal-link",
               attrs: { href: "/client/account/edit" }
             },
-            [_vm._v("\n                      EDIT\n                  ")]
+            [_vm._v("\n                    EDIT\n                ")]
           )
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "account-info-content-wrapper" }, [
-        _c("div", { staticClass: "account-info-content" }, [
-          _c("div", { staticClass: "acc-info-content-heading" }, [
-            _c("div", { staticClass: "acc-info-item" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/my_account/name.png",
-                  alt: "name icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("span", [
-                _vm._v(
-                  "\n                              Edward Norton\n                          "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "acc-info-timezone" }, [
-              _vm._v("\n            GMT -8\n          ")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "acc-info-content-item" }, [
-            _c("img", {
-              attrs: {
-                src: "/images/client/my_account/agency.png",
-                alt: "agency icon"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticStyle: { color: "#4A5464" } }, [
-              _vm._v("\n            Black and White - agency\n          ")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("hr", { staticStyle: { width: "100%", margin: "21px 0" } }),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "acc-info-content-item",
-              staticStyle: { "margin-top": "0" }
-            },
-            [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/my_account/phone_number.png",
-                  alt: "phone icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [_vm._v("\n            00442037000685\n          ")])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "acc-info-content-item" }, [
-            _c("img", {
-              attrs: {
-                src: "/images/client/my_account/email.png",
-                alt: "email icon"
-              }
-            }),
-            _vm._v(" "),
-            _c("div", [
-              _vm._v("\n            email@gmail.com"),
-              _c("br"),
-              _vm._v(
-                "\n            email123456656@gmail.com (account dept)\n          "
-              )
-            ])
-          ])
-        ])
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contracts dashboard-box" }, [
-      _c("div", { staticClass: "account-info-heading dashboard-box-heading" }, [
+    return _c(
+      "div",
+      { staticClass: "account-info-heading dashboard-box-heading" },
+      [
         _c("div", { staticClass: "left" }, [
           _c("img", {
             attrs: {
@@ -97815,67 +97887,47 @@ var staticRenderFns = [
           }),
           _vm._v(" "),
           _c("span", [
-            _vm._v("\n                      CONTRACTS\n                  ")
+            _vm._v("\n                    CONTRACTS\n                ")
           ])
         ])
-      ]),
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "right" }, [
+      _c("img", {
+        attrs: {
+          src: "/images/client/my_account/privacy.png",
+          alt: "privacy icon"
+        }
+      }),
       _vm._v(" "),
-      _c("div", { staticClass: "account-info-content-wrapper" }, [
-        _c("div", { staticClass: "account-info-content p-0" }, [
-          _c("div", { staticClass: "agreement" }, [
-            _c("div", { staticClass: "right" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/my_account/privacy.png",
-                  alt: "privacy icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _vm._v("\n              Privacy agreement\n            ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "left no-decoration" }, [
-              _c(
-                "a",
-                { attrs: { href: "/client/account/privacy-agreement" } },
-                [
-                  _vm._v(
-                    "\n                              COMPLETE AGREEMENT\n                          "
-                  )
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "agreement" }, [
-            _c("div", { staticClass: "right" }, [
-              _c("img", {
-                attrs: {
-                  src: "/images/client/my_account/service.png",
-                  alt: "service icon"
-                }
-              }),
-              _vm._v(" "),
-              _c("div", [
-                _vm._v("\n              Service agreement\n            ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "left no-decoration" }, [
-              _c(
-                "a",
-                { attrs: { href: "/client/account/service-agreement" } },
-                [
-                  _vm._v(
-                    "\n                              COMPLETE AGREEMENT\n                          "
-                  )
-                ]
-              )
-            ])
-          ])
-        ])
+      _c("div", [
+        _vm._v(
+          "\n                            Privacy agreement\n                        "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "right" }, [
+      _c("img", {
+        attrs: {
+          src: "/images/client/my_account/service.png",
+          alt: "service icon"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", [
+        _vm._v(
+          "\n                            Service agreement\n                        "
+        )
       ])
     ])
   },
@@ -97895,9 +97947,7 @@ var staticRenderFns = [
             }
           }),
           _vm._v(" "),
-          _c("span", [
-            _vm._v("\n                      FAQ\n                  ")
-          ])
+          _c("span", [_vm._v("\n                    FAQ\n                ")])
         ])
       ]
     )

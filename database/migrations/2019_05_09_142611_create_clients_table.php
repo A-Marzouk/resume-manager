@@ -22,8 +22,14 @@ class CreateClientsTable extends Migration
             $table->text('contact')->nullable();
             $table->string('agency_phone')->nullable();
             $table->string('department_email')->nullable();
-            $table->integer('user_id')->unsigned()->index();
+            $table->string('signature')->nullable();
+            $table->string('website')->nullable();
+            $table->string('skype_id')->nullable();
+            $table->string('second_contact')->nullable();
+            $table->string('second_contact_phone')->nullable();
+            $table->string('preferred_contact')->nullable();
 
+            $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();

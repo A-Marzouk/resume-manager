@@ -131,6 +131,12 @@ Route::prefix('client')->group(function (){
 // client agreements :
     Route::get('/agreement','ClientsController@viewClientAgreement')->name('client.agreement');
     Route::get('/privacy_policy','ClientsController@viewClientPrivacyPolicy')->name('client.agreement');
+
+
+// get current client :
+    Route::get('/current','ClientsController@getCurrentClient')->name('get.current.client');
+
+
 });
 
 Route::prefix('freelancer')->group(function (){

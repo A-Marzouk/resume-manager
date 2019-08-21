@@ -146,6 +146,12 @@ class CampaignsController extends Controller
         return Campaign::find($campID)->members;
     }
 
+
+    public function getClientCampMembers($camp_id){
+        return Campaign::find($camp_id)->members;
+    }
+
+
     public function addMembersToCamp(Request $request){
         $campaign = Campaign::find($request->campID) ;
         if(empty($request->users)){

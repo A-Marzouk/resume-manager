@@ -30,7 +30,7 @@ class CreateCampaignsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('campaign_agents', function (Blueprint $table) {
+        Schema::create('agent_campaign', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
             $table->increments('id');

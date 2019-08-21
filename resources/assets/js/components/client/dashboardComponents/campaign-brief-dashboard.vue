@@ -138,6 +138,7 @@
             return {
                 openCampaignMenu: false,
                 campaignStatus: '',
+                campaignMembers: [],
                 campaignStatusCode:{
                     1:'Active',
                     2:'Paused',
@@ -162,10 +163,20 @@
                 // send to the server to change campaign status.
                 this.campaignStatus = status ;
                 this.$emit('showPositiveNotification');
+            },
+            getCampMembers(){
+                axios.get('client/camp/members/'+ this.campaign.id)
+                    .then( (response) => {
+                        this.campaignMembers = response.data ;
+                    })
+                    .catch( (error) => {
+                        console.log(error) ;
+                    });
             }
         },
         mounted(){
           this.setDefaultCampaignStatus();
+          this.getCampMembers() ;
         }
     }
 </script>

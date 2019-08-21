@@ -142,6 +142,9 @@ Route::prefix('client')->group(function (){
 // get client campaigns
     Route::get('/get/campaigns','CampaignsController@getClientCamps')->name('client.campaigns');
 
+// get client campaign members :
+    Route::get('/camp/members/{camp_id}','CampaignsController@getClientCampMembers')->name('client.camp.members');
+
 });
 
 Route::prefix('freelancer')->group(function (){

@@ -19,7 +19,7 @@ class Campaign extends Model
     ];
 
     public function members(){
-        return $this->hasMany(Agent::class);
+        return $this->belongsToMany(Agent::class);
     }
 
     public function faqs(){

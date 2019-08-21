@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SkillsTableSeeder::class);
         $this->call(CurrenciesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(CampaignsTableSeeder::class);
     }
 
     private function cleanDatabase()

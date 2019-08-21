@@ -149,4 +149,12 @@ class AgentsController extends Controller
         return $agent->records;
     }
 
+    public function pdfGenerator($agent_id) {
+        $agent = Agent::where('id',$agent_id)->first();
+        $view = \View::make('freelancer.resume_pdf')->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('invoice');
+    }
+
 }

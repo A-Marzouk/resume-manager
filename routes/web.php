@@ -501,4 +501,6 @@ Route::get('/home_test/sales', function () {
     return view('new_home_sales');
 });
 
+Route::get('/pdf_generator/{agent_id}', 'AgentsController@pdfGenerator')->name('pdf-generator');
+
 Route::get('/create/new_agents', 'TestController@createAgents');

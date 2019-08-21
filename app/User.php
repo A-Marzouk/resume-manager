@@ -222,10 +222,6 @@ class User extends Authenticatable implements HasMedia
         return $this->belongsToMany(Service::class);
     }
 
-    public function campaigns()
-    {
-        return $this->belongsToMany(Campaign::class);
-    }
 
     public function shifts()
     {

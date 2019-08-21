@@ -17,7 +17,7 @@
                     x
                 </a>
             </div>
-            <div class="account-info-edit dashboard-box">
+            <div class="account-info-edit dashboard-box" style="margin-top: 16px;">
                 <div class="account-info-edit-heading dashboard-box-heading">
                     <div class="left">
                         <img src="/images/client/my_account/info_40px.png" alt="info icon">

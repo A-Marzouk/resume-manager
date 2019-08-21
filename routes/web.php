@@ -139,6 +139,8 @@ Route::prefix('client')->group(function (){
 // update client (from client dashboard)
     Route::post('/update', 'ClientsController@updateClient');
 
+// get client campaigns
+    Route::get('/get/campaigns','CampaignsController@getClientCamps')->name('client.campaigns');
 
 });
 

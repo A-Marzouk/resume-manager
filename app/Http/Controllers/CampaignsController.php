@@ -19,7 +19,7 @@ class CampaignsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except('viewSingleCampaign');
+        $this->middleware('role:client');
     }
 
     public function viewCampaigns(){
@@ -99,9 +99,8 @@ class CampaignsController extends Controller
     }
 
     public function getClientCamps(){
-       // get current authenticated client :
-        $currClient = auth()->guard('client')->user();
-        return $currClient->campaigns;
+        $campaigns =  currentClient()->campaigns ; // retreive it to be sent with current client data
+        return currentClient() ;
     }
 
     public function addCamp(Request $request){

@@ -158,7 +158,8 @@ class CampaignsController extends Controller
 
     public function getClientCampMembers($camp_id)
     {
-        return Campaign::find($camp_id)->members;
+        $campaign = Campaign::where('id',$camp_id)->with('agents.user','agents.user.userData','agents.logs')->first();
+        return $campaign->agents ;
     }
 
 

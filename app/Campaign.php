@@ -22,6 +22,13 @@ class Campaign extends Model
         return $this->belongsToMany(Agent::class);
     }
 
+
+
+
+    public function agents(){
+        return $this->belongsToMany(Agent::class);
+    }
+
     public function faqs(){
         return $this->hasMany(FAQ::class);
     }
@@ -30,7 +37,7 @@ class Campaign extends Model
         return $this->hasMany(Shift::class);
     }
 
-    public function logs(){
+    public function activityLog(){
         return $this->hasMany(ActivityLog::class);
     }
 

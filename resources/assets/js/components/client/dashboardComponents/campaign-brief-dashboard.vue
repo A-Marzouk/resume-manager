@@ -24,100 +24,35 @@
                 </a>
             </div>
         </div>
-        <div class="agent-logs-block">
-            <div class="agentInfo">
-                <img src="/images/client/dummy.png" alt="">
-                <span class="userName">
-                            Mohamed Salah
+
+        <div v-for="(agent,index) in campaignMembers" :key="index">
+            <div class="agent-logs-block">
+                <div class="agentInfo">
+                    <img src="/images/client/dummy.png" alt="">
+                    <span class="userName">
+                            {{agent.user.user_data.first_name}} {{agent.user.user_data.last_name}}
                         </span>
-            </div>
-            <div class="log">
-                <div class="log-time">
-                    9.15 am
                 </div>
-                <div class="log-text">
-                    <status-selector status="call-back"></status-selector>
-                    <span class="log-text-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    </span>
+                <div v-for="(log,index) in agent.logs" :key="index">
+                    <div class="log">
+                        <div class="log-time">
+                            {{getDate(log.created_at)}}
+                        </div>
+                        <div class="log-text">
+                            <status-selector status="call-back"></status-selector>
+                            <span class="log-text-content">
+                                {{log.log_text}}
+                            </span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="log">
-                <div class="log-time">
-                    9.15 am
+
+                <div class="showMoreBtn">
+                    <a href="#">SHOW MORE</a>
                 </div>
-                <div class="log-text">
-                    <status-selector status="call-back"></status-selector>
-                    <span class="log-text-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    </span>
-                </div>
-            </div>
-            <div class="log">
-                <div class="log-time">
-                    9.15 am
-                </div>
-                <div class="log-text">
-                    <status-selector status="call-back"></status-selector>
-                    <span class="log-text-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    </span>
-                </div>
-            </div>
-            <div class="showMoreBtn">
-                <a href="#">SHOW MORE</a>
             </div>
         </div>
-        <div class="agent-logs-block">
-            <div class="agentInfo">
-                <img src="/images/client/dummy.png" alt="">
-                <span class="userName">
-                            Lionel Messi
-                        </span>
-            </div>
-            <div class="log">
-                <div class="log-time">
-                    9.15 am
-                </div>
-                <div class="log-text">
-                    <status-selector status="call-back"></status-selector>
-                    <span class="log-text-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    </span>
-                </div>
-            </div>
-            <div class="log">
-                <div class="log-time">
-                    9.15 am
-                </div>
-                <div class="log-text">
-                    <status-selector status="call-back"></status-selector>
-                    <span class="log-text-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    </span>
-                </div>
-            </div>
-            <div class="log">
-                <div class="log-time">
-                    9.15 am
-                </div>
-                <div class="log-text">
-                    <status-selector status="call-back"></status-selector>
-                    <span class="log-text-content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    </span>
-                </div>
-            </div>
-            <div class="showMoreBtn">
-                <a href="#">SHOW MORE</a>
-            </div>
-        </div>
+
         <div class="campaign-brief-footer">
             <a href="/client/campaign">
                 GO TO CAMPAIGN
@@ -143,6 +78,15 @@
                     1:'Active',
                     2:'Paused',
                     3:'Cancelled',
+                },
+
+                logStatusCode:{
+                    1:'ER',
+                    2:'CB',
+                    3:'NI',
+                    4:'AS',
+                    5:'CR',
+                    6:'S',
                 },
             }
         },
@@ -181,7 +125,12 @@
                     .catch( (error) => {
                         console.log(error) ;
                     });
-            }
+            },
+            getDate(date) {
+                let event = new Date(date);
+                let options = {hour:'numeric',minute:'numeric', month: 'short', day: 'numeric' };
+                return event.toLocaleDateString('en-EN', options);
+            },
         },
         mounted(){
           this.setDefaultCampaignStatus();

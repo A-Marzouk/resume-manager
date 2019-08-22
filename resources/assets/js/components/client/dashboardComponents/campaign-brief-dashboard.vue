@@ -161,11 +161,20 @@
             },
             changeCampaignStatus(status){
                 // send to the server to change campaign status.
-                this.campaignStatus = status ;
-                this.$emit('showPositiveNotification');
+                axios.post('/client/camp/update',{
+                    campaignStatus : status,
+                    campaign_id : this.campaign.id
+                })
+                    .then( (response) => {
+                        this.campaignStatus = status ;
+                        this.$emit('showPositiveNotification');
+                    })
+                    .catch( (error) => {
+                        console.log('Error updating campaign status : ' + error) ;
+                    }) ;
             },
             getCampMembers(){
-                axios.get('client/camp/members/'+ this.campaign.id)
+                axios.get('/client/camp/members/'+ this.campaign.id)
                     .then( (response) => {
                         this.campaignMembers = response.data ;
                     })

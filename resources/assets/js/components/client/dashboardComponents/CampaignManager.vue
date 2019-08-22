@@ -48,7 +48,6 @@
                 axios.get('/client/get/campaigns')
                     .then((response) => {
                         this.client    = response.data ;
-                        console.log(response.data);
                         this.campaigns = response.data.campaigns ;
                         this.getActiveCampaigns();
                     })

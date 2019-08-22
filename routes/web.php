@@ -144,6 +144,8 @@ Route::prefix('client')->group(function (){
 
 // get client campaign members :
     Route::get('/camp/members/{camp_id}','CampaignsController@getClientCampMembers')->name('client.camp.members');
+    Route::post('/camp/update','CampaignsController@updateCampaignStatus')->name('client.camp.update');
+
 
 });
 

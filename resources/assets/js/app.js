@@ -568,14 +568,21 @@ Vue.component('business-support-users', require('./components/businessSupportCom
 Vue.component('send-emails', require('./components/mails/sendEmailsComponent.vue'));
 Vue.component('send-invitations', require('./components/mails/sendInvitationMail.vue'));
 
+// Freelancers cards
+Vue.component('freelancer-resume', require('./components/resumeAgent/resumeComponentLong.vue'));
+
+if ($("#freelancerResume").length !== 0) {
+    let freelancerResume = new Vue({
+        el: "#freelancerResume"
+    });
+}
+
 
 if ($("#searchFreelancers").length !== 0){
     let searchFreelancers = new Vue({
         el:'#searchFreelancers'
     });
 }
-
-
 
 
 if ($("#record_input").length !== 0){

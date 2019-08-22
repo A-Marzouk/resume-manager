@@ -158,4 +158,8 @@ class AgentsController extends Controller
         return $pdf->stream('invoice');
     }
 
+    public function agentsResume() {
+        return view('freelancer.resume_test');
+    }
+
 }

@@ -337,9 +337,9 @@
                 </div>
                 <div class="resume__content__details__educationDate">
                   <?
-                    $auxDateStart->setTimestamp($work['date_from']);
-                    if (!$work['currently_working']) {
-                      $auxDateEnd->setTimestamp($work['date_end']);
+                    $auxDateStart->setTimestamp($education['date_from']);
+                    if (!$education['currently_learning']) {
+                      $auxDateEnd->setTimestamp($education['date_end']);
                     }
                   ?>                   
                   {{ date_format($auxDateStart, 'F\' Y') }} - {{ ($education['currently_learning']) ? 'Now' : date_format($auxDateEnd, 'F\' Y')  }}

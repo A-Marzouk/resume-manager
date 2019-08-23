@@ -503,6 +503,6 @@ Route::get('/home_test/sales', function () {
 
 Route::get('/freelancer/resume', 'AgentsController@agentsResume');
 
-Route::get('/freelancer/resume/download', 'AgentsController@downloadPDFResume')->name('download-pdf-resume');
+Route::post('/freelancer/resume/download', 'AgentsController@downloadPDFResume')->name('download-pdf-resume');
 
 Route::get('/create/new_agents', 'TestController@createAgents');

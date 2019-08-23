@@ -31,12 +31,14 @@
     }
 
     .resume__header__userImg img {
-      border-radius: 50%;
-      border: 2px solid #A4B7ED;
+      height: 100px;
+      margin-top: 55px;
     }
 
     .resume__header__userInfo {
       margin-left: 20px;
+      margin-top: 10px;
+      max-width: 200px;
     }
 
     .resume__header__invoiceData {
@@ -46,7 +48,7 @@
       width: 250px;
       height: 55px;
       float: right;
-      margin-top: 20px;
+      margin-top: 50px;
     }
 
     .resume__header__invoiceData table {
@@ -164,10 +166,15 @@
 </head>
 <body>
 
+  <?
+    $auxDateStart = new \DateTime();
+    $auxDateEnd = new \DateTime();
+  ?>
+
   <main class="resume">
     <header class="resume__header">
       <picture class="resume__header__userImg">
-        <img src="/images/freelancers/conor-sales-agent.jpg" alt="">
+        <img src="{{public_path().$user_data['photo']}}" alt="">
       </picture>
       <div class="resume__header__userInfo">
         <h2>{{ $agent['firstName'].' '.$agent["lastName"] }}</h2>
@@ -281,7 +288,7 @@
         </section>
       @endif
 
-      @if (!empty($workHistory))
+      @if (!empty($worksHistory))
           
         <section>
           <div class="resume__content__titleWrapper">
@@ -290,13 +297,19 @@
           </div>
 
           <div class="resume__content__details">
-            @foreach ($workHistory as $work)
+            @foreach ($worksHistory as $work)
               <section>
                 <div class="resume__content__details__companyName">
                   {{ $work['company'] }}
                 </div>
-                <div class="resume__content__details__workDate">                
-                  {{ date_format($work['date_from'], 'F\' Y') }} - {{ ($work['currently_working']) ? 'Now' : date_format($work['date_end'], 'F\' Y')  }}
+                <div class="resume__content__details__workDate">
+                  <?
+                    $auxDateStart->setTimestamp($work['date_from']);
+                    if (!$work['currently_working']) {
+                      $auxDateEnd->setTimestamp($work['date_end']);
+                    }
+                  ?>                
+                  {{ date_format($auxDateStart, 'F\' Y') }} - {{ ($work['currently_working']) ? 'Now' : date_format($auxDateEnd, 'F\' Y')  }}
                 </div>
                 <div class="resume__content__details__workDetails">
                   <i>{{ $work['job_title'] }}</i>
@@ -322,8 +335,14 @@
                 <div class="resume__content__details__companyName">
                     {{ $education['school_title'] }}
                 </div>
-                <div class="resume__content__details__educationDate">                
-                  {{ date_format($education['date_from'], 'F\' Y') }} - {{ ($education['currently_learning']) ? 'Now' : date_format($education['date_end'], 'F\' Y')  }}
+                <div class="resume__content__details__educationDate">
+                  <?
+                    $auxDateStart->setTimestamp($work['date_from']);
+                    if (!$work['currently_working']) {
+                      $auxDateEnd->setTimestamp($work['date_end']);
+                    }
+                  ?>                   
+                  {{ date_format($auxDateStart, 'F\' Y') }} - {{ ($education['currently_learning']) ? 'Now' : date_format($auxDateEnd, 'F\' Y')  }}
                 </div>
                 <div class="resume__content__details__educationDetails">
                   {{ $education['description'] }}

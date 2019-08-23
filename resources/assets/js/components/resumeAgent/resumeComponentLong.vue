@@ -3,8 +3,16 @@
         <div class="freelancerCard">
 
             <div class="row">
+                <form action="/freelancer/resume/download" method="POST">
+                    <input type="hidden" id="freelancer" name="freelancer" :value="JSON.stringify({ freelancer })">
+                    <input type="hidden" id="user_data" name="user_data" :value="JSON.stringify({ user_data })">
+                    <input type="hidden" id="worksHistory" name="worksHistory" :value="JSON.stringify({ worksHistory })">
+                    <input type="hidden" id="educationsHistory" name="educationsHistory" :value="JSON.stringify({ educationsHistory })">
+                    <input type="hidden" id="skills" name="skills" :value="JSON.stringify({ skills })">
+                    <input v-bind="csrf" type="hidden" id="_token" name="_token" :value="csrf">
 
-                <a href="javascript:;" v-on:click="downloadResume" class="downloadBtn">Download resume</a>
+                    <button type="submit" class="downloadBtn">Download Resume</button>
+                </form>
 
                 <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
                     <div class="showOnlyOnmd">
@@ -479,6 +487,7 @@
         data(){
             return {
                 slideNumber : 1 ,
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 numberOfSlides : this.calculateNumberOfSlides(),
                 skills: [
                     {
@@ -491,7 +500,7 @@
                     {
                         job_title: 'Fullstack developer',
                         company: '123workforce',
-                        date_from: (new Date(2016, 0, 20)).getTime(),
+                        date_from: (new Date(2016, 0, 20)).getTime() / 1000,
                         currently_working: true,
                         job_description: `Officia adipisicing incididunt consectetur aliquip et pariatur nisi laboris. Dolor non esse fugiat excepteur minim occaecat eu. Do ex ut ea et officia. Ut exercitation laborum officia cupidatat nulla eu. Ex laborum minim nostrud nostrud nostrud qui irure ea voluptate cillum dolore mollit ea magna.
 
@@ -505,7 +514,7 @@
                 educationsHistory: [
                     {
                         school_title: '"Simón Bolívar" University',
-                        date_from: (new Date(2014, 8)),
+                        date_from: (new Date(2014, 8)).getTime() / 1000,
                         currently_learning: true,
                         description: `
                             Ipsum dolore adipisicing aliquip duis. Aute sint incididunt ullamco cillum sunt excepteur dolor magna aliquip ullamco mollit enim occaecat. Id labore amet dolor Lorem adipisicing aute fugiat ipsum sint. Consequat cillum excepteur ipsum elit. Nostrud irure quis pariatur ex sit id dolor quis. Sunt fugiat anim amet incididunt officia cillum quis. Incididunt aliqua mollit sint sit esse ad incididunt Lorem.
@@ -755,7 +764,7 @@
                         user_data: this.user_data,
                         freelancer: this.freelancer,
                         educationsHistory: this.educationsHistory,
-                        worksHistory: this.workHistory,
+                        worksHistory: this.worksHistory,
                         skills: this.skills
                     })
                     .then(response => console.log(response))

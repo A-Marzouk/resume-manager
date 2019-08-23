@@ -254,7 +254,7 @@ class AgentsController extends Controller
             "projects" => array()
         );
 
-        $workHistory = [
+        $worksHistory = [
             array(
                 "job_title" => 'Fullstack developer',
                 "company" => '123workforce',
@@ -295,11 +295,16 @@ class AgentsController extends Controller
             "salary" => 10
         ];
 
+        $freelancer = json_decode($request->input('freelancer'), true)["freelancer"];
+        $user_data = json_decode($request->input('user_data'), true)["user_data"];
+        $worksHistory = json_decode($request->input('worksHistory'), true)["worksHistory"];
+        $educationHistory = json_decode($request->input('educationsHistory'), true)["educationsHistory"];
+        $skills = json_decode($request->input('skills'), true)["skills"];
 
-        $view = \View::make('freelancer.resume_pdf', ['agent' => $agent, 'user_data' => $user_data, 'skills' => $skills, 'workHistory' => $workHistory, 'educationHistory' => $educationHistory])->render();
+
+        $view = \View::make('freelancer.resume_pdf', ['agent' => $freelancer, 'user_data' => $user_data, 'skills' => $skills, 'worksHistory' => $worksHistory, 'educationHistory' => $educationHistory])->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        // dd($agent);
         return $pdf->stream('invoice');
     }
 

@@ -4,6 +4,8 @@
 
             <div class="row">
 
+                <a href="javascript:;" v-on:click="downloadResume" class="downloadBtn">Download resume</a>
+
                 <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
                     <div class="showOnlyOnmd">
                         <!-- main card info -->
@@ -466,6 +468,7 @@
 <script>
     import Slick from 'vue-slick';
     import VueLoadImage from 'vue-load-image'
+    import axios from 'axios'
 
     export default {
         props:['freelancer','hire','search'],
@@ -745,6 +748,18 @@
             },
             highlightSkill(skill,percent){
                 $('#skillImage_' + skill.id).css('filter', 'grayscale('+ percent + '%)');
+            },
+            downloadResume() {
+                axios
+                    .post('/freelancer/resume/download', {
+                        user_data: this.user_data,
+                        freelancer: this.freelancer,
+                        educationsHistory: this.educationsHistory,
+                        worksHistory: this.workHistory,
+                        skills: this.skills
+                    })
+                    .then(response => console.log(response))
+                    .catch(error => console.log(error))
             }
         },
         mounted() {

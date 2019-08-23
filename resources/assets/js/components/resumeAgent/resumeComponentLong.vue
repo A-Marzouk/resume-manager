@@ -3,7 +3,7 @@
         <div class="freelancerCard">
 
             <div class="row">
-                <form action="/freelancer/resume/download" method="POST">
+                <form class="downloadForm" action="/freelancer/resume/download" method="POST">
                     <input type="hidden" id="freelancer" name="freelancer" :value="JSON.stringify({ freelancer })">
                     <input type="hidden" id="user_data" name="user_data" :value="JSON.stringify({ user_data })">
                     <input type="hidden" id="worksHistory" name="worksHistory" :value="JSON.stringify({ worksHistory })">
@@ -11,7 +11,9 @@
                     <input type="hidden" id="skills" name="skills" :value="JSON.stringify({ skills })">
                     <input v-bind="csrf" type="hidden" id="_token" name="_token" :value="csrf">
 
-                    <button type="submit" class="downloadBtn">Download Resume</button>
+                    <button type="submit" class="downloadBtn">
+                        <img src="/images/icons/download_icon-white.svg" alt="download icon">
+                    </button>
                 </form>
 
                 <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
@@ -794,6 +796,8 @@
         margin-left: 10px;
         margin-right: 10px;
         height: 730px ;
+        position: relative;
+
         @media only screen and (max-width: 1200px) {
             width: 910px;
         }
@@ -804,6 +808,18 @@
         @media only screen and (max-width: 500px) {
             width: 315px;
             height: 785px ;
+        }
+
+        .downloadForm {
+            position: absolute;
+            right: 20px;            
+            top: 10px;
+            z-index: 10;
+
+            button {
+                border: none;
+                background: none;
+            }
         }
     }
 

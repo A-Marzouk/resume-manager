@@ -83193,7 +83193,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            user: {},
+            user: {
+                client: {}
+            },
             client: {
                 name: 'Ahmed Marzouk',
                 agency: 'The best agency',
@@ -83607,8 +83609,8 @@ var render = function() {
                             {
                               name: "show",
                               rawName: "v-show",
-                              value: _vm.user.client.agency.length > 0,
-                              expression: "user.client.agency.length > 0"
+                              value: _vm.user.client.agency,
+                              expression: "user.client.agency"
                             }
                           ],
                           attrs: {
@@ -83688,8 +83690,8 @@ var render = function() {
                             {
                               name: "show",
                               rawName: "v-show",
-                              value: _vm.user.client.contact.length > 0,
-                              expression: "user.client.contact.length > 0"
+                              value: _vm.user.client.contact,
+                              expression: "user.client.contact"
                             }
                           ],
                           attrs: {
@@ -83769,8 +83771,8 @@ var render = function() {
                             {
                               name: "show",
                               rawName: "v-show",
-                              value: _vm.user.client.agency_phone.length > 0,
-                              expression: "user.client.agency_phone.length > 0"
+                              value: _vm.user.client.agency_phone,
+                              expression: "user.client.agency_phone"
                             }
                           ],
                           attrs: {
@@ -84466,10 +84468,8 @@ var render = function() {
                             {
                               name: "show",
                               rawName: "v-show",
-                              value:
-                                _vm.user.client.department_email.length > 0,
-                              expression:
-                                "user.client.department_email.length > 0"
+                              value: _vm.user.client.department_email,
+                              expression: "user.client.department_email"
                             }
                           ],
                           attrs: {
@@ -84560,8 +84560,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.user.client.website.length > 0,
-                            expression: "user.client.website.length > 0"
+                            value: _vm.user.client.website,
+                            expression: "user.client.website"
                           }
                         ],
                         attrs: {
@@ -84641,8 +84641,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.user.client.skype_id.length > 0,
-                            expression: "user.client.skype_id.length > 0"
+                            value: _vm.user.client.skype_id,
+                            expression: "user.client.skype_id"
                           }
                         ],
                         attrs: {
@@ -84722,8 +84722,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.user.client.second_contact.length > 0,
-                            expression: "user.client.second_contact.length > 0"
+                            value: _vm.user.client.second_contact,
+                            expression: "user.client.second_contact"
                           }
                         ],
                         attrs: {
@@ -84805,10 +84805,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value:
-                              _vm.user.client.second_contact_phone.length > 0,
-                            expression:
-                              "user.client.second_contact_phone.length > 0"
+                            value: _vm.user.client.second_contact_phone,
+                            expression: "user.client.second_contact_phone"
                           }
                         ],
                         attrs: {
@@ -85006,8 +85004,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.password.length > 0,
-                            expression: "password.length > 0"
+                            value: _vm.password,
+                            expression: "password"
                           }
                         ],
                         attrs: {
@@ -85083,8 +85081,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: _vm.password_confirmation.length > 0,
-                            expression: "password_confirmation.length > 0"
+                            value: _vm.password_confirmation,
+                            expression: "password_confirmation"
                           }
                         ],
                         attrs: {
@@ -97281,7 +97279,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -97450,7 +97448,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 answer: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
             }],
 
-            user: {}
+            user: {
+                client: {}
+            }
         };
     },
 

@@ -39,7 +39,7 @@
                             {{getDate(log.created_at)}}
                         </div>
                         <div class="log-text">
-                            <status-selector status="call-back"></status-selector>
+                            <status-selector :status="logStatusCode[log.status]"></status-selector>
                             <span class="log-text-content">
                                 {{log.log_text}}
                             </span>

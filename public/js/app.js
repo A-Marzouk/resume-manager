@@ -92066,56 +92066,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['status', 'setStatus'],
   data: function data() {
     return {
       showStatusList: false,
-      selectedStatus: this.status || 'status-default'
+      selectedStatus: '',
+      classes: {
+        'ER': 'email-request',
+        'CB': 'call-back',
+        'NI': 'not-interested',
+        'AS': 'appointment-set',
+        'CR': 'contacts-received',
+        'S': 'successful'
+      }
     };
   },
 
   methods: {
     printStatus: function printStatus() {
-      var splittedStatusName = this.selectedStatus.split('-');
-      return this.selectedStatus !== 'status-default' ? splittedStatusName.length > 1 ? splittedStatusName[0].charAt(0).toUpperCase() + splittedStatusName[1].charAt(0).toUpperCase() : splittedStatusName[0].charAt(0).toUpperCase() : 'S';
+      return this.status;
+    },
+    setLogClass: function setLogClass() {
+      this.selectedStatus = this.classes[this.status];
     }
   },
-  watch: {
-    selectedStatus: function selectedStatus(status) {
-      if (this.setStatus !== null || this.setStatus !== undefined) {
-        if (status === 'successful') this.setStatus(true);else this.setStatus(false);
-      }
-    }
+  mounted: function mounted() {
+    this.setLogClass();
   }
 });
 
@@ -92129,188 +92107,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "status-selector-component" }, [
     _c(
-      "div",
-      { staticClass: "status-list", class: { show: _vm.showStatusList } },
-      [
-        _c("div", { staticClass: "status-component" }, [
-          _c(
-            "a",
-            {
-              staticClass: "icon email-request",
-              attrs: { href: "javascript:;" },
-              on: {
-                click: function($event) {
-                  _vm.selectedStatus = "email-request"
-                  _vm.showStatusList = !_vm.showStatusList
-                }
-              }
-            },
-            [_vm._v("ER")]
-          ),
-          _vm._v(" "),
-          _vm._m(0)
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status-component" }, [
-          _c(
-            "a",
-            {
-              staticClass: "icon call-back",
-              attrs: { href: "javascript:;" },
-              on: {
-                click: function($event) {
-                  _vm.selectedStatus = "call-back"
-                  _vm.showStatusList = !_vm.showStatusList
-                }
-              }
-            },
-            [_vm._v("CB")]
-          ),
-          _vm._v(" "),
-          _c("span", { staticClass: "icon-name" }, [_vm._v("Call back")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status-component" }, [
-          _c(
-            "a",
-            {
-              staticClass: "icon not-interested",
-              attrs: { href: "javascript:;" },
-              on: {
-                click: function($event) {
-                  _vm.selectedStatus = "not-interested"
-                  _vm.showStatusList = !_vm.showStatusList
-                }
-              }
-            },
-            [_vm._v("NI")]
-          ),
-          _vm._v(" "),
-          _vm._m(1)
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status-component" }, [
-          _c(
-            "a",
-            {
-              staticClass: "icon",
-              staticStyle: { background: "#8567FF" },
-              attrs: { href: "javascript:;" },
-              on: {
-                click: function($event) {
-                  _vm.selectedStatus = "appointment-set"
-                  _vm.showStatusList = !_vm.showStatusList
-                }
-              }
-            },
-            [_vm._v("AS")]
-          ),
-          _vm._v(" "),
-          _vm._m(2)
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status-component" }, [
-          _c(
-            "a",
-            {
-              staticClass: "icon",
-              staticStyle: { background: "#4ABFF1" },
-              attrs: { href: "javascript:;" },
-              on: {
-                click: function($event) {
-                  _vm.selectedStatus = "contacts-received"
-                  _vm.showStatusList = !_vm.showStatusList
-                }
-              }
-            },
-            [_vm._v("CR")]
-          ),
-          _vm._v(" "),
-          _vm._m(3)
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "status-component" }, [
-          _c(
-            "a",
-            {
-              staticClass: "icon",
-              staticStyle: { background: "#2ABD68" },
-              attrs: { href: "javascript:;" },
-              on: {
-                click: function($event) {
-                  _vm.selectedStatus = "successful"
-                  _vm.showStatusList = !_vm.showStatusList
-                }
-              }
-            },
-            [_vm._v("S")]
-          ),
-          _vm._v(" "),
-          _c("span", { staticClass: "icon-name" }, [_vm._v("Successful")])
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
       "a",
       {
         staticClass: "recording-status icon",
         class: _vm.selectedStatus,
-        attrs: { href: "javascript:;" },
-        on: {
-          click: function($event) {
-            _vm.showStatusList = !_vm.showStatusList
-          }
-        }
+        attrs: { href: "javascript:;" }
       },
       [_vm._v(_vm._s(_vm.printStatus()))]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "icon-name" }, [
-      _vm._v("E-mail"),
-      _c("br"),
-      _vm._v("request")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "icon-name" }, [
-      _vm._v("Not"),
-      _c("br"),
-      _vm._v("interested")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "icon-name" }, [
-      _vm._v("Appointment"),
-      _c("br"),
-      _vm._v("set")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "icon-name" }, [
-      _vm._v("Decission"),
-      _c("br"),
-      _vm._v("maker"),
-      _c("br"),
-      _vm._v("contacts received")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -96064,7 +95871,7 @@ var render = function() {
                       { staticClass: "log-text" },
                       [
                         _c("status-selector", {
-                          attrs: { status: "call-back" }
+                          attrs: { status: _vm.logStatusCode[log.status] }
                         }),
                         _vm._v(" "),
                         _c("span", { staticClass: "log-text-content" }, [

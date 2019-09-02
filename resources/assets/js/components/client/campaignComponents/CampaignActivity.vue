@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-center">
         <div class="dashboard_content campaign_activity">
             <div class="hideOnTablet">
-                <div class="dashboard-side-menu">
+                <div class="dashboard-side-menu NoDecor">
                     <div class="team-list-header">
                         <div class="teamName">
                             TEAM
@@ -13,7 +13,8 @@
                     </div>
                     <div class="lineDivide"></div>
 
-                    <div v-for="(agent,index) in campaign.agents" :key="index" class="team-member">
+                    <a v-for="(agent,index) in campaign.agents" :key="index" class="team-member"
+                       href="javascript:void(0)" @click="setCurrentAgent(agent.id)">
                         <img src="/images/client/dummy.png" alt="member image">
                         <div class="team-member-info">
                             <div class="member-name manager">
@@ -23,7 +24,7 @@
                                 {{agent.user.user_data.job_title}}
                             </div>
                         </div>
-                    </div>
+                    </a>
 
                 </div>
                 <div class="documents-bar d-flex justify-content-center">
@@ -88,84 +89,22 @@
                         </div>
                         <div class="member-logs" v-show="hasLogs">
                             <div class="agent-logs-block">
-                                <div class="log">
-                                    <div class="log-time">
-                                        9.15 am
+                                <div v-for="(log,index) in currentAgent.logs" :key="index">
+                                    <div class="log">
+                                        <div class="log-time">
+                                            {{getDate(log.created_at)}}
+                                        </div>
+                                        <div class="log-text">
+                                            <status-selector :status="logStatusCode[log.status]"></status-selector>
+                                            <span class="log-text-content">
+                                                {{log.log_text}}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="log-text">
-                                        <status-selector status="call-back"></status-selector>
-                                        <span class="log-text-content">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        </span>
+                                    <div class="showMoreBtn">
+                                        <a href="javascript:void(0)">SHOW RECORDINGS</a>
                                     </div>
-                                </div>
-                                <div class="showMoreBtn">
-                                    <a href="#">SHOW RECORDINGS</a>
-                                </div>
-                                <div class="lineDivide"></div>
-                                <div class="log">
-                                    <div class="log-time">
-                                        9.15 am
-                                    </div>
-                                    <div class="log-text">
-                                        <status-selector status="call-back"></status-selector>
-                                        <span class="log-text-content">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="showMoreBtn disabled">
-                                    <a href="#">SHOW RECORDINGS</a>
-                                </div>
-                                <div class="lineDivide"></div>
-                                <div class="log">
-                                    <div class="log-time">
-                                        9.15 am
-                                    </div>
-                                    <div class="log-text">
-                                        <status-selector status="call-back"></status-selector>
-                                        <span class="log-text-content">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="showMoreBtn">
-                                    <a href="#">SHOW RECORDINGS</a>
-                                </div>
-                                <div class="lineDivide"></div>
-                                <div class="log">
-                                    <div class="log-time">
-                                        9.15 am
-                                    </div>
-                                    <div class="log-text">
-                                        <status-selector status="call-back"></status-selector>
-                                        <span class="log-text-content">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="showMoreBtn">
-                                    <a href="#">SHOW RECORDINGS</a>
-                                </div>
-                                <div class="lineDivide"></div>
-                                <div class="log">
-                                    <div class="log-time">
-                                        9.15 am
-                                    </div>
-                                    <div class="log-text">
-                                        <status-selector status="call-back"></status-selector>
-                                        <span class="log-text-content">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="showMoreBtn disabled">
-                                    <a href="#">SHOW RECORDINGS</a>
+                                    <div class="lineDivide" v-show="index < currentAgent.logs.length-1"></div>
                                 </div>
                             </div>
                         </div>
@@ -197,61 +136,18 @@
                     <!-- Modal body -->
                     <div class="modal-body">
                         <div class="dashboard-side-menu">
-                            <div class="team-member">
+                            <a v-for="(agent,index) in campaign.agents" :key="index" class="team-member"
+                               @click="setCurrentAgent(agent.id)">
                                 <img src="/images/client/dummy.png" alt="member image">
                                 <div class="team-member-info">
                                     <div class="member-name manager">
-                                        Louis Snyderberg
+                                        {{agent.user.user_data.first_name}} {{agent.user.user_data.last_name}}
                                     </div>
                                     <div class="job-title">
-                                        Team manager
+                                        {{agent.user.user_data.job_title}}
                                     </div>
                                 </div>
-                            </div>
-                            <div class="team-member">
-                                <img src="/images/client/dummy.png" alt="member image">
-                                <div class="team-member-info">
-                                    <div class="member-name">
-                                        Mohamed Salah
-                                    </div>
-                                    <div class="job-title">
-                                        Egyptian king
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-member">
-                                <img src="/images/client/dummy.png" alt="member image">
-                                <div class="team-member-info">
-                                    <div class="member-name">
-                                        Lionel Messi
-                                    </div>
-                                    <div class="job-title">
-                                        Artist
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-member">
-                                <img src="/images/client/dummy.png" alt="member image">
-                                <div class="team-member-info">
-                                    <div class="member-name">
-                                        Zlatan Ibrahimovic
-                                    </div>
-                                    <div class="job-title">
-                                        Animation
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="team-member">
-                                <img src="/images/client/dummy.png" alt="member image">
-                                <div class="team-member-info">
-                                    <div class="member-name">
-                                        Louis Snyderberg
-                                    </div>
-                                    <div class="job-title">
-                                        Animation
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
 
@@ -262,7 +158,7 @@
             <div class="modal-dialog">
                 <div class="modal-content agent-modal-content date-picker">
                     <!-- Modal body -->
-                    <button type="button" id="close-modal" class="close d-none" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close d-none" data-dismiss="modal" id="agentsModal">&times;</button>
                     <div class="modal-body">
                         <div id="datepicker"></div>
                         <input type="hidden" name="selected-date-value" id="selected-date-value" @change="dateChanged">
@@ -286,7 +182,7 @@
     import statusSelector from '../../status-selector'
 
     export default {
-        props:['campaign'],
+        props: ['campaign'],
         components: {
             datepicker,
             "status-selector": statusSelector
@@ -296,6 +192,15 @@
                 hasLogs: true,
                 selectedDate: '',
                 appliedDate: '',
+                currentAgent: this.campaign.agents[0],
+                logStatusCode:{
+                    1:'ER',
+                    2:'CB',
+                    3:'NI',
+                    4:'AS',
+                    5:'CR',
+                    6:'S',
+                },
             }
         },
         methods: {
@@ -317,10 +222,33 @@
                         document.getElementById('selected-date-value').dispatchEvent(dateChanged);
                     }
                 });
-            }
+            },
+            setCurrentAgent(agent_id) {
+                $.each(this.campaign.agents, (index, agent) => {
+                    console.log('Index : ' + index);
+                    console.log('Agent : ' + agent);
+                    if (agent.id === agent_id) {
+                        this.currentAgent = agent;
+                    }
+                });
+
+                // close modal
+                $('.close').click();
+            },
+            getDate(date) {
+                let event = new Date(date);
+                let options = {hour:'numeric',minute:'numeric', month: 'short', day: 'numeric' };
+                return event.toLocaleDateString('en-EN', options);
+            },
         },
         mounted() {
-            console.log(this.campaign);
+
         }
     }
 </script>
+<style lang="scss" scoped>
+    .agent-logs-block .log .log-text .log-text-content {
+        padding-left: 50px;
+        padding-right: 0px;
+    }
+</style>

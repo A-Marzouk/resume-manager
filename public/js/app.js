@@ -91471,17 +91471,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(553)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(193)
 /* template */
-var __vue_template__ = __webpack_require__(198)
+var __vue_template__ = __webpack_require__(555)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-437e7a3b"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -91702,110 +91706,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -91820,7 +91720,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             hasLogs: true,
             selectedDate: '',
-            appliedDate: ''
+            appliedDate: '',
+            currentAgent: this.campaign.agents[0],
+            logStatusCode: {
+                1: 'ER',
+                2: 'CB',
+                3: 'NI',
+                4: 'AS',
+                5: 'CR',
+                6: 'S'
+            }
         };
     },
 
@@ -91843,11 +91752,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     document.getElementById('selected-date-value').dispatchEvent(dateChanged);
                 }
             });
+        },
+        setCurrentAgent: function setCurrentAgent(agent_id) {
+            var _this = this;
+
+            $.each(this.campaign.agents, function (index, agent) {
+                console.log('Index : ' + index);
+                console.log('Agent : ' + agent);
+                if (agent.id === agent_id) {
+                    _this.currentAgent = agent;
+                }
+            });
+
+            // close modal
+            $('.close').click();
+        },
+        getDate: function getDate(date) {
+            var event = new Date(date);
+            var options = { hour: 'numeric', minute: 'numeric', month: 'short', day: 'numeric' };
+            return event.toLocaleDateString('en-EN', options);
         }
     },
-    mounted: function mounted() {
-        console.log(this.campaign);
-    }
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -92082,739 +92008,7 @@ if (false) {
 }
 
 /***/ }),
-/* 198 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "d-flex justify-content-center" }, [
-    _c("div", { staticClass: "dashboard_content campaign_activity" }, [
-      _c("div", { staticClass: "hideOnTablet" }, [
-        _c(
-          "div",
-          { staticClass: "dashboard-side-menu" },
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "lineDivide" }),
-            _vm._v(" "),
-            _vm._l(_vm.campaign.agents, function(agent, index) {
-              return _c("div", { key: index, staticClass: "team-member" }, [
-                _c("img", {
-                  attrs: {
-                    src: "/images/client/dummy.png",
-                    alt: "member image"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "team-member-info" }, [
-                  _c("div", { staticClass: "member-name manager" }, [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(agent.user.user_data.first_name) +
-                        " " +
-                        _vm._s(agent.user.user_data.last_name) +
-                        "\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "job-title" }, [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(agent.user.user_data.job_title) +
-                        "\n                        "
-                    )
-                  ])
-                ])
-              ])
-            })
-          ],
-          2
-        ),
-        _vm._v(" "),
-        _vm._m(1)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "content-block client" }, [
-        _c("div", { staticClass: "content-block-campaign-activity" }, [
-          _vm._m(2),
-          _vm._v(" "),
-          _vm._m(3),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "data-logs" },
-            [
-              _c("datepicker", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "date-picker-btn",
-                    attrs: {
-                      href: "javascript:void(0)",
-                      "data-toggle": "modal",
-                      "data-target": "#pick-date-modal"
-                    },
-                    on: {
-                      "~click": function($event) {
-                        return _vm.setDatePicker($event)
-                      }
-                    }
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: "/images/icons/pick_date.svg",
-                        alt: "pick date"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "hideDate" }, [
-                      _vm._v("PICK A DATE")
-                    ])
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "lineDivide" }),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: !_vm.hasLogs,
-                      expression: "!hasLogs"
-                    }
-                  ],
-                  staticClass: "member-logs-empty"
-                },
-                [
-                  _c("div", { staticClass: "empty-state-text" }, [
-                    _vm._v(
-                      "\n                            Sorry, no entries for today yet -\n                            "
-                    ),
-                    _c(
-                      "a",
-                      {
-                        staticClass: "text",
-                        attrs: { href: "javascript:void(0)" },
-                        on: {
-                          click: function($event) {
-                            _vm.hasLogs = !_vm.hasLogs
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          " SHOW DEMO\n                                LOGS"
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(4)
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.hasLogs,
-                      expression: "hasLogs"
-                    }
-                  ],
-                  staticClass: "member-logs"
-                },
-                [
-                  _c("div", { staticClass: "agent-logs-block" }, [
-                    _c("div", { staticClass: "log" }, [
-                      _c("div", { staticClass: "log-time" }, [
-                        _vm._v(
-                          "\n                                    9.15 am\n                                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "log-text" },
-                        [
-                          _c("status-selector", {
-                            attrs: { status: "call-back" }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "log-text-content" }, [
-                            _vm._v(
-                              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(5),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "lineDivide" }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "log" }, [
-                      _c("div", { staticClass: "log-time" }, [
-                        _vm._v(
-                          "\n                                    9.15 am\n                                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "log-text" },
-                        [
-                          _c("status-selector", {
-                            attrs: { status: "call-back" }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "log-text-content" }, [
-                            _vm._v(
-                              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(6),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "lineDivide" }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "log" }, [
-                      _c("div", { staticClass: "log-time" }, [
-                        _vm._v(
-                          "\n                                    9.15 am\n                                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "log-text" },
-                        [
-                          _c("status-selector", {
-                            attrs: { status: "call-back" }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "log-text-content" }, [
-                            _vm._v(
-                              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(7),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "lineDivide" }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "log" }, [
-                      _c("div", { staticClass: "log-time" }, [
-                        _vm._v(
-                          "\n                                    9.15 am\n                                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "log-text" },
-                        [
-                          _c("status-selector", {
-                            attrs: { status: "call-back" }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "log-text-content" }, [
-                            _vm._v(
-                              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(8),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "lineDivide" }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "log" }, [
-                      _c("div", { staticClass: "log-time" }, [
-                        _vm._v(
-                          "\n                                    9.15 am\n                                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "log-text" },
-                        [
-                          _c("status-selector", {
-                            attrs: { status: "call-back" }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "log-text-content" }, [
-                            _vm._v(
-                              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(9)
-                  ])
-                ]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(10)
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _vm._m(11),
-    _vm._v(" "),
-    _c("div", { staticClass: "modal", attrs: { id: "pick-date-modal" } }, [
-      _c("div", { staticClass: "modal-dialog" }, [
-        _c(
-          "div",
-          { staticClass: "modal-content agent-modal-content date-picker" },
-          [
-            _c(
-              "button",
-              {
-                staticClass: "close d-none",
-                attrs: {
-                  type: "button",
-                  id: "close-modal",
-                  "data-dismiss": "modal"
-                }
-              },
-              [_vm._v("×")]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("div", { attrs: { id: "datepicker" } }),
-              _vm._v(" "),
-              _c("input", {
-                attrs: {
-                  type: "hidden",
-                  name: "selected-date-value",
-                  id: "selected-date-value"
-                },
-                on: { change: _vm.dateChanged }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "date-picker-modal-footer" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "cancelBtn",
-                    attrs: { href: "javascriot:void(0)" },
-                    on: { click: _vm.cancelDatePicking }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            CANCEL\n                        "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "applyBtn selected-date",
-                    attrs: { href: "javascriot:void(0)" },
-                    on: { click: _vm.applySelectedDate }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            APPLY\n                        "
-                    )
-                  ]
-                )
-              ])
-            ])
-          ]
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "team-list-header" }, [
-      _c("div", { staticClass: "teamName" }, [
-        _vm._v("\n                        TEAM\n                    ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "teamChat" }, [
-        _vm._v(
-          "\n                        GO TO TEAM CHAT\n                    "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "documents-bar d-flex justify-content-center" },
-      [
-        _c("div", { staticClass: "button-base blue-button-a" }, [
-          _c(
-            "a",
-            {
-              staticStyle: { width: "178px", height: "38px" },
-              attrs: { href: "#" }
-            },
-            [_vm._v("GO TO STATISTICS")]
-          )
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "hideOnLg" }, [
-      _c(
-        "div",
-        {
-          staticClass: "button-base blue-button-a d-flex justify-content-end",
-          staticStyle: { "margin-bottom": "22px", "margin-top": "22px" }
-        },
-        [
-          _c(
-            "a",
-            {
-              staticClass: "m-0",
-              staticStyle: { width: "178px", height: "38px" },
-              attrs: { href: "#" }
-            },
-            [_vm._v("GO TO STATISTICS")]
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "team-bar-tablet" }, [
-      _c("div", { staticClass: "team-info" }, [
-        _c("div", { staticClass: "team-name" }, [
-          _vm._v("\n                            TEAM\n                        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "actionBtn" }, [
-          _vm._v(
-            "\n                            GO TO TEAM CHAT\n                        "
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "lineDivide tablet-bar" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "agent-bar" }, [
-        _c("div", { staticClass: "team-member tablet-bar" }, [
-          _c("img", {
-            attrs: { src: "/images/client/dummy.png", alt: "member image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "team-member-info" }, [
-            _c("div", { staticClass: "member-name" }, [
-              _vm._v(
-                "\n                                    Z. Ibrahimovic\n                                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "job-title" }, [
-              _vm._v(
-                "\n                                    Animation\n                                "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "actionBtn",
-            attrs: {
-              href: "javascript:void(0)",
-              "data-toggle": "modal",
-              "data-target": "#select-agent-modal"
-            }
-          },
-          [
-            _vm._v(
-              "\n                            CHOOSE AGENT\n                        "
-            )
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "empty-state-image" }, [
-      _c("img", {
-        attrs: {
-          src: "/images/client/campaign_activity/empty_state.png",
-          alt: "empty state"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "showMoreBtn" }, [
-      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW RECORDINGS")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "showMoreBtn disabled" }, [
-      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW RECORDINGS")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "showMoreBtn" }, [
-      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW RECORDINGS")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "showMoreBtn" }, [
-      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW RECORDINGS")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "showMoreBtn disabled" }, [
-      _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW RECORDINGS")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "documents-bar" }, [
-      _c("img", {
-        attrs: {
-          src: "/images/client/campaign_activity/document.png",
-          alt: "document"
-        }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "document-text" }, [
-        _vm._v("\n                        Document link: "),
-        _c("span", [_vm._v("No links.")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "modal", attrs: { id: "select-agent-modal" } },
-      [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content agent-modal-content" }, [
-            _c("div", { staticClass: "select-agent-modal-header" }, [
-              _c("div", { staticClass: "title text-lay" }, [
-                _vm._v(
-                  "\n                        CHOOSE TEAM MEMBER\n                    "
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "close",
-                  attrs: { type: "button", "data-dismiss": "modal" }
-                },
-                [_vm._v("×")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "lineDivide" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("div", { staticClass: "dashboard-side-menu" }, [
-                _c("div", { staticClass: "team-member" }, [
-                  _c("img", {
-                    attrs: {
-                      src: "/images/client/dummy.png",
-                      alt: "member image"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "team-member-info" }, [
-                    _c("div", { staticClass: "member-name manager" }, [
-                      _vm._v(
-                        "\n                                    Louis Snyderberg\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "job-title" }, [
-                      _vm._v(
-                        "\n                                    Team manager\n                                "
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "team-member" }, [
-                  _c("img", {
-                    attrs: {
-                      src: "/images/client/dummy.png",
-                      alt: "member image"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "team-member-info" }, [
-                    _c("div", { staticClass: "member-name" }, [
-                      _vm._v(
-                        "\n                                    Mohamed Salah\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "job-title" }, [
-                      _vm._v(
-                        "\n                                    Egyptian king\n                                "
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "team-member" }, [
-                  _c("img", {
-                    attrs: {
-                      src: "/images/client/dummy.png",
-                      alt: "member image"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "team-member-info" }, [
-                    _c("div", { staticClass: "member-name" }, [
-                      _vm._v(
-                        "\n                                    Lionel Messi\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "job-title" }, [
-                      _vm._v(
-                        "\n                                    Artist\n                                "
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "team-member" }, [
-                  _c("img", {
-                    attrs: {
-                      src: "/images/client/dummy.png",
-                      alt: "member image"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "team-member-info" }, [
-                    _c("div", { staticClass: "member-name" }, [
-                      _vm._v(
-                        "\n                                    Zlatan Ibrahimovic\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "job-title" }, [
-                      _vm._v(
-                        "\n                                    Animation\n                                "
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "team-member" }, [
-                  _c("img", {
-                    attrs: {
-                      src: "/images/client/dummy.png",
-                      alt: "member image"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "team-member-info" }, [
-                    _c("div", { staticClass: "member-name" }, [
-                      _vm._v(
-                        "\n                                    Louis Snyderberg\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "job-title" }, [
-                      _vm._v(
-                        "\n                                    Animation\n                                "
-                      )
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-437e7a3b", module.exports)
-  }
-}
-
-/***/ }),
+/* 198 */,
 /* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -141124,6 +140318,594 @@ exports.push([module.i, "\n.campaign-info-bar[data-v-0405e40c] {\n  margin-top: 
 
 // exports
 
+
+/***/ }),
+/* 553 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(554);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("bed2bc2c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-437e7a3b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignActivity.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-437e7a3b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignActivity.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 554 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.agent-logs-block .log .log-text .log-text-content[data-v-437e7a3b] {\n  padding-left: 50px;\n  padding-right: 0px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 555 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "d-flex justify-content-center" }, [
+    _c("div", { staticClass: "dashboard_content campaign_activity" }, [
+      _c("div", { staticClass: "hideOnTablet" }, [
+        _c(
+          "div",
+          { staticClass: "dashboard-side-menu NoDecor" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "lineDivide" }),
+            _vm._v(" "),
+            _vm._l(_vm.campaign.agents, function(agent, index) {
+              return _c(
+                "a",
+                {
+                  key: index,
+                  staticClass: "team-member",
+                  attrs: { href: "javascript:void(0)" },
+                  on: {
+                    click: function($event) {
+                      _vm.setCurrentAgent(agent.id)
+                    }
+                  }
+                },
+                [
+                  _c("img", {
+                    attrs: {
+                      src: "/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name manager" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(agent.user.user_data.first_name) +
+                          " " +
+                          _vm._s(agent.user.user_data.last_name) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(agent.user.user_data.job_title) +
+                          "\n                        "
+                      )
+                    ])
+                  ])
+                ]
+              )
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _vm._m(1)
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content-block client" }, [
+        _c("div", { staticClass: "content-block-campaign-activity" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "data-logs" },
+            [
+              _c("datepicker", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "date-picker-btn",
+                    attrs: {
+                      href: "javascript:void(0)",
+                      "data-toggle": "modal",
+                      "data-target": "#pick-date-modal"
+                    },
+                    on: {
+                      "~click": function($event) {
+                        return _vm.setDatePicker($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      attrs: {
+                        src: "/images/icons/pick_date.svg",
+                        alt: "pick date"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "hideDate" }, [
+                      _vm._v("PICK A DATE")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "lineDivide" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.hasLogs,
+                      expression: "!hasLogs"
+                    }
+                  ],
+                  staticClass: "member-logs-empty"
+                },
+                [
+                  _c("div", { staticClass: "empty-state-text" }, [
+                    _vm._v(
+                      "\n                            Sorry, no entries for today yet -\n                            "
+                    ),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text",
+                        attrs: { href: "javascript:void(0)" },
+                        on: {
+                          click: function($event) {
+                            _vm.hasLogs = !_vm.hasLogs
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          " SHOW DEMO\n                                LOGS"
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(4)
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.hasLogs,
+                      expression: "hasLogs"
+                    }
+                  ],
+                  staticClass: "member-logs"
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "agent-logs-block" },
+                    _vm._l(_vm.currentAgent.logs, function(log, index) {
+                      return _c("div", { key: index }, [
+                        _c("div", { staticClass: "log" }, [
+                          _c("div", { staticClass: "log-time" }, [
+                            _vm._v(
+                              "\n                                        " +
+                                _vm._s(_vm.getDate(log.created_at)) +
+                                "\n                                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "log-text" },
+                            [
+                              _c("status-selector", {
+                                attrs: { status: _vm.logStatusCode[log.status] }
+                              }),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "log-text-content" }, [
+                                _vm._v(
+                                  "\n                                            " +
+                                    _vm._s(log.log_text) +
+                                    "\n                                        "
+                                )
+                              ])
+                            ],
+                            1
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(5, true),
+                        _vm._v(" "),
+                        _c("div", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: index < _vm.currentAgent.logs.length - 1,
+                              expression: "index < currentAgent.logs.length-1"
+                            }
+                          ],
+                          staticClass: "lineDivide"
+                        })
+                      ])
+                    })
+                  )
+                ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._m(6)
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal", attrs: { id: "select-agent-modal" } }, [
+      _c("div", { staticClass: "modal-dialog" }, [
+        _c("div", { staticClass: "modal-content agent-modal-content" }, [
+          _vm._m(7),
+          _vm._v(" "),
+          _c("div", { staticClass: "lineDivide" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [
+            _c(
+              "div",
+              { staticClass: "dashboard-side-menu" },
+              _vm._l(_vm.campaign.agents, function(agent, index) {
+                return _c(
+                  "a",
+                  {
+                    key: index,
+                    staticClass: "team-member",
+                    on: {
+                      click: function($event) {
+                        _vm.setCurrentAgent(agent.id)
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      attrs: {
+                        src: "/images/client/dummy.png",
+                        alt: "member image"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "team-member-info" }, [
+                      _c("div", { staticClass: "member-name manager" }, [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(agent.user.user_data.first_name) +
+                            " " +
+                            _vm._s(agent.user.user_data.last_name) +
+                            "\n                                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "job-title" }, [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(agent.user.user_data.job_title) +
+                            "\n                                "
+                        )
+                      ])
+                    ])
+                  ]
+                )
+              })
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "modal", attrs: { id: "pick-date-modal" } }, [
+      _c("div", { staticClass: "modal-dialog" }, [
+        _c(
+          "div",
+          { staticClass: "modal-content agent-modal-content date-picker" },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "close d-none",
+                attrs: {
+                  type: "button",
+                  "data-dismiss": "modal",
+                  id: "agentsModal"
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { attrs: { id: "datepicker" } }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: {
+                  type: "hidden",
+                  name: "selected-date-value",
+                  id: "selected-date-value"
+                },
+                on: { change: _vm.dateChanged }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "date-picker-modal-footer" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "cancelBtn",
+                    attrs: { href: "javascriot:void(0)" },
+                    on: { click: _vm.cancelDatePicking }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            CANCEL\n                        "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "applyBtn selected-date",
+                    attrs: { href: "javascriot:void(0)" },
+                    on: { click: _vm.applySelectedDate }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            APPLY\n                        "
+                    )
+                  ]
+                )
+              ])
+            ])
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "team-list-header" }, [
+      _c("div", { staticClass: "teamName" }, [
+        _vm._v("\n                        TEAM\n                    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "teamChat" }, [
+        _vm._v(
+          "\n                        GO TO TEAM CHAT\n                    "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "documents-bar d-flex justify-content-center" },
+      [
+        _c("div", { staticClass: "button-base blue-button-a" }, [
+          _c(
+            "a",
+            {
+              staticStyle: { width: "178px", height: "38px" },
+              attrs: { href: "#" }
+            },
+            [_vm._v("GO TO STATISTICS")]
+          )
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "hideOnLg" }, [
+      _c(
+        "div",
+        {
+          staticClass: "button-base blue-button-a d-flex justify-content-end",
+          staticStyle: { "margin-bottom": "22px", "margin-top": "22px" }
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass: "m-0",
+              staticStyle: { width: "178px", height: "38px" },
+              attrs: { href: "#" }
+            },
+            [_vm._v("GO TO STATISTICS")]
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "team-bar-tablet" }, [
+      _c("div", { staticClass: "team-info" }, [
+        _c("div", { staticClass: "team-name" }, [
+          _vm._v("\n                            TEAM\n                        ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "actionBtn" }, [
+          _vm._v(
+            "\n                            GO TO TEAM CHAT\n                        "
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "lineDivide tablet-bar" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "agent-bar" }, [
+        _c("div", { staticClass: "team-member tablet-bar" }, [
+          _c("img", {
+            attrs: { src: "/images/client/dummy.png", alt: "member image" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "team-member-info" }, [
+            _c("div", { staticClass: "member-name" }, [
+              _vm._v(
+                "\n                                    Z. Ibrahimovic\n                                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "job-title" }, [
+              _vm._v(
+                "\n                                    Animation\n                                "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "actionBtn",
+            attrs: {
+              href: "javascript:void(0)",
+              "data-toggle": "modal",
+              "data-target": "#select-agent-modal"
+            }
+          },
+          [
+            _vm._v(
+              "\n                            CHOOSE AGENT\n                        "
+            )
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "empty-state-image" }, [
+      _c("img", {
+        attrs: {
+          src: "/images/client/campaign_activity/empty_state.png",
+          alt: "empty state"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "showMoreBtn" }, [
+      _c("a", { attrs: { href: "javascript:void(0)" } }, [
+        _vm._v("SHOW RECORDINGS")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "documents-bar" }, [
+      _c("img", {
+        attrs: {
+          src: "/images/client/campaign_activity/document.png",
+          alt: "document"
+        }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "document-text" }, [
+        _vm._v("\n                        Document link: "),
+        _c("span", [_vm._v("No links.")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "select-agent-modal-header" }, [
+      _c("div", { staticClass: "title text-lay" }, [
+        _vm._v(
+          "\n                        CHOOSE TEAM MEMBER\n                    "
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("×")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-437e7a3b", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

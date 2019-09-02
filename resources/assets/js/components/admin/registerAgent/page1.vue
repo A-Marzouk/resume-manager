@@ -61,10 +61,8 @@
                     Enter your phone number
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.phone}">
-                    <flag-dropdown>
                         <input type="text" name="phone" placeholder="123-3534634" v-model="personalData.phone">
                         <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('phone')" alt="delete icon" v-show="personalData.phone.length > 0">
-                    </flag-dropdown>                    
                 </div>
                 <div class="error" v-if="showErrors && errors.phone">
                     {{errors.phone}}

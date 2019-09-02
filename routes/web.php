@@ -85,7 +85,7 @@ Route::prefix('client')->group(function (){
     // front-end routes :
     Route::get('/','ClientsController@index')->name('client.dashboard');
     Route::get('/dashboard/{any?}','ClientsController@index')->name('client.dashboard.campaing-manager');
-    Route::get('/campaign','ClientsController@campaignActivity')->name('campaign.main');
+    Route::get('/campaign/{campaign_id}','ClientsController@campaignActivity')->name('campaign.main');
     Route::get('/campaigns-archive','ClientsController@campaignArchives')->name('campaign.archives');
     Route::get('/campaign/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');
     Route::get('/account/edit','ClientsController@viewAccountEditPage')->name('account.edit');
@@ -139,6 +139,24 @@ Route::prefix('client')->group(function (){
 // update client (from client dashboard)
     Route::post('/update', 'ClientsController@updateClient');
 
+// get client campaigns
+    Route::get('/get/campaigns','CampaignsController@getClientCamps')->name('client.campaigns');
+
+// get client campaign members :
+    Route::get('/camp/members/{camp_id}','CampaignsController@getClientCampMembers')->name('client.camp.members');
+    Route::post('/camp/update','CampaignsController@updateCampaignStatus')->name('client.camp.update');
+
+// campaign faqs :
+    Route::post('/camp/faqs/add','FAQsController@addFAQ')->name('client.camp.faqs.add');
+    Route::post('/camp/faqs/update','FAQsController@updateFAQ')->name('client.camp.faqs.update');
+    Route::post('/camp/faqs/delete','FAQsController@deleteFAQ')->name('client.camp.faqs.delete');
+
+// save campaign process flow
+    Route::post('/camp/process-flow/update','CampaignsController@saveCampaignProcessFLow')->name('client.camp.process_flow.update');
+
+// campaign links
+    Route::post('/camp/links/create','LinksController@create')->name('client.camp.links.create');
+    Route::post('/camp/links/update','LinksController@update')->name('client.camp.links.update');
 
 });
 

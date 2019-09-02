@@ -37,6 +37,12 @@ class UsersTableSeeder extends Seeder
                     'username' => 'agent',
                 ],
                 'agent' => [],
+                'user_data' => [
+                    'profession_id' => '1',
+                    'first_name' => 'John',
+                    'last_name' => 'Doe'
+                ],
+
             ],
         ])->each(function ($item) {
             app(User::class)->createAgent($item);
@@ -49,7 +55,9 @@ class UsersTableSeeder extends Seeder
                     'password' => '123456789',
                     'username' => 'client',
                 ],
-                'client' => [],
+                'client' => [
+                    'contact' => 'John doe'
+                ],
             ],
         ])->each(function ($item) {
             app(User::class)->createClient($item);

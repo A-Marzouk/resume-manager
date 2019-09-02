@@ -58,7 +58,7 @@ class CreateUserDatasTable extends Migration
             $table->boolean('is_homepage_visible')->default(false);
             $table->timestamp('agreed_with_terms_at')->nullable();
             $table->text('avatar')->nullable();
-            $table->integer('paypal_acc_number')->nullable();
+            $table->text('paypal_acc_number')->nullable();
 
             // $table->string('address_line_1')->nullable();
             // $table->string('address_line_2')->nullable();

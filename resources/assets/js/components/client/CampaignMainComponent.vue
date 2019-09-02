@@ -2,11 +2,11 @@
     <div id="campaign_activity">
         <div class="fixed-top d-flex flex-column">
             <div class="backBar">
-                <div class="backBtn">
-                    <a href="/client/dashboard">
+                <div class="backBtn" style="padding-left: 15px;">
+                    <a href="/client/dashboard"  style="margin: 0;">
                         <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
-                    {{campaign.title}}
+                    <span style="margin-left: 8px;">{{campaign.title}}</span>
                 </div>
             </div>
             <div class="campaign-info-bar">

@@ -82077,14 +82077,17 @@ var render = function() {
     [
       _c("div", { staticClass: "fixed-top d-flex flex-column" }, [
         _c("div", { staticClass: "backBar" }, [
-          _c("div", { staticClass: "backBtn" }, [
-            _vm._m(0),
-            _vm._v(
-              "\n                " +
-                _vm._s(_vm.campaign.title) +
-                "\n            "
-            )
-          ])
+          _c(
+            "div",
+            { staticClass: "backBtn", staticStyle: { "padding-left": "15px" } },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("span", { staticStyle: { "margin-left": "8px" } }, [
+                _vm._v(_vm._s(_vm.campaign.title))
+              ])
+            ]
+          )
         ]),
         _vm._v(" "),
         _c(
@@ -82164,11 +82167,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "/client/dashboard" } }, [
-      _c("img", {
-        attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
-      })
-    ])
+    return _c(
+      "a",
+      { staticStyle: { margin: "0" }, attrs: { href: "/client/dashboard" } },
+      [
+        _c("img", {
+          attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
+        })
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -92013,6 +92020,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(556)
+}
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(200)
@@ -92021,7 +92032,7 @@ var __vue_template__ = __webpack_require__(201)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -92171,120 +92182,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      dropdown: {
-        selectedOption: 'Show active team',
-        options: ['Show backup agents', 'Show past agents'],
-        showDropdown: false
-      }
-    };
-  },
-
-  methods: {
-    toggleDropdown: function toggleDropdown() {
-      this.dropdown.showDropdown = !this.dropdown.showDropdown;
+    props: ['campaign'],
+    data: function data() {
+        return {
+            dropdown: {
+                selectedOption: 'Show active team',
+                options: ['Show backup agents', 'Show past agents'],
+                showDropdown: false
+            }
+        };
     },
 
-    selectOption: function selectOption(value) {
-      this.dropdown.options.push(this.dropdown.selectedOption);
-      this.dropdown.selectedOption = this.dropdown.options[value];
-      this.dropdown.options.splice(value, 1);
-      this.toggleDropdown();
-    }
-  },
-  mounted: function mounted() {}
+    methods: {
+        toggleDropdown: function toggleDropdown() {
+            this.dropdown.showDropdown = !this.dropdown.showDropdown;
+        },
+
+        selectOption: function selectOption(value) {
+            this.dropdown.options.push(this.dropdown.selectedOption);
+            this.dropdown.selectedOption = this.dropdown.options[value];
+            this.dropdown.options.splice(value, 1);
+            this.toggleDropdown();
+        }
+    },
+    mounted: function mounted() {}
 });
 
 /***/ }),
@@ -92328,7 +92251,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v(_vm._s(option))]
+                    [_vm._v(_vm._s(option) + "\n                            ")]
                   )
                 })
               )
@@ -92339,7 +92262,52 @@ var render = function() {
         _c("div", { staticClass: "actionBtn" })
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c(
+        "div",
+        { staticClass: "campaign-team-list" },
+        _vm._l(_vm.campaign.agents, function(agent, index) {
+          return _c(
+            "div",
+            {
+              key: index,
+              staticClass:
+                "campaign-team-row d-flex justify-content-between flex-wrap"
+            },
+            [
+              _c("div", { staticClass: "team-member" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/dummy.png",
+                    alt: "member image"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "team-member-info" }, [
+                  _c("div", { staticClass: "member-name" }, [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(agent.user.user_data.first_name) +
+                        " " +
+                        _vm._s(agent.user.user_data.last_name) +
+                        "\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "job-title" }, [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(agent.user.user_data.job_title) +
+                        "\n                        "
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(0, true)
+            ]
+          )
+        })
+      )
     ]),
     _vm._v(" "),
     _vm._m(1),
@@ -92352,25 +92320,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "campaign-team-list" }, [
-      _c("div", { staticClass: "campaign-team-row no-decoration" }, [
-        _c("div", { staticClass: "team-member" }, [
-          _c("img", {
-            attrs: { src: "/images/client/dummy.png", alt: "member image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "team-member-info" }, [
-            _c("div", { staticClass: "member-name" }, [
-              _vm._v("\n              Louis Snyderberg\n            ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "job-title" }, [
-              _vm._v("\n              Team manager\n            ")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "chat-action-btn" }, [
+    return _c(
+      "div",
+      {
+        staticClass:
+          "d-flex align-items-center justify-content-between action-btns-bar"
+      },
+      [
+        _c("a", { staticClass: "chat-action-btn" }, [
           _c("img", {
             attrs: {
               src: "/images/client/campaign_activity/send_message.png",
@@ -92382,248 +92339,32 @@ var staticRenderFns = [
         _c(
           "a",
           {
-            staticClass: "change-status-btn",
             attrs: {
               href: "javascript:void(0)",
               "data-toggle": "modal",
               "data-target": "#remove-modal"
             }
           },
-          [_vm._v("\n                      REMOVE\n                  ")]
+          [_vm._v("\n                        REMOVE\n                    ")]
         ),
         _vm._v(" "),
         _c(
           "a",
           {
-            staticClass: "change-status-btn",
             attrs: {
               href: "javascript:void(0)",
               "data-toggle": "modal",
               "data-target": "#backup-modal"
             }
           },
-          [_vm._v("\n                      MAKE BACKUP\n                  ")]
+          [
+            _vm._v(
+              "\n                        MAKE BACKUP\n                    "
+            )
+          ]
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "campaign-team-row" }, [
-        _c("div", { staticClass: "team-member" }, [
-          _c("img", {
-            attrs: { src: "/images/client/dummy.png", alt: "member image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "team-member-info" }, [
-            _c("div", { staticClass: "member-name" }, [
-              _vm._v("\n                Louis Snyderberg\n              ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "job-title" }, [
-              _vm._v("\n                Team manager\n              ")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "chat-action-btn" }, [
-          _c("img", {
-            attrs: {
-              src: "/images/client/campaign_activity/send_message.png",
-              alt: "chat icon"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "change-status-btn",
-            attrs: {
-              href: "javascript:void(0)",
-              "data-toggle": "modal",
-              "data-target": "#remove-modal"
-            }
-          },
-          [_vm._v("\n                      REMOVE\n                  ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "change-status-btn",
-            attrs: {
-              href: "javascript:void(0)",
-              "data-toggle": "modal",
-              "data-target": "#backup-modal"
-            }
-          },
-          [_vm._v("\n                      MAKE BACKUP\n                  ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "campaign-team-row" }, [
-        _c("div", { staticClass: "team-member" }, [
-          _c("img", {
-            attrs: { src: "/images/client/dummy.png", alt: "member image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "team-member-info" }, [
-            _c("div", { staticClass: "member-name" }, [
-              _vm._v("\n                  Louis Snyderberg\n                ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "job-title" }, [
-              _vm._v("\n                  Team manager\n                ")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "chat-action-btn" }, [
-          _c("img", {
-            attrs: {
-              src: "/images/client/campaign_activity/send_message.png",
-              alt: "chat icon"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "change-status-btn",
-            attrs: {
-              href: "javascript:void(0)",
-              "data-toggle": "modal",
-              "data-target": "#remove-modal"
-            }
-          },
-          [_vm._v("\n                      REMOVE\n                  ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "change-status-btn",
-            attrs: {
-              href: "javascript:void(0)",
-              "data-toggle": "modal",
-              "data-target": "#backup-modal"
-            }
-          },
-          [_vm._v("\n                      MAKE BACKUP\n                  ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "campaign-team-row" }, [
-        _c("div", { staticClass: "team-member" }, [
-          _c("img", {
-            attrs: { src: "/images/client/dummy.png", alt: "member image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "team-member-info" }, [
-            _c("div", { staticClass: "member-name" }, [
-              _vm._v(
-                "\n                    Louis Snyderberg\n                  "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "job-title" }, [
-              _vm._v("\n                    Team manager\n                  ")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "chat-action-btn" }, [
-          _c("img", {
-            attrs: {
-              src: "/images/client/campaign_activity/send_message.png",
-              alt: "chat icon"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "change-status-btn",
-            attrs: {
-              href: "javascript:void(0)",
-              "data-toggle": "modal",
-              "data-target": "#remove-modal"
-            }
-          },
-          [_vm._v("\n                      REMOVE\n                  ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "change-status-btn",
-            attrs: {
-              href: "javascript:void(0)",
-              "data-toggle": "modal",
-              "data-target": "#backup-modal"
-            }
-          },
-          [_vm._v("\n                      MAKE BACKUP\n                  ")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "campaign-team-row" }, [
-        _c("div", { staticClass: "team-member" }, [
-          _c("img", {
-            attrs: { src: "/images/client/dummy.png", alt: "member image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "team-member-info" }, [
-            _c("div", { staticClass: "member-name" }, [
-              _vm._v(
-                "\n                      Louis Snyderberg\n                    "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "job-title" }, [
-              _vm._v(
-                "\n                      Team manager\n                    "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "chat-action-btn" }, [
-          _c("img", {
-            attrs: {
-              src: "/images/client/campaign_activity/send_message.png",
-              alt: "chat icon"
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "change-status-btn",
-            attrs: {
-              href: "javascript:void(0)",
-              "data-toggle": "modal",
-              "data-target": "#remove-modal"
-            }
-          },
-          [_vm._v("\n                      REMOVE\n                  ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "change-status-btn",
-            attrs: {
-              href: "javascript:void(0)",
-              "data-toggle": "modal",
-              "data-target": "#backup-modal"
-            }
-          },
-          [_vm._v("\n                      MAKE BACKUP\n                  ")]
-        )
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -92656,13 +92397,13 @@ var staticRenderFns = [
                 _c("div", { staticClass: "modal-body campaign-team-modal" }, [
                   _c("div", { staticClass: "modal-question" }, [
                     _vm._v(
-                      "\n                      Are you sure you want to remove the agent ?\n                    "
+                      "\n                        Are you sure you want to remove the agent ?\n                    "
                     )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-answer" }, [
                     _vm._v(
-                      "\n                      Agent will be in the list of Past agents from this moment.\n                    "
+                      "\n                        Agent will be in the list of Past agents from this moment.\n                    "
                     )
                   ]),
                   _vm._v(" "),
@@ -92732,13 +92473,13 @@ var staticRenderFns = [
                 _c("div", { staticClass: "modal-body campaign-team-modal" }, [
                   _c("div", { staticClass: "modal-question" }, [
                     _vm._v(
-                      "\n                      Are you sure you want to make agent back up?\n                    "
+                      "\n                        Are you sure you want to make agent back up?\n                    "
                     )
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-answer" }, [
                     _vm._v(
-                      "\n                      Agent will be in the list of back up agents from this moment.\n                    "
+                      "\n                        Agent will be in the list of back up agents from this moment.\n                    "
                     )
                   ]),
                   _vm._v(" "),
@@ -140906,6 +140647,46 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-437e7a3b", module.exports)
   }
 }
+
+/***/ }),
+/* 556 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(557);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("3cf903ea", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-02ccc6ee\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignTeam.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-02ccc6ee\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignTeam.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 557 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.action-btns-bar {\n  -ms-flex-preferred-size: 35%;\n      flex-basis: 35%;\n}\n@media only screen and (max-width: 600px) {\n.action-btns-bar {\n    height: 56px;\n    padding-left: 20px;\n    padding-right: 20px;\n    -ms-flex-preferred-size: 100%;\n        flex-basis: 100%;\n}\n.action-btns-bar .change-status-btn {\n      width: auto;\n}\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

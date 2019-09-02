@@ -146,6 +146,10 @@ Route::prefix('client')->group(function (){
     Route::get('/camp/members/{camp_id}','CampaignsController@getClientCampMembers')->name('client.camp.members');
     Route::post('/camp/update','CampaignsController@updateCampaignStatus')->name('client.camp.update');
 
+// campaign faqs :
+    Route::post('/camp/faqs/add','FAQsController@addFAQ')->name('client.camp.faqs.add');
+    Route::post('/camp/faqs/update','FAQsController@updateFAQ')->name('client.camp.faqs.update');
+    Route::post('/camp/faqs/delete','FAQsController@deleteFAQ')->name('client.camp.faqs.delete');
 
 });
 

@@ -92642,8 +92642,33 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -92955,197 +92980,194 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var dropZone = void 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      faqs: [{
-        id: 1,
-        beingEdited: false,
-        question: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-        answer: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-      }, {
-        id: 2,
-        beingEdited: false,
-        question: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-        answer: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-      }, {
-        id: 3,
-        beingEdited: false,
-        question: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-        answer: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-      }, {
-        id: 4,
-        beingEdited: false,
-        question: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit,' + ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-        answer: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' + ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' + ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' + ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-      }],
-      activeBriefTab: 'FAQ',
-      newFAQ: {
-        question: '',
-        answer: ''
-      },
-      newLink: '',
-      editingLink: -1,
-      links: [],
-      errors: {
-        question: false,
-        answer: false
-      },
-      currentlyEditedQuestion: {
-        beingEdited: false,
-        question: '',
-        answer: ''
-      },
-      flowIsEmpty: true,
-      process_flow_em: false,
-      is_text_editor_set: false,
-      showErrors: false,
-      files: []
-    };
-  },
+    props: ['campaign'],
+    data: function data() {
+        return {
+            faqs: [],
 
-  methods: {
-    chooseBriefTab: function chooseBriefTab(tab_name) {
-      this.activeBriefTab = tab_name;
-      if (tab_name === 'PROCESS_FLOW' && !this.is_text_editor_set) {
-        this.setTextEditor();
-      }
+            activeBriefTab: 'FAQ',
+            newFAQ: {
+                question: '',
+                answer: '',
+                campaign_id: this.campaign.id
+            },
+            newLink: '',
+            editingLink: -1,
+            links: [],
+            errors: {
+                question: false,
+                answer: false
+            },
+            currentlyEditedQuestion: {
+                question: '',
+                answer: ''
+            },
+            flowIsEmpty: true,
+            process_flow_em: false,
+            is_text_editor_set: false,
+            showErrors: false,
+            files: [],
+            editedQuestionID: 0
+        };
     },
-    addLink: function addLink(link) {
-      this.links.push(link);
-      this.newLink = '';
-    },
-    editLink: function editLink(index) {
-      var link = document.getElementsByClassName('saved-link')[index].value;
-      this.links[index] = link;
-      this.editingLink = -1;
-    },
-    editFAQ: function editFAQ(faq_id) {
-      var _this = this;
 
-      var faqs = this.faqs;
-      $.each(faqs, function (i) {
-        faqs[i].beingEdited = false;
-        if (faqs[i].id === faq_id) {
-          faqs[i].beingEdited = true;
-          _this.currentlyEditedQuestion.beingEdited = true;
-          _this.currentlyEditedQuestion.question = faqs[i].question;
-          _this.currentlyEditedQuestion.answer = faqs[i].answer;
-        }
-      });
-    },
-    cancelEditFAQ: function cancelEditFAQ(faq_id) {
-      var _this2 = this;
-
-      var faqs = this.faqs;
-      $.each(faqs, function (i) {
-        if (faqs[i].id === faq_id) {
-          faqs[i].beingEdited = false;
-          _this2.currentlyEditedQuestion.beingEdited = false;
-          _this2.currentlyEditedQuestion.question = '';
-          _this2.currentlyEditedQuestion.answer = '';
-        }
-      });
-    },
-    addFAQ: function addFAQ() {
-      if (this.newFAQ.answer.length < 7) {
-        this.showErrors = true;
-        this.errors.answer = true;
-      }
-
-      if (this.newFAQ.question.length < 7) {
-        this.showErrors = true;
-        this.errors.question = true;
-      }
-
-      if (this.showErrors) return;
-
-      // add FAQ
-      this.faqs.push({
-        id: this.faqs.length,
-        answer: this.newFAQ.answer,
-        question: this.newFAQ.question
-      });
-
-      this.newFAQ.question = '';
-      this.newFAQ.answer = '';
-      this.showErrors = false;
-    },
-    saveFAQ: function saveFAQ(faq_id) {
-      var _this3 = this;
-
-      var faqs = this.faqs;
-      $.each(faqs, function (i) {
-        if (faqs[i].id === faq_id) {
-          faqs[i].beingEdited = false;
-          faqs[i].question = _this3.currentlyEditedQuestion.question;
-          faqs[i].answer = _this3.currentlyEditedQuestion.answer;
-          _this3.currentlyEditedQuestion.beingEdited = false;
-        }
-      });
-    },
-    deleteFAQ: function deleteFAQ(faq_id) {
-      var faqs = this.faqs;
-      $.each(faqs, function (i) {
-        if (faqs[i].id === faq_id) {
-          faqs.splice(i, 1);
-          return false;
-        }
-      });
-    },
-    setTextEditor: function setTextEditor() {
-      var component = this;
-      var quill = new Quill('#editor', {
-        modules: {
-          toolbar: [[{ 'header': [1, 2, 3, 4, 5, 6, false] }], ['bold', 'italic', 'underline', 'strike'], // toggled buttons
-          ['blockquote'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], [{ 'align': [] }]]
+    methods: {
+        chooseBriefTab: function chooseBriefTab(tab_name) {
+            this.activeBriefTab = tab_name;
+            if (tab_name === 'PROCESS_FLOW' && !this.is_text_editor_set) {
+                this.setTextEditor();
+            }
         },
-        placeholder: 'Write your description here...',
-        theme: 'snow' // or 'bubble'
-      });
+        addLink: function addLink(link) {
+            this.links.push(link);
+            this.newLink = '';
+        },
+        editLink: function editLink(index) {
+            var link = document.getElementsByClassName('saved-link')[index].value;
+            this.links[index] = link;
+            this.editingLink = -1;
+        },
+        editFAQ: function editFAQ(faq) {
+            this.editedQuestionID = faq.id;
+            this.currentlyEditedQuestion = faq;
+        },
+        cancelEditFAQ: function cancelEditFAQ(faq_id) {
+            return;
+            var faqs = this.faqs;
+            $.each(faqs, function (i) {
+                faqs[i].beingEdited = false;
+            });
+        },
+        addFAQ: function addFAQ() {
+            var _this = this;
 
-      component.is_text_editor_set = true;
+            if (this.newFAQ.answer.length < 7) {
+                this.showErrors = true;
+                this.errors.answer = true;
+            } else {
+                this.showErrors = false;
+            }
 
-      quill.on('text-change', function () {
-        if (quill.getLength() === 1) component.flowIsEmpty = true;else component.flowIsEmpty = false;
-      });
-    },
-    removeDoc: function removeDoc(index) {
-      this.files.splice(index, 1);
-      if (this.files.length === 0) dropZone.removeAllFiles();
-    },
-    showMenu: function showMenu(index) {
-      var fileContainers = document.getElementsByClassName('preview-container');
+            if (this.newFAQ.question.length < 7) {
+                this.showErrors = true;
+                this.errors.question = true;
+            } else {
+                this.showErrors = false;
+            }
 
-      var container = fileContainers[index].getElementsByClassName('menu-preview')[0].classList.toggle('show');
+            if (this.showErrors) return;
+
+            // add FAQ
+            axios.post('/client/camp/faqs/add', this.newFAQ).then(function (response) {
+                var addedFAQ = response.data;
+                addedFAQ.beingEdited = false;
+                _this.faqs.push(addedFAQ);
+
+                // clear data
+                _this.newFAQ.question = '';
+                _this.newFAQ.answer = '';
+                _this.showErrors = false;
+            }).catch(function (error) {
+                if (_typeof(error.response.data) === 'object') {
+                    console.log(error.response.data.errors);
+                } else {
+                    console.log('Something went wrong. Please try again.');
+                }
+            });
+        },
+        saveFAQ: function saveFAQ(faq) {
+            var _this2 = this;
+
+            axios.post('/client/camp/faqs/update', faq).then(function (response) {
+                console.log(response.data);
+                _this2.editedQuestionID = 0;
+            }).catch(function (error) {
+                if (_typeof(error.response.data) === 'object') {
+                    console.log(error.response.data.errors);
+                } else {
+                    console.log('Something went wrong. Please try again.');
+                }
+            });
+        },
+        deleteFAQ: function deleteFAQ(faq_id) {
+            var _this3 = this;
+
+            if (!confirm('Are you sure you want to delete this FAQ ?')) {
+                return;
+            }
+
+            axios.post('/client/camp/faqs/delete', { 'FAQ_ID': faq_id }).then(function (response) {
+                var faqs = _this3.faqs;
+                $.each(faqs, function (i) {
+                    if (faqs[i].id === faq_id) {
+                        faqs.splice(i, 1);
+                        return false;
+                    }
+                });
+            }).catch(function (error) {
+                if (_typeof(error.response.data) === 'object') {
+                    console.log(error.response.data.errors);
+                } else {
+                    console.log('Something went wrong. Please try again.');
+                }
+            });
+        },
+        setTextEditor: function setTextEditor() {
+            var component = this;
+            var quill = new Quill('#editor', {
+                modules: {
+                    toolbar: [[{ 'header': [1, 2, 3, 4, 5, 6, false] }], ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+                    ['blockquote'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], [{ 'align': [] }]]
+                },
+                placeholder: 'Write your description here...',
+                theme: 'snow' // or 'bubble'
+            });
+
+            component.is_text_editor_set = true;
+
+            quill.on('text-change', function () {
+                if (quill.getLength() === 1) component.flowIsEmpty = true;else component.flowIsEmpty = false;
+            });
+        },
+        removeDoc: function removeDoc(index) {
+            this.files.splice(index, 1);
+            if (this.files.length === 0) dropZone.removeAllFiles();
+        },
+        showMenu: function showMenu(index) {
+            var fileContainers = document.getElementsByClassName('preview-container');
+
+            var container = fileContainers[index].getElementsByClassName('menu-preview')[0].classList.toggle('show');
+        },
+        addFiles: function addFiles(e) {
+            this.files = [].concat(_toConsumableArray(this.files), _toConsumableArray(e.target.files));
+        }
     },
-    addFiles: function addFiles(e) {
-      this.files = [].concat(_toConsumableArray(this.files), _toConsumableArray(e.target.files));
+    mounted: function mounted() {
+        var component = this;
+
+        dropZone = new Dropzone("#dropfiles-team-brief", {
+            maxFilesize: 45,
+            dictDefaultMessage: '',
+            dictRemoveFile: '',
+            dictCancelUpload: '',
+            url: '/',
+            paramName: 'files',
+            addRemoveLinks: true,
+            uploadMultiple: true,
+            init: function init() {
+                this.on('addedfile', function (file) {
+                    var filesInput = document.getElementById('files');
+                    component.files.push(file);
+                });
+
+                this.on('error', function (error) {
+                    return console.log(error);
+                });
+            }
+        });
+
+        this.faqs = this.campaign.faqs;
     }
-  },
-  mounted: function mounted() {
-    var component = this;
-
-    dropZone = new Dropzone("#dropfiles-team-brief", {
-      maxFilesize: 45,
-      dictDefaultMessage: '',
-      dictRemoveFile: '',
-      dictCancelUpload: '',
-      url: '/',
-      paramName: 'files',
-      addRemoveLinks: true,
-      uploadMultiple: true,
-      init: function init() {
-        this.on('addedfile', function (file) {
-          var filesInput = document.getElementById('files');
-          component.files.push(file);
-        });
-
-        this.on('error', function (error) {
-          return console.log(error);
-        });
-      }
-    });
-  }
 });
 
 /***/ }),
@@ -93172,7 +93194,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n        FAQ\n      ")]
+          [_vm._v("\n                FAQ\n            ")]
         ),
         _vm._v(" "),
         _c(
@@ -93186,7 +93208,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n        PROCESS FLOW\n      ")]
+          [_vm._v("\n                PROCESS FLOW\n            ")]
         ),
         _vm._v(" "),
         _c(
@@ -93200,7 +93222,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n        FILES\n      ")]
+          [_vm._v("\n                FILES\n            ")]
         ),
         _vm._v(" "),
         _c(
@@ -93214,7 +93236,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n        VOICE SCRIPTS\n      ")]
+          [_vm._v("\n                VOICE SCRIPTS\n            ")]
         ),
         _vm._v(" "),
         _c(
@@ -93228,7 +93250,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n        E-MAIL TEMPLATES\n      ")]
+          [_vm._v("\n                E-MAIL TEMPLATES\n            ")]
         )
       ]),
       _vm._v(" "),
@@ -93249,7 +93271,7 @@ var render = function() {
           [
             _c("div", { staticClass: "faq-title" }, [
               _vm._v(
-                "\n          In this section you can add frequently asked questions and answers to them.\n        "
+                "\n                    In this section you can add frequently asked questions and answers to them.\n                "
               )
             ]),
             _vm._v(" "),
@@ -93313,7 +93335,7 @@ var render = function() {
               _vm.showErrors && _vm.errors.question
                 ? _c("div", { staticClass: "error" }, [
                     _vm._v(
-                      "\n            This field must contain at least 7 characters.\n          "
+                      "\n                        This field must contain at least 7 characters.\n                    "
                     )
                   ])
                 : _vm._e()
@@ -93379,7 +93401,7 @@ var render = function() {
               _vm.showErrors && _vm.errors.answer
                 ? _c("div", { staticClass: "error" }, [
                     _vm._v(
-                      "\n              This field must contain at least 7 characters.\n            "
+                      "\n                        This field must contain at least 7 characters.\n                    "
                     )
                   ])
                 : _vm._e()
@@ -93404,7 +93426,7 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                          ADD FAQ\n                      "
+                      "\n                        ADD FAQ\n                    "
                     )
                   ]
                 )
@@ -93426,8 +93448,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: faq.beingEdited,
-                            expression: "faq.beingEdited"
+                            value: faq.id === _vm.editedQuestionID,
+                            expression: "faq.id === editedQuestionID"
                           }
                         ],
                         staticClass: "faq-edit-state"
@@ -93440,7 +93462,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("div", { staticClass: "edit-title" }, [
                             _vm._v(
-                              "\n                      Edit the question and the answer :\n                    "
+                              "\n                                    Edit the question and the answer :\n                                "
                             )
                           ]),
                           _vm._v(" "),
@@ -93464,7 +93486,7 @@ var render = function() {
                                 attrs: { href: "javascript:void(0)" },
                                 on: {
                                   click: function($event) {
-                                    _vm.cancelEditFAQ(faq.id)
+                                    _vm.editedQuestionID = 0
                                   }
                                 }
                               },
@@ -93477,7 +93499,7 @@ var render = function() {
                                 attrs: { href: "javascript:void(0)" },
                                 on: {
                                   click: function($event) {
-                                    _vm.saveFAQ(faq.id)
+                                    _vm.saveFAQ(faq)
                                   }
                                 }
                               },
@@ -93628,8 +93650,8 @@ var render = function() {
                           {
                             name: "show",
                             rawName: "v-show",
-                            value: !faq.beingEdited,
-                            expression: "!faq.beingEdited"
+                            value: faq.id !== _vm.editedQuestionID,
+                            expression: "faq.id !== editedQuestionID"
                           }
                         ],
                         staticClass: "faq-question"
@@ -93642,47 +93664,58 @@ var render = function() {
                         _c("div", { staticClass: "faq-item" }, [
                           _c("div", { staticClass: "faq-item-question" }, [
                             _vm._v(
-                              "\n                          " +
+                              "\n                                    " +
                                 _vm._s(faq.question) +
-                                "\n                        "
+                                "\n                                "
                             )
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "faq-item-answer" }, [
                             _vm._v(
-                              "\n                          " +
+                              "\n                                    " +
                                 _vm._s(faq.answer) +
-                                "\n                        "
+                                "\n                                "
                             )
                           ])
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "faq-edit" }, [
-                          _vm.currentlyEditedQuestion.beingEdited === false
-                            ? _c("img", {
-                                attrs: {
-                                  src:
-                                    "/images/client/campaign_activity/edit.png",
-                                  alt: "edit icon"
-                                },
-                                on: {
-                                  click: function($event) {
-                                    _vm.editFAQ(faq.id)
-                                  }
-                                }
-                              })
-                            : _vm._e(),
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editedQuestionID === 0,
+                                expression: "editedQuestionID === 0"
+                              }
+                            ],
+                            attrs: {
+                              src: "/images/client/campaign_activity/edit.png",
+                              alt: "edit icon"
+                            },
+                            on: {
+                              click: function($event) {
+                                _vm.editFAQ(faq)
+                              }
+                            }
+                          }),
                           _vm._v(" "),
-                          _vm.currentlyEditedQuestion.beingEdited === true
-                            ? _c("img", {
-                                staticClass: "faq-edit-disabled",
-                                attrs: {
-                                  src:
-                                    "/images/client/campaign_activity/edit grey.png",
-                                  alt: "edit icon"
-                                }
-                              })
-                            : _vm._e()
+                          _c("img", {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.editedQuestionID !== 0,
+                                expression: "editedQuestionID !== 0"
+                              }
+                            ],
+                            staticClass: "faq-edit-disabled",
+                            attrs: {
+                              src:
+                                "/images/client/campaign_activity/edit grey.png",
+                              alt: "edit icon"
+                            }
+                          })
                         ])
                       ]
                     )
@@ -93750,7 +93783,7 @@ var render = function() {
                 _c("div", { staticClass: "edit-state-heading" }, [
                   _c("div", { staticClass: "heading-text" }, [
                     _vm._v(
-                      "\n                            Enter the description of the process flow:\n                          "
+                      "\n                            Enter the description of the process flow:\n                        "
                     )
                   ]),
                   _vm._v(" "),
@@ -93959,7 +93992,7 @@ var render = function() {
                             },
                             [
                               _vm._v(
-                                "\n                                  CHOOSE A FILE\n                              "
+                                "\n                                    CHOOSE A FILE\n                                "
                               )
                             ]
                           ),
@@ -94072,7 +94105,11 @@ var render = function() {
                                             }
                                           }
                                         },
-                                        [_vm._v("Delete the document")]
+                                        [
+                                          _vm._v(
+                                            "Delete the\n                                                document"
+                                          )
+                                        ]
                                       ),
                                       _vm._v(" "),
                                       _c(
@@ -94117,7 +94154,7 @@ var render = function() {
           [
             _c("div", { staticClass: "files-tab-heading" }, [
               _vm._v(
-                "\n                        In this section you can add documents with voice scripts\n                      "
+                "\n                    In this section you can add documents with voice scripts\n                "
               )
             ]),
             _vm._v(" "),
@@ -94141,7 +94178,7 @@ var render = function() {
           [
             _c("div", { staticClass: "files-tab-heading" }, [
               _vm._v(
-                "\n                        In this section you can add e-mail templates\n                      "
+                "\n                    In this section you can add e-mail templates\n                "
               )
             ]),
             _vm._v(" "),
@@ -94159,12 +94196,12 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "campaign_desc" }, [
       _c("div", { staticClass: "title" }, [
-        _vm._v("\n      PROJECT DESCRIPTION\n    ")
+        _vm._v("\n            PROJECT DESCRIPTION\n        ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "desc" }, [
         _vm._v(
-          "\n      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n    "
+          "\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut\n            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi\n            ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n            cillum dolore eu fugiat nulla pariatur.\n            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est\n            laborum.\n        "
         )
       ])
     ])
@@ -94176,7 +94213,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "process-flow-heading" }, [
       _c("div", { staticClass: "process-flow-text" }, [
         _vm._v(
-          "\n                        This section is empty. To fiil it please click the edit "
+          "\n                            This section is empty. To fiil it please click the edit "
         ),
         _c("img", {
           attrs: {
@@ -94184,10 +94221,10 @@ var staticRenderFns = [
             alt: "edit grey icon"
           }
         }),
-        _vm._v(" button.\n                        "),
+        _vm._v(" button.\n                            "),
         _c("br"),
         _vm._v(
-          "\n                        In this section you can...short description.\n                      "
+          "\n                            In this section you can...short description.\n                        "
         )
       ]),
       _vm._v(" "),
@@ -94206,7 +94243,7 @@ var staticRenderFns = [
     return _c("label", { staticClass: "faq-input-label" }, [
       _c("i", { staticClass: "icon icon-point" }),
       _vm._v(
-        "\n                            List of the links\n                          "
+        "\n                            List of the links\n                        "
       )
     ])
   },
@@ -94217,7 +94254,7 @@ var staticRenderFns = [
     return _c("label", { staticClass: "faq-input-label" }, [
       _c("i", { staticClass: "icon icon-point" }),
       _vm._v(
-        "\n                            List of the documents\n                          "
+        "\n                            List of the documents\n                        "
       )
     ])
   },
@@ -94252,18 +94289,18 @@ var staticRenderFns = [
             "\n                            Drag or Drop documents you want to upload "
           ),
           _c("br"),
-          _vm._v("or\n                          ")
+          _vm._v("or\n                        ")
         ]),
         _vm._v(" "),
         _c("a", { staticClass: "upload-btn", attrs: { href: "#" } }, [
           _vm._v(
-            "\n                              CHOOSE A FILE\n                          "
+            "\n                            CHOOSE A FILE\n                        "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "upload-notes" }, [
           _vm._v(
-            "\n                            Maximum allowed size is 45 MB\n                          "
+            "\n                            Maximum allowed size is 45 MB\n                        "
           )
         ])
       ])
@@ -94280,18 +94317,18 @@ var staticRenderFns = [
             "\n                            Drag or Drop documents you want to upload "
           ),
           _c("br"),
-          _vm._v("or\n                          ")
+          _vm._v("or\n                        ")
         ]),
         _vm._v(" "),
         _c("a", { staticClass: "upload-btn", attrs: { href: "#" } }, [
           _vm._v(
-            "\n                              CHOOSE A FILE\n                          "
+            "\n                            CHOOSE A FILE\n                        "
           )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "upload-notes" }, [
           _vm._v(
-            "\n                            Maximum allowed size is 45 MB\n                          "
+            "\n                            Maximum allowed size is 45 MB\n                        "
           )
         ])
       ])

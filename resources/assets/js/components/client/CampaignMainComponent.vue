@@ -6,7 +6,7 @@
                     <a href="/client/dashboard">
                         <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
-                    NAME OF THE CAMPAIGN
+                    {{campaign.title}}
                 </div>
             </div>
             <div class="campaign-info-bar">
@@ -32,16 +32,22 @@
         </div>
         <keep-alive>
             <!-- here load different components depending on the route.-->
-            <router-view style="margin-top: 30px;"></router-view>
+            <router-view style="margin-top: 30px;" v-bind="myProps"></router-view>
         </keep-alive>
     </div>
 </template>
 <script>
     export default {
         props:['campaign'],
+        computed: {
+            myProps() {
+                if (this.campaign !== undefined) { return { campaign: this.campaign }}
+            }
+        },
         data() {
             return {
                 activeTab: '',
+                currentCampaign:{}
             }
         },
         methods: {
@@ -51,7 +57,6 @@
         },
         mounted() {
             this.setActiveTab();
-            console.log(this.campaign);
         }
     }
 </script>

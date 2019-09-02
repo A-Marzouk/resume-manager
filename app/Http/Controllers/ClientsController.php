@@ -23,7 +23,7 @@ class ClientsController extends Controller
     }
 
     public function campaignActivity($campaign_id){
-        $campaign = Campaign::find($campaign_id);
+        $campaign = Campaign::where('id',$campaign_id)->with('agents.user','agents.user.userData','agents.logs')->first();
         return view('client.campaign_main',compact('campaign'));
     }
 

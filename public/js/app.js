@@ -82039,9 +82039,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['campaign'],
+    computed: {
+        myProps: function myProps() {
+            if (this.campaign !== undefined) {
+                return { campaign: this.campaign };
+            }
+        }
+    },
     data: function data() {
         return {
-            activeTab: ''
+            activeTab: '',
+            currentCampaign: {}
         };
     },
 
@@ -82052,7 +82060,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         this.setActiveTab();
-        console.log(this.campaign);
     }
 });
 
@@ -82069,7 +82076,16 @@ var render = function() {
     { attrs: { id: "campaign_activity" } },
     [
       _c("div", { staticClass: "fixed-top d-flex flex-column" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "backBar" }, [
+          _c("div", { staticClass: "backBtn" }, [
+            _vm._m(0),
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.campaign.title) +
+                "\n            "
+            )
+          ])
+        ]),
         _vm._v(" "),
         _c(
           "div",
@@ -82126,7 +82142,17 @@ var render = function() {
       _vm._v(" "),
       _c(
         "keep-alive",
-        [_c("router-view", { staticStyle: { "margin-top": "30px" } })],
+        [
+          _c(
+            "router-view",
+            _vm._b(
+              { staticStyle: { "margin-top": "30px" } },
+              "router-view",
+              _vm.myProps,
+              false
+            )
+          )
+        ],
         1
       )
     ],
@@ -82138,15 +82164,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "backBar" }, [
-      _c("div", { staticClass: "backBtn" }, [
-        _c("a", { attrs: { href: "/client/dashboard" } }, [
-          _c("img", {
-            attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
-          })
-        ]),
-        _vm._v("\n                NAME OF THE CAMPAIGN\n            ")
-      ])
+    return _c("a", { attrs: { href: "/client/dashboard" } }, [
+      _c("img", {
+        attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
+      })
     ])
   }
 ]
@@ -91785,83 +91806,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    datepicker: __WEBPACK_IMPORTED_MODULE_0__datepicker___default.a,
-    "status-selector": __WEBPACK_IMPORTED_MODULE_1__status_selector___default.a
-  },
-  data: function data() {
-    return {
-      hasLogs: true,
-      selectedDate: '',
-      appliedDate: ''
-    };
-  },
+    props: ['campaign'],
+    components: {
+        datepicker: __WEBPACK_IMPORTED_MODULE_0__datepicker___default.a,
+        "status-selector": __WEBPACK_IMPORTED_MODULE_1__status_selector___default.a
+    },
+    data: function data() {
+        return {
+            hasLogs: true,
+            selectedDate: '',
+            appliedDate: ''
+        };
+    },
 
-  methods: {
-    dateChanged: function dateChanged() {
-      this.selectedDate = $('#selected-date-value').val();
-    },
-    applySelectedDate: function applySelectedDate() {
-      this.appliedDate = this.selectedDate;
-      $('#close-modal').click();
-    },
-    cancelDatePicking: function cancelDatePicking() {
-      $('#close-modal').click();
-    },
-    setDatePicker: function setDatePicker() {
-      $("#datepicker").datepicker({
-        onSelect: function onSelect(dateText, inst) {
-          $("input[name='selected-date-value']").val(dateText);
-          var dateChanged = new CustomEvent('change');
-          document.getElementById('selected-date-value').dispatchEvent(dateChanged);
+    methods: {
+        dateChanged: function dateChanged() {
+            this.selectedDate = $('#selected-date-value').val();
+        },
+        applySelectedDate: function applySelectedDate() {
+            this.appliedDate = this.selectedDate;
+            $('#close-modal').click();
+        },
+        cancelDatePicking: function cancelDatePicking() {
+            $('#close-modal').click();
+        },
+        setDatePicker: function setDatePicker() {
+            $("#datepicker").datepicker({
+                onSelect: function onSelect(dateText, inst) {
+                    $("input[name='selected-date-value']").val(dateText);
+                    var dateChanged = new CustomEvent('change');
+                    document.getElementById('selected-date-value').dispatchEvent(dateChanged);
+                }
+            });
         }
-      });
+    },
+    mounted: function mounted() {
+        console.log(this.campaign);
     }
-  },
-  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -92105,13 +92091,57 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "d-flex justify-content-center" }, [
     _c("div", { staticClass: "dashboard_content campaign_activity" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "hideOnTablet" }, [
+        _c(
+          "div",
+          { staticClass: "dashboard-side-menu" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "lineDivide" }),
+            _vm._v(" "),
+            _vm._l(_vm.campaign.agents, function(agent, index) {
+              return _c("div", { key: index, staticClass: "team-member" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/dummy.png",
+                    alt: "member image"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "team-member-info" }, [
+                  _c("div", { staticClass: "member-name manager" }, [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(agent.user.user_data.first_name) +
+                        " " +
+                        _vm._s(agent.user.user_data.last_name) +
+                        "\n                        "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "job-title" }, [
+                    _vm._v(
+                      "\n                            " +
+                        _vm._s(agent.user.user_data.job_title) +
+                        "\n                        "
+                    )
+                  ])
+                ])
+              ])
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _vm._m(1)
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "content-block client" }, [
         _c("div", { staticClass: "content-block-campaign-activity" }, [
-          _vm._m(1),
-          _vm._v(" "),
           _vm._m(2),
+          _vm._v(" "),
+          _vm._m(3),
           _vm._v(" "),
           _c(
             "div",
@@ -92166,7 +92196,7 @@ var render = function() {
                 [
                   _c("div", { staticClass: "empty-state-text" }, [
                     _vm._v(
-                      "\n              Sorry, no entries for today yet  -\n              "
+                      "\n                            Sorry, no entries for today yet -\n                            "
                     ),
                     _c(
                       "a",
@@ -92179,11 +92209,15 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v(" SHOW DEMO LOGS")]
+                      [
+                        _vm._v(
+                          " SHOW DEMO\n                                LOGS"
+                        )
+                      ]
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(4)
                 ]
               ),
               _vm._v(" "),
@@ -92204,7 +92238,9 @@ var render = function() {
                   _c("div", { staticClass: "agent-logs-block" }, [
                     _c("div", { staticClass: "log" }, [
                       _c("div", { staticClass: "log-time" }, [
-                        _vm._v("\n                  9.15 am\n                ")
+                        _vm._v(
+                          "\n                                    9.15 am\n                                "
+                        )
                       ]),
                       _vm._v(" "),
                       _c(
@@ -92217,34 +92253,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("span", { staticClass: "log-text-content" }, [
                             _vm._v(
-                              "\n                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                      "
-                            )
-                          ])
-                        ],
-                        1
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(4),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "lineDivide" }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "log" }, [
-                      _c("div", { staticClass: "log-time" }, [
-                        _vm._v("\n                  9.15 am\n                ")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "log-text" },
-                        [
-                          _c("status-selector", {
-                            attrs: { status: "call-back" }
-                          }),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "log-text-content" }, [
-                            _vm._v(
-                              "\n                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                      "
+                              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
                             )
                           ])
                         ],
@@ -92258,7 +92267,9 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "log" }, [
                       _c("div", { staticClass: "log-time" }, [
-                        _vm._v("\n                  9.15 am\n                ")
+                        _vm._v(
+                          "\n                                    9.15 am\n                                "
+                        )
                       ]),
                       _vm._v(" "),
                       _c(
@@ -92271,7 +92282,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("span", { staticClass: "log-text-content" }, [
                             _vm._v(
-                              "\n                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                      "
+                              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
                             )
                           ])
                         ],
@@ -92285,7 +92296,9 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "log" }, [
                       _c("div", { staticClass: "log-time" }, [
-                        _vm._v("\n                  9.15 am\n                ")
+                        _vm._v(
+                          "\n                                    9.15 am\n                                "
+                        )
                       ]),
                       _vm._v(" "),
                       _c(
@@ -92298,7 +92311,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("span", { staticClass: "log-text-content" }, [
                             _vm._v(
-                              "\n                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                      "
+                              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
                             )
                           ])
                         ],
@@ -92312,7 +92325,9 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "log" }, [
                       _c("div", { staticClass: "log-time" }, [
-                        _vm._v("\n                  9.15 am\n                ")
+                        _vm._v(
+                          "\n                                    9.15 am\n                                "
+                        )
                       ]),
                       _vm._v(" "),
                       _c(
@@ -92325,7 +92340,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("span", { staticClass: "log-text-content" }, [
                             _vm._v(
-                              "\n                                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                      "
+                              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
                             )
                           ])
                         ],
@@ -92333,7 +92348,36 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _vm._m(8)
+                    _vm._m(8),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "lineDivide" }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "log" }, [
+                      _c("div", { staticClass: "log-time" }, [
+                        _vm._v(
+                          "\n                                    9.15 am\n                                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "log-text" },
+                        [
+                          _c("status-selector", {
+                            attrs: { status: "call-back" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "log-text-content" }, [
+                            _vm._v(
+                              "\n                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor\n                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut\n                                    "
+                            )
+                          ])
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(9)
                   ])
                 ]
               )
@@ -92341,12 +92385,12 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _vm._m(9)
+          _vm._m(10)
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(10),
+    _vm._m(11),
     _vm._v(" "),
     _c("div", { staticClass: "modal", attrs: { id: "pick-date-modal" } }, [
       _c("div", { staticClass: "modal-dialog" }, [
@@ -92387,7 +92431,11 @@ var render = function() {
                     attrs: { href: "javascriot:void(0)" },
                     on: { click: _vm.cancelDatePicking }
                   },
-                  [_vm._v("\n              CANCEL\n            ")]
+                  [
+                    _vm._v(
+                      "\n                            CANCEL\n                        "
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
@@ -92397,7 +92445,11 @@ var render = function() {
                     attrs: { href: "javascriot:void(0)" },
                     on: { click: _vm.applySelectedDate }
                   },
-                  [_vm._v("\n              APPLY\n            ")]
+                  [
+                    _vm._v(
+                      "\n                            APPLY\n                        "
+                    )
+                  ]
                 )
               ])
             ])
@@ -92412,118 +92464,38 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "hideOnTablet" }, [
-      _c("div", { staticClass: "dashboard-side-menu" }, [
-        _c("div", { staticClass: "team-list-header" }, [
-          _c("div", { staticClass: "teamName" }, [
-            _vm._v("\n            TEAM\n          ")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "teamChat" }, [
-            _vm._v("\n            GO TO TEAM CHAT\n          ")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "lineDivide" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "team-member" }, [
-          _c("img", {
-            attrs: { src: "/images/client/dummy.png", alt: "member image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "team-member-info" }, [
-            _c("div", { staticClass: "member-name manager" }, [
-              _vm._v("\n              Louis Snyderberg\n            ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "job-title" }, [
-              _vm._v("\n              Team manager\n            ")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "team-member" }, [
-          _c("img", {
-            attrs: { src: "/images/client/dummy.png", alt: "member image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "team-member-info" }, [
-            _c("div", { staticClass: "member-name" }, [
-              _vm._v("\n              Mohamed Salah\n            ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "job-title" }, [
-              _vm._v("\n              Egyptian king\n            ")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "team-member" }, [
-          _c("img", {
-            attrs: { src: "/images/client/dummy.png", alt: "member image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "team-member-info" }, [
-            _c("div", { staticClass: "member-name" }, [
-              _vm._v("\n              Lionel Messi\n            ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "job-title" }, [
-              _vm._v("\n              Artist\n            ")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "team-member" }, [
-          _c("img", {
-            attrs: { src: "/images/client/dummy.png", alt: "member image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "team-member-info" }, [
-            _c("div", { staticClass: "member-name" }, [
-              _vm._v("\n              Zlatan Ibrahimovic\n            ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "job-title" }, [
-              _vm._v("\n              Animation\n            ")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "team-member" }, [
-          _c("img", {
-            attrs: { src: "/images/client/dummy.png", alt: "member image" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "team-member-info" }, [
-            _c("div", { staticClass: "member-name" }, [
-              _vm._v("\n              Louis Snyderberg\n            ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "job-title" }, [
-              _vm._v("\n              Animation\n            ")
-            ])
-          ])
-        ])
+    return _c("div", { staticClass: "team-list-header" }, [
+      _c("div", { staticClass: "teamName" }, [
+        _vm._v("\n                        TEAM\n                    ")
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "documents-bar d-flex justify-content-center" },
-        [
-          _c("div", { staticClass: "button-base blue-button-a" }, [
-            _c(
-              "a",
-              {
-                staticStyle: { width: "178px", height: "38px" },
-                attrs: { href: "#" }
-              },
-              [_vm._v("GO TO STATISTICS")]
-            )
-          ])
-        ]
-      )
+      _c("div", { staticClass: "teamChat" }, [
+        _vm._v(
+          "\n                        GO TO TEAM CHAT\n                    "
+        )
+      ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "documents-bar d-flex justify-content-center" },
+      [
+        _c("div", { staticClass: "button-base blue-button-a" }, [
+          _c(
+            "a",
+            {
+              staticStyle: { width: "178px", height: "38px" },
+              attrs: { href: "#" }
+            },
+            [_vm._v("GO TO STATISTICS")]
+          )
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -92557,11 +92529,13 @@ var staticRenderFns = [
     return _c("div", { staticClass: "team-bar-tablet" }, [
       _c("div", { staticClass: "team-info" }, [
         _c("div", { staticClass: "team-name" }, [
-          _vm._v("\n              TEAM\n            ")
+          _vm._v("\n                            TEAM\n                        ")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "actionBtn" }, [
-          _vm._v("\n              GO TO TEAM CHAT\n            ")
+          _vm._v(
+            "\n                            GO TO TEAM CHAT\n                        "
+          )
         ])
       ]),
       _vm._v(" "),
@@ -92575,11 +92549,15 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "team-member-info" }, [
             _c("div", { staticClass: "member-name" }, [
-              _vm._v("\n                  Z. Ibrahimovic\n                ")
+              _vm._v(
+                "\n                                    Z. Ibrahimovic\n                                "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "job-title" }, [
-              _vm._v("\n                  Animation\n                ")
+              _vm._v(
+                "\n                                    Animation\n                                "
+              )
             ])
           ])
         ]),
@@ -92594,7 +92572,11 @@ var staticRenderFns = [
               "data-target": "#select-agent-modal"
             }
           },
-          [_vm._v("\n              CHOOSE AGENT\n            ")]
+          [
+            _vm._v(
+              "\n                            CHOOSE AGENT\n                        "
+            )
+          ]
         )
       ])
     ])
@@ -92665,7 +92647,7 @@ var staticRenderFns = [
       }),
       _vm._v(" "),
       _c("div", { staticClass: "document-text" }, [
-        _vm._v("\n            Document link: "),
+        _vm._v("\n                        Document link: "),
         _c("span", [_vm._v("No links.")])
       ])
     ])
@@ -92682,7 +92664,9 @@ var staticRenderFns = [
           _c("div", { staticClass: "modal-content agent-modal-content" }, [
             _c("div", { staticClass: "select-agent-modal-header" }, [
               _c("div", { staticClass: "title text-lay" }, [
-                _vm._v("\n            CHOOSE TEAM MEMBER\n          ")
+                _vm._v(
+                  "\n                        CHOOSE TEAM MEMBER\n                    "
+                )
               ]),
               _vm._v(" "),
               _c(
@@ -92710,13 +92694,13 @@ var staticRenderFns = [
                   _c("div", { staticClass: "team-member-info" }, [
                     _c("div", { staticClass: "member-name manager" }, [
                       _vm._v(
-                        "\n                  Louis Snyderberg\n                "
+                        "\n                                    Louis Snyderberg\n                                "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "job-title" }, [
                       _vm._v(
-                        "\n                  Team manager\n                "
+                        "\n                                    Team manager\n                                "
                       )
                     ])
                   ])
@@ -92733,13 +92717,13 @@ var staticRenderFns = [
                   _c("div", { staticClass: "team-member-info" }, [
                     _c("div", { staticClass: "member-name" }, [
                       _vm._v(
-                        "\n                  Mohamed Salah\n                "
+                        "\n                                    Mohamed Salah\n                                "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "job-title" }, [
                       _vm._v(
-                        "\n                  Egyptian king\n                "
+                        "\n                                    Egyptian king\n                                "
                       )
                     ])
                   ])
@@ -92756,12 +92740,14 @@ var staticRenderFns = [
                   _c("div", { staticClass: "team-member-info" }, [
                     _c("div", { staticClass: "member-name" }, [
                       _vm._v(
-                        "\n                  Lionel Messi\n                "
+                        "\n                                    Lionel Messi\n                                "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "job-title" }, [
-                      _vm._v("\n                  Artist\n                ")
+                      _vm._v(
+                        "\n                                    Artist\n                                "
+                      )
                     ])
                   ])
                 ]),
@@ -92777,12 +92763,14 @@ var staticRenderFns = [
                   _c("div", { staticClass: "team-member-info" }, [
                     _c("div", { staticClass: "member-name" }, [
                       _vm._v(
-                        "\n                  Zlatan Ibrahimovic\n                "
+                        "\n                                    Zlatan Ibrahimovic\n                                "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "job-title" }, [
-                      _vm._v("\n                  Animation\n                ")
+                      _vm._v(
+                        "\n                                    Animation\n                                "
+                      )
                     ])
                   ])
                 ]),
@@ -92798,12 +92786,14 @@ var staticRenderFns = [
                   _c("div", { staticClass: "team-member-info" }, [
                     _c("div", { staticClass: "member-name" }, [
                       _vm._v(
-                        "\n                  Louis Snyderberg\n                "
+                        "\n                                    Louis Snyderberg\n                                "
                       )
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "job-title" }, [
-                      _vm._v("\n                  Animation\n                ")
+                      _vm._v(
+                        "\n                                    Animation\n                                "
+                      )
                     ])
                   ])
                 ])

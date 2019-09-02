@@ -54,7 +54,7 @@
         </div>
 
         <div class="campaign-brief-footer">
-            <a href="/client/campaign">
+            <a :href="'/client/campaign/' + campaign.id ">
                 GO TO CAMPAIGN
             </a>
         </div>

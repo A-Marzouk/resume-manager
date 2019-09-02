@@ -81946,7 +81946,7 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(140)
+  __webpack_require__(551)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -81991,46 +81991,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 140 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(141);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("0de81f2b", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0405e40c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignMainComponent.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0405e40c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignMainComponent.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 141 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 140 */,
+/* 141 */,
 /* 142 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -82072,22 +82034,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      activeTab: ''
-    };
-  },
+    props: ['campaign'],
+    data: function data() {
+        return {
+            activeTab: ''
+        };
+    },
 
-  methods: {
-    setActiveTab: function setActiveTab() {
-      this.activeTab = this.$route.path.replace('/', '');
+    methods: {
+        setActiveTab: function setActiveTab() {
+            this.activeTab = this.$route.path.replace('/', '');
+        }
+    },
+    mounted: function mounted() {
+        this.setActiveTab();
+        console.log(this.campaign);
     }
-  },
-  mounted: function mounted() {
-    this.setActiveTab();
-  }
 });
 
 /***/ }),
@@ -82102,61 +82068,67 @@ var render = function() {
     "div",
     { attrs: { id: "campaign_activity" } },
     [
-      _vm._m(0),
+      _c("div", { staticClass: "fixed-top d-flex flex-column" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "campaign-info-bar" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "campaign-info-tab firstTab",
+                class: { active: _vm.activeTab === "" },
+                attrs: { to: "/" },
+                nativeOn: {
+                  click: function($event) {
+                    _vm.activeTab = ""
+                  }
+                }
+              },
+              [_vm._v("\n                ACTIVITY\n            ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass: "campaign-info-tab",
+                class: { active: _vm.activeTab === "campaign-team" },
+                attrs: { to: "/campaign-team" },
+                nativeOn: {
+                  click: function($event) {
+                    _vm.activeTab = "campaign-team"
+                  }
+                }
+              },
+              [_vm._v("\n                CAMPAIGN TEAM\n            ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass: "campaign-info-tab",
+                class: { active: _vm.activeTab === "campaign-brief" },
+                attrs: { to: "/campaign-brief" },
+                nativeOn: {
+                  click: function($event) {
+                    _vm.activeTab = "campaign-brief"
+                  }
+                }
+              },
+              [_vm._v("\n                CAMPAIGN BRIEF\n            ")]
+            )
+          ],
+          1
+        )
+      ]),
       _vm._v(" "),
       _c(
-        "div",
-        { staticClass: "campaign-info-bar" },
-        [
-          _c(
-            "router-link",
-            {
-              staticClass: "campaign-info-tab firstTab",
-              class: { active: _vm.activeTab === "" },
-              attrs: { to: "/" },
-              nativeOn: {
-                click: function($event) {
-                  _vm.activeTab = ""
-                }
-              }
-            },
-            [_vm._v("\n      ACTIVITY\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            {
-              staticClass: "campaign-info-tab",
-              class: { active: _vm.activeTab === "campaign-team" },
-              attrs: { to: "/campaign-team" },
-              nativeOn: {
-                click: function($event) {
-                  _vm.activeTab = "campaign-team"
-                }
-              }
-            },
-            [_vm._v("\n      CAMPAIGN TEAM\n    ")]
-          ),
-          _vm._v(" "),
-          _c(
-            "router-link",
-            {
-              staticClass: "campaign-info-tab",
-              class: { active: _vm.activeTab === "campaign-brief" },
-              attrs: { to: "/campaign-brief" },
-              nativeOn: {
-                click: function($event) {
-                  _vm.activeTab = "campaign-brief"
-                }
-              }
-            },
-            [_vm._v("\n      CAMPAIGN BRIEF\n    ")]
-          )
-        ],
+        "keep-alive",
+        [_c("router-view", { staticStyle: { "margin-top": "30px" } })],
         1
-      ),
-      _vm._v(" "),
-      _c("keep-alive", [_c("router-view")], 1)
+      )
     ],
     1
   )
@@ -82166,20 +82138,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "nav",
-      { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
-      [
-        _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "/client/dashboard" } }, [
-            _c("img", {
-              attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
-            })
-          ]),
-          _vm._v("\n      NAME OF THE CAMPAIGN\n    ")
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "backBar" }, [
+      _c("div", { staticClass: "backBtn" }, [
+        _c("a", { attrs: { href: "/client/dashboard" } }, [
+          _c("img", {
+            attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
+          })
+        ]),
+        _vm._v("\n                NAME OF THE CAMPAIGN\n            ")
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -95895,7 +95863,11 @@ var render = function() {
         ])
       }),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "campaign-brief-footer" }, [
+        _c("a", { attrs: { href: "/client/campaign/" + _vm.campaign.id } }, [
+          _vm._v("\n            GO TO CAMPAIGN\n        ")
+        ])
+      ])
     ],
     2
   )
@@ -95907,16 +95879,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "showMoreBtn" }, [
       _c("a", { attrs: { href: "#" } }, [_vm._v("SHOW MORE")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "campaign-brief-footer" }, [
-      _c("a", { attrs: { href: "/client/campaign" } }, [
-        _vm._v("\n            GO TO CAMPAIGN\n        ")
-      ])
     ])
   }
 ]
@@ -141129,6 +141091,49 @@ new SideNav();
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 548 */,
+/* 549 */,
+/* 550 */,
+/* 551 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(552);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("0d2ff176", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0405e40c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignMainComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0405e40c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./CampaignMainComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 552 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.campaign-info-bar[data-v-0405e40c] {\n  margin-top: 0;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n}\n.backBar[data-v-0405e40c] {\n  height: 56px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  background: white;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

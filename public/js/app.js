@@ -92182,16 +92182,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['campaign'],
     data: function data() {
         return {
             dropdown: {
-                selectedOption: 'Show active team',
-                options: ['Show backup agents', 'Show past agents'],
+                options: [{
+                    'value': 1,
+                    'text': 'Show active agents'
+                }, {
+                    'value': 2,
+                    'text': 'Show backup agents'
+                }, {
+                    'value': 3,
+                    'text': 'Show past agents'
+                }],
                 showDropdown: false
-            }
+            },
+            selectedOption: {
+                'value': 1,
+                'text': 'Show active agents'
+            },
+            agentStatusCode: {
+                1: 'ACTIVE',
+                2: 'BACKUP',
+                3: 'REMOVED'
+            },
+            filterValue: 1
         };
     },
 
@@ -92200,11 +92224,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.dropdown.showDropdown = !this.dropdown.showDropdown;
         },
 
-        selectOption: function selectOption(value) {
-            this.dropdown.options.push(this.dropdown.selectedOption);
-            this.dropdown.selectedOption = this.dropdown.options[value];
-            this.dropdown.options.splice(value, 1);
+        selectOption: function selectOption(option) {
+            this.filterValue = option.value;
+            this.selectedOption = option;
             this.toggleDropdown();
+        }
+    },
+    computed: {
+        filteredAgents: function filteredAgents() {
+            var filterValue = this.filterValue;
+            if (!filterValue) return this.campaign.agents;
+            return this.campaign.agents.filter(function (agent) {
+                return agent.status === filterValue;
+            });
         }
     },
     mounted: function mounted() {}
@@ -92230,7 +92262,7 @@ var render = function() {
                   staticClass: "selected-option",
                   on: { click: _vm.toggleDropdown }
                 },
-                [_vm._v(_vm._s(_vm.dropdown.selectedOption))]
+                [_vm._v(_vm._s(_vm.selectedOption.text))]
               ),
               _vm._v(" "),
               _c(
@@ -92247,11 +92279,17 @@ var render = function() {
                       staticClass: "dropdown-item",
                       on: {
                         click: function($event) {
-                          _vm.selectOption(index)
+                          _vm.selectOption(option)
                         }
                       }
                     },
-                    [_vm._v(_vm._s(option) + "\n                            ")]
+                    [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(option.text) +
+                          "\n                            "
+                      )
+                    ]
                   )
                 })
               )
@@ -92265,48 +92303,71 @@ var render = function() {
       _c(
         "div",
         { staticClass: "campaign-team-list" },
-        _vm._l(_vm.campaign.agents, function(agent, index) {
-          return _c(
+        [
+          _vm._l(_vm.filteredAgents, function(agent, index) {
+            return _c(
+              "div",
+              {
+                key: index,
+                staticClass:
+                  "campaign-team-row d-flex justify-content-between flex-wrap"
+              },
+              [
+                _c("div", { staticClass: "team-member" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "/images/client/dummy.png",
+                      alt: "member image"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "team-member-info" }, [
+                    _c("div", { staticClass: "member-name" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(agent.user.user_data.first_name) +
+                          " " +
+                          _vm._s(agent.user.user_data.last_name) +
+                          "\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-title" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(agent.user.user_data.job_title) +
+                          "\n                        "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(0, true)
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _c(
             "div",
             {
-              key: index,
-              staticClass:
-                "campaign-team-row d-flex justify-content-between flex-wrap"
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.filteredAgents.length < 1,
+                  expression: "filteredAgents.length < 1"
+                }
+              ],
+              staticClass: "member-name"
             },
             [
-              _c("div", { staticClass: "team-member" }, [
-                _c("img", {
-                  attrs: {
-                    src: "/images/client/dummy.png",
-                    alt: "member image"
-                  }
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "team-member-info" }, [
-                  _c("div", { staticClass: "member-name" }, [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(agent.user.user_data.first_name) +
-                        " " +
-                        _vm._s(agent.user.user_data.last_name) +
-                        "\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "job-title" }, [
-                    _vm._v(
-                      "\n                            " +
-                        _vm._s(agent.user.user_data.job_title) +
-                        "\n                        "
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(0, true)
+              _vm._v(
+                "\n                There is no agents in this selection.\n            "
+              )
             ]
           )
-        })
+        ],
+        2
       )
     ]),
     _vm._v(" "),

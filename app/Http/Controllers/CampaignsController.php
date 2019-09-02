@@ -162,6 +162,14 @@ class CampaignsController extends Controller
         return $campaign->agents ;
     }
 
+    public function saveCampaignProcessFLow(Request $request){
+
+        $campaign = Campaign::where('id',$request->campaign_id)->first();
+        $campaign->update([
+            'process_flow' => $request->process_flow
+        ]);
+        return $campaign ;
+    }
 
     public function addMembersToCamp(Request $request)
     {

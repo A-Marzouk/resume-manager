@@ -24,7 +24,7 @@ class CreateAgentsTable extends Migration
             $table->text('experience')->nullable();
             $table->text('technologies')->nullable();
             $table->string('voice_character')->nullable();
-            $table->tinyInteger('status')->unsigned()->nullable()->index();
+            $table->tinyInteger('status')->unsigned()->default(1)->index();
 
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users');

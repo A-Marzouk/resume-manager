@@ -151,6 +151,9 @@ Route::prefix('client')->group(function (){
     Route::post('/camp/faqs/update','FAQsController@updateFAQ')->name('client.camp.faqs.update');
     Route::post('/camp/faqs/delete','FAQsController@deleteFAQ')->name('client.camp.faqs.delete');
 
+// save campaign process flow
+    Route::post('/camp/process-flow/update','CampaignsController@saveCampaignProcessFLow')->name('client.camp.process_flow.update');
+
 });
 
 Route::prefix('freelancer')->group(function (){

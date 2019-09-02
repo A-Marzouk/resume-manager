@@ -179,8 +179,8 @@
                             </div>
                             <div class="edit-state-action">
                                 <a href="javascript:void(0)" class="btn-link"
-                                   :class="{disabled: flowIsEmpty}">CANCEL</a>
-                                <a href="javascript:void(0)" class="btn-link" :class="{disabled: flowIsEmpty}">SAVE</a>
+                                   v-show="flowHasChanged">CANCEL</a>
+                                <a href="javascript:void(0)" @click="saveProcessFlow" class="btn-link" v-show="flowHasChanged">SAVE</a>
                             </div>
                         </div>
                         <div id="toolbar"
@@ -354,12 +354,15 @@
                     question: '',
                     answer: '',
                 },
-                flowIsEmpty: true,
+                flowHasChanged: false,
                 process_flow_em: false,
                 is_text_editor_set: false,
                 showErrors: false,
                 files: [],
-                editedQuestionID:0
+                editedQuestionID:0,
+                processFlowText:'',
+                processFlowJson:'',
+                processFlowHTML:'',
             }
         },
         methods: {
@@ -469,7 +472,7 @@
 
             },
             setTextEditor() {
-                let component = this
+                let component = this;
                 var quill = new Quill('#editor', {
                     modules: {
                         toolbar: [
@@ -485,12 +488,15 @@
                     theme: 'snow' // or 'bubble'
                 });
 
+                quill.root.innerHTML = this.campaign.process_flow ;
+
                 component.is_text_editor_set = true;
 
                 quill.on('text-change', () => {
-                    if (quill.getLength() === 1) component.flowIsEmpty = true
-                    else component.flowIsEmpty = false
-                })
+                    this.processFlowHTML = quill.root.innerHTML.trim() ;
+                    component.flowHasChanged = ( quill.root.innerHTML.trim() !== this.campaign.process_flow) ;
+                });
+
             },
             removeDoc(index) {
                 this.files.splice(index, 1)
@@ -503,6 +509,19 @@
             },
             addFiles(e) {
                 this.files = [...this.files, ...e.target.files]
+            },
+            saveProcessFlow(){
+                axios.post('/client/camp/process-flow/update',{
+                    process_flow : this.processFlowHTML,
+                    campaign_id  : this.campaign.id
+                })
+                    .then( (response) => {
+                        this.campaign.process_flow = response.data.process_flow ;
+                        this.flowHasChanged = false;
+                    })
+                    .catch((error)=>{
+
+                    })
             }
         },
         mounted() {

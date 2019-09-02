@@ -93638,10 +93638,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
-//
-//
-//
-//
 
 var dropZone = void 0;
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -93687,13 +93683,27 @@ var dropZone = void 0;
             }
         },
         addLink: function addLink(link) {
-            this.links.push(link);
-            this.newLink = '';
+            var _this = this;
+
+            axios.post('/client/camp/links/create', { url: link, campaign_id: this.campaign.id }).then(function (response) {
+                _this.links.push(response.data);
+                _this.newLink = '';
+            }).catch(function (error) {
+                console.log(error);
+            });
         },
-        editLink: function editLink(index) {
+        editLink: function editLink(index, link_id) {
             var link = document.getElementsByClassName('saved-link')[index].value;
-            this.links[index] = link;
+            this.links[index] = {
+                id: link_id,
+                url: link,
+                campaign_id: this.campaign.id
+            };
             this.editingLink = -1;
+
+            axios.post('/client/camp/links/update', { id: link_id, url: link }).then(function (response) {}).catch(function (error) {
+                console.log(error);
+            });
         },
         editFAQ: function editFAQ(faq) {
             this.editedQuestionID = faq.id;
@@ -93707,7 +93717,7 @@ var dropZone = void 0;
             });
         },
         addFAQ: function addFAQ() {
-            var _this = this;
+            var _this2 = this;
 
             if (this.newFAQ.answer.length < 7) {
                 this.showErrors = true;
@@ -93729,12 +93739,12 @@ var dropZone = void 0;
             axios.post('/client/camp/faqs/add', this.newFAQ).then(function (response) {
                 var addedFAQ = response.data;
                 addedFAQ.beingEdited = false;
-                _this.faqs.push(addedFAQ);
+                _this2.faqs.push(addedFAQ);
 
                 // clear data
-                _this.newFAQ.question = '';
-                _this.newFAQ.answer = '';
-                _this.showErrors = false;
+                _this2.newFAQ.question = '';
+                _this2.newFAQ.answer = '';
+                _this2.showErrors = false;
             }).catch(function (error) {
                 if (_typeof(error.response.data) === 'object') {
                     console.log(error.response.data.errors);
@@ -93744,11 +93754,11 @@ var dropZone = void 0;
             });
         },
         saveFAQ: function saveFAQ(faq) {
-            var _this2 = this;
+            var _this3 = this;
 
             axios.post('/client/camp/faqs/update', faq).then(function (response) {
                 console.log(response.data);
-                _this2.editedQuestionID = 0;
+                _this3.editedQuestionID = 0;
             }).catch(function (error) {
                 if (_typeof(error.response.data) === 'object') {
                     console.log(error.response.data.errors);
@@ -93758,14 +93768,14 @@ var dropZone = void 0;
             });
         },
         deleteFAQ: function deleteFAQ(faq_id) {
-            var _this3 = this;
+            var _this4 = this;
 
             if (!confirm('Are you sure you want to delete this FAQ ?')) {
                 return;
             }
 
             axios.post('/client/camp/faqs/delete', { 'FAQ_ID': faq_id }).then(function (response) {
-                var faqs = _this3.faqs;
+                var faqs = _this4.faqs;
                 $.each(faqs, function (i) {
                     if (faqs[i].id === faq_id) {
                         faqs.splice(i, 1);
@@ -93781,7 +93791,7 @@ var dropZone = void 0;
             });
         },
         setTextEditor: function setTextEditor() {
-            var _this4 = this;
+            var _this5 = this;
 
             var component = this;
             var quill = new Quill('#editor', {
@@ -93798,8 +93808,8 @@ var dropZone = void 0;
             component.is_text_editor_set = true;
 
             quill.on('text-change', function () {
-                _this4.processFlowHTML = quill.root.innerHTML.trim();
-                component.flowHasChanged = quill.root.innerHTML.trim() !== _this4.campaign.process_flow;
+                _this5.processFlowHTML = quill.root.innerHTML.trim();
+                component.flowHasChanged = quill.root.innerHTML.trim() !== _this5.campaign.process_flow;
             });
         },
         removeDoc: function removeDoc(index) {
@@ -93815,14 +93825,14 @@ var dropZone = void 0;
             this.files = [].concat(_toConsumableArray(this.files), _toConsumableArray(e.target.files));
         },
         saveProcessFlow: function saveProcessFlow() {
-            var _this5 = this;
+            var _this6 = this;
 
             axios.post('/client/camp/process-flow/update', {
                 process_flow: this.processFlowHTML,
                 campaign_id: this.campaign.id
             }).then(function (response) {
-                _this5.campaign.process_flow = response.data.process_flow;
-                _this5.flowHasChanged = false;
+                _this6.campaign.process_flow = response.data.process_flow;
+                _this6.flowHasChanged = false;
             }).catch(function (error) {});
         }
     },
@@ -93851,6 +93861,7 @@ var dropZone = void 0;
         });
 
         this.faqs = this.campaign.faqs;
+        this.links = this.campaign.links;
     }
 });
 
@@ -94562,14 +94573,6 @@ var render = function() {
                   }),
                   _vm._v(" "),
                   _c("img", {
-                    staticClass: "dropdown-circle-icon",
-                    attrs: {
-                      src: "/images/icons/arrow_drop_down_circle_gray.svg",
-                      alt: ""
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("img", {
                     directives: [
                       {
                         name: "show",
@@ -94611,7 +94614,7 @@ var render = function() {
                   _vm._l(_vm.links, function(link, index) {
                     return _c(
                       "div",
-                      { key: link + index, staticClass: "faq-question-input" },
+                      { key: index + "G", staticClass: "faq-question-input" },
                       [
                         _c("div", { staticClass: "faq-input" }, [
                           _c("input", {
@@ -94620,21 +94623,12 @@ var render = function() {
                               disabled: index !== _vm.editingLink,
                               type: "text"
                             },
-                            domProps: { value: link }
-                          }),
-                          _vm._v(" "),
-                          _c("img", {
-                            staticClass: "dropdown-circle-icon",
-                            attrs: {
-                              src:
-                                "/images/icons/arrow_drop_down_circle_gray.svg",
-                              alt: ""
-                            }
+                            domProps: { value: link.url }
                           }),
                           _vm._v(" "),
                           _c("img", {
                             attrs: {
-                              src: "/images/icons/edit_icon.svg",
+                              src: "/images/client/campaign_activity/edit.png",
                               alt: "edit icon"
                             },
                             on: {
@@ -94654,7 +94648,7 @@ var render = function() {
                                 attrs: { href: "javascript:;" },
                                 on: {
                                   click: function($event) {
-                                    _vm.editLink(index)
+                                    _vm.editLink(index, link.id)
                                   }
                                 }
                               },
@@ -94942,7 +94936,7 @@ var staticRenderFns = [
     return _c("label", { staticClass: "faq-input-label" }, [
       _c("i", { staticClass: "icon icon-point" }),
       _vm._v(
-        "\n                            List of the links\n                        "
+        "\n                            List of links\n                        "
       )
     ])
   },
@@ -94953,7 +94947,7 @@ var staticRenderFns = [
     return _c("label", { staticClass: "faq-input-label" }, [
       _c("i", { staticClass: "icon icon-point" }),
       _vm._v(
-        "\n                            List of the documents\n                        "
+        "\n                            List of documents\n                        "
       )
     ])
   },

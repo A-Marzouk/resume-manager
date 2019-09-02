@@ -154,6 +154,10 @@ Route::prefix('client')->group(function (){
 // save campaign process flow
     Route::post('/camp/process-flow/update','CampaignsController@saveCampaignProcessFLow')->name('client.camp.process_flow.update');
 
+// campaign links
+    Route::post('/camp/links/create','LinksController@create')->name('client.camp.links.create');
+    Route::post('/camp/links/update','LinksController@update')->name('client.camp.links.update');
+
 });
 
 Route::prefix('freelancer')->group(function (){

@@ -180,7 +180,8 @@
                             <div class="edit-state-action">
                                 <a href="javascript:void(0)" class="btn-link"
                                    v-show="flowHasChanged">CANCEL</a>
-                                <a href="javascript:void(0)" @click="saveProcessFlow" class="btn-link" v-show="flowHasChanged">SAVE</a>
+                                <a href="javascript:void(0)" @click="saveProcessFlow" class="btn-link"
+                                   v-show="flowHasChanged">SAVE</a>
                             </div>
                         </div>
                         <div id="toolbar"
@@ -199,13 +200,11 @@
                         <div class="faq-question-input">
                             <label class="faq-input-label">
                                 <i class="icon icon-point"></i>
-                                List of the links
+                                List of links
                             </label>
                             <div class="faq-input">
                                 <input class="bg-gray-input" type="text" placeholder="Add a link you want to share"
                                        v-model="newLink">
-                                <img src="/images/icons/arrow_drop_down_circle_gray.svg" alt=""
-                                     class="dropdown-circle-icon">
                                 <img src="/images/client/campaign_activity/close_black.png"
                                      v-on:click="newLink = ''" alt="delete icon" v-show="newLink.length > 0"
                                 >
@@ -213,25 +212,22 @@
                             <a v-on:click="addLink(newLink)" class="btn btn-link" :class="{disabled: newLink === ''}"
                                href="javascript:;">ADD LINK</a>
                             <div class="links-saved">
-                                <div class="faq-question-input" :key="link + index" v-for="(link, index) in links">
+                                <div class="faq-question-input" :key="index + 'G'" v-for="(link, index) in links">
                                     <div class="faq-input">
                                         <input :disabled="index !== editingLink" class="saved-link bg-gray-input"
-                                               type="text" :value="link">
-                                        <img src="/images/icons/arrow_drop_down_circle_gray.svg" alt=""
-                                             class="dropdown-circle-icon">
-                                        <img src="/images/icons/edit_icon.svg"
+                                               type="text" :value="link.url">
+                                        <img src="/images/client/campaign_activity/edit.png"
                                              v-on:click="editingLink = index" alt="edit icon"
                                         >
                                     </div>
-                                    <a v-if="editingLink === index" v-on:click="editLink(index)" class="btn btn-link"
-                                       :class="{disabled: links[index] === ''}" href="javascript:;">SAVE LINK</a>
+                                    <a v-if="editingLink === index" v-on:click="editLink(index,link.id)" class="btn btn-link" :class="{disabled: links[index] === ''}" href="javascript:;">SAVE LINK</a>
                                 </div>
                             </div>
                         </div>
                         <div class="faq-question-input">
                             <label class="faq-input-label">
                                 <i class="icon icon-point"></i>
-                                List of the documents
+                                List of documents
                             </label>
                             <div class="faq-input">
                                 <div v-if="files.length === 0"
@@ -359,10 +355,10 @@
                 is_text_editor_set: false,
                 showErrors: false,
                 files: [],
-                editedQuestionID:0,
-                processFlowText:'',
-                processFlowJson:'',
-                processFlowHTML:'',
+                editedQuestionID: 0,
+                processFlowText: '',
+                processFlowJson: '',
+                processFlowHTML: '',
             }
         },
         methods: {
@@ -373,17 +369,37 @@
                 }
             },
             addLink(link) {
-                this.links.push(link)
-                this.newLink = ''
+                axios.post('/client/camp/links/create', {url: link, campaign_id: this.campaign.id})
+                    .then((response) => {
+                        this.links.push(response.data);
+                        this.newLink = '';
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             },
-            editLink(index) {
+            editLink(index,link_id) {
                 let link = document.getElementsByClassName('saved-link')[index].value;
-                this.links[index] = link
-                this.editingLink = -1
+                this.links[index] = {
+                    id  : link_id,
+                    url : link,
+                    campaign_id : this.campaign.id
+                };
+                this.editingLink = -1;
+
+
+                axios.post('/client/camp/links/update', {id:link_id ,url: link})
+                    .then((response) => {
+
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+
             },
             editFAQ(faq) {
-                this.editedQuestionID = faq.id
-                this.currentlyEditedQuestion = faq ;
+                this.editedQuestionID = faq.id;
+                this.currentlyEditedQuestion = faq;
             },
             cancelEditFAQ(faq_id) {
                 return;
@@ -396,15 +412,14 @@
                 if (this.newFAQ.answer.length < 7) {
                     this.showErrors = true;
                     this.errors.answer = true;
-                }else{
+                } else {
                     this.showErrors = false;
                 }
 
                 if (this.newFAQ.question.length < 7) {
                     this.showErrors = true;
                     this.errors.question = true;
-                }
-                else{
+                } else {
                     this.showErrors = false;
                 }
 
@@ -412,8 +427,8 @@
                 if (this.showErrors) return;
 
                 // add FAQ
-                axios.post('/client/camp/faqs/add',this.newFAQ)
-                    .then( (response) => {
+                axios.post('/client/camp/faqs/add', this.newFAQ)
+                    .then((response) => {
                         let addedFAQ = response.data;
                         addedFAQ.beingEdited = false;
                         this.faqs.push(addedFAQ);
@@ -423,27 +438,27 @@
                         this.newFAQ.answer = '';
                         this.showErrors = false;
                     })
-                    .catch( (error) => {
+                    .catch((error) => {
                         if (typeof error.response.data === 'object') {
-                            console.log(error.response.data.errors) ;
+                            console.log(error.response.data.errors);
                         } else {
-                            console.log('Something went wrong. Please try again.') ;
+                            console.log('Something went wrong. Please try again.');
                         }
                     });
 
 
             },
             saveFAQ(faq) {
-                axios.post('/client/camp/faqs/update',faq)
-                    .then( (response) => {
+                axios.post('/client/camp/faqs/update', faq)
+                    .then((response) => {
                         console.log(response.data);
-                        this.editedQuestionID = 0 ;
+                        this.editedQuestionID = 0;
                     })
-                    .catch( (error) => {
+                    .catch((error) => {
                         if (typeof error.response.data === 'object') {
-                            console.log(error.response.data.errors) ;
+                            console.log(error.response.data.errors);
                         } else {
-                            console.log('Something went wrong. Please try again.') ;
+                            console.log('Something went wrong. Please try again.');
                         }
                     });
             },
@@ -452,8 +467,8 @@
                     return;
                 }
 
-                axios.post('/client/camp/faqs/delete',{'FAQ_ID':faq_id})
-                    .then( (response) => {
+                axios.post('/client/camp/faqs/delete', {'FAQ_ID': faq_id})
+                    .then((response) => {
                         let faqs = this.faqs;
                         $.each(faqs, function (i) {
                             if (faqs[i].id === faq_id) {
@@ -462,11 +477,11 @@
                             }
                         });
                     })
-                    .catch( (error) => {
+                    .catch((error) => {
                         if (typeof error.response.data === 'object') {
-                            console.log(error.response.data.errors) ;
+                            console.log(error.response.data.errors);
                         } else {
-                            console.log('Something went wrong. Please try again.') ;
+                            console.log('Something went wrong. Please try again.');
                         }
                     });
 
@@ -488,13 +503,13 @@
                     theme: 'snow' // or 'bubble'
                 });
 
-                quill.root.innerHTML = this.campaign.process_flow ;
+                quill.root.innerHTML = this.campaign.process_flow;
 
                 component.is_text_editor_set = true;
 
                 quill.on('text-change', () => {
-                    this.processFlowHTML = quill.root.innerHTML.trim() ;
-                    component.flowHasChanged = ( quill.root.innerHTML.trim() !== this.campaign.process_flow) ;
+                    this.processFlowHTML = quill.root.innerHTML.trim();
+                    component.flowHasChanged = (quill.root.innerHTML.trim() !== this.campaign.process_flow);
                 });
 
             },
@@ -510,16 +525,16 @@
             addFiles(e) {
                 this.files = [...this.files, ...e.target.files]
             },
-            saveProcessFlow(){
-                axios.post('/client/camp/process-flow/update',{
-                    process_flow : this.processFlowHTML,
-                    campaign_id  : this.campaign.id
+            saveProcessFlow() {
+                axios.post('/client/camp/process-flow/update', {
+                    process_flow: this.processFlowHTML,
+                    campaign_id: this.campaign.id
                 })
-                    .then( (response) => {
-                        this.campaign.process_flow = response.data.process_flow ;
+                    .then((response) => {
+                        this.campaign.process_flow = response.data.process_flow;
                         this.flowHasChanged = false;
                     })
-                    .catch((error)=>{
+                    .catch((error) => {
 
                     })
             }
@@ -547,6 +562,7 @@
             });
 
             this.faqs = this.campaign.faqs;
+            this.links = this.campaign.links;
         },
     }
 </script>

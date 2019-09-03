@@ -14,7 +14,7 @@
                     MY ACTIVE CAMPAIGNS
                 </div>
                 <div class="actionBtn">
-                    <a href="#">
+                    <a href="/client/payments/sub-set-up">
                         <img src="/images/client/plus.png" alt="plus sign">CREATE NEW CAMPAIGN
                     </a>
                 </div>

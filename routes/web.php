@@ -158,6 +158,11 @@ Route::prefix('client')->group(function (){
     Route::post('/camp/links/create','LinksController@create')->name('client.camp.links.create');
     Route::post('/camp/links/update','LinksController@update')->name('client.camp.links.update');
 
+
+// client subsriptions
+    Route::get('/subs/get','SubscriptionsController@getClientSubscription')->name('client.subs.get');
+    Route::post('/subs/create','SubscriptionsController@create')->name('client.subs.create');
+
 });
 
 Route::prefix('freelancer')->group(function (){

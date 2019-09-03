@@ -161,6 +161,7 @@ Route::prefix('client')->group(function (){
 
 // client subsriptions
     Route::get('/subs/get','SubscriptionsController@getClientSubscription')->name('client.subs.get');
+    Route::post('/subs/create','SubscriptionsController@create')->name('client.subs.create');
 
 });
 

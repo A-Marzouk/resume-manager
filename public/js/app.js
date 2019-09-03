@@ -87044,7 +87044,7 @@ var staticRenderFns = [
       { staticClass: "navbar navbar-light fixed-top dashboard_navbar" },
       [
         _c("div", { staticClass: "backBtn" }, [
-          _c("a", { attrs: { href: "#" } }, [
+          _c("a", { attrs: { href: "/client/dashboard/payments" } }, [
             _c("img", {
               attrs: { src: "/images/client/arrow_back.png", alt: "back-icon" }
             })
@@ -95675,7 +95675,7 @@ var staticRenderFns = [
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "actionBtn" }, [
-        _c("a", { attrs: { href: "#" } }, [
+        _c("a", { attrs: { href: "/client/payments/sub-set-up" } }, [
           _c("img", {
             attrs: { src: "/images/client/plus.png", alt: "plus sign" }
           }),
@@ -95780,7 +95780,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96078,13 +96078,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      payments_empty_state: false
-    };
-  }
+    data: function data() {
+        return {
+            payments_empty_state: true,
+            invoices_empty_state: true
+        };
+    }
 });
 
 /***/ }),
@@ -96112,7 +96123,7 @@ var render = function() {
                   expression: "!payments_empty_state"
                 }
               ],
-              attrs: { href: "javascript:void(0)" }
+              attrs: { href: "/client/payments/sub-set-up" }
             },
             [
               _c("img", {
@@ -96122,14 +96133,14 @@ var render = function() {
                 }
               }),
               _vm._v(
-                "\n                      ADD NEW SUBSCRIPTION PLAN\n                  "
+                "\n                    ADD NEW SUBSCRIPTION PLAN\n                "
               )
             ]
           ),
           _vm._v(" "),
           _c("span", [
             _vm._v(
-              "\n                      SUBSCRIPTION RECORD\n                  "
+              "\n                    SUBSCRIPTION RECORD\n                "
             )
           ])
         ])
@@ -96148,13 +96159,7 @@ var render = function() {
           ],
           staticClass: "subs-empty-state"
         },
-        [
-          _c("div", { staticClass: "subs-e-s-text" }, [
-            _vm._v("\n        There are no subs yet.\n      ")
-          ]),
-          _vm._v(" "),
-          _vm._m(1)
-        ]
+        [_vm._m(1), _vm._v(" "), _vm._m(2)]
       ),
       _vm._v(" "),
       _c(
@@ -96170,16 +96175,12 @@ var render = function() {
           ],
           staticClass: "subs-list"
         },
-        [_vm._m(2)]
+        [_vm._m(3)]
       )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "invoices" }, [
-      _vm._m(3),
-      _vm._v(" "),
       _vm._m(4),
-      _vm._v(" "),
-      _vm._m(5),
       _vm._v(" "),
       _c(
         "div",
@@ -96188,16 +96189,42 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: _vm.payments_empty_state,
-              expression: "payments_empty_state"
+              value: !_vm.invoices_empty_state,
+              expression: "!invoices_empty_state"
+            }
+          ]
+        },
+        [_vm._m(5), _vm._v(" "), _vm._m(6)]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.invoices_empty_state,
+              expression: "invoices_empty_state"
             }
           ],
           staticClass: "subs-empty-state"
         },
         [
-          _c("div", { staticClass: "subs-e-s-text" }, [
-            _vm._v("\n          There are no invoices yet.\n        ")
-          ])
+          _vm._m(7),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "subs-e-s-text",
+              staticStyle: { "padding-bottom": "70px" }
+            },
+            [
+              _vm._v(
+                "\n                There are no invoices yet.\n            "
+              )
+            ]
+          )
         ]
       )
     ])
@@ -96214,7 +96241,7 @@ var staticRenderFns = [
       }),
       _vm._v(" "),
       _c("span", [
-        _vm._v("\n                      YOUR SUBSCRIPTIONS\n                  ")
+        _vm._v("\n                    YOUR SUBSCRIPTIONS\n                ")
       ])
     ])
   },
@@ -96222,13 +96249,34 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "subs-e-s-action" }, [
-      _c("a", { attrs: { href: "javascript:void(0)" } }, [
-        _vm._v(
-          "\n                      SET UP YOUR SUBSCRIPTION PLAN\n                  "
-        )
-      ])
+    return _c("div", [
+      _c("img", {
+        attrs: {
+          src:
+            "/images/client/payments/Illustrations_065_Subscr_empty_state.svg",
+          alt: "subs empty state"
+        }
+      })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "subs-e-s-action",
+        staticStyle: { "padding-top": "50px" }
+      },
+      [
+        _c("a", { attrs: { href: "/client/payments/sub-set-up" } }, [
+          _vm._v(
+            "\n                    SET UP YOUR SUBSCRIPTION PLAN\n                "
+          )
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -96251,11 +96299,15 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v("\n                60 HOURS\n              ")
+              _vm._v(
+                "\n                                60 HOURS\n                            "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v("\n                per week\n              ")
+              _vm._v(
+                "\n                                per week\n                            "
+              )
             ])
           ])
         ]),
@@ -96270,11 +96322,15 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v("\n                $ 600\n              ")
+              _vm._v(
+                "\n                                $ 600\n                            "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v("\n                weekly amount\n              ")
+              _vm._v(
+                "\n                                weekly amount\n                            "
+              )
             ])
           ])
         ]),
@@ -96286,11 +96342,15 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v("\n                14 WEEKS\n              ")
+              _vm._v(
+                "\n                                14 WEEKS\n                            "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v("\n                10 used / 4 left\n              ")
+              _vm._v(
+                "\n                                10 used / 4 left\n                            "
+              )
             ])
           ])
         ]),
@@ -96305,12 +96365,14 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v("\n                4.04.19 - 4.01.20\n              ")
+              _vm._v(
+                "\n                                4.04.19 - 4.01.20\n                            "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
               _vm._v(
-                "\n                start date - finish date\n              "
+                "\n                                start date - finish date\n                            "
               )
             ])
           ])
@@ -96326,11 +96388,15 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v("\n                4 AGENTS\n              ")
+              _vm._v(
+                "\n                                4 AGENTS\n                            "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v("\n                working on campaign\n              ")
+              _vm._v(
+                "\n                                working on campaign\n                            "
+              )
             ])
           ])
         ]),
@@ -96342,11 +96408,15 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v("\n                $ 10\n              ")
+              _vm._v(
+                "\n                                $ 10\n                            "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v("\n                agent's hourly rate\n              ")
+              _vm._v(
+                "\n                                agent's hourly rate\n                            "
+              )
             ])
           ])
         ]),
@@ -96361,11 +96431,15 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "right" }, [
             _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v("\n                CONOR MARJORAM\n              ")
+              _vm._v(
+                "\n                                CONOR MARJORAM\n                            "
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v("\n                your manager\n              ")
+              _vm._v(
+                "\n                                your manager\n                            "
+              )
             ])
           ])
         ])
@@ -96374,7 +96448,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "sub-action" }, [
         _c("a", { attrs: { href: "/client/payments/sub-update" } }, [
           _vm._v(
-            "\n                          UPDATE SUBSCRIPTION PLAN\n                      "
+            "\n                        UPDATE SUBSCRIPTION PLAN\n                    "
           )
         ])
       ])
@@ -96391,7 +96465,7 @@ var staticRenderFns = [
           alt: "invoices icon"
         }
       }),
-      _vm._v("\n              YOUR INVOICES\n          ")
+      _vm._v("\n            YOUR INVOICES\n        ")
     ])
   },
   function() {
@@ -96442,19 +96516,25 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-number" }, [
-                _vm._v("\n                  059-044-038\n                ")
+                _vm._v(
+                  "\n                                059-044-038\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-service" }, [
-                _vm._v("\n                  Other services\n                ")
+                _vm._v(
+                  "\n                                Other services\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount" }, [
-                _vm._v("\n                  $ 3,500\n                ")
+                _vm._v(
+                  "\n                                $ 3,500\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
@@ -96503,19 +96583,25 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-number" }, [
-                _vm._v("\n                  059-044-038\n                ")
+                _vm._v(
+                  "\n                                059-044-038\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-service" }, [
-                _vm._v("\n                  Other services\n                ")
+                _vm._v(
+                  "\n                                Other services\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount" }, [
-                _vm._v("\n                  $ 3,500\n                ")
+                _vm._v(
+                  "\n                                $ 3,500\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
@@ -96562,19 +96648,25 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-number" }, [
-                _vm._v("\n                  059-044-038\n                ")
+                _vm._v(
+                  "\n                                059-044-038\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-service" }, [
-                _vm._v("\n                  Other services\n                ")
+                _vm._v(
+                  "\n                                Other services\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount" }, [
-                _vm._v("\n                  $ 3,500\n                ")
+                _vm._v(
+                  "\n                                $ 3,500\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
@@ -96621,19 +96713,25 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-number" }, [
-                _vm._v("\n                  059-044-038\n                ")
+                _vm._v(
+                  "\n                                059-044-038\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-service" }, [
-                _vm._v("\n                  Other services\n                ")
+                _vm._v(
+                  "\n                                Other services\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
             _c("td", [
               _c("div", { staticClass: "invoice-amount" }, [
-                _vm._v("\n                  $ 3,500\n                ")
+                _vm._v(
+                  "\n                                $ 3,500\n                            "
+                )
               ])
             ]),
             _vm._v(" "),
@@ -96664,8 +96762,22 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "invoices-export-btn" }, [
       _c("a", { attrs: { href: "#" } }, [
-        _vm._v("\n                  EXPORT ALL INVOICES\n              ")
+        _vm._v("\n                    EXPORT ALL INVOICES\n                ")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("img", {
+        attrs: {
+          src:
+            "/images/client/payments/Illustrations_065_Invoice_empty_state.svg",
+          alt: "invoices empty state"
+        }
+      })
     ])
   }
 ]

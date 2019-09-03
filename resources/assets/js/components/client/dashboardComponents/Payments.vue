@@ -9,7 +9,7 @@
                     </span>
                 </div>
                 <div class="right">
-                    <a href="/client/payments/sub-set-up" v-show="!payments_empty_state">
+                    <a href="/client/payments/sub-set-up" v-show="subs.length > 0">
                         <img src="/images/client/payments/add.png" alt="add icon">
                         ADD NEW SUBSCRIPTION PLAN
                     </a>
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="subs-empty-state"
-                 v-show="payments_empty_state">
+                 v-show="subs.length < 1">
                 <div>
                     <img src="/images/client/payments/Illustrations_065_Subscr_empty_state.svg" alt="subs empty state">
                 </div>
@@ -29,9 +29,8 @@
                     </a>
                 </div>
             </div>
-            <div class="subs-list"
-                 v-show="!payments_empty_state">
-                <div class="sub-item">
+            <div class="subs-list" v-show="subs.length > 0">
+                <div v-for="(sub,index) in subs" :key="index" class="sub-item">
                     <div class="next-billing-date">
                         <span class="date"> 22.04.19 </span> <span style='opacity: 0.7;'>next billing date</span>
                     </div>
@@ -40,7 +39,7 @@
                             <img src="/images/client/payments/time.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    60 HOURS
+                                   {{sub.hours_per_week}} HOURS
                                 </div>
                                 <div class="sub-info-box-note">
                                     per week
@@ -51,7 +50,7 @@
                             <img src="/images/client/payments/amount.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    $ 600
+                                    $ {{sub.amount_paid}}
                                 </div>
                                 <div class="sub-info-box-note">
                                     weekly amount
@@ -62,18 +61,18 @@
                             <img src="/images/client/payments/week.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    14 WEEKS
+                                    {{sub.origianl_duration_in_weeks}} WEEKS
                                 </div>
                                 <div class="sub-info-box-note">
-                                    10 used / 4 left
+                                    {{sub.duration_in_weeks}} used / {{sub.origianl_duration_in_weeks - sub.duration_in_weeks}} left
                                 </div>
                             </div>
                         </div>
                         <div class="sub-info-box">
                             <img src="/images/client/payments/period.png" alt="time icon">
                             <div class="right">
-                                <div class="sub-info-box-heading">
-                                    4.04.19 - 4.01.20
+                                <div class="sub-info-box-heading" style="font-size:12px;">
+                                    {{sub.start_date}} - {{sub.end_date}}
                                 </div>
                                 <div class="sub-info-box-note">
                                     start date - finish date
@@ -84,7 +83,7 @@
                             <img src="/images/client/payments/number_agents.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    4 AGENTS
+                                    {{sub.campaign.agents.length}} AGENTS
                                 </div>
                                 <div class="sub-info-box-note">
                                     working on campaign
@@ -95,7 +94,7 @@
                             <img src="/images/client/payments/rate.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    $ 10
+                                    $  {{sub.hourly_rate}}
                                 </div>
                                 <div class="sub-info-box-note">
                                     agent's hourly rate
@@ -106,7 +105,7 @@
                             <img src="/images/client/payments/manager.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    CONOR MARJORAM
+                                    {{sub.manager.user.user_data.first_name}}  {{sub.manager.user.user_data.last_name}}
                                 </div>
                                 <div class="sub-info-box-note">
                                     your manager
@@ -299,9 +298,24 @@
     export default {
         data() {
             return {
-                payments_empty_state: true,
+                subs:[],
+                invoices:[],
                 invoices_empty_state: true
             }
+        },
+        methods:{
+            getClientSubs(){
+                axios.get('/client/subs/get')
+                    .then((response) => {
+                        this.subs    = response.data ;
+                    })
+                    .catch( (error) => {
+
+                    });
+            }
+        },
+        mounted(){
+            this.getClientSubs();
         }
     }
 </script>

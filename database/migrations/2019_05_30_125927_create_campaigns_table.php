@@ -21,13 +21,9 @@ class CreateCampaignsTable extends Migration
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->longText('process_flow')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
             $table->integer('status');
             $table->integer('client_id')->unsigned()->index();
-
             $table->foreign('client_id')->references('id')->on('clients');
-
             $table->timestamps();
         });
 

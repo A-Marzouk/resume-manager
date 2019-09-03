@@ -15,7 +15,7 @@ class Campaign extends Model
 {
     protected $table = 'campaigns';
     protected $fillable = [
-        'client_id','title','description','start_date','end_date','status','process_flow'
+        'client_id','title','description','status','process_flow'
     ];
 
     public function members(){

@@ -95780,7 +95780,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -96087,14 +96087,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            payments_empty_state: true,
+            subs: [],
+            invoices: [],
             invoices_empty_state: true
         };
+    },
+
+    methods: {
+        getClientSubs: function getClientSubs() {
+            var _this = this;
+
+            axios.get('/client/subs/get').then(function (response) {
+                _this.subs = response.data;
+            }).catch(function (error) {});
+        }
+    },
+    mounted: function mounted() {
+        this.getClientSubs();
     }
 });
 
@@ -96119,8 +96132,8 @@ var render = function() {
                 {
                   name: "show",
                   rawName: "v-show",
-                  value: !_vm.payments_empty_state,
-                  expression: "!payments_empty_state"
+                  value: _vm.subs.length > 0,
+                  expression: "subs.length > 0"
                 }
               ],
               attrs: { href: "/client/payments/sub-set-up" }
@@ -96153,8 +96166,8 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: _vm.payments_empty_state,
-              expression: "payments_empty_state"
+              value: _vm.subs.length < 1,
+              expression: "subs.length < 1"
             }
           ],
           staticClass: "subs-empty-state"
@@ -96169,18 +96182,218 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: !_vm.payments_empty_state,
-              expression: "!payments_empty_state"
+              value: _vm.subs.length > 0,
+              expression: "subs.length > 0"
             }
           ],
           staticClass: "subs-list"
         },
-        [_vm._m(3)]
+        _vm._l(_vm.subs, function(sub, index) {
+          return _c("div", { key: index, staticClass: "sub-item" }, [
+            _vm._m(3, true),
+            _vm._v(" "),
+            _c("div", { staticClass: "sub-info" }, [
+              _c("div", { staticClass: "sub-info-box" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/payments/time.png",
+                    alt: "time icon"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "right" }, [
+                  _c("div", { staticClass: "sub-info-box-heading" }, [
+                    _vm._v(
+                      "\n                               " +
+                        _vm._s(sub.hours_per_week) +
+                        " HOURS\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "sub-info-box-note" }, [
+                    _vm._v(
+                      "\n                                per week\n                            "
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "sub-info-box" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/payments/amount.png",
+                    alt: "time icon"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "right" }, [
+                  _c("div", { staticClass: "sub-info-box-heading" }, [
+                    _vm._v(
+                      "\n                                $ " +
+                        _vm._s(sub.amount_paid) +
+                        "\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "sub-info-box-note" }, [
+                    _vm._v(
+                      "\n                                weekly amount\n                            "
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "sub-info-box" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/payments/week.png",
+                    alt: "time icon"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "right" }, [
+                  _c("div", { staticClass: "sub-info-box-heading" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(sub.origianl_duration_in_weeks) +
+                        " WEEKS\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "sub-info-box-note" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(sub.duration_in_weeks) +
+                        " used / " +
+                        _vm._s(
+                          sub.origianl_duration_in_weeks - sub.duration_in_weeks
+                        ) +
+                        " left\n                            "
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "sub-info-box" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/payments/period.png",
+                    alt: "time icon"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "right" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "sub-info-box-heading",
+                      staticStyle: { "font-size": "12px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(sub.start_date) +
+                          " - " +
+                          _vm._s(sub.end_date) +
+                          "\n                            "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "sub-info-box-note" }, [
+                    _vm._v(
+                      "\n                                start date - finish date\n                            "
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "sub-info-box" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/payments/number_agents.png",
+                    alt: "time icon"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "right" }, [
+                  _c("div", { staticClass: "sub-info-box-heading" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(sub.campaign.agents.length) +
+                        " AGENTS\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "sub-info-box-note" }, [
+                    _vm._v(
+                      "\n                                working on campaign\n                            "
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "sub-info-box" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/payments/rate.png",
+                    alt: "time icon"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "right" }, [
+                  _c("div", { staticClass: "sub-info-box-heading" }, [
+                    _vm._v(
+                      "\n                                $  " +
+                        _vm._s(sub.hourly_rate) +
+                        "\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "sub-info-box-note" }, [
+                    _vm._v(
+                      "\n                                agent's hourly rate\n                            "
+                    )
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "sub-info-box" }, [
+                _c("img", {
+                  attrs: {
+                    src: "/images/client/payments/manager.png",
+                    alt: "time icon"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "right" }, [
+                  _c("div", { staticClass: "sub-info-box-heading" }, [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(sub.manager.user.user_data.first_name) +
+                        "  " +
+                        _vm._s(sub.manager.user.user_data.last_name) +
+                        "\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "sub-info-box-note" }, [
+                    _vm._v(
+                      "\n                                your manager\n                            "
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(4, true)
+          ])
+        })
       )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "invoices" }, [
-      _vm._m(4),
+      _vm._m(5),
       _vm._v(" "),
       _c(
         "div",
@@ -96194,7 +96407,7 @@ var render = function() {
             }
           ]
         },
-        [_vm._m(5), _vm._v(" "), _vm._m(6)]
+        [_vm._m(6), _vm._v(" "), _vm._m(7)]
       ),
       _vm._v(" "),
       _c(
@@ -96211,7 +96424,7 @@ var render = function() {
           staticClass: "subs-empty-state"
         },
         [
-          _vm._m(7),
+          _vm._m(8),
           _vm._v(" "),
           _c(
             "div",
@@ -96282,175 +96495,23 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "sub-item" }, [
-      _c("div", { staticClass: "next-billing-date" }, [
-        _c("span", { staticClass: "date" }, [_vm._v(" 22.04.19 ")]),
-        _vm._v(" "),
-        _c("span", { staticStyle: { opacity: "0.7" } }, [
-          _vm._v("next billing date")
-        ])
-      ]),
+    return _c("div", { staticClass: "next-billing-date" }, [
+      _c("span", { staticClass: "date" }, [_vm._v(" 22.04.19 ")]),
       _vm._v(" "),
-      _c("div", { staticClass: "sub-info" }, [
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: { src: "/images/client/payments/time.png", alt: "time icon" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                60 HOURS\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                per week\n                            "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/images/client/payments/amount.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                $ 600\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                weekly amount\n                            "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: { src: "/images/client/payments/week.png", alt: "time icon" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                14 WEEKS\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                10 used / 4 left\n                            "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/images/client/payments/period.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                4.04.19 - 4.01.20\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                start date - finish date\n                            "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/images/client/payments/number_agents.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                4 AGENTS\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                working on campaign\n                            "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: { src: "/images/client/payments/rate.png", alt: "time icon" }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                $ 10\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                agent's hourly rate\n                            "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "sub-info-box" }, [
-          _c("img", {
-            attrs: {
-              src: "/images/client/payments/manager.png",
-              alt: "time icon"
-            }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "right" }, [
-            _c("div", { staticClass: "sub-info-box-heading" }, [
-              _vm._v(
-                "\n                                CONOR MARJORAM\n                            "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "sub-info-box-note" }, [
-              _vm._v(
-                "\n                                your manager\n                            "
-              )
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "sub-action" }, [
-        _c("a", { attrs: { href: "/client/payments/sub-update" } }, [
-          _vm._v(
-            "\n                        UPDATE SUBSCRIPTION PLAN\n                    "
-          )
-        ])
+      _c("span", { staticStyle: { opacity: "0.7" } }, [
+        _vm._v("next billing date")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "sub-action" }, [
+      _c("a", { attrs: { href: "/client/payments/sub-update" } }, [
+        _vm._v(
+          "\n                        UPDATE SUBSCRIPTION PLAN\n                    "
+        )
       ])
     ])
   },

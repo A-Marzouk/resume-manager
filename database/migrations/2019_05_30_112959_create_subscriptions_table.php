@@ -18,22 +18,29 @@ class CreateSubscriptionsTable extends Migration
 
             $table->increments('id');
 
-            $table->decimal('amount_paid', 16, 4)->nullable();
-            $table->decimal('hours_per_week', 3, 2)->unsigned()->nullable();
+            $table->decimal('amount_paid', 16, 2)->nullable();
+            $table->decimal('hours_per_week', 16, 0)->unsigned()->nullable();
+            $table->decimal('hourly_rate', 16, 2)->unsigned()->nullable();
             $table->tinyInteger('duration_in_weeks')->unsigned()->index();
             $table->tinyInteger('original_duration_in_weeks')->unsigned()->index();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->timestamp('canceled_at')->nullable();
             $table->timestamp('finished_at')->nullable();
             $table->string('booking_email')->nullable();
             $table->string('payment_gateway_subscription_id')->nullable();
-            $table->integer('invoice_id')->unsigned()->index();
-            $table->integer('client_id')->unsigned()->index();
 
-            $table->foreign('invoice_id')->references('id')->on('invoices');
+
+            $table->integer('client_id')->unsigned()->index();
+            $table->integer('agent_id')->unsigned()->index();
+            $table->integer('campaign_id')->unsigned()->index();
+
+            $table->foreign('agent_id')->references('id')->on('agents');
             $table->foreign('client_id')->references('id')->on('clients');
 
             $table->timestamps();
         });
+
     }
 
     /**

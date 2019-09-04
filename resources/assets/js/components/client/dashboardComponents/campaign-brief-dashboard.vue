@@ -92,10 +92,10 @@
         },
         methods: {
             setDefaultCampaignStatus(){
-                if(this.campaign.status === 1){
+                if(this.campaign.status == 1){
                     this.campaignStatus = 'ACTIVE' ;
                 }
-                else if(this.campaign.status === 2){
+                else if(this.campaign.status == 2){
                     this.campaignStatus = 'PAUSED' ;
 
                 }

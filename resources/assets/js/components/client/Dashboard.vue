@@ -55,7 +55,7 @@
                                 Campaign manager
                             </div>
                         </router-link>
-                        <div class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
+                        <div v-show="false" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('chats')" alt="icon">
                             </div>
@@ -71,7 +71,7 @@
                                 Payments
                             </div>
                         </router-link>
-                        <div class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
+                        <div v-show="false"  class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('agents_database')"  alt="icon">
                             </div>
@@ -108,7 +108,7 @@
                         Campaign manager
                     </div>
                 </router-link>
-                <div class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
+                <div v-show="false" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('chats')" alt="icon">
                     </div>
@@ -124,7 +124,7 @@
                         Payments
                     </div>
                 </router-link>
-                <div class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
+                <div v-show="false"  class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('agents_database')"  alt="icon">
                     </div>

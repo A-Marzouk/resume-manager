@@ -97,8 +97,7 @@ Route::prefix('client')->group(function (){
     Route::get('/payments/sub-set-up','ClientsController@viewClientSubSetUp')->name('payment.sub');
     // privacy agreement route
     Route::get('/account/privacy-agreement','ClientsController@viewClientPrivacyAgreement')->name('privacy.agreement');
-    // update subscription plan route
-    Route::get('/payments/sub-update','ClientsController@viewUpdateSubPlan')->name('privacy.agreement');
+
     //campaign agents
     Route::get('/payments/campaign-agents','ClientsController@viewClientCampaignAgents')->name('campaign.agents');
     //////////////////
@@ -162,6 +161,10 @@ Route::prefix('client')->group(function (){
 // client subsriptions
     Route::get('/subs/get','SubscriptionsController@getClientSubscription')->name('client.subs.get');
     Route::post('/subs/create','SubscriptionsController@create')->name('client.subs.create');
+// update subscription plan route
+    Route::get('/subs/update/{sub_id}','SubscriptionsController@showUpdatePage')->name('client.subs.show.update');
+    Route::post('/subs/update','SubscriptionsController@update')->name('client.subs.update');
+
 
 });
 

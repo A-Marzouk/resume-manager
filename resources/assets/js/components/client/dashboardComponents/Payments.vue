@@ -114,7 +114,7 @@
                         </div>
                     </div>
                     <div class="sub-action">
-                        <a href="/client/payments/sub-update">
+                        <a :href="'/client/subs/update/' + sub.id">
                             UPDATE SUBSCRIPTION PLAN
                         </a>
                     </div>

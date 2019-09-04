@@ -13,7 +13,7 @@
             <div class="main-grid">
                 <div class="header-text">
                     <img src="/images/client/plan.png" alt="" class="icon-margin small-image">
-                    CREATE SUBSCRIPTION PLAN
+                    FINISH SUBSCRIPTION PLAN
                 </div>
                 <!--title-->
                 <hr/>
@@ -76,7 +76,7 @@
 
                 <hr/>
                 <div style="justify-content: flex-end" class="d-flex sub-action pt-5">
-                    <a href="javascript:void(0)" class="btn btn-primary d-flex justify-content-center align-items-center" @click="finishPayment">
+                    <a href="/client/dashboard/payments" class="btn btn-primary d-flex justify-content-center align-items-center">
                         FINISH
                     </a>
                 </div>

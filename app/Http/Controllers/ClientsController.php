@@ -35,9 +35,6 @@ class ClientsController extends Controller
         return view('client.my_account.service_agreement') ;
     }
 
-    public function viewUpdateSubPlan(){
-        return view('client.payments.update_sub_plan') ;
-    }
 
     public function viewClientPrivacyAgreement(){
         return view('client.my_account.privacy_agreement') ;

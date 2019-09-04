@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="updateSubPlan">
-        <update-sub-plan></update-sub-plan>
+        <update-sub-plan :subscription="{{json_encode($subscription)}}"></update-sub-plan>
     </div>
 
 @endsection

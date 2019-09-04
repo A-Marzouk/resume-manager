@@ -36,7 +36,9 @@ class SubscriptionsController extends Controller
             'end_date' => $end_date,
             'original_duration_in_weeks' => $request->duration_in_weeks,
             'hourly_rate' => $request->amount_paid/$request->hours_per_week,
-            'campaign_id' => $campaign->id
+            'campaign_id' => $campaign->id,
+            'client_id' => currentClient()->id,
+            'agent_id' => 1
         ]);
 
 

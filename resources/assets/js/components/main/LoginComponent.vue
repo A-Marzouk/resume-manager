@@ -75,7 +75,7 @@
           </div>
     </form>
     <div class="pt-3 no-decoration d-flex justify-content-center base-text align-items-center">
-      Don't have an account ? <a href="#" class="ml-2 base-link"> REGISTER </a>
+      Don't have an account ? <a href="/client/register" class="ml-2 base-link"> REGISTER </a>
     </div>
   </div>
 </template>

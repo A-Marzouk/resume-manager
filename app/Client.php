@@ -60,6 +60,11 @@ class Client extends Model
         return $this->hasMany(CampaignBrief::class);
     }
 
+    public function campaigns()
+    {
+        return $this->hasMany(Campaign::class);
+    }
+
     public function invoices()
     {
         return $this->hasMany(Invoice::class);

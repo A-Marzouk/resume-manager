@@ -55,7 +55,7 @@
                                 Campaign manager
                             </div>
                         </router-link>
-                        <div class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
+                        <div v-show="false" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('chats')" alt="icon">
                             </div>
@@ -71,7 +71,7 @@
                                 Payments
                             </div>
                         </router-link>
-                        <div class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
+                        <div v-show="false"  class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('agents_database')"  alt="icon">
                             </div>
@@ -108,7 +108,7 @@
                         Campaign manager
                     </div>
                 </router-link>
-                <div class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
+                <div v-show="false" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('chats')" alt="icon">
                     </div>
@@ -124,7 +124,7 @@
                         Payments
                     </div>
                 </router-link>
-                <div class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
+                <div v-show="false"  class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('agents_database')"  alt="icon">
                     </div>
@@ -142,8 +142,17 @@
                 </router-link>
             </div>
             <div class="content-block">
+                <div class="notificationBar" id="notificationBar" style="display:none; position: fixed;width: inherit;">
+                    <div>
+                        {{notificationMessage}}
+                    </div>
+                    <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                        x
+                    </a>
+                </div>
+
                 <keep-alive>
-                    <router-view></router-view>
+                    <router-view  @showPositiveNotification="showNotification" ></router-view>
                 </keep-alive>
             </div>
         </div>
@@ -252,6 +261,7 @@
         data(){
             return{
                 activeTab: 'campaign-manager',
+                notificationMessage: 'Successfully updated campaign '
             }
         },
         methods:{
@@ -271,6 +281,16 @@
                 if(!tabs.includes(this.activeTab)){
                     this.activeTab = 'campaign-manager';
                 }
+            },
+            showNotification(notificationMessage){
+                this.notificationMessage = notificationMessage ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
             }
         },
         mounted(){

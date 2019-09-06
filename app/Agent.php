@@ -26,6 +26,12 @@ class Agent extends Model
         return $this->hasMany(Recording::class);
     }
 
+
+    public function logs()
+    {
+        return $this->hasMany(ActivityLog::class);
+    }
+
     public function businessUser()
     {
         return $this->belongsTo(User::class);
@@ -35,4 +41,11 @@ class Agent extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function campaigns()
+    {
+        return $this->belongsToMany(Campaign::class);
+    }
+
+
 }

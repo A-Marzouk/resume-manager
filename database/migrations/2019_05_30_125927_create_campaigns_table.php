@@ -20,26 +20,24 @@ class CreateCampaignsTable extends Migration
 
             $table->string('title')->nullable();
             $table->text('description')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->longText('process_flow')->nullable();
             $table->integer('status');
             $table->integer('client_id')->unsigned()->index();
-
             $table->foreign('client_id')->references('id')->on('clients');
-
             $table->timestamps();
         });
 
-        Schema::create('campaign_user', function (Blueprint $table) {
+        Schema::create('agent_campaign', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            $table->integer('user_id')->unsigned()->index();
+            $table->increments('id');
+
+            $table->integer('agent_id')->unsigned()->index();
             $table->integer('campaign_id')->unsigned()->index();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('agent_id')->references('id')->on('agents');
             $table->foreign('campaign_id')->references('id')->on('campaigns');
 
-            $table->primary(['user_id', 'campaign_id']);
 
             $table->timestamps();
         });

@@ -22,36 +22,35 @@ class FAQsController extends Controller
 
     public function addFAQ(Request $request){
 
-        // current campaign
-        $currentCampaign = [];
-
         $request->validate([
-            'title' => 'max:190|required',
             'question' => 'max:1500|required',
             'answer' => 'max:1500',
-            'approved' => 'max:190',
         ]);
 
-        if(isset($request->id)){
-            // edit
-            $FAQ = EducationHistory::where('id',$request->id)->first();
-        }else{
-            // add
-            $FAQ = new FAQ;
-            $FAQ->campaign_id = $currentCampaign->id;
-        }
+        $faq = FAQ::create($request->toArray());
 
-        $FAQ->title    = $request->title;
-        $FAQ->question = $request->question;
-        if(isset($request->answer)){
-            $FAQ->answer   = $request->answer;
-        }
+        return $faq;
 
-        $FAQ->save();
+    }
+
+    public function updateFAQ(Request $request){
+
+        $request->validate([
+            'question' => 'max:1500|required',
+            'answer' => 'max:1500',
+        ]);
 
 
-        return ['id'=>$FAQ->id];
+        $faq = FAQ::where('id',$request->id)->first();
 
+
+
+        $faq->update([
+            'question' => $request->question ,
+            'answer' => $request->answer ,
+        ]);
+
+        return $faq ;
     }
 
     public function deleteFAQ(Request $request){

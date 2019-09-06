@@ -176,7 +176,9 @@
                     },
                 ],
 
-                user: {},
+                user: {
+                    client:{}
+                },
             }
         },
         methods: {

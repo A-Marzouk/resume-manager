@@ -13,13 +13,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActivityLog extends Model
 {
-    protected $table = 'logs';
+    protected $table = 'activity_logs';
     protected $fillable = [
-        'log_text','campaign_id','user_id'
+        'log_text','status','campaign_id','agent_id'
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function agent(){
+        return $this->belongsTo(Agent::class);
+    }
+
+
+    public function campaign(){
+        return $this->belongsTo(Campaign::class);
     }
 
 }

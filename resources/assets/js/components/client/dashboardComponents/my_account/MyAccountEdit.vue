@@ -17,7 +17,7 @@
                     x
                 </a>
             </div>
-            <div class="account-info-edit dashboard-box">
+            <div class="account-info-edit dashboard-box" style="margin-top: 16px;">
                 <div class="account-info-edit-heading dashboard-box-heading">
                     <div class="left">
                         <img src="/images/client/my_account/info_40px.png" alt="info icon">
@@ -44,7 +44,7 @@
                                        v-model="user.client.agency">
                                 <img src="/images/client/campaign_activity/close_black.png"
                                      alt="delete icon"
-                                     v-show="user.client.agency.length > 0"
+                                     v-show="user.client.agency"
                                      @click="clearInput('agency')"
                                 >
                             </div>
@@ -64,7 +64,7 @@
                                        v-model="user.client.contact"
                                        placeholder="Contact person">
                                 <img src="/images/client/campaign_activity/close_black.png" alt="delete icon"
-                                     v-show="user.client.contact.length > 0"
+                                     v-show="user.client.contact"
                                      @click="clearInput('contact')"
                                 >
                             </div>
@@ -82,7 +82,7 @@
                                        v-model="user.client.agency_phone"
                                        placeholder="Contact phone">
                                 <img src="/images/client/campaign_activity/close_black.png" alt="delete icon"
-                                     v-show="user.client.agency_phone.length > 0"
+                                     v-show="user.client.agency_phone"
                                      @click="clearInput('agency_phone')"
                                 >
                             </div>
@@ -217,7 +217,7 @@
                                        placeholder="Email of accounts dept">
                                 <img src="/images/client/campaign_activity/close_black.png"
                                      @click="clearInput('department_email')"
-                                     alt="delete icon" v-show="user.client.department_email.length > 0">
+                                     alt="delete icon" v-show="user.client.department_email">
                             </div>
                             <div class="error" v-if="showErrors && errors.department_email">
                                 {{errors.department_email}}
@@ -240,7 +240,7 @@
                             >
                             <img src="/images/client/campaign_activity/close_black.png"
                                  @click="clearInput('website')" alt="delete icon"
-                                 v-show="user.client.website.length > 0">
+                                 v-show="user.client.website">
                         </div>
                         <div class="error" v-if="showErrors && errors.website">
                             {{errors.website}}
@@ -258,7 +258,7 @@
                             >
                             <img src="/images/client/campaign_activity/close_black.png"
                                  @click="clearInput('skype_id')" alt="delete icon"
-                                 v-show="user.client.skype_id.length > 0">
+                                 v-show="user.client.skype_id">
                         </div>
                         <div class="error" v-if="showErrors && errors.skype_id">
                             {{errors.skype_id}}
@@ -275,7 +275,7 @@
                                    v-model="user.client.second_contact">
                             <img src="/images/client/campaign_activity/close_black.png"
                                  @click="clearInput('second_contact')" alt="delete icon"
-                                 v-show="user.client.second_contact.length > 0"
+                                 v-show="user.client.second_contact"
                             >
                         </div>
                         <div class="error" v-if="showErrors && errors.second_contact">
@@ -293,7 +293,7 @@
                                    v-model="user.client.second_contact_phone">
                             <img src="/images/client/campaign_activity/close_black.png"
                                  @click="clearInput('second_contact_phone')" alt="delete icon"
-                                 v-show="user.client.second_contact_phone.length > 0"
+                                 v-show="user.client.second_contact_phone"
                             >
                         </div>
                         <div class="error" v-if="showErrors && errors.second_contact_phone">
@@ -345,7 +345,7 @@
                                        v-model="password">
                                 <img src="/images/client/campaign_activity/close_black.png"
                                      @click="password = ''" alt="delete icon"
-                                     v-show="password.length > 0">
+                                     v-show="password">
                             </div>
                             <div class="error" v-if="showErrors && errors.password">
                                 {{errors.password}}
@@ -362,7 +362,7 @@
                                        v-model="password_confirmation">
                                 <img src="/images/client/campaign_activity/close_black.png"
                                      @click="password_confirmation = ''" alt="delete icon"
-                                     v-show="password_confirmation.length > 0">
+                                     v-show="password_confirmation">
                             </div>
                             <div class="error" v-if="showErrors && errors.password_confirmation">
                                 {{errors.password_confirmation}}
@@ -383,7 +383,9 @@
     export default {
         data() {
             return {
-                user: {},
+                user: {
+                    client:{}
+                },
                 client: {
                     name: 'Ahmed Marzouk',
                     agency: 'The best agency',

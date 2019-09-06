@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Affiliate;
+use App\Campaign;
 use App\Client;
 use App\Owner;
 use App\User;
@@ -21,8 +22,9 @@ class ClientsController extends Controller
         return view('client.dashboard',compact('client'));
     }
 
-    public function campaignActivity(){
-        return view('client.campaign_main');
+    public function campaignActivity($campaign_id){
+        $campaign = Campaign::where('id',$campaign_id)->with('agents.user','agents.user.userData','agents.logs','faqs','links')->first();
+        return view('client.campaign_main',compact('campaign'));
     }
 
     public function viewAccountEditPage(){
@@ -33,9 +35,6 @@ class ClientsController extends Controller
         return view('client.my_account.service_agreement') ;
     }
 
-    public function viewUpdateSubPlan(){
-        return view('client.payments.update_sub_plan') ;
-    }
 
     public function viewClientPrivacyAgreement(){
         return view('client.my_account.privacy_agreement') ;

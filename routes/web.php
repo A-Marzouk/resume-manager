@@ -527,8 +527,8 @@ Route::get('/home_test/sales', function () {
     return view('new_home_sales');
 });
 
-Route::get('/freelancer/resume', 'AgentsController@agentsResume');
+Route::get('/resume/{username}', 'ResumeController@agentsResume');
 
-Route::post('/freelancer/resume/download', 'AgentsController@downloadPDFResume')->name('download-pdf-resume');
+Route::post('/freelancer/resume/download', 'ResumeController@downloadPDFResume')->name('download-pdf-resume');
 
 Route::get('/create/new_agents', 'TestController@createAgents');

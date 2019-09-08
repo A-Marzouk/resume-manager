@@ -70,7 +70,6 @@ class ClientsController extends Controller
 
     public function campaignAddAgent(){
         return view('client.add_agent_view');
-
     }
 
 

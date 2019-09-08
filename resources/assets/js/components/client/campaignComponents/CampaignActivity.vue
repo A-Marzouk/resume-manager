@@ -14,6 +14,7 @@
                     <div class="lineDivide"></div>
 
                     <a v-for="(agent,index) in campaign.agents" :key="index" class="team-member"
+                       v-show="campaign.agents.length > 1"
                        href="javascript:void(0)" @click="setCurrentAgent(agent.id)">
                         <img src="/images/client/dummy.png" alt="member image">
                         <div class="team-member-info">
@@ -25,6 +26,10 @@
                             </div>
                         </div>
                     </a>
+
+                    <div style="padding: 16px;">
+                        There are no active members in this campaign. <a href="/client/camp/add-agent">Add new agent</a>
+                    </div>
 
                 </div>
                 <div class="documents-bar d-flex justify-content-center">
@@ -77,18 +82,16 @@
                             </a>
                         </datepicker>
                         <div class="lineDivide"></div>
-                        <div class="member-logs-empty" v-show="!hasLogs">
+                        <div class="member-logs-empty" v-show="currentAgent.logs.length < 1">
                             <div class="empty-state-text">
-                                Sorry, no entries for today yet -
-                                <a href="javascript:void(0)" @click="hasLogs = !hasLogs" class="text"> SHOW DEMO
-                                    LOGS</a>
+                                Sorry, no entries for today
                             </div>
                             <div class="empty-state-image">
                                 <img src="/images/client/campaign_activity/empty_state.png" alt="empty state">
                             </div>
                         </div>
-                        <div class="member-logs" v-show="hasLogs">
-                            <div class="agent-logs-block">
+                        <div class="member-logs"  v-show="currentAgent.logs.length > 1">
+                            <div class="agent-logs-block" v-if="currentAgent !== undefined">
                                 <div v-for="(log,index) in currentAgent.logs" :key="index">
                                     <div class="log">
                                         <div class="log-time">
@@ -137,6 +140,7 @@
                     <div class="modal-body">
                         <div class="dashboard-side-menu">
                             <a v-for="(agent,index) in campaign.agents" :key="index" class="team-member"
+                               v-show="campaign.agents.length > 1"
                                @click="setCurrentAgent(agent.id)">
                                 <img src="/images/client/dummy.png" alt="member image">
                                 <div class="team-member-info">
@@ -192,14 +196,16 @@
                 hasLogs: true,
                 selectedDate: '',
                 appliedDate: '',
-                currentAgent: this.campaign.agents[0],
-                logStatusCode:{
-                    1:'ER',
-                    2:'CB',
-                    3:'NI',
-                    4:'AS',
-                    5:'CR',
-                    6:'S',
+                currentAgent: {
+                    logs:[]
+                },
+                logStatusCode: {
+                    1: 'ER',
+                    2: 'CB',
+                    3: 'NI',
+                    4: 'AS',
+                    5: 'CR',
+                    6: 'S',
                 },
             }
         },
@@ -235,14 +241,19 @@
                 // close modal
                 $('.close').click();
             },
+            setDefaultAgent() {
+                if(this.campaign.agents[0] !== undefined){
+                    this.currentAgent = this.campaign.agents[0]
+                }
+            },
             getDate(date) {
                 let event = new Date(date);
-                let options = {hour:'numeric',minute:'numeric', month: 'short', day: 'numeric' };
+                let options = {hour: 'numeric', minute: 'numeric', month: 'short', day: 'numeric'};
                 return event.toLocaleDateString('en-EN', options);
             },
         },
         mounted() {
-
+            this.setDefaultAgent();
         }
     }
 </script>

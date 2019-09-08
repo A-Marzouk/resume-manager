@@ -87,7 +87,6 @@ Route::prefix('client')->group(function (){
     Route::get('/dashboard/{any?}','ClientsController@index')->name('client.dashboard.campaing-manager');
     Route::get('/campaign/{campaign_id}','ClientsController@campaignActivity')->name('campaign.main');
     Route::get('/campaigns-archive','ClientsController@campaignArchives')->name('campaign.archives');
-    Route::get('/campaign/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');
     Route::get('/account/edit','ClientsController@viewAccountEditPage')->name('account.edit');
     // service agreement route
     Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
@@ -165,6 +164,8 @@ Route::prefix('client')->group(function (){
     Route::get('/subs/update/{sub_id}','SubscriptionsController@showUpdatePage')->name('client.subs.show.update');
     Route::post('/subs/update','SubscriptionsController@update')->name('client.subs.update');
 
+// client campaign agents :
+    Route::get('/camp/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');
 
 });
 

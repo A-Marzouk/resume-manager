@@ -16,9 +16,9 @@
                     </div>
                 </div>
                 <div class="actionBtn">
-                    <!-- <a href="/client/campaign/add-agent">
-                                  <img src="/images/client/plus.png" alt="plus sign">ADD NEW AGENT
-                              </a> -->
+                    <a href="/client/camp/add-agent">
+                        <img src="/images/client/plus.png" alt="plus sign">ADD NEW AGENT
+                    </a>
                 </div>
             </div>
             <div class="campaign-team-list">

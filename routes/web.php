@@ -167,6 +167,9 @@ Route::prefix('client')->group(function (){
 // client campaign agents :
     Route::get('/camp/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');
 
+// client search agents :
+    Route::post('/agents/search','SearchesController@searchAgentsForCampaign')->name('client.search.agents');
+
 });
 
 Route::prefix('freelancer')->group(function (){

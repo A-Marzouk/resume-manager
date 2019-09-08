@@ -26,19 +26,19 @@
                                     <label>Enter primary job title</label>
                                     <input type="text"
                                            class="form-control form-control-sm borderinput"
-                                           placeholder="e.g. Telesale">
+                                           placeholder="e.g. Telesale" v-model="searchParams.job_title">
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-11 input_divider">
                                     <label>Enter sector experience</label>
                                     <input type="text"
                                            class="form-control form-control-sm borderinput"
-                                           placeholder="PARAMETERS OF SEARCH">
+                                           placeholder="PARAMETERS OF SEARCH"  v-model="searchParams.experience">
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-11 input_divider">
                                     <label>Enter technologies/ frameworks/software</label>
                                     <input type="text"
                                            class="form-control form-control-sm borderinput"
-                                           placeholder="you can enter several ">
+                                           placeholder="you can enter several "  v-model="searchParams.frameworks">
                                 </div>
                             </div>
                         </div>
@@ -46,22 +46,20 @@
                         <!-- form second column -->
                         <div class="col-sm-12 col-md-12 col-lg-6">
                             <div class="form-row">
-                                <div class="col-sm-12 col-md-12 col-lg-11 form-group input_divider">
-                                    <label for="inState"
-                                           class="">Choose voice character</label>
-                                    <select id="inState"
-                                            class="form-control form-control-MD select">
-                                        <option selected
-                                                value="">Voice chapter 1 type
+                                <div class="col-sm-12 col-md-12 col-lg-11 form-group input_divider flex-column">
+                                    <label class="w-100">Choose voice character (for sales agents)</label>
+                                    <select id="inState" class="form-control form-control-MD select"  v-model="searchParams.voice_character">
+                                        <option selected  value="not-selected">-- Select --</option>
+                                        <option
+                                                value="Friendly">Friendly
                                         </option>
-                                        <option value="">...</option>
+                                        <option value="Official">Official</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-11 input_divider">
                                     <label>Specify available hours per week</label>
                                     <input type="text"
-                                           class="form-control form-control-sm borderinput"
-                                           placeholder="25">
+                                           class="form-control form-control-sm borderinput" placeholder="25"  v-model="searchParams.available_hours">
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 ">
                                     <div class="row">
@@ -74,7 +72,8 @@
                                                             <input type="radio"
                                                                    name="language"
                                                                    class="sr-only"
-                                                                   id="english">
+                                                                   value="english"
+                                                                   id="english" v-model="searchParams.language">
                                                             <label for="english"
                                                                    id="english_label"
                                                                    class="form-icon"
@@ -89,7 +88,8 @@
                                                             <input type="radio"
                                                                    name="language"
                                                                    class="sr-only"
-                                                                   id="spanish">
+                                                                   value="spanish"
+                                                                   id="spanish" v-model="searchParams.language">
                                                             <label for="spanish"
                                                                    id="spanish_label"
                                                                    class="form-icon"
@@ -114,7 +114,8 @@
                                                             <input type="radio"
                                                                    name="gender"
                                                                    class="sr-only"
-                                                                   id="male">
+                                                                   value="m"
+                                                                   id="male" v-model="searchParams.gender">
                                                             <label for="male"
                                                                    id="male-gender"
                                                                    class="form-icon"
@@ -130,7 +131,8 @@
                                                             <input type="radio"
                                                                    name="gender"
                                                                    class="sr-only"
-                                                                   id="female">
+                                                                   value="f"
+                                                                   id="female" v-model="searchParams.gender">
                                                             <label for="female"
                                                                    id="female-gender"
                                                                    class="form-icon"
@@ -146,7 +148,8 @@
                                                             <input type="radio"
                                                                    name="gender"
                                                                    class="sr-only"
-                                                                   id="both">
+                                                                   value="b"
+                                                                   id="both" v-model="searchParams.gender">
                                                             <label for="both"
                                                                    id="both-gender"
                                                                    class="form-icon"
@@ -181,20 +184,18 @@
                                          style="margin-top: 14px;">
                                         <div class="col-12 col-sm-6 col-md-8 right-side">
                                             <button type="button"
-                                                    class="btn btn-left">VIEW SAVED SEARCH
+                                                    class="btn btn-left">VIEW SAVED SEARCHES
                                             </button>
                                         </div>
                                         <div class="col-12 col-sm-6 col-md-4">
                                             <div class="row">
                                                 <div class="col-12 center-content">
-                                                    <button type="button"
-                                                            class="btn btn-right-top">SEARCH FOR AGENTES
-                                                    </button>
+                                                    <a href="javascript:void(0)" @click="updateSearch"
+                                                            class="btn btn-primary d-flex justify-content-center align-items-center">SEARCH FOR AGENTES
+                                                    </a>
                                                 </div>
-                                                <div class="col-12 center-content">
-                                                    <button type="button"
-                                                            class="btn btn-right-bottom">SAVE THIS SEARCH
-                                                    </button>
+                                                <div class="col-12 center-content NoDecor" id="aboveSearchResultsSection">
+                                                    <a href="javascript:void(0)" style="font-size:14px; padding-top: 5px;">SAVE THIS SEARCH</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -215,7 +216,7 @@
         <!--</div>-->
         <!--</div>-->
         <!-- search_result -->
-        <div class="d-flex justify-content-center ">
+        <div class="d-flex justify-content-center" v-if="showSearchResults">
             <div class="main-grid">
                 <div class="header-text">
                     <img src="/images/client/add_agent/ic/search_results_40px.png" alt="search"
@@ -224,224 +225,142 @@
                 </div>
                 <!-- first agent -->
                 <hr/>
-                <div class="responsive-grid mb-3"
-                     style="margin-top: 32px;">
-                    <!--image-->
-                    <div class="d-flex">
-                        <div class="p-2">
-                            <img src="/images/client/add_agent/search_result/ic/user/user123.png" class="avator"/>
-                        </div>
-                        <!--location-->
-                        <div class="p-2">
-                            <div class="big-font">Jason Morgenstern</div>
-                            <div class="location">
-                                <img src="/images/client/add_agent/search_result/icon/maps/place_24px.png"/>
-                                Dublin, Ireland
+
+                <div  v-show="searchResults.length > 0">
+                    <div v-for="(agent,index) in searchResults" :key="index">
+                        <div class="responsive-grid mb-3"
+                             style="margin-top: 32px;">
+                            <!--image-->
+                            <div class="d-flex">
+                                <div class="p-2">
+                                    <img src="/images/client/add_agent/search_result/ic/user/user123.png" class="avator"/>
+                                </div>
+                                <!--location-->
+                                <div class="p-2">
+                                    <div class="big-font">{{agent.user.user_data.first_name}} {{agent.user.user_data.last_name}}</div>
+                                    <div class="location">
+                                        <img src="/images/client/add_agent/search_result/icon/maps/place_24px.png"/>
+                                        Dublin, Ireland
+                                    </div>
+                                    <div class="visiblty">
+                                        <div class="pt-2">
+                                            <button class="btn btn-primar btn-radius btn-responsive">VISIT AGENT’S PROFILE
+                                            </button>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
+                                                <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                                     style="margin-right: 15px;"/>
+                                                LISTEN TO THE RECORD
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="visiblty">
-                                <div>
-                                    <button class="btn btn-primar btn-radius btn-responsive">VISIT AGENT’S PROFILE
-                                    </button>
+                            <!--info-->
+                            <div class="p-2 info-grid"
+                                 style="">
+                                <div class="big-font">
+                                    <img src="/images/client/add_agent/search_result/ic/primary_job_name.png"
+                                         class="primaryjob-icon"/>
+                                    {{agent.user.user_data.job_title}}
+                                </div>
+                                <div style="font-size: 16px; color : #4a5464; margin: 20px 0 20px;">
+                                    <span style="font-weight: 500;">Sector experience: </span> {{agent.experience}}
                                 </div>
                                 <div>
-                                    <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
-                                        <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                                             style="margin-right: 15px;"/>
-                                        LISTEN TO THE RECORD
-                                    </button>
+                                    <span style="font-weight: 500;">Technologies, software: </span> {{agent.technologies}}
+                                </div>
+                                <div style="margin: 20px 0 ;">
+                                    <span style="font-weight: 500;">Languages: </span>
+                                    <span v-for="(language,index) in agent.user.languages" :key="index"> {{language.label}}</span>
+                                </div>
+                                <div>
+                                    <span style="font-weight: 500;">No. hours per week: </span>{{Math.trunc(agent.available_hours_per_week)}} hours
+                                </div>
+                            </div>
+                            <div class="invisiblty">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center"
+                                                style="width: 136px;!important">
+                                            <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png"
+                                                 style="margin-right: 15px;"/>
+                                            LISTEN TO THE RECORD
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primar btn-radius btn-responsive">VISIT PROFILE</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <hr/>
                     </div>
-                    <!--info-->
-                    <div class="p-2 info-grid"
-                         style="">
-                        <div class="big-font">
-                            <img src="/images/client/add_agent/search_result/ic/primary_job_name.png"
-                                 class="primaryjob-icon"/>
-                            Telemarketing
-                        </div>
-                        <div style="font-size: 16px; color : #4a5464; margin: 20px 0 20px;">
-                            <span style="font-weight: 500;">Sector experience: </span> Real estate, Investement,
-                            Insurance
-                        </div>
-                        <div>
-                            <span style="font-weight: 500;">Technologies, software: </span> Microsoft Excel
-                        </div>
-                        <div style="margin: 20px 0 ;">
-                            <span style="font-weight: 500;">Languages: </span>English, Spanish
-                        </div>
-                        <div>
-                            <span style="font-weight: 500;">No. hours per week: </span>30-40 hours
-                        </div>
+
+                    <!-- buttons -->
+                    <div class="justify-content-center d-flex pt-4">
+                        <button type="button"
+                                class="btn btn-footer btn-radius align-item-center">
+                            <img src="/images/client/add_agent/search_result/btn/refresh-arrow.png" alt=""
+                                 class="refresh-icon">
+                            LOAD MORE
+                        </button>
                     </div>
-                    <div class="invisiblty">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center"
-                                        style="width: 136px;!important">
-                                    <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                                         style="margin-right: 15px;"/>
-                                    LISTEN TO THE RECORD
-                                </button>
-                            </div>
-                            <div>
-                                <button class="btn btn-primar btn-radius btn-responsive">VISIT PROFILE</button>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
-                <hr/>
-                <div class="responsive-grid mb-3"
-                     style="margin-top: 32px;">
-                    <!--image-->
-                    <div class="d-flex">
-                        <div class="p-2">
-                            <img src="/images/client/add_agent/search_result/ic/user/user123.png" class="avator"/>
-                        </div>
-                        <!--location-->
-                        <div class="p-2">
-                            <div class="big-font">Jason Morgenstern</div>
-                            <div class="location">
-                                <img src="/images/client/add_agent/search_result/icon/maps/place_24px.png"/>
-                                Dublin, Ireland
-                            </div>
-                            <div class="visiblty">
-                                <div>
-                                    <button class="btn btn-primar btn-radius btn-responsive">VISIT AGENT’S PROFILE
-                                    </button>
-                                </div>
-                                <div>
-                                    <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
-                                        <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                                             style="margin-right: 15px;"/>
-                                        LISTEN TO THE RECORD
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--info-->
-                    <div class="p-2 info-grid"
-                         style="">
-                        <div class="big-font">
-                            <img src="/images/client/add_agent/search_result/ic/primary_job_name.png"
-                                 class="primaryjob-icon"/>
-                            Telemarketing
-                        </div>
-                        <div style="font-size: 16px; color : #4a5464; margin: 20px 0 20px;">
-                            <span style="font-weight: 500;">Sector experience: </span> Real estate, Investement,
-                            Insurance
-                        </div>
-                        <div>
-                            <span style="font-weight: 500;">Technologies, software: </span> Microsoft Excel
-                        </div>
-                        <div style="margin: 20px 0 ;">
-                            <span style="font-weight: 500;">Languages: </span>English, Spanish
-                        </div>
-                        <div>
-                            <span style="font-weight: 500;">No. hours per week: </span>30-40 hours
-                        </div>
-                    </div>
-                    <div class="invisiblty">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center"
-                                        style="width: 136px;!important">
-                                    <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                                         style="margin-right: 15px;"/>
-                                    LISTEN TO THE RECORD
-                                </button>
-                            </div>
-                            <div>
-                                <button class="btn btn-primar btn-radius btn-responsive">VISIT PROFILE</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr/>
-                <div class="responsive-grid mb-3"
-                     style="margin-top: 32px;">
-                    <!--image-->
-                    <div class="d-flex">
-                        <div class="p-2">
-                            <img src="/images/client/add_agent/search_result/ic/user/user123.png" class="avator"/>
-                        </div>
-                        <!--location-->
-                        <div class="p-2">
-                            <div class="big-font">Jason Morgenstern</div>
-                            <div class="location">
-                                <img src="/images/client/add_agent/search_result/icon/maps/place_24px.png"/>
-                                Dublin, Ireland
-                            </div>
-                            <div class="visiblty">
-                                <div>
-                                    <button class="btn btn-primar btn-radius btn-responsive">VISIT AGENT’S PROFILE
-                                    </button>
-                                </div>
-                                <div>
-                                    <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
-                                        <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                                             style="margin-right: 15px;"/>
-                                        LISTEN TO THE RECORD
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--info-->
-                    <div class="p-2 info-grid"
-                         style="">
-                        <div class="big-font">
-                            <img src="/images/client/add_agent/search_result/ic/primary_job_name.png"
-                                 class="primaryjob-icon"/>
-                            Telemarketing
-                        </div>
-                        <div style="font-size: 16px; color : #4a5464; margin: 20px 0 20px;">
-                            <span style="font-weight: 500;">Sector experience: </span> Real estate, Investement,
-                            Insurance
-                        </div>
-                        <div>
-                            <span style="font-weight: 500;">Technologies, software: </span> Microsoft Excel
-                        </div>
-                        <div style="margin: 20px 0 ;">
-                            <span style="font-weight: 500;">Languages: </span>English, Spanish
-                        </div>
-                        <div>
-                            <span style="font-weight: 500;">No. hours per week: </span>30-40 hours
-                        </div>
-                    </div>
-                    <div class="invisiblty">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center"
-                                        style="width: 136px;!important">
-                                    <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                                         style="margin-right: 15px;"/>
-                                    LISTEN TO THE RECORD
-                                </button>
-                            </div>
-                            <div>
-                                <button class="btn btn-primar btn-radius btn-responsive">VISIT PROFILE</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-                <!-- buttons -->
-                <div class="justify-content-center d-flex">
-                    <button type="button"
-                            class="btn btn-footer btn-radius align-item-center">
-                        <img src="/images/client/add_agent/search_result/btn/refresh-arrow.png" alt=""
-                             class="refresh-icon">
-                        LOAD MORE
-                    </button>
+
+                <div  v-show="searchResults.length < 1">
+                    Please refine your search parameters.
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
+    export default {
+        data(){
+            return {
+                searchParams:{
+                    job_title : '',
+                    voice_character : 'not-selected' ,
+                    experience:'',
+                    available_hours:'',
+                    frameworks:'',
+                    language:'',
+                    gender:'',
+                },
+                searchResults:[
+
+                ],
+
+                showSearchResults:false,
+            }
+        },
+        methods:{
+            updateSearch(){
+                axios.post('/client/agents/search',this.searchParams)
+                    .then( (response) => {
+                        console.log(response.data);
+                        this.searchResults = response.data ;
+                        this.showSearchResults = true ;
+
+                        // scroll to search section
+                        $('html, body').animate({
+                            scrollTop: $("#aboveSearchResultsSection").offset().top
+                        }, 2000);
+                    } )
+                    .catch( (error) => {
+                        console.log(error.response.data);
+                    } );
+            },
+        },
+        mounted() {
+
+        }
+    }
+
+
     $(document).ready(function () {
 
         $(":radio[class=sr-only]").on("change", function () {
@@ -451,9 +370,6 @@
             var female_gender = document.getElementById('female-gender');
             var bothed_gender = document.getElementById('both-gender');
             var man_gender = document.getElementById('male-gender');
-            console.log(female);
-            console.log(both);
-            console.log(male);
             if (female == true) {
                 $(female_gender).css({backgroundImage: 'url("/images/client/add_agent/femaleselected.jpg")'});
                 $(bothed_gender).css({backgroundImage: 'url("/images/client/add_agent/gender/both_gender_icon.png")'});
@@ -500,8 +416,6 @@
             var spanish = document.getElementById('spanish').checked;
             var english_label = document.getElementById('english_label');
             var spanish_label = document.getElementById('spanish_label');
-            console.log(english);
-            console.log(spanish);
             if (english == true) {
                 $(english_label).css({backgroundImage: 'url("/images/client/add_agent/englishselected.jpg")'});
                 $(spanish_label).css({backgroundImage: 'url("/images/client/add_agent/spanish.jpg")'});

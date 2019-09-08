@@ -14,7 +14,7 @@
                     <div class="lineDivide"></div>
 
                     <a v-for="(agent,index) in campaign.agents" :key="index" class="team-member"
-                       v-show="campaign.agents.length > 1"
+                       v-show="campaign.agents.length > 0"
                        href="javascript:void(0)" @click="setCurrentAgent(agent.id)">
                         <img src="/images/client/dummy.png" alt="member image">
                         <div class="team-member-info">
@@ -27,7 +27,7 @@
                         </div>
                     </a>
 
-                    <div style="padding: 16px;">
+                    <div style="padding: 16px;" v-show="campaign.agents.length < 1">
                         There are no active members in this campaign. <a href="/client/camp/add-agent">Add new agent</a>
                     </div>
 

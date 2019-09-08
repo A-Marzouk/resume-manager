@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div v-for="(agent,index) in campaignMembers" :key="index">
+        <div v-for="(agent,index) in campaignMembers" :key="index" v-show="campaignMembers.length > 0">
             <div class="agent-logs-block">
                 <div class="agentInfo">
                     <img src="/images/client/dummy.png" alt="">
@@ -51,6 +51,9 @@
                     <a href="#">SHOW MORE</a>
                 </div>
             </div>
+        </div>
+        <div v-show="campaignMembers.length < 1" class="NoDecor" style="padding: 54px;">
+            There are no active members in this campaign. <a href="/client/camp/add-agent">Add new agent</a>
         </div>
 
         <div class="campaign-brief-footer">

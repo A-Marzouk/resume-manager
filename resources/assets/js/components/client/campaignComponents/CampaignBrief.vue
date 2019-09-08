@@ -288,16 +288,54 @@
                     <div class="files-tab-heading">
                         In this section you can add documents with voice scripts
                     </div>
-                    <div class="files-tab-upload-area">
-                        <div class="upload-box">
-                            <div class="upload-box-heading">
-                                Drag or Drop documents you want to upload <br/>or
+                    <div class="faq-input dropZoneSection">
+                        <div v-if="files.length === 0"
+                             class="account-edit-section-edit-btn no-decoration picture-box">
+                            <div class="fallback">
+                                <input multiple type="file" id="files_voice_scripts" name="files"/>
                             </div>
-                            <a href="#" class="upload-btn">
+                            <p class="dz-message">Drag and drop a photo you want to upload <br/> or</p>
+
+                            <div class="fake-file-input btn btn-orange dz-input">
                                 CHOOSE A FILE
-                            </a>
-                            <div class="upload-notes">
-                                Maximum allowed size is 45 MB
+                            </div>
+                            <p class="dz-message little">Maximum allowed size is 45 MB</p>
+                            <div id="dropfiles-team-brief_voice_scripts" class="dropzone"></div>
+                        </div>
+                        <div class="preview-files-container" v-else>
+                            <div class="add-document-container">
+                                <div class="dz-details">
+                                    <div
+                                            class="thumbnail-container">
+                                        <img class="icon-download" src="/images/icons/document.svg"/>
+                                        <input multiple type="file" id="files_voice_scripts" name="files"
+                                               v-on:change="addFiles"/>
+                                    </div>
+                                    <a href="javascript:;">UPLOAD NEW FILE</a>
+                                </div>
+                            </div>
+                            <div :key="index + file.name" v-for="(file, index) in files"
+                                 class="preview-container">
+                                <div class="dz-preview dz-file-preview">
+                                    <div class="dz-details">
+                                        <div class="thumbnail-container">
+                                            <img class="icon-download" src="/images/icons/download_icon.svg"/>
+                                            <a href="javascript:;"
+                                               v-on:click="showMenu(index)"
+                                               class="menu-handler">
+                                                <img class="icon-menu"
+                                                     src="/images/icons/more_vert.svg"/>
+                                            </a>
+                                        </div>
+                                        <div class="filename">{{file.name}}</div>
+                                    </div>
+                                    <div class="menu-preview">
+                                        <a href="javascript:;" v-on:click="removeDoc(index)">Delete the
+                                            document</a>
+                                        <a href="javascript:;">Send in private message</a>
+                                        <a href="javascript:;">Send to email</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -307,16 +345,54 @@
                     <div class="files-tab-heading">
                         In this section you can add e-mail templates
                     </div>
-                    <div class="files-tab-upload-area">
-                        <div class="upload-box">
-                            <div class="upload-box-heading">
-                                Drag or Drop documents you want to upload <br/>or
+                    <div class="faq-input dropZoneSection">
+                        <div v-if="files.length === 0"
+                             class="account-edit-section-edit-btn no-decoration picture-box">
+                            <div class="fallback">
+                                <input multiple type="file" id="files_email_template" name="files"/>
                             </div>
-                            <a href="#" class="upload-btn">
+                            <p class="dz-message">Drag and drop a photo you want to upload <br/> or</p>
+
+                            <div class="fake-file-input btn btn-orange dz-input">
                                 CHOOSE A FILE
-                            </a>
-                            <div class="upload-notes">
-                                Maximum allowed size is 45 MB
+                            </div>
+                            <p class="dz-message little">Maximum allowed size is 45 MB</p>
+                            <div id="dropfiles-team-brief_email_template" class="dropzone"></div>
+                        </div>
+                        <div class="preview-files-container" v-else>
+                            <div class="add-document-container">
+                                <div class="dz-details">
+                                    <div
+                                            class="thumbnail-container">
+                                        <img class="icon-download" src="/images/icons/document.svg"/>
+                                        <input multiple type="file" id="files_email_template" name="files"
+                                               v-on:change="addFiles"/>
+                                    </div>
+                                    <a href="javascript:;">UPLOAD NEW FILE</a>
+                                </div>
+                            </div>
+                            <div :key="index + file.name" v-for="(file, index) in files"
+                                 class="preview-container">
+                                <div class="dz-preview dz-file-preview">
+                                    <div class="dz-details">
+                                        <div class="thumbnail-container">
+                                            <img class="icon-download" src="/images/icons/download_icon.svg"/>
+                                            <a href="javascript:;"
+                                               v-on:click="showMenu(index)"
+                                               class="menu-handler">
+                                                <img class="icon-menu"
+                                                     src="/images/icons/more_vert.svg"/>
+                                            </a>
+                                        </div>
+                                        <div class="filename">{{file.name}}</div>
+                                    </div>
+                                    <div class="menu-preview">
+                                        <a href="javascript:;" v-on:click="removeDoc(index)">Delete the
+                                            document</a>
+                                        <a href="javascript:;">Send in private message</a>
+                                        <a href="javascript:;">Send to email</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -469,6 +545,7 @@
 
                 axios.post('/client/camp/faqs/delete', {'FAQ_ID': faq_id})
                     .then((response) => {
+                        this.editedQuestionID = 0 ;
                         let faqs = this.faqs;
                         $.each(faqs, function (i) {
                             if (faqs[i].id === faq_id) {
@@ -566,3 +643,13 @@
         },
     }
 </script>
+
+
+<style scoped lang="scss">
+    .dropZoneSection{
+        padding: 36px 0 36px 65px;
+        @media (max-width: 1240px) {
+            padding: 36px 0px 36px 18px;
+        }
+    }
+</style>

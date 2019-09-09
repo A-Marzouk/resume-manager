@@ -444,7 +444,7 @@
                 $('#notificationBar').css('display','none');
             },
             showSuccessMessage(){
-                $('.notificationBar').css('background','#FFBA69;') ;
+                $('.notificationBar').css('background','#FFBA69') ;
                 this.notificationMessage = 'Successfully added agent to campaign !' ;
                 $('#notificationBar').fadeIn(600);
                 setTimeout(()=>{

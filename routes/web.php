@@ -165,10 +165,12 @@ Route::prefix('client')->group(function (){
     Route::post('/subs/update','SubscriptionsController@update')->name('client.subs.update');
 
 // client campaign agents :
-    Route::get('/camp/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');
+    Route::get('/camp/add-agent','ClientsController@viewCampaignAddAgentPage')->name('campaign.add.agent');
 
 // client search agents :
     Route::post('/agents/search','SearchesController@searchAgentsForCampaign')->name('client.search.agents');
+// add agent to camp
+    Route::post('/camp/add-agent','ClientsController@campaignAddAgent')->name('client.camp.add_agent');
 
 });
 

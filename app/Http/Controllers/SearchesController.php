@@ -343,14 +343,14 @@ class SearchesController extends Controller
 
         // available_hours_per_week :
         if(isset($request->available_hours)){
-            $searchArray[] = ['available_hours_per_week','<=',intval($request->available_hours)];
+            $searchArray[] = ['available_hours_per_week','>=',intval($request->available_hours)];
         }
 
         // search function : search in agents and user_datas table.
 
         $agents  = Agent::where($searchArray)
 
-            ->orWhereHas('user.userData',function ($query) use ($request){
+            ->WhereHas('user.userData',function ($query) use ($request){
                 $searchArray = [] ;
 
                 // gender :
@@ -360,15 +360,6 @@ class SearchesController extends Controller
                 // jobTitle :
                 if(isset($request->job_title)){
                     $searchArray[] = ['job_title','like','%'.$request->job_title.'%'];
-                }
-                $query->where($searchArray);
-            })
-
-            ->orWhereHas('user.languages',function ($query) use ($request){
-                $searchArray = [] ;
-                // language :
-                if(isset($request->language)){
-                    $searchArray[] = ['name','like','%'.$request->language.'%'];
                 }
                 $query->where($searchArray);
             })

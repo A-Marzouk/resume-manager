@@ -8,10 +8,22 @@
                 ADD NEW AGENT
             </div>
         </nav>
+        <div class="container" style="display: flex;justify-content: center;">
+            <div class="notificationBar" id="notificationBar" style="display: none; position:fixed;">
+                <div>
+                    {{notificationMessage}}
+                </div>
+                <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                    x
+                </a>
+            </div>
+        </div>
+
         <!--<div class="visible-add-agent">-->
         <!-- visibale in laptop -->
         <div class="d-flex justify-content-center">
             <div class="main-grid">
+
                 <div class="header-text">
                     <img src="/images/client/add_agent/ic/search_40px.svg" alt="" class="icon-margin small-image">
                     ENTER THE PARAMETERS OF SEARCH
@@ -243,9 +255,10 @@
                                         Dublin, Ireland
                                     </div>
                                     <div class="visiblty">
-                                        <div class="pt-2">
-                                            <button class="btn btn-primar btn-radius btn-responsive">VISIT AGENT’S PROFILE
-                                            </button>
+                                        <div class="pt-2 NoDecor">
+                                            <a href="javascript:void(0)" class="btn btn-primar btn-radius btn-responsive" data-toggle="modal" data-target="#add-agent" @click="addAgentData.agentID = agent.id">
+                                                ADD AGENT TO CAMPAIGN
+                                            </a>
                                         </div>
                                         <div>
                                             <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
@@ -315,6 +328,54 @@
                 </div>
             </div>
         </div>
+
+
+        <!-- modals -->
+
+        <div class="modal fade centered-modal"
+             id="add-agent"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="remove-modal"
+             aria-hidden="true">
+            <div class="modal-dialog"
+                 role="document">
+                <div class="modal-content border-0">
+                    <div class="modal-body campaign-team-modal">
+                        <div>
+                            <div class="modal-question">
+                                Please choose campaign :
+                            </div>
+                            <div class="modal-answer">
+                                <select name="campaign" id="campaign" v-model="addAgentData.selectedCampaignID" style="margin-bottom: 25px;">
+                                    <option value="no-select" selected>-- Select --</option>
+                                    <option :value="campaign.id" v-for="(campaign,index) in clientCampaigns" :key="index">{{campaign.title}}</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-check-label checkBoxContainer disapprove-text">
+                                    <input class="form-check-input"  type="radio"  value="1" name="agentStatus" v-model="addAgentData.status">
+                                    <span class="checkmark make-circle"></span> Active
+                                </label>
+                            </div>
+                            <div class="col-12" style="margin-bottom: 26px;">
+                                <label class="form-check-label checkBoxContainer disapprove-text">
+                                    <input  type="radio" value="2" class="form-check-input" name="agentStatus" checked v-model="addAgentData.status">
+                                    <span class="checkmark make-circle"></span>Backup
+                                </label>
+                            </div>
+
+                            <div class="modal-btn-wrapper d-flex justify-content-end">
+                                <div class="button-base blue-button-a">
+                                    <a href="javascript:void(0)" data-dismiss="modal" @click="addCampAgent" style="width: 83px;">OK</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 <script>
@@ -333,8 +394,16 @@
                 searchResults:[
 
                 ],
+                clientCampaigns :[
 
+                ],
+                addAgentData:{
+                    selectedCampaignID:'no-select',
+                    status:'',
+                    agentID: ''
+                },
                 showSearchResults:false,
+                notificationMessage:'Successfully added agent to campaign ',
             }
         },
         methods:{
@@ -354,9 +423,45 @@
                         console.log(error.response.data);
                     } );
             },
+            addCampAgent(){
+                axios.post('/client/camp/add-agent',this.addAgentData)
+                    .then( (response) => {
+                        if(response.data.status === 'success'){
+                            // agent has been successfully added to the campaign.
+                            this.showSuccessMessage();
+                            console.log('success');
+                        }
+                        else if(response.data.status === 'exists') {
+                            this.showErrorMessage();
+                            console.log('exists');
+                        }
+                    })
+                    .catch( (error) => {
+
+                    })
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
+            },
+            showSuccessMessage(){
+                $('.notificationBar').css('background','#FFBA69;') ;
+                this.notificationMessage = 'Successfully added agent to campaign !' ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+            showErrorMessage(){
+                this.notificationMessage = 'Error! Agent already exists in the selected campaign.' ;
+                $('.notificationBar').css('background','red') ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
         },
         mounted() {
-
+            this.clientCampaigns = this.$attrs.clientcampaigns ;
         }
     }
 
@@ -427,3 +532,25 @@
         })
     })
 </script>
+
+<style scoped lang="scss">
+    .btn-primar:hover{
+        color: white;
+    }
+
+    .main-grid{
+        margin-top: 22px;
+    }
+
+    .notificationBar{
+        margin-top: -8px;
+        z-index: 2;
+        width: 1165px;
+    }
+
+    @media screen and (max-width: 1270px) {
+        .notificationBar{
+            width: 96%;
+        }
+    }
+</style>

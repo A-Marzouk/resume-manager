@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="addAgent">
-        <add-agent-component></add-agent-component>
+        <add-agent-component :clientCampaigns = "{{$clientCampaigns}}"></add-agent-component>
     </div>
 
 @endsection

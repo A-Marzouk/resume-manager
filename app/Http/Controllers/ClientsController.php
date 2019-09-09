@@ -68,8 +68,29 @@ class ClientsController extends Controller
         return view('client.campaign_archives');
     }
 
-    public function campaignAddAgent(){
-        return view('client.add_agent_view');
+    public function viewCampaignAddAgentPage(){
+        $clientCampaigns = currentClient()->campaigns ;
+        return view('client.add_agent_view',compact('clientCampaigns'));
+    }
+
+    public function campaignAddAgent(Request $request){
+        // get the campaign
+        $campaign = Campaign::find($request->selectedCampaignID) ;
+        // attach agent :
+        if (!$campaign->agents->contains($request->agentID)) {
+            $campaign->agents()->attach($request->agentID);
+        }
+        else{
+            return [
+                'status' => 'exists'
+            ];
+        }
+        // update pivot status
+        $campaign->agents()->where('agent_id',$request->agentID)->first()->pivot->status = $request->status ;
+
+        return [
+            'status' => 'success'
+        ] ;
     }
 
 

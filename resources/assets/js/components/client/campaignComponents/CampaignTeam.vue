@@ -163,7 +163,7 @@
             filteredAgents() {
                 const filterValue = this.filterValue;
                 if (!filterValue) return this.campaign.agents;
-                return this.campaign.agents.filter(agent => agent.status === filterValue);
+                return this.campaign.agents.filter(agent => agent.status == filterValue);
             }
         },
         mounted() {

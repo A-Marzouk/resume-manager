@@ -8,10 +8,22 @@
                 ADD NEW AGENT
             </div>
         </nav>
+        <div class="container" style="display: flex;justify-content: center;">
+            <div class="notificationBar" id="notificationBar" style="display: none; position:fixed;">
+                <div>
+                    {{notificationMessage}}
+                </div>
+                <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                    x
+                </a>
+            </div>
+        </div>
+
         <!--<div class="visible-add-agent">-->
         <!-- visibale in laptop -->
         <div class="d-flex justify-content-center">
             <div class="main-grid">
+
                 <div class="header-text">
                     <img src="/images/client/add_agent/ic/search_40px.svg" alt="" class="icon-margin small-image">
                     ENTER THE PARAMETERS OF SEARCH
@@ -391,6 +403,7 @@
                     agentID: ''
                 },
                 showSearchResults:false,
+                notificationMessage:'Successfully added agent to campaign ',
             }
         },
         methods:{
@@ -413,12 +426,39 @@
             addCampAgent(){
                 axios.post('/client/camp/add-agent',this.addAgentData)
                     .then( (response) => {
-                        console.log(response.data) ;
+                        if(response.data.status === 'success'){
+                            // agent has been successfully added to the campaign.
+                            this.showSuccessMessage();
+                            console.log('success');
+                        }
+                        else if(response.data.status === 'exists') {
+                            this.showErrorMessage();
+                            console.log('exists');
+                        }
                     })
                     .catch( (error) => {
 
                     })
-            }
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
+            },
+            showSuccessMessage(){
+                $('.notificationBar').css('background','#FFBA69;') ;
+                this.notificationMessage = 'Successfully added agent to campaign !' ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+            showErrorMessage(){
+                this.notificationMessage = 'Error! Agent already exists in the selected campaign.' ;
+                $('.notificationBar').css('background','red') ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
         },
         mounted() {
             this.clientCampaigns = this.$attrs.clientcampaigns ;
@@ -496,5 +536,21 @@
 <style scoped lang="scss">
     .btn-primar:hover{
         color: white;
+    }
+
+    .main-grid{
+        margin-top: 22px;
+    }
+
+    .notificationBar{
+        margin-top: -8px;
+        z-index: 2;
+        width: 1165px;
+    }
+
+    @media screen and (max-width: 1270px) {
+        .notificationBar{
+            width: 96%;
+        }
     }
 </style>

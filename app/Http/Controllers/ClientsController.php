@@ -77,7 +77,14 @@ class ClientsController extends Controller
         // get the campaign
         $campaign = Campaign::find($request->selectedCampaignID) ;
         // attach agent :
-        $campaign->agents()->attach($request->agentID);
+        if (!$campaign->agents->contains($request->agentID)) {
+            $campaign->agents()->attach($request->agentID);
+        }
+        else{
+            return [
+                'status' => 'exists'
+            ];
+        }
         // update pivot status
         $campaign->agents()->where('agent_id',$request->agentID)->first()->pivot->status = $request->status ;
 

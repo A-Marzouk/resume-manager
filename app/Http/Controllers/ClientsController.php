@@ -7,6 +7,7 @@ use App\Campaign;
 use App\Client;
 use App\Owner;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -91,6 +92,35 @@ class ClientsController extends Controller
         return [
             'status' => 'success'
         ] ;
+    }
+
+    public function signContract(Request $request){
+        // contract type :
+        $type = $request->type ; // privacy or service
+        // timestamp
+        $current_date_time = Carbon::now()->toDateTimeString();
+
+        if($request->type === 'privacy'){
+            currentClient()->user()->update([
+                'agreed_with_privacy_agreement_at' => $current_date_time
+            ]);
+        }
+        else if($request->type === 'service'){
+            currentClient()->user()->update([
+                'agreed_with_service_agreement_at' => $current_date_time
+            ]);
+        }
+
+        if(isset($request->signature)){
+            currentClient()->update([
+                'signature' => $request->signature
+            ]);
+        }
+
+
+        return [
+            'status' => 'success'
+        ];
     }
 
 

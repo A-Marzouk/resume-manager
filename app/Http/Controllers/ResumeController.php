@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Agent;
 use App\User;
 
@@ -170,7 +171,13 @@ class ResumeController extends Controller
     public function agentsResume($username) {
 
         $user = User::where('username', $username)->get();
-        dd($user);
+        $agent = Agent::where('user_id', $user[0]->id)->get();
+        // $user = DB::table('users')
+        //     ->join('agents', 'users.id', '=', 'agents.user_id')
+        //     ->join('user_datas','users.id', '=', 'user_datas.user_id')
+        //     ->where('username', $username)
+        //     ->get();
+        dd($user[0]->skills);
         
         // return view('freelancer.resume_test');
     }

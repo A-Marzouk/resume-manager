@@ -26,7 +26,7 @@ class Campaign extends Model
 
 
     public function agents(){
-        return $this->belongsToMany(Agent::class);
+        return $this->belongsToMany(Agent::class)->withPivot('status');
     }
 
     public function faqs(){

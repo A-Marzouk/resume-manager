@@ -68,7 +68,7 @@
                             First payment date is :
                         </div>
                         <div  class="plan-text text-orange">
-                            $ {{subscription.start_date}}
+                             {{subscription.start_date}}
                         </div>
                     </div>
                 </div>

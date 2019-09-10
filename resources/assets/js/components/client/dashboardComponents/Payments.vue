@@ -61,10 +61,10 @@
                             <img src="/images/client/payments/week.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    {{sub.origianl_duration_in_weeks}} WEEKS
+                                    {{sub.original_duration_in_weeks}} WEEKS
                                 </div>
                                 <div class="sub-info-box-note">
-                                    {{sub.duration_in_weeks}} used / {{sub.origianl_duration_in_weeks - sub.duration_in_weeks}} left
+                                    {{parseInt(sub.original_duration_in_weeks) - parseInt(sub.duration_in_weeks)}}  used / {{sub.duration_in_weeks}} left
                                 </div>
                             </div>
                         </div>
@@ -312,6 +312,9 @@
                     .catch( (error) => {
 
                     });
+            },
+            calculateNextBillingDate(){
+
             }
         },
         mounted(){

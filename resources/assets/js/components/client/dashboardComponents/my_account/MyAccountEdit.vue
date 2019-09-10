@@ -442,6 +442,7 @@
 
                     axios.post('/client/update', this.user)
                         .then((response) => {
+                            console.log(response.data);
                             // show a saved changes message
                             this.notificationMessage = 'Successfully updated !' ;
                             $('#notificationBar').fadeIn(600);

@@ -23,7 +23,7 @@
                     </a>
                 </div>
                 <div>
-                    Ahmed R. Marzouk
+                    {{client.contact}}
                 </div>
                 <div class="avatar">
                     <img src="/images/client/dummy.png" alt="logout">
@@ -41,7 +41,7 @@
                             Welcome,
                         </div>
                         <div style="font-weight: 500">
-                            Ahmed R. Marzouk
+                            {{client.contact}}
                         </div>
                     </div>
                 </div>
@@ -258,6 +258,7 @@
 </template>
 <script>
     export default {
+        props:['client'],
         data(){
             return{
                 activeTab: 'campaign-manager',

@@ -185,18 +185,23 @@ class ClientsController extends Controller
     }
 
     public function updateClient(Request $request){
+        $requestArray = $request->toArray();
+
         $user =  User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'client');
         })->where('id',$request->id)->with('client')->first();
 
         if(isset($request->password) && !empty($request->password)){
             $this->validate($request, [
-                'password' => 'confirmed|min:7',
+                'password' => 'confirmed|min:6',
             ]);
         }
+        else{
+            // remove password from the request array
+            unset($requestArray['password']);
+            unset($requestArray['password_confirmation']);
+        }
 
-
-        $requestArray = $request->toArray() ;
         $user->update(
             $requestArray
         );

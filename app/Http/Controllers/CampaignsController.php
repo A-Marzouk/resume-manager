@@ -14,6 +14,7 @@ use App\Client;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\DocBlock\Description;
 
 class CampaignsController extends Controller
 {
@@ -216,6 +217,24 @@ class CampaignsController extends Controller
         }
 
         return $campaign ;
+    }
+
+    public function updateCampaignInfo(Request $request){
+        $campaign = Campaign::where('id',$request->campaign_id)->first();
+
+        $request->validate([
+            'title' => 'max:190|min:7|required',
+            'description' => 'max:1500|min:7|required',
+        ]);
+
+        $campaign->update([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+
+        return [
+            'status' => 'success'
+        ];
     }
 
 }

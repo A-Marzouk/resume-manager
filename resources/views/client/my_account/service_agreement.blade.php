@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="serviceAgreement">
-        <service-agreement></service-agreement>
+        <service-agreement  :client="{{currentClient()}}" :user="{{currentClient()->user}}"></service-agreement>
     </div>
 
 @endsection

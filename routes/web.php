@@ -171,6 +171,9 @@ Route::prefix('client')->group(function (){
     Route::post('/agents/search','SearchesController@searchAgentsForCampaign')->name('client.search.agents');
 // add agent to camp
     Route::post('/camp/add-agent','ClientsController@campaignAddAgent')->name('client.camp.add_agent');
+// client sign contract :
+    Route::post('/contracts/sign','ClientsController@signContract')->name('client.sign.contract');
+
 
 });
 

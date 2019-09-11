@@ -239,6 +239,17 @@
         mounted(){
             this.getClientSubs();
             this.getClientInvoices();
+
+            let searchParams = new URLSearchParams(window.location.search);
+
+            if(searchParams.has('request')){
+                if(searchParams.get('request') === 'updateSubscription'){
+                    let notificationMessage = "Request successfully sent. (Update subscription plan)" ;
+                    this.$emit('showPositiveNotification',notificationMessage);
+                    window.history.pushState('request', 'sent', '/client/dashboard/payment');
+                }
+            }
+
         }
     }
 </script>

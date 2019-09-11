@@ -208,7 +208,7 @@
 
 
         <div v-show="status === 'finish'">
-            <finishSub :subscription="subscription_data"></finishSub>
+            <finishSub :subscription="subscription_data" :status="'updateSub'"></finishSub>
         </div>
 
         <!-- Modal -->

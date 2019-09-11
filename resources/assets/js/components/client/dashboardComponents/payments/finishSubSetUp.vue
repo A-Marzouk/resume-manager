@@ -75,9 +75,15 @@
 
 
                 <hr/>
+
                 <div style="justify-content: flex-end" class="d-flex sub-action pt-5">
-                    <a href="javascript:void(0)" @click="finishPayment" class="btn btn-primary d-flex justify-content-center align-items-center">
+
+                    <a href="javascript:void(0)" @click="finishPayment" class="btn btn-primary d-flex justify-content-center align-items-center" v-if="status === 'newSub'">
                         FINISH
+                    </a>
+
+                    <a href="/client/dashboard/payments?request=updateSubscription" class="btn btn-primary d-flex justify-content-center align-items-center" v-else-if="status === 'updateSub'">
+                        REQUEST UPDATE
                     </a>
                 </div>
 
@@ -91,7 +97,7 @@
 <script>
     export default {
         name: "finishSubSetUp",
-        props:['subscription'],
+        props:['subscription','status'],
         data(){
             return{
 

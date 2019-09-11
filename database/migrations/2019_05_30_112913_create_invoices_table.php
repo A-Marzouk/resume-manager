@@ -33,7 +33,6 @@ class CreateInvoicesTable extends Migration
 
             $table->foreign('client_id')->references('id')->on('clients');
             $table->foreign('currency_id')->references('id')->on('currencies');
-            $table->foreign('subscription_id')->references('id')->on('subscriptions');
 
             $table->timestamps();
         });

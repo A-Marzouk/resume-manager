@@ -86,7 +86,12 @@
                                             {{sub.campaign.agents.length}} AGENTS
                                         </div>
                                         <div class="sub-info-box-note">
-                                            working on campaign
+                                            <span v-if="sub.campaign.agents.length > 0">
+                                                working on campaign
+                                            </span>
+                                            <span v-else class="NoDecor">
+                                                <a href="/client/camp/add-agent"> Add agent</a>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

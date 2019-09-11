@@ -39,7 +39,7 @@
                             <img src="/images/client/payments/time.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                   {{sub.hours_per_week}} HOURS
+                                    {{sub.hours_per_week}} HOURS
                                 </div>
                                 <div class="sub-info-box-note">
                                     per week
@@ -64,7 +64,8 @@
                                     {{sub.original_duration_in_weeks}} WEEKS
                                 </div>
                                 <div class="sub-info-box-note">
-                                    {{parseInt(sub.original_duration_in_weeks) - parseInt(sub.duration_in_weeks)}}  used / {{sub.duration_in_weeks}} left
+                                    {{parseInt(sub.original_duration_in_weeks) - parseInt(sub.duration_in_weeks)}} used
+                                    / {{sub.duration_in_weeks}} left
                                 </div>
                             </div>
                         </div>
@@ -86,7 +87,12 @@
                                     {{sub.campaign.agents.length}} AGENTS
                                 </div>
                                 <div class="sub-info-box-note">
-                                    working on campaign
+                                    <span v-if="sub.campaign.agents.length > 0">
+                                            working on campaign
+                                    </span>
+                                    <span v-else class="NoDecor">
+                                        <a href="/client/camp/add-agent"> Add agent</a>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +100,7 @@
                             <img src="/images/client/payments/rate.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    $  {{sub.hourly_rate}}
+                                    $ {{sub.hourly_rate}}
                                 </div>
                                 <div class="sub-info-box-note">
                                     agent's hourly rate
@@ -105,7 +111,7 @@
                             <img src="/images/client/payments/manager.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    {{sub.manager.user.user_data.first_name}}  {{sub.manager.user.user_data.last_name}}
+                                    {{sub.manager.user.user_data.first_name}} {{sub.manager.user.user_data.last_name}}
                                 </div>
                                 <div class="sub-info-box-note">
                                     your manager
@@ -140,9 +146,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(invoice,index) in invoices" :key="index">
+                        <tr v-for="(invoice,index) in invoices" :key="index">
                             <td>
-                                <a class="invoice-view" data-toggle="modal" data-target="#view-invoice" @click="setOpenedInvoice(invoice)"
+                                <a class="invoice-view" data-toggle="modal" data-target="#view-invoice"
+                                   @click="setOpenedInvoice(invoice)"
                                    href="javascript:void(0)">
                                     <img src="/images/client/payments/show_invoice.png" alt="show invoice icon">
                                 </a>
@@ -186,7 +193,8 @@
             <div class="subs-empty-state"
                  v-show="invoices_empty_state">
                 <div>
-                    <img src="/images/client/payments/Illustrations_065_Invoice_empty_state.svg" alt="invoices empty state">
+                    <img src="/images/client/payments/Illustrations_065_Invoice_empty_state.svg"
+                         alt="invoices empty state">
                 </div>
                 <div class="subs-e-s-text" style="padding-bottom: 70px;">
                     There are no invoices yet.
@@ -199,53 +207,53 @@
     export default {
         data() {
             return {
-                subs:[],
-                invoices:[],
+                subs: [],
+                invoices: [],
                 invoices_empty_state: true,
-                invoiceStatusCode:{
-                    '1':'PAID',
-                    '2':'OUTSTANDING',
-                    '3':'CANCELLED',
+                invoiceStatusCode: {
+                    '1': 'PAID',
+                    '2': 'OUTSTANDING',
+                    '3': 'CANCELLED',
                 }
             }
         },
-        methods:{
-            getClientSubs(){
+        methods: {
+            getClientSubs() {
                 axios.get('/client/subs/get')
                     .then((response) => {
-                        this.subs    = response.data ;
+                        this.subs = response.data;
                     })
-                    .catch( (error) => {
+                    .catch((error) => {
 
                     });
             },
-            getClientInvoices(){
+            getClientInvoices() {
                 axios.get('/client/invoices/get')
                     .then((response) => {
-                        this.invoices    = response.data ;
-                        this.invoices_empty_state = false ;
+                        this.invoices = response.data;
+                        this.invoices_empty_state = false;
                     })
-                    .catch( (error) => {
+                    .catch((error) => {
 
                     });
             },
-            calculateNextBillingDate(){
+            calculateNextBillingDate() {
 
             },
-            setOpenedInvoice(invoice){
-                this.$emit('openInvoice',invoice);
+            setOpenedInvoice(invoice) {
+                this.$emit('openInvoice', invoice);
             }
         },
-        mounted(){
+        mounted() {
             this.getClientSubs();
             this.getClientInvoices();
 
             let searchParams = new URLSearchParams(window.location.search);
 
-            if(searchParams.has('request')){
-                if(searchParams.get('request') === 'updateSubscription'){
-                    let notificationMessage = "Request successfully sent. (Update subscription plan)" ;
-                    this.$emit('showPositiveNotification',notificationMessage);
+            if (searchParams.has('request')) {
+                if (searchParams.get('request') === 'updateSubscription') {
+                    let notificationMessage = "Request successfully sent. (Update subscription plan)";
+                    this.$emit('showPositiveNotification', notificationMessage);
                     window.history.pushState('request', 'sent', '/client/dashboard/payment');
                 }
             }

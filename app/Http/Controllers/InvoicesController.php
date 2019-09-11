@@ -21,7 +21,13 @@ class InvoicesController extends Controller
 
     public function viewClientInvoice($invoice_id)
     {
-        $invoice = Invoice::find($invoice_id)->with('client.user.userData','subscription.campaign')->first();
-        return view('client.payments.invoice',compact('invoice'));
+        $invoice = Invoice::find($invoice_id)->with('client.user.userData', 'subscription.campaign')->first();
+        return view('client.payments.invoice', compact('invoice'));
+    }
+
+    public function getClientInvoices()
+    {
+        $invoices = Invoice::where('client_id', currentClient()->id)->with('client.user.userData', 'subscription.campaign')->get();
+        return $invoices;
     }
 }

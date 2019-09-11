@@ -175,7 +175,8 @@ Route::prefix('client')->group(function (){
     Route::post('/contracts/sign','ClientsController@signContract')->name('client.sign.contract');
 
 // Client invoices :
-    Route::get('/invoices/{invoice_id}','InvoicesController@viewClientInvoice')->name('client.payment.invoice');
+    Route::get('/invoices/view/{invoice_id}','InvoicesController@viewClientInvoice')->name('client.payment.invoice');
+    Route::get('/invoices/get','InvoicesController@getClientInvoices')->name('client.invoices.get');
 
 
 });

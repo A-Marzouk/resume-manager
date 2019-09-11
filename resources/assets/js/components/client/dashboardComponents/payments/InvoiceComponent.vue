@@ -1,6 +1,6 @@
 <template>
     <div>
-        <nav class="navbar navbar-light fixed-top dashboard_navbar">
+        <nav class="navbar navbar-light fixed-top dashboard_navbar" v-show="!modal">
             <div class="backBtn">
                 <a href="/client/dashboard/payments">
                     <img src="/images/client/arrow_back.png" alt="back-icon">
@@ -10,7 +10,7 @@
         </nav>
         <!--navbar  -->
         <div class="d-flex justify-content-center">
-            <div class="main-grid search-main-grid">
+            <div  :class="{'d-flex flex-column w-100' : modal , 'search-main-grid main-grid': !modal}">
                 <div>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="invoice-style"> INVOICE</div>
@@ -150,7 +150,7 @@
 
 <script>
     export default {
-        props: ['invoice'],
+        props: ['invoice','modal'],
         data() {
             return {
                 invoiceStatusCode:{

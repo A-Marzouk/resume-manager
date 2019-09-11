@@ -177,6 +177,7 @@ Route::prefix('client')->group(function (){
 // Client invoices :
     Route::get('/invoices/view/{invoice_id}','InvoicesController@viewClientInvoice')->name('client.payment.invoice');
     Route::get('/invoices/get','InvoicesController@getClientInvoices')->name('client.invoices.get');
+    Route::post('/invoices/create','InvoicesController@createInvoice')->name('client.invoices.create');
 
 
 });

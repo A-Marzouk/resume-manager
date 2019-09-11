@@ -76,7 +76,7 @@
 
                 <hr/>
                 <div style="justify-content: flex-end" class="d-flex sub-action pt-5">
-                    <a href="/client/dashboard/payments" class="btn btn-primary d-flex justify-content-center align-items-center">
+                    <a href="javascript:void(0)" @click="finishPayment" class="btn btn-primary d-flex justify-content-center align-items-center">
                         FINISH
                     </a>
                 </div>
@@ -99,7 +99,18 @@
         },
         methods:{
             finishPayment(){
-                // create invoice and redirect
+                // issue client invoice and redirect to invoice page on success
+
+                axios.post('/client/invoices/create',this.subscription)
+                    .then ( (response) => {
+                        console.log(response.data);
+                        if(response.data.status === 'success' ){
+                            // redirect to invoice page to pay
+                            window.location.href = '/client/invoices/view/' + response.data.invoice_id ;
+                        }
+                    })
+                    .catch( () => {});
+
             }
         },
         mounted(){

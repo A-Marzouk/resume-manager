@@ -17,7 +17,7 @@ class ClientRegisterController extends BaseClientRegisterController
 
         $client = $this->create($request->all());
 
-        Mail::send(new ClientRegistered($client));
+//        Mail::send(new ClientRegistered($client));
 
         auth()->login($client->user);
 

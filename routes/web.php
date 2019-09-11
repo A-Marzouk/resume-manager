@@ -90,7 +90,6 @@ Route::prefix('client')->group(function (){
     Route::get('/account/edit','ClientsController@viewAccountEditPage')->name('account.edit');
     // service agreement route
     Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
-    Route::get('/payments/pay','ClientsController@viewClientPaymentPay')->name('payment.pay');
     Route::get('/payments/manager-calculation','ClientsController@viewClientManagerCalculation')->name('manager.calculation');
     //sub set up router
     Route::get('/payments/sub-set-up','ClientsController@viewClientSubSetUp')->name('payment.sub');
@@ -174,6 +173,9 @@ Route::prefix('client')->group(function (){
     Route::post('/camp/add-agent','ClientsController@campaignAddAgent')->name('client.camp.add_agent');
 // client sign contract :
     Route::post('/contracts/sign','ClientsController@signContract')->name('client.sign.contract');
+
+// Client invoices :
+    Route::get('/invoices/{invoice_id}','InvoicesController@viewClientInvoice')->name('client.payment.invoice');
 
 
 });

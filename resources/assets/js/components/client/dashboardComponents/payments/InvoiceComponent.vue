@@ -8,9 +8,20 @@
                 {{invoice.identifier}} INVOICE DETAILS
             </div>
         </nav>
+        <div class="container" style="display: flex;justify-content: center;">
+            <div class="notificationBar" :class="{'notificationBarModal' : modal}" id="InvoiceNotificationBar" style="display:none; position:fixed;">
+                <div>
+                    {{invoiceNotificationMessage}}
+                </div>
+                <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                    x
+                </a>
+            </div>
+        </div>
+
         <!--navbar  -->
         <div class="d-flex justify-content-center">
-            <div  :class="{'d-flex flex-column w-100' : modal , 'search-main-grid main-grid': !modal}">
+            <div :class="{'d-flex flex-column w-100' : modal , 'search-main-grid main-grid': !modal}">
                 <div>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="invoice-style"> INVOICE</div>
@@ -31,14 +42,16 @@
                     <div class="mr-2" style="font-weight: 500;">№ {{invoice.identifier}}</div>
                     <div class="export-invoice mr-2"> {{invoice.service_title}}</div>
                     <div class="export-invoice" style="font-weight: 500;"> $ {{invoice.total}}</div>
-                    <div class="invoice-outstand" style="padding: 0px 16px!important; display: inline; margin-left:0; line-height: 24px;">
+                    <div class="invoice-outstand"
+                         style="padding: 0px 16px!important; display: inline; margin-left:0; line-height: 24px;">
                         {{invoiceStatusCode[invoice.status]}}
                     </div>
-                    <div class="justify-content-end mobile-display">
-                        <div class="export-invoice"
+                    <div class="justify-content-end mobile-display NoDecor">
+                        <a href="javascript:void(0)" class="export-invoice"
                              style="margin-right: 43px;"><img src="/images/client/payments/export_invoice.png"/>
-                        </div>
-                        <div class="invoice-download export-invoice payment-pay-text">COPY LINK</div>
+                        </a>
+                        <a href="javascript:void(0)" @click="copyLink(invoice.id)"
+                           class="invoice-download export-invoice payment-pay-text">COPY LINK</a>
                     </div>
                 </div>
                 <!-- title -->
@@ -120,7 +133,7 @@
                             Rate:
                         </div>
                         <div class="display-content-block">
-                            $  {{invoice.subscription.hourly_rate}}
+                            $ {{invoice.subscription.hourly_rate}}
                         </div>
                     </div>
                 </div>
@@ -150,21 +163,47 @@
 
 <script>
     export default {
-        props: ['invoice','modal'],
+        props: ['invoice', 'modal'],
         data() {
             return {
-                invoiceStatusCode:{
-                    '1':'PAID',
-                    '2':'OUTSTANDING',
-                    '3':'CANCELLED',
-                }
+                invoiceStatusCode: {
+                    '1': 'PAID',
+                    '2': 'OUTSTANDING',
+                    '3': 'CANCELLED',
+                },
+                invoiceNotificationMessage : ' ',
             }
         },
         methods: {
             getDate(date) {
                 let event = new Date(date);
-                let options = { day: '2-digit', month: '2-digit', year:'numeric' };
+                let options = {day: '2-digit', month: '2-digit', year: 'numeric'};
                 return event.toLocaleDateString('en-EN', options);
+            },
+            copyLink(invoiceID) {
+
+                let getUrl  = window.location;
+                let baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
+                let $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(baseUrl + '/invoices/view/' + invoiceID).select();
+                document.execCommand("copy");
+                $temp.remove();
+
+                // notification copied :
+                this.showSuccessMessage();
+            },
+            hideNotification(){
+                $('#InvoiceNotificationBar').css('display','none');
+            },
+            showSuccessMessage(){
+                $('.notificationBar').css('background','#FFBA69') ;
+                this.invoiceNotificationMessage = 'Invoice link copied !' ;
+                $('#InvoiceNotificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#InvoiceNotificationBar').fadeOut(1500);
+                },4000);
             },
         }
     }
@@ -173,5 +212,25 @@
 <style scoped lang="scss">
     .agreement-button:hover {
         cursor: pointer;
+    }
+    .main-grid{
+        margin-top: 22px;
+    }
+
+    .notificationBar{
+        margin-top: -8px;
+        z-index: 2;
+        width: 1078px;
+    }
+
+    .notificationBarModal{
+        margin-top: -44px !important;
+        width: 100% !important;
+    }
+
+    @media screen and (max-width: 1270px) {
+        .notificationBar{
+            width: 96%;
+        }
     }
 </style>

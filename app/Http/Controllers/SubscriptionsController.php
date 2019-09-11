@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class SubscriptionsController extends Controller
 {
     public function getClientSubscription(){
-        return Subscription::where('client_id',currentClient()->id)->with('campaign.agents','manager.user.userData')->get();
+        return Subscription::where('client_id',currentClient()->id)->with('campaign.agents','manager.user.userData','invoices')->get();
     }
 
     public function create(Request $request){

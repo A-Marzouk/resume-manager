@@ -10,7 +10,6 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import VueRouter from 'vue-router';
-
 Vue.use(VueRouter);
 
 $.ajaxSetup({
@@ -174,7 +173,7 @@ Vue.component('campaign-archives', require('./components/client/CampaignArchives
 Vue.component('account-info-edit', require('./components/client/dashboardComponents/my_account/MyAccountEdit.vue'));
 Vue.component('service-agreement',require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
 // payment pay
-Vue.component('payment-pay',require('./components/client/dashboardComponents/payments/PaymentPay.vue'));
+Vue.component('invoice-component',require('./components/client/dashboardComponents/payments/InvoiceComponent.vue'));
 Vue.component('manager-calculation',require('./components/client/dashboardComponents/payments/ManagerCalculation.vue'));
 Vue.component('sub-set-up',require('./components/client/dashboardComponents/payments/SubSetUp.vue'));
 Vue.component('privacy-agreement',require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'));
@@ -298,10 +297,10 @@ if ($("#paymentShowInvoice").length !== 0){
     });
 }
 
-if ($("#paymentPay").length !== 0){
+if ($("#invoiceComponent").length !== 0){
 
-    let paymentPay = new Vue({
-        el:'#paymentPay'
+    let invoiceComponent = new Vue({
+        el:'#invoiceComponent',
     });
 }
 

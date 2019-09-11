@@ -70,6 +70,16 @@ class SubscriptionsController extends Controller
         return ['status' => 'success'];
     }
 
+    public function requestUpdate(Request $request){
+        if(isset($request->status) && $request->status == 'updateSub'){
+            // send update request email with the new updated subscription data.
+        }
+
+        return [
+            'status' => 'success'
+        ];
+    }
+
     public function showUpdatePage($sub_id){
         $subscription = Subscription::where('id',$sub_id)->with('campaign.agents','manager.user.userData')->first();
         return view('client.payments.update_sub_plan',compact('subscription')) ;

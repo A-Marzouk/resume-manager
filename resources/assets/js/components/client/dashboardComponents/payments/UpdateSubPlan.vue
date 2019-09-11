@@ -355,7 +355,7 @@
                 this[key] = ''
             },
             finishUpdate() {
-                // create new subscription plan for the client.
+
                 $.each(this.plans,(index,plan)=>{
                     if(plan.selected){
                         this.subscription_data.amount_paid = plan.price;
@@ -365,13 +365,7 @@
 
                 this.subscription_data.duration_in_weeks = this.numOfWeeks ;
 
-                axios.post('/client/subs/update',this.subscription_data)
-                    .then( (response) => {
-                        if(response.data.status === 'success'){
-                            this.status = 'finish';
-                        }
-                    })
-                    .catch()
+                this.status = 'finish';
 
             },
             dateChanged() {

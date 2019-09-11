@@ -163,6 +163,7 @@ Route::prefix('client')->group(function (){
 // update subscription plan route
     Route::get('/subs/update/{sub_id}','SubscriptionsController@showUpdatePage')->name('client.subs.show.update');
     Route::post('/subs/update','SubscriptionsController@update')->name('client.subs.update');
+    Route::post('/subs/request-update','SubscriptionsController@requestUpdate')->name('client.subs.request_update');
 
 // client campaign agents :
     Route::get('/camp/add-agent','ClientsController@viewCampaignAddAgentPage')->name('campaign.add.agent');

@@ -9987,12 +9987,12 @@ select:focus {
 
 .invoice-outstand {
   background: #FFFFFF;
-  border: 2px solid #F56F6F;
+  border: 2px solid #FFA368;
+  color: #FFA368;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   letter-spacing: -0.1px;
   border-radius: 40px;
-  color: #F56F6F;
   font-size: 12px;
   padding: 7px 16px;
   margin-left: 15px;

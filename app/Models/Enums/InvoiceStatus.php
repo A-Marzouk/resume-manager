@@ -11,9 +11,11 @@ namespace App\Models\Enums;
 
 class InvoiceStatus
 {
-    const PAID = 1 ;  // email request
-    const OUTSTANDING = 2 ;  // call back
-    const CANCELLED = 3 ;  // Not interested
+    const PAID = 1 ;
+    const OUTSTANDING = 2 ;
+    const CANCELLED = 3 ;
+    const DUE = 4 ;
+
 
 
 }

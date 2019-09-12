@@ -9,7 +9,8 @@
             </div>
         </nav>
         <div class="container" style="display: flex;justify-content: center;">
-            <div class="notificationBar" :class="{'notificationBarModal' : modal}" id="InvoiceNotificationBar" style="display:none; position:fixed;">
+            <div class="notificationBar" :class="{'notificationBarModal' : modal}" id="InvoiceNotificationBar"
+                 style="display:none; position:fixed;">
                 <div>
                     {{invoiceNotificationMessage}}
                 </div>
@@ -42,13 +43,13 @@
                     <div class="mr-2" style="font-weight: 500;">№ {{invoice.identifier}}</div>
                     <div class="export-invoice mr-2"> {{invoice.service_title}}</div>
                     <div class="export-invoice" style="font-weight: 500;"> $ {{invoice.total}}</div>
-                    <div class="invoice-outstand"
+                    <div  :class="{ 'invoice-paid' : invoice.status == 1, 'invoice-outstand' :invoice.status == 2, 'invoice-due' : invoice.status == 4}"
                          style="padding: 0px 16px!important; display: inline; margin-left:0; line-height: 24px;">
                         {{invoiceStatusCode[invoice.status]}}
                     </div>
                     <div class="justify-content-end mobile-display NoDecor">
                         <a href="javascript:void(0)" class="export-invoice"
-                             style="margin-right: 43px;"><img src="/images/client/payments/export_invoice.png"/>
+                           style="margin-right: 43px;"><img src="/images/client/payments/export_invoice.png"/>
                         </a>
                         <a href="javascript:void(0)" @click="copyLink(invoice.id)"
                            class="invoice-download export-invoice payment-pay-text">COPY LINK</a>
@@ -153,11 +154,30 @@
                 <!-- total due -->
                 <hr style="margin: 30px 0;"/>
                 <div class="d-flex justify-content-end">
-                    <button class="agreement-button payment-button">PAY VIA PayPal</button>
+                    <button class="agreement-button payment-button" @click="pay" :class="{'disabled-btn' :!canPay}">PAY
+                        VIA PayPal
+                    </button>
                 </div>
             </div>
             <!-- payments info -->
         </div>
+
+        <!-- paypal form -->
+
+        <form action="/paypal/express-checkout" method="POST" style="display: none;" id="paypalForm">
+            <input type="hidden" name="_token" :value="csrf">
+            <input type="text" class="form-control panelFormInput" id="amount" name="amountToPay"
+                   :value="paymentData.amountToPay">
+            <input type="text" class="form-control panelFormInput" id="invoice_id" name="invoice_id"
+                   :value="invoice.id">
+            <textarea class="form-control" rows="3" id="description" name="description"
+                      :value="paymentData.description"></textarea>
+            <input type="number" placeholder="Number of weeks.." min="0" max="24" id="weeks"
+                   class="panelFormInput form-control" name="weeks" :value="paymentData.weeks">
+            <button class="hireBtn btn-block hire" type="submit">Pay via PayPal</button>
+        </form>
+
+        <!-- end of paypal form-->
     </div>
 </template>
 
@@ -166,15 +186,26 @@
         props: ['invoice', 'modal'],
         data() {
             return {
+                canPay: true,
                 invoiceStatusCode: {
                     '1': 'PAID',
                     '2': 'OUTSTANDING',
                     '3': 'CANCELLED',
                 },
-                invoiceNotificationMessage : ' ',
+                invoiceNotificationMessage: ' ',
+                paymentData: {
+                    amountToPay: this.invoice.total,
+                    description: this.invoice.service_title,
+                    weeks: this.invoice.subscription.original_duration_in_weeks
+                },
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             }
         },
         methods: {
+            pay() {
+                this.canPay = false;
+                $('#paypalForm').submit();
+            },
             getDate(date) {
                 let event = new Date(date);
                 let options = {day: '2-digit', month: '2-digit', year: 'numeric'};
@@ -182,8 +213,8 @@
             },
             copyLink(invoiceID) {
 
-                let getUrl  = window.location;
-                let baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                let getUrl = window.location;
+                let baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 
                 let $temp = $("<input>");
                 $("body").append($temp);
@@ -194,16 +225,16 @@
                 // notification copied :
                 this.showSuccessMessage();
             },
-            hideNotification(){
-                $('#InvoiceNotificationBar').css('display','none');
+            hideNotification() {
+                $('#InvoiceNotificationBar').css('display', 'none');
             },
-            showSuccessMessage(){
-                $('.notificationBar').css('background','#FFBA69') ;
-                this.invoiceNotificationMessage = 'Invoice link copied !' ;
+            showSuccessMessage() {
+                $('.notificationBar').css('background', '#FFBA69');
+                this.invoiceNotificationMessage = 'Invoice link copied !';
                 $('#InvoiceNotificationBar').fadeIn(600);
-                setTimeout(()=>{
+                setTimeout(() => {
                     $('#InvoiceNotificationBar').fadeOut(1500);
-                },4000);
+                }, 4000);
             },
         }
     }
@@ -213,24 +244,59 @@
     .agreement-button:hover {
         cursor: pointer;
     }
-    .main-grid{
+
+    .main-grid {
         margin-top: 22px;
     }
 
-    .notificationBar{
+    .notificationBar {
         margin-top: -8px;
         z-index: 2;
         width: 1078px;
     }
 
-    .notificationBarModal{
+    .notificationBarModal {
         margin-top: -44px !important;
         width: 100% !important;
     }
 
     @media screen and (max-width: 1270px) {
-        .notificationBar{
+        .notificationBar {
             width: 96%;
         }
     }
+
+    .disabled-btn {
+        background: lightgrey;
+        border: none;
+        cursor: not-allowed !important;
+    }
+
+    .invoice-paid {
+        background: #FFFFFF;
+        border: 2px solid #27AE60;
+        color: #27AE60;
+        box-sizing: border-box;
+        letter-spacing: -0.1px;
+        border-radius: 40px;
+        font-size: 12px;
+        padding: 7px 16px;
+        margin-left: 15px;
+        font-weight: bold;
+    }
+
+    .invoice-due {
+        background: #FFFFFF;
+        border: 2px solid #F56F6F;
+        color: #F56F6F;
+        box-sizing: border-box;
+        letter-spacing: -0.1px;
+        border-radius: 40px;
+        font-size: 12px;
+        padding: 7px 16px;
+        margin-left: 15px;
+        font-weight: bold;
+    }
+
+
 </style>

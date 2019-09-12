@@ -96,7 +96,8 @@ class SubscriptionsController extends Controller
                 'duration_in_weeks' => $request->updated_subscription['duration_in_weeks'],
                 'end_date' => $end_date,
                 'original_duration_in_weeks' => $request->updated_subscription['duration_in_weeks'],
-                'hourly_rate' => $request->updated_subscription['amount_paid']/$request->updated_subscription['hours_per_week']
+                'hourly_rate' => $request->updated_subscription['amount_paid']/$request->updated_subscription['hours_per_week'],
+                'subscription_id' => $request->updated_subscription['id']
             ]);
 
         }

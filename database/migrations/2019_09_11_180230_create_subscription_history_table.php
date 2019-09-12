@@ -35,9 +35,11 @@ class CreateSubscriptionHistoryTable extends Migration
             $table->integer('client_id')->unsigned()->nullable()->index();
             $table->integer('agent_id')->unsigned()->nullable()->index();
             $table->integer('campaign_id')->unsigned()->nullable()->index();
+            $table->integer('subscription_id')->unsigned()->nullable()->index();
 
             $table->foreign('agent_id')->references('id')->on('agents');
             $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreign('subscription_id')->references('id')->on('subscriptions');
 
             $table->timestamps();
         });

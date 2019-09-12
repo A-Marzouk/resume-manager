@@ -64,7 +64,8 @@
                                             {{sub.origianl_duration_in_weeks}} WEEKS
                                         </div>
                                         <div class="sub-info-box-note">
-                                            {{sub.duration_in_weeks}} used / {{sub.origianl_duration_in_weeks - sub.duration_in_weeks}} left
+                                            {{parseInt(sub.original_duration_in_weeks) - parseInt(sub.duration_in_weeks)}} used
+                                            / {{sub.duration_in_weeks}} left
                                         </div>
                                     </div>
                                 </div>

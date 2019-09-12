@@ -143,6 +143,7 @@
                             <th scope="col">TOTAL DUE</th>
                             <th scope="col">PAYMENT STATUS</th>
                             <th scope="col">EXPORT</th>
+                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -170,13 +171,19 @@
                                 </div>
                             </td>
                             <td style="display:inline-block">
-                                <div class="payment-btn due">
-                                    <a href="/client/payments/pay">{{invoiceStatusCode[invoice.status]}}</a>
+                                <div class="payment-btn" :class="{ 'paid' : invoice.status == 1, 'upcoming' :invoice.status == 2, 'due' : invoice.status == 4}">
+                                    <a :href="'/client/invoices/view/' + invoice.id">{{invoiceStatusCode[invoice.status]}}</a>
                                 </div>
                             </td>
                             <td>
                                 <div class="export-icon">
                                     <img src="/images/client/payments/export_invoice.png" alt="export icon">
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="NoDecor">
+                                    <a :href="'/client/invoices/view/' + invoice.id">Open</a>
                                 </div>
                             </td>
                         </tr>

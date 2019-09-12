@@ -18,6 +18,7 @@ class Subscription extends Model
         'end_date',
         'canceled_at',
         'finished_at',
+        'invoice_generated_at',
         'booking_email',
         'payment_gateway_subscription_id',
         'client_id',

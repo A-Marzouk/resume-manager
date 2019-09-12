@@ -26,10 +26,14 @@ class SubscriptionsController extends Controller
         $start_date = date('Y-m-d', strtotime(str_replace('-', '/', $request->start_date)));
         $date       = strtotime($start_date);
         $date       = strtotime("+".$request->duration_in_weeks. " week", $date);
-        $end_date   =  date('Y-m-d', $date);
+        if($request->end_date === 'no-end-date'){
+            $end_date = null ;
+        }else{
+            $end_date   =  date('Y-m-d', $date);
+        }
 
         // create subscription
-        Subscription::create([
+        $subscription = Subscription::create([
             'amount_paid' => $request->amount_paid ,
             'hours_per_week' => $request->hours_per_week ,
             'start_date' =>  date('Y-m-d', strtotime(str_replace('-', '/', $request->start_date))),
@@ -43,7 +47,7 @@ class SubscriptionsController extends Controller
         ]);
 
 
-        return ['status' => 'success'];
+        return ['status' => 'success', 'subscription' => $subscription];
     }
 
 

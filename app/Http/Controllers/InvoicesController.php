@@ -39,8 +39,6 @@ class InvoicesController extends Controller
     {
 
         $subscription = Subscription::where('id', $request->id)->first();
-
-
         // create invoice :
          $invoice = Invoice::create([
             'identifier' => $this->getInvoiceIdentifier(),
@@ -54,6 +52,11 @@ class InvoicesController extends Controller
             'client_id' => currentClient()->id,
             'currency_id' => 1,
             'subscription_id' => $subscription->id,
+        ]);
+
+         // update subscription (invoice generated)
+        $subscription->update([
+            'invoice_generated_at' => $invoice->created_at
         ]);
 
          return [

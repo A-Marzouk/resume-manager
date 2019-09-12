@@ -111,7 +111,6 @@
 
                 axios.post('/client/invoices/create', this.subscription)
                     .then((response) => {
-                        console.log(response.data);
                         if (response.data.status === 'success') {
                             // redirect to invoice page to pay
                             window.location.href = '/client/invoices/view/' + response.data.invoice_id;

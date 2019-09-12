@@ -192,6 +192,7 @@
         methods: {
             handleCheck() {
                 this.checked = !this.checked
+                this.subscription.end_date = 'no-end-date' ;
             },
             changePlan(index) {
                 let {plans} = this
@@ -223,6 +224,7 @@
                     .then( (response) => {
                         if(response.data.status === 'success'){
                             this.status = 'finish';
+                            this.subscription.id = response.data.subscription.id ;
                         }
                     })
                     .catch()

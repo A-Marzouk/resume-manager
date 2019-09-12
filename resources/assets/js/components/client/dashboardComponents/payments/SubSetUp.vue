@@ -107,7 +107,7 @@
         </div>
 
         <div v-show="status === 'finish'">
-            <finishSub :subscription="subscription"></finishSub>
+            <finishSub :subscription="subscription"  :status="'newSub'"></finishSub>
         </div>
 
         <div class="modal" id="pick-date-modal">

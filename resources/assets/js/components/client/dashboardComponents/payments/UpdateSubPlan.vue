@@ -64,7 +64,8 @@
                                             {{sub.origianl_duration_in_weeks}} WEEKS
                                         </div>
                                         <div class="sub-info-box-note">
-                                            {{sub.duration_in_weeks}} used / {{sub.origianl_duration_in_weeks - sub.duration_in_weeks}} left
+                                            {{parseInt(sub.original_duration_in_weeks) - parseInt(sub.duration_in_weeks)}} used
+                                            / {{sub.duration_in_weeks}} left
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +87,12 @@
                                             {{sub.campaign.agents.length}} AGENTS
                                         </div>
                                         <div class="sub-info-box-note">
-                                            working on campaign
+                                            <span v-if="sub.campaign.agents.length > 0">
+                                                working on campaign
+                                            </span>
+                                            <span v-else class="NoDecor">
+                                                <a href="/client/camp/add-agent"> Add agent</a>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +214,7 @@
 
 
         <div v-show="status === 'finish'">
-            <finishSub :subscription="subscription_data"></finishSub>
+            <finishSub :subscription="subscription_data" :status="'updateSub'"></finishSub>
         </div>
 
         <!-- Modal -->
@@ -350,7 +356,7 @@
                 this[key] = ''
             },
             finishUpdate() {
-                // create new subscription plan for the client.
+
                 $.each(this.plans,(index,plan)=>{
                     if(plan.selected){
                         this.subscription_data.amount_paid = plan.price;
@@ -360,13 +366,7 @@
 
                 this.subscription_data.duration_in_weeks = this.numOfWeeks ;
 
-                axios.post('/client/subs/update',this.subscription_data)
-                    .then( (response) => {
-                        if(response.data.status === 'success'){
-                            this.status = 'finish';
-                        }
-                    })
-                    .catch()
+                this.status = 'finish';
 
             },
             dateChanged() {

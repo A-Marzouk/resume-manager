@@ -37,4 +37,8 @@ class Subscription extends Model
     public function invoices(){
         return $this->hasMany(Invoice::class);
     }
+
+    public function subscriptionsUpdateHistory(){
+        return $this->hasMany(SubscriptionHistory::class);
+    }
 }

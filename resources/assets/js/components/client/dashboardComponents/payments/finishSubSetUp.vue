@@ -37,7 +37,7 @@
                         <div class="plan-text">
                             Your start date is :
                         </div>
-                        <div  class="plan-text text-orange">
+                        <div class="plan-text text-orange">
                             {{subscription.start_date}}
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                         <div class="plan-text">
                             Your campaign will run for :
                         </div>
-                        <div  class="plan-text text-orange">
+                        <div class="plan-text text-orange">
                             {{subscription.duration_in_weeks}} WEEKS
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                         <div class="plan-text">
                             Total weekly amount is :
                         </div>
-                        <div  class="plan-text text-orange">
+                        <div class="plan-text text-orange">
                             $ {{subscription.amount_paid}}
                         </div>
                     </div>
@@ -67,17 +67,27 @@
                         <div class="plan-text">
                             First payment date is :
                         </div>
-                        <div  class="plan-text text-orange">
-                             {{subscription.start_date}}
+                        <div class="plan-text text-orange">
+                            {{subscription.start_date}}
                         </div>
                     </div>
                 </div>
 
 
                 <hr/>
+
                 <div style="justify-content: flex-end" class="d-flex sub-action pt-5">
-                    <a href="/client/dashboard/payments" class="btn btn-primary d-flex justify-content-center align-items-center">
+
+                    <a href="javascript:void(0)" @click="finishPayment"
+                       class="btn btn-primary d-flex justify-content-center align-items-center"
+                       v-if="status === 'newSub'">
                         FINISH
+                    </a>
+
+                    <a href="javascript:void(0)" @click="requestUpdateSubscription"
+                       class="btn btn-primary d-flex justify-content-center align-items-center"
+                       v-else-if="status === 'updateSub'">
+                        REQUEST UPDATE
                     </a>
                 </div>
 
@@ -91,25 +101,49 @@
 <script>
     export default {
         name: "finishSubSetUp",
-        props:['subscription'],
-        data(){
-            return{
+        props: ['subscription', 'status'],
+        data() {
+            return {}
+        },
+        methods: {
+            finishPayment() {
+                // issue client invoice and redirect to invoice page on success
 
+                axios.post('/client/invoices/create', this.subscription)
+                    .then((response) => {
+                        console.log(response.data);
+                        if (response.data.status === 'success') {
+                            // redirect to invoice page to pay
+                            window.location.href = '/client/invoices/view/' + response.data.invoice_id;
+                        }
+                    })
+                    .catch(() => {
+                    });
+
+            },
+            requestUpdateSubscription() {
+                axios.post('/client/subs/request-update', {
+                    'updated_subscription': this.subscription,
+                    'status': this.status
+                })
+                    .then((response) => {
+                        if (response.data.status === 'success') {
+                            window.location.href = '/client/dashboard/payments?request=updateSubscription';
+                        }
+                    })
+                    .catch((error) => {
+                    });
             }
         },
-        methods:{
-            finishPayment(){
-                // create invoice and redirect
-            }
-        },
-        mounted(){
+
+        mounted() {
 
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .plan-text{
+    .plan-text {
         font-family: Roboto;
         font-style: normal;
         font-weight: normal;
@@ -121,13 +155,14 @@
         color: #4A5464;
     }
 
-    .text-orange{
+    .text-orange {
         color: #FFA368;
     }
 
-    .plan-row{
-        padding-bottom:12px;
-        img,.plan-text{
+    .plan-row {
+        padding-bottom: 12px;
+
+        img, .plan-text {
             margin-right: 10px;
         }
     }

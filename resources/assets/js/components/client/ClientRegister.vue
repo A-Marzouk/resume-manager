@@ -312,4 +312,8 @@ export default {
   /* identical to box height, or 187% */
   color: #F56F6F;
 }
+
+  .account-edit-section-edit-btn:hover{
+    color:white;
+  }
 </style>

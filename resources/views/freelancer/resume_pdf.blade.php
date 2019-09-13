@@ -174,7 +174,9 @@
   <main class="resume">
     <header class="resume__header">
       <picture class="resume__header__userImg">
-        <img src="{{public_path().$user_data['photo']}}" alt="">
+        @if($user_data['photo'] != null)
+          <img src="{{public_path().$user_data['photo']}}" alt="">
+        @endif
       </picture>
       <div class="resume__header__userInfo">
         <h2>{{ $agent['firstName'].' '.$agent["lastName"] }}</h2>
@@ -185,7 +187,7 @@
         <table>
           <tr class="resume__header__invoiceData__hourlyRate">
             <td class="value"><b>{{ number_format(floatval($user_data["salary"]), 2) }}</b></td>
-            <td class="value"><b>{{ intval($user_data["availableHours"]) }} hours</b></td>
+            <td class="value"><b>{{ intval($user_data["available_hours_per_week"]) }} hours</b></td>
           </tr>
           <tr class="resume__header__invoiceData__weeklyAvailability">
             <td class="little">hourly rate</td>
@@ -233,7 +235,7 @@
             <div class="container">
               <div class="resume__content__details__subtitle">Programming Languages</div>
               @foreach ($programmingSkills as $skill)
-                <div class="skillName">{{ $skill['skill_title'] }}</div>
+                <div class="skillName">{{ $skill['name'] }}</div>
 
                 <div class="skillBar">
                   <div class="left"></div>

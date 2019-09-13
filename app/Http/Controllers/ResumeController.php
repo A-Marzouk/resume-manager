@@ -182,13 +182,13 @@ class ResumeController extends Controller
             $worksHistory = $user[0]->worksHistory;
             $skills = $user[0]->skills;
 
-            dd($skills[0]->skillType);
+            // dd($user_data);
 
             return view('freelancer.resume_test', [
                 "agent" => $agent[0],
                 "user" => $user[0],
                 "user_data" => $user_data,
-                "skill" => $skills,
+                "skills" => $skills,
                 "worksHistory" => $worksHistory,
                 "educationsHistory" => $educationsHistory
             ]);

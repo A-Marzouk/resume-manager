@@ -6,8 +6,8 @@
                 <form class="downloadForm" action="/freelancer/resume/download" method="POST">
                     <input type="hidden" id="freelancer" name="freelancer" :value="JSON.stringify({ freelancer })">
                     <input type="hidden" id="user_data" name="user_data" :value="JSON.stringify({ user_data })">
-                    <input type="hidden" id="worksHistory" name="worksHistory" :value="JSON.stringify({ worksHistory })">
-                    <input type="hidden" id="educationsHistory" name="educationsHistory" :value="JSON.stringify({ educationsHistory })">
+                    <input type="hidden" id="works_history" name="works_history" :value="JSON.stringify({ works_history })">
+                    <input type="hidden" id="educations_history" name="educations_history" :value="JSON.stringify({ educations_history })">
                     <input type="hidden" id="skills" name="skills" :value="JSON.stringify({ skills })">
                     <input v-bind="csrf" type="hidden" id="_token" name="_token" :value="csrf">
 
@@ -54,13 +54,13 @@
                                 <div class="row hireRow w-100">
                                     <div  class="col-md-4 text-center" style="font-size: 15px; color: white;" >
                                     <span style="font-weight: bold;">
-                                        {{user_data.salary}}
+                                        {{parseFloat(user_data.salary).toFixed(2)}}
                                     </span>
                                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
                                     </div>
 
                                     <div class="col-md-4 text-center"  style="font-size: 15px; color: white;">
-                                        <span style="font-weight: bold;">{{user_data.availableHours.replace(/[^0-9]/g,'')}} hours</span>
+                                        <span style="font-weight: bold;">{{parseInt(user_data.available_hours_per_week)}} hours</span>
                                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly Availability</div>
                                     </div>
 
@@ -105,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="text-left"  style="font-size: 15px; color: white; padding-top: 5px;">
-                                        <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span style="font-weight: bold;">{{user_data.availableHours.replace(/[^0-9]/g,'')}}h/week</span></div>
+                                        <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span style="font-weight: bold;">{{user_data.available_hours_per_week.replace(/[^0-9]/g,'')}}h/week</span></div>
                                     </div>
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
                                         Hi, I am {{freelancer.firstName}}, I am a {{user_data.jobTitle}}, How can I help
@@ -163,8 +163,8 @@
                                     <div class="col-md-12  text-center">
                                         <span class="skillsCard">
                                                 <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'programming'" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
+                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.name)" alt="skill" :id="'skillImage_' + skill.id">
+                                                    {{skill.name}}
                                                 </span>
                                         </span>
                                     </div>
@@ -175,8 +175,8 @@
                                     <div class="col-md-12  text-center">
                                         <span class="skillsCard">
                                                 <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index + 'M'" v-show="skill.type === 'frameworks'" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
+                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.name)" alt="skill" :id="'skillImage_' + skill.id">
+                                                    {{skill.name}}
                                                 </span>
                                         </span>
                                     </div>
@@ -187,8 +187,8 @@
                                     <div class="col-md-12  text-center">
                                         <span class="skillsCard">
                                                 <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'design'" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
+                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.name)" alt="skill" :id="'skillImage_' + skill.id">
+                                                    {{skill.name}}
                                                 </span>
                                         </span>
                                     </div>
@@ -199,8 +199,8 @@
                                     <div class="col-md-12  text-center">
                                         <span class="skillsCard">
                                                 <span @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)"  v-for="(skill,index) in skills" :key="index" v-show="skill.type === 'software'" :id="'skillContainer'+skill.id" class="highlightSkill">
-                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.skill_title)" alt="skill" :id="'skillImage_' + skill.id">
-                                                    {{skill.skill_title}}
+                                                    <img style="width: 17px;padding-bottom: 3px;" :src="getSkillIconSrc(skill.name)" alt="skill" :id="'skillImage_' + skill.id">
+                                                    {{skill.name}}
                                                 </span>
                                         </span>
                                     </div>
@@ -309,7 +309,7 @@
                                 <div class="row" style="padding-top: 35px;">
                                     <div class="col-12 educationSection">
                                         <div class="aboutText">
-                                            <div class="row" v-for="(work, index) in worksHistory" :key="index + 'V'">
+                                            <div class="row" v-for="(work, index) in works_history" :key="index + 'V'">
                                                 <div class="col-md-12 aboutSubText">
                                                     <div class="title work">
                                                         <span class="circle"></span>
@@ -338,7 +338,7 @@
                                 <div class="row" style="padding-top: 35px;">
                                     <div class="col-12 educationSection">
                                         <div class="aboutText">
-                                            <div class="row" v-for="(education, index) in educationsHistory" :key="index + 'E'">
+                                            <div class="row" v-for="(education, index) in educations_history" :key="index + 'E'">
                                                 <div class="col-md-12 aboutSubText">
                                                     <div class="title work">
                                                         <span class="circle"></span>
@@ -481,7 +481,7 @@
     import axios from 'axios'
 
     export default {
-        props:['freelancer','hire','search'],
+        props:['freelancer','hire','search', 'user_data', 'skills', 'educations_history', 'works_history'],
         components:{
             'vue-load-image': VueLoadImage,
             Slick
@@ -491,42 +491,42 @@
                 slideNumber : 1 ,
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 numberOfSlides : this.calculateNumberOfSlides(),
-                skills: [
-                    {
-                        type: 'programming',
-                        id: 1,
-                        skill_title: 'javascript'
-                    }
-                ],
-                worksHistory: [
-                    {
-                        job_title: 'Fullstack developer',
-                        company: '123workforce',
-                        date_from: (new Date(2016, 0, 20)).getTime() / 1000,
-                        currently_working: true,
-                        job_description: `Officia adipisicing incididunt consectetur aliquip et pariatur nisi laboris. Dolor non esse fugiat excepteur minim occaecat eu. Do ex ut ea et officia. Ut exercitation laborum officia cupidatat nulla eu. Ex laborum minim nostrud nostrud nostrud qui irure ea voluptate cillum dolore mollit ea magna.
+                // skills: [
+                //     {
+                //         type: 'programming',
+                //         id: 1,
+                //         name: 'javascript'
+                //     }
+                // ],
+                // works_history: [
+                //     {
+                //         job_title: 'Fullstack developer',
+                //         company: '123workforce',
+                //         date_from: (new Date(2016, 0, 20)).getTime() / 1000,
+                //         currently_working: true,
+                //         job_description: `Officia adipisicing incididunt consectetur aliquip et pariatur nisi laboris. Dolor non esse fugiat excepteur minim occaecat eu. Do ex ut ea et officia. Ut exercitation laborum officia cupidatat nulla eu. Ex laborum minim nostrud nostrud nostrud qui irure ea voluptate cillum dolore mollit ea magna.
 
-                        Dolor ad irure cupidatat ea dolore eiusmod ex ad ex duis ex consequat ullamco. Et do amet nulla culpa elit ad. Exercitation commodo sunt anim do reprehenderit commodo nostrud qui reprehenderit pariatur ea voluptate laboris. Magna eiusmod nulla minim eiusmod do. Ullamco pariatur commodo quis enim duis cupidatat ut nisi. Do irure incididunt non eu Lorem sint ullamco proident ea eu. Ipsum nisi tempor officia velit reprehenderit ut tempor.
+                //         Dolor ad irure cupidatat ea dolore eiusmod ex ad ex duis ex consequat ullamco. Et do amet nulla culpa elit ad. Exercitation commodo sunt anim do reprehenderit commodo nostrud qui reprehenderit pariatur ea voluptate laboris. Magna eiusmod nulla minim eiusmod do. Ullamco pariatur commodo quis enim duis cupidatat ut nisi. Do irure incididunt non eu Lorem sint ullamco proident ea eu. Ipsum nisi tempor officia velit reprehenderit ut tempor.
 
-                        Tempor in pariatur veniam dolore. Qui ex ut magna quis adipisicing fugiat amet. Labore veniam et eiusmod cillum exercitation laborum. Dolore laborum tempor nulla incididunt et sint amet ut irure incididunt labore amet et elit. Magna voluptate velit ex irure esse sunt adipisicing est laborum pariatur consectetur exercitation nulla. Nulla incididunt id velit in qui commodo commodo exercitation magna ipsum. Tempor velit culpa dolore incididunt ex id labore quis ipsum eiusmod nisi esse amet.
+                //         Tempor in pariatur veniam dolore. Qui ex ut magna quis adipisicing fugiat amet. Labore veniam et eiusmod cillum exercitation laborum. Dolore laborum tempor nulla incididunt et sint amet ut irure incididunt labore amet et elit. Magna voluptate velit ex irure esse sunt adipisicing est laborum pariatur consectetur exercitation nulla. Nulla incididunt id velit in qui commodo commodo exercitation magna ipsum. Tempor velit culpa dolore incididunt ex id labore quis ipsum eiusmod nisi esse amet.
 
-                        Laboris veniam proident fugiat dolore qui. Dolore nisi id dolor id et qui eu culpa pariatur sint. Velit sit ea nisi esse excepteur nulla ea culpa sint aute duis. Occaecat fugiat do dolor Lorem occaecat culpa ex minim ut Lorem irure labore est ad. Sit proident cillum amet ut eiusmod dolore. Deserunt laboris do qui mollit ut excepteur irure esse quis est.`
-                    }
-                ],
-                educationsHistory: [
-                    {
-                        school_title: '"Simón Bolívar" University',
-                        date_from: (new Date(2014, 8)).getTime() / 1000,
-                        currently_learning: true,
-                        description: `
-                            Ipsum dolore adipisicing aliquip duis. Aute sint incididunt ullamco cillum sunt excepteur dolor magna aliquip ullamco mollit enim occaecat. Id labore amet dolor Lorem adipisicing aute fugiat ipsum sint. Consequat cillum excepteur ipsum elit. Nostrud irure quis pariatur ex sit id dolor quis. Sunt fugiat anim amet incididunt officia cillum quis. Incididunt aliqua mollit sint sit esse ad incididunt Lorem.
+                //         Laboris veniam proident fugiat dolore qui. Dolore nisi id dolor id et qui eu culpa pariatur sint. Velit sit ea nisi esse excepteur nulla ea culpa sint aute duis. Occaecat fugiat do dolor Lorem occaecat culpa ex minim ut Lorem irure labore est ad. Sit proident cillum amet ut eiusmod dolore. Deserunt laboris do qui mollit ut excepteur irure esse quis est.`
+                //     }
+                // ],
+                // educations_history: [
+                //     {
+                //         school_title: '"Simón Bolívar" University',
+                //         date_from: (new Date(2014, 8)).getTime() / 1000,
+                //         currently_learning: true,
+                //         description: `
+                //             Ipsum dolore adipisicing aliquip duis. Aute sint incididunt ullamco cillum sunt excepteur dolor magna aliquip ullamco mollit enim occaecat. Id labore amet dolor Lorem adipisicing aute fugiat ipsum sint. Consequat cillum excepteur ipsum elit. Nostrud irure quis pariatur ex sit id dolor quis. Sunt fugiat anim amet incididunt officia cillum quis. Incididunt aliqua mollit sint sit esse ad incididunt Lorem.
 
-                            Est deserunt elit esse laborum. Consequat do reprehenderit amet nulla incididunt velit irure nostrud consequat. Irure consequat incididunt aliqua esse incididunt. Tempor irure proident Lorem nisi tempor elit fugiat nostrud sint cupidatat irure reprehenderit. Ex in nisi elit velit. Dolore ullamco esse officia exercitation ut occaecat sit ipsum. Id nisi occaecat est consectetur eiusmod ex reprehenderit occaecat.
+                //             Est deserunt elit esse laborum. Consequat do reprehenderit amet nulla incididunt velit irure nostrud consequat. Irure consequat incididunt aliqua esse incididunt. Tempor irure proident Lorem nisi tempor elit fugiat nostrud sint cupidatat irure reprehenderit. Ex in nisi elit velit. Dolore ullamco esse officia exercitation ut occaecat sit ipsum. Id nisi occaecat est consectetur eiusmod ex reprehenderit occaecat.
 
-                            Tempor pariatur consequat anim aliquip elit culpa esse in dolor amet qui est labore. Amet enim laborum enim adipisicing voluptate sint occaecat eu excepteur. Incididunt tempor sunt ipsum consequat Lorem fugiat cupidatat Lorem ipsum ex ut exercitation cillum.
-                        `
-                    }
-                ],
+                //             Tempor pariatur consequat anim aliquip elit culpa esse in dolor amet qui est labore. Amet enim laborum enim adipisicing voluptate sint occaecat eu excepteur. Incididunt tempor sunt ipsum consequat Lorem fugiat cupidatat Lorem ipsum ex ut exercitation cillum.
+                //         `
+                //     }
+                // ],
                 currentTab: 'portfolio',
                 slickOptions: {
                     infinite: false,
@@ -553,13 +553,13 @@
                 },
                 weeks:4,
                 hours: 40,
-                user_data: {
-                    salary_monthly: 1700,
-                    availableHours: '40',
-                    photo: '/images/home/profile1.png',
-                    job_title: 'Software developer',
-                    salary: 10
-                },
+                // user_data: {
+                //     monthly_salary: 1700,
+                //     available_hours_per_week: '40',
+                //     photo: '/images/home/profile1.png',
+                //     job_title: 'Software developer',
+                //     salary: 10
+                // },
                 portfolio: true    
             }
         },
@@ -594,7 +594,7 @@
 
                 return dd + '/' + mm + '/' + yyyy;
             },
-            getSkillIconSrc(skill_title){
+            getSkillIconSrc(name){
                 let arrayOfSkillImages = {
                     'ui design' : '/resources/assets/images/skills_icons/user_interface.png',
                     'ux design' : '/resources/assets/images/skills_icons/user_experience.png',
@@ -677,8 +677,8 @@
                     'redis' : '/resources/assets/images/skills_icons/redis.png',
                     'cassandra' : '/resources/assets/images/skills_icons/cassandra.png'
             };
-                if(arrayOfSkillImages.hasOwnProperty(skill_title.toLowerCase())){
-                    return arrayOfSkillImages[skill_title.toLowerCase()] ;
+                if(arrayOfSkillImages.hasOwnProperty(name.toLowerCase())){
+                    return arrayOfSkillImages[name.toLowerCase()] ;
                 }
                 return '/resources/assets/images/skills_icons/skill.png' ;
             },
@@ -765,8 +765,8 @@
                     .post('/freelancer/resume/download', {
                         user_data: this.user_data,
                         freelancer: this.freelancer,
-                        educationsHistory: this.educationsHistory,
-                        worksHistory: this.worksHistory,
+                        educationsHistory: this.educations_history,
+                        worksHistory: this.works_history,
                         skills: this.skills
                     })
                     .then(response => console.log(response))
@@ -777,6 +777,8 @@
         },
         created: function() {
             this.$parent.$on('update', this.updateSlick);
+
+            console.log(this.skills)
         }
     }
 </script>

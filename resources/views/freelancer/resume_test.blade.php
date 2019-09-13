@@ -13,11 +13,18 @@
   
   <div id="freelancerResume">
     <freelancer-resume :freelancer="{{ json_encode(array(
-      "id" => 1,
-      "firstName" => "Jose Daniel",
-      "lastName" => "Quintero",
+      "id" => $user->id,
+      "firstName" => $user->firstName,
+      "lastName" => $user->lastName,
       "projects" => array()
-    )) }}"></freelancer-resume>
+    )) }}"
+    <?
+      $skillsArray = array();
+    ?>
+    @foreach ($skills as $skill)
+        
+    @endforeach
+    ></freelancer-resume>
   </div>
 
   @include('layouts.includes.scripts')

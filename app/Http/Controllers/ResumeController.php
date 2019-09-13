@@ -172,13 +172,28 @@ class ResumeController extends Controller
 
         $user = User::where('username', $username)->get();
         $agent = Agent::where('user_id', $user[0]->id)->get();
-        // $user = DB::table('users')
-        //     ->join('agents', 'users.id', '=', 'agents.user_id')
-        //     ->join('user_datas','users.id', '=', 'user_datas.user_id')
-        //     ->where('username', $username)
-        //     ->get();
-        dd($user[0]->skills);
+
+        if (!empty($agent)) {
+            // The user is an agent
+
+            // Educations history
+            $educationsHistory = $user[0]->educationsHistory;
+            $user_data = $user[0]->userData;
+            $worksHistory = $user[0]->worksHistory;
+            $skills = $user[0]->skills;
+
+            dd($skills[0]->skillType);
+
+            return view('freelancer.resume_test', [
+                "agent" => $agent[0],
+                "user" => $user[0],
+                "user_data" => $user_data,
+                "skill" => $skills,
+                "worksHistory" => $worksHistory,
+                "educationsHistory" => $educationsHistory
+            ]);
+        }
         
-        // return view('freelancer.resume_test');
+        
     }
 }

@@ -32,6 +32,8 @@ class CreateCampaignsTable extends Migration
 
             $table->increments('id');
 
+            $table->tinyInteger('status')->nullable();
+
             $table->integer('agent_id')->unsigned()->index();
             $table->integer('campaign_id')->unsigned()->index();
 

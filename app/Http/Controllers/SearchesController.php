@@ -323,6 +323,55 @@ class SearchesController extends Controller
         return ['status'=>'ok'];
     }
 
+    public function searchAgentsForCampaign(Request $request){
+        $searchArray =[] ;
+
+        // experience :
+        if(isset($request->experience)){
+            $searchArray[] = ['experience','like','%'.$request->experience.'%'];
+        }
+
+        // technologies :
+        if(isset($request->technologies)){
+            $searchArray[] = ['technologies','like','%'.$request->technologies.'%'];
+        }
+
+        // voice_character :
+        if(isset($request->voice_character) && $request->voice_character !== 'not-selected'){
+            $searchArray[] = ['voice_character','like','%'.$request->voice_character.'%'];
+        }
+
+        // available_hours_per_week :
+        if(isset($request->available_hours)){
+            $searchArray[] = ['available_hours_per_week','>=',intval($request->available_hours)];
+        }
+
+        // search function : search in agents and user_datas table.
+
+        $agents  = Agent::where($searchArray)
+
+            ->WhereHas('user.userData',function ($query) use ($request){
+                $searchArray = [] ;
+
+                // gender :
+                if(isset($request->gender) && $request->gender !== 'b'){
+                    $searchArray[] = ['gender','LIKE','%'.$request->gender.'%'];
+                }
+                // jobTitle :
+                if(isset($request->job_title)){
+                    $searchArray[] = ['job_title','like','%'.$request->job_title.'%'];
+                }
+                $query->where($searchArray);
+            })
+
+            ->with('user.userData','user.languages')->get();
+
+
+
+        return $agents ;
+
+    }
+
     public function deleteSearchFreelancer(Request $request){
 
         $search = ClientSearch::where('id',$request->search_id)->first();

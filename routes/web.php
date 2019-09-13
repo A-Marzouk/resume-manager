@@ -87,11 +87,9 @@ Route::prefix('client')->group(function (){
     Route::get('/dashboard/{any?}','ClientsController@index')->name('client.dashboard.campaing-manager');
     Route::get('/campaign/{campaign_id}','ClientsController@campaignActivity')->name('campaign.main');
     Route::get('/campaigns-archive','ClientsController@campaignArchives')->name('campaign.archives');
-    Route::get('/campaign/add-agent','ClientsController@campaignAddAgent')->name('campaign.add.agent');
     Route::get('/account/edit','ClientsController@viewAccountEditPage')->name('account.edit');
     // service agreement route
     Route::get('/account/service-agreement','ClientsController@viewClientServiceAgreement')->name('service.agreement');
-    Route::get('/payments/pay','ClientsController@viewClientPaymentPay')->name('payment.pay');
     Route::get('/payments/manager-calculation','ClientsController@viewClientManagerCalculation')->name('manager.calculation');
     //sub set up router
     Route::get('/payments/sub-set-up','ClientsController@viewClientSubSetUp')->name('payment.sub');
@@ -143,7 +141,8 @@ Route::prefix('client')->group(function (){
 
 // get client campaign members :
     Route::get('/camp/members/{camp_id}','CampaignsController@getClientCampMembers')->name('client.camp.members');
-    Route::post('/camp/update','CampaignsController@updateCampaignStatus')->name('client.camp.update');
+    Route::post('/camp/update','CampaignsController@updateCampaignStatus')->name('client.camp.update.status');
+    Route::post('/camp/update-info','CampaignsController@updateCampaignInfo')->name('client.camp.update.info');
 
 // campaign faqs :
     Route::post('/camp/faqs/add','FAQsController@addFAQ')->name('client.camp.faqs.add');
@@ -164,6 +163,22 @@ Route::prefix('client')->group(function (){
 // update subscription plan route
     Route::get('/subs/update/{sub_id}','SubscriptionsController@showUpdatePage')->name('client.subs.show.update');
     Route::post('/subs/update','SubscriptionsController@update')->name('client.subs.update');
+    Route::post('/subs/request-update','SubscriptionsController@requestUpdate')->name('client.subs.request_update');
+
+// client campaign agents :
+    Route::get('/camp/add-agent','ClientsController@viewCampaignAddAgentPage')->name('campaign.add.agent');
+
+// client search agents :
+    Route::post('/agents/search','SearchesController@searchAgentsForCampaign')->name('client.search.agents');
+// add agent to camp
+    Route::post('/camp/add-agent','ClientsController@campaignAddAgent')->name('client.camp.add_agent');
+// client sign contract :
+    Route::post('/contracts/sign','ClientsController@signContract')->name('client.sign.contract');
+
+// Client invoices :
+    Route::get('/invoices/view/{invoice_id}','InvoicesController@viewClientInvoice')->name('client.payment.invoice');
+    Route::get('/invoices/get','InvoicesController@getClientInvoices')->name('client.invoices.get');
+    Route::post('/invoices/create','InvoicesController@createInvoice')->name('client.invoices.create');
 
 
 });

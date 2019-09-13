@@ -19,22 +19,20 @@ class CreateInvoicesTable extends Migration
             $table->increments('id');
 
             $table->string('identifier');
-            $table->decimal('total', 16, 4);
-            $table->decimal('discount', 16, 4);
+            $table->decimal('total', 16, 2);
+            $table->decimal('discount', 16, 2)->nullable();
             $table->integer('hours')->nullable();
-            $table->decimal('rate', 16, 4)->nullable();
+            $table->decimal('rate', 16, 2)->nullable();
             $table->text('notes')->nullable();
-            $table->integer('status');
-            $table->time('start_time')->nullable();
-            $table->time('end_time')->nullable();
-            $table->integer('timezone')->unsigned()->index();
+            $table->text('service_title')->nullable();
+            $table->tinyInteger('status')->nullable();
+
             $table->integer('client_id')->unsigned()->index();
             $table->integer('currency_id')->unsigned()->index();
-            $table->integer('service_id')->unsigned()->index();
+            $table->integer('subscription_id')->unsigned()->index();
 
             $table->foreign('client_id')->references('id')->on('clients');
             $table->foreign('currency_id')->references('id')->on('currencies');
-            $table->foreign('service_id')->references('id')->on('services');
 
             $table->timestamps();
         });

@@ -71,10 +71,12 @@ class ClientRegisterController extends Controller
                 'email' => $data['email'],
                 'password' => $data['password'],
                 'username' => $data['email'],
+                'timezone' => $data['timezone'],
             ],
             'client' => [
                 'contact' => $data['name'],
                 'agency' => $data['agency'],
+                'agency_phone' => $data['phone'],
                 'department_email' => $data['department_email'],
             ],
             'user_data' => [

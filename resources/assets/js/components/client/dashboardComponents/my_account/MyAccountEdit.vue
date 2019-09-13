@@ -318,7 +318,7 @@
                                 <select class="form-control" id="preferred_contact" name="preferred_contact"
                                         style="height: 50px;"
                                         v-model="user.client.preferred_contact">
-                                    <option value="" selected="selected">Select contact method</option>
+                                    <option value="null" selected="true" disabled>Select contact method</option>
                                     <option value="email" selected="selected">Email</option>
                                     <option value="phone" selected="selected">Phone</option>
                                     <option value="skype" selected="selected">Skype</option>
@@ -442,6 +442,7 @@
 
                     axios.post('/client/update', this.user)
                         .then((response) => {
+                            console.log(response.data);
                             // show a saved changes message
                             this.notificationMessage = 'Successfully updated !' ;
                             $('#notificationBar').fadeIn(600);
@@ -527,6 +528,10 @@
             noErrorsSecondContactName() {
                 let valid = true;
 
+                if(this.user.client.second_contact === null){ // not required
+                    return valid ;
+                }
+
                 if (this.user.client.second_contact.trim() === '') {
                     // Empty field
                     valid = false;
@@ -555,6 +560,9 @@
                 let valid = true;
                 let contactFormat = /[0-9]{7,12}/;
 
+                if(this.user.client.second_contact_phone === null){ // not required
+                    return valid ;
+                }
                 if (this.user.client.second_contact_phone.trim() === '') {
                     // Empty field
                     valid = false;
@@ -585,6 +593,12 @@
             noErrorsTimeZone() {
                 let valid = true;
 
+                if(this.user.timezone === null){ // not required
+                    // Empty field
+                    valid = false;
+                    this.errors.timezone = 'Please, select a time zone'
+                    return valid;
+                }
                 if (this.user.timezone.trim() === '') {
                     // Empty field
                     valid = false;
@@ -595,7 +609,9 @@
             },
             noErrorsWebSite() {
                 let valid = true;
-
+                if(this.user.client.website === null){ // not required
+                    return valid ;
+                }
                 if (this.user.client.website.trim() === '') {
                     // Empty field
                     valid = false;
@@ -607,6 +623,9 @@
             noErrorsSkype() {
                 let valid = true;
 
+                if(this.user.client.skype_id === null){ // not required
+                    return valid ;
+                }
                 if (this.user.client.skype_id.trim() === '') {
                     // Empty field
                     valid = false;
@@ -658,6 +677,10 @@
                     let keys = Object.keys(this.client);
                     let isAll_filled = true;
                     for (const key of keys) {
+                        if(this.client[key] === null){
+                            isAll_filled = false;
+                            break
+                        }
                         if (this.client[key].trim().length < 1) {
                             isAll_filled = false;
                             break

@@ -107,7 +107,7 @@
         </div>
 
         <div v-show="status === 'finish'">
-            <finishSub :subscription="subscription"></finishSub>
+            <finishSub :subscription="subscription"  :status="'newSub'"></finishSub>
         </div>
 
         <div class="modal" id="pick-date-modal">
@@ -192,6 +192,7 @@
         methods: {
             handleCheck() {
                 this.checked = !this.checked
+                this.subscription.end_date = 'no-end-date' ;
             },
             changePlan(index) {
                 let {plans} = this
@@ -223,6 +224,7 @@
                     .then( (response) => {
                         if(response.data.status === 'success'){
                             this.status = 'finish';
+                            this.subscription.id = response.data.subscription.id ;
                         }
                     })
                     .catch()

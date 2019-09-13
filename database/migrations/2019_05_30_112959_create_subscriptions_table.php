@@ -27,6 +27,7 @@ class CreateSubscriptionsTable extends Migration
             $table->date('end_date')->nullable();
             $table->timestamp('canceled_at')->nullable();
             $table->timestamp('finished_at')->nullable();
+            $table->timestamp('invoice_generated_at')->nullable();
             $table->string('booking_email')->nullable();
             $table->string('payment_gateway_subscription_id')->nullable();
 

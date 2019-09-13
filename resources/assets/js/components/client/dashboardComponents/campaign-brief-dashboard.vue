@@ -25,15 +25,16 @@
             </div>
         </div>
 
-        <div v-for="(agent,index) in campaignMembers" :key="index">
+        <div v-for="(agent,index) in campaignMembers" :key="index" v-show="campaignMembers.length > 0">
             <div class="agent-logs-block">
+
                 <div class="agentInfo">
                     <img src="/images/client/dummy.png" alt="">
                     <span class="userName">
                             {{agent.user.user_data.first_name}} {{agent.user.user_data.last_name}}
                         </span>
                 </div>
-                <div v-for="(log,index) in agent.logs" :key="index">
+                <div v-for="(log,index) in agent.logs" :key="index" v-show="agent.logs.length > 0">
                     <div class="log">
                         <div class="log-time">
                             {{getDate(log.created_at)}}
@@ -46,11 +47,18 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="showMoreBtn">
+                <div class="showMoreBtn"  v-show="agent.logs.length > 0">
                     <a href="#">SHOW MORE</a>
                 </div>
+
+                <div  v-show="agent.logs.length < 1" style="padding: 38px;">
+                    There are no logs for this agent.
+                </div>
+
             </div>
+        </div>
+        <div v-show="campaignMembers.length < 1" class="NoDecor" style="padding: 54px;">
+            There are no active members in this campaign. <a href="/client/camp/add-agent">Add new agent</a>
         </div>
 
         <div class="campaign-brief-footer">

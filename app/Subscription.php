@@ -18,6 +18,7 @@ class Subscription extends Model
         'end_date',
         'canceled_at',
         'finished_at',
+        'invoice_generated_at',
         'booking_email',
         'payment_gateway_subscription_id',
         'client_id',
@@ -34,4 +35,11 @@ class Subscription extends Model
         return $this->belongsTo(Agent::class,'agent_id') ;
     }
 
+    public function invoices(){
+        return $this->hasMany(Invoice::class);
+    }
+
+    public function subscriptionsUpdateHistory(){
+        return $this->hasMany(SubscriptionHistory::class);
+    }
 }

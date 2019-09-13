@@ -39,7 +39,7 @@
                             <img src="/images/client/payments/time.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                   {{sub.hours_per_week}} HOURS
+                                    {{sub.hours_per_week}} HOURS
                                 </div>
                                 <div class="sub-info-box-note">
                                     per week
@@ -61,10 +61,11 @@
                             <img src="/images/client/payments/week.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    {{sub.origianl_duration_in_weeks}} WEEKS
+                                    {{sub.original_duration_in_weeks}} WEEKS
                                 </div>
                                 <div class="sub-info-box-note">
-                                    {{sub.duration_in_weeks}} used / {{sub.origianl_duration_in_weeks - sub.duration_in_weeks}} left
+                                    {{parseInt(sub.original_duration_in_weeks) - parseInt(sub.duration_in_weeks)}} used
+                                    / {{sub.duration_in_weeks}} left
                                 </div>
                             </div>
                         </div>
@@ -86,7 +87,12 @@
                                     {{sub.campaign.agents.length}} AGENTS
                                 </div>
                                 <div class="sub-info-box-note">
-                                    working on campaign
+                                    <span v-if="sub.campaign.agents.length > 0">
+                                            working on campaign
+                                    </span>
+                                    <span v-else class="NoDecor">
+                                        <a href="/client/camp/add-agent"> Add agent</a>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +100,7 @@
                             <img src="/images/client/payments/rate.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    $  {{sub.hourly_rate}}
+                                    $ {{sub.hourly_rate}}
                                 </div>
                                 <div class="sub-info-box-note">
                                     agent's hourly rate
@@ -105,7 +111,7 @@
                             <img src="/images/client/payments/manager.png" alt="time icon">
                             <div class="right">
                                 <div class="sub-info-box-heading">
-                                    {{sub.manager.user.user_data.first_name}}  {{sub.manager.user.user_data.last_name}}
+                                    {{sub.manager.user.user_data.first_name}} {{sub.manager.user.user_data.last_name}}
                                 </div>
                                 <div class="sub-info-box-note">
                                     your manager
@@ -137,34 +143,36 @@
                             <th scope="col">TOTAL DUE</th>
                             <th scope="col">PAYMENT STATUS</th>
                             <th scope="col">EXPORT</th>
+                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        <tr v-for="(invoice,index) in invoices" :key="index">
                             <td>
                                 <a class="invoice-view" data-toggle="modal" data-target="#view-invoice"
+                                   @click="setOpenedInvoice(invoice)"
                                    href="javascript:void(0)">
                                     <img src="/images/client/payments/show_invoice.png" alt="show invoice icon">
                                 </a>
                             </td>
                             <td>
                                 <div class="invoice-number">
-                                    059-044-038
+                                    {{invoice.identifier}}
                                 </div>
                             </td>
                             <td>
                                 <div class="invoice-service">
-                                    Other services
+                                    {{invoice.service_title}}
                                 </div>
                             </td>
                             <td>
                                 <div class="invoice-amount">
-                                    $ 3,500
+                                    $ {{invoice.total}}
                                 </div>
                             </td>
                             <td style="display:inline-block">
-                                <div class="payment-btn due">
-                                    <a href="/client/payments/pay">DUE</a>
+                                <div class="payment-btn" :class="{ 'paid' : invoice.status == 1, 'upcoming' :invoice.status == 2, 'due' : invoice.status == 4}">
+                                    <a :href="'/client/invoices/view/' + invoice.id">{{invoiceStatusCode[invoice.status]}}</a>
                                 </div>
                             </td>
                             <td>
@@ -172,103 +180,10 @@
                                     <img src="/images/client/payments/export_invoice.png" alt="export icon">
                                 </div>
                             </td>
-                        </tr>
-                        <tr>
+
                             <td>
-                                <a class="invoice-view" data-toggle="modal" data-target="#view-invoice"
-                                   href="javascript:void(0)">
-                                    <img src="/images/client/payments/show_invoice.png" alt="show invoice icon">
-                                </a>
-                            </td>
-                            <td>
-                                <div class="invoice-number">
-                                    059-044-038
-                                </div>
-                            </td>
-                            <td>
-                                <div class="invoice-service">
-                                    Other services
-                                </div>
-                            </td>
-                            <td>
-                                <div class="invoice-amount">
-                                    $ 3,500
-                                </div>
-                            </td>
-                            <td>
-                                <div class="payment-btn upcoming">
-                                    <a href="#">UPCOMING</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="export-icon">
-                                    <img src="/images/client/payments/export_invoice.png" alt="export icon">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a class="invoice-view" data-toggle="modal" data-target="#view-invoice"
-                                   href="javascript:void(0)">
-                                    <img src="/images/client/payments/show_invoice.png" alt="show invoice icon">
-                                </a>
-                            </td>
-                            <td>
-                                <div class="invoice-number">
-                                    059-044-038
-                                </div>
-                            </td>
-                            <td>
-                                <div class="invoice-service">
-                                    Other services
-                                </div>
-                            </td>
-                            <td>
-                                <div class="invoice-amount">
-                                    $ 3,500
-                                </div>
-                            </td>
-                            <td>
-                                <div class="payment-btn paid">
-                                    <a href="#">PAID</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="export-icon">
-                                    <img src="/images/client/payments/export_invoice.png" alt="export icon">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a class="invoice-view" data-toggle="modal" data-target="#view-invoice"
-                                   href="javascript:void(0)">
-                                    <img src="/images/client/payments/show_invoice.png" alt="show invoice icon">
-                                </a>
-                            </td>
-                            <td>
-                                <div class="invoice-number">
-                                    059-044-038
-                                </div>
-                            </td>
-                            <td>
-                                <div class="invoice-service">
-                                    Other services
-                                </div>
-                            </td>
-                            <td>
-                                <div class="invoice-amount">
-                                    $ 3,500
-                                </div>
-                            </td>
-                            <td>
-                                <div class="payment-btn paid">
-                                    <a href="#">PAID</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="export-icon">
-                                    <img src="/images/client/payments/export_invoice.png" alt="export icon">
+                                <div class="NoDecor">
+                                    <a :href="'/client/invoices/view/' + invoice.id">Open</a>
                                 </div>
                             </td>
                         </tr>
@@ -285,7 +200,8 @@
             <div class="subs-empty-state"
                  v-show="invoices_empty_state">
                 <div>
-                    <img src="/images/client/payments/Illustrations_065_Invoice_empty_state.svg" alt="invoices empty state">
+                    <img src="/images/client/payments/Illustrations_065_Invoice_empty_state.svg"
+                         alt="invoices empty state">
                 </div>
                 <div class="subs-e-s-text" style="padding-bottom: 70px;">
                     There are no invoices yet.
@@ -298,24 +214,57 @@
     export default {
         data() {
             return {
-                subs:[],
-                invoices:[],
-                invoices_empty_state: true
+                subs: [],
+                invoices: [],
+                invoices_empty_state: true,
+                invoiceStatusCode: {
+                    '1': 'PAID',
+                    '2': 'OUTSTANDING',
+                    '3': 'CANCELLED',
+                }
             }
         },
-        methods:{
-            getClientSubs(){
+        methods: {
+            getClientSubs() {
                 axios.get('/client/subs/get')
                     .then((response) => {
-                        this.subs    = response.data ;
+                        this.subs = response.data;
                     })
-                    .catch( (error) => {
+                    .catch((error) => {
 
                     });
+            },
+            getClientInvoices() {
+                axios.get('/client/invoices/get')
+                    .then((response) => {
+                        this.invoices = response.data;
+                        this.invoices_empty_state = false;
+                    })
+                    .catch((error) => {
+
+                    });
+            },
+            calculateNextBillingDate() {
+
+            },
+            setOpenedInvoice(invoice) {
+                this.$emit('openInvoice', invoice);
             }
         },
-        mounted(){
+        mounted() {
             this.getClientSubs();
+            this.getClientInvoices();
+
+            let searchParams = new URLSearchParams(window.location.search);
+
+            if (searchParams.has('request')) {
+                if (searchParams.get('request') === 'updateSubscription') {
+                    let notificationMessage = "Request successfully sent. (Update subscription plan)";
+                    this.$emit('showPositiveNotification', notificationMessage);
+                    window.history.pushState('request', 'sent', '/client/dashboard/payment');
+                }
+            }
+
         }
     }
 </script>

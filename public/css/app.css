@@ -4029,7 +4029,7 @@ body {
 }
 
 .dashboard_content .content-block {
-  margin-left: 75px;
+  margin-left: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6656,6 +6656,7 @@ body {
           flex-direction: column;
   font-style: normal;
   padding-left: 60px;
+  padding-right: 60px;
 }
 
 @media (max-width: 1240px) {
@@ -9986,12 +9987,12 @@ select:focus {
 
 .invoice-outstand {
   background: #FFFFFF;
-  border: 2px solid #F56F6F;
+  border: 2px solid #FFA368;
+  color: #FFA368;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   letter-spacing: -0.1px;
   border-radius: 40px;
-  color: #F56F6F;
   font-size: 12px;
   padding: 7px 16px;
   margin-left: 15px;

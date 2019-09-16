@@ -25,7 +25,7 @@ class InvoicesController extends Controller
 
     public function viewClientInvoice($invoice_id)
     {
-        $invoice = Invoice::where('id',$invoice_id)->with('client.user.userData', 'subscription.campaign')->first();
+        $invoice = Invoice::where('id', $invoice_id)->with('client.user.userData', 'subscription.campaign')->first();
         return view('client.payments.invoice', compact('invoice'));
     }
 
@@ -40,12 +40,24 @@ class InvoicesController extends Controller
 
         $subscription = Subscription::where('id', $request->id)->first();
         // create invoice :
-         $invoice = Invoice::create([
+        $invoice = $this->createNewInvoice($subscription);
+
+        return [
+            'status' => 'success',
+            'invoice_id' => $invoice->id,
+        ];
+
+    }
+
+    protected function createNewInvoice($subscription)
+    {
+        $invoice = Invoice::create([
             'identifier' => $this->getInvoiceIdentifier(),
             'total' => $subscription->amount_paid,
             'discount' => 0,
             'hours' => $subscription->hours_per_week,
             'status' => InvoiceStatus::OUTSTANDING,
+            'billing_date' => Date('Y.m.d'),
             'rate' => $subscription->hourly_rate,
             'notes' => 'Campaign issued after ordering a campaign',
             'service_title' => $subscription->campaign->title,
@@ -54,15 +66,12 @@ class InvoicesController extends Controller
             'subscription_id' => $subscription->id,
         ]);
 
-         // update subscription (invoice generated)
+        // update subscription (invoice generated)
         $subscription->update([
             'invoice_generated_at' => $invoice->created_at
         ]);
 
-         return [
-             'status' => 'success',
-             'invoice_id' => $invoice->id ,
-         ] ;
+        return $invoice;
     }
 
     protected function getInvoiceIdentifier()

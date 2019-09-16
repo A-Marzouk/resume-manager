@@ -151,7 +151,7 @@
                         <div class="start-date">
                             <div class="start-date-heading">
                                 <img src="/images/client/payments/period.png" alt="time icon">
-                                Pick a start date of updated campaign
+                                Pick a start date of campaign
                             </div>
                             <a href="javascript:void(0)" data-toggle="modal" data-target="#pick-date-modal"
                                @click.once="setDatePicker">

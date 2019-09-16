@@ -30,9 +30,19 @@
                 </router-link>
             </div>
         </div>
+
+        <div class="notificationBar" id="notificationBar" style="display:none ; position: fixed;width: inherit; margin-top:10px;">
+            <div>
+                {{notificationMessage}}
+            </div>
+            <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                x
+            </a>
+        </div>
+
         <keep-alive>
             <!-- here load different components depending on the route.-->
-            <router-view style="margin-top: 30px;" v-bind="myProps"></router-view>
+            <router-view style="margin-top: 30px;" v-bind="myProps" @showPositiveNotification="showNotification"></router-view>
         </keep-alive>
     </div>
 </template>
@@ -47,12 +57,23 @@
         data() {
             return {
                 activeTab: '',
-                currentCampaign:{}
+                currentCampaign:{},
+                notificationMessage:'Successfully updated agent',
             }
         },
         methods: {
             setActiveTab() {
                 this.activeTab = this.$route.path.replace('/', '');
+            },
+            showNotification(notificationMessage){
+                this.notificationMessage = notificationMessage ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
             }
         },
         mounted() {
@@ -60,7 +81,7 @@
         }
     }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
     .campaign-info-bar {
         margin-top: 0;
         border-top-left-radius: 0;
@@ -73,4 +94,10 @@
         align-items: center;
         background: white;
     }
+
+    .notificationBar{
+        z-index:2;
+        margin-left:auto ;
+    }
+
 </style>

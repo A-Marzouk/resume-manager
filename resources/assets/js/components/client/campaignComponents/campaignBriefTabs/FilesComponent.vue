@@ -138,31 +138,52 @@
             },
             showMenu(index) {
                 let fileContainers = document.getElementsByClassName('preview-container')
-
                 let container = fileContainers[index].getElementsByClassName('menu-preview')[0].classList.toggle('show')
             },
             addFiles(e) {
-                this.files = [...this.files, ...e.target.files]
+                console.log(e.target.files);
+                // upload e.target.files[0]
+
+                this.files = [...this.files, ...e.target.files];
+
+                console.log('multi files has been added');
             },
         },
         mounted() {
             let component = this;
+
+            let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             dropZone = new Dropzone("#dropfiles-team-brief", {
                 maxFilesize: 45,
                 dictDefaultMessage: '',
                 dictRemoveFile: '',
                 dictCancelUpload: '',
-                url: '/',
+                url: '/client/camp/files/upload',
+                headers: {
+                    'x-csrf-token': CSRF_TOKEN
+                },
                 paramName: 'files',
                 addRemoveLinks: true,
                 uploadMultiple: true,
                 init: function () {
                     this.on('addedfile', (file) => {
-                        let filesInput = document.getElementById('files')
-                        component.files.push(file)
-                    })
+                        console.log('addedfile event, the file : ', file);
+                        let filesInput = document.getElementById('files');
+                        component.files.push(file);
+                    });
 
-                    this.on('error', (error) => console.log(error))
+                    this.on('error', (error) => {
+                        console.log(error);
+                        console.log('error event');
+                    });
+
+                    this.on('success', function() {
+                        console.log('success event');
+
+                        var args = Array.prototype.slice.call(arguments);
+                        // Look at the output in you browser console, if there is something interesting
+                        console.log(args);
+                    });
                 }
             });
         }

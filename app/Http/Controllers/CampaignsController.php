@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Campaign;
+use App\classes\Upload;
 use App\Client;
 use App\User;
 use App\UserData;
@@ -234,6 +235,18 @@ class CampaignsController extends Controller
 
         return [
             'status' => 'success'
+        ];
+    }
+
+    public function uploadFilesToCampaign(Request $request){
+        $file = Upload::campaignFile('files',date(time()));
+
+        // create a media record for the uploaded campaign file :
+
+        return [
+            'status' => 'success',
+            'filePath' => $file['path'],
+            'request'  => $request
         ];
     }
 

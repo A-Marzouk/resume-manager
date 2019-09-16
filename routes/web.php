@@ -180,6 +180,11 @@ Route::prefix('client')->group(function (){
     Route::get('/invoices/get','InvoicesController@getClientInvoices')->name('client.invoices.get');
     Route::post('/invoices/create','InvoicesController@createInvoice')->name('client.invoices.create');
 
+// Client campaign agents :
+    // update agents status
+    Route::post('/camp/agents/update','AgentsController@updateAgentStatus')->name('client.camp.agents.update');
+
+
 
 });
 

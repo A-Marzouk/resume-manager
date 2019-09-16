@@ -18,6 +18,7 @@ class Invoice extends Model
         'total',
         'service_title',
         'status',
+        'billing_date',
         'discount',
         'hours',
         'rate',

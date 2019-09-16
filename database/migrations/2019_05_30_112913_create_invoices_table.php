@@ -25,6 +25,7 @@ class CreateInvoicesTable extends Migration
             $table->decimal('rate', 16, 2)->nullable();
             $table->text('notes')->nullable();
             $table->text('service_title')->nullable();
+            $table->date('billing_date')->nullable();
             $table->tinyInteger('status')->nullable();
 
             $table->integer('client_id')->unsigned()->index();

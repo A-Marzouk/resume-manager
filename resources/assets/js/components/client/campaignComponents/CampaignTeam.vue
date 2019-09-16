@@ -38,11 +38,18 @@
                     <div class="d-flex align-items-center justify-content-between action-btns-bar">
                         <a class="chat-action-btn"><img src="/images/client/campaign_activity/send_message.png"
                                                         alt="chat icon"></a>
-                        <a class="" href="javascript:void(0)" data-toggle="modal"
+                        <a class="" href="javascript:void(0)" v-show="agent.status != 3 " data-toggle="modal" @click="selectedAgent = agent"
                            data-target="#remove-modal">
                             REMOVE
                         </a>
-                        <a class="" href="javascript:void(0)" data-toggle="modal"
+
+                        <a class="" href="javascript:void(0)" v-show="agent.status != 1" data-toggle="modal" @click="selectedAgent = agent"
+                           data-target="#make-active-modal">
+                            MAKE ACTIVE
+                        </a>
+
+
+                        <a class="" href="javascript:void(0)" data-toggle="modal" @click="selectedAgent = agent"  v-show="agent.status != 2"
                            data-target="#backup-modal">
                             MAKE BACKUP
                         </a>
@@ -53,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <!-- Modal -->
+        <!-- Modals -->
         <div class="modal fade"
              id="remove-modal"
              tabindex="-1"
@@ -76,13 +83,46 @@
                                 <a href="javascript:void(0)" data-dismiss="modal">CANCEL</a>
                             </div>
                             <div class="button-base blue-button-a">
-                                <a href="javascript:void(0)" data-dismiss="modal">REMOVE THE AGENT</a>
+                                <a href="javascript:void(0)" data-dismiss="modal"
+                                   @click="removeAgent(selectedAgent.id)">REMOVE THE AGENT</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="modal fade"
+             id="make-active-modal"
+             tabindex="-1"
+             role="dialog"
+             aria-labelledby="make-active-modal"
+             aria-hidden="true">
+            <div class="modal-dialog"
+                 role="document">
+                <div class="modal-content border-0"
+                     style="margin-top: 30%;">
+                    <div class="modal-body campaign-team-modal">
+                        <div class="modal-question">
+                            Are you sure you want to make this agent active ?
+                        </div>
+                        <div class="modal-answer">
+                            Agent will be in the list of Active agents from this moment.
+                        </div>
+                        <div class="modal-btn-wrapper">
+                            <div class="button-base white-button-a">
+                                <a href="javascript:void(0)" data-dismiss="modal">CANCEL</a>
+                            </div>
+                            <div class="button-base blue-button-a">
+                                <a href="javascript:void(0)" data-dismiss="modal"
+                                   @click="activateAgent(selectedAgent.id)">MAKE THE AGENT ACTIVE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="modal fade"
              id="backup-modal"
              tabindex="-1"
@@ -105,7 +145,7 @@
                                 <a href="javascript:void(0)" data-dismiss="modal">CANCEL</a>
                             </div>
                             <div class="button-base blue-button-a">
-                                <a href="javascript:void(0)" data-dismiss="modal">MAKE AGENT BACK UP</a>
+                                <a href="javascript:void(0)" data-dismiss="modal" @click="makeAgentBackup(selectedAgent.id)">MAKE AGENT BACK UP</a>
                             </div>
                         </div>
                     </div>
@@ -146,6 +186,7 @@
                     2: 'BACKUP',
                     3: 'REMOVED',
                 },
+                selectedAgent: {},
                 filterValue: 1
             }
         },
@@ -158,6 +199,60 @@
                 this.selectedOption = option;
                 this.toggleDropdown()
             },
+            removeAgent(agent_id) {
+                axios.post('/client/camp/agents/update', {'status': 3, 'agent_id' : agent_id})
+                    .then((response) => {
+                        console.log(response.data);
+                        if (response.data.status === 'success') {
+                            this.agentUpdatedSuccessfully(3,'Agent Successfully removed!');
+                        }
+                    })
+                    .catch(() => {
+
+                    });
+            },
+
+            activateAgent(agent_id) {
+                axios.post('/client/camp/agents/update', {'status': 1, 'agent_id' : agent_id})
+                    .then((response) => {
+                        console.log(response.data);
+                        if (response.data.status === 'success') {
+                            this.agentUpdatedSuccessfully(1,'Agent Successfully made Active!');
+                        }
+                    })
+                    .catch(() => {
+
+                    });
+            },
+            makeAgentBackup(agent_id) {
+                axios.post('/client/camp/agents/update', {'status': 2, 'agent_id' : agent_id})
+                    .then((response) => {
+                        console.log(response.data);
+                        if (response.data.status === 'success') {
+                            this.agentUpdatedSuccessfully(2,'Agent Successfully made Backup!');
+                        }
+                    })
+                    .catch(() => {
+
+                    });
+            },
+            agentUpdatedSuccessfully(status,message){
+                // give notification and filter agents again.
+                let notificationMessage = message ;
+                this.$emit('showPositiveNotification',notificationMessage);
+
+                // change current agent status.
+                this.selectedAgent.status = status ;
+                this.campaign.agents.forEach( (agent,index) => {
+                    if(agent.id === this.selectedAgent.id){
+                        agent.status = status ;
+                        let old_filter = this.filterValue ;
+                        this.filterValue = 5  ;
+                        this.filterValue =  old_filter  ;
+                    }
+                })
+            }
+
         },
         computed: {
             filteredAgents() {

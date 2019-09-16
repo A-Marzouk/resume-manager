@@ -19,8 +19,26 @@ class AgentsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except('viewAgents','isAdmin','getAgents');
+        $this->middleware('role:client')->except('viewAgents','isAdmin','getAgents');
     }
+
+
+    public function updateAgentStatus(Request $request){
+
+        $status = $request->status;
+        $agent  = Agent::where('id',$request->agent_id)->first();
+
+
+
+        $agent->update([
+            'status' => $status
+        ]);
+
+        return [
+            'status' => 'success'
+        ] ;
+    }
+
 
     public function viewAgents(){
         $agents = $this->getAgents();

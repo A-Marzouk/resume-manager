@@ -58,7 +58,7 @@
                                     <input multiple type="file" id="files" name="files"
                                            v-on:change="addFiles"/>
                                 </div>
-                                <a href="javascript:;">UPLOAD NEW FILE</a>
+                                <a>UPLOAD NEW FILE</a>
                             </div>
                         </div>
                         <div :key="index + file.name" v-for="(file, index) in files"
@@ -141,7 +141,7 @@
             },
             removeDoc(index) {
                 this.files.splice(index, 1)
-                if (this.files.length === 0) dropZone.removeAllFiles()
+                if (this.files.length === 0) dropZone.removeAllFiles();
             },
             showMenu(index) {
                 let fileContainers = document.getElementsByClassName('preview-container')
@@ -171,13 +171,23 @@
                         }.bind(this)
                     }
                 ).then((response) => {
-                    console.log(response.data);
-                    this.filePaths.push(response.data.filePath);
-                    console.log('file is uploaded');
                     this.uploadPercentage = 0 ;
                     $('#processBar').css('width',0);
-                    let notificationMessage = 'File has been successfully uploaded!' ;
-                    this.$emit('showPositiveNotification',notificationMessage);
+
+                    if(response.data.filePath === null){
+                        let notificationMessage = 'File is not accepted !';
+                        this.$emit('showPositiveNotification',notificationMessage);
+                        if (this.files.length === 0) dropZone.removeAllFiles();
+                    }else{
+                        this.filePaths.push(response.data.filePath);
+                        console.log('file is uploaded');
+                        let notificationMessage = 'File has been successfully uploaded!' ;
+                        this.$emit('showPositiveNotification',notificationMessage);
+                        this.files.push(file);
+                    }
+
+                }).catch((error) => {
+
                 });
             }
         },
@@ -197,14 +207,18 @@
                     'x-csrf-token': CSRF_TOKEN
                 },
                 paramName: 'files',
-                addRemoveLinks: true,
+                addRemoveLinks: false,
+                addImage: false,
                 uploadMultiple: true,
                 init: function () {
                     this.on('addedfile', (file) => {
                         console.log('addedfile event');
-                        component.files.push(file);
                         component.uploadFile(file);
-                        return;
+                        file.previewElement.innerHTML = "";
+                    });
+
+                    this.on('error', (error) => {
+                        console.log(error);
                     });
                 }
             });
@@ -212,10 +226,11 @@
     }
 </script>
 
-<style scoped>
+<style >
     #processBar{
         height: 6px;
         background: lightgreen;
         width: 0%;
     }
+
 </style>

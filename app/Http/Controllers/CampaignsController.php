@@ -266,4 +266,20 @@ class CampaignsController extends Controller
 
     }
 
+    public function deleteFileCampaign(Request $request){
+        // remove the file from the directory
+        $file = CampaignFile::where('id',$request->file_id)->first();
+
+        if (file_exists($file->path)) {
+            unlink($file->path);
+
+            // delete the file record from the database
+            $file->delete();
+        }
+
+        return [
+            'status' => 'success'
+        ];
+    }
+
 }

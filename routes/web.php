@@ -156,6 +156,7 @@ Route::prefix('client')->group(function (){
     Route::post('/camp/links/create','LinksController@create')->name('client.camp.links.create');
     Route::post('/camp/links/update','LinksController@update')->name('client.camp.links.update');
     Route::post('/camp/files/upload','CampaignsController@uploadFilesToCampaign')->name('client.camp.files.upload');
+    Route::post('/camp/files/delete','CampaignsController@deleteFileCampaign')->name('client.camp.files.delete');
 
 
 // client subsriptions

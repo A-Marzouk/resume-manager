@@ -233,6 +233,9 @@
                 <div class="files-tab-content"
                      v-show="activeBriefTab === 'FILES'">
 
+                    <div class="faq-content">
+                        <LinksComponent  :campaign="campaign" @showPositiveNotification="showNotification" @showNegativeNotification="showNegativeNotification"></LinksComponent>
+                    </div>
                     <FilesComponent  :campaign="campaign" @showPositiveNotification="showNotification" @showNegativeNotification="showNegativeNotification"></FilesComponent>
 
                 </div>
@@ -359,9 +362,10 @@
 <script>
 
     import FilesComponent from './campaignBriefTabs/FilesComponent' ;
+    import LinksComponent from './campaignBriefTabs/LinksComponent' ;
     export default {
         props: ['campaign'],
-        components:{FilesComponent},
+        components:{FilesComponent,LinksComponent},
         data() {
             return {
                 faqs: [],

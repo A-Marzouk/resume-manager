@@ -4,35 +4,6 @@
             <div class="faq-question-input">
                 <label class="faq-input-label">
                     <i class="icon icon-point"></i>
-                    List of links
-                </label>
-                <div class="faq-input">
-                    <input class="bg-gray-input" type="text" placeholder="Add a link you want to share"
-                           v-model="newLink">
-                    <img src="/images/client/campaign_activity/close_black.png"
-                         v-on:click="newLink = ''" alt="delete icon" v-show="newLink.length > 0"
-                    >
-                </div>
-                <a v-on:click="addLink(newLink)" class="btn btn-link" :class="{disabled: newLink === ''}"
-                   href="javascript:;">ADD LINK</a>
-                <div class="links-saved">
-                    <div class="faq-question-input" :key="index + 'G'" v-for="(link, index) in links">
-                        <div class="faq-input">
-                            <input :disabled="index !== editingLink" class="saved-link bg-gray-input"
-                                   type="text" :value="link.url">
-                            <img src="/images/client/campaign_activity/edit.png"
-                                 v-on:click="editingLink = index" alt="edit icon"
-                            >
-                        </div>
-                        <a v-if="editingLink === index" v-on:click="editLink(index,link.id)"
-                           class="btn btn-link" :class="{disabled: links[index] === ''}"
-                           href="javascript:;">SAVE LINK</a>
-                    </div>
-                </div>
-            </div>
-            <div class="faq-question-input">
-                <label class="faq-input-label">
-                    <i class="icon icon-point"></i>
                     List of documents
                 </label>
                 <div class="faq-input">
@@ -77,7 +48,7 @@
                                     <div class="filename" style="word-break: break-all;">{{file.name}}</div>
                                 </div>
                                 <div class="menu-preview">
-                                    <a href="javascript:;" v-on:click="removeDoc(index)">Delete the document</a>
+                                    <a href="javascript:;" v-on:click="removeDoc(index,file)">Delete the document</a>
                                     <a href="javascript:;">Send in private message</a>
                                     <a href="javascript:;">Send to email</a>
                                 </div>
@@ -100,48 +71,26 @@
         props:['campaign'],
         data(){
             return{
-                newLink: '',
-                editingLink: -1,
-                links: [],
                 files: [],
                 filePaths: [],
                 uploadPercentage:0
             }
         },
         methods:{
-            addLink(link) {
-                axios.post('/client/camp/links/create', {url: link, campaign_id: this.campaign.id})
-                    .then((response) => {
-                        this.links.push(response.data);
-                        this.newLink = '';
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            },
-            editLink(index, link_id) {
-                let link = document.getElementsByClassName('saved-link')[index].value;
-                this.links[index] = {
-                    id: link_id,
-                    url: link,
-                    campaign_id: this.campaign.id
-                };
-                this.editingLink = -1;
-
-
-                axios.post('/client/camp/links/update', {id: link_id, url: link})
-                    .then((response) => {
-
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-
-            },
-            removeDoc(index) {
-                this.files.splice(index, 1) ;
+            removeDoc(index,file) {
+                if (!confirm('Are you sure you want to delete this file ?')) {
+                    return;
+                }
                 // post data to delete the file from the directory and to remove the campaign file record.
-
+                axios.post('/client/camp/files/delete',{file_id : file.id})
+                    .then( (response) => {
+                        if(response.data.status === 'success'){
+                            this.files.splice(index, 1) ;
+                            // file has been deleted notification.
+                            this.$emit('showPositiveNotification','File has been successfully deleted!');
+                        }
+                    })
+                    .catch()
                 if (this.files.length === 0) dropZone.removeAllFiles();
             },
             showMenu(index) {
@@ -180,11 +129,8 @@
                         this.$emit('showNegativeNotification',notificationMessage);
                         if (this.files.length === 0) dropZone.removeAllFiles();
                     }else{
-                        this.filePaths.push(response.data.file.filePath);
-                        console.log('file is uploaded');
-                        let notificationMessage = 'File has been successfully uploaded!' ;
-                        this.$emit('showPositiveNotification',notificationMessage);
-                        this.files.push(file);
+                        this.$emit('showPositiveNotification','File has been successfully uploaded!');
+                        this.files.push(response.data.file);
                     }
 
                 }).catch((error) => {
@@ -195,7 +141,6 @@
         mounted() {
             this.files = this.campaign.files ;
             let component   = this;
-            let campaign_id = this.campaign.id ;
 
             let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             dropZone = new Dropzone("#dropfiles-team-brief", {

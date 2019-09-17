@@ -233,7 +233,7 @@
                 <div class="files-tab-content"
                      v-show="activeBriefTab === 'FILES'">
 
-                    <FilesComponent  :campaign="campaign"></FilesComponent>
+                    <FilesComponent  :campaign="campaign" @showPositiveNotification="showNotification"></FilesComponent>
 
                 </div>
 
@@ -565,7 +565,10 @@
                     .catch((error) => {
 
                     })
-            }
+            },
+            showNotification(notificationMessage){
+                this.$emit('showPositiveNotification',notificationMessage);
+            },
 
         },
         mounted() {

@@ -300,12 +300,12 @@ class Upload
 
     public static function campaignFile($name,$newName){
         $target_dir = "uploads/files/";
-        $target_file = $target_dir . $newName .'_' .basename($_FILES[$name]['name'][0]);
+        $target_file = $target_dir . $newName .'_' .basename($_FILES[$name]["name"]);
         $uploadOk = 1;
 
         // check file extensions
         $guesser = new MimeTypeExtensionGuesser ;
-        $format  = $guesser->guess($_FILES[$name]['type'][0]);
+        $format  = $guesser->guess($_FILES[$name]['type']);
 
 
         // check file type :
@@ -314,7 +314,7 @@ class Upload
         }
 
         // Check file size
-        if ($_FILES[$name]["size"][0] > 45000000) {
+        if ($_FILES[$name]["size"] > 45000000) {
             $uploadOk = 0;
         }
         // Check if $uploadOk is set to 0 by an error
@@ -322,10 +322,10 @@ class Upload
             return false;
             // if everything is ok, try to upload file
         } else {
-            if (move_uploaded_file($_FILES[$name]["tmp_name"][0], $target_file)) {
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
                 return [
                     'path' => $target_file,
-                    'format' => $_FILES[$name]['type'][0]
+                    'format' => $_FILES[$name]['type']
                 ];
             } else {
                 return false;

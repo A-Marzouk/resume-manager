@@ -10,6 +10,8 @@ namespace App\Http\Controllers;
 
 
 use App\Campaign;
+use App\CampaignFile;
+use App\classes\Upload;
 use App\Client;
 use App\User;
 use App\UserData;
@@ -231,6 +233,50 @@ class CampaignsController extends Controller
             'title' => $request->title,
             'description' => $request->description
         ]);
+
+        return [
+            'status' => 'success'
+        ];
+    }
+
+    public function uploadFilesToCampaign(Request $request){
+        $campaign_id = $request->campaign_id ;
+        $category    = $request->category ;
+        $file = Upload::campaignFile('campaignFile',date(time()));
+        // create a media record for the uploaded campaign file :
+        if(isset($file['path'])){
+            // create new media record
+            $file = CampaignFile::create([
+                'name' => basename($_FILES['campaignFile']["name"]),
+                'path' => $file['path'],
+                'file_name' => $file['path'],
+                'mime_type' => $file['format'],
+                'campaign_id' => $campaign_id,
+                'category' => $category
+            ]);
+
+            return [
+                'file' => $file,
+            ];
+
+        }
+
+        return[
+          'filePath' => null
+        ];
+
+    }
+
+    public function deleteFileCampaign(Request $request){
+        // remove the file from the directory
+        $file = CampaignFile::where('id',$request->file_id)->first();
+
+        if (file_exists($file->path)) {
+            unlink($file->path);
+
+            // delete the file record from the database
+            $file->delete();
+        }
 
         return [
             'status' => 'success'

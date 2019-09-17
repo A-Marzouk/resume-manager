@@ -176,10 +176,10 @@
 
                     if(response.data.filePath === null){
                         let notificationMessage = 'File is not accepted !';
-                        this.$emit('showPositiveNotification',notificationMessage);
+                        this.$emit('showNegativeNotification',notificationMessage);
                         if (this.files.length === 0) dropZone.removeAllFiles();
                     }else{
-                        this.filePaths.push(response.data.filePath);
+                        this.filePaths.push(response.data.file.filePath);
                         console.log('file is uploaded');
                         let notificationMessage = 'File has been successfully uploaded!' ;
                         this.$emit('showPositiveNotification',notificationMessage);

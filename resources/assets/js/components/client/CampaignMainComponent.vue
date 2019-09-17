@@ -42,7 +42,7 @@
 
         <keep-alive>
             <!-- here load different components depending on the route.-->
-            <router-view style="margin-top: 30px;" v-bind="myProps" @showPositiveNotification="showNotification"></router-view>
+            <router-view style="margin-top: 30px;" v-bind="myProps" @showPositiveNotification="showNotification" @showNegativeNotification="showNegativeNotification"></router-view>
         </keep-alive>
     </div>
 </template>
@@ -66,7 +66,17 @@
                 this.activeTab = this.$route.path.replace('/', '');
             },
             showNotification(notificationMessage){
+                $('.notificationBar').css('background','#FFBA69') ;
                 this.notificationMessage = notificationMessage ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+
+            showNegativeNotification(notificationMessage){
+                this.notificationMessage = notificationMessage ;
+                $('.notificationBar').css('background','red') ;
                 $('#notificationBar').fadeIn(600);
                 setTimeout(()=>{
                     $('#notificationBar').fadeOut(1500);

@@ -33,6 +33,11 @@ class Campaign extends Model
         return $this->hasMany(FAQ::class);
     }
 
+
+    public function files(){
+        return $this->hasMany(CampaignFile::class);
+    }
+
     public function links(){
         return $this->hasMany(Link::class);
     }

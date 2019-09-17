@@ -241,6 +241,7 @@ class CampaignsController extends Controller
 
     public function uploadFilesToCampaign(Request $request){
         $campaign_id = $request->campaign_id ;
+        $category    = $request->category ;
         $file = Upload::campaignFile('campaignFile',date(time()));
         // create a media record for the uploaded campaign file :
         if(isset($file['path'])){
@@ -251,7 +252,7 @@ class CampaignsController extends Controller
                 'file_name' => $file['path'],
                 'mime_type' => $file['format'],
                 'campaign_id' => $campaign_id,
-                'category' => 'files'
+                'category' => $category
             ]);
 
             return [

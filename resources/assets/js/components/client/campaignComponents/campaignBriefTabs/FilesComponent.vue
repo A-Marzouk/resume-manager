@@ -7,7 +7,7 @@
                     List of documents
                 </label>
                 <div class="faq-input">
-                    <div v-if="files.length === 0"
+                    <div v-if="filteredFiles.length === 0"
                          class="account-edit-section-edit-btn no-decoration picture-box">
                         <div class="fallback">
                             <input multiple type="file" id="files" name="files"/>
@@ -18,7 +18,7 @@
                             CHOOSE A FILE
                         </div>
                         <p class="dz-message little">Maximum allowed size is 45 MB</p>
-                        <div id="dropfiles-team-brief" class="dropzone"></div>
+                        <div :id="'dropfiles-team-brief-'+ fileCategory" class="dropzone"></div>
                     </div>
                     <div class="preview-files-container" v-else>
                         <div class="add-document-container">
@@ -32,14 +32,14 @@
                                 <a>UPLOAD NEW FILE</a>
                             </div>
                         </div>
-                        <div :key="index + file.name" v-for="(file, index) in files"
+                        <div :key="index + file.name" v-for="(file, index) in filteredFiles"
                              class="preview-container">
                             <div class="dz-preview dz-file-preview">
                                 <div class="dz-details">
                                     <div class="thumbnail-container">
                                         <img class="icon-download" src="/images/icons/download_icon.svg"/>
                                         <a href="javascript:;"
-                                           v-on:click="showMenu(index)"
+                                           v-on:click="toggleMenu(file)"
                                            class="menu-handler">
                                             <img class="icon-menu"
                                                  src="/images/icons/more_vert.svg"/>
@@ -47,10 +47,10 @@
                                     </div>
                                     <div class="filename" style="word-break: break-all;">{{file.name}}</div>
                                 </div>
-                                <div class="menu-preview">
+                                <div class="menu-preview" v-show="selectedFileID === file.id">
                                     <a href="javascript:;" v-on:click="removeDoc(index,file)">Delete the document</a>
-                                    <a href="javascript:;">Send in private message</a>
-                                    <a href="javascript:;">Send to email</a>
+                                    <!--<a href="javascript:;">Send in private message</a>-->
+                                    <!--<a href="javascript:;">Send to email</a>-->
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                 </div>
             </div>
         </div>
-        <div id="processBar">
+        <div class="processBar">
 
         </div>
     </div>
@@ -68,13 +68,19 @@
     let dropZone;
     export default {
         name: "FilesComponent",
-        props:['campaign'],
+        props:['campaign','fileCategory'],
         data(){
             return{
                 files: [],
                 filePaths: [],
+                selectedFileID: '',
                 uploadPercentage:0
             }
+        },
+        computed:{
+          filteredFiles(){
+              return this.files.filter((file) => {return file.category === this.fileCategory})
+          }
         },
         methods:{
             removeDoc(index,file) {
@@ -85,7 +91,15 @@
                 axios.post('/client/camp/files/delete',{file_id : file.id})
                     .then( (response) => {
                         if(response.data.status === 'success'){
-                            this.files.splice(index, 1) ;
+
+                            this.files.forEach( (myFile, i) => {
+                                if(myFile.id === file.id){
+                                    // remove the file
+                                    this.files.splice(i,1)
+                                }
+                            });
+
+                            this.selectedFileID = '' ;
                             // file has been deleted notification.
                             this.$emit('showPositiveNotification','File has been successfully deleted!');
                         }
@@ -93,9 +107,12 @@
                     .catch()
                 if (this.files.length === 0) dropZone.removeAllFiles();
             },
-            showMenu(index) {
-                let fileContainers = document.getElementsByClassName('preview-container')
-                let container = fileContainers[index].getElementsByClassName('menu-preview')[0].classList.toggle('show')
+            toggleMenu(file) {
+                if(this.selectedFileID === file.id ){
+                    this.selectedFileID = '' ;
+                }else{
+                    this.selectedFileID = file.id ;
+                }
             },
             addFiles(e) {
                 console.log(e.target.files);
@@ -109,6 +126,7 @@
                 let formData = new FormData();
                 formData.append('campaignFile', file);
                 formData.append('campaign_id', this.campaign.id);
+                formData.append('category', this.fileCategory);
                 axios.post('/client/camp/files/upload',
                     formData, {
                         headers: {
@@ -117,12 +135,12 @@
                         },
                         onUploadProgress: function(progressEvent) {
                             this.uploadPercentage = parseInt(Math.round((progressEvent.loaded * 100) / progressEvent.total));
-                            $('#processBar').css('width',this.uploadPercentage+'%');
+                            $('.processBar').css('width',this.uploadPercentage+'%');
                         }.bind(this)
                     }
                 ).then((response) => {
                     this.uploadPercentage = 0 ;
-                    $('#processBar').css('width',0);
+                    $('.processBar').css('width',0);
 
                     if(response.data.filePath === null){
                         let notificationMessage = 'File is not accepted !';
@@ -141,9 +159,10 @@
         mounted() {
             this.files = this.campaign.files ;
             let component   = this;
+            let fileCategory   = this.fileCategory;
 
             let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            dropZone = new Dropzone("#dropfiles-team-brief", {
+            dropZone = new Dropzone("#dropfiles-team-brief-"+ fileCategory , {
                 maxFilesize: 45,
                 dictDefaultMessage: '',
                 dictRemoveFile: '',
@@ -174,7 +193,7 @@
 </script>
 
 <style >
-    #processBar{
+    .processBar{
         height: 6px;
         background: lightgreen;
         width: 0%;

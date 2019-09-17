@@ -236,7 +236,7 @@
                     <div class="faq-content">
                         <LinksComponent  :campaign="campaign" @showPositiveNotification="showNotification" @showNegativeNotification="showNegativeNotification"></LinksComponent>
                     </div>
-                    <FilesComponent  :campaign="campaign" @showPositiveNotification="showNotification" @showNegativeNotification="showNegativeNotification"></FilesComponent>
+                    <FilesComponent  :campaign="campaign" :fileCategory="'files'" @showPositiveNotification="showNotification" @showNegativeNotification="showNegativeNotification"></FilesComponent>
 
                 </div>
 
@@ -245,114 +245,18 @@
                     <div class="files-tab-heading">
                         In this section you can add documents with voice scripts
                     </div>
-                    <div class="faq-input dropZoneSection">
-                        <div v-if="files.length === 0"
-                             class="account-edit-section-edit-btn no-decoration picture-box">
-                            <div class="fallback">
-                                <input multiple type="file" id="files_voice_scripts" name="files"/>
-                            </div>
-                            <p class="dz-message">Drag and drop a photo you want to upload <br/> or</p>
 
-                            <div class="fake-file-input btn btn-orange dz-input">
-                                CHOOSE A FILE
-                            </div>
-                            <p class="dz-message little">Maximum allowed size is 45 MB</p>
-                            <div id="dropfiles-team-brief_voice_scripts" class="dropzone"></div>
-                        </div>
-                        <div class="preview-files-container" v-else>
-                            <div class="add-document-container">
-                                <div class="dz-details">
-                                    <div
-                                            class="thumbnail-container">
-                                        <img class="icon-download" src="/images/icons/document.svg"/>
-                                        <input multiple type="file" id="files_voice_scripts" name="files"
-                                               v-on:change="addFiles"/>
-                                    </div>
-                                    <a href="javascript:;">UPLOAD NEW FILE</a>
-                                </div>
-                            </div>
-                            <div :key="index + file.name" v-for="(file, index) in files"
-                                 class="preview-container">
-                                <div class="dz-preview dz-file-preview">
-                                    <div class="dz-details">
-                                        <div class="thumbnail-container">
-                                            <img class="icon-download" src="/images/icons/download_icon.svg"/>
-                                            <a href="javascript:;"
-                                               v-on:click="showMenu(index)"
-                                               class="menu-handler">
-                                                <img class="icon-menu"
-                                                     src="/images/icons/more_vert.svg"/>
-                                            </a>
-                                        </div>
-                                        <div class="filename">{{file.name}}</div>
-                                    </div>
-                                    <div class="menu-preview">
-                                        <a href="javascript:;" v-on:click="removeDoc(index)">Delete the
-                                            document</a>
-                                        <a href="javascript:;">Send in private message</a>
-                                        <a href="javascript:;">Send to email</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <FilesComponent  :campaign="campaign" :fileCategory="'voice_scripts'" @showPositiveNotification="showNotification" @showNegativeNotification="showNegativeNotification"></FilesComponent>
+
                 </div>
                 <div class="email-templates-tab-content"
                      v-show="activeBriefTab === 'EMAIL_TEMPS'">
                     <div class="files-tab-heading">
                         In this section you can add e-mail templates
                     </div>
-                    <div class="faq-input dropZoneSection">
-                        <div v-if="files.length === 0"
-                             class="account-edit-section-edit-btn no-decoration picture-box">
-                            <div class="fallback">
-                                <input multiple type="file" id="files_email_template" name="files"/>
-                            </div>
-                            <p class="dz-message">Drag and drop a photo you want to upload <br/> or</p>
 
-                            <div class="fake-file-input btn btn-orange dz-input">
-                                CHOOSE A FILE
-                            </div>
-                            <p class="dz-message little">Maximum allowed size is 45 MB</p>
-                            <div id="dropfiles-team-brief_email_template" class="dropzone"></div>
-                        </div>
-                        <div class="preview-files-container" v-else>
-                            <div class="add-document-container">
-                                <div class="dz-details">
-                                    <div
-                                            class="thumbnail-container">
-                                        <img class="icon-download" src="/images/icons/document.svg"/>
-                                        <input multiple type="file" id="files_email_template" name="files"
-                                               v-on:change="addFiles"/>
-                                    </div>
-                                    <a href="javascript:;">UPLOAD NEW FILE</a>
-                                </div>
-                            </div>
-                            <div :key="index + file.name" v-for="(file, index) in files"
-                                 class="preview-container">
-                                <div class="dz-preview dz-file-preview">
-                                    <div class="dz-details">
-                                        <div class="thumbnail-container">
-                                            <img class="icon-download" src="/images/icons/download_icon.svg"/>
-                                            <a href="javascript:;"
-                                               v-on:click="showMenu(index)"
-                                               class="menu-handler">
-                                                <img class="icon-menu"
-                                                     src="/images/icons/more_vert.svg"/>
-                                            </a>
-                                        </div>
-                                        <div class="filename">{{file.name}}</div>
-                                    </div>
-                                    <div class="menu-preview">
-                                        <a href="javascript:;" v-on:click="removeDoc(index)">Delete the
-                                            document</a>
-                                        <a href="javascript:;">Send in private message</a>
-                                        <a href="javascript:;">Send to email</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <FilesComponent  :campaign="campaign" :fileCategory="'email_temps'" @showPositiveNotification="showNotification" @showNegativeNotification="showNegativeNotification"></FilesComponent>
+
                 </div>
 
             </div>

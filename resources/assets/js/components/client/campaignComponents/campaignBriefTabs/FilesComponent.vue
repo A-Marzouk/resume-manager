@@ -74,11 +74,10 @@
                                                  src="/images/icons/more_vert.svg"/>
                                         </a>
                                     </div>
-                                    <div class="filename">{{file.name}}</div>
+                                    <div class="filename" style="word-break: break-all;">{{file.name}}</div>
                                 </div>
                                 <div class="menu-preview">
-                                    <a href="javascript:;" v-on:click="removeDoc(index)">Delete the
-                                        document</a>
+                                    <a href="javascript:;" v-on:click="removeDoc(index)">Delete the document</a>
                                     <a href="javascript:;">Send in private message</a>
                                     <a href="javascript:;">Send to email</a>
                                 </div>
@@ -140,7 +139,9 @@
 
             },
             removeDoc(index) {
-                this.files.splice(index, 1)
+                this.files.splice(index, 1) ;
+                // post data to delete the file from the directory and to remove the campaign file record.
+
                 if (this.files.length === 0) dropZone.removeAllFiles();
             },
             showMenu(index) {
@@ -192,6 +193,7 @@
             }
         },
         mounted() {
+            this.files = this.campaign.files ;
             let component   = this;
             let campaign_id = this.campaign.id ;
 

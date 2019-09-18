@@ -322,12 +322,12 @@
             saveEdit() {
                 axios.post('/client/camp/update-info', this.editFormData)
                     .then((response) => {
-                        console.log(response.data);
                         if (response.data.status === 'success') {
                             this.campaign.title = this.editFormData.title;
                             this.campaign.description = this.editFormData.description;
                             this.canEdit = false;
                             this.infoErrors = {};
+                            this.$emit('showPositiveNotification','Saved!');
                         }
                     })
                     .catch((error) => {

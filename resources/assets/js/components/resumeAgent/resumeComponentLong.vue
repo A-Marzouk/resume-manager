@@ -54,7 +54,7 @@
                                 <div class="row hireRow w-100">
                                     <div  class="col-md-4 text-center" style="font-size: 15px; color: white;" >
                                     <span style="font-weight: bold;">
-                                        {{parseFloat(user_data.salary).toFied(2)}}
+                                        {{parseFloat(user_data.salary).toFixed(2)}}
                                     </span>
                                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
                                     </div>

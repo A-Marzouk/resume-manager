@@ -549,4 +549,8 @@ Route::get('/home_test/sales', function () {
     return view('new_home_sales');
 });
 
+Route::get('/resume/{username}', 'ResumeController@agentsResume');
+
+Route::post('/freelancer/resume/download', 'ResumeController@downloadPDFResume')->name('download-pdf-resume');
+
 Route::get('/create/new_agents', 'TestController@createAgents');

@@ -166,5 +166,4 @@ class AgentsController extends Controller
         $agent = Agent::where('id',$agent_id)->first();
         return $agent->records;
     }
-
 }

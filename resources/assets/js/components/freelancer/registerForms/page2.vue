@@ -235,7 +235,7 @@ export default {
       onlyNumeric (e) {
           if (e.key !== 'Backspace' &&
             e.key !== 'Delete' &&
-            (e.keyCode < 48 || e.keyCode > 57)
+            isNaN(parseInt(e.key))
         ) e.preventDefault()
       },
       addToTechs (e) {

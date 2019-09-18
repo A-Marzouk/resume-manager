@@ -152,9 +152,9 @@
                     </div>
                 </div>
                 <!-- total due -->
-                <hr style="margin: 30px 0;"/>
+                <hr style="margin: 30px 0;" v-show="invoice.status != 1"  />
                 <div class="d-flex justify-content-end">
-                    <button class="agreement-button payment-button" @click="pay" :class="{'disabled-btn' :!canPay}">PAY
+                    <button class="agreement-button payment-button" @click="pay" v-show="invoice.status != 1" :class="{'disabled-btn' :!canPay}">PAY
                         VIA PayPal
                     </button>
                 </div>
@@ -174,7 +174,7 @@
                       :value="paymentData.description"></textarea>
             <input type="number" placeholder="Number of weeks.." min="0" max="24" id="weeks"
                    class="panelFormInput form-control" name="weeks" :value="paymentData.weeks">
-            <button class="hireBtn btn-block hire" type="submit">Pay via PayPal</button>
+            <button class="hireBtn btn-block hire" type="submit" >Pay via PayPal</button>
         </form>
 
         <!-- end of paypal form-->

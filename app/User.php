@@ -288,7 +288,7 @@ class User extends Authenticatable implements HasMedia
 
     public function skills()
     {
-        return $this->hasMany(Skill::class);
+        return $this->belongsToMany(Skill::class, 'skill_user');
     }
 
     public function bookings()

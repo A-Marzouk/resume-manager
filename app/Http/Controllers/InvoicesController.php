@@ -14,6 +14,7 @@ use App\Invoice;
 use App\Models\Enums\InvoiceStatus;
 use App\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class InvoicesController extends Controller
 {
@@ -93,6 +94,16 @@ class InvoicesController extends Controller
         } else {
             return $number;
         }
+    }
+
+    public function exportInvoice($invoice_id)
+    {
+        $invoice = Invoice::where('id', $invoice_id)->with('client.user.userData', 'subscription.campaign')->first();
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
+        $pdf->loadView('client.payments.invoice', compact('invoice'));
+        return $pdf->stream();
+
     }
 
 }

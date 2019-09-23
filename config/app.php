@@ -148,6 +148,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Chumper\Zipper\ZipperServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -213,6 +214,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Zipper' => Chumper\Zipper\Zipper::class
     ],
 
 ];

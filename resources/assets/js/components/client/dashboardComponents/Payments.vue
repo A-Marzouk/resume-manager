@@ -177,7 +177,9 @@
                             </td>
                             <td>
                                 <div class="export-icon">
-                                    <img src="/images/client/payments/export_invoice.png" alt="export icon">
+                                    <a :href="'/client/invoices/export/' + invoice.id">
+                                        <img src="/images/client/payments/export_invoice.png" alt="export icon">
+                                    </a>
                                 </div>
                             </td>
 
@@ -191,7 +193,7 @@
                     </table>
                 </div>
                 <div class="invoices-export-btn">
-                    <a href="#">
+                    <a href="/client/invoices/export/all"  v-show="invoices.length > 1">
                         EXPORT ALL INVOICES
                     </a>
                 </div>

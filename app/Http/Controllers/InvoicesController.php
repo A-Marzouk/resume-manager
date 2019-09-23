@@ -13,8 +13,10 @@ use App\Client;
 use App\Invoice;
 use App\Models\Enums\InvoiceStatus;
 use App\Subscription;
+use Chumper\Zipper\Facades\Zipper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use ZipArchive;
 
 class InvoicesController extends Controller
 {
@@ -98,11 +100,57 @@ class InvoicesController extends Controller
 
     public function exportInvoice($invoice_id)
     {
+//        $zip_file = 'invoices.zip'; // Name of our archive to download
+//
+//        // Initializing PHP class
+//        $zip = new ZipArchive();
+//        $zip->open($zip_file, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+//
+//        $invoice_file = 'invoices/aaa001.pdf';
+//
+//        // Adding file: second parameter is what will the path inside of the archive
+//        // So it will create another folder called "storage/" inside ZIP, and put the file there.
+//        $zip->addFile(storage_path($invoice_file), $invoice_file);
+//        $zip->close();
+//
+//        // We return the file immediately after download
+//        return response()->download($zip_file);
+
         $invoice = Invoice::where('id', $invoice_id)->with('client.user.userData', 'subscription.campaign')->first();
         $pdf = App::make('dompdf.wrapper');
-        $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif']);
-        $pdf->loadView('client.payments.invoice', compact('invoice'));
+        $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif','javascript-delay' => 3000]);
+        $pdf->loadView('client.payments.invoice_pdf_view', compact('invoice'));
         return $pdf->stream();
+
+    }
+
+    public function downloadAllInvoices(){
+
+        $client   = currentClient();
+        $invoices = Invoice::where('client_id', $client->id)->with('client.user.userData', 'subscription.campaign')->get();
+
+        foreach ($invoices as $invoice){
+            // 1- make the pdf file
+            $pdf = App::make('dompdf.wrapper');
+            $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif','javascript-delay' => 3000]);
+            $pdf->loadView('client.payments.invoice_pdf_view', compact('invoice'));
+
+            // save the output to folder
+
+            $output = $pdf->output();
+            if (!is_dir(storage_path().'/invoices/'.$invoice->client->id)) {
+                // dir doesn't exist, make it
+                mkdir(storage_path().'/invoices/'.$invoice->client->id);
+            }
+            file_put_contents(storage_path().'/invoices/'.$invoice->client->id.'/invoice_'. $invoice->id .'.pdf', $output);
+
+
+            $files = glob(storage_path('/invoices/'.$invoice->client->id));
+            Zipper::make(public_path('invoices.zip'))->add($files)->close();
+            return response()->download(public_path('invoices.zip'));
+
+        }
+
 
     }
 

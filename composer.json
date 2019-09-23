@@ -9,6 +9,7 @@
     "barryvdh/laravel-dompdf": "^0.8.3",
     "behance/api-network": "^2.0",
     "calcinai/php-imagick": "^0.1.2",
+    "chumper/zipper": "^1.0",
     "doctrine/dbal": "^2.9",
     "endyjasmi/cuid": "^2.0",
     "fideloper/proxy": "^4.0",

@@ -48,7 +48,7 @@
                         {{invoiceStatusCode[invoice.status]}}
                     </div>
                     <div class="justify-content-end mobile-display NoDecor">
-                        <a href="javascript:void(0)" class="export-invoice"
+                        <a :href=" '/client/invoices/export/' + invoice.id " class="export-invoice"
                            style="margin-right: 43px;"><img src="/images/client/payments/export_invoice.png"/>
                         </a>
                         <a href="javascript:void(0)" @click="copyLink(invoice.id)"

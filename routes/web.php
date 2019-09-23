@@ -181,10 +181,16 @@ Route::prefix('client')->group(function (){
     Route::get('/invoices/view/{invoice_id}','InvoicesController@viewClientInvoice')->name('client.payment.invoice');
     Route::get('/invoices/get','InvoicesController@getClientInvoices')->name('client.invoices.get');
     Route::post('/invoices/create','InvoicesController@createInvoice')->name('client.invoices.create');
+    // export single invoice as pdf
+    Route::get('/invoices/export/all','InvoicesController@downloadAllInvoices')->name('invoice.export.all');
+    Route::get('/invoices/export/{invoice_id}','InvoicesController@exportInvoice')->name('invoice.export');
 
 // Client campaign agents :
     // update agents status
     Route::post('/camp/agents/update','AgentsController@updateAgentStatus')->name('client.camp.agents.update');
+
+
+
 
 
 

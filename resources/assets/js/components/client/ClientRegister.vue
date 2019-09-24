@@ -268,7 +268,7 @@ export default {
         return;
       }
       this.canSubmit = false;
-      axios.post('/ajax/clients/register', this.formData)
+      axios.post('/client/register', this.formData)
         .then(response => {
           window.location.href = '/dashboard';
         })
@@ -278,7 +278,7 @@ export default {
           } else {
             this.errors = ['Something went wrong. Please try again.'];
           }
-        });;
+        });
     },
     clearInput(inputName) {
       this.formData[inputName] = '';

@@ -38,11 +38,13 @@ class ClientRegisterController extends Controller
 
         $client = $this->create($request->all());
 
-        Mail::send(new ClientRegistered($client));
+//        Mail::send(new ClientRegistered($client));
 
         auth()->login($client->user);
 
-        return redirect()->route('dashboard.index');
+        return [
+            'status' => 'success'
+        ];
     }
 
     protected function validator(array $data)
@@ -86,38 +88,6 @@ class ClientRegisterController extends Controller
             ],
         ]);
     }
-
-    // protected function create(array $data)
-    // {
-    //     Client::create([
-    //         'firstName' => $data['name'],
-    //         'name' => $data['name'],
-    //         'agency' => $data['agency'],
-    //         'email' => $data['email'],
-    //         'emailDept' => $data['emailDept'],
-    //         'phone' => $data['phone'],
-    //         'timeZone' => $data['timeZone'],
-    //         'password' => Hash::make($data['password']),
-    //     ]);
-
-    //     $client = Client::where('email', $data['email'])->first();
-
-    //     // send notification of registered client :
-    //     $notification = new NotificationsController();
-    //     $data['id'] = $client->id;
-    //     $notification->clientRegisteredEmail($data);
-
-    //     // save the owner :
-    //     // add the owner code if exists
-    //     if (isset($data['ownerCode'])) {
-    //         // get owner with this code
-    //         $owner = Owner::where('code', $data['ownerCode'])->first();
-    //         $client->owner_id = $owner->id;
-    //         $client->save();
-    //     }
-
-    //     return $client;
-    // }
 
     protected function affiliate($ownerCode)
     {

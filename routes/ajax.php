@@ -11,5 +11,4 @@
 |
  */
 
-Route::post('clients/register', 'Auth\ClientRegisterController@register')
-    ->name('clients.register');
+

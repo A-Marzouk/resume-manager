@@ -3,7 +3,7 @@
         <div class="content-block-campaign">
             <div class="upper-bar">
                 <div class="welcomeText">
-                    Hello Mr. Marzouk!  You have 8 active campaigns.
+                    Hello {{agent.user.user_data.first_name}}!  You have {{activeCampaigns.length}} active campaigns.
                 </div>
                 <a href="/freelancer/campaigns-archive" class="actionText">
                     GO TO ARCHIVE OF CAMPAIGNS
@@ -23,110 +23,37 @@
                 </div>
             </div>
         </div>
-        <div class="content-block-campaign-brief">
+        <div class="content-block-campaign-brief" v-for="(campaign,index) in activeCampaigns" :key="index">
             <div class="upper-bar">
                 <div class="campaignInfo">
                     <div class="title">
-                        Name of the campaign
+                        {{campaign.title}}
                     </div>
                 </div>
                 <div class="actionBtn">
-                    <a class="status active" href="#">
-                        ACTIVE
+                    <a class="status" :class="{active: campaign.status === 1, paused: campaign.status === 2, canceled: campaign.status === 3}" href="#">
+                        {{campaignStatusCode[campaign.status]}}
                     </a>
                 </div>
             </div>
+
             <div class="agent-logs-block">
                 <div class="agentInfo">
                     <img src="/images/client/dummy.png" alt="">
                     <span class="userName">
-                                Mohamed Salah
-                            </span>
+                            {{agent.user.user_data.first_name}}
+                    </span>
                 </div>
-                <div class="log">
+                <div class="log" v-for="(log,index) in agent.logs" :key="index + '_LOG'">
                     <div class="log-time">
-                        9.15 am
+                        {{getDate(log.created_at)}}
                     </div>
                     <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
+                        <status-selector :status="logStatusCode[log.status]"></status-selector>
                         <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            {{log.log_text}}
                         </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9.15 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9.15 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-            </div>
-            <div class="agent-logs-block">
-                <div class="agentInfo">
-                    <img src="/images/client/dummy.png" alt="">
-                    <span class="userName">
-                                Lionel Messi
-                            </span>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9.15 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9.15 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9.15 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
+                        <img class="icon-edit" src="/images/client/campaign_activity/edit.png" alt="edit icon" />
                     </div>
                 </div>
             </div>
@@ -140,136 +67,8 @@
                 </a>
             </div>
         </div>
-        <div class="content-block-campaign-brief">
-            <div class="upper-bar">
-                <div class="campaignInfo">
-                    <div class="title">
-                        Name of the campaign
-                    </div>
-                </div>
-                <div class="actionBtn">
-                    <a class="status live" href="#">
-                        LIVE
-                    </a>
-                </div>
-            </div>
-            <div class="agent-logs-block">
-                <div class="agentInfo">
-                    <img src="/images/client/dummy.png" alt="">
-                    <span class="userName">
-                                Mohamed Salah
-                            </span>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        10 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        11 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        11 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-            </div>
-            <div class="agent-logs-block">
-                <div class="agentInfo">
-                    <img src="/images/client/dummy.png" alt="">
-                    <span class="userName">
-                                Lionel Messi
-                            </span>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        10 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        11 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                        <img class="icon-edit" src="/images/icons/edit_icon.svg" alt="edit icon" />
-                    </div>
-                </div>
-            </div>
 
-            <div class="campaign-brief-footer">
-                <a href="/freelancer/campaign">
-                    GO TO CAMPAIGN
-                </a>
-                <a class="add-entry" :class="{disabled: addEntry}" href="javascript:;" v-on:click="tryToAddEntry">
-                    <img :src="`/images/icons/${(!addEntry) ? 'plus_icon_blue' : 'plus_icon_gray'}.svg`" alt="plus sign" /> ADD ENTRY
-                </a>
-            </div>
-        </div>
+
 
         <addEntry :clear="clear" v-if="addEntry"></addEntry>
         <addDocument v-if="addEntry"></addDocument>
@@ -280,21 +79,44 @@
 <script>
     import addEntry from './addEntry'
     import addDocument from './addDocument'
-    import statusSelector from '../../status-selector.vue'
+    import logStatusSelector from '../Log-status-selector'
 
     export default {
         components: {
             addEntry,
             addDocument,
-            'status-selector': statusSelector
+            'status-selector': logStatusSelector
         },
+        props:['agent'],
         data(){
           return{
               rootLink: this.$route.path,
               addEntry: false,
               imAway: true,
-              startShift: false
+              startShift: false,
+              campaigns:this.agent.campaigns,
+              agentLogs:this.agent.logs,
+              campaignStatusCode:{
+                  1:'Active',
+                  2:'Paused',
+                  3:'Cancelled',
+              },
+
+              logStatusCode:{
+                  1:'email-request',
+                  2:'call-back',
+                  3:'not-interested',
+                  4:'appointment-set',
+                  5:'contacts-received',
+                  6:'successful',
+              },
+
           }
+        },
+        computed:{
+            activeCampaigns(){
+                return this.campaigns.filter( (campaign) => { return campaign.status === 1});
+            },
         },
         methods:{
             rootLinkTo (link) {
@@ -304,9 +126,17 @@
                 this.addEntry = false
             },
             tryToAddEntry () {
-                if (this.startShift && this.imAway)
-                    this.addEntry = true
-            }
+                this.addEntry = true ;
+
+            },
+            getDate(date) {
+                let event = new Date(date);
+                let options = {hour:'numeric',minute:'numeric', month: 'short', day: 'numeric' };
+                return event.toLocaleDateString('en-EN', options);
+            },
+        },
+        mounted() {
+            console.log(this.agent.logs);
         }
     }
 </script>

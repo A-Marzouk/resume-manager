@@ -16,16 +16,16 @@
         </div>
         <input v-model="names" style="margin-bottom: 15px;" v-if="isSuccessful" class="names-input" placeholder="Please, write names of the registered people using commas" />
         <div v-if="this.errors.entry !== ''" class="error">{{errors.entry}}</div>
-        <div class="add-recording-action">
-          <a href="javascript:void(0);">ADD RECORDING</a>
-        </div>
+        <!--<div class="add-recording-action">-->
+          <!--<a href="javascript:void(0);">ADD RECORDING</a>-->
+        <!--</div>-->
         <hr>
         <div class="btn-container">
           <button v-if="entry !== ''" type="button" name="button"
             class="btn btn-link"
             v-on:click="() => {entry = ''; clear()}"
           >CANCEL</button>
-          <button v-on:click="addEntry" class="btn btn-submit btn-primar" :class="{ disabled: entry === '' }" >ADD ENTRY</button>
+          <button v-on:click="addEntry" class="btn btn-submit btn-primar" :class="{ disabled: entry === '' }" >SAVE ENTRY</button>
         </div>
       </div>
     </div>
@@ -34,15 +34,23 @@
 
 <script>
 
-  import statusSelector from '../../status-selector.vue'
+  import logStatusSelector from '../Log-status-selector'
 
   export default {
     props: ['clear'],
     components: {
-      'status-selector': statusSelector
+      'status-selector': logStatusSelector
     },
     data () {
       return {
+        logStatusCode:{
+          1:'email-request',
+          2:'call-back',
+          3:'not-interested',
+          4:'appointment-set',
+          5:'contacts-received',
+          6:'successful',
+        },
         entry: '',
         isSuccessful: false,
         names: '',

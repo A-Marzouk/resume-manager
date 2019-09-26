@@ -2,8 +2,11 @@
     <div>
         <div class="type-entry-block">
             <div class="upper-bar">
-                <div class="type-entry-label">
+                <div class="type-entry-label d-flex justify-content-between align-items-center w-100">
                     <div class="title">Edit your entry</div>
+                    <div class="deleteText" @click="deleteLog">
+                        Delete log
+                    </div>
                 </div>
             </div>
             <div class="entry-input-block">
@@ -41,7 +44,7 @@
     import logStatusSelector from '../Log-status-selector'
 
     export default {
-        props: ['clear','log'],
+        props: ['clear', 'log'],
         components: {
             'status-selector': logStatusSelector
         },
@@ -60,9 +63,9 @@
                     status: ''
                 },
                 editedLog: {
-                    'id' : this.log.id,
-                    'log_text' : this.log.log_text,
-                    'status' : this.log.status,
+                    'id': this.log.id,
+                    'log_text': this.log.log_text,
+                    'status': this.log.status,
                 }
             }
         },
@@ -88,6 +91,22 @@
             },
             setStatus(status) {
                 this.editedLog.status = Object.keys(this.logStatusCode).find(key => this.logStatusCode[key] === status);
+            },
+            deleteLog() {
+                if (!confirm('Are you sure you want to delete this activity log ?')) {
+                    return;
+                }
+                let logID = this.log.id;
+                axios.post('/agent/logs/delete', {log_id: logID})
+                    .then((response) => {
+                        if (response.data.status === 'success') {
+                            this.$emit('activityLogDeleted', logID);
+                            this.clear();
+                        }
+                    })
+                    .catch(() => {
+
+                    });
             }
         }
     }
@@ -99,11 +118,17 @@
         background: #E4E4E4 !important;
     }
 
-    .btn-container{
-        margin-top: 10px!important;
+    .btn-container {
+        margin-top: 10px !important;
     }
-    .input-container{
+
+    .input-container {
         height: 85px !important;
+    }
+
+    .deleteText {
+        color: orangered;
+        cursor: pointer;
     }
 
 </style>

@@ -70,7 +70,7 @@
                         </div>
 
                         <div>
-                            <updateEntry :clear="cancelEdit" v-if="editedLog.id === log.id" :log="log" @activityLogUpdated="updateActivityLog"></updateEntry>
+                            <updateEntry :clear="cancelEdit" v-if="editedLog.id === log.id" :log="log" @activityLogUpdated="updateActivityLog" @activityLogDeleted="deleteActivityLog"></updateEntry>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
 
             <div :id=" 'entryBox_' + campaign.id">
                 <addEntry :clear="clear" v-if="addEntry" :agent_id="agent.id" :campaign_id="campaign.id"
-                          @activityLogAdded="addActivityLog"></addEntry>
+                          @activityLogAdded="addActivityLog" ></addEntry>
             </div>
 
         </div>
@@ -141,9 +141,7 @@
                     5:'CR',
                     6:'S',
                 },
-                editedLog:{
-
-                }
+                editedLog:{}
 
             }
         },
@@ -175,7 +173,7 @@
             },
             addActivityLog(log) {
                 this.agentLogs.push(log);
-                this.$emit('showPositiveNotification', 'Activity log as been successfully ADDED!')
+                this.$emit('showPositiveNotification', 'Activity log has been successfully Added!')
             },
             updateActivityLog(log) {
                 // replace the old log with this one passed here.
@@ -185,8 +183,17 @@
                         console.log(log);
                     }
                 }) ;
-                this.$emit('showPositiveNotification', 'Activity log as been successfully UPDATED !')
+                this.$emit('showPositiveNotification', 'Activity log has been successfully Updated !')
 
+            },
+            deleteActivityLog(logID){
+                // splice the old log with this one passed here.
+                this.agentLogs.forEach( (oldLog,index) => {
+                    if(oldLog.id === logID){
+                        this.agentLogs.splice(index,1);
+                    }
+                });
+                this.$emit('showPositiveNotification', 'Activity log has been successfully Deleted !')
             },
             cancelEdit(){
                 this.editedLog = {}

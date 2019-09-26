@@ -3,38 +3,22 @@
         <div class="type-entry-block">
             <div class="upper-bar">
                 <div class="type-entry-label">
-                    <div class="title">Type your entry</div>
+                    <div class="title">Edit your entry</div>
                 </div>
             </div>
             <div class="entry-input-block">
                 <div class="input-container">
-                    <status-selector :setStatus="setStatus"></status-selector>
+                    <status-selector :setStatus="setStatus" :status="logStatusCode[editedLog.status]"></status-selector>
                     <textarea class="entry-input" placeholder="Type your entry here"
-                              v-model="entryData.log_text"></textarea>
+                              v-model="editedLog.log_text"></textarea>
                 </div>
                 <div class="entry-comment">
                     Please don't forget to mention N° of the client (company) in the document
                 </div>
                 <div v-if="this.errors.entry !== ''" class="error">{{errors.entry}}</div>
                 <div v-if="this.errors.status !== ''" class="error">{{errors.status}}</div>
-                <!--<div class="add-recording-action">-->
-                <!--<a href="javascript:void(0);">ADD RECORDING</a>-->
-                <!--</div>-->
+
                 <br/>
-
-                <!--<div>-->
-                <!--<div class="">-->
-                <!--<div class="upper-bar">-->
-                <!--<div class="type-document-label">-->
-                <!--<div class="title">Document link</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="document-input-block">-->
-                <!--<input type="text" class="document-input" placeholder="Add a document link">-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-
 
                 <div class="btn-container">
                     <button type="button" name="button"
@@ -42,8 +26,8 @@
                             v-on:click="() => {entry = ''; clear()}"
                     >CANCEL
                     </button>
-                    <button v-on:click="addEntry" class="btn btn-submit btn-primar"
-                            :class="{ disabled: entryData.log_text === '' }">
+                    <button v-on:click="updateEntry" class="btn btn-submit btn-primar"
+                            :class="{ disabled: editedLog.log_text === '' }">
                         SAVE ENTRY
                     </button>
                 </div>
@@ -57,7 +41,7 @@
     import logStatusSelector from '../Log-status-selector'
 
     export default {
-        props: ['clear', 'campaign_id', 'agent_id'],
+        props: ['clear','log'],
         components: {
             'status-selector': logStatusSelector
         },
@@ -75,29 +59,27 @@
                     entry: '',
                     status: ''
                 },
-                entryData: {
-                    log_text: '',
-                    status: '',
-                    agent_id: this.agent_id,
-                    campaign_id: this.campaign_id
+                editedLog: {
+                    'id' : this.log.id,
+                    'log_text' : this.log.log_text,
+                    'status' : this.log.status,
                 }
             }
         },
         methods: {
-            addEntry: function () {
-                if (this.entryData.log_text.trim() === '') {
+            updateEntry: function () {
+                if (this.editedLog.log_text.trim() === '') {
                     this.errors.entry = 'Entry is empty';
                     return;
                 }
-                if (this.entryData.status === '') {
+                if (this.editedLog.status === '') {
                     this.errors.status = 'Please select status';
                     return;
                 }
-                axios.post('/agent/logs/add', this.entryData)
+                axios.post('/agent/logs/update', this.editedLog)
                     .then((response) => {
                         let log = response.data;
-                        this.$emit('activityLogAdded', log);
-                        this.clearEntryData();
+                        this.$emit('activityLogUpdated', log);
                         this.clear();
                     })
                     .catch((error) => {
@@ -105,15 +87,7 @@
                     });
             },
             setStatus(status) {
-                this.entryData.status = Object.keys(this.logStatusCode).find(key => this.logStatusCode[key] === status);
-            },
-            clearEntryData() {
-                this.entryData = {
-                    log_text: '',
-                    status: '',
-                    agent_id: this.agent_id,
-                    campaign_id: this.campaign_id
-                }
+                this.editedLog.status = Object.keys(this.logStatusCode).find(key => this.logStatusCode[key] === status);
             }
         }
     }
@@ -124,4 +98,12 @@
     .disabled:hover {
         background: #E4E4E4 !important;
     }
+
+    .btn-container{
+        margin-top: 10px!important;
+    }
+    .input-container{
+        height: 85px !important;
+    }
+
 </style>

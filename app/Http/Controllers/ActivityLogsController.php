@@ -52,6 +52,13 @@ class ActivityLogsController extends Controller
         return ActivityLog::create($request->toArray());
     }
 
+    public function editLog(Request $request){
+        $log = ActivityLog::where('id',$request->id);
+         if($log->update($request->toArray())) {
+             return $log->first() ;
+         };
+    }
+
     public function deleteActivityLog(Request $request){
         // delete job post
         $activityLog = ActivityLog::where('id',$request->logID);

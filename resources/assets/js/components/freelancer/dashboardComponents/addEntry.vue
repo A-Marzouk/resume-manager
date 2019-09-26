@@ -19,9 +19,24 @@
         <!--<div class="add-recording-action">-->
           <!--<a href="javascript:void(0);">ADD RECORDING</a>-->
         <!--</div>-->
-        <hr>
+        <br/>
+
+        <div>
+          <div class="">
+            <div class="upper-bar">
+              <div class="type-document-label">
+                <div class="title">Document link</div>
+              </div>
+            </div>
+            <div class="document-input-block">
+              <input type="text" class="document-input" placeholder="Add a document link">
+            </div>
+          </div>
+        </div>
+
+
         <div class="btn-container">
-          <button v-if="entry !== ''" type="button" name="button"
+          <button type="button" name="button"
             class="btn btn-link"
             v-on:click="() => {entry = ''; clear()}"
           >CANCEL</button>

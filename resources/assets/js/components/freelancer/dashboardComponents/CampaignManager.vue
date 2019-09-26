@@ -23,68 +23,75 @@
                 </div>
             </div>
         </div>
-        <div class="content-block-campaign-brief" v-for="(campaign,index) in activeCampaigns" :key="index">
-            <div class="upper-bar">
-                <div class="campaignInfo">
-                    <div class="title">
-                        {{campaign.title}}
+
+        <div  v-for="(campaign,index) in activeCampaigns" :key="index">
+            <div class="content-block-campaign-brief">
+                <div class="upper-bar">
+                    <div class="campaignInfo">
+                        <div class="title">
+                            {{campaign.title}}
+                        </div>
+                    </div>
+                    <div class="actionBtn">
+                        <a class="status" :class="{active: campaign.status === 1, paused: campaign.status === 2, canceled: campaign.status === 3}" href="#">
+                            {{campaignStatusCode[campaign.status]}}
+                        </a>
                     </div>
                 </div>
-                <div class="actionBtn">
-                    <a class="status" :class="{active: campaign.status === 1, paused: campaign.status === 2, canceled: campaign.status === 3}" href="#">
-                        {{campaignStatusCode[campaign.status]}}
-                    </a>
-                </div>
-            </div>
 
-            <div class="agent-logs-block">
-                <div class="agentInfo">
-                    <img src="/images/client/dummy.png" alt="">
-                    <span class="userName">
+                <div class="agent-logs-block">
+                    <div class="agentInfo">
+                        <img src="/images/client/dummy.png" alt="">
+                        <span class="userName">
                             {{agent.user.user_data.first_name}}
                     </span>
-                </div>
-                <div class="log" v-for="(log,index) in agent.logs" :key="index + '_LOG'">
-                    <div class="log-time">
-                        {{getDate(log.created_at)}}
                     </div>
-                    <div class="log-text">
-                        <status-selector :status="logStatusCode[log.status]"></status-selector>
-                        <span class="log-text-content">
+                    <div class="log" v-for="(log,index) in agent.logs" :key="index + '_LOG'">
+                        <div class="log-time">
+                            {{getDate(log.created_at)}}
+                        </div>
+                        <div class="log-text">
+                            <status-selector :status="logStatusCode[log.status]"></status-selector>
+                            <span class="log-text-content">
                             {{log.log_text}}
                         </span>
-                        <img class="icon-edit" src="/images/client/campaign_activity/edit.png" alt="edit icon" />
+                            <img class="icon-edit" src="/images/client/campaign_activity/edit.png" alt="edit icon" style="height: 20px;"/>
+                        </div>
                     </div>
                 </div>
+
+                <div class="campaign-brief-footer">
+                    <a href="/freelancer/campaign">
+                        GO TO CAMPAIGN
+                    </a>
+                    <a class="add-entry" :class="{disabled: addEntry}" href="javascript:;" v-on:click="addEntryBox(campaign.id)">
+                        <img :src="`/images/icons/${(!addEntry) ? 'plus_icon_blue' : 'plus_icon_gray'}.svg`" alt="plus sign" /> ADD ENTRY
+                    </a>
+                </div>
+
             </div>
 
-            <div class="campaign-brief-footer">
-                <a href="/freelancer/campaign">
-                    GO TO CAMPAIGN
-                </a>
-                <a class="add-entry" :class="{disabled: addEntry}" href="javascript:;" v-on:click="tryToAddEntry">
-                    <img :src="`/images/icons/${(!addEntry) ? 'plus_icon_blue' : 'plus_icon_gray'}.svg`" alt="plus sign" /> ADD ENTRY
-                </a>
+
+            <div :id=" 'entryBox_' + campaign.id">
+                <addEntry :clear="clear" v-if="addEntry" ></addEntry>
             </div>
+
         </div>
 
 
 
-        <addEntry :clear="clear" v-if="addEntry"></addEntry>
-        <addDocument v-if="addEntry"></addDocument>
-        
+
+
     </div>
 </template>
 
 <script>
     import addEntry from './addEntry'
-    import addDocument from './addDocument'
     import logStatusSelector from '../Log-status-selector'
 
     export default {
         components: {
             addEntry,
-            addDocument,
             'status-selector': logStatusSelector
         },
         props:['agent'],
@@ -125,9 +132,12 @@
             clear () {
                 this.addEntry = false
             },
-            tryToAddEntry () {
+            addEntryBox (campaign_id) {
                 this.addEntry = true ;
-
+                //scroll to the box
+                $('html, body').animate({
+                    scrollTop: $("#entryBox_" + campaign_id).offset().top - 105
+                }, 2000);
             },
             getDate(date) {
                 let event = new Date(date);
@@ -136,7 +146,7 @@
             },
         },
         mounted() {
-            console.log(this.agent.logs);
+
         }
     }
 </script>

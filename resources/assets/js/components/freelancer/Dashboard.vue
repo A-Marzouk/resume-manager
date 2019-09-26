@@ -126,6 +126,15 @@
                 </router-link>
             </div>
             <div class="content-block">
+                <div class="notificationBar" id="notificationBar" style="display:none; position: fixed;width: inherit;">
+                    <div>
+                        {{notificationMessage}}
+                    </div>
+                    <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                        x
+                    </a>
+                </div>
+
                 <keep-alive>
                     <router-view :agent ="agent" ></router-view>
                 </keep-alive>
@@ -246,7 +255,8 @@
         data() {
             return {
                 activeTab: 'campaign-manager',
-                rootURL: this.$route.path.split('/')[1] + '/' + this.$route.path.split('/')[2]
+                rootURL: this.$route.path.split('/')[1] + '/' + this.$route.path.split('/')[2],
+                notificationMessage : ''
             }
         },
         methods: {
@@ -267,7 +277,17 @@
             },
             rootLinkTo(link) {
                 return '/' + this.rootURL + '/' + link
-            }
+            },
+            showNotification(notificationMessage){
+                this.notificationMessage = notificationMessage ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
+            },
         },
         mounted() {
             this.setActiveTab();

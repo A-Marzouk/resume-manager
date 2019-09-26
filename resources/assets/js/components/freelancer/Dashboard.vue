@@ -126,7 +126,7 @@
                 </router-link>
             </div>
             <div class="content-block">
-                <div class="notificationBar" id="notificationBar" style="display:none; position: fixed;width: inherit;">
+                <div class="notificationBar" id="notificationBar" style="display:none; position: fixed;width: inherit; z-index:2;">
                     <div>
                         {{notificationMessage}}
                     </div>
@@ -136,7 +136,7 @@
                 </div>
 
                 <keep-alive>
-                    <router-view :agent ="agent" ></router-view>
+                    <router-view :agent ="agent" @showPositiveNotification="showNotification" ></router-view>
                 </keep-alive>
             </div>
         </div>

@@ -46,13 +46,13 @@
                             {{agent.user.user_data.first_name}}
                     </span>
                     </div>
-                    <div class="log" v-for="(log,index) in agent.logs" :key="index + '_LOG'">
+                    <div class="log" v-for="(log,index) in agentLogs" :key="index + '_LOG'">
                         <div class="log-time">
                             {{getDate(log.created_at)}}
                         </div>
-                        <div class="log-text">
+                        <div class="log-text justify-content-between">
                             <status-selector :status="logStatusCode[log.status]"></status-selector>
-                            <span class="log-text-content">
+                            <span class="log-text-content" style="flex:1;">
                             {{log.log_text}}
                         </span>
                             <img class="icon-edit" src="/images/client/campaign_activity/edit.png" alt="edit icon" style="height: 20px;"/>
@@ -73,7 +73,7 @@
 
 
             <div :id=" 'entryBox_' + campaign.id">
-                <addEntry :clear="clear" v-if="addEntry" ></addEntry>
+                <addEntry :clear="clear" v-if="addEntry" :agent_id="agent.id" :campaign_id="campaign.id" @activityLogAdded="addActivityLog"></addEntry>
             </div>
 
         </div>
@@ -137,13 +137,17 @@
                 //scroll to the box
                 $('html, body').animate({
                     scrollTop: $("#entryBox_" + campaign_id).offset().top - 105
-                }, 2000);
+                }, 1000);
             },
             getDate(date) {
                 let event = new Date(date);
                 let options = {hour:'numeric',minute:'numeric', month: 'short', day: 'numeric' };
                 return event.toLocaleDateString('en-EN', options);
             },
+            addActivityLog(log){
+                this.agentLogs.push(log);
+                this.$emit('showPositiveNotification','Activity log as been successfully added!')
+            }
         },
         mounted() {
 

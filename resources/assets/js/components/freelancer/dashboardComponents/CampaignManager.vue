@@ -180,7 +180,6 @@
                 this.agentLogs.forEach( (oldLog,index) => {
                     if(oldLog.id === log.id){
                         this.agentLogs[index] = log ;
-                        console.log(log);
                     }
                 }) ;
                 this.$emit('showPositiveNotification', 'Activity log has been successfully Updated !')

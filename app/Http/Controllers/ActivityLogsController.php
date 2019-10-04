@@ -15,6 +15,11 @@ use Illuminate\Http\Request;
 
 class ActivityLogsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:agent');
+    }
+
     public function getLogsByCampaignID($camp_id){
         $campaign = Campaign::where('id',$camp_id)->first();
         return $campaign->logs;
@@ -44,28 +49,23 @@ class ActivityLogsController extends Controller
 
 
     public function addLog(Request $request){
-        $currentUser = auth()->user();
-        $request->validate([
-            'log_text' => 'max:1500|required',
-        ]);
-
-        // add
-        $activityLog = new ActivityLog;
-        $activityLog->user_id = $currentUser->id;
-        $activityLog->log_text = $request->log_text;
-        $activityLog->campaign_id = $request->campaign_id;
-
-        $activityLog->save();
-
-        return $activityLog;
-
+        return ActivityLog::create($request->toArray());
     }
 
-    public function deleteActivityLog(Request $request){
+    public function editLog(Request $request){
+        $log = ActivityLog::where('id',$request->id);
+         if($log->update($request->toArray())) {
+             return $log->first() ;
+         };
+    }
+
+    public function deleteLog(Request $request){
         // delete job post
-        $activityLog = ActivityLog::where('id',$request->logID);
+        $activityLog = ActivityLog::where('id',$request->log_id);
         $activityLog->delete();
-        return 'ActivityLog has been deleted';
+        return [
+            'status' => 'success'
+        ];
     }
 
 }

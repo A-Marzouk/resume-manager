@@ -188,12 +188,13 @@ Route::prefix('client')->group(function (){
     // update agents status
     Route::post('/camp/agents/update','AgentsController@updateAgentStatus')->name('client.camp.agents.update');
 
-
-
-
-
-
 });
+Route::prefix('agent')->group(function (){
+    Route::post('/logs/add','ActivityLogsController@addLog')->name('add.log');
+    Route::post('/logs/update','ActivityLogsController@editLog')->name('edit.log');
+    Route::post('/logs/delete','ActivityLogsController@deleteLog')->name('delete.log');
+});
+
 
 Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
@@ -276,8 +277,6 @@ Route::post('/admin/camps/delete_shift','ShiftsController@deleteShift')->name('d
 Route::get('/admin/camps/get_camp_logs/{camp_id}','ActivityLogsController@getLogsByCampaignID')->name('get.logs');
 Route::get('/admin/camps/get_camp_members/{camp_id}','ActivityLogsController@getMembersByCampaignID')->name('get.members');
 Route::get('/admin/camps/get_camp_shifts/{camp_id}','ActivityLogsController@getShiftsByCampaignID')->name('get.shifts');
-Route::post('/admin/camps/add_log','ActivityLogsController@addLog')->name('add.log');
-Route::post('/admin/camps/delete_log','ActivityLogsController@deleteActivityLog')->name('delete.log');
 Route::post('/admin/camps/add_user_to_day','ShiftsController@addUserToShiftDay')->name('add.user.to.day');
 Route::post('/admin/camps/remove_user_from_day','ShiftsController@removeUserFromShiftDay')->name('remove.user.from.day');
 

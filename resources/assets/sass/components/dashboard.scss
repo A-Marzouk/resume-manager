@@ -937,6 +937,11 @@
       padding: 10px 10px 10px 30px;
     }
 
+    .document-input:focus{
+      outline: none;
+      border-bottom: 2px #05A4F4 solid;
+    }
+
     .names-input {
       width: 100%;
       background: #FBFBFB;

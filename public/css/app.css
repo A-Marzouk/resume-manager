@@ -5006,6 +5006,14 @@ body {
   padding: 10px 10px 10px 30px;
 }
 
+.type-entry-block .entry-input-block .document-input:focus,
+.type-entry-block .document-input-block .document-input:focus,
+.add-document-block .entry-input-block .document-input:focus,
+.add-document-block .document-input-block .document-input:focus {
+  outline: none;
+  border-bottom: 2px #05A4F4 solid;
+}
+
 .type-entry-block .entry-input-block .names-input,
 .type-entry-block .document-input-block .names-input,
 .add-document-block .entry-input-block .names-input,

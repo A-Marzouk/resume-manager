@@ -23,7 +23,7 @@
                     </a>
                 </div>
                 <div>
-                    Ahmed R. Marzouk
+                   {{agent.user.user_data.first_name}} {{agent.user.user_data.last_name}}
                 </div>
                 <div class="avatar">
                     <img src="/images/client/dummy.png" alt="logout">
@@ -48,9 +48,11 @@
 
                 <div class="dashboard_content">
                     <div class="dashboard-side-menu">
-                        <router-link :to="'/' + rootURL" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
+                        <router-link :to="'/' + rootURL" class="menu-block row"
+                                     :class="{'active' : activeTab === 'campaign-manager'}"
+                                     @click.native="selectTab('campaign-manager')">
                             <div class="imageContainer">
-                                <img  :src="getMenuBlockIcon('campaign-manager')" alt="icon">
+                                <img :src="getMenuBlockIcon('campaign-manager')" alt="icon">
                             </div>
                             <div class="menu-block-name">
                                 Campaign manager
@@ -80,7 +82,9 @@
                                 Agents database
                             </div>
                         </div> -->
-                        <router-link :to="rootLinkTo('my-account')" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
+                        <router-link :to="rootLinkTo('my-account')" class="menu-block row"
+                                     :class="{'active' : activeTab === 'my-account'}"
+                                     @click.native="selectTab('my-account')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('my-account')" alt="icon">
                             </div>
@@ -101,15 +105,18 @@
 
         <div class="dashboard_content">
             <div class="dashboard-side-menu hideOnTablet">
-                <router-link :to="'/' + rootURL" class="menu-block row" :class="{'active' : activeTab === 'campaign-manager'}" @click.native="selectTab('campaign-manager')">
+                <router-link :to="'/' + rootURL" class="menu-block row"
+                             :class="{'active' : activeTab === 'campaign-manager'}"
+                             @click.native="selectTab('campaign-manager')">
                     <div class="imageContainer">
-                        <img  :src="getMenuBlockIcon('campaign-manager')" alt="icon">
+                        <img :src="getMenuBlockIcon('campaign-manager')" alt="icon">
                     </div>
                     <div class="menu-block-name">
                         Campaign manager
                     </div>
                 </router-link>
-                <router-link :to="rootLinkTo('my-account')" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
+                <router-link :to="rootLinkTo('my-account')" class="menu-block row"
+                             :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('my-account')" alt="icon">
                     </div>
@@ -119,8 +126,17 @@
                 </router-link>
             </div>
             <div class="content-block">
+                <div class="notificationBar" id="notificationBar" style="display:none; position: fixed;width: inherit; z-index:2;">
+                    <div>
+                        {{notificationMessage}}
+                    </div>
+                    <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                        x
+                    </a>
+                </div>
+
                 <keep-alive>
-                    <router-view></router-view>
+                    <router-view :agent ="agent" @showPositiveNotification="showNotification" ></router-view>
                 </keep-alive>
             </div>
         </div>
@@ -139,7 +155,7 @@
                     </div>
                     <div class="invoice-body">
                         <div class="d-flex justify-content-between align-items-center">
-                            <div class="invoice-style"> INVOICE </div>
+                            <div class="invoice-style"> INVOICE</div>
                             <div class="modal-logo"></div>
                             <!-- <img src="/images/freelancer/logo_123.png" class="modal-logo"/> -->
                         </div>
@@ -156,8 +172,11 @@
                         <div class="d-flex justify-content-between align-items-center invioce-title">
                             <div>№ 059-004-038</div>
                             <div> other services</div>
-                            <div  class="d-flex justify-content-between align-items-center"> $400  <span class="invoice-outstand"> outstand</span> </div>
-                            <div class="invoice-download"> <img src="/images/client/payments/export_invoice.png"/>   copy invioce link </div>
+                            <div class="d-flex justify-content-between align-items-center"> $400 <span
+                                    class="invoice-outstand"> outstand</span></div>
+                            <div class="invoice-download"><img src="/images/client/payments/export_invoice.png"/> copy
+                                invioce link
+                            </div>
                         </div>
 
                         <div class="invoice-date">
@@ -170,11 +189,13 @@
                             <div>Name: Kim Coe</div>
                             <div>Company: Urban HQ LTD</div>
                             <div class="d-flex">
-                                <div >
+                                <div>
                                     Contact:
                                 </div>
-                                <div style="width:200px; margin-left: 3px;" >  +447711228204
-                                    kim@urbanhqgroup.com </div></div>
+                                <div style="width:200px; margin-left: 3px;"> +447711228204
+                                    kim@urbanhqgroup.com
+                                </div>
+                            </div>
                         </div>
 
                         <div class="freelancer-info invoice-info-freelancer">
@@ -184,13 +205,15 @@
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/assignment_turned_in_24px.png" class="invoice-info-icon"/>
+                                <img src="/images/client/payments/assignment_turned_in_24px.png"
+                                     class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/account_balance_wallet_24px.png" class="invoice-info-icon"/>
+                                <img src="/images/client/payments/account_balance_wallet_24px.png"
+                                     class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
@@ -208,7 +231,8 @@
                             </div>
 
                             <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/account_balance_wallet_24px.png" class="invoice-info-icon"/>
+                                <img src="/images/client/payments/account_balance_wallet_24px.png"
+                                     class="invoice-info-icon"/>
                                 <span class="invoice-info-title"> Name of agents: </span>
                                 Analiza Belleza, Cheska Ramos
                             </div>
@@ -227,33 +251,45 @@
 <script>
 
     export default {
-        data(){
-            return{
+        props:['agent'],
+        data() {
+            return {
                 activeTab: 'campaign-manager',
-                rootURL: this.$route.path.split('/')[1] + '/' + this.$route.path.split('/')[2]
+                rootURL: this.$route.path.split('/')[1] + '/' + this.$route.path.split('/')[2],
+                notificationMessage : ''
             }
         },
-        methods:{
-            selectTab(tabName){
-                this.activeTab = tabName ;
+        methods: {
+            selectTab(tabName) {
+                this.activeTab = tabName;
             },
-            getMenuBlockIcon(tabName){
-                if(this.activeTab === tabName){
-                   return '/images/client/menu_icons/active/'+ tabName + '.png';
+            getMenuBlockIcon(tabName) {
+                if (this.activeTab === tabName) {
+                    return '/images/client/menu_icons/active/' + tabName + '.png';
                 }
-                return '/images/client/menu_icons/inactive/'+ tabName + '.png';
+                return '/images/client/menu_icons/inactive/' + tabName + '.png';
             },
-            setActiveTab(){
+            setActiveTab() {
                 this.activeTab = this.$route.path.split('/')[3]
-                if (this.activeTab === undefined){
+                if (this.activeTab === undefined) {
                     this.activeTab = 'campaign-manager';
                 }
             },
-            rootLinkTo (link) {
+            rootLinkTo(link) {
                 return '/' + this.rootURL + '/' + link
-            }
+            },
+            showNotification(notificationMessage){
+                this.notificationMessage = notificationMessage ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
+            },
         },
-        mounted(){
+        mounted() {
             this.setActiveTab();
         }
 

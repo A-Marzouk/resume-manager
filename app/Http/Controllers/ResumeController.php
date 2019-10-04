@@ -157,8 +157,8 @@ class ResumeController extends Controller
 
         $freelancer = json_decode($request->input('freelancer'), true)["freelancer"];
         $user_data = json_decode($request->input('user_data'), true)["user_data"];
-        $worksHistory = json_decode($request->input('worksHistory'), true)["worksHistory"];
-        $educationHistory = json_decode($request->input('educationsHistory'), true)["educationsHistory"];
+        $worksHistory = json_decode($request->input('works_history'), true)["works_history"];
+        $educationHistory = json_decode($request->input('educations_history'), true)["educations_history"];
         $skills = json_decode($request->input('skills'), true)["skills"];
 
 

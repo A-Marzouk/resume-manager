@@ -774,11 +774,11 @@
             }
         },
         mounted() {
+            console.log(this.works_history)
         },
         created: function() {
             this.$parent.$on('update', this.updateSlick);
 
-            console.log(this.skills)
         }
     }
 </script>

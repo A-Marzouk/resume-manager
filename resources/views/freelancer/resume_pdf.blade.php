@@ -306,12 +306,13 @@
                 </div>
                 <div class="resume__content__details__workDate">
                   <?
-                    $auxDateStart->setTimestamp($work['date_from']);
-                    if (!$work['currently_working']) {
-                      $auxDateEnd->setTimestamp($work['date_end']);
+                    
+                    $auxDateStart->createFromFormat('YYYY-mm-dd', $work['date_from']);
+                    if (!$work['is_currently_working']) {
+                      $auxDateEnd->createFromFormat('YYYY-mm-dd', $work['date_to']);
                     }
                   ?>                
-                  {{ date_format($auxDateStart, 'F\' Y') }} - {{ ($work['currently_working']) ? 'Now' : date_format($auxDateEnd, 'F\' Y')  }}
+                  {{ date_format($auxDateStart, 'F\' Y') }} - {{ ($work['is_currently_working']) ? 'Now' : date_format($auxDateEnd, 'F\' Y')  }}
                 </div>
                 <div class="resume__content__details__workDetails">
                   <i>{{ $work['job_title'] }}</i>
@@ -339,12 +340,12 @@
                 </div>
                 <div class="resume__content__details__educationDate">
                   <?
-                    $auxDateStart->setTimestamp($education['date_from']);
-                    if (!$education['currently_learning']) {
-                      $auxDateEnd->setTimestamp($education['date_end']);
+                    $auxDateStart->createFromFormat('YYYY-mm-dd', $education['date_from']);
+                    if (!$education['is_currently_learning']) {
+                      $auxDateEnd->createFromFormat('YYYY-mm-dd', $education['date_from']);
                     }
                   ?>                   
-                  {{ date_format($auxDateStart, 'F\' Y') }} - {{ ($education['currently_learning']) ? 'Now' : date_format($auxDateEnd, 'F\' Y')  }}
+                  {{ date_format($auxDateStart, 'F\' Y') }} - {{ ($education['is_currently_learning']) ? 'Now' : date_format($auxDateEnd, 'F\' Y')  }}
                 </div>
                 <div class="resume__content__details__educationDetails">
                   {{ $education['description'] }}

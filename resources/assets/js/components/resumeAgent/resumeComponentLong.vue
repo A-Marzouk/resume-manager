@@ -3,7 +3,7 @@
         <div class="freelancerCard">
 
             <div class="row">
-                <form class="downloadForm" action="/freelancer/resume/download" method="POST">
+                <!-- <form class="downloadForm" action="/freelancer/resume/download" method="POST">
                     <input type="hidden" id="freelancer" name="freelancer" :value="JSON.stringify({ freelancer })">
                     <input type="hidden" id="user_data" name="user_data" :value="JSON.stringify({ user_data })">
                     <input type="hidden" id="works_history" name="works_history" :value="JSON.stringify({ works_history })">
@@ -14,7 +14,11 @@
                     <button type="submit" class="downloadBtn">
                         <img src="/images/icons/download_icon-white.svg" alt="download icon">
                     </button>
-                </form>
+                </form> -->
+
+                <a :href="`/freelancer/resume/${freelancer.username}/download`" class="downloadBtn">
+                    <img src="/images/icons/download_icon-white.svg" alt="download icon">
+                </a>
 
                 <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
                     <div class="showOnlyOnmd">
@@ -774,7 +778,7 @@
             }
         },
         mounted() {
-            console.log(this.works_history)
+            console.log(this.freelancer)
         },
         created: function() {
             this.$parent.$on('update', this.updateSlick);
@@ -812,16 +816,16 @@
             height: 785px ;
         }
 
-        .downloadForm {
+        .downloadBtn {
             position: absolute;
             right: 20px;            
             top: 10px;
             z-index: 10;
 
-            button {
-                border: none;
-                background: none;
-            }
+            // button {
+            //     border: none;
+            //     background: none;
+            // }
         }
     }
 

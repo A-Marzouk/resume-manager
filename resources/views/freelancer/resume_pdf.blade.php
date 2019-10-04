@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ $agent["firstName"] }} Resume</title>
@@ -208,26 +208,21 @@
           </div>
 
           <?
-            function isProgrammingSkill ($item_values) {
+            $programmingSkills = $skills->filter(function ($item_values) {
               return ($item_values['type'] == 'programming' ? true : false);
-            }
+            });
 
-            function isFrameworkOrDatabaseSkill ($item_values) {
+            $frameworkOrDatabaseSkills = $skills->filter(function ($item_values) {
               return ($item_values['type'] == 'framework' || $item_values['type'] == 'database' ? true : false);
-            }
+            });
 
-            function isSoftwareSkill ($item_values) {
+            $softwareSkills = $skills->filter(function ($item_values) {
               return ($item_values['type'] == 'software' ? true : false);
-            }
-
-            function isDesignSkill ($item_values) {
+            });
+            
+            $designSkills = $skills->filter(function ($item_values) {
               return ($item_values['type'] == 'design' ? true : false);
-            }
-
-            $programmingSkills = array_filter($skills, 'isProgrammingSkill');
-            $frameworkOrDatabaseSkills = array_filter($skills, 'isFrameworkOrDatabaseSkill');
-            $softwareSkills = array_filter($skills, 'isSoftwareSkill');
-            $designSkills = array_filter($skills, 'isDesignSkill');
+            });
           ?>
 
           <div class="resume__content__details">

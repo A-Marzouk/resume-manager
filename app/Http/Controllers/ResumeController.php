@@ -9,7 +9,7 @@ use App\User;
 
 class ResumeController extends Controller
 {
-    public function downloadPDFResume(Request $request) {
+    public function downloadPDFResume($username) {
         // $user_data = $request->user_data;
         // $agent = $request->freelancer;
         // $skills = $request->skills;
@@ -155,24 +155,29 @@ class ResumeController extends Controller
             "salary" => 10
         ];
 
-        $freelancer = json_decode($request->input('freelancer'), true)["freelancer"];
-        $user_data = json_decode($request->input('user_data'), true)["user_data"];
-        $worksHistory = json_decode($request->input('works_history'), true)["works_history"];
-        $educationHistory = json_decode($request->input('educations_history'), true)["educations_history"];
-        $skills = json_decode($request->input('skills'), true)["skills"];
+        $agentData = $this->getAgentData($username);
+        // dd($agentData);
 
+        if ($agentData) {
 
-        $view = \View::make('freelancer.resume_pdf', ['agent' => $freelancer, 'user_data' => $user_data, 'skills' => $skills, 'worksHistory' => $worksHistory, 'educationHistory' => $educationHistory])->render();
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
-        return $pdf->stream('invoice');
+            $view = \View::make('freelancer.resume_pdf', [
+                'agent' => $agentData['agent'],
+                'user_data' => $agentData['user_data'],
+                'skills' => $agentData['skills'],
+                'worksHistory' => $agentData['worksHistory'],
+                'educationHistory' => $agentData['educationsHistory']
+            ])->render();
+            $pdf = \App::make('dompdf.wrapper');
+            $pdf->loadHTML($view);
+            return $pdf->download('resume.pdf');
+        }
     }
 
-    public function agentsResume($username) {
+    public function getAgentData ($username) {
 
         $user = User::where('username', $username)->get();
         $agent = Agent::where('user_id', $user[0]->id)->get();
-
+        
         if (!empty($agent)) {
             // The user is an agent
 
@@ -184,13 +189,34 @@ class ResumeController extends Controller
 
             // dd($user_data);
 
-            return view('freelancer.resume_test', [
+            return array(
+                "username" => $username,
                 "agent" => $agent[0],
                 "user" => $user[0],
                 "user_data" => $user_data,
                 "skills" => $skills,
                 "worksHistory" => $worksHistory,
                 "educationsHistory" => $educationsHistory
+            );
+        }
+
+        return false;
+    }
+
+    public function agentsResume($username) {
+
+        $agentData = $this->getAgentData($username);
+
+        if ($agentData) {
+
+            return view('freelancer.resume_test', [
+                "username" => $agentData['username'],
+                "agent" => $agentData['agent'],
+                "user" => $agentData['user'],
+                "user_data" => $agentData['user_data'],
+                "skills" => $agentData['skills'],
+                "worksHistory" => $agentData['worksHistory'],
+                "educationsHistory" => $agentData['educationsHistory']
             ]);
         }
         

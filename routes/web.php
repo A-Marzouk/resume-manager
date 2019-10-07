@@ -193,6 +193,14 @@ Route::prefix('agent')->group(function (){
     Route::post('/logs/add','ActivityLogsController@addLog')->name('add.log');
     Route::post('/logs/update','ActivityLogsController@editLog')->name('edit.log');
     Route::post('/logs/delete','ActivityLogsController@deleteLog')->name('delete.log');
+
+    Route::get('/current','AgentsController@getCurrentAgent')->name('get.current.agent');
+
+    // agreements
+    Route::get('/account/service-agreement','AgentsController@viewAgentServiceAgreement')->name('service.agreement');
+    Route::get('/account/privacy-agreement','AgentsController@viewAgentPrivacyAgreement')->name('privacy.agreement');
+    // agent sign contract :
+    Route::post('/contracts/sign','AgentsController@signContract')->name('client.sign.contract');
 });
 
 
@@ -204,8 +212,6 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
 //    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
-    Route::get('/account/service-agreement','FreelancersController@viewFreelancerServiceAgreement')->name('service.agreement');
-    Route::get('/account/privacy-agreement','FreelancersController@viewFreelancerPrivacyAgreement')->name('privacy.agreement');
 
     // frontend routes
     Route::get('/',function (){

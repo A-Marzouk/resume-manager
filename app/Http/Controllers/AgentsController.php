@@ -14,12 +14,13 @@ use App\classes\Upload;
 use App\Recording;
 use App\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AgentsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:client')->except('viewAgents','isAdmin','getAgents');
+        $this->middleware('auth')->except('viewAgents','isAdmin','getAgents');
     }
 
 
@@ -37,6 +38,45 @@ class AgentsController extends Controller
         return [
             'status' => 'success'
         ] ;
+    }
+
+    public function viewAgentServiceAgreement()
+    {
+        return view('freelancer.my_account.service_agreement');
+    }
+
+    public function viewAgentPrivacyAgreement()
+    {
+        return view('freelancer.my_account.privacy_agreement');
+    }
+
+    public function signContract(Request $request)
+    {
+        // contract type :
+        $type = $request->type; // privacy or service
+        // timestamp
+        $current_date_time = Carbon::now()->toDateTimeString();
+
+        if ($request->type === 'privacy') {
+            currentAgent()->user()->update([
+                'agreed_with_privacy_agreement_at' => $current_date_time
+            ]);
+        } else if ($request->type === 'service') {
+            currentAgent()->user()->update([
+                'agreed_with_service_agreement_at' => $current_date_time
+            ]);
+        }
+
+        if (isset($request->signature)) {
+            currentAgent()->update([
+                'signature' => $request->signature
+            ]);
+        }
+
+
+        return [
+            'status' => 'success'
+        ];
     }
 
 
@@ -165,5 +205,11 @@ class AgentsController extends Controller
     public function getAgentRecords($agent_id){
         $agent = Agent::where('id',$agent_id)->first();
         return $agent->records;
+    }
+
+    public function getCurrentAgent(){
+        return User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'agent');
+        })->where('id', currentAgent()->user_id)->with('agent','userData','languages')->first();
     }
 }

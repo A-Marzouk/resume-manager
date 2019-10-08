@@ -95,6 +95,7 @@
                 }
                 axios.post('/agent/logs/add', this.entryData)
                     .then((response) => {
+                        console.log(response.data);
                         let log = response.data;
                         this.$emit('activityLogAdded', log);
                         this.clearEntryData();

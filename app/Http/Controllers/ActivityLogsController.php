@@ -49,7 +49,9 @@ class ActivityLogsController extends Controller
 
 
     public function addLog(Request $request){
-        return ActivityLog::create($request->toArray());
+        $requestArray = $request->toArray();
+        $requestArray['agent_id'] = currentAgent()->id;
+        return ActivityLog::create($requestArray);
     }
 
     public function editLog(Request $request){

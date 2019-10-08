@@ -210,6 +210,6 @@ class AgentsController extends Controller
     public function getCurrentAgent(){
         return User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'agent');
-        })->where('id', currentAgent()->user_id)->with('agent','userData','languages')->first();
+        })->where('id', currentAgent()->user_id)->with('agent','userData','languages','agent.logs')->first();
     }
 }

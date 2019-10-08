@@ -36,7 +36,8 @@
       "id" => $user->id,
       "firstName" => $user->firstName,
       "lastName" => $user->lastName,
-      "projects" => array()
+      "projects" => array(),
+      "username" => $username
     )) }}"
       :skills="{{ json_encode($skillsArray) }}"
       :works_history="{{ json_encode($worksHistory) }}"

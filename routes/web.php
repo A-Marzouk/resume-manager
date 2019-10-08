@@ -208,7 +208,7 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
     Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
     Route::get('/campaigns-archive','FreelancersController@campaignArchives')->name('freelancer.campaign.archives');
-    Route::get('/campaign','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
+    Route::get('/campaign/{campaign_id}','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
     Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
 //    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
@@ -561,6 +561,6 @@ Route::get('/home_test/sales', function () {
 
 Route::get('/resume/{username}', 'ResumeController@agentsResume');
 
-Route::post('/freelancer/resume/download', 'ResumeController@downloadPDFResume')->name('download-pdf-resume');
+Route::get('/freelancer/resume/{username}/download', 'ResumeController@downloadPDFResume')->name('download-pdf-resume');
 
 Route::get('/create/new_agents', 'TestController@createAgents');

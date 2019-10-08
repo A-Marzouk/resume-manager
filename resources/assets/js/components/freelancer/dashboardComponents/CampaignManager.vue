@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="campaign-brief-footer">
-                    <a href="/freelancer/campaign">
+                    <a :href=" '/freelancer/campaign/' + campaign.id ">
                         GO TO CAMPAIGN
                     </a>
                     <a class="add-entry" :class="{disabled: addEntry}" href="javascript:;"

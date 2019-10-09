@@ -10,7 +10,7 @@
                 <img src="/images/client/close.png" alt="menu">
             </a>
 
-            <a class="navbar-brand" :href="rootURL">
+            <a class="navbar-brand" href="/freelancer/dashboard">
                 <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
             </a>
             <div class="form-inline my-2 my-lg-0">

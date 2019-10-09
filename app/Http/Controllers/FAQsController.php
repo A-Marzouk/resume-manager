@@ -15,6 +15,12 @@ use Illuminate\Http\Request;
 
 class FAQsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getFAQs(){
        // get current campaign:
 

@@ -201,6 +201,10 @@ Route::prefix('agent')->group(function (){
     Route::get('/account/privacy-agreement','AgentsController@viewAgentPrivacyAgreement')->name('privacy.agreement');
     // agent sign contract :
     Route::post('/contracts/sign','AgentsController@signContract')->name('client.sign.contract');
+
+    // update agent
+    Route::post('/update', 'AgentsController@updateAgent');
+
 });
 
 

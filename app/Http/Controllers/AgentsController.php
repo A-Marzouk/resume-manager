@@ -11,16 +11,18 @@ namespace App\Http\Controllers;
 
 use App\Agent;
 use App\classes\Upload;
+use App\Language;
 use App\Recording;
 use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class AgentsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('viewAgents', 'isAdmin', 'getAgents');
+        $this->middleware('auth')->except('viewAgents', 'isAdmin', 'getAgents','createAgent');
     }
 
 
@@ -221,6 +223,58 @@ class AgentsController extends Controller
         })->where('id', currentAgent()->user_id)->with('agent', 'userData', 'languages', 'agent.logs')->first();
     }
 
+    public function createAgent(Request $request){
+        $agent =  app(User::class)->createAgent([
+            'user' => [
+                'email' => $request->personalData['email'],
+                'password' => $request->password,
+                'username' => $request->personalData['email'],
+            ],
+            'agent' => [
+                'available_hours_per_week' => $request->professionalData['hoursPerWeek'],
+                'experience'               => $request->professionalData['sector'],
+                'technologies'             => implode(',',$request->professionalData['techs']),
+                'hourly_rate'              => 5,
+                'voice_character'          => $request->professionalData['voice'],
+            ],
+            'user_data' => [
+                'profession_id'         => $request->personalData['profession_id'], // business-support, developer, designer
+                'currency_id'           => 1, // usd
+                'timezone'              => 1,
+                // personal data
+                'first_name'            => $request->personalData['name'],
+                'last_name'             => $request->personalData['surname'],
+                'city'                  => $request->personalData['cityName'],
+                'phone'                 => $request->personalData['phone'],
+                'gender'                => $request->personalData['gender'],
+                'paypal_acc_number'     => $request->personalData['paypal'],
+//                // professional data
+                'job_title'             => $request->professionalData['primaryJob'],
+            ]
+        ]);
+
+
+        // add languages to agent
+
+        $languageSymbol = $request->professionalData['lang'];
+
+        $language = Language::where('name','english')->first();
+        if($languageSymbol == 'es'){
+            $language = Language::where('name','spanish')->first();
+        }
+
+        // attach user to language
+        $language->users()->attach($agent->user_id);
+
+        // login the agent after register
+        Auth::loginUsingId($agent->user->id);
+
+        return [
+            'user' => $agent->user,
+            'status' => 'success'
+        ];
+
+    }
 
     public function updateAgent(Request $request)
     {

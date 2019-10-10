@@ -202,6 +202,13 @@ Route::prefix('agent')->group(function (){
     // agent sign contract :
     Route::post('/contracts/sign','AgentsController@signContract')->name('client.sign.contract');
 
+    // register agent
+
+    Route::post('/register/submit','AgentsController@createAgent')->name('freelancer.register.submit');
+    Route::get('/register/submit',function(){
+        return redirect()->back();
+    });
+
     // update agent
     Route::post('/update', 'AgentsController@updateAgent');
 
@@ -233,10 +240,6 @@ Route::prefix('freelancer')->group(function (){
     });
     
     Route::get('/register/{any?}', 'Auth\FreelancerRegisterController@showRegistrationForm')->name('freelancer.register');
-    Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
-    Route::get('/register/submit',function(){
-        return redirect()->back();
-    });
     //////////////
     // new register for business support  :
     Route::get('/workforce/register','BusinessSupportController@showRegistrationForm')->name('freelancer.register');

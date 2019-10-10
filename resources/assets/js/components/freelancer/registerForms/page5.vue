@@ -4,7 +4,7 @@
         <div class="left">
             <img src="/images/dashboard/info.svg" alt="info icon">
             <span>
-            FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)
+            FILL IN THE INFORMATION TO REGISTER AN AGENT (BUSSINESS SUPPORT)
         </span>
         </div>
     </div>
@@ -70,9 +70,7 @@ export default {
   methods: {
       noErrors () {
           let noErrorPassword = this.noErrorPassword()
-          let passwordsMatch = this.passwords.password === this.passwords.passwordConf
-
-          if (!passwordsMatch) this.errors.passwordConf = 'The passwords doesn\'t match'
+          let passwordsMatch = this.password === this.passwordConf
 
           return (
               noErrorPassword &&
@@ -81,7 +79,6 @@ export default {
       },
       noErrorPassword () {
           let valid = true
-          let alphaNumericRegex = /[^A-Za-z0-9]+/g
 
           if (this.passwords.password.trim().length < 1) {
               valid = false
@@ -89,9 +86,6 @@ export default {
           } else if (this.passwords.password.length < 6) {
               valid = false
               this.errors.password = 'The password must have at least 8 characters'
-          } else if (alphaNumericRegex.test(this.passwords.password)) {
-              valid = false
-              this.errors.password = 'Only use alpha numeric characters'
           } else this.errors.password = ''
 
           return valid
@@ -99,9 +93,8 @@ export default {
       nextStep (e) {
         e.preventDefault()
         if (this.noErrors()) {
-            this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf})
-            // this.changeStep(5)
-            // window.location.href = '/freelancer/register/completed'
+            this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf});
+            this.$emit('formReady');
             window.location.replace('/freelancer/register/completed')
         } else {
             this.showErrors = true

@@ -3,15 +3,15 @@
         <div class="account-info-edit-wrapper">
             <nav class="navbar navbar-light fixed-top dashboard_navbar">
                 <div class="backBtn">
-                    <a href="/freelancer/dashboard">
+                    <a href="/admin/agents">
                         <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
-                    <span v-if="step !== 6">BECOME AN AGENT</span>
+                    <span v-if="step !== 6">AGENT REGISTER</span>
                     <span v-else>REGISTRATION COMPLETED</span>
                 </div>
             </nav>
             <keep-alive>
-                <router-view :changeStep="changeStep" :getData="getData" ></router-view>
+                <router-view :changeStep="changeStep" :getData="getData" @formReady="submitForm"></router-view>
             </keep-alive>
             <span v-if="step !== 6" class="step-footer">Step {{ step }} / 5</span>
         </div>
@@ -38,10 +38,10 @@
                     return ;
                 }
                 this.canSubmit = false;
-                axios.post('/freelancer/register/submit',this.formData).then( (response) => {
+                axios.post('/agent/register/submit',this.formData).then( (response) => {
                     if(response.data.status === 'success'){
-                        // redirect to client dashboard
-                        window.location.href = '/freelancer';
+                        // redirect to admin
+                        window.location.href = '/freelancer/dashboard';
                     }
                     this.errors = response.data.errors;
                 });

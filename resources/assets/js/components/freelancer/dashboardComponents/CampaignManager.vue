@@ -15,8 +15,8 @@
                 </div>
                 <div class="actionBtn">
                     <a class="secondary little-padding hideOnSm" href="javascript:;"
-                       v-on:click="startShift = !startShift">
-                        {{ (startShift) ? 'FINISH SHIFT' : 'START SHIFT' }}
+                       v-on:click="toggleShift">
+                        {{ (isShiftStart) ? 'FINISH SHIFT' : 'START SHIFT' }}
                     </a>
                     <a class="little-padding" href="javascript:;" v-on:click="imAway = !imAway">
                         {{ (imAway) ? 'I\'M AWAY' : 'I\'M BACK' }}
@@ -91,7 +91,7 @@
 
             <div :id=" 'entryBox_' + campaign.id">
                 <addEntry :clear="clear" v-if="addEntry" :agent_id="agent.id" :campaign_id="campaign.id"
-                          @activityLogAdded="addActivityLog" ></addEntry>
+                          @activityLogAdded="addActivityLog" ref="addEntryComponent"></addEntry>
             </div>
 
         </div>
@@ -116,7 +116,7 @@
                 rootLink: this.$route.path,
                 addEntry: false,
                 imAway: true,
-                startShift: false,
+                isShiftStart: false,
                 campaigns: this.agent.campaigns,
                 agentLogs: this.agent.logs,
                 campaignStatusCode: {
@@ -153,6 +153,50 @@
             },
         },
         methods: {
+            toggleShift(){
+              // add log of starting the shift
+                if(!this.isShiftStart){
+                    this.isShiftStart = true ;
+                    this.addShiftStartLog();
+                }else{
+                    this.isShiftStart = false ;
+                    this.addShiftEndLog();
+                }
+            },
+            addShiftStartLog(){
+                let logData = {
+                    log_text: 'Shift starts at: ' + new Date().toLocaleString(),
+                    status: 6,
+                    agent_id: this.agent.id,
+                    campaign_id: this.campaigns[0].id
+                };
+                axios.post('/agent/logs/add', logData)
+                    .then((response) => {
+                        console.log(response.data);
+                        let log = response.data;
+                        this.addActivityLog(log);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            addShiftEndLog(){
+                let logData = {
+                    log_text: 'Shift ends at: ' + new Date().toLocaleString(),
+                    status: 6,
+                    agent_id: this.agent.id,
+                    campaign_id: this.campaigns[0].id
+                };
+                axios.post('/agent/logs/add', logData)
+                    .then((response) => {
+                        console.log(response.data);
+                        let log = response.data;
+                        this.addActivityLog(log);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
             rootLinkTo(link) {
                 return this.$route.path + '/' + link
             },

@@ -11,23 +11,26 @@ namespace App\Http\Controllers;
 
 use App\Agent;
 use App\classes\Upload;
+use App\Language;
 use App\Recording;
 use App\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class AgentsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:client')->except('viewAgents','isAdmin','getAgents');
+        $this->middleware('auth')->except('viewAgents', 'isAdmin', 'getAgents','createAgent');
     }
 
 
-    public function updateAgentStatus(Request $request){
+    public function updateAgentStatus(Request $request)
+    {
 
         $status = $request->status;
-        $agent  = Agent::where('id',$request->agent_id)->first();
-
+        $agent = Agent::where('id', $request->agent_id)->first();
 
 
         $agent->update([
@@ -36,32 +39,75 @@ class AgentsController extends Controller
 
         return [
             'status' => 'success'
-        ] ;
+        ];
+    }
+
+    public function viewAgentServiceAgreement()
+    {
+        return view('freelancer.my_account.service_agreement');
+    }
+
+    public function viewAgentPrivacyAgreement()
+    {
+        return view('freelancer.my_account.privacy_agreement');
+    }
+
+    public function signContract(Request $request)
+    {
+        // contract type :
+        $type = $request->type; // privacy or service
+        // timestamp
+        $current_date_time = Carbon::now()->toDateTimeString();
+
+        if ($request->type === 'privacy') {
+            currentAgent()->user()->update([
+                'agreed_with_privacy_agreement_at' => $current_date_time
+            ]);
+        } else if ($request->type === 'service') {
+            currentAgent()->user()->update([
+                'agreed_with_service_agreement_at' => $current_date_time
+            ]);
+        }
+
+        if (isset($request->signature)) {
+            currentAgent()->update([
+                'signature' => $request->signature
+            ]);
+        }
+
+
+        return [
+            'status' => 'success'
+        ];
     }
 
 
-    public function viewAgents(){
+    public function viewAgents()
+    {
         $agents = $this->getAgents();
-        return view('agents',compact('agents'));
+        return view('agents', compact('agents'));
     }
 
-    public function isAdmin(){
-        if (auth()->user() &&  auth()->user()->admin == 1) {
+    public function isAdmin()
+    {
+        if (auth()->user() && auth()->user()->admin == 1) {
             return 'admin';
         }
         return 'not-admin';
     }
 
-    public function getAgents(){
-       // get current authenticated freelancer :
-        $agents = Agent::orderBy('number','ASC')->get();
-        foreach ($agents as &$agent){
+    public function getAgents()
+    {
+        // get current authenticated freelancer :
+        $agents = Agent::orderBy('number', 'ASC')->get();
+        foreach ($agents as &$agent) {
             $agent['records'] = $agent->records;
         }
         return $agents;
     }
 
-    public function addAgent(Request $request){
+    public function addAgent(Request $request)
+    {
         $request->validate([
             'number' => 'max:10|required',
             'name' => 'max:191|required',
@@ -69,20 +115,20 @@ class AgentsController extends Controller
             'hourly_rate' => 'max:10',
             'available_hours' => 'max:1500',
             'location' => 'max:191|required',
-            'experience'  => 'max:1500|required'
+            'experience' => 'max:1500|required'
         ]);
 
-        if(isset($request->id)){
+        if (isset($request->id)) {
             // edit
-            $agent = Agent::where('id',$request->id)->first();
-        }else{
+            $agent = Agent::where('id', $request->id)->first();
+        } else {
             // add
             $agent = new Agent;
         }
 
         $agent->name = $request->name;
         $newNumber = $request->number;
-        if($request->number == '100'){
+        if ($request->number == '100') {
             // get the last number and add 1
             $newNumber = count(Agent::all()) + 1;
         }
@@ -93,21 +139,20 @@ class AgentsController extends Controller
         $agent->available_hours = $request->available_hours;
         $agent->location = $request->location;
 
-        if(isset($request->user_id)){
-            $agent->user_id = $request->user_id ;
+        if (isset($request->user_id)) {
+            $agent->user_id = $request->user_id;
         }
 
         $agent->save();
 
 
-
         // get user recordings to agents :
 
-        if(isset($request->user_id)){
+        if (isset($request->user_id)) {
             $agent->user_id = $request->user_id;
-            $user= User::where('id',$request->user_id)->first();
+            $user = User::where('id', $request->user_id)->first();
             $records = $user->recordings;
-            foreach ($records as $rec){
+            foreach ($records as $rec) {
                 $record = new Recording;
                 $record->title = 'Business agent record';
                 $record->agent_id = $agent->id;
@@ -117,22 +162,22 @@ class AgentsController extends Controller
         }
 
 
-        return ['id'=>$agent->id];
+        return ['id' => $agent->id];
 
     }
 
-    public function addRecordToAgent(Request $request){
+    public function addRecordToAgent(Request $request)
+    {
         $record = new Recording;
         $record->title = $request->title;
         $record->agent_id = $request->agent_id;
 
-        if($request->src){
+        if ($request->src) {
             $record->src = $request->src;
-        }
-        elseif($request->audioFile) {
-            $pathToAudio = Upload::audio($request->audioFile, 'audioFile', '_160'.$request->agent_id.'Record_');
+        } elseif ($request->audioFile) {
+            $pathToAudio = Upload::audio($request->audioFile, 'audioFile', '_160' . $request->agent_id . 'Record_');
             if ($pathToAudio) {
-                $record->src = '/'.$pathToAudio;
+                $record->src = '/' . $pathToAudio;
             }
         }
 
@@ -140,30 +185,128 @@ class AgentsController extends Controller
         return $record;
     }
 
-        public function deleteAgentRecord(Request $request){
-            // delete education history
-            $record = Recording::where('id',$request->recordID);
-            // delete the audio file
-            if(strpos($record->first()->src,'drive.google.com') !== false){
-                $record->delete();
-                return 'Record deleted';
-            }
-            if (file_exists(substr($record->first()->src, 1))){
-                unlink(substr($record->first()->src, 1));
-            }
+    public function deleteAgentRecord(Request $request)
+    {
+        // delete education history
+        $record = Recording::where('id', $request->recordID);
+        // delete the audio file
+        if (strpos($record->first()->src, 'drive.google.com') !== false) {
             $record->delete();
             return 'Record deleted';
         }
+        if (file_exists(substr($record->first()->src, 1))) {
+            unlink(substr($record->first()->src, 1));
+        }
+        $record->delete();
+        return 'Record deleted';
+    }
 
-    public function deleteAgent(Request $request){
+    public function deleteAgent(Request $request)
+    {
         // delete agent
-        $agent = Agent::where('id',$request->agentID);
+        $agent = Agent::where('id', $request->agentID);
         $agent->delete();
         return 'Agent deleted';
     }
 
-    public function getAgentRecords($agent_id){
-        $agent = Agent::where('id',$agent_id)->first();
+    public function getAgentRecords($agent_id)
+    {
+        $agent = Agent::where('id', $agent_id)->first();
         return $agent->records;
     }
+
+
+    public function getCurrentAgent()
+    {
+        return User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'agent');
+        })->where('id', currentAgent()->user_id)->with('agent', 'userData', 'languages', 'agent.logs')->first();
+    }
+
+    public function createAgent(Request $request){
+        $agent =  app(User::class)->createAgent([
+            'user' => [
+                'email' => $request->personalData['email'],
+                'password' => $request->password,
+                'username' => $request->personalData['email'],
+            ],
+            'agent' => [
+                'available_hours_per_week' => $request->professionalData['hoursPerWeek'],
+                'experience'               => $request->professionalData['sector'],
+                'technologies'             => implode(',',$request->professionalData['techs']),
+                'hourly_rate'              => 5,
+                'voice_character'          => $request->professionalData['voice'],
+            ],
+            'user_data' => [
+                'profession_id'         => $request->personalData['profession_id'], // business-support, developer, designer
+                'currency_id'           => 1, // usd
+                'timezone'              => 1,
+                // personal data
+                'first_name'            => $request->personalData['name'],
+                'last_name'             => $request->personalData['surname'],
+                'city'                  => $request->personalData['cityName'],
+                'phone'                 => $request->personalData['phone'],
+                'gender'                => $request->personalData['gender'],
+                'paypal_acc_number'     => $request->personalData['paypal'],
+//                // professional data
+                'job_title'             => $request->professionalData['primaryJob'],
+            ]
+        ]);
+
+
+        // add languages to agent
+
+        $languageSymbol = $request->professionalData['lang'];
+
+        $language = Language::where('name','english')->first();
+        if($languageSymbol == 'es'){
+            $language = Language::where('name','spanish')->first();
+        }
+
+        // attach user to language
+        $language->users()->attach($agent->user_id);
+
+        // login the agent after register
+        Auth::loginUsingId($agent->user->id);
+
+        return [
+            'user' => $agent->user,
+            'status' => 'success'
+        ];
+
+    }
+
+    public function updateAgent(Request $request)
+    {
+        $requestArray = $request->toArray();
+
+        $user = User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'agent');
+        })->where('id', $request->id)->with('agent')->first();
+
+        if (isset($request->password) && !empty($request->password)) {
+            $this->validate($request, [
+                'password' => 'confirmed|min:6',
+            ]);
+        } else {
+            // remove password from the request array
+            unset($requestArray['password']);
+            unset($requestArray['password_confirmation']);
+        }
+
+        $user->update(
+            $requestArray
+        );
+
+        $user->agent->update(
+            $requestArray['agent']
+        );
+
+        return [
+            'user' => $user,
+            'status' => 'success',
+        ];
+
+    }
+
 }

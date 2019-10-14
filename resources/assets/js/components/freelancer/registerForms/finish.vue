@@ -3,19 +3,18 @@
 
     <div class="account-edit-section">
         <div class="account-edit-section-heading">
-            THANK YOU FOR THE REGISTRATION!
+           NEW AGENT REGISTERED !
         </div>
         <div class="account-edit-section-inputs">
             <div class="faq-question-input account-edit-input">
                 <label class="faq-input-label">
-                    Your registration is completed. Soon our recruitment coordinator will contact you.
                 </label>
             </div>
         </div>
     </div>
     <div class="account-edit-section-edit-btn no-decoration" id="submitBtnWrapper">
-        <a href="/freelancer/dashboard">
-            GO TO MAIN PAGE
+        <a href="/freelancer">
+            DASHBOARD
         </a>
     </div>
   </div>

@@ -193,6 +193,25 @@ Route::prefix('agent')->group(function (){
     Route::post('/logs/add','ActivityLogsController@addLog')->name('add.log');
     Route::post('/logs/update','ActivityLogsController@editLog')->name('edit.log');
     Route::post('/logs/delete','ActivityLogsController@deleteLog')->name('delete.log');
+
+    Route::get('/current','AgentsController@getCurrentAgent')->name('get.current.agent');
+
+    // agreements
+    Route::get('/account/service-agreement','AgentsController@viewAgentServiceAgreement')->name('service.agreement');
+    Route::get('/account/privacy-agreement','AgentsController@viewAgentPrivacyAgreement')->name('privacy.agreement');
+    // agent sign contract :
+    Route::post('/contracts/sign','AgentsController@signContract')->name('client.sign.contract');
+
+    // register agent
+
+    Route::post('/register/submit','AgentsController@createAgent')->name('freelancer.register.submit');
+    Route::get('/register/submit',function(){
+        return redirect()->back();
+    });
+
+    // update agent
+    Route::post('/update', 'AgentsController@updateAgent');
+
 });
 
 
@@ -200,12 +219,10 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
     Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
     Route::get('/campaigns-archive','FreelancersController@campaignArchives')->name('freelancer.campaign.archives');
-    Route::get('/campaign','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
+    Route::get('/campaign/{campaign_id}','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
     Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
 //    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
-    Route::get('/account/service-agreement','FreelancersController@viewFreelancerServiceAgreement')->name('service.agreement');
-    Route::get('/account/privacy-agreement','FreelancersController@viewFreelancerPrivacyAgreement')->name('privacy.agreement');
 
     // frontend routes
     Route::get('/',function (){
@@ -223,10 +240,6 @@ Route::prefix('freelancer')->group(function (){
     });
     
     Route::get('/register/{any?}', 'Auth\FreelancerRegisterController@showRegistrationForm')->name('freelancer.register');
-    Route::post('/register/submit','Auth\RegisterController@register')->name('freelancer.register.submit');
-    Route::get('/register/submit',function(){
-        return redirect()->back();
-    });
     //////////////
     // new register for business support  :
     Route::get('/workforce/register','BusinessSupportController@showRegistrationForm')->name('freelancer.register');
@@ -555,6 +568,6 @@ Route::get('/home_test/sales', function () {
 
 Route::get('/resume/{username}', 'ResumeController@agentsResume');
 
-Route::post('/freelancer/resume/download', 'ResumeController@downloadPDFResume')->name('download-pdf-resume');
+Route::get('/freelancer/resume/{username}/download', 'ResumeController@downloadPDFResume')->name('download-pdf-resume');
 
 Route::get('/create/new_agents', 'TestController@createAgents');

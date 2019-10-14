@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Affiliate;
 use App\Agent;
+use App\Campaign;
 use App\Job;
-use App\Owner;
 use App\Project;
 use App\User;
 use App\UserData;
@@ -33,9 +33,10 @@ class FreelancersController extends Controller
         return view('freelancer.campaign_archives');
     }
 
-    public function campaignActivity()
+    public function campaignActivity($campaign_id)
     {
-        return view('freelancer.campaign_main');
+        $campaign = Campaign::where('id', $campaign_id)->with('agents.user', 'agents.user.userData', 'agents.logs', 'faqs', 'links','files')->first();
+        return view('freelancer.campaign_main',compact('campaign','currentAgent'));
     }
 
     public function viewAccountEditPage()

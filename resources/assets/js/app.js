@@ -333,7 +333,7 @@ if ($("#account_info_edit").length !== 0){
 }
 
 // Freelancer components
-import FreelancerCampaignActivity from './components/freelancer/campaignComponents/CampaignActivity.vue';
+
 import FreelancerCampaignManager from './components/freelancer/dashboardComponents/CampaignManager.vue';
 import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyAccount.vue';
 import FreelancerRegisterPage1 from './components/freelancer/registerForms/page1.vue'
@@ -403,17 +403,20 @@ if ($('#freelancerCampaignArchives').length !== 0) {
   })
 }
 
+import FreelancerCampaignActivity from './components/freelancer/campaignComponents/CampaignActivity.vue';
+import FreelancerCampaignTeam from './components/freelancer/campaignComponents/CampaignTeam.vue';
+import FreelancerCampaignBrief from './components/freelancer/campaignComponents/CampaignBrief.vue';
+
 if ($('#freelancerCampaignMainComponent').length !== 0) {
   const routes = [
-    { path: '/freelancer/campaign-team', component: CampaignTeam },
-    { path: '/freelancer/campaign-brief', component: CampaignBrief },
-    { path: '/freelancer/campaign', component: FreelancerCampaignActivity }
-  ]
+      { path: '/:campaign-team', component: FreelancerCampaignTeam },
+      { path: '/:campaign-brief', component: FreelancerCampaignBrief },
+      { path: '/', component: FreelancerCampaignActivity }
+  ];
 
   const router = new VueRouter({
     routes,
-    mode: 'history'
-  })
+  });
 
   let freelancerCampaignMainComponent = new Vue({
     router,

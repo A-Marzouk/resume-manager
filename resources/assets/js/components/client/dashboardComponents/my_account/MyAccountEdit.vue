@@ -386,21 +386,6 @@
                 user: {
                     client:{}
                 },
-                client: {
-                    name: 'Ahmed Marzouk',
-                    agency: 'The best agency',
-                    contact: ' 0044203700685',
-                    website: 'mywebsite.com',
-                    secondContact: '0044203700685',
-                    secondContactName: 'Jhon Doe',
-                    skype: 'ahmed24',
-                    timeZone: '',
-                    email: 'test@gmail.com',
-                    preferred1: 'email',
-                    preferred2: 'phone',
-                    password: '12345678',
-                    password2: '12345678'
-                },
                 canSubmit: false,
                 errors: {
                     agency: '',
@@ -442,7 +427,6 @@
 
                     axios.post('/client/update', this.user)
                         .then((response) => {
-                            console.log(response.data);
                             // show a saved changes message
                             this.notificationMessage = 'Successfully updated !' ;
                             $('#notificationBar').fadeIn(600);

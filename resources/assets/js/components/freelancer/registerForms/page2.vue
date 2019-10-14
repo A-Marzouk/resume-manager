@@ -4,7 +4,7 @@
         <div class="left">
             <img src="/images/client/my_account/info_40px.png" alt="info icon">
             <span>
-            FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)
+            FILL IN THE INFORMATION TO REGISTER AN AGENT (BUSSINESS SUPPORT)
         </span>
         </div>
     </div>
@@ -66,7 +66,7 @@
                     Specify available hours per week hoursPerWeek
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.hoursPerWeek}">
-                    <input v-on:keydown="onlyNumeric" type="text" name="hoursPerWeek" placeholder="25" v-model="professionalData.hoursPerWeek">
+                    <input  v-on:keydown="onlyNumeric" type="text" name="hoursPerWeek" placeholder="25" v-model="professionalData.hoursPerWeek">
                     <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('hoursPerWeek')" alt="delete icon" v-show="professionalData.hoursPerWeek.length > 0">
                 </div>
                 <div class="error" v-if="showErrors && errors.hoursPerWeek">
@@ -234,13 +234,12 @@ export default {
       },
       onlyNumeric (e) {
           if (e.key !== 'Backspace' &&
-            e.key !== 'Delete' &&
-            isNaN(parseInt(e.key))
-        ) e.preventDefault()
+              e.key !== 'Delete' &&
+              isNaN(parseInt(e.key))
+          ) e.preventDefault()
       },
       addToTechs (e) {
-          // Remove supp and del key
-          if (e.key == ',' || e.key === ' ' || e.key === 'Enter') {
+          if (e.key == ',' || e.key === ' ' || e.key === 'Enter')  {
             e.preventDefault()
             this.professionalData.techs.push(this.inputTechs)
             this.inputTechs = ''

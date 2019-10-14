@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ $agent["firstName"] }} Resume</title>
@@ -208,26 +208,21 @@
           </div>
 
           <?
-            function isProgrammingSkill ($item_values) {
+            $programmingSkills = $skills->filter(function ($item_values) {
               return ($item_values['type'] == 'programming' ? true : false);
-            }
+            });
 
-            function isFrameworkOrDatabaseSkill ($item_values) {
+            $frameworkOrDatabaseSkills = $skills->filter(function ($item_values) {
               return ($item_values['type'] == 'framework' || $item_values['type'] == 'database' ? true : false);
-            }
+            });
 
-            function isSoftwareSkill ($item_values) {
+            $softwareSkills = $skills->filter(function ($item_values) {
               return ($item_values['type'] == 'software' ? true : false);
-            }
-
-            function isDesignSkill ($item_values) {
+            });
+            
+            $designSkills = $skills->filter(function ($item_values) {
               return ($item_values['type'] == 'design' ? true : false);
-            }
-
-            $programmingSkills = array_filter($skills, 'isProgrammingSkill');
-            $frameworkOrDatabaseSkills = array_filter($skills, 'isFrameworkOrDatabaseSkill');
-            $softwareSkills = array_filter($skills, 'isSoftwareSkill');
-            $designSkills = array_filter($skills, 'isDesignSkill');
+            });
           ?>
 
           <div class="resume__content__details">
@@ -306,12 +301,13 @@
                 </div>
                 <div class="resume__content__details__workDate">
                   <?
-                    $auxDateStart->setTimestamp($work['date_from']);
-                    if (!$work['currently_working']) {
-                      $auxDateEnd->setTimestamp($work['date_end']);
+                    
+                    $auxDateStart->createFromFormat('YYYY-mm-dd', $work['date_from']);
+                    if (!$work['is_currently_working']) {
+                      $auxDateEnd->createFromFormat('YYYY-mm-dd', $work['date_to']);
                     }
                   ?>                
-                  {{ date_format($auxDateStart, 'F\' Y') }} - {{ ($work['currently_working']) ? 'Now' : date_format($auxDateEnd, 'F\' Y')  }}
+                  {{ date_format($auxDateStart, 'F\' Y') }} - {{ ($work['is_currently_working']) ? 'Now' : date_format($auxDateEnd, 'F\' Y')  }}
                 </div>
                 <div class="resume__content__details__workDetails">
                   <i>{{ $work['job_title'] }}</i>
@@ -339,12 +335,12 @@
                 </div>
                 <div class="resume__content__details__educationDate">
                   <?
-                    $auxDateStart->setTimestamp($education['date_from']);
-                    if (!$education['currently_learning']) {
-                      $auxDateEnd->setTimestamp($education['date_end']);
+                    $auxDateStart->createFromFormat('YYYY-mm-dd', $education['date_from']);
+                    if (!$education['is_currently_learning']) {
+                      $auxDateEnd->createFromFormat('YYYY-mm-dd', $education['date_from']);
                     }
                   ?>                   
-                  {{ date_format($auxDateStart, 'F\' Y') }} - {{ ($education['currently_learning']) ? 'Now' : date_format($auxDateEnd, 'F\' Y')  }}
+                  {{ date_format($auxDateStart, 'F\' Y') }} - {{ ($education['is_currently_learning']) ? 'Now' : date_format($auxDateEnd, 'F\' Y')  }}
                 </div>
                 <div class="resume__content__details__educationDetails">
                   {{ $education['description'] }}

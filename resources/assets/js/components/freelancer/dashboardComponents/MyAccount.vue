@@ -21,7 +21,7 @@
                         <div class="acc-info-item">
                             <img src="/images/client/my_account/name.png" alt="name icon">
                             <span>
-                                Edward Norton
+                                 {{user.user_data.first_name}} {{user.user_data.last_name}}
                             </span>
                         </div>
                         <div class="acc-info-timezone">
@@ -31,20 +31,19 @@
                     <div class="acc-info-content-item">
                         <img src="/images/client/my_account/agency.png" alt="agency icon">
                         <div>
-                            Black and White - agency
+                            {{user.user_data.city}}
                         </div>
                     </div>
                     <div class="acc-info-content-item">
                         <img src="/images/client/my_account/phone_number.png" alt="phone icon">
                         <div>
-                            00442037000685
+                            {{user.user_data.phone}}
                         </div>
                     </div>
                     <div class="acc-info-content-item">
                         <img src="/images/client/my_account/email.png" alt="email icon">
-                        <div>
-                            email@gmail.com<br/>
-                            email123456656@gmail.com (account dept)
+                        <div style="line-height: inherit;">
+                            {{user.email}}
                         </div>
                     </div>
                 </div>
@@ -71,37 +70,41 @@
                     <div class="primary-job-title info">
                         <img class="" src="/images/dashboard/job_title.svg" alt="job icon">
                         <div class="info-content">
-                            <b>Primary job title: </b>Telemarketing
+                            <b>Primary job title: </b>{{user.user_data.job_title}}
+
                         </div>
                     </div>
                     <div class="sector-experience info">
                         <img class="" src="/images/dashboard/experience.svg" alt="experience icon">
                         <div class="info-content">
-                            <b>Sector experience: </b>Real state, Investment, insurance
+                            <b>Sector experience: </b>{{user.agent.experience}}
                         </div>
                     </div>
                     <div class="software info">
                         <img class="" src="/images/dashboard/software.svg" alt="software icon">
                         <div class="info-content">
-                            <b>Technologies, software: </b>Microsoft Excel
+                            <b>Technologies, software: </b> {{user.agent.technologies}}
                         </div>
                     </div>
                     <div class="hours info">
                         <img class="" src="/images/dashboard/hours.svg" alt="hours icon">
                         <div class="info-content">
-                            <b>N. hours per week: </b>30 - 40 hours
+                            <b>N. hours per week: </b>{{parseInt(user.agent.available_hours_per_week)}} hours
                         </div>
                     </div>
                     <div class="voice-character info">
                         <img class="" src="/images/dashboard/voice.svg" alt="voice icon">
                         <div class="info-content">
-                            <b>Voice character: </b>Friendly
+                            <b>Voice character: </b>{{user.agent.voice_character}}
                         </div>
                     </div>
                     <div class="languages info">
                         <img class="" src="/images/dashboard/languages.svg" alt="languages icon">
                         <div class="info-content">
-                            <b>Languages: </b>English
+                            <b>Languages: </b>
+                            <span v-for="(language,index) in user.languages" :key="language.id">
+                                {{language.label}}<span v-if="index < user.languages.length - 1">, </span>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -127,8 +130,9 @@
                            </div>
                        </div>
                         <div class="left no-decoration">
-                            <a href="/freelancer/account/privacy-agreement">
-                                COMPLETE AGREEMENT
+                            <a href="/agent/account/privacy-agreement">
+                                <span v-if="user.agreed_with_privacy_agreement_at === null">COMPLETE AGREEMENT</span>
+                                <span v-else >SHOW AGREEMENT</span>
                             </a>
                         </div>
                     </div>
@@ -140,8 +144,9 @@
                             </div>
                         </div>
                         <div class="left no-decoration">
-                            <a href="/freelancer/account/service-agreement">
-                                COMPLETE AGREEMENT
+                            <a href="/agent/account/service-agreement">
+                                <span v-if="user.agreed_with_service_agreement_at === null">COMPLETE AGREEMENT</span>
+                                <span v-else >SHOW AGREEMENT</span>
                             </a>
                         </div>
                     </div>
@@ -232,6 +237,12 @@
                     },
 
                 ],
+
+
+                user: {
+                    agent:{},
+                    user_data:{},
+                },
             }
         },
         methods:{
@@ -248,10 +259,16 @@
                     }
 
                 });
-            }
+            },
+            getCurrentAgent() {
+                axios.get('/agent/current').then((response) => {
+                    this.user = response.data;
+                });
+            },
+
         },
         mounted(){
-
+            this.getCurrentAgent();
         }
     }
 </script>

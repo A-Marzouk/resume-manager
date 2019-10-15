@@ -174,6 +174,7 @@ Vue.component('account-info-edit', require('./components/client/dashboardCompone
 Vue.component('service-agreement',require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
 // payment pay
 Vue.component('invoice-component',require('./components/client/dashboardComponents/payments/InvoiceComponent.vue'));
+Vue.component('agent-invoice-component',require('./components/freelancer/dashboardComponents/payments/InvoiceComponent.vue'));
 Vue.component('manager-calculation',require('./components/client/dashboardComponents/payments/ManagerCalculation.vue'));
 Vue.component('sub-set-up',require('./components/client/dashboardComponents/payments/SubSetUp.vue'));
 Vue.component('privacy-agreement',require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'));
@@ -336,6 +337,7 @@ if ($("#account_info_edit").length !== 0){
 
 import FreelancerCampaignManager from './components/freelancer/dashboardComponents/CampaignManager.vue';
 import FreelancerMyAccount from './components/freelancer/dashboardComponents/MyAccount.vue';
+import FreelancerPayments from './components/freelancer/dashboardComponents/Payments.vue';
 import FreelancerRegisterPage1 from './components/freelancer/registerForms/page1.vue'
 import FreelancerRegisterPage2 from './components/freelancer/registerForms/page2.vue'
 import FreelancerRegisterPage3 from './components/freelancer/registerForms/page3.vue'
@@ -383,6 +385,7 @@ if ($('#freelancerRegisterComponent').length !== 0){
 if ($('#freelancerDashboardComponent').length !== 0) {
   const routes = [
     { path: '/freelancer/dashboard/my-account', component: FreelancerMyAccount },
+    { path: '/freelancer/dashboard/payments', component: FreelancerPayments },
     { path: '/freelancer/dashboard', component: FreelancerCampaignManager }
   ]
 

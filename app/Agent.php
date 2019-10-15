@@ -32,6 +32,12 @@ class Agent extends Model
         return $this->hasMany(ActivityLog::class);
     }
 
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
+    }
+
     public function businessUser()
     {
         return $this->belongsTo(User::class);

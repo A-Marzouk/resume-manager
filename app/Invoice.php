@@ -37,6 +37,10 @@ class Invoice extends Model
         return $this->belongsTo(Client::class);
     }
 
+    public function agent(){
+        return $this->belongsTo(Agent::class);
+    }
+
 
     public function subscription(){
         return $this->belongsTo(Subscription::class);

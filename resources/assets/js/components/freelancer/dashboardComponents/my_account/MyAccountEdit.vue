@@ -40,7 +40,6 @@
                                     @click="clearInput('name')"
                                     alt="delete icon" 
                                     v-show="agent.name.length > 0">
-                                >
                             </div>
                             <div class="error" v-if="showErrors && errors.name">
                                 {{errors.name}}
@@ -229,75 +228,68 @@
                                 {{errors.timezone}}
                             </div>
                         </div>
-                    </div>
-                    <div class="faq-question-input account-edit-input">
-                        <label class="faq-input-label">
-                            Enter your city name
-                        </label>
-                        <div class="faq-input" :class="{ 'error-input' : errors.city}">
-                            <input type="text" name="city" placeholder="Enter your city" v-model="agent.city">
-                            <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('city')"
-                                alt="delete icon" v-show="agent.city.length > 0">
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
+                                Enter your city name
+                            </label>
+                            <div class="faq-input" :class="{ 'error-input' : errors.city}">
+                                <input type="text" name="city" placeholder="Enter your city" v-model="agent.city">
+                                <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('city')"
+                                    alt="delete icon" v-show="agent.city.length > 0">
+                            </div>
+                            <div class="error" v-if="showErrors && errors.city">
+                                {{errors.city}}
+                            </div>
                         </div>
-                        <div class="error" v-if="showErrors && errors.city">
-                            {{errors.city}}
-                        </div>
-                    </div>
-                    <div class="faq-question-input account-edit-input">
-                        <label class="faq-input-label">
-                            Enter your PayPal acc number
-                        </label>
-                        <div class="faq-input" :class="{ 'error-input' : errors.paypal}">
-                            <input type="text" name="paypal" placeholder="Enter your paypal ID" v-model="agent.paypal">
-                            <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('paypal')"
-                                alt="delete icon" v-show="agent.paypal.length > 0">
-                        </div>
-                        <div class="error" v-if="showErrors && errors.paypal">
-                            {{errors.paypal}}
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
+                                Enter your PayPal acc number
+                            </label>
+                            <div class="faq-input" :class="{ 'error-input' : errors.paypal}">
+                                <input type="text" name="paypal" placeholder="Enter your paypal ID" v-model="agent.paypal">
+                                <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('paypal')"
+                                    alt="delete icon" v-show="agent.paypal.length > 0">
+                            </div>
+                            <div class="error" v-if="showErrors && errors.paypal">
+                                {{errors.paypal}}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="account-edit-section sub-section">
-                    <div class="account-edit-section-inputs">
-                        <div class="account-edit-section-heading">
-                        PASSWORD
-                    </div>
-                    <div class="account-edit-section-inputs">
-                        <div class="faq-question-input account-edit-input">
-                            <label class="faq-input-label">
-                                Write a new password
-                            </label>
-                            <div class="faq-input" :class="{ 'error-input' : errors.password}">
-                                <input type="password"
-                                       name="faq"
-                                       placeholder="*********"
-                                       v-model="password">
-                                <img src="/images/client/campaign_activity/close_black.png"
-                                     @click="password = ''" alt="delete icon"
-                                     v-show="password">
-                            </div>
-                            <div class="error" v-if="showErrors && errors.password">
-                                {{errors.password}}
-                            </div>
+                <div class="account-edit-section-inputs">
+                    <div class="faq-question-input account-edit-input">
+                        <label class="faq-input-label">
+                            Write a new password
+                        </label>
+                        <div class="faq-input" :class="{ 'error-input' : errors.password}">
+                            <input type="password"
+                                name="faq"
+                                placeholder="*********"
+                                v-model="password">
+                            <img src="/images/client/campaign_activity/close_black.png"
+                                @click="password = ''" alt="delete icon"
+                                v-show="password">
                         </div>
-                        <div class="faq-question-input account-edit-input">
-                            <label class="faq-input-label">
-                                Repeat your new password
-                            </label>
-                            <div class="faq-input" :class="{ 'error-input' : errors.password_confirmation}">
-                                <input type="password"
-                                       name="faq"
-                                       placeholder="*********"
-                                       v-model="password_confirmation">
-                                <img src="/images/client/campaign_activity/close_black.png"
-                                     @click="password_confirmation = ''" alt="delete icon"
-                                     v-show="password_confirmation">
-                            </div>
-                            <div class="error" v-if="showErrors && errors.password_confirmation">
-                                {{errors.password_confirmation}}
-                            </div>
+                        <div class="error" v-if="showErrors && errors.password">
+                            {{errors.password}}
                         </div>
                     </div>
+                    <div class="faq-question-input account-edit-input">
+                        <label class="faq-input-label">
+                            Repeat your new password
+                        </label>
+                        <div class="faq-input" :class="{ 'error-input' : errors.password_confirmation}">
+                            <input type="password"
+                                name="faq"
+                                placeholder="*********"
+                                v-model="password_confirmation">
+                            <img src="/images/client/campaign_activity/close_black.png"
+                                @click="password_confirmation = ''" alt="delete icon"
+                                v-show="password_confirmation">
+                        </div>
+                        <div class="error" v-if="showErrors && errors.password_confirmation">
+                            {{errors.password_confirmation}}
+                        </div>
                     </div>
                 </div>
                 <div class="account-edit-section-edit-btn no-decoration">
@@ -312,7 +304,12 @@
 </template>
 
 <script>
+    import flagDropdown from '../../../flagsDropdown.vue'
+
     export default {
+        components: {
+            "flag-dropdown": flagDropdown
+        },
       data(){
           return {
               agent:{

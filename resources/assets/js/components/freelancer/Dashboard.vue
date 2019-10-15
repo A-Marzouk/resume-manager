@@ -58,14 +58,7 @@
                                 Campaign manager
                             </div>
                         </router-link>
-                        <!-- <div v-if="rootURL !== '/freelancer'" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
-                            <div class="imageContainer">
-                                <img :src="getMenuBlockIcon('chats')" alt="icon">
-                            </div>
-                            <div class="menu-block-name">
-                                Chats
-                            </div>
-                        </div>
+
                         <router-link v-if="rootURL !== '/freelancer'" :to="rootLinkTo('payments')" class="menu-block row" :class="{'active' : activeTab === 'payments'}" @click.native="selectTab('payments')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('payments')" alt="icon">
@@ -74,6 +67,16 @@
                                 Payments
                             </div>
                         </router-link>
+
+                        <!-- <div v-if="rootURL !== '/freelancer'" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
+                            <div class="imageContainer">
+                                <img :src="getMenuBlockIcon('chats')" alt="icon">
+                            </div>
+                            <div class="menu-block-name">
+                                Chats
+                            </div>
+                        </div>
+
                         <div v-if="rootURL !== '/freelancer'" class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('agents_database')"  alt="icon">
@@ -115,6 +118,16 @@
                         Campaign manager
                     </div>
                 </router-link>
+
+                <router-link v-if="rootURL !== '/freelancer'" :to="rootLinkTo('payments')" class="menu-block row" :class="{'active' : activeTab === 'payments'}" @click.native="selectTab('payments')">
+                    <div class="imageContainer">
+                        <img :src="getMenuBlockIcon('payments')" alt="icon">
+                    </div>
+                    <div class="menu-block-name">
+                        Payments
+                    </div>
+                </router-link>
+
                 <router-link :to="rootLinkTo('my-account')" class="menu-block row"
                              :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                     <div class="imageContainer">
@@ -136,7 +149,7 @@
                 </div>
 
                 <keep-alive>
-                    <router-view :agent ="agent" @showPositiveNotification="showNotification" ></router-view>
+                    <router-view :agent ="agent" @showPositiveNotification="showNotification" @openInvoice="setSelectedInvoice"></router-view>
                 </keep-alive>
             </div>
         </div>
@@ -154,93 +167,8 @@
                         </button>
                     </div>
                     <div class="invoice-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="invoice-style"> INVOICE</div>
-                            <div class="modal-logo"></div>
-                            <!-- <img src="/images/freelancer/logo_123.png" class="modal-logo"/> -->
-                        </div>
-                        <div class="invioce-top-text">
-                            123 Workforce
-                            <br/>
-                            5th floor Portview House Thorn Castle st Dublin Ireland
-                            <br/>
-                            00442037000685
-                            <br/>
-                            info@123workforce.com
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center invioce-title">
-                            <div>№ 059-004-038</div>
-                            <div> other services</div>
-                            <div class="d-flex justify-content-between align-items-center"> $400 <span
-                                    class="invoice-outstand"> outstand</span></div>
-                            <div class="invoice-download"><img src="/images/client/payments/export_invoice.png"/> copy
-                                invioce link
-                            </div>
-                        </div>
-
-                        <div class="invoice-date">
-                            Invoice issue date:
-                            <br/> 26.03.2019
-                        </div>
-
-                        <div class="info">
-                            <div style=" font-weight: 500;">Freelancer info:</div>
-                            <div>Name: Kim Coe</div>
-                            <div>Company: Urban HQ LTD</div>
-                            <div class="d-flex">
-                                <div>
-                                    Contact:
-                                </div>
-                                <div style="width:200px; margin-left: 3px;"> +447711228204
-                                    kim@urbanhqgroup.com
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="freelancer-info invoice-info-freelancer">
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/people_24px.png" class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span> Analiza Belleza, Cheska Ramos
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/assignment_turned_in_24px.png"
-                                     class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span>
-                                Analiza Belleza, Cheska Ramos
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/account_balance_wallet_24px.png"
-                                     class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span>
-                                Analiza Belleza, Cheska Ramos
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/watch_later_24px.png" class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span>
-                                Analiza Belleza, Cheska Ramos
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/Subtract.png" class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span>
-                                Analiza Belleza, Cheska Ramos
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/account_balance_wallet_24px.png"
-                                     class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span>
-                                Analiza Belleza, Cheska Ramos
-                            </div>
-                        </div>
-
-
+                        <agent-invoice-component :invoice="selectedInvoice" :modal="true"></agent-invoice-component>
                     </div>
-
 
                 </div>
 
@@ -250,13 +178,27 @@
 </template>
 <script>
 
+    import agentInvoiceComponent from './dashboardComponents/payments/InvoiceComponent'
+
     export default {
         props:['agent'],
+        components: {
+            'agent-invoice-component': agentInvoiceComponent
+        },
         data() {
             return {
                 activeTab: 'campaign-manager',
                 rootURL: this.$route.path.split('/')[1] + '/' + this.$route.path.split('/')[2],
-                notificationMessage : ''
+                notificationMessage : '',
+                selectedInvoice:{
+                    client:{
+                        user:{}
+                    },
+                    subscription:{
+                        campaign:{},
+                        start_date:''
+                    }
+                }
             }
         },
         methods: {
@@ -287,6 +229,9 @@
             },
             hideNotification(){
                 $('#notificationBar').css('display','none');
+            },
+            setSelectedInvoice(invoice){
+                this.selectedInvoice = invoice ;
             },
         },
         mounted() {

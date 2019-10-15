@@ -180,7 +180,7 @@ Route::prefix('client')->group(function (){
     Route::get('/invoices/view/{invoice_id}','InvoicesController@viewClientInvoice')->name('client.payment.invoice');
     Route::get('/invoices/get','InvoicesController@getClientInvoices')->name('client.invoices.get');
     Route::post('/invoices/create','InvoicesController@createInvoice')->name('client.invoices.create');
-    // export single invoice as pdf
+    // export invoiced as pdf
     Route::get('/invoices/export/all','InvoicesController@downloadAllInvoices')->name('invoice.export.all');
     Route::get('/invoices/export/{invoice_id}','InvoicesController@exportInvoice')->name('invoice.export');
 
@@ -208,6 +208,14 @@ Route::prefix('agent')->group(function (){
     Route::get('/register/submit',function(){
         return redirect()->back();
     });
+
+    // invoices
+    Route::get('/invoices/get','InvoicesController@getAgentInvoices')->name('get.agent.invoices');
+    Route::get('/invoices/view/{invoice_id}','InvoicesController@viewAgentInvoice')->name('agent.payment.invoice');
+
+    // export invoiced as pdf
+    Route::get('/invoices/export/all','InvoicesController@downloadAllAgentInvoices')->name('invoice.export.all');
+    Route::get('/invoices/export/{invoice_id}','InvoicesController@exportAgentInvoice')->name('invoice.export');
 
     // update agent
     Route::post('/update', 'AgentsController@updateAgent');

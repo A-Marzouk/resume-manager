@@ -23,7 +23,7 @@ class InvoicesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('role:client');
+        $this->middleware('auth');
     }
 
     public function viewClientInvoice($invoice_id)
@@ -32,9 +32,21 @@ class InvoicesController extends Controller
         return view('client.payments.invoice', compact('invoice'));
     }
 
+    public function viewAgentInvoice($invoice_id)
+    {
+        $invoice = Invoice::where('id', $invoice_id)->with('agent.user.userData', 'subscription.campaign')->first();
+        return view('freelancer.payments.invoice', compact('invoice'));
+    }
+
     public function getClientInvoices()
     {
         $invoices = Invoice::where('client_id', currentClient()->id)->with('client.user.userData', 'subscription.campaign')->get();
+        return $invoices;
+    }
+
+    public function getAgentInvoices()
+    {
+        $invoices = Invoice::where('agent_id', currentAgent()->id)->with('agent.user.userData','subscription.campaign')->get();
         return $invoices;
     }
 
@@ -100,21 +112,6 @@ class InvoicesController extends Controller
 
     public function exportInvoice($invoice_id)
     {
-//        $zip_file = 'invoices.zip'; // Name of our archive to download
-//
-//        // Initializing PHP class
-//        $zip = new ZipArchive();
-//        $zip->open($zip_file, ZipArchive::CREATE | ZipArchive::OVERWRITE);
-//
-//        $invoice_file = 'invoices/aaa001.pdf';
-//
-//        // Adding file: second parameter is what will the path inside of the archive
-//        // So it will create another folder called "storage/" inside ZIP, and put the file there.
-//        $zip->addFile(storage_path($invoice_file), $invoice_file);
-//        $zip->close();
-//
-//        // We return the file immediately after download
-//        return response()->download($zip_file);
 
         $invoice = Invoice::where('id', $invoice_id)->with('client.user.userData', 'subscription.campaign')->first();
         $pdf = App::make('dompdf.wrapper');
@@ -123,7 +120,6 @@ class InvoicesController extends Controller
         return $pdf->stream();
 
     }
-
     public function downloadAllInvoices(){
 
         $client   = currentClient();
@@ -148,6 +144,46 @@ class InvoicesController extends Controller
             $files = glob(storage_path('/invoices/'.$invoice->client->id));
             Zipper::make(public_path('invoices.zip'))->add($files)->close();
             return response()->download(public_path('invoices.zip'));
+
+        }
+
+
+    }
+
+    public function exportAgentInvoice($invoice_id)
+    {
+
+        $invoice = Invoice::where('id', $invoice_id)->with('agent.user.userData','subscription.campaign')->first();
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif','javascript-delay' => 3000]);
+        $pdf->loadView('freelancer.payments.invoice_pdf_view', compact('invoice'));
+        return $pdf->stream();
+
+    }
+    public function downloadAllAgentInvoices(){
+
+        $agent  = currentAgent();
+        $invoices = Invoice::where('agent_id', $agent->id)->with('agent.user.userData', 'subscription.campaign')->get();
+
+        foreach ($invoices as $invoice){
+            // 1- make the pdf file
+            $pdf = App::make('dompdf.wrapper');
+            $pdf->setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif','javascript-delay' => 3000]);
+            $pdf->loadView('freelancer.payments.invoice_pdf_view', compact('invoice'));
+
+            // save the output to folder
+
+            $output = $pdf->output();
+            if (!is_dir(storage_path().'/invoices/'.$invoice->agent->id.'_agent')) {
+                // dir doesn't exist, make it
+                mkdir(storage_path().'/invoices/'.$invoice->agent->id.'_agent');
+            }
+            file_put_contents(storage_path().'/invoices/'.$invoice->agent->id.'_agent'.'/invoice_'. $invoice->id .'.pdf', $output);
+
+
+            $files = glob(storage_path('/invoices/'.$invoice->agent->id.'_agent'));
+            Zipper::make(public_path('invoices_agent.zip'))->add($files)->close();
+            return response()->download(public_path('invoices_agent.zip'));
 
         }
 

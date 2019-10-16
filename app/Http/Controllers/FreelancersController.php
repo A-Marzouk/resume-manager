@@ -41,7 +41,22 @@ class FreelancersController extends Controller
 
     public function viewAccountEditPage()
     {
-        return view('freelancer.my_account.account_information_edition');
+        $agentData = UserData::select(
+            'first_name',
+            'last_name',
+            'phone',
+            'city',
+            'job_title',
+            'gender',
+            'timezone',
+            'paypal_acc_number'
+        )->where('id', currentUser()->data->id)->first();
+
+        $agentData->email = currentAgent()->email;
+
+        // dd(currentUser());
+
+        return view('freelancer.my_account.account_information_edition', compact('agentData'));
     }
 
     public function viewProfessionalEditPage()

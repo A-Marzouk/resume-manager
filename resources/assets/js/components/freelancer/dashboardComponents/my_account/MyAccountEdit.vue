@@ -27,20 +27,20 @@
                     <div class="account-edit-section-inputs">
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter your name
+                                Enter your first name
                             </label>
                             <div class="faq-input"
                                  :class="{ 'error-input' : errors.name }"
                             >
                                 <input type="text"
                                        name="faq"
-                                       placeholder="Agent name"
-                                       v-model="agent.name"
+                                       placeholder="Agent first name"
+                                       v-model="agent.first_name"
                                        v-on:change="checkDataIsNotEmpty">
                                 <img src="/images/client/campaign_activity/close_black.png" 
-                                    @click="clearInput('name')"
+                                    @click="clearInput('first_name')"
                                     alt="delete icon" 
-                                    v-show="agent.name.length > 0">
+                                    v-show="agent.first_name.length > 0">
                             </div>
                             <div class="error" v-if="showErrors && errors.name">
                                 {{errors.name}}
@@ -48,23 +48,23 @@
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter your surname
+                                Enter your last name
                             </label>
                             <div class="faq-input"
-                                 :class="{ 'error-input' : errors.surname }"
+                                 :class="{ 'error-input' : errors.last_name }"
                             >
                                 <input type="text"
                                        name="faq"
-                                       placeholder="Agent surname"
-                                       v-model="agent.surname"
+                                       placeholder="Agent last name"
+                                       v-model="agent.last_name"
                                        v-on:change="checkDataIsNotEmpty">
                                 <img src="/images/client/campaign_activity/close_black.png" 
-                                    @click="clearInput('surname')"
+                                    @click="clearInput('last_name')"
                                     alt="delete icon" 
-                                    v-show="agent.surname.length > 0">
+                                    v-show="agent.last_name.length > 0">
                             </div>
-                            <div class="error" v-if="showErrors && errors.surname">
-                                {{errors.surname}}
+                            <div class="error" v-if="showErrors && errors.last_name">
+                                {{errors.last_name}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
@@ -255,10 +255,10 @@
                                 Enter your PayPal acc number
                             </label>
                             <div class="faq-input" :class="{ 'error-input' : errors.paypal}">
-                                <input type="text" name="paypal" placeholder="Enter your paypal ID" v-model="agent.paypal"
+                                <input type="text" name="paypal_acc_number" placeholder="Enter your paypal ID" v-model="agent.paypal_acc_number"
                                 v-on:change="checkDataIsNotEmpty">
                                 <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('paypal')"
-                                    alt="delete icon" v-show="agent.paypal.length > 0">
+                                    alt="delete icon" v-show="agent.paypal_acc_number.length > 0">
                             </div>
                             <div class="error" v-if="showErrors && errors.paypal">
                                 {{errors.paypal}}
@@ -275,11 +275,11 @@
                             <input type="password"
                                 name="faq"
                                 placeholder="*********"
-                                v-model="agent.password"
+                                v-model="password"
                                 v-on:change="checkDataIsNotEmpty">
                             <img src="/images/client/campaign_activity/close_black.png"
-                                @click="agent.password = ''" alt="delete icon"
-                                v-show="agent.password">
+                                @click="password = ''" alt="delete icon"
+                                v-show="password">
                         </div>
                         <div class="error" v-if="showErrors && errors.password">
                             {{errors.password}}
@@ -293,12 +293,12 @@
                             <input type="password"
                                 name="faq"
                                 placeholder="*********"
-                                v-model="agent.password_confirmation"
+                                v-model="password_confirmation"
                                 v-on:change="checkDataIsNotEmpty"
                                 >
                             <img src="/images/client/campaign_activity/close_black.png"
-                                @click="agent.password_confirmation = ''" alt="delete icon"
-                                v-show="agent.password_confirmation">
+                                @click="password_confirmation = ''" alt="delete icon"
+                                v-show="password_confirmation">
                         </div>
                         <div class="error" v-if="showErrors && errors.password_confirmation">
                             {{errors.password_confirmation}}
@@ -318,28 +318,28 @@
 
 <script>
     import flagDropdown from '../../../flagsDropdown.vue'
+    import axios from 'axios'
 
     export default {
+        props: ['agentData'],
         components: {
             "flag-dropdown": flagDropdown
         },
       data(){
           return {
               agent:{
-                  name: '',
-                  surname: '',
+                  first_name: '',
+                  last_name: '',
                   email: '',
                   timezone: '',
                   phone: '',
                   gender: '',
                   city: '',
-                  paypal: '',
-                  password: '',
-                  password_confirmation: '',
+                  paypal_acc_number: '',
               },
               errors: {
                 name: '',
-                surname: '',
+                last_name: '',
                 email: '',
                 timezone: '',
                 phone: '',
@@ -349,6 +349,8 @@
                 password: '',
                 password_confirmation: '',
               },
+              password: '',
+              password_confirmation: '',
               showErrors: false,
               canSubmit: false
           }
@@ -356,7 +358,7 @@
       methods:{
             noErrors () {
                 let noErrorsName = this.noErrorsName()
-                let noErrorsSurname = this.noErrorsSurname()
+                let noErrorslast_name = this.noErrorslast_name()
                 let noErrorsEmail = this.noErrorsEmail()
                 let noErrorsPaypal = this.noErrorsPaypal()
                 let noErrorsGender = this.noErrorsGender()
@@ -367,7 +369,7 @@
 
                 return (
                     noErrorsName &&
-                    noErrorsSurname &&
+                    noErrorslast_name &&
                     noErrorsEmail &&
                     noErrorsPaypal &&
                     noErrorsGender &&
@@ -381,24 +383,24 @@
                 let valid = true
                 
                 // Empty field
-                if (this.agent.name.trim() === '') {
+                if (this.agent.first_name.trim() === '') {
                     valid = false;
-                    this.errors.name = 'Please fill this field'
+                    this.errors.first_name = 'Please fill this field'
                 } else {
-                    this.errors.name = ''
+                    this.errors.first_name = ''
                 }
 
                 return valid
             },
-            noErrorsSurname () {
+            noErrorslast_name () {
                 let valid = true
                 
                 // Empty field
-                if (this.agent.surname.trim() === '') {
+                if (this.agent.last_name.trim() === '') {
                     valid = false;
-                    this.errors.surname = 'Please fill this field'
+                    this.errors.last_name = 'Please fill this field'
                 } else {
-                    this.errors.surname = ''
+                    this.errors.last_name = ''
                 }
 
                 return valid
@@ -430,9 +432,7 @@
 
             noErrorsPhone () {
                 let valid = true
-                let phoneFormat = /[0-9]{1,3}-[0-9]{7}/g
-
-                console.log(!phoneFormat.test(this.agent.phone))
+                let phoneFormat = /\+[0-9]{1,3}-[0-9]{10}/g
 
                 if (this.agent.phone.trim() === '') {
                     // Empty field
@@ -450,10 +450,10 @@
                 let valid = true
 
 
-                if (this.agent.paypal.trim() === '') {
+                if (this.agent.paypal_acc_number.trim() === '') {
                     valid = false
                     this.errors.paypal = 'Please fill this field'
-                } else if (!/\d{9}/g.test(this.agent.paypal)) {
+                } else if (!/\d{9}/g.test(this.agent.paypal_acc_number)) {
                     valid = false
                     this.errors.paypal = 'This is not a valid paypal ID'
                 } else {
@@ -490,7 +490,7 @@
                 let valid = true;
 
                 // Empty field
-                if (this.agent.password.trim() !== this.agent.password_confirmation.trim()) {
+                if (this.password.trim() !== this.password_confirmation.trim()) {
                     valid = false;
                     this.errors.password = 'Password doesn\'t match';
                 } else {
@@ -504,6 +504,19 @@
 
                 if (this.noErrors()) {
                     // send data to backend
+                    
+                    // Fix this bug
+                    this.agent.timezone = 1
+
+                    axios
+                        .post('/freelancer/account/edit', {
+                            ...this.agent
+                        })
+                        .then(res => {
+                            if (res.data.status === "sucess") window.location.reload()
+                        })
+                        .catch(err => console.log(err))
+
                 } else this.showErrors = true
             },
             clearInput(name) {
@@ -524,6 +537,10 @@
           "agent.gender": function (val) {
               if (val === "") this.canSubmit = false
           }
+      },
+
+      mounted () {
+          this.agent = { ...this.agent, ...this.agentData }
       }
     }
 </script>

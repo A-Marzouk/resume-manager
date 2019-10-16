@@ -335,7 +335,7 @@ class Upload
     }
 
     public static function mainRecording($name,$newName){
-        $target_dir = storage_path().'/agents_main_recordings/' ;
+        $target_dir = 'uploads/agents_main_recordings/' ;
         $uploadOk = 1;
         if ($_FILES[$name]["size"] > 45000000) { // 45 megabyte
             $uploadOk = 0;
@@ -400,7 +400,7 @@ class Upload
     }
 
     public static function resume($name,$newName){
-        $target_dir = storage_path().'/agents_resume/' ;
+        $target_dir = 'uploads/agents_resume/' ;
         $target_file = $target_dir . $newName .'_' .basename($_FILES[$name]["name"]);
         $uploadOk = 1;
 
@@ -434,7 +434,7 @@ class Upload
     }
 
     public static function profilePicture($name,$newName){
-        $target_dir = storage_path().'/agents_pictures/' ;
+        $target_dir = 'uploads/agents_pictures/' ;
         $target_file = $target_dir . $newName .'_' .basename($_FILES[$name]["name"]);
         $uploadOk = 1;
 

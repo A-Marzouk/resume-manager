@@ -294,6 +294,16 @@ class AgentsController extends Controller
         }
 
 
+        if(isset($_FILES['profilePicture'])){
+            // upload the resume to our storage
+            $pathToPicture = Upload::profilePicture( 'profilePicture', 'profile_picture');
+
+            $agent->user->userData->update([
+                'profile_picture' => $pathToPicture,
+            ]);
+        }
+
+
 
         if($resumeData['typeOfRecording'] === 'link'){
             $agent->update([

@@ -45,7 +45,7 @@ export default {
     props: ['changeStep', 'getData'],
   data () {
     return{
-        resumeData:{
+        profileData:{
             profilePicture: ''
         },
         canSubmit: true,
@@ -57,7 +57,7 @@ export default {
         e.preventDefault()
         this.canSubmit = true
         if (this.canSubmit) {
-            this.getData({ resumeData: { ...this.resumeData }})
+            this.getData({ profileData: { ...this.profileData }})
             this.changeStep(5)
             this.$router.push('/freelancer/register/page5')
         } else {
@@ -67,10 +67,10 @@ export default {
       }
   },
   watch: {
-        resumeData: {
+        profileData: {
             handler(){
-                // check if all resumeData values are filled
-                let values = Object.values(this.resumeData);
+                // check if all profileData values are filled
+                let values = Object.values(this.profileData);
                 let isAll_filled = true;
                 for (const value of values) {
                     if (value.trim() !== '') {

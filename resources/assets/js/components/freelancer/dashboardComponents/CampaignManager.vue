@@ -14,20 +14,14 @@
                     MY ACTIVE CAMPAIGNS
                 </div>
                 <div class="actionBtn">
-                    <a class="secondary little-padding hideOnSm" href="javascript:;"
-                       v-on:click="toggleShift">
-                        {{ (isShiftStart) ? 'FINISH SHIFT' : 'START SHIFT' }}
-                    </a>
-                    <a class="little-padding" href="javascript:;" v-on:click="imAway = !imAway">
-                        {{ (imAway) ? 'I\'M AWAY' : 'I\'M BACK' }}
-                    </a>
+
                 </div>
             </div>
         </div>
 
         <div v-for="(campaign,index) in activeCampaigns" :key="index">
             <div class="content-block-campaign-brief">
-                <div class="upper-bar">
+                <div class="upper-bar p-0">
                     <div class="campaignInfo">
                         <div class="title">
                             {{campaign.title}}
@@ -43,11 +37,25 @@
                 </div>
 
                 <div class="agent-logs-block">
-                    <div class="agentInfo">
-                        <img src="/images/client/dummy.png" alt="">
-                        <span class="userName">
+                    <div class="agentInfo d-flex flex-wrap justify-content-between">
+                        <div>
+                            <img src="/images/client/dummy.png" alt="">
+                            <span class="userName">
                             {{agent.user.user_data.first_name}}
-                    </span>
+                            </span>
+
+                        </div>
+
+                        <div class="actionBtn">
+                            <a class="secondary little-padding" href="javascript:;"
+                               v-on:click="toggleShift(campaign.id)">
+                                {{ (isShiftStart) ? 'FINISH SHIFT' : 'START SHIFT' }}
+                            </a>
+                            <a class="little-padding" href="javascript:;" v-on:click="toggleBreak(campaign.id)" v-show="isShiftStart">
+                                {{ (isBreakStart) ?  'I\'M BACK' :  'I\'M AWAY'}}
+                            </a>
+                        </div>
+
                     </div>
                     <div v-for="(log,index) in agentLogs" :key="index + '_LOG'">
                         <div class="log">
@@ -117,6 +125,7 @@
                 addEntry: false,
                 imAway: true,
                 isShiftStart: false,
+                isBreakStart: false,
                 campaigns: this.agent.campaigns,
                 agentLogs: this.agent.logs,
                 campaignStatusCode: {
@@ -153,22 +162,32 @@
             },
         },
         methods: {
-            toggleShift(){
+            toggleShift(camp_id){
               // add log of starting the shift
                 if(!this.isShiftStart){
                     this.isShiftStart = true ;
-                    this.addShiftStartLog();
+                    this.addShiftStartLog(camp_id);
                 }else{
                     this.isShiftStart = false ;
-                    this.addShiftEndLog();
+                    this.addShiftEndLog(camp_id);
                 }
             },
-            addShiftStartLog(){
+            toggleBreak(camp_id){
+                // add log of starting the shift
+                if(!this.isBreakStart){
+                    this.isBreakStart = true ;
+                    this.addBreakStartLog(camp_id);
+                }else{
+                    this.isBreakStart = false ;
+                    this.addBreakEndLog(camp_id);
+                }
+            },
+            addShiftStartLog(camp_id){
                 let logData = {
                     log_text: 'Shift starts at: ' + new Date().toLocaleString(),
                     status: 6,
                     agent_id: this.agent.id,
-                    campaign_id: this.campaigns[0].id
+                    campaign_id: camp_id
                 };
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
@@ -180,12 +199,12 @@
                         console.log(error);
                     });
             },
-            addShiftEndLog(){
+            addShiftEndLog(camp_id){
                 let logData = {
                     log_text: 'Shift ends at: ' + new Date().toLocaleString(),
                     status: 6,
                     agent_id: this.agent.id,
-                    campaign_id: this.campaigns[0].id
+                    campaign_id: camp_id
                 };
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
@@ -197,6 +216,43 @@
                         console.log(error);
                     });
             },
+
+            addBreakStartLog(camp_id){
+                let logData = {
+                    log_text: 'Break starts at: ' + new Date().toLocaleString(),
+                    status: 6,
+                    agent_id: this.agent.id,
+                    campaign_id: camp_id
+                };
+                axios.post('/agent/logs/add', logData)
+                    .then((response) => {
+                        console.log(response.data);
+                        let log = response.data;
+                        this.addActivityLog(log);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            addBreakEndLog(camp_id){
+                let logData = {
+                    log_text: 'Break ends at: ' + new Date().toLocaleString(),
+                    status: 6,
+                    agent_id: this.agent.id,
+                    campaign_id: camp_id
+                };
+                axios.post('/agent/logs/add', logData)
+                    .then((response) => {
+                        console.log(response.data);
+                        let log = response.data;
+                        this.addActivityLog(log);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+
+
             rootLinkTo(link) {
                 return this.$route.path + '/' + link
             },
@@ -248,6 +304,61 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+    .actionBtn{
+        margin-right: 34px;
+        justify-content: space-between;
+        display: flex;
 
+    @media (max-width:745px) {
+        margin-right: 6px;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+    a {
+    @media (max-width:745px) {
+        min-width: 120px;
+        height: 31px;
+        font-size: 11px;
+
+    &.hideOnSm {
+         display: none;
+     }
+    }
+
+    padding: 4px 23px 3px 13px;
+    display:block;
+    min-width: 120px;
+    height: 31px;
+    text-align: center;
+    border-radius: 30px;
+    background: #05A4F4;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: -0.1px;
+    color: #FFFFFF;
+    margin: 0 5px;
+
+    &.little-padding {
+         padding: 4px 15px;
+     }
+
+    &.secondary {
+         background: transparent;
+         color: #05A4F4;
+     }
+
+    img{
+        padding-right: 8px;
+        padding-left: 7px;
+        padding-bottom: 3px;
+    }
+    }
+    }
 </style>

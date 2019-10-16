@@ -28,11 +28,13 @@ class CreateInvoicesTable extends Migration
             $table->date('billing_date')->nullable();
             $table->tinyInteger('status')->nullable();
 
-            $table->integer('client_id')->unsigned()->index();
+            $table->integer('client_id')->unsigned()->index()->nullable();
+            $table->integer('agent_id')->unsigned()->index()->nullable();
             $table->integer('currency_id')->unsigned()->index();
             $table->integer('subscription_id')->unsigned()->index();
 
             $table->foreign('client_id')->references('id')->on('clients');
+            $table->foreign('agent_id')->references('id')->on('agents');
             $table->foreign('currency_id')->references('id')->on('currencies');
 
             $table->timestamps();

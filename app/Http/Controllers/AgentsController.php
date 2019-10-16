@@ -224,39 +224,45 @@ class AgentsController extends Controller
     }
 
     public function createAgent(Request $request){
+
+         $resumeData = json_decode( $request->resumeData,true) ;
+         $professionalData = json_decode( $request->professionalData,true) ;
+         $personalData = json_decode( $request->personalData,true) ;
+
+
         $agent =  app(User::class)->createAgent([
             'user' => [
-                'email' => $request->personalData['email'],
+                'email' => $personalData['email'],
                 'password' => $request->password,
-                'username' => $request->personalData['email'],
+                'username' => $personalData['email'],
             ],
             'agent' => [
-                'available_hours_per_week' => $request->professionalData['hoursPerWeek'],
-                'experience'               => $request->professionalData['sector'],
-                'technologies'             => implode(',',$request->professionalData['techs']),
+                'available_hours_per_week' =>  $professionalData['hoursPerWeek'],
+                'experience'               => $professionalData['sector'],
+                'technologies'             => implode(',',$professionalData['techs']),
                 'hourly_rate'              => 5,
-                'voice_character'          => $request->professionalData['voice'],
+                'voice_character'          => $professionalData['voice'],
             ],
             'user_data' => [
-                'profession_id'         => $request->personalData['profession_id'], // business-support, developer, designer
+                'profession_id'         => $personalData['profession_id'], // business-support, developer, designer
                 'currency_id'           => 1, // usd
                 'timezone'              => 1,
                 // personal data
-                'first_name'            => $request->personalData['name'],
-                'last_name'             => $request->personalData['surname'],
-                'city'                  => $request->personalData['cityName'],
-                'phone'                 => $request->personalData['phone'],
-                'gender'                => $request->personalData['gender'],
-                'paypal_acc_number'     => $request->personalData['paypal'],
+                'first_name'            => $personalData['name'],
+                'last_name'             => $personalData['surname'],
+                'city'                  => $personalData['cityName'],
+                'phone'                 => $personalData['phone'],
+                'gender'                => $personalData['gender'],
+                'paypal_acc_number'     => $personalData['paypal'],
 //                // professional data
-                'job_title'             => $request->professionalData['primaryJob'],
+                'job_title'             => $professionalData['primaryJob'],
             ]
         ]);
 
 
         // add languages to agent
 
-        $languageSymbol = $request->professionalData['lang'];
+        $languageSymbol = $professionalData['lang'];
 
         $language = Language::where('name','english')->first();
         if($languageSymbol == 'es'){
@@ -265,6 +271,40 @@ class AgentsController extends Controller
 
         // attach user to language
         $language->users()->attach($agent->user_id);
+
+
+
+//         upload recording and resume files
+        if($resumeData['typeOfRecording'] === 'file'){
+            // upload the recording to our storage
+            $pathToAudio = Upload::mainRecording( 'recordingFile', 'main_record');
+
+            $agent->update([
+                'recording' => $pathToAudio,
+                'recording_type' => 'file'
+            ]);
+        }
+
+        if(isset($_FILES['resumeFile'])){
+            // upload the resume to our storage
+            $pathToResume = Upload::resume( 'resumeFile', 'main_resume');
+
+            $agent->update([
+                'cv' => $pathToResume,
+            ]);
+        }
+
+
+
+        if($resumeData['typeOfRecording'] === 'link'){
+            $agent->update([
+                'recording'      => $request->resumeData['recordingLink'],
+                'recording_type' => 'link'
+            ]);
+        }
+
+
+
 
         // login the agent after register
         Auth::loginUsingId($agent->user->id);

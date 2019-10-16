@@ -26,6 +26,9 @@ class CreateAgentsTable extends Migration
             $table->string('voice_character')->nullable();
             $table->tinyInteger('status')->unsigned()->default(1)->index();
             $table->string('signature')->nullable();
+            $table->string('cv')->nullable();
+            $table->string('recording')->nullable();
+            $table->string('recording_type')->nullable();
 
 
             $table->integer('user_id')->unsigned()->index();

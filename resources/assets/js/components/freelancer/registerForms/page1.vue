@@ -342,7 +342,7 @@
             },
             noErrorsPhone() {
                 let valid = true
-                let phoneFormat = /[0-9]{1,3}-[0-9]{7}/
+                let phoneFormat = /[0-9]{7}/
 
                 if (this.personalData.phone.trim() === '') {
                     // Empty field
@@ -352,7 +352,7 @@
                     // Review the regExp
                     valid = false
                     this.errors.phone = 'This not a valid phone number format'
-                } else this.errors.phone = ''
+                } else this.errors.phone = '';
 
                 return valid
             },

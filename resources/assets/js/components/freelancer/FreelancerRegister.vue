@@ -38,10 +38,24 @@
                     return ;
                 }
                 this.canSubmit = false;
-                axios.post('/agent/register/submit',this.formData).then( (response) => {
+                let form_data = new FormData();
+                form_data.append('recordingFile', this.formData.resumeData.recordingFile);
+                form_data.append('resumeFile', this.formData.resumeData.resumeFile);
+
+                form_data.append('resumeData', JSON.stringify(this.formData.resumeData));
+                form_data.append('personalData', JSON.stringify(this.formData.personalData));
+                form_data.append('professionalData', JSON.stringify(this.formData.professionalData));
+
+                form_data.append('password', this.formData.password);
+                form_data.append('password2', this.formData.password2);
+
+                axios.post('/agent/register/submit',
+                    form_data).then( (response) => {
+                    console.log(response.data);
+                    return;
                     if(response.data.status === 'success'){
                         // redirect to admin
-                        window.location.href = '/freelancer/dashboard';
+                        window.location.href('/freelancer/register/completed')
                     }
                     this.errors = response.data.errors;
                 });

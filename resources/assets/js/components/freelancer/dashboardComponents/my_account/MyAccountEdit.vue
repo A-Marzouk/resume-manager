@@ -35,7 +35,8 @@
                                 <input type="text"
                                        name="faq"
                                        placeholder="Agent name"
-                                       v-model="agent.name">
+                                       v-model="agent.name"
+                                       v-on:change="checkDataIsNotEmpty">
                                 <img src="/images/client/campaign_activity/close_black.png" 
                                     @click="clearInput('name')"
                                     alt="delete icon" 
@@ -55,7 +56,8 @@
                                 <input type="text"
                                        name="faq"
                                        placeholder="Agent surname"
-                                       v-model="agent.surname">
+                                       v-model="agent.surname"
+                                       v-on:change="checkDataIsNotEmpty">
                                 <img src="/images/client/campaign_activity/close_black.png" 
                                     @click="clearInput('surname')"
                                     alt="delete icon" 
@@ -86,13 +88,17 @@
                                 Enter your phone number
                             </label>
                             <div class="faq-input">
-                                <flag-dropdown>
-                                    <input type="text" name="phone" placeholder="Your phone number">
+                                <!-- <flag-dropdown> -->
+                                    <input v-model="agent.phone" type="text" name="phone" placeholder="Your phone number">
                                     <img src="/images/client/campaign_activity/close_black.png" 
                                         @click="clearInput('phone')"
                                         alt="delete icon" 
-                                        v-show="agent.phone.length > 0">
-                                </flag-dropdown>                    
+                                        v-show="agent.phone.length > 0"
+                                        v-on:change="checkDataIsNotEmpty">
+                                <!-- </flag-dropdown>                     -->
+                            </div>
+                            <div class="error" v-if="showErrors && errors.phone">
+                                {{errors.phone}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
@@ -103,7 +109,8 @@
                                 <input type="text"
                                        name="faq"
                                        v-model="agent.email"
-                                       placeholder="Your email">
+                                       placeholder="Your email"
+                                       v-on:change="checkDataIsNotEmpty">
                                 <img src="/images/client/campaign_activity/close_black.png"
                                      @click="clearInput('email')"
                                      alt="delete icon" v-show="agent.email">
@@ -118,7 +125,8 @@
                             </label>
                             <div class="faq-input" :class="{ 'error-input' : errors.timezone}">
                                 <select class="form-control" id="timezone" name="timezone" style="height: 50px;"
-                                        v-model="agent.timezone">
+                                    v-on:change="checkDataIsNotEmpty"
+                                    v-model="agent.timezone">
                                     <option value="" selected="selected">Select your timezone</option>
                                     <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00)
                                         Eastern Time (US & Canada), Bogota, Lima
@@ -233,7 +241,8 @@
                                 Enter your city name
                             </label>
                             <div class="faq-input" :class="{ 'error-input' : errors.city}">
-                                <input type="text" name="city" placeholder="Enter your city" v-model="agent.city">
+                                <input type="text" name="city" placeholder="Enter your city" v-model="agent.city"
+                                v-on:change="checkDataIsNotEmpty">
                                 <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('city')"
                                     alt="delete icon" v-show="agent.city.length > 0">
                             </div>
@@ -246,7 +255,8 @@
                                 Enter your PayPal acc number
                             </label>
                             <div class="faq-input" :class="{ 'error-input' : errors.paypal}">
-                                <input type="text" name="paypal" placeholder="Enter your paypal ID" v-model="agent.paypal">
+                                <input type="text" name="paypal" placeholder="Enter your paypal ID" v-model="agent.paypal"
+                                v-on:change="checkDataIsNotEmpty">
                                 <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('paypal')"
                                     alt="delete icon" v-show="agent.paypal.length > 0">
                             </div>
@@ -265,10 +275,11 @@
                             <input type="password"
                                 name="faq"
                                 placeholder="*********"
-                                v-model="password">
+                                v-model="agent.password"
+                                v-on:change="checkDataIsNotEmpty">
                             <img src="/images/client/campaign_activity/close_black.png"
-                                @click="password = ''" alt="delete icon"
-                                v-show="password">
+                                @click="agent.password = ''" alt="delete icon"
+                                v-show="agent.password">
                         </div>
                         <div class="error" v-if="showErrors && errors.password">
                             {{errors.password}}
@@ -282,18 +293,20 @@
                             <input type="password"
                                 name="faq"
                                 placeholder="*********"
-                                v-model="password_confirmation">
+                                v-model="agent.password_confirmation"
+                                v-on:change="checkDataIsNotEmpty"
+                                >
                             <img src="/images/client/campaign_activity/close_black.png"
-                                @click="password_confirmation = ''" alt="delete icon"
-                                v-show="password_confirmation">
+                                @click="agent.password_confirmation = ''" alt="delete icon"
+                                v-show="agent.password_confirmation">
                         </div>
                         <div class="error" v-if="showErrors && errors.password_confirmation">
                             {{errors.password_confirmation}}
                         </div>
                     </div>
                 </div>
-                <div class="account-edit-section-edit-btn no-decoration">
-                    <a class="btn-primary" href="#">
+                <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
+                    <a class="btn-primary" href="javascript:;" v-on:click="submitData">
                         SAVE EDITS
                     </a>
                 </div>
@@ -320,7 +333,9 @@
                   phone: '',
                   gender: '',
                   city: '',
-                  paypal: ''
+                  paypal: '',
+                  password: '',
+                  password_confirmation: '',
               },
               errors: {
                 name: '',
@@ -332,11 +347,10 @@
                 city: '',
                 paypal: '',
                 password: '',
-                password_confirmation: ''
+                password_confirmation: '',
               },
-              password: '',
-              password_confirmation: '',
-              showErrors: false
+              showErrors: false,
+              canSubmit: false
           }
       },
       methods:{
@@ -367,7 +381,7 @@
                 let valid = true
                 
                 // Empty field
-                if (this.name.trim() !== '') {
+                if (this.agent.name.trim() === '') {
                     valid = false;
                     this.errors.name = 'Please fill this field'
                 } else {
@@ -380,7 +394,7 @@
                 let valid = true
                 
                 // Empty field
-                if (this.surname.trim() !== '') {
+                if (this.agent.surname.trim() === '') {
                     valid = false;
                     this.errors.surname = 'Please fill this field'
                 } else {
@@ -402,14 +416,44 @@
 
                 return valid
             },
+
+            noErrorsGender () {
+                let valid = true
+
+                if (this.agent.gender === "") {
+                    valid = false
+                    this.errors.gender = "Please select a gender"
+                } else this.errors.gender = ""
+
+                return valid
+            },
+
+            noErrorsPhone () {
+                let valid = true
+                let phoneFormat = /[0-9]{1,3}-[0-9]{7}/g
+
+                console.log(!phoneFormat.test(this.agent.phone))
+
+                if (this.agent.phone.trim() === '') {
+                    // Empty field
+                    valid = false
+                    this.errors.phone = 'Please enter your phone number'
+                } else if (!phoneFormat.test(this.agent.phone)) {
+                    // Review the regExp
+                    valid = false
+                    this.errors.phone = 'This not a valid phone number format'
+                } else this.errors.phone = ''
+
+                return valid
+            },
             noErrorsPaypal () {
                 let valid = true
 
 
-                if (this.agent.paypal.trim() !== '') {
+                if (this.agent.paypal.trim() === '') {
                     valid = false
                     this.errors.paypal = 'Please fill this field'
-                } else if (/\d{9}/.test(this.agent.paypal)) {
+                } else if (!/\d{9}/g.test(this.agent.paypal)) {
                     valid = false
                     this.errors.paypal = 'This is not a valid paypal ID'
                 } else {
@@ -446,7 +490,7 @@
                 let valid = true;
 
                 // Empty field
-                if (this.password.trim() !== this.password_confirmation.trim()) {
+                if (this.agent.password.trim() !== this.agent.password_confirmation.trim()) {
                     valid = false;
                     this.errors.password = 'Password doesn\'t match';
                 } else {
@@ -454,7 +498,32 @@
                 }
 
                 return valid
+            },
+
+            submitData () {
+
+                if (this.noErrors()) {
+                    // send data to backend
+                } else this.showErrors = true
+            },
+            clearInput(name) {
+                this.agent[name] = ''
+            },
+            checkDataIsNotEmpty () {
+                let canSubmit = true
+
+                Object.keys(this.agent).forEach((key, index) => {
+                    if (this.agent[key] === "") canSubmit = false
+                })
+
+                this.canSubmit = canSubmit
             }
+      },
+
+      watch: {
+          "agent.gender": function (val) {
+              if (val === "") this.canSubmit = false
+          }
       }
     }
 </script>

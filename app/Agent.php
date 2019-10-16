@@ -17,7 +17,7 @@ class Agent extends Model
 
     protected $table = 'agents';
     protected $fillable = [
-        'number', 'name', 'language', 'hourly_rate','status'
+        'number', 'name', 'language', 'hourly_rate','status','recording_type','recording','cv'
         , 'available_hours_per_week', 'location', 'experience', 'user_id','voice_character','technologies','available_hours'
     ];
 

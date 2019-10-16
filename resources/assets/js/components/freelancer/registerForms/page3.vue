@@ -20,41 +20,44 @@
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
                     <div class="form-group form-center">
-                        <div class="fake-radio-option" :class="{ checked: typeOfRecording === 'file' }">
+                        <div class="fake-radio-option" :class="{ checked: resumeData.typeOfRecording === 'file' }">
                             <div class="inner-circle"></div>
                         </div>
-                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="(typeOfRecording === 'file')" v-on:click="typeOfRecording = 'file'">
+                        <input class="radio-option" type="radio" name="voiceRecorder"  :checked="(resumeData.typeOfRecording === 'file')" v-on:click="resumeData.typeOfRecording = 'file'">
                         <label for="">Upload a file</label>
                     </div>
                 </div>
                 <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
                     <div class="form-group form-center">
-                        <div class="fake-radio-option" :class="{ checked: typeOfRecording === 'link' }">
+                        <div class="fake-radio-option" :class="{ checked: resumeData.typeOfRecording === 'link' }">
                             <div class="inner-circle"></div>
                         </div>
-                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="(typeOfRecording === 'link')" v-on:click="typeOfRecording = 'link'">
+                        <input class="radio-option" type="radio" name="voiceRecorder"  :checked="(resumeData.typeOfRecording === 'link')" v-on:click="resumeData.typeOfRecording = 'link'">
                         <label for="">Share a link</label>
                     </div>
                 </div>
-                <div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">
-                    <div class="form-group form-center">
-                        <div class="fake-radio-option" :class="{ checked: typeOfRecording === 'recording' }">
-                            <div class="inner-circle"></div>
-                        </div>
-                        <input class="radio-option" type="radio" name="voiceRecorder" id="voiceRecorder" :checked="(typeOfRecording === 'recording')" v-on:click="typeOfRecording = 'recording'">
-                        <label for="">Record your voice</label>
-                    </div>
-                </div>
+                <!--<div class="faq-input" :class="{ 'error-input' : errors.voiceRecorder}">-->
+                    <!--<div class="form-group form-center">-->
+                        <!--<div class="fake-radio-option" :class="{ checked: resumeData.typeOfRecording === 'recording' }">-->
+                            <!--<div class="inner-circle"></div>-->
+                        <!--</div>-->
+                        <!--<input class="radio-option" type="radio" name="voiceRecorder" :checked="(resumeData.typeOfRecording === 'recording')" v-on:click="resumeData.typeOfRecording = 'recording'">-->
+                        <!--<label for="">Record your voice</label>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
-            <div v-if="(typeOfRecording === 'file')" class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
+            <div v-if="(resumeData.typeOfRecording === 'file')" class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
                 <div class="fake-file-input btn" >
-                    <input type="file" id="voiceRecorder" />
+                    <input type="file" id="recording" ref="file"  v-on:change="handleFileUpload" />
                     UPLOAD A FILE
                 </div>
+                <div v-show="resumeData.typeOfRecording === 'file' " class="ml-3 d-flex align-items-center">
+                    {{recordingFileName}}
+                </div>
             </div>
-            <div v-else-if="(typeOfRecording === 'link')" class="faq-question-input account-edit-input">
+            <div v-else-if="(resumeData.typeOfRecording === 'link')" class="faq-question-input account-edit-input">
                 <div  class="faq-input" :class="{ 'error-input' : errors.primaryJob}">
-                    <input type="text" placeholder="Insert link here..." />
+                    <input type="text" placeholder="Insert link here..."  v-model="resumeData.recordingLink" />
                 </div>
             </div>
             <div v-else class="faq-question-input account-edit-input">
@@ -77,10 +80,13 @@
                     Please upload your resume. Only .pdf files are allowed.
                 </label>
             </div>
-            <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}">
+            <div class="account-edit-section-edit-btn no-decoration justify-content-start" :class="{'disabled-btn' : !canSubmit}">
                 <div class="fake-file-input btn" >
-                    <input type="file" id="resumeFile" />
+                    <input type="file" id="resumeFile" ref="file2" v-on:change="handleCVUpload"/>
                     UPLOAD A FILE
+                </div>
+                <div  class="ml-3 d-flex align-items-center">
+                    {{resumeFileName}}
                 </div>
             </div>
         </div>
@@ -98,21 +104,33 @@ export default {
   data () {
     return{
         resumeData:{
-            voiceRecorder: '',
+            // voiceRecorder: '',
+            typeOfRecording: 'file',
+            recordingLink: '',
+            recordingFile: '',
             resumeFile: ''
         },
-        typeOfRecording: 'file',
-        canSubmit: true,
+        recordingFileName: '' ,
+        resumeFileName: '' ,
+        canSubmit: false,
         errors:[],
         showErrors: false
     }
   },
   methods: {
+      handleFileUpload(){
+          this.recordingFileName = this.$refs.file.files[0].name ;
+          this.resumeData.recordingFile = this.$refs.file.files[0];
+      },
+      handleCVUpload(){
+          this.resumeFileName = this.$refs.file2.files[0].name ;
+          this.resumeData.resumeFile = this.$refs.file2.files[0];
+      },
       nextStep (e) {
-        e.preventDefault()
+        e.preventDefault();
         if (this.canSubmit) {
-            this.getData({ resumeData: { ...this.resumeData }})
-            this.changeStep(4)
+            this.getData({ resumeData: { ...this.resumeData }});
+            this.changeStep(4);
             this.$router.push('/freelancer/register/page4')
         } else {
             this.showErrors = true
@@ -125,14 +143,22 @@ export default {
             handler(){
                 // check if all resumeData values are filled
                 let values = Object.values(this.resumeData);
-                let isAll_filled = true;
-                for (const value of values) {
-                    if (value.trim() !== '') {
-                        isAll_filled = false;
-                        break
-                    }
+
+                let resume = false;
+                let recording = false;
+
+                if(this.resumeData.recordingFile || this.resumeData.recordingLink ){
+                    // recording is fine
+                    recording = true;
                 }
-                this.canSubmit = isAll_filled;
+
+                if(this.resumeData.resumeFile){
+                    // resume file is fine
+                    resume = true;
+                }
+
+
+                this.canSubmit = resume && recording;
             },
             deep: true
         }

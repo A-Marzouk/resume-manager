@@ -10,6 +10,7 @@ class UserData extends Model
     protected $fillable = [
          'first_name',
         'last_name',
+        'profile_picture',
         'skype',
         'whatsapp',
         'phone',

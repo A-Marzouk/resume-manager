@@ -20,6 +20,7 @@ class CreateUserDatasTable extends Migration
 
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->text('profile_picture')->nullable();
             $table->string('skype')->nullable();
             $table->string('whatsapp')->nullable();
             $table->string('phone')->nullable();

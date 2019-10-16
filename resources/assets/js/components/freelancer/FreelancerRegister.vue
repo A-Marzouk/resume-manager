@@ -51,11 +51,9 @@
 
                 axios.post('/agent/register/submit',
                     form_data).then( (response) => {
-                    console.log(response.data);
-                    return;
                     if(response.data.status === 'success'){
                         // redirect to admin
-                        window.location.href('/freelancer/register/completed')
+                        window.location.replace('/freelancer/register/completed')
                     }
                     this.errors = response.data.errors;
                 });

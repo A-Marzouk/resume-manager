@@ -232,9 +232,9 @@ class AgentsController extends Controller
 
         $agent =  app(User::class)->createAgent([
             'user' => [
-                'email' => $personalData['email'],
+                'email' => 'sswwss'.$personalData['email'],
                 'password' => $request->password,
-                'username' => $personalData['email'],
+                'username' => 'sdswws'.$personalData['email'],
             ],
             'agent' => [
                 'available_hours_per_week' =>  $professionalData['hoursPerWeek'],
@@ -244,7 +244,7 @@ class AgentsController extends Controller
                 'voice_character'          => $professionalData['voice'],
             ],
             'user_data' => [
-                'profession_id'         => $personalData['profession_id'], // business-support, developer, designer
+                'profession_id'         => 2, // business-support, developer, designer
                 'currency_id'           => 1, // usd
                 'timezone'              => 1,
                 // personal data
@@ -258,7 +258,6 @@ class AgentsController extends Controller
                 'job_title'             => $professionalData['primaryJob'],
             ]
         ]);
-
 
         // add languages to agent
 
@@ -298,7 +297,7 @@ class AgentsController extends Controller
 
         if($resumeData['typeOfRecording'] === 'link'){
             $agent->update([
-                'recording'      => $request->resumeData['recordingLink'],
+                'recording'      => $resumeData['recordingLink'],
                 'recording_type' => 'link'
             ]);
         }

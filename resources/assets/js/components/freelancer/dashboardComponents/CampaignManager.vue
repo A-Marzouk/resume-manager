@@ -29,7 +29,7 @@
                     </div>
                     <div class="actionBtn">
                         <a class="status"
-                           :class="{active: campaign.status === 1, paused: campaign.status === 2, canceled: campaign.status === 3}"
+                           :class="{active: campaign.status == 1, paused: campaign.status == 2, canceled: campaign.status == 3}"
                            href="#">
                             {{campaignStatusCode[campaign.status]}}
                         </a>
@@ -157,7 +157,7 @@
         computed: {
             activeCampaigns() {
                 return this.campaigns.filter((campaign) => {
-                    return campaign.status === 1
+                    return campaign.status == 1
                 });
             },
         },

@@ -177,31 +177,13 @@
                             </div>
                         </div>
                         <!-- form btns -->
-                        <div class="col-sm-12">
-                            <div class="form-row">
-                                <div class="container">
-                                    <div class="row"
-                                         style="margin-top: 14px; margin-bottom: 14px;">
-                                        <div class="col-12 col-sm-6 col-md-8 right-side">
-                                            <button type="button"
-                                                    class="btn btn-left">VIEW SAVED SEARCHES
-                                            </button>
-                                        </div>
-                                        <div class="col-12 col-sm-6 col-md-4">
-                                            <div class="row">
-                                                <div class="col-12 center-content">
-                                                    <a href="javascript:void(0)" @click="updateSearch"
-                                                       class="btn btn-primary d-flex justify-content-center align-items-center">SEARCH FOR AGENTS
-                                                    </a>
-                                                </div>
-                                                <div class="col-12 center-content NoDecor" id="aboveSearchResultsSection">
-                                                    <a href="javascript:void(0)" style="font-size:14px; padding-top: 5px;">SAVE THIS SEARCH</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="container w-100 d-flex justify-content-end mb-3">
+                            <a href="javascript:void(0)" @click="updateSearch"
+                               class="btn btn-primary d-flex justify-content-center align-items-center">SEARCH FOR AGENTS
+                            </a>
+                        </div>
+                        <div class="col-12 center-content NoDecor" id="aboveSearchResultsSection">
+
                         </div>
                     </div>
                 </form>
@@ -234,8 +216,8 @@
                                     </div>
                                     <div class="visiblty">
                                         <div class="pt-2 NoDecor">
-                                            <a href="javascript:void(0)" class="btn btn-primar btn-radius btn-responsive" data-toggle="modal" data-target="#add-agent" @click="addAgentData.agentID = agent.id">
-                                                ADD AGENT TO CAMPAIGN
+                                            <a href="javascript:void(0)" class="btn btn-primar btn-radius btn-responsive">
+                                                VISIT AGENT'S PROFILE
                                             </a>
                                         </div>
                                         <div>
@@ -308,52 +290,6 @@
         </div>
 
 
-        <!-- modals -->
-
-        <div class="modal fade centered-modal"
-             id="add-agent"
-             tabindex="-1"
-             role="dialog"
-             aria-labelledby="remove-modal"
-             aria-hidden="true">
-            <div class="modal-dialog"
-                 role="document">
-                <div class="modal-content border-0">
-                    <div class="modal-body campaign-team-modal">
-                        <div>
-                            <div class="modal-question">
-                                Please choose campaign :
-                            </div>
-                            <div class="modal-answer">
-                                <select name="campaign" id="campaign" v-model="addAgentData.selectedCampaignID" style="margin-bottom: 25px;">
-                                    <option value="no-select" selected>-- Select --</option>
-                                    <option :value="campaign.id" v-for="(campaign,index) in clientCampaigns" :key="index">{{campaign.title}}</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-check-label checkBoxContainer disapprove-text">
-                                    <input class="form-check-input"  type="radio"  value="1" name="agentStatus" v-model="addAgentData.status">
-                                    <span class="checkmark make-circle"></span> Active
-                                </label>
-                            </div>
-                            <div class="col-12" style="margin-bottom: 26px;">
-                                <label class="form-check-label checkBoxContainer disapprove-text">
-                                    <input  type="radio" value="2" class="form-check-input" name="agentStatus" checked v-model="addAgentData.status">
-                                    <span class="checkmark make-circle"></span>Backup
-                                </label>
-                            </div>
-
-                            <div class="modal-btn-wrapper d-flex justify-content-end">
-                                <div class="button-base blue-button-a">
-                                    <a href="javascript:void(0)" data-dismiss="modal" @click="addCampAgent" style="width: 83px;">OK</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </template>
 <script>
@@ -375,11 +311,6 @@
                 clientCampaigns :[
 
                 ],
-                addAgentData:{
-                    selectedCampaignID:'no-select',
-                    status:'',
-                    agentID: ''
-                },
                 showSearchResults:false,
                 notificationMessage:'Successfully added agent to campaign ',
             }
@@ -399,21 +330,6 @@
                     .catch( (error) => {
                         console.log(error.response.data);
                     } );
-            },
-            addCampAgent(){
-                axios.post('/client/camp/add-agent',this.addAgentData)
-                    .then( (response) => {
-                        if(response.data.status === 'success'){
-                            // agent has been successfully added to the campaign.
-                            this.showSuccessMessage();
-                        }
-                        else if(response.data.status === 'exists') {
-                            this.showErrorMessage();
-                        }
-                    })
-                    .catch( (error) => {
-
-                    })
             },
             hideNotification(){
                 $('#notificationBar').css('display','none');

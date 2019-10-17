@@ -1,6 +1,6 @@
 <template>
     <div class="payments">
-        <div class="invoices">
+        <div class="invoices  mt-0">
             <div class="invoices-heading">
                 <img src="/images/client/payments/invoices_40px.png" alt="invoices icon">
                 YOUR INVOICES

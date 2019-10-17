@@ -57,7 +57,7 @@
                         </div>
 
                     </div>
-                    <div v-for="(log,index) in agentLogs" :key="index + '_LOG'">
+                    <div v-for="(log,index) in agentLogs" :key="index + '_LOG'" v-show="log.campaign_id == campaign.id">
                         <div class="log">
                             <div class="log-time">
                                 {{getDate(log.created_at)}}

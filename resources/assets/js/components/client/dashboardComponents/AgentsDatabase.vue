@@ -1,13 +1,5 @@
 <template>
     <div>
-        <nav class="navbar navbar-light fixed-top dashboard_navbar">
-            <div class="backBtn">
-                <a href="/client/dashboard">
-                    <img src="/images/client/arrow_back.png" alt="back-icon">
-                </a>
-                ADD NEW AGENT
-            </div>
-        </nav>
         <div class="container" style="display: flex;justify-content: center;">
             <div class="notificationBar" id="notificationBar" style="display: none; position:fixed;">
                 <div>
@@ -19,18 +11,14 @@
             </div>
         </div>
 
-        <!--<div class="visible-add-agent">-->
-        <!-- visibale in laptop -->
         <div class="d-flex justify-content-center">
-            <div class="main-grid">
-
+            <div class="dashboard-box">
                 <div class="header-text">
                     <img src="/images/client/add_agent/ic/search_40px.svg" alt="" class="icon-margin small-image">
                     ENTER THE PARAMETERS OF SEARCH
                 </div>
-                <hr/>
                 <!-- hr  -->
-                <form class="add-agent-form">
+                <form class="">
                     <div class="form-row">
                         <div class="col-sm-12 col-md-12 col-lg-6">
                             <div class="form-row">
@@ -193,7 +181,7 @@
                             <div class="form-row">
                                 <div class="container">
                                     <div class="row"
-                                         style="margin-top: 14px;">
+                                         style="margin-top: 14px; margin-bottom: 14px;">
                                         <div class="col-12 col-sm-6 col-md-8 right-side">
                                             <button type="button"
                                                     class="btn btn-left">VIEW SAVED SEARCHES
@@ -203,7 +191,7 @@
                                             <div class="row">
                                                 <div class="col-12 center-content">
                                                     <a href="javascript:void(0)" @click="updateSearch"
-                                                            class="btn btn-primary d-flex justify-content-center align-items-center">SEARCH FOR AGENTS
+                                                       class="btn btn-primary d-flex justify-content-center align-items-center">SEARCH FOR AGENTS
                                                     </a>
                                                 </div>
                                                 <div class="col-12 center-content NoDecor" id="aboveSearchResultsSection">
@@ -219,15 +207,7 @@
                 </form>
             </div>
         </div>
-        <!--</div>-->
-        <!--<div class="invisible-add-agent d-flex align-item-center justify-content-center">-->
-        <!--&lt;!&ndash; visiable in mobile and tablet &ndash;&gt;-->
-        <!--<div class="header-text invisiable-div main-grid" style="padding: 20px 0 !imprtnant; margin-bottom :20px;">-->
-        <!--<img src="/images/client/add_agent/ic/search_40px.png" alt="search" class="search-icon-margin small-image">-->
-        <!--GO TO PARAMETERS OF SEARCH-->
-        <!--</div>-->
-        <!--</div>-->
-        <!-- search_result -->
+
         <div class="d-flex justify-content-center" v-if="showSearchResults">
             <div class="main-grid">
                 <div class="header-text">
@@ -235,8 +215,6 @@
                          class="icon-margin small-image">
                     SEARCH RESULTS
                 </div>
-                <!-- first agent -->
-                <hr/>
 
                 <div  v-show="searchResults.length > 0">
                     <div v-for="(agent,index) in searchResults" :key="index">
@@ -410,7 +388,6 @@
             updateSearch(){
                 axios.post('/client/agents/search',this.searchParams)
                     .then( (response) => {
-                        console.log(response.data);
                         this.searchResults = response.data ;
                         this.showSearchResults = true ;
 
@@ -429,11 +406,9 @@
                         if(response.data.status === 'success'){
                             // agent has been successfully added to the campaign.
                             this.showSuccessMessage();
-                            console.log('success');
                         }
                         else if(response.data.status === 'exists') {
                             this.showErrorMessage();
-                            console.log('exists');
                         }
                     })
                     .catch( (error) => {
@@ -552,5 +527,19 @@
         .notificationBar{
             width: 96%;
         }
+    }
+
+    .header-text{
+        justify-content: space-between;
+        padding-bottom: 24px;
+        padding-top: 34px;
+        margin-left: 24px;
+        margin-right: 24px;
+        border-bottom: 1px solid rgba(188, 191, 198, 0.44);
+    }
+
+    .form-row{
+        margin-left: 24px;
+        margin-right: 24px;
     }
 </style>

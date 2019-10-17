@@ -71,14 +71,14 @@
                                 Payments
                             </div>
                         </router-link>
-                        <div v-show="false"  class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
+                        <router-link to="/client/dashboard/agents-database"  class="menu-block row" :class="{'active' : activeTab === 'agents-database'}" @click.native="selectTab('agents-database')">
                             <div class="imageContainer">
-                                <img :src="getMenuBlockIcon('agents_database')"  alt="icon">
+                                <img :src="getMenuBlockIcon('agents-database')"  alt="icon">
                             </div>
                             <div class="menu-block-name">
                                 Agents database
                             </div>
-                        </div>
+                        </router-link>
                         <router-link to="/client/dashboard/my-account" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('my-account')" alt="icon">
@@ -124,14 +124,14 @@
                         Payments
                     </div>
                 </router-link>
-                <div v-show="false"  class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
+                <router-link   to="/client/dashboard/agents-database" class="menu-block row" :class="{'active' : activeTab === 'agents-database'}" @click.native="selectTab('agents-database')">
                     <div class="imageContainer">
-                        <img :src="getMenuBlockIcon('agents_database')"  alt="icon">
+                        <img :src="getMenuBlockIcon('agents-database')"  alt="icon">
                     </div>
                     <div class="menu-block-name">
                         Agents database
                     </div>
-                </div>
+                </router-link>
                 <router-link to="/client/dashboard/my-account" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('my-account')" alt="icon">
@@ -177,6 +177,7 @@
 
             </div>
         </div>
+
     </div>
 </template>
 <script>
@@ -213,7 +214,7 @@
                 return '/images/client/menu_icons/inactive/'+ tabName + '.png';
             },
             setActiveTab(){
-                let tabs = ['campaign-manager', 'payments', 'my-account'];
+                let tabs = ['campaign-manager', 'payments', 'my-account','agents-database'];
                 
                 this.activeTab = this.$route.path.replace('/client/dashboard/','');
                 if(!tabs.includes(this.activeTab)){

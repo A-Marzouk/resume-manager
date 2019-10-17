@@ -430,9 +430,6 @@
             var female_gender = document.getElementById('female-gender');
             var bothed_gender = document.getElementById('both-gender');
             var man_gender = document.getElementById('male-gender');
-            console.log(female);
-            console.log(both);
-            console.log(male);
             if (female == true) {
                 $(female_gender).css({ backgroundImage: 'url("/images/client/add_agent/femaleselected.jpg")' });
                 $(bothed_gender).css({ backgroundImage: 'url("/images/client/add_agent/gender/both_gender_icon.png")' });
@@ -467,8 +464,6 @@
             var spanish = document.getElementById('spanish').checked;
             var english_label = document.getElementById('english_label');
             var spanish_label = document.getElementById('spanish_label');
-            console.log(english);
-            console.log(spanish);
             if (english == true) {
                 $(english_label).css({ backgroundImage: 'url("/images/client/add_agent/englishselected.jpg")' });
                 $(spanish_label).css({ backgroundImage: 'url("/images/client/add_agent/spanish.jpg")' });

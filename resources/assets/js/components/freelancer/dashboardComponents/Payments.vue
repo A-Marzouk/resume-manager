@@ -103,7 +103,9 @@
                 axios.get('/agent/invoices/get')
                     .then((response) => {
                         this.invoices = response.data;
-                        this.invoices_empty_state = false;
+                        if(this.invoices.length > 0){
+                            this.invoices_empty_state = false;
+                        }
                     })
                     .catch((error) => {
 

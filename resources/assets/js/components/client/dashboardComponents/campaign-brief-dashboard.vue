@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div v-for="(agent,index) in campaignMembers" :key="index" v-show="campaignMembers.length > 0">
+        <div v-for="(agent,index) in campaignMembers" :key="index" v-show="campaignMembers.length > 0" >
             <div class="agent-logs-block">
 
                 <div class="agentInfo">
@@ -34,8 +34,8 @@
                             {{agent.user.user_data.first_name}} {{agent.user.user_data.last_name}}
                         </span>
                 </div>
-                <div v-for="(log,index) in agent.logs" :key="index" v-show="agent.logs.length > 0">
-                    <div class="log">
+                <div v-for="(log,index) in agent.logs" :key="index" v-show="agent.logs.length > 0" >
+                    <div class="log" v-show="log.campaign_id == campaign.id">
                         <div class="log-time">
                             {{getDate(log.created_at)}}
                         </div>

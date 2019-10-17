@@ -191,8 +191,10 @@
                 rootURL: this.$route.path.split('/')[1] + '/' + this.$route.path.split('/')[2],
                 notificationMessage : '',
                 selectedInvoice:{
-                    client:{
-                        user:{}
+                    agent:{
+                        user:{
+                            user_data:{}
+                        }
                     },
                     subscription:{
                         campaign:{},

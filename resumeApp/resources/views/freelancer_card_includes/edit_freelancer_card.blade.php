@@ -15,11 +15,11 @@
                         $defaultSrc = '/resumeApp/public/images/add_profile_photo.png';
 
                         $photoSrc = $freelancer->userData->photo;
-                        if(!empty($photoSrc)){
+                        if (!empty($photoSrc)) {
                             if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
                                 $photoSrc = '/' . $photoSrc;
                             }
-                        }else{
+                        } else {
                             $photoSrc = $defaultSrc;
                         }
                         ?>
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                    <div class="col-lg-3 col-md-4 col-12 freelancerCardLeft freelancerCardLeft_edit_card mobile-auto-margin">
+                <div class="col-lg-3 col-md-4 col-12 freelancerCardLeft freelancerCardLeft_edit_card mobile-auto-margin">
                     <div class="nameArea nameArea_edit_Card">
                         <div class="nameCard">
                             <input type="text" class="form-control cardInput"
@@ -41,18 +41,19 @@
                                    value="<?if(empty($name)):?>{{$freelancer->firstName}} {{$freelancer->lastName}}<?else:?>{{$name}}<? endif;?>"
                             >
                         </div>
-                        <div class="jobTitle jobTitle_edit_card" style="color: white; font-size: 14px; padding-top: 7px;">
+                        <div class="jobTitle jobTitle_edit_card"
+                             style="color: white; font-size: 14px; padding-top: 7px;">
                             <?
                             $developer = [
                                 'Full-Stack Developer', 'Front-End Developer', 'PHP Developer',
                                 'Javascript Developer', '.NET Developer',
                                 'iOS Developer', 'Android Developer', 'Swift Developer',
-                                'Java Developer','Data Scientist','C C++ Developer' , 'Team Leader' ,
-                                'Unity Developer' , 'Ruby Developer','Python Developer' , 'SQL Developer' ,'Wordpress Developer'
+                                'Java Developer', 'Data Scientist', 'C C++ Developer', 'Team Leader',
+                                'Unity Developer', 'Ruby Developer', 'Python Developer', 'SQL Developer', 'Wordpress Developer'
                             ];
-                            $designer =['UI/UX Designer','UI Designer',' UX Designer',
-                                'Illustrator','Motion Graphics','Art Director','Branding',
-                                'Graphic Designer',' Web Designer','Game Designer','Digital Artist'];
+                            $designer = ['UI/UX Designer', 'UI Designer', ' UX Designer',
+                                'Illustrator', 'Motion Graphics', 'Art Director', 'Branding',
+                                'Graphic Designer', ' Web Designer', 'Game Designer', 'Digital Artist'];
 
                             $businessSupport = ['Business Support'];
                             ?>
@@ -73,20 +74,20 @@
                                         line-height: 15px;"
                                     id="jobTitle" name="jobTitle">
                                 <? if($profession == 'Developer'):?>
-                                    <option value="" selected disabled>-- Developer --</option>
-                                    <? foreach($developer as $job):?>
-                                        <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?> >{{$job}}</option>
-                                    <? endforeach;?>
+                                <option value="" selected disabled>-- Developer --</option>
+                                <? foreach($developer as $job):?>
+                                <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?> >{{$job}}</option>
+                                <? endforeach;?>
                                 <?elseif($profession == 'Designer'):?>
-                                    <option value="" disabled selected>-- Designer --</option>
-                                    <? foreach($designer as $job):?>
-                                        <option value="{{$job}}"<?if($jobTitle == $job):?>selected<?endif;?>>{{$job}}</option>
-                                    <? endforeach;?>
+                                <option value="" disabled selected>-- Designer --</option>
+                                <? foreach($designer as $job):?>
+                                <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?>>{{$job}}</option>
+                                <? endforeach;?>
                                 <?else:?>
-                                    <option value="" disabled selected>-- Bussiness support --</option>
-                                    <? foreach($businessSupport as $job):?>
-                                        <option value="{{$job}}"<?if($jobTitle == $job):?>selected<?endif;?>>{{$job}}</option>
-                                    <? endforeach;?>
+                                <option value="" disabled selected>-- Bussiness support --</option>
+                                <? foreach($businessSupport as $job):?>
+                                <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?>>{{$job}}</option>
+                                <? endforeach;?>
                                 <? endif;?>
                             </select>
                         </div>
@@ -94,7 +95,8 @@
                 </div>
                 <div class="col-lg-7 col-md-8 col-12 freelancerCardRight">
                     <div class="row interviewIcons">
-                        <div class="col-md-4 jobTitle text-right d-none d-md-inline" style="font-size:12px;color: white; padding-top: 13px; padding-right: 30px;">
+                        <div class="col-md-4 jobTitle text-right d-none d-md-inline"
+                             style="font-size:12px;color: white; padding-top: 13px; padding-right: 30px;">
                             Your interviews :
                         </div>
                         <div class="col-12 col-lg-4 audioTransArea text-center NoDecor">
@@ -127,42 +129,52 @@
                             <div class="hoursBtn NoDecor" style="color:white; background: none; border:none;">
                                 <div class="row">
                                     <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
-                                        <a href="javascript:void(0)" id="dollarsMinus{{$freelancer->id}}" class="dollarsMinus">
-                                            <img src="/resumeApp/public/images/newResume/minus copy 6.png" style="width: 18px; padding-right: 8px;" alt="minus">
+                                        <a href="javascript:void(0)" id="dollarsMinus{{$freelancer->id}}"
+                                           class="dollarsMinus">
+                                            <img src="/resumeApp/public/images/newResume/minus copy 6.png"
+                                                 style="width: 18px; padding-right: 8px;" alt="minus">
                                         </a>
                                     </div>
 
                                     <div class="col-md-8 col-8 textBox">
-                                        <span id="numberOfDollars{{$freelancer->id}}">{{$freelancer->userData->salary}}</span> $<br/>
+                                        <span id="numberOfDollars{{$freelancer->id}}">{{$freelancer->userData->salary}}</span>
+                                        $<br/>
                                         <span style="font-size: 13px; font-weight: normal">Hourly Rate</span>
                                     </div>
 
                                     <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
-                                        <a href="javascript:void(0)" id="dollarsPlus{{$freelancer->id}}" class="dollarsPlus">
-                                            <img src="/resumeApp/public/images/newResume/plus copy 6.png" style="width: 18px; padding-left: 8px;" alt="plus">
+                                        <a href="javascript:void(0)" id="dollarsPlus{{$freelancer->id}}"
+                                           class="dollarsPlus">
+                                            <img src="/resumeApp/public/images/newResume/plus copy 6.png"
+                                                 style="width: 18px; padding-left: 8px;" alt="plus">
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div  class="text-center hireRow calculateBox" style="margin-left: 7px;">
+                        <div class="text-center hireRow calculateBox" style="margin-left: 7px;">
                             <div class="hoursBtn NoDecor" style="color:white; background: none; border:none;">
                                 <div class="row">
                                     <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
-                                        <a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}" class="hoursMinus">
-                                            <img src="/resumeApp/public/images/newResume/minus copy 6.png" style="width: 18px; padding-right: 8px;" alt="minus">
+                                        <a href="javascript:void(0)" id="hoursMinus{{$freelancer->id}}"
+                                           class="hoursMinus">
+                                            <img src="/resumeApp/public/images/newResume/minus copy 6.png"
+                                                 style="width: 18px; padding-right: 8px;" alt="minus">
                                         </a>
                                     </div>
                                     <div class="col-md-8 col-8 textBox">
-                                        <span id="numberOfHours{{$freelancer->id}}">@if($freelancer->userData->availableHours==0) 0 @else {{$freelancer->userData->availableHours}} @endif</span>
+                                        <span id="numberOfHours{{$freelancer->id}}">@if($freelancer->userData->availableHours==0)
+                                                0 @else {{$freelancer->userData->availableHours}} @endif</span>
                                         hours<br/>
                                         <span id="maxHours{{$freelancer->id}}" class="d-none">60</span>
                                         <span style="font-size: 13px; font-weight: normal">Weekly Availability</span>
                                     </div>
                                     <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
-                                        <a href="javascript:void(0)" id="hoursPlus{{$freelancer->id}}" class="hoursPlus">
-                                            <img src="/resumeApp/public/images/newResume/plus copy 6.png" style="width: 18px; padding-left: 8px;" alt="plus">
+                                        <a href="javascript:void(0)" id="hoursPlus{{$freelancer->id}}"
+                                           class="hoursPlus">
+                                            <img src="/resumeApp/public/images/newResume/plus copy 6.png"
+                                                 style="width: 18px; padding-left: 8px;" alt="plus">
                                         </a>
                                     </div>
                                 </div>
@@ -171,30 +183,54 @@
                     </div>
                 </div>
 
-                <input type="file" id="audioFile" name="audioFile" style="width: 1px; height: 1px; opacity: 0; right:145%;">
-                <input type="file" id="video_file" name="video_file" style="width: 1px; height: 1px; opacity: 0; right:145%;">
-                <input type="file" id="photoInput" name="photo" style="width: 1px; height: 1px; opacity: 0; right:145%;">
-                <input type="text" id="salary{{$freelancer->id}}" name="salary" style="width: 1px; height: 1px; opacity: 0; right:145%;" value="<? if(!empty($salary)){echo $salary;}else{echo '';}?>">
-                <input type="text" id="availableHours{{$freelancer->id}}" name="availableHours" style="width: 1px; height: 1px; opacity: 0; right:145%;" value="<? if(!empty($availableHours)){echo $availableHours;}else{echo '';}?>">
+                <input type="file" id="audioFile" name="audioFile"
+                       style="width: 1px; height: 1px; opacity: 0; right:145%;">
+                <input type="file" id="video_file" name="video_file"
+                       style="width: 1px; height: 1px; opacity: 0; right:145%;">
+                <input type="file" id="photoInput" name="photo"
+                       style="width: 1px; height: 1px; opacity: 0; right:145%;">
+                <input type="text" id="salary{{$freelancer->id}}" name="salary"
+                       style="width: 1px; height: 1px; opacity: 0; right:145%;" value="<? if (!empty($salary)) {
+                    echo $salary;
+                } else {
+                    echo '';
+                }?>">
+                <input type="text" id="availableHours{{$freelancer->id}}" name="availableHours"
+                       style="width: 1px; height: 1px; opacity: 0; right:145%;" value="<? if (!empty($availableHours)) {
+                    echo $availableHours;
+                } else {
+                    echo '';
+                }?>">
             </form>
         </div>
     </div>
 
     <div id="nav-taps-resume-card">
         <ul class="nav nav-tabs navRow" role="tablist">
+
+            <li class="offset-md-2 nav-item col-md-2 col-4 NoDecor">
+                <a class="nav-link navTab text-center active" href="#skills{{$freelancer->id}}" role="tab" data-toggle="tab">
+                    Skills
+                </a>
+            </li>
+
+
             @if($freelancer->profession == 'businessSupport')
-                <li class="offset-md-3 col-md-2 col-4 nav-item NoDecor">
-                    <a class="nav-link navTab text-center active" href="#recordings{{$freelancer->id}}" role="tab" data-toggle="tab">
+                <li class="col-md-2 col-4 nav-item NoDecor">
+                    <a class="nav-link navTab text-center " href="#recordings{{$freelancer->id}}" role="tab"
+                       data-toggle="tab">
                         Recordings
                     </a>
                 </li>
             @else
-                <li class="offset-md-3 col-md-2 col-4 nav-item NoDecor">
-                    <a class="nav-link navTab text-center active" href="#portfolio{{$freelancer->id}}" role="tab" data-toggle="tab">
-                        Skills
+                <li class="col-md-2 col-4 nav-item NoDecor">
+                    <a class="nav-link navTab text-center " href="#portfolio{{$freelancer->id}}" role="tab"
+                       data-toggle="tab">
+                        Portfolio
                     </a>
                 </li>
             @endif
+
 
             <li class="nav-item col-md-2 col-4 NoDecor">
                 <a class="nav-link navTab text-center" href="#work{{$freelancer->id}}" role="tab" data-toggle="tab">
@@ -202,20 +238,38 @@
                 </a>
             </li>
             <li class="nav-item col-md-2 col-4 NoDecor d-none">
-                <a class="nav-link navTab text-center" id="showReferences{{$freelancer->id}}" href="#references{{$freelancer->id}}" role="tab" data-toggle="tab">
+                <a class="nav-link navTab text-center" id="showReferences{{$freelancer->id}}"
+                   href="#references{{$freelancer->id}}" role="tab" data-toggle="tab">
                 </a>
             </li>
 
             <li class="nav-item col-md-2 col-4 NoDecor">
-                <a class="nav-link navTab text-center" href="#education{{$freelancer->id}}" role="tab" data-toggle="tab">
+                <a class="nav-link navTab text-center" href="#education{{$freelancer->id}}" role="tab"
+                   data-toggle="tab">
                     Education
                 </a>
             </li>
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
-            @if($freelancer->profession == 'businessSupport')
-                <div role="tabpanel" class="tab-pane active firstItem" id="recordings{{$freelancer->id}}">
+            <div role="tabpanel" class="tab-pane active firstItem" id="skills{{$freelancer->id}}">
+                <div class="row" style="padding-bottom: 16px;background: #fdfdfd;">
+                    <div class="col-md-12">
+
+
+                        {{-- Skills area --}}
+                        <div id="freelancer_skills">
+                            <skills-list></skills-list>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        @if($freelancer->profession == 'businessSupport')
+                <div role="tabpanel" class="tab-pane  firstItem" id="recordings{{$freelancer->id}}">
                     <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                         <div class="col-md-12">
                             <div id="freelancer_works">
@@ -225,21 +279,14 @@
                     </div>
                 </div>
             @else
-                <div role="tabpanel" class="tab-pane active firstItem" id="portfolio{{$freelancer->id}}">
-                    <div class="row" style="padding-bottom: 16px;background: #fdfdfd;">
+                <div role="tabpanel" class="tab-pane firstItem" id="portfolio{{$freelancer->id}}">
+                    <div class="row" style="padding-top:17px; padding-bottom: 16px;background: #fdfdfd;">
                         <div class="col-md-12">
 
 
-                            {{--<div id="freelancer_works">--}}
-                                {{--<projects-list></projects-list>--}}
-                            {{--</div>--}}
-
-
-                            {{-- Skills area --}}
-                            <div  id="freelancer_skills">
-                                <skills-list></skills-list>
+                            <div id="freelancer_works">
+                                <projects-list></projects-list>
                             </div>
-
 
 
                         </div>
@@ -251,7 +298,7 @@
             <div role="tabpanel" class="tab-pane fade" id="work{{$freelancer->id}}">
                 <div style="padding-top: 17px; padding-bottom: 17px;">
                     <div class="col-md-12">
-                        <div  id="work_overview">
+                        <div id="work_overview">
                             <works-list></works-list>
                         </div>
                     </div>
@@ -260,7 +307,7 @@
             <div role="tabpanel" class="tab-pane fade" id="education{{$freelancer->id}}">
                 <div class="" style="padding-top: 17px; padding-bottom: 17px;">
                     <div class="col-md-12">
-                        <div  id="freelancer_educations">
+                        <div id="freelancer_educations">
                             <educations-list></educations-list>
                         </div>
                     </div>
@@ -270,7 +317,7 @@
             <div role="tabpanel" class="tab-pane fade" id="references{{$freelancer->id}}">
                 <div class="" style="padding-top: 17px; padding-bottom: 17px;">
                     <div class="col-md-12">
-                        <div  id="freelancer_references">
+                        <div id="freelancer_references">
                             <references-list></references-list>
                         </div>
                     </div>
@@ -284,11 +331,13 @@
 {{-- modals : modal of import behance --}}
 
 <!-- Modal -->
-<div class="modal fade" id="behanceDataModal" tabindex="-1" role="dialog" aria-labelledby="behanceDataModalLabel" aria-hidden="true">
+<div class="modal fade" id="behanceDataModal" tabindex="-1" role="dialog" aria-labelledby="behanceDataModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header" style="border: none;">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeBehanceModal" style="outline: none;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeBehanceModal"
+                        style="outline: none;">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -297,7 +346,8 @@
                     {{csrf_field()}}
                     <div class="form-group">
                         <label for="userName" class="panelFormLabel">Your Behance profile link :</label>
-                        <input type="text" class="form-control panelFormInput" id="behanceLink" name="behanceLink"  value="" required>
+                        <input type="text" class="form-control panelFormInput" id="behanceLink" name="behanceLink"
+                               value="" required>
                         <p id="behanceLinkError" class="d-none" style="color: red;">Link is not correct.</p>
                         <p id="behanceLinkWait" class="d-none" style="color: gray;">
                             Please wait, importing your data from Behance..

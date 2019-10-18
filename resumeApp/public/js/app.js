@@ -59826,6 +59826,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         skillsBar: function skillsBar() {
             $(".skills").addClass("active");
             $(".skills .skill .skill-bar span").each(function () {
+                console.log($(this).parent().attr("data-bar"));
                 $(this).animate({
                     "width": $(this).parent().attr("data-bar") + "%"
                 }, 1000);
@@ -82639,19 +82640,19 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(204)
+  __webpack_require__(332)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(206)
 /* template */
-var __vue_template__ = __webpack_require__(207)
+var __vue_template__ = __webpack_require__(334)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-164aa250"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -82684,51 +82685,24 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 204 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(205);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("7d5bd84c", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-164aa250\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./skillsComponent.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-164aa250\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./skillsComponent.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 205 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.list-item {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active, .list-leave-active {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n#addSKillBtn{\n    border:1px lightgray solid;\n    margin-bottom: 8px;\n    margin-left: -30px;\n}\n@media only screen and (max-width: 600px) {\n#addSKillBtn{\n        margin-left: 0px;\n}\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 204 */,
+/* 205 */,
 /* 206 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -82823,6 +82797,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('/freelancer/skills').then(function (response) {
                 _this.skills = response.data;
+                setTimeout(function () {
+                    _this.skillsBar();
+                }, 500);
             });
         },
         deleteSkill: function deleteSkill(skill) {
@@ -82870,6 +82847,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 // enable the input :
                 $('#skill_title').attr('disabled', false);
                 $('#skill_title').css('background-color', 'white');
+
+                setTimeout(function () {
+                    _this3.skillsBar();
+                }, 500);
+
                 // changes saved :
                 $('#changesSaved').fadeIn('slow');
                 setTimeout(function () {
@@ -82879,393 +82861,121 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         setCurrSkillType: function setCurrSkillType(type) {
             this.currType = type;
+        },
+        highlightSkill: function highlightSkill(skill, percent) {
+            $('#skillImage_' + skill.id).css('filter', 'grayscale(' + percent + '%)');
+        },
+        getSkillIconSrc: function getSkillIconSrc(skill_title) {
+            var arrayOfSkillImages = {
+                'ui design': '/resumeApp/resources/assets/images/skills_icons/user_interface.png',
+                'ux design': '/resumeApp/resources/assets/images/skills_icons/user_experience.png',
+                'logo design': '/resumeApp/resources/assets/images/skills_icons/logo_design.png',
+                'animation': '/resumeApp/resources/assets/images/skills_icons/animation.jpg',
+                'motion graphics': '/resumeApp/resources/assets/images/skills_icons/motion_graphics.png',
+                'illustration': '/resumeApp/resources/assets/images/skills_icons/illustration.png',
+                'advertising': '/resumeApp/resources/assets/images/skills_icons/advertising.png',
+                'branding': '/resumeApp/resources/assets/images/skills_icons/branding.png',
+                'brochure Design': '/resumeApp/resources/assets/images/skills_icons/brochure_design.png',
+                'website design': '/resumeApp/resources/assets/images/skills_icons/web_design.png',
+                'game designer': '/resumeApp/resources/assets/images/skills_icons/game_designer.png',
+                'character design': '/resumeApp/resources/assets/images/skills_icons/character_design.png',
+                'digital painting': '/resumeApp/resources/assets/images/skills_icons/digital_painting.png',
+                'creative director': '/resumeApp/resources/assets/images/skills_icons/creative_director.png',
+                'html / css': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                // 2-
+
+                'adobe after effects': '/resumeApp/resources/assets/images/skills_icons/AE.png',
+                'sketch': '/resumeApp/resources/assets/images/skills_icons/Sketch.png',
+                'adobe illustrator': '/resumeApp/resources/assets/images/skills_icons/Illustrator.png',
+                'adobe xd': '/resumeApp/resources/assets/images/skills_icons/AdobeXD.png',
+                'photoshop': '/resumeApp/resources/assets/images/skills_icons/Photoshop.png',
+                'autocad': '/resumeApp/resources/assets/images/skills_icons/autocad.png',
+                'solidworks': '/resumeApp/resources/assets/images/skills_icons/solid_works.png',
+                'adobe flash': '/resumeApp/resources/assets/images/skills_icons/adobe_flash.png',
+                'digital drawing Tablet': '/resumeApp/resources/assets/images/skills_icons/digital_drawing_tablet.png',
+                'adobe indesign': '/resumeApp/resources/assets/images/skills_icons/indesign.png',
+                'coreldraw': '/resumeApp/resources/assets/images/skills_icons/corel_draw.png',
+                '3d max': '/resumeApp/resources/assets/images/skills_icons/3d_max.png',
+
+                // developer :
+                // 1-
+                'javascript': '/resumeApp/resources/assets/images/skills_icons/javascript.png',
+                'sql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+                'java': 'resumeApp/resources/assets/images/skills_icons/java.png',
+                'c#': '/resumeApp/resources/assets/images/skills_icons/c#.png',
+                'python': '/resumeApp/resources/assets/images/skills_icons/python.png',
+                'php': '/resumeApp/resources/assets/images/skills_icons/php.png',
+                'c++': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
+                'c': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
+                'typescript': '/resumeApp/resources/assets/images/skills_icons/typescript.png',
+                'ruby': '/resumeApp/resources/assets/images/skills_icons/ruby.png',
+                'objective-C': '/resumeApp/resources/assets/images/skills_icons/objective_c.png',
+                'swift': '/resumeApp/resources/assets/images/skills_icons/swift.png',
+                'vb.net': '/resumeApp/resources/assets/images/skills_icons/vb_net.png',
+                'go': '/resumeApp/resources/assets/images/skills_icons/go.png',
+                'perl': '/resumeApp/resources/assets/images/skills_icons/perl.png',
+                'scala': '/resumeApp/resources/assets/images/skills_icons/scala.png',
+                'groovy': '/resumeApp/resources/assets/images/skills_icons/groovy.png',
+                'assembly': '/resumeApp/resources/assets/images/skills_icons/assembly.png',
+                'coffeescript': '/resumeApp/resources/assets/images/skills_icons/coffeeScript.png',
+                'vba': '/resumeApp/resources/assets/images/skills_icons/vba.png',
+                'r': '/resumeApp/resources/assets/images/skills_icons/r_lang.png',
+                'matlab': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
+                'visual basic 6': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
+                'lua': '/resumeApp/resources/assets/images/skills_icons/lua.png',
+                'haskell': '/resumeApp/resources/assets/images/skills_icons/haskell.png',
+                'html': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                'css': '/resumeApp/resources/assets/images/skills_icons/CSS.png',
+
+                //2-
+                'angularjs': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
+                'angular.js': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
+                'node.js': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
+                'nodejs': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
+                '.net Core': '/resumeApp/resources/assets/images/skills_icons/netcore.png',
+                'react': '/resumeApp/resources/assets/images/skills_icons/react.png',
+                'cordova': '/resumeApp/resources/assets/images/skills_icons/cordava.png',
+                'firebase': '',
+                'xamarin': '',
+                'hadoop': '/resumeApp/resources/assets/images/skills_icons/hadoop.png',
+                'spark': '/resumeApp/resources/assets/images/skills_icons/spark.png',
+                'mysql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+                'sql server': '/resumeApp/resources/assets/images/skills_icons/sql server.png',
+                'postgresql': '/resumeApp/resources/assets/images/skills_icons/postgreSQL.png',
+                'sqlite': '/resumeApp/resources/assets/images/skills_icons/SQLite.png',
+                'mongodb': '/resumeApp/resources/assets/images/skills_icons/mongoDB.png',
+                'oracle': '/resumeApp/resources/assets/images/skills_icons/Oracle.png',
+                'redis': '/resumeApp/resources/assets/images/skills_icons/redis.png',
+                'cassandra': '/resumeApp/resources/assets/images/skills_icons/cassandra.png'
+            };
+            if (arrayOfSkillImages.hasOwnProperty(skill_title.toLowerCase())) {
+                return arrayOfSkillImages[skill_title.toLowerCase()];
+            }
+            return '/resumeApp/resources/assets/images/skills_icons/skill.png';
+        },
+        skillsBar: function skillsBar() {
+            $(".skills").addClass("active");
+
+            $(".skills .skill .skill-bar span").each(function () {
+                $(this).animate({
+                    "width": $(this).parent().attr("data-bar") + "%"
+                }, 1000);
+            });
+
+            setTimeout(function () {
+                $(".skills .skill .skill-bar span b").animate({ "opacity": "1" }, 1000);
+            }, 2000);
         }
     },
     created: function created() {
         this.getSkills();
         this.currType = 'programming';
-    }
+    },
+    mounted: function mounted() {}
 });
 
 /***/ }),
-/* 207 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { attrs: { id: "nav-taps-resume" } }, [
-      _c("ul", { staticClass: "nav nav-tabs", attrs: { role: "tablist" } }, [
-        _c(
-          "li",
-          {
-            staticClass: "nav-item",
-            on: {
-              click: function($event) {
-                _vm.setCurrSkillType("programming")
-              }
-            }
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "nav-link text-center active",
-                attrs: {
-                  href: "javascript:void(0)",
-                  role: "tab",
-                  "data-toggle": "tab"
-                }
-              },
-              [
-                _vm._v(
-                  "\n                    Programming Languages\n                "
-                )
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          {
-            staticClass: "nav-item",
-            on: {
-              click: function($event) {
-                _vm.setCurrSkillType("frameworks")
-              }
-            }
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "nav-link text-center",
-                attrs: {
-                  href: "javascript:void(0)",
-                  role: "tab",
-                  "data-toggle": "tab"
-                }
-              },
-              [
-                _vm._v(
-                  "\n                    Frameworks / Databases\n                "
-                )
-              ]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          {
-            staticClass: "nav-item",
-            on: {
-              click: function($event) {
-                _vm.setCurrSkillType("design")
-              }
-            }
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "nav-link text-center",
-                attrs: {
-                  href: "javascript:void(0)",
-                  role: "tab",
-                  "data-toggle": "tab"
-                }
-              },
-              [_vm._v("\n                    Design Skills\n                ")]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          {
-            staticClass: "nav-item",
-            on: {
-              click: function($event) {
-                _vm.setCurrSkillType("software")
-              }
-            }
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "nav-link text-center",
-                attrs: {
-                  href: "javascript:void(0)",
-                  role: "tab",
-                  "data-toggle": "tab"
-                }
-              },
-              [_vm._v("\n                    Software\n                ")]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "tab-content" }, [
-        _c(
-          "div",
-          {
-            staticClass: "tab-pane active firstItem",
-            attrs: { role: "tabpanel", id: "languagesTab" }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "row",
-                staticStyle: { "padding-top": "17px", background: "#fdfdfd" }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-md-8",
-                    staticStyle: { "padding-top": "5px" }
-                  },
-                  [
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.skills.length < 1,
-                            expression: "skills.length < 1"
-                          }
-                        ],
-                        staticClass: "jobTitle"
-                      },
-                      [
-                        _vm._v(
-                          "\n                               Your skills section looks empty. Please add your skills.\n                         "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "row", attrs: { name: "list" } },
-                      _vm._l(_vm.skills, function(skill, index) {
-                        return _c(
-                          "div",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value: skill.type == _vm.currType,
-                                expression: "skill.type == currType"
-                              }
-                            ],
-                            key: index,
-                            staticClass: "text-center skillView col-3",
-                            staticStyle: {
-                              "margin-right": "10px",
-                              background: "whitesmoke",
-                              "border-radius": "10px",
-                              "margin-top": "5px",
-                              "margin-bottom": "5px"
-                            }
-                          },
-                          [
-                            _c(
-                              "b",
-                              {
-                                staticStyle: {
-                                  color: "#697786",
-                                  "font-family": "Roboto",
-                                  "font-size": "16px",
-                                  "font-weight": "300",
-                                  "line-height": "24px"
-                                }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                   " +
-                                    _vm._s(skill.skill_title) +
-                                    " "
-                                ),
-                                _c("br"),
-                                _vm._v(
-                                  " " +
-                                    _vm._s(skill.percentage) +
-                                    "%\n                                   "
-                                ),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "close",
-                                    staticStyle: {
-                                      padding: "2px",
-                                      outline: "none"
-                                    },
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        _vm.deleteSkill(skill)
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "span",
-                                      { attrs: { "aria-hidden": "true" } },
-                                      [_vm._v("×")]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      })
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-3" }, [
-                  _c(
-                    "form",
-                    {
-                      attrs: {
-                        action: "/freelancer/addskill/",
-                        method: "post"
-                      },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.addSkill($event)
-                        }
-                      }
-                    },
-                    [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.currSkill.skill_title,
-                              expression: "currSkill.skill_title"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          staticStyle: {
-                            background:
-                              "white url('/resumeApp/resources/assets/images/add_skill.png')  no-repeat right .75rem center",
-                            "background-size": "15px 15px"
-                          },
-                          attrs: {
-                            type: "text",
-                            placeholder: "Add new skill",
-                            id: "skill_title",
-                            name: "skill_title",
-                            required: ""
-                          },
-                          domProps: { value: _vm.currSkill.skill_title },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.currSkill,
-                                "skill_title",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.currSkill.percentage,
-                              expression: "currSkill.percentage"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            min: "50",
-                            max: "100",
-                            step: "10",
-                            placeholder: "Percentage %",
-                            required: ""
-                          },
-                          domProps: { value: _vm.currSkill.percentage },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.currSkill,
-                                "percentage",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-1" }, [
-                  _c(
-                    "a",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value:
-                            _vm.currSkill.skill_title.length > 0 &&
-                            _vm.currSkill.percentage.length > 0,
-                          expression:
-                            "currSkill.skill_title.length > 0 && currSkill.percentage.length > 0"
-                        }
-                      ],
-                      staticClass: "btn btn-outline-dark",
-                      attrs: { href: "javascript:void(0)", id: "addSKillBtn" },
-                      on: { click: _vm.addSkill }
-                    },
-                    [_vm._v("Add")]
-                  )
-                ])
-              ]
-            )
-          ]
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-164aa250", module.exports)
-  }
-}
-
-/***/ }),
+/* 207 */,
 /* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -102987,6 +102697,409 @@ if (navigator.mediaDevices.getUserMedia) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(333);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("60060892", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-164aa250\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./skillsComponent.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-164aa250\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./skillsComponent.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 333 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.list-item[data-v-164aa250] {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active[data-v-164aa250], .list-leave-active[data-v-164aa250] {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter[data-v-164aa250], .list-leave-to[data-v-164aa250] {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n#addSKillBtn[data-v-164aa250] {\n  border: 1px lightgray solid;\n  margin-bottom: 8px;\n  margin-top: 8px;\n}\n@media only screen and (max-width: 600px) {\n#addSKillBtn[data-v-164aa250] {\n    margin-left: 0px;\n}\n}\n.skills[data-v-164aa250],\n.skills .skill[data-v-164aa250],\n.skills .skill .skill-title[data-v-164aa250],\n.skills .skill .skill-bar[data-v-164aa250] {\n  width: 100% !important;\n  float: left;\n}\n.skills[data-v-164aa250] {\n  padding: 0px 15px 10px 15px;\n}\n.skills .skill[data-v-164aa250] {\n  margin-bottom: 30px;\n}\n.skills .skill .skill-title[data-v-164aa250] {\n  color: #808080;\n  margin-bottom: 15px;\n  font-weight: 400;\n  font-size: 14px;\n}\n.skills .skill .skill-bar[data-v-164aa250] {\n  width: 0;\n  height: 6px;\n  background: #f0f0f0;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills.active .skill .skill-bar[data-v-164aa250] {\n  width: 100%;\n}\n.skills .skill .skill-bar span[data-v-164aa250] {\n  float: left;\n  width: 0%;\n  background: #1D91F2;\n  height: 6px;\n  position: relative;\n  transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -webkit-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n  -ms-transition: 1s cubic-bezier(1, 0, 0.5, 1);\n}\n.skills .skill .skill-bar span b[data-v-164aa250] {\n  float: left;\n  width: 100%;\n  position: relative;\n  text-align: right;\n  opacity: 0;\n  font-size: 14px;\n  color: #1D91F2;\n  font-weight: 400;\n  top: -13px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { attrs: { id: "nav-taps-resume" } }, [
+      _c("ul", { staticClass: "nav nav-tabs", attrs: { role: "tablist" } }, [
+        _c(
+          "li",
+          {
+            staticClass: "nav-item",
+            on: {
+              click: function($event) {
+                _vm.setCurrSkillType("programming")
+              }
+            }
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "nav-link text-center active",
+                attrs: {
+                  href: "javascript:void(0)",
+                  role: "tab",
+                  "data-toggle": "tab"
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    Programming Languages\n                "
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            staticClass: "nav-item",
+            on: {
+              click: function($event) {
+                _vm.setCurrSkillType("frameworks")
+              }
+            }
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "nav-link text-center",
+                attrs: {
+                  href: "javascript:void(0)",
+                  role: "tab",
+                  "data-toggle": "tab"
+                }
+              },
+              [
+                _vm._v(
+                  "\n                    Frameworks / Databases\n                "
+                )
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            staticClass: "nav-item",
+            on: {
+              click: function($event) {
+                _vm.setCurrSkillType("design")
+              }
+            }
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "nav-link text-center",
+                attrs: {
+                  href: "javascript:void(0)",
+                  role: "tab",
+                  "data-toggle": "tab"
+                }
+              },
+              [_vm._v("\n                    Design Skills\n                ")]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "li",
+          {
+            staticClass: "nav-item",
+            on: {
+              click: function($event) {
+                _vm.setCurrSkillType("software")
+              }
+            }
+          },
+          [
+            _c(
+              "a",
+              {
+                staticClass: "nav-link text-center",
+                attrs: {
+                  href: "javascript:void(0)",
+                  role: "tab",
+                  "data-toggle": "tab"
+                }
+              },
+              [_vm._v("\n                    Software\n                ")]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "tab-content" }, [
+        _c(
+          "div",
+          {
+            staticClass: "tab-pane active firstItem",
+            attrs: { role: "tabpanel", id: "languagesTab" }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "row",
+                staticStyle: { "padding-top": "17px", background: "#fdfdfd" }
+              },
+              [
+                _c("div", { staticClass: "col-md-12" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: {
+                        action: "/freelancer/addskill/",
+                        method: "post"
+                      },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.addSkill($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.currSkill.skill_title,
+                              expression: "currSkill.skill_title"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          staticStyle: {
+                            background:
+                              "white url('/resumeApp/resources/assets/images/add_skill.png')  no-repeat right .75rem center",
+                            "background-size": "15px 15px"
+                          },
+                          attrs: {
+                            type: "text",
+                            placeholder: "Add new skill",
+                            id: "skill_title",
+                            name: "skill_title",
+                            required: ""
+                          },
+                          domProps: { value: _vm.currSkill.skill_title },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.currSkill,
+                                "skill_title",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.currSkill.percentage,
+                              expression: "currSkill.percentage"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "number",
+                            min: "50",
+                            max: "100",
+                            step: "10",
+                            placeholder: "Percentage %",
+                            required: ""
+                          },
+                          domProps: { value: _vm.currSkill.percentage },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.currSkill,
+                                "percentage",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value:
+                                  _vm.currSkill.skill_title.length > 0 &&
+                                  _vm.currSkill.percentage.length > 0,
+                                expression:
+                                  "currSkill.skill_title.length > 0 && currSkill.percentage.length > 0"
+                              }
+                            ],
+                            staticClass: "btn btn-outline-dark",
+                            attrs: {
+                              href: "javascript:void(0)",
+                              id: "addSKillBtn"
+                            },
+                            on: { click: _vm.addSkill }
+                          },
+                          [_vm._v("Add")]
+                        )
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-md-12",
+                    staticStyle: { "padding-top": "5px" }
+                  },
+                  [
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.skills.length < 1,
+                            expression: "skills.length < 1"
+                          }
+                        ],
+                        staticClass: "jobTitle"
+                      },
+                      [
+                        _vm._v(
+                          "\n                               Your skills section looks empty. Please add your skills.\n                         "
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.skills, function(skill, index) {
+                      return _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: skill.type === _vm.currType,
+                              expression: "skill.type === currType"
+                            }
+                          ],
+                          key: index,
+                          staticClass: "highlightSkill skills",
+                          on: {
+                            mouseover: function($event) {
+                              _vm.highlightSkill(skill, 0)
+                            },
+                            mouseleave: function($event) {
+                              _vm.highlightSkill(skill, 100)
+                            }
+                          }
+                        },
+                        [
+                          _c("div", { staticClass: "skill text-left" }, [
+                            _c("div", { staticClass: "skill-title" }, [
+                              _c("img", {
+                                staticStyle: {
+                                  width: "17px",
+                                  "padding-bottom": "3px"
+                                },
+                                attrs: {
+                                  src: _vm.getSkillIconSrc(skill.skill_title),
+                                  alt: "skill",
+                                  id: "skillImage_" + skill.id
+                                }
+                              }),
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(skill.skill_title) +
+                                  "\n                                "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "skill-bar",
+                                attrs: { "data-bar": skill.percentage }
+                              },
+                              [_c("span")]
+                            )
+                          ])
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-164aa250", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

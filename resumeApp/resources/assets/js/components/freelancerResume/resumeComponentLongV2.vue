@@ -938,6 +938,7 @@
             skillsBar() {
                 $(".skills").addClass("active");
                 $(".skills .skill .skill-bar span").each(function () {
+                    console.log($(this).parent().attr("data-bar"));
                     $(this).animate({
                         "width": $(this).parent().attr("data-bar") + "%"
                     }, 1000);

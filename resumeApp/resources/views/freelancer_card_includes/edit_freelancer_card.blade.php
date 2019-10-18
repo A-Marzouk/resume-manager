@@ -179,10 +179,6 @@
             </form>
         </div>
     </div>
-    {{-- Skills area --}}
-    <div  id="freelancer_skills">
-        <skills-list></skills-list>
-    </div>
 
     <div id="nav-taps-resume-card">
         <ul class="nav nav-tabs navRow" role="tablist">
@@ -195,7 +191,7 @@
             @else
                 <li class="offset-md-3 col-md-2 col-4 nav-item NoDecor">
                     <a class="nav-link navTab text-center active" href="#portfolio{{$freelancer->id}}" role="tab" data-toggle="tab">
-                        Portfolio
+                        Skills
                     </a>
                 </li>
             @endif
@@ -230,11 +226,22 @@
                 </div>
             @else
                 <div role="tabpanel" class="tab-pane active firstItem" id="portfolio{{$freelancer->id}}">
-                    <div class="row" style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
+                    <div class="row" style="padding-bottom: 16px;background: #fdfdfd;">
                         <div class="col-md-12">
-                            <div id="freelancer_works">
-                                <projects-list></projects-list>
+
+
+                            {{--<div id="freelancer_works">--}}
+                                {{--<projects-list></projects-list>--}}
+                            {{--</div>--}}
+
+
+                            {{-- Skills area --}}
+                            <div  id="freelancer_skills">
+                                <skills-list></skills-list>
                             </div>
+
+
+
                         </div>
                     </div>
                 </div>

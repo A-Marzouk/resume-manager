@@ -27,26 +27,7 @@
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active firstItem" id="languagesTab">
                     <div class="row" style="padding-top: 17px;background: #fdfdfd;">
-                        <div class="col-md-8" style="padding-top: 5px;">
-                             <span class="jobTitle" v-show="skills.length < 1">
-                                   Your skills section looks empty. Please add your skills.
-                             </span>
-                           <div name="list" class="row">
-                               <div v-show="skill.type == currType" v-for="(skill,index) in skills"
-                                    v-bind:key="index"
-                                    class="text-center skillView col-3"
-                                    style="margin-right: 10px; background: whitesmoke;border-radius: 10px; margin-top:5px; margin-bottom:5px;"
-                               >
-                                   <b style="color: #697786;font-family: Roboto;font-size: 16px;font-weight: 300;line-height: 24px;">
-                                       {{skill.skill_title}} <br/> {{skill.percentage}}%
-                                       <button type="button" class="close" style="padding: 2px; outline: none;" @click="deleteSkill(skill)">
-                                           <span aria-hidden="true">&times;</span>
-                                       </button>
-                                    </b>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
+                        <div class="col-md-12">
                             <form action="/freelancer/addskill/" method="post" @submit.prevent="addSkill">
                                 <div class="form-group">
                                     <input type="text" placeholder="Add new skill" class="form-control" id="skill_title"
@@ -57,12 +38,42 @@
                                         background-size: 15px 15px;"
                                     >
 
-                                    <input type="number" min="50" max="100" step="10" placeholder="Percentage %" class="form-control" v-model="currSkill.percentage" required>
+                                    <input type="number" min="50" max="100" step="10" placeholder="Percentage %"
+                                           class="form-control" v-model="currSkill.percentage" required>
+
+                                    <a href="javascript:void(0)"
+                                       v-show="currSkill.skill_title.length > 0 && currSkill.percentage.length > 0"
+                                       id="addSKillBtn" @click="addSkill" class="btn btn-outline-dark">Add</a>
+
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-1">
-                            <a href="javascript:void(0)" v-show="currSkill.skill_title.length > 0 && currSkill.percentage.length > 0" id="addSKillBtn" @click="addSkill" class="btn btn-outline-dark">Add</a>
+                        <div class="col-md-12" style="padding-top: 5px;">
+                             <span class="jobTitle" v-show="skills.length < 1">
+                                   Your skills section looks empty. Please add your skills.
+                             </span>
+
+                            <div @mouseover="highlightSkill(skill,0)"
+                                 @mouseleave="highlightSkill(skill,100)"
+                                 v-for="(skill,index) in skills" :key="index"
+                                 v-show="skill.type === currType"
+                                 class="highlightSkill skills">
+                                <!-- skill -->
+                                <div class="skill text-left">
+                                    <!-- title -->
+                                    <div class="skill-title">
+                                        <img style="width: 17px;padding-bottom: 3px;"
+                                             :src="getSkillIconSrc(skill.skill_title)"
+                                             alt="skill" :id="'skillImage_' + skill.id">
+                                        {{skill.skill_title}}
+                                    </div>
+                                    <!-- bar -->
+                                    <div class="skill-bar" :data-bar="skill.percentage">
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <!-- #skill -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,31 +85,35 @@
 
 <script>
     export default {
-        data(){
-            return{
-                skills:[],
-                currSkill:{
-                    skill_title:'',
-                    type:'',
-                    percentage:'',
+        data() {
+            return {
+                skills: [],
+                currSkill: {
+                    skill_title: '',
+                    type: '',
+                    percentage: '',
                 },
-                currType:''
+                currType: '',
             }
         },
-        methods:{
-            getSkills(){
+        methods: {
+            getSkills() {
                 axios.get('/freelancer/skills').then(
                     (response) => {
                         this.skills = response.data;
+                        setTimeout(() => {
+                            this.skillsBar();
+                        },500);
+
                     }
                 );
             },
-            deleteSkill(skill){
-                axios.post('/freelancer/deleteskill',{skillID:skill.id}).then((response)=>{
+            deleteSkill(skill) {
+                axios.post('/freelancer/deleteskill', {skillID: skill.id}).then((response) => {
                     let skills = this.skills;
-                    $.each(skills, function(i){
-                        if(skills[i].id === skill.id) {
-                            skills.splice(i,1);
+                    $.each(skills, function (i) {
+                        if (skills[i].id === skill.id) {
+                            skills.splice(i, 1);
                             return false;
                         }
                     });
@@ -107,27 +122,27 @@
                     $('#changesSaved').fadeIn('slow');
                     setTimeout(function () {
                         $('#changesSaved').fadeOut();
-                    },2000);
+                    }, 2000);
 
                 });
             },
-            addSkill(){
+            addSkill() {
                 // disable the input :
-                $('#skill_title').attr('disabled',true);
-                $('#skill_title').css('background-color','lightgrey');
+                $('#skill_title').attr('disabled', true);
+                $('#skill_title').css('background-color', 'lightgrey');
                 // post data :
                 axios.post('/freelancer/addskill',
                     {
-                        skill_title : this.currSkill.skill_title,
+                        skill_title: this.currSkill.skill_title,
                         type: this.currType,
                         percentage: this.currSkill.percentage
                     }
-                    ).then( (response) => {
+                ).then((response) => {
                     let newSkill = {
-                        id:response.data.id,
-                        skill_title : this.currSkill.skill_title,
-                        type :this.currType,
-                        percentage :this.currSkill.percentage
+                        id: response.data.id,
+                        skill_title: this.currSkill.skill_title,
+                        type: this.currType,
+                        percentage: this.currSkill.percentage
                     };
 
                     this.skills.push(newSkill);
@@ -135,49 +150,227 @@
                     this.currSkill.skill_title = '';
                     this.currSkill.percentage = '';
                     // enable the input :
-                    $('#skill_title').attr('disabled',false);
-                    $('#skill_title').css('background-color','white');
+                    $('#skill_title').attr('disabled', false);
+                    $('#skill_title').css('background-color', 'white');
+
+                    setTimeout(() => {
+                        this.skillsBar();
+                    },500);
+
+
                     // changes saved :
                     $('#changesSaved').fadeIn('slow');
                     setTimeout(function () {
                         $('#changesSaved').fadeOut();
-                    },2000);
+                    }, 2000);
                 });
             },
-            setCurrSkillType(type){
-                this.currType = type ;
-            }
+            setCurrSkillType(type) {
+                this.currType = type;
+            },
+            highlightSkill(skill, percent) {
+                $('#skillImage_' + skill.id).css('filter', 'grayscale(' + percent + '%)');
+            },
+            getSkillIconSrc(skill_title) {
+                let arrayOfSkillImages = {
+                    'ui design': '/resumeApp/resources/assets/images/skills_icons/user_interface.png',
+                    'ux design': '/resumeApp/resources/assets/images/skills_icons/user_experience.png',
+                    'logo design': '/resumeApp/resources/assets/images/skills_icons/logo_design.png',
+                    'animation': '/resumeApp/resources/assets/images/skills_icons/animation.jpg',
+                    'motion graphics': '/resumeApp/resources/assets/images/skills_icons/motion_graphics.png',
+                    'illustration': '/resumeApp/resources/assets/images/skills_icons/illustration.png',
+                    'advertising': '/resumeApp/resources/assets/images/skills_icons/advertising.png',
+                    'branding': '/resumeApp/resources/assets/images/skills_icons/branding.png',
+                    'brochure Design': '/resumeApp/resources/assets/images/skills_icons/brochure_design.png',
+                    'website design': '/resumeApp/resources/assets/images/skills_icons/web_design.png',
+                    'game designer': '/resumeApp/resources/assets/images/skills_icons/game_designer.png',
+                    'character design': '/resumeApp/resources/assets/images/skills_icons/character_design.png',
+                    'digital painting': '/resumeApp/resources/assets/images/skills_icons/digital_painting.png',
+                    'creative director': '/resumeApp/resources/assets/images/skills_icons/creative_director.png',
+                    'html / css': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                    // 2-
+
+                    'adobe after effects': '/resumeApp/resources/assets/images/skills_icons/AE.png',
+                    'sketch': '/resumeApp/resources/assets/images/skills_icons/Sketch.png',
+                    'adobe illustrator': '/resumeApp/resources/assets/images/skills_icons/Illustrator.png',
+                    'adobe xd': '/resumeApp/resources/assets/images/skills_icons/AdobeXD.png',
+                    'photoshop': '/resumeApp/resources/assets/images/skills_icons/Photoshop.png',
+                    'autocad': '/resumeApp/resources/assets/images/skills_icons/autocad.png',
+                    'solidworks': '/resumeApp/resources/assets/images/skills_icons/solid_works.png',
+                    'adobe flash': '/resumeApp/resources/assets/images/skills_icons/adobe_flash.png',
+                    'digital drawing Tablet': '/resumeApp/resources/assets/images/skills_icons/digital_drawing_tablet.png',
+                    'adobe indesign': '/resumeApp/resources/assets/images/skills_icons/indesign.png',
+                    'coreldraw': '/resumeApp/resources/assets/images/skills_icons/corel_draw.png',
+                    '3d max': '/resumeApp/resources/assets/images/skills_icons/3d_max.png',
+
+                    // developer :
+                    // 1-
+                    'javascript': '/resumeApp/resources/assets/images/skills_icons/javascript.png',
+                    'sql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+                    'java': 'resumeApp/resources/assets/images/skills_icons/java.png',
+                    'c#': '/resumeApp/resources/assets/images/skills_icons/c#.png',
+                    'python': '/resumeApp/resources/assets/images/skills_icons/python.png',
+                    'php': '/resumeApp/resources/assets/images/skills_icons/php.png',
+                    'c++': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
+                    'c': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
+                    'typescript': '/resumeApp/resources/assets/images/skills_icons/typescript.png',
+                    'ruby': '/resumeApp/resources/assets/images/skills_icons/ruby.png',
+                    'objective-C': '/resumeApp/resources/assets/images/skills_icons/objective_c.png',
+                    'swift': '/resumeApp/resources/assets/images/skills_icons/swift.png',
+                    'vb.net': '/resumeApp/resources/assets/images/skills_icons/vb_net.png',
+                    'go': '/resumeApp/resources/assets/images/skills_icons/go.png',
+                    'perl': '/resumeApp/resources/assets/images/skills_icons/perl.png',
+                    'scala': '/resumeApp/resources/assets/images/skills_icons/scala.png',
+                    'groovy': '/resumeApp/resources/assets/images/skills_icons/groovy.png',
+                    'assembly': '/resumeApp/resources/assets/images/skills_icons/assembly.png',
+                    'coffeescript': '/resumeApp/resources/assets/images/skills_icons/coffeeScript.png',
+                    'vba': '/resumeApp/resources/assets/images/skills_icons/vba.png',
+                    'r': '/resumeApp/resources/assets/images/skills_icons/r_lang.png',
+                    'matlab': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
+                    'visual basic 6': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
+                    'lua': '/resumeApp/resources/assets/images/skills_icons/lua.png',
+                    'haskell': '/resumeApp/resources/assets/images/skills_icons/haskell.png',
+                    'html': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                    'css': '/resumeApp/resources/assets/images/skills_icons/CSS.png',
+
+                    //2-
+                    'angularjs': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
+                    'angular.js': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
+                    'node.js': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
+                    'nodejs': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
+                    '.net Core': '/resumeApp/resources/assets/images/skills_icons/netcore.png',
+                    'react': '/resumeApp/resources/assets/images/skills_icons/react.png',
+                    'cordova': '/resumeApp/resources/assets/images/skills_icons/cordava.png',
+                    'firebase': '',
+                    'xamarin': '',
+                    'hadoop': '/resumeApp/resources/assets/images/skills_icons/hadoop.png',
+                    'spark': '/resumeApp/resources/assets/images/skills_icons/spark.png',
+                    'mysql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+                    'sql server': '/resumeApp/resources/assets/images/skills_icons/sql server.png',
+                    'postgresql': '/resumeApp/resources/assets/images/skills_icons/postgreSQL.png',
+                    'sqlite': '/resumeApp/resources/assets/images/skills_icons/SQLite.png',
+                    'mongodb': '/resumeApp/resources/assets/images/skills_icons/mongoDB.png',
+                    'oracle': '/resumeApp/resources/assets/images/skills_icons/Oracle.png',
+                    'redis': '/resumeApp/resources/assets/images/skills_icons/redis.png',
+                    'cassandra': '/resumeApp/resources/assets/images/skills_icons/cassandra.png'
+                };
+                if (arrayOfSkillImages.hasOwnProperty(skill_title.toLowerCase())) {
+                    return arrayOfSkillImages[skill_title.toLowerCase()];
+                }
+                return '/resumeApp/resources/assets/images/skills_icons/skill.png';
+            },
+            skillsBar() {
+                $(".skills").addClass("active");
+
+                $(".skills .skill .skill-bar span").each(function () {
+                    $(this).animate({
+                        "width": $(this).parent().attr("data-bar") + "%"
+                    }, 1000);
+                });
+
+                setTimeout(function () {
+                    $(".skills .skill .skill-bar span b").animate({"opacity": "1"}, 1000);
+                }, 2000);
+            },
         },
         created() {
             this.getSkills();
             this.currType = 'programming';
-        }
+        },
+        mounted() {
+
+        },
     }
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
     .list-item {
         display: inline-block;
         margin-right: 10px;
     }
+
     .list-enter-active, .list-leave-active {
         transition: all 1s;
     }
-    .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+
+    .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */
+    {
         opacity: 0;
         transform: translateY(30px);
     }
 
-    #addSKillBtn{
-        border:1px lightgray solid;
+    #addSKillBtn {
+        border: 1px lightgray solid;
         margin-bottom: 8px;
-        margin-left: -30px;
+        margin-top: 8px;
     }
+
     @media only screen and (max-width: 600px) {
-        #addSKillBtn{
+        #addSKillBtn {
             margin-left: 0px;
         }
     }
+
+
+    .skills,
+    .skills .skill,
+    .skills .skill .skill-title,
+    .skills .skill .skill-bar {
+        width: 100% !important;
+        float: left;
+    }
+
+    .skills {
+        padding: 0px 15px 10px 15px;
+    }
+
+    .skills .skill {
+        margin-bottom: 30px;
+    }
+
+    .skills .skill .skill-title {
+        color: #808080;
+        margin-bottom: 15px;
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    .skills .skill .skill-bar {
+        width: 0;
+        height: 6px;
+        background: #f0f0f0;
+        transition: 1s cubic-bezier(1, 0, .5, 1);
+        -webkit-transition: 1s cubic-bezier(1, 0, .5, 1);
+        -ms-transition: 1s cubic-bezier(1, 0, .5, 1);
+    }
+
+    .skills.active .skill .skill-bar {
+        width: 100%;
+    }
+
+    .skills .skill .skill-bar span {
+        float: left;
+        width: 0%;
+        background: #1D91F2;
+        height: 6px;
+        position: relative;
+        transition: 1s cubic-bezier(1, 0, .5, 1);
+        -webkit-transition: 1s cubic-bezier(1, 0, .5, 1);
+        -ms-transition: 1s cubic-bezier(1, 0, .5, 1);
+    }
+
+    .skills .skill .skill-bar span b {
+        float: left;
+        width: 100%;
+        position: relative;
+        text-align: right;
+        opacity: 0;
+        font-size: 14px;
+        color: #1D91F2;
+        font-weight: 400;
+        top: -13px;
+    }
+
 </style>
 
 

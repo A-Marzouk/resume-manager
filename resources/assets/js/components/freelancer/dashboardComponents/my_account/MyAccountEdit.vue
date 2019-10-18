@@ -22,6 +22,31 @@
 
                 <div class="account-edit-section">
                     <div class="account-edit-section-heading">
+                        ADD A PICTURE OF YOURSELF
+                    </div>
+                    <div class="account-edit-section-inputs">
+                        <div class="faq-question-input account-edit-input full-width">
+                            <label class="faq-input-description">
+                                Please upload a picture of yourself. There should be only your face
+                            </label>
+                        </div>
+                        <div id="dropb-profile-picture" class="account-edit-section-edit-btn no-decoration picture-box" :class="{'disabled-btn' : !canSubmit}">
+                            <div class="fallback">
+                                <input type="file" id="photo" name="photo" />
+                            </div>
+                            <p class="dz-message">Drag and drop a photo you want to upload</p>
+                    
+                            <div class="fake-file-input btn btn-orange dz-input" >
+                                CHOOSE A FILE
+                            </div>
+                            <p class="dz-message little">Maximum allowed size is 45 MB</p>
+                            <div id="dropzone" class="dropzone"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="account-edit-section">
+                    <div class="account-edit-section-heading">
                         PERSONAL INFORMATION
                     </div>
                     <div class="account-edit-section-inputs">
@@ -541,6 +566,38 @@
 
       mounted () {
           this.agent = { ...this.agent, ...this.agentData }
+
+          this.files = this.campaign.files ;
+            let component   = this;
+            let fileCategory   = this.fileCategory;
+
+            let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            dropZone = new Dropzone("#drop-profile-picture" , {
+                maxFilesize: 45,
+                dictDefaultMessage: '',
+                dictRemoveFile: '',
+                dictCancelUpload: '',
+                url: '/client/camp/files/upload',
+                autoProcessQueue:false,
+                headers: {
+                    'x-csrf-token': CSRF_TOKEN
+                },
+                paramName: 'files',
+                addRemoveLinks: false,
+                addImage: false,
+                uploadMultiple: false,
+                init: function () {
+                    this.on('addedfile', (file) => {
+                        console.log('addedfile event');
+                        component.uploadFile(file);
+                        file.previewElement.innerHTML = "";
+                    });
+
+                    this.on('error', (error) => {
+                        console.log(error);
+                    });
+                }
+            });
       }
     }
 </script>

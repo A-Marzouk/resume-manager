@@ -24,7 +24,7 @@
                 </li>
             </ul>
             <!-- Tab panes -->
-            <div class="tab-content">
+            <div class="tab-content" style="height: auto !important;">
                 <div role="tabpanel" class="tab-pane active firstItem" id="languagesTab">
                     <div class="row" style="padding-top: 17px;background: #fdfdfd;">
                         <div class="col-md-12">
@@ -66,6 +66,9 @@
                                              :src="getSkillIconSrc(skill.skill_title)"
                                              alt="skill" :id="'skillImage_' + skill.id">
                                         {{skill.skill_title}}
+                                        <button type="button" class="close" style="padding: 2px; outline: none;" @click="deleteSkill(skill)">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                     <!-- bar -->
                                     <div class="skill-bar" :data-bar="skill.percentage">
@@ -131,6 +134,10 @@
                 $('#skill_title').attr('disabled', true);
                 $('#skill_title').css('background-color', 'lightgrey');
                 // post data :
+                if(this.currSkill.percentage > 100){
+                    alert('Percentage can not be greater than 100');
+                    return;
+                }
                 axios.post('/freelancer/addskill',
                     {
                         skill_title: this.currSkill.skill_title,

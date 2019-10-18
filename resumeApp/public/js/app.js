@@ -82777,6 +82777,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -82828,6 +82831,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $('#skill_title').attr('disabled', true);
             $('#skill_title').css('background-color', 'lightgrey');
             // post data :
+            if (this.currSkill.percentage > 100) {
+                alert('Percentage can not be greater than 100');
+                return;
+            }
             axios.post('/freelancer/addskill', {
                 skill_title: this.currSkill.skill_title,
                 type: this.currType,
@@ -102867,227 +102874,257 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "tab-content" }, [
-        _c(
-          "div",
-          {
-            staticClass: "tab-pane active firstItem",
-            attrs: { role: "tabpanel", id: "languagesTab" }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass: "row",
-                staticStyle: { "padding-top": "17px", background: "#fdfdfd" }
-              },
-              [
-                _c("div", { staticClass: "col-md-12" }, [
-                  _c(
-                    "form",
-                    {
-                      attrs: {
-                        action: "/freelancer/addskill/",
-                        method: "post"
-                      },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.addSkill($event)
-                        }
-                      }
-                    },
-                    [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.currSkill.skill_title,
-                              expression: "currSkill.skill_title"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          staticStyle: {
-                            background:
-                              "white url('/resumeApp/resources/assets/images/add_skill.png')  no-repeat right .75rem center",
-                            "background-size": "15px 15px"
-                          },
-                          attrs: {
-                            type: "text",
-                            placeholder: "Add new skill",
-                            id: "skill_title",
-                            name: "skill_title",
-                            required: ""
-                          },
-                          domProps: { value: _vm.currSkill.skill_title },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.currSkill,
-                                "skill_title",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.currSkill.percentage,
-                              expression: "currSkill.percentage"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            min: "50",
-                            max: "100",
-                            step: "10",
-                            placeholder: "Percentage %",
-                            required: ""
-                          },
-                          domProps: { value: _vm.currSkill.percentage },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.currSkill,
-                                "percentage",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            directives: [
-                              {
-                                name: "show",
-                                rawName: "v-show",
-                                value:
-                                  _vm.currSkill.skill_title.length > 0 &&
-                                  _vm.currSkill.percentage.length > 0,
-                                expression:
-                                  "currSkill.skill_title.length > 0 && currSkill.percentage.length > 0"
-                              }
-                            ],
-                            staticClass: "btn btn-outline-dark",
-                            attrs: {
-                              href: "javascript:void(0)",
-                              id: "addSKillBtn"
-                            },
-                            on: { click: _vm.addSkill }
-                          },
-                          [_vm._v("Add")]
-                        )
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "col-md-12",
-                    staticStyle: { "padding-top": "5px" }
-                  },
-                  [
+      _c(
+        "div",
+        {
+          staticClass: "tab-content",
+          staticStyle: { height: "auto !important" }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "tab-pane active firstItem",
+              attrs: { role: "tabpanel", id: "languagesTab" }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "row",
+                  staticStyle: { "padding-top": "17px", background: "#fdfdfd" }
+                },
+                [
+                  _c("div", { staticClass: "col-md-12" }, [
                     _c(
-                      "span",
+                      "form",
                       {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.skills.length < 1,
-                            expression: "skills.length < 1"
+                        attrs: {
+                          action: "/freelancer/addskill/",
+                          method: "post"
+                        },
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.addSkill($event)
                           }
-                        ],
-                        staticClass: "jobTitle"
+                        }
                       },
                       [
-                        _vm._v(
-                          "\n                               Your skills section looks empty. Please add your skills.\n                         "
-                        )
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.currSkill.skill_title,
+                                expression: "currSkill.skill_title"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            staticStyle: {
+                              background:
+                                "white url('/resumeApp/resources/assets/images/add_skill.png')  no-repeat right .75rem center",
+                              "background-size": "15px 15px"
+                            },
+                            attrs: {
+                              type: "text",
+                              placeholder: "Add new skill",
+                              id: "skill_title",
+                              name: "skill_title",
+                              required: ""
+                            },
+                            domProps: { value: _vm.currSkill.skill_title },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.currSkill,
+                                  "skill_title",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.currSkill.percentage,
+                                expression: "currSkill.percentage"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "number",
+                              min: "50",
+                              max: "100",
+                              step: "10",
+                              placeholder: "Percentage %",
+                              required: ""
+                            },
+                            domProps: { value: _vm.currSkill.percentage },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.currSkill,
+                                  "percentage",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value:
+                                    _vm.currSkill.skill_title.length > 0 &&
+                                    _vm.currSkill.percentage.length > 0,
+                                  expression:
+                                    "currSkill.skill_title.length > 0 && currSkill.percentage.length > 0"
+                                }
+                              ],
+                              staticClass: "btn btn-outline-dark",
+                              attrs: {
+                                href: "javascript:void(0)",
+                                id: "addSKillBtn"
+                              },
+                              on: { click: _vm.addSkill }
+                            },
+                            [_vm._v("Add")]
+                          )
+                        ])
                       ]
-                    ),
-                    _vm._v(" "),
-                    _vm._l(_vm.skills, function(skill, index) {
-                      return _c(
-                        "div",
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "col-md-12",
+                      staticStyle: { "padding-top": "5px" }
+                    },
+                    [
+                      _c(
+                        "span",
                         {
                           directives: [
                             {
                               name: "show",
                               rawName: "v-show",
-                              value: skill.type === _vm.currType,
-                              expression: "skill.type === currType"
+                              value: _vm.skills.length < 1,
+                              expression: "skills.length < 1"
                             }
                           ],
-                          key: index,
-                          staticClass: "highlightSkill skills",
-                          on: {
-                            mouseover: function($event) {
-                              _vm.highlightSkill(skill, 0)
-                            },
-                            mouseleave: function($event) {
-                              _vm.highlightSkill(skill, 100)
-                            }
-                          }
+                          staticClass: "jobTitle"
                         },
                         [
-                          _c("div", { staticClass: "skill text-left" }, [
-                            _c("div", { staticClass: "skill-title" }, [
-                              _c("img", {
-                                staticStyle: {
-                                  width: "17px",
-                                  "padding-bottom": "3px"
-                                },
-                                attrs: {
-                                  src: _vm.getSkillIconSrc(skill.skill_title),
-                                  alt: "skill",
-                                  id: "skillImage_" + skill.id
-                                }
-                              }),
-                              _vm._v(
-                                "\n                                    " +
-                                  _vm._s(skill.skill_title) +
-                                  "\n                                "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "skill-bar",
-                                attrs: { "data-bar": skill.percentage }
-                              },
-                              [_c("span")]
-                            )
-                          ])
+                          _vm._v(
+                            "\n                               Your skills section looks empty. Please add your skills.\n                         "
+                          )
                         ]
-                      )
-                    })
-                  ],
-                  2
-                )
-              ]
-            )
-          ]
-        )
-      ])
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.skills, function(skill, index) {
+                        return _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: skill.type === _vm.currType,
+                                expression: "skill.type === currType"
+                              }
+                            ],
+                            key: index,
+                            staticClass: "highlightSkill skills",
+                            on: {
+                              mouseover: function($event) {
+                                _vm.highlightSkill(skill, 0)
+                              },
+                              mouseleave: function($event) {
+                                _vm.highlightSkill(skill, 100)
+                              }
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "skill text-left" }, [
+                              _c("div", { staticClass: "skill-title" }, [
+                                _c("img", {
+                                  staticStyle: {
+                                    width: "17px",
+                                    "padding-bottom": "3px"
+                                  },
+                                  attrs: {
+                                    src: _vm.getSkillIconSrc(skill.skill_title),
+                                    alt: "skill",
+                                    id: "skillImage_" + skill.id
+                                  }
+                                }),
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(skill.skill_title) +
+                                    "\n                                    "
+                                ),
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "close",
+                                    staticStyle: {
+                                      padding: "2px",
+                                      outline: "none"
+                                    },
+                                    attrs: { type: "button" },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.deleteSkill(skill)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      { attrs: { "aria-hidden": "true" } },
+                                      [_vm._v("×")]
+                                    )
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "skill-bar",
+                                  attrs: { "data-bar": skill.percentage }
+                                },
+                                [_c("span")]
+                              )
+                            ])
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  )
+                ]
+              )
+            ]
+          )
+        ]
+      )
     ])
   ])
 }

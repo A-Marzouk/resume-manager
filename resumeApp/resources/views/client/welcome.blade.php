@@ -47,14 +47,12 @@
                    Hi {{$client->name}},
                </h3>
                <div class="pageSubHeading text-left">
-                   Welcome to 123 Workforce. Here you can manage your campaigns , track payments and search for agents.
-
-                   We are currently working on our system and these features will be available as soon as possible. <br/>
-                   <br/>For the moment please send all communication about your account to :
-                   <br/> <a href="mailto:cheska@123workforce.com">cheska@123workforce.com</a> ( email)
-                   <br/> <a href="skype:cheska@123workforce.com">cheska@123workforce.com</a>  (Skype id)
-
-                   <br/><br/>Thank-you Kindly
+                   Welcome to 123 Workforce. Here you can manage your contractors, track payments and search for freelancers.<br/><br/> We are currently working on our system and these features will be available as soon as possible.
+                   <br/><br/>For the moment please send all communication about your account to :
+                   <br/> <a href="mailto:conor@123workforce.com">Conor@123workforce.com</a> ( email)
+                   <br/> <a href="skype:cheska@123workforce.com">Cheska@123workforce.com</a>  (Skype id)
+                   Thank-you Kindly
+                   <br/><br/>
                </div>
            </div>
        </div>
@@ -62,7 +60,7 @@
        <div class="row pt-5">
            <div class="col-12">
                <div id="faq_list">
-                   <faq-list></faq-list>
+                   {{--<faq-list></faq-list>--}}
                </div>
            </div>
        </div>

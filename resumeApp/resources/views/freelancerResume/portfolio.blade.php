@@ -1,4 +1,4 @@
-@extends('layouts.client-app')
+@extends('layouts.app')
 {{-- variables : $data -> freelancer userdata  and $owners --}}
 <?
 

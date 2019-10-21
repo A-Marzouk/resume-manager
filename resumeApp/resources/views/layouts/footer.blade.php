@@ -37,7 +37,8 @@
                 <!-- Load Facebook SDK for JavaScript -->
 
             {{-- if this is the working site --}}
-            @if(env('APP_ENV') !== 'local')
+
+            @if(env('APP_ENV') !== 'local' && Route::getCurrentRoute()->uri() === '/')
                 <div id="fb-root"></div>
                 <script>
                         (function(d, s, id) {

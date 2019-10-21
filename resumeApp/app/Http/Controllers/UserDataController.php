@@ -298,7 +298,6 @@ class UserDataController extends Controller
             $userData->name = $user->user['formattedName'];
             $userData->photo = $user->avatar_original;
             $userData->intro = $user->user['headline'];
-
             $userData->save();
             return redirect('/freelancer')->with('successMessage','Data is successfully imported from Linked In.');
 

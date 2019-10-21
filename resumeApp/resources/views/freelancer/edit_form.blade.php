@@ -3,6 +3,8 @@
 {{-- variables : $data . freelancer userdata --}}
 <?
 extract($data);
+$clientID = '865ff2s2qvpkzb' ;
+$redirectURL = 'https://123workforce.com/freelancer/linkedin';
 $freelancer = auth()->user();
 ?>
 @section('content')

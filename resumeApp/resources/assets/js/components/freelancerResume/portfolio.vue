@@ -8,15 +8,7 @@
                             References / Testimonials
                         </a>
                     </div>
-                    <div class="importBtn NoDecor">
-                        <span>Import : </span>&nbsp;
-                        <a
-                           :href="'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=' + clientID + '&redirect_uri=' + redirectURL + '&state=987654321&scope=r_basicprofile' "
-                           id="importBehanceData">
-                            LinkedIn
-                        </a>
-                    </div>
-                    <div class="col-md-2">
+                    <div class="col-md-5">
 
                     </div>
                     <div class="progressBtn">
@@ -699,8 +691,6 @@
         },
         data() {
             return {
-                clientID: '865ff2s2qvpkzb',
-                redirectURL: 'https://123workforce.com/freelancer/linkedin',
                 slides: [],
                 numberOfSlides: this.calculateNumberOfSlides(),
                 skills: this.freelancer.skills,

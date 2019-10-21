@@ -46,7 +46,11 @@ $freelancer = auth()->user();
                 <div class="importBtn NoDecor">
                     <span>Import : </span>&nbsp;
                     <a href="javascript:void(0)"id="importBehanceData" data-toggle="modal" data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
-                    <a href="javascript:void(0)"> linkedIn</a>
+                    <a
+                            :href="'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=' + clientID + '&redirect_uri=' + redirectURL + '&state=987654321&scope=r_basicprofile' "
+                            id="importBehanceData">
+                        LinkedIn
+                    </a>
                 </div>
                 <div class="importBtn importBtn_upload NoDecor">
                     <a href="javascript:void(0)" id="uploadReferences{{$freelancer->id}}" class="uploadReferences">

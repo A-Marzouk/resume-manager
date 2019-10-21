@@ -66407,14 +66407,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -66427,8 +66419,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     data: function data() {
         return {
-            clientID: '865ff2s2qvpkzb',
-            redirectURL: 'https://123workforce.com/freelancer/linkedin',
             slides: [],
             numberOfSlides: this.calculateNumberOfSlides(),
             skills: this.freelancer.skills,
@@ -66761,31 +66751,7 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "importBtn NoDecor" }, [
-                _c("span", [_vm._v("Import : ")]),
-                _vm._v(" \n                    "),
-                _c(
-                  "a",
-                  {
-                    attrs: {
-                      href:
-                        "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=" +
-                        _vm.clientID +
-                        "&redirect_uri=" +
-                        _vm.redirectURL +
-                        "&state=987654321&scope=r_basicprofile",
-                      id: "importBehanceData"
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        LinkedIn\n                    "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-2" }),
+              _c("div", { staticClass: "col-md-5" }),
               _vm._v(" "),
               _vm._m(0),
               _vm._v(" "),

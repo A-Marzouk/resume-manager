@@ -22,14 +22,7 @@ class FreelancersController extends Controller
     }
 
     public function form(){
-        if(Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce'){
-            return redirect(route('admin.dashboard'));
-        }
         $affiliates = Affiliate::all();
-
-        if(Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce'){
-            return redirect(route('admin.dashboard'));
-        }
 
         $freelancer = User::with(['userData','skills','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);

@@ -8,7 +8,15 @@
                             References / Testimonials
                         </a>
                     </div>
-                    <div class="col-md-5">
+                    <div class="importBtn NoDecor">
+                        <span>Import : </span>&nbsp;
+                        <a
+                           :href="'https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=' + clientID + '&redirect_uri=' + redirectURL + '&state=987654321&scope=r_basicprofile' "
+                           id="importBehanceData">
+                            LinkedIn
+                        </a>
+                    </div>
+                    <div class="col-md-2">
 
                     </div>
                     <div class="progressBtn">
@@ -630,7 +638,6 @@
             </div>
 
         </div>
-
         <div v-for="(work,index) in freelancer.works_history" :key="index + work.id">
             <div v-for="(project,index) in work.projects" :key="index + project.id" class="modal fade"
                  :id="'project_modal_'+project.id" tabindex="-1" role="dialog" aria-labelledby="certificate"
@@ -677,7 +684,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -693,6 +699,8 @@
         },
         data() {
             return {
+                clientID: '865ff2s2qvpkzb',
+                redirectURL: 'https://123workforce.com/freelancer/linkedin',
                 slides: [],
                 numberOfSlides: this.calculateNumberOfSlides(),
                 skills: this.freelancer.skills,
@@ -909,11 +917,11 @@
                 });
             },
             addHours() {
-                this.hours.replace(/[^0-9]/g,'');
+                this.hours.replace(/[^0-9]/g, '');
                 this.hours++;
             },
             subtractHours() {
-                this.hours.replace(/[^0-9]/g,'');
+                this.hours.replace(/[^0-9]/g, '');
                 this.hours--;
             },
             addWeeks() {

@@ -49,7 +49,7 @@ $freelancer = auth()->user();
                     <span>Import : </span>&nbsp;
                     <a href="javascript:void(0)"id="importBehanceData" data-toggle="modal" data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
                     <a
-                            href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id={{$clientID}}&redirect_uri={{$redirectURL}}&state=987654321&scope=r_basicprofile"
+                            href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id={{$clientID}}&redirect_uri={{$redirectURL}}&state=987654321&scope=r_liteprofile%20r_emailaddress%20w_member_social"
                             id="importBehanceData">
                         LinkedIn
                     </a>

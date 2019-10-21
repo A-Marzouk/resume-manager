@@ -3377,6 +3377,17 @@ body {
   }
 }
 
+.progressBtn :hover {
+  color: white;
+  text-decoration: none;
+  cursor: default;
+}
+
+.editBtn :hover {
+  color: white;
+  text-decoration: none;
+}
+
 .addImageContainer {
   background: white;
   padding: 5px;

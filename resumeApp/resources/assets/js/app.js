@@ -38,6 +38,8 @@ Vue.component('chat-composer', require('./components/chat/chatComposer.vue'));
 Vue.component('freelancer-resume-long-v2', require('./components/freelancerResume/resumeComponentLongV2.vue'));
 Vue.component('freelancer-resume-short-v2', require('./components/freelancerResume/resumeComponentShortV2.vue'));
 
+Vue.component('freelancer-portfolio', require('./components/freelancerResume/portfolio.vue'));
+
 Vue.component('faq-list', require('./components/FaqsComponent.vue'));
 
 // works
@@ -165,6 +167,12 @@ if ($("#searchFreelancers").length !== 0){
 if ($("#freelancerResumeLongV2").length !== 0){
     let freelancerResumeLongV2 = new Vue({
         el:'#freelancerResumeLongV2'
+    });
+}
+
+if ($("#freelancerPortfolio").length !== 0){
+    let freelancerPortfolio = new Vue({
+        el:'#freelancerPortfolio'
     });
 }
 

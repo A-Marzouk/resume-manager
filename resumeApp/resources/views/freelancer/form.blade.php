@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 {{-- variables : $data -> freelancer userdata  and $owners --}}
+
+{{--
+
+
+
+    NOT USED NOW
+
+
+
+
+--}}
 <?
 extract($data);
 $freelancer = auth()->user();

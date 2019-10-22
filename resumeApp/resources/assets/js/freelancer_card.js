@@ -30,7 +30,7 @@ $('.hoursMinus').on('click',function(){
     let currentHours = parseInt($('#numberOfHours' + ID ).html());
     let newHours = currentHours - 5;
     // set new hours :
-    if(newHours > 9){
+    if(newHours >= 0){
         $('#numberOfHours' + ID ).fadeOut(150);
         setTimeout(function () {
             $('#numberOfHours' + ID ).html(newHours);

@@ -11498,13 +11498,14 @@ html {
   position: absolute;
   top: -44px;
   right: -20px;
-  z-index: -2;
+  z-index: 0;
   max-width: 100%;
 }
 
 @media (max-width: 992px) {
   .topBg {
     width: 50%;
+    right: 0;
   }
 }
 
@@ -11571,7 +11572,7 @@ html {
   -webkit-box-align: space-between;
       -ms-flex-align: space-between;
           align-items: space-between;
-  padding: 120px 78px;
+  padding: 50px 78px;
 }
 
 @media (max-width: 992px) {
@@ -11587,6 +11588,7 @@ html {
   font-size: 77px;
   color: #2660AE;
   width: 70%;
+  z-index: 5;
   max-width: 945px;
   margin-bottom: 37px;
 }
@@ -12002,11 +12004,55 @@ html {
   font-weight: bold;
 }
 
+.registerBtn a:hover {
+  color: white;
+}
+
+.registerBtn {
+  padding: 18px 35px !important;
+  background-color: #05A4F4;
+  font-size: 14px;
+  margin-left: 54px;
+  font-weight: bold;
+}
+
+@media (max-width: 992px) {
+  .registerBtn {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .registerBtn {
+    padding: 14px 20px !important;
+  }
+}
+
+@media (max-width: 512px) {
+  .registerBtn {
+    font-size: 10px;
+    padding: 9px !important;
+    margin-left: 16px;
+  }
+}
+
+.registerBtn a {
+  color: white;
+}
+
+.registerBtn a:hover,
+.registerBtn a:visited {
+  text-decoration: none;
+}
+
 .agentsSection {
   position: relative;
-  padding: 100px 78px;
+  padding: 50px 78px 10px 78px;
   overflow: hidden;
   width: 100%;
+  background-image: url(/resumeApp/public/images/home/agentsBg-1.svg), url(/resumeApp/public/images/home/pencilsBg.png);
+  background-repeat: no-repeat,no-repeat;
+  background-size: cover;
 }
 
 @media (max-width: 992px) {
@@ -12020,7 +12066,7 @@ html {
   top: 0;
   right: 50px;
   height: 150px;
-  z-index: -2;
+  z-index: 0;
 }
 
 .agentsSection .agentsBg-1,
@@ -12105,6 +12151,7 @@ html {
   background: white;
   width: 550px;
   color: #2A3749;
+  z-index: 5;
 }
 
 @media (max-width: 992px) {
@@ -12127,7 +12174,7 @@ html {
 }
 
 .agentsSection .agentsContainer__searchTools .btn-first {
-  border-radius: 60px 0 0 60px;
+  border-radius: 60px 60px 60px 60px;
 }
 
 .agentsSection .agentsContainer__searchTools .btn-second {
@@ -12177,7 +12224,8 @@ html {
   }
 }
 
-.agentsSection .agentsContainer__selectContainer select {
+.agentsSection .agentsContainer__selectContainer select,
+.agentsSection .agentsContainer__selectContainer input {
   background: #FFFFFF;
   width: 100%;
   font-size: 22px;
@@ -12190,13 +12238,15 @@ html {
 }
 
 @media (max-width: 992px) {
-  .agentsSection .agentsContainer__selectContainer select {
+  .agentsSection .agentsContainer__selectContainer select,
+  .agentsSection .agentsContainer__selectContainer input {
     font-size: 16px;
   }
 }
 
 @media (max-width: 768px) {
-  .agentsSection .agentsContainer__selectContainer select {
+  .agentsSection .agentsContainer__selectContainer select,
+  .agentsSection .agentsContainer__selectContainer input {
     font-size: 14px;
   }
 }
@@ -12282,7 +12332,7 @@ html {
 
 .agentsSection .agentsContainer__hireContainer {
   width: calc(100% - 330px);
-  height: 175px;
+  height: 182px;
 }
 
 @media (max-width: 770px) {
@@ -12889,5 +12939,220 @@ html {
         -ms-flex-pack: center;
             justify-content: center;
   }
+}
+
+@media only screen and (max-width: 760px) {
+  .modal-lg-phone {
+    max-width: 100% !important;
+  }
+
+  .hideOnSm {
+    display: none !important;
+  }
+}
+
+.showOnSm {
+  display: none;
+}
+
+@media only screen and (max-width: 760px) {
+  .showOnSm {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.contact_pop_up {
+  padding: 57px 45px 28px 45px !important;
+}
+
+.contact_pop_up .title {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 27px;
+  line-height: 37px;
+  /* identical to box height */
+  color: #4A5464;
+}
+
+.contact_pop_up .faq-question-input,
+.contact_pop_up .faq-answer-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 36px;
+}
+
+.contact_pop_up .faq-question-input .faq-input-label,
+.contact_pop_up .faq-answer-input .faq-input-label {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #4A5464;
+}
+
+.contact_pop_up .faq-question-input .sub-label,
+.contact_pop_up .faq-answer-input .sub-label {
+  font-size: 16px;
+  color: #7A828D;
+  padding-bottom: 15px;
+  padding-right: 38px;
+}
+
+@media (max-width: 768px) {
+  .contact_pop_up .faq-question-input .sub-label,
+  .contact_pop_up .faq-answer-input .sub-label {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact_pop_up .faq-question-input,
+  .contact_pop_up .faq-answer-input {
+    width: 100%;
+  }
+}
+
+.contact_pop_up .faq-question-input img,
+.contact_pop_up .faq-answer-input img {
+  margin-right: 38px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.contact_pop_up .faq-question-input .faq-input,
+.contact_pop_up .faq-answer-input .faq-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.contact_pop_up .faq-question-input .faq-input input,
+.contact_pop_up .faq-question-input .faq-input textarea,
+.contact_pop_up .faq-question-input .faq-input select,
+.contact_pop_up .faq-answer-input .faq-input input,
+.contact_pop_up .faq-answer-input .faq-input textarea,
+.contact_pop_up .faq-answer-input .faq-input select {
+  width: 400px;
+  border: none;
+  border-bottom: 1px solid #7A828D;
+  height: 56px;
+  background: #FBFBFB;
+  padding-left: 22px;
+  border-radius: 4px 4px 0px 0px;
+}
+
+@media (max-width: 768px) {
+  .contact_pop_up .faq-question-input .faq-input input,
+  .contact_pop_up .faq-question-input .faq-input textarea,
+  .contact_pop_up .faq-question-input .faq-input select,
+  .contact_pop_up .faq-answer-input .faq-input input,
+  .contact_pop_up .faq-answer-input .faq-input textarea,
+  .contact_pop_up .faq-answer-input .faq-input select {
+    width: 100%;
+  }
+}
+
+.contact_pop_up .faq-question-input .faq-input textarea,
+.contact_pop_up .faq-answer-input .faq-input textarea {
+  width: 100%;
+}
+
+.contact_pop_up .faq-question-input .faq-input input:focus,
+.contact_pop_up .faq-question-input .faq-input textarea:focus,
+.contact_pop_up .faq-question-input .faq-input select:focus,
+.contact_pop_up .faq-answer-input .faq-input input:focus,
+.contact_pop_up .faq-answer-input .faq-input textarea:focus,
+.contact_pop_up .faq-answer-input .faq-input select:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 1px solid #05A4F4;
+  outline: none;
+}
+
+.contact_pop_up .faq-question-input .faq-input img,
+.contact_pop_up .faq-answer-input .faq-input img {
+  margin-left: -62px;
+  cursor: pointer;
+}
+
+.contact_pop_up .sendMessageBtn {
+  margin-top: 52px;
+  width: 235px;
+  height: 48px;
+  background: #05A4F4;
+  border-radius: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.contact_pop_up .sendMessageBtn:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.projectsSection .slick-prev.slick-arrow {
+  display: none;
+}
+
+.projectsSection .slick-next.slick-arrow {
+  display: none;
+}
+
+.projectsSection .slick-dots {
+  padding-right: 40px;
+  bottom: -18px;
+}
+
+.newHomePage {
+  margin-left: 10px;
+  margin-right: 10px;
+  background: aliceblue;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media only screen and (max-device-width: 768px) {
+  .newHomePage {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.newHomePage .freelancerCard {
+  -webkit-box-shadow: 0 11px 16px -7px lightgrey;
+          box-shadow: 0 11px 16px -7px lightgrey;
+  margin: 1%;
+}
+
+.newHomePage .freelancerCard .nameRow {
+  max-height: 158px !important;
 }
 

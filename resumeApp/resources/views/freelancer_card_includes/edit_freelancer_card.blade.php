@@ -226,7 +226,7 @@
                 <li class="col-md-2 col-4 nav-item NoDecor">
                     <a class="nav-link navTab text-center " href="#portfolio{{$freelancer->id}}" role="tab"
                        data-toggle="tab">
-                        Portfolio
+                        Projects
                     </a>
                 </li>
             @endif

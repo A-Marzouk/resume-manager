@@ -59,8 +59,8 @@
                                 <select name="gender" v-model="searchParams.gender" @focus="activeBox = 'gender'"
                                 >
                                     <option value="">Choose a gender</option>
-                                    <option v-for="(gender, index) in customValues.genders" :value="gender"
-                                            :key="gender + index">{{gender}}
+                                    <option v-for="(gender, index) in customValues.genders" :value="gender.value"
+                                            :key="gender.value + index">{{gender.label}}
                                     </option>
                                 </select>
                             </div>
@@ -214,9 +214,9 @@
                         'Spanish',
                     ],
                     genders: [
-                        'Male',
-                        'Female',
-                        'Both',
+                        {label: 'Male' , value: 'm'},
+                        {label: 'Female' , value: 'f'},
+                        {label: 'Both' , value: 'b'}
                     ],
                     rates: [
                         {

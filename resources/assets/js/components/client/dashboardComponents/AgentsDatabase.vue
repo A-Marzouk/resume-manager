@@ -137,7 +137,7 @@
                                     <span style="font-weight: 500;">Sector experience: </span> {{agent.experience}}
                                 </div>
                                 <div>
-                                    <span style="font-weight: 500;">Technologies, software: </span> {{agent.technologies}}
+                                    <span style="font-weight: 500; word-break: break-all;">Technologies, software: </span> {{agent.technologies}}
                                 </div>
                                 <div style="margin: 20px 0 ;">
                                     <span style="font-weight: 500;">Languages: </span>
@@ -213,7 +213,7 @@
                         'English',
                         'Spanish',
                     ],
-                    gender: [
+                    genders: [
                         'Male',
                         'Female',
                         'Both',
@@ -402,6 +402,7 @@
 
     .main-grid {
         margin-top: 22px;
+        width: 100% !important;
     }
 
     .notificationBar {

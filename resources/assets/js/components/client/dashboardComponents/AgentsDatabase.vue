@@ -28,56 +28,59 @@
 
                         <div class="agentsContainer__searchSelects">
                             <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'job_title'}">
-                                <select name="jobTitle" v-model="searchParams.job_title" @focus="activeBox = 'job_title'"
-                                        @change="updateSearch">
-                                    <option value="">Choose job title</option>
-                                    <option v-for="(jobTitle, index) in customValues.jobTitles" :value="jobTitle"
-                                            :key="jobTitle + index">{{jobTitle}}
-                                    </option>
-                                </select>
+                                <input type="text" name="job_title" v-model="searchParams.job_title" @focus="activeBox = 'job_title'"
+                                        placeholder="Job title"/>
                             </div>
                             <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'frameworks'}">
                                 <input type="text" name="skills" v-model="searchParams.frameworks" @focus="activeBox = 'frameworks'"
-                                       @change="updateSearch" placeholder="Languages, Frameworks.."/>
+                                        placeholder="Languages, Frameworks.."/>
                             </div>
-                            <div class="agentsContainer__customSelect">
-                                <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'rate'}">
-                                    <select name="rate" v-model="searchParams.salary_hour" @focus="activeBox = 'rate'"
-                                            @change="updateSearch">
-                                        <option value="">Choose a rate</option>
-                                        <option v-for="(rate, index) in customValues.rates" :value="rate.value"
-                                                :key="rate.value + index"> {{rate.name}} hourly
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="agentsContainer__selectContainer"
-                                     :class="{active: activeBox === 'availability'}">
-                                    <select name="availability" v-model="searchParams.available_hours"
-                                            @focus="activeBox = 'availability'" @change="updateSearch">
-                                        <option value="">Choose an availability</option>
-                                        <option v-for="(availability, index) in customValues.availabilities"
-                                                :value="availability.value"
-                                                :key="availability.value + index">{{availability.name}} hours weekly
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'country'}">
-                                    <select name="country" v-model="searchParams.country" @focus="activeBox = 'country'"
-                                            @change="updateSearch">
-                                        <option value="">Choose a country</option>
-                                        <option v-for="(country, index) in customValues.countries" :value="country"
-                                                :key="country + index">{{country}}
-                                        </option>
-                                    </select>
-                                </div>
+                            <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'experience'}">
+                                <input type="text" name="experience" v-model="searchParams.experience" @focus="activeBox = 'experience'"
+                                        placeholder="Experience"/>
                             </div>
+                            <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'available_hours'}">
+                                <input type="number" min="0" max="99" step="1/2" name="available_hours" v-model="searchParams.available_hours" @focus="activeBox = 'available_hours'"
+                                       placeholder="Available hours"/>
+                            </div>
+
+                            <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'language'}">
+                                <select name="rate" v-model="searchParams.salary_hour" @focus="activeBox = 'language'"
+                                >
+                                    <option value="">Choose language</option>
+                                    <option v-for="(language, index) in customValues.languages" :value="language"
+                                            :key="language + index"> {{language}}
+                                    </option>
+                                </select>
+                            </div>
+
+
+                            <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'gender'}">
+                                <select name="gender" v-model="searchParams.gender" @focus="activeBox = 'gender'"
+                                >
+                                    <option value="">Choose a gender</option>
+                                    <option v-for="(gender, index) in customValues.genders" :value="gender"
+                                            :key="gender + index">{{gender}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- form btns -->
+                        <div class="container w-100 d-flex justify-content-end mb-3">
+                            <a href="javascript:void(0)" @click="updateSearch"
+                               class="btn btn-primary d-flex justify-content-center align-items-center">RESULTS
+                            </a>
+                        </div>
+                        <div class="col-12 center-content NoDecor" id="aboveSearchResultsSection">
+
                         </div>
 
                         <img src="/resumeApp/public/images/home/computer.png" alt="computer" class="bottomBg">
                     </div>
                 </div>
-
             </div>
+
         </div>
 
         <div class="d-flex justify-content-center" v-if="showSearchResults">
@@ -192,14 +195,12 @@
             return {
                 searchParams: {
                     job_title: '',
-                    voice_character: 'not-selected',
                     experience: '',
                     available_hours: '',
                     frameworks: '',
                     language: '',
                     gender: '',
                     salary_hour: '',
-                    country: '',
                 },
                 customValues: {
                     jobTitles: [
@@ -207,6 +208,15 @@
                         'Illustrator',
                         'Motion designer',
                         'Digital artist'
+                    ],
+                    languages: [
+                        'English',
+                        'Spanish',
+                    ],
+                    gender: [
+                        'Male',
+                        'Female',
+                        'Both',
                     ],
                     rates: [
                         {
@@ -384,6 +394,10 @@
 <style scoped lang="scss">
     .btn-primar:hover {
         color: white;
+    }
+    
+    .agentsSection{
+        padding: 30px 30px 10px 30px !important;
     }
 
     .main-grid {

@@ -12233,7 +12233,7 @@ html {
   border-radius: 4px;
   padding: 12px 20px;
   font-weight: bold;
-  color: #4A5464;
+  color: #4A5464 !important;
   font-family: Nunito, Arial, Helvetica, sans-serif;
 }
 

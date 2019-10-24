@@ -101591,7 +101591,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         'freelancer-resume-long': __WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong___default.a
     },
 
-    props: ['featured_developers', 'featured_designers'],
+    props: ['featured_developers'],
 
     data: function data() {
         return {
@@ -101645,7 +101645,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.featuredDevelopers = response.data;
             });
         },
-        sort: function sort() {},
+        sort: function sort(event) {
+            if (event.target.value === 'high') {
+                this.sortHighest();
+            } else {
+                this.sortLowest();
+            }
+        },
         addSkill: function addSkill(event, type) {
             var skill = event.target.value;
 
@@ -101661,6 +101667,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
 
             this.searchDevelopers();
+        },
+        sortLowest: function sortLowest() {
+            this.featuredDevelopers = this.featuredDevelopers.sort(function (a, b) {
+                return a.user_data.salary - b.user_data.salary;
+            });
+        },
+        sortHighest: function sortHighest() {
+            this.featuredDevelopers = this.featuredDevelopers.sort(function (b, a) {
+                return a.user_data.salary - b.user_data.salary;
+            });
         }
     },
 
@@ -106299,7 +106315,9 @@ var render = function() {
                       ? $$selectedVal
                       : $$selectedVal[0]
                   },
-                  _vm.sort
+                  function($event) {
+                    _vm.sort($event)
+                  }
                 ]
               }
             },

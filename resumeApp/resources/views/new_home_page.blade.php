@@ -23,7 +23,7 @@
     </div>
 
     <div id="newHomeComponent">
-        <new-home-component :featured_designers="{{ json_encode($featuredDesigners) }}" :featured_developers="{{ json_encode($featuredDevelopers) }}" ></new-home-component>
+        <new-home-component :featured_developers="{{ json_encode($featuredDevelopers) }}" ></new-home-component>
     </div>
 
 @endsection

@@ -65,7 +65,7 @@
 
             <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'sort'}">
                 <select name="sort" v-model="sortValue" @focus="activeBox = 'sort'"
-                        @change="sort">
+                        @change="sort($event)">
                     <option value="">Sort by</option>
                     <option v-for="(rate, index) in customValues.rateSort" :value="rate.value"
                             :key="rate.value + index">{{rate.label}}
@@ -103,7 +103,7 @@
             'freelancer-resume-long': freelancerResumeLong
         },
 
-        props: ['featured_developers', 'featured_designers'],
+        props: ['featured_developers'],
 
         data() {
             return {
@@ -241,8 +241,12 @@
                     this.featuredDevelopers = response.data;
                 });
             },
-            sort(){
-
+            sort(event){
+                if(event.target.value === 'high'){
+                    this.sortHighest();
+                }else{
+                    this.sortLowest();
+                }
             },
             addSkill(event,type){
                 let skill = event.target.value;
@@ -259,6 +263,14 @@
                 });
 
                 this.searchDevelopers();
+            },
+
+            sortLowest(){
+                this.featuredDevelopers =  this.featuredDevelopers.sort((a, b) => a.user_data.salary - b.user_data.salary );
+            },
+
+            sortHighest(){
+                this.featuredDevelopers =  this.featuredDevelopers.sort((b, a) => a.user_data.salary - b.user_data.salary );
             }
 
         },

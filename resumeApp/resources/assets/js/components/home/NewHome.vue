@@ -105,6 +105,7 @@
     import freelancerCardSmall from '../../components/homeDesigners/freelancerSmallCard'
     import freelancerResume from '../freelancerResume/resumeComponent'
     import freelancerResumeLong from '../freelancerResume/resumeComponentLong'
+    import freelancerResumeLongV2 from '../freelancerResume/resumeComponentLongV2'
     import freelancerResumeShortV2 from '../freelancerResume/resumeComponentShortV2'
 
     export default {
@@ -112,6 +113,7 @@
              freelancerCardSmall,
             'freelancer-resume': freelancerResume,
             'freelancer-resume-long': freelancerResumeLong,
+            'freelancer-resume-long-v2': freelancerResumeLongV2,
             'freelancer-resume-short-v2': freelancerResumeShortV2
         },
 

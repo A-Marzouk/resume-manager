@@ -101506,8 +101506,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__freelancerResume_resumeComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__freelancerResume_resumeComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong__ = __webpack_require__(324);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__freelancerResume_resumeComponentShortV2__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__freelancerResume_resumeComponentShortV2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__freelancerResume_resumeComponentShortV2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__freelancerResume_resumeComponentLongV2__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__freelancerResume_resumeComponentLongV2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__freelancerResume_resumeComponentLongV2__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__freelancerResume_resumeComponentShortV2__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__freelancerResume_resumeComponentShortV2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__freelancerResume_resumeComponentShortV2__);
 //
 //
 //
@@ -101611,6 +101613,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+
 
 
 
@@ -101622,7 +101625,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         freelancerCardSmall: __WEBPACK_IMPORTED_MODULE_0__components_homeDesigners_freelancerSmallCard___default.a,
         'freelancer-resume': __WEBPACK_IMPORTED_MODULE_1__freelancerResume_resumeComponent___default.a,
         'freelancer-resume-long': __WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong___default.a,
-        'freelancer-resume-short-v2': __WEBPACK_IMPORTED_MODULE_3__freelancerResume_resumeComponentShortV2___default.a
+        'freelancer-resume-long-v2': __WEBPACK_IMPORTED_MODULE_3__freelancerResume_resumeComponentLongV2___default.a,
+        'freelancer-resume-short-v2': __WEBPACK_IMPORTED_MODULE_4__freelancerResume_resumeComponentShortV2___default.a
     },
 
     props: ['featured_developers'],

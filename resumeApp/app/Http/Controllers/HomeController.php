@@ -96,7 +96,7 @@ class HomeController extends Controller
         $featuredDevelopers = [] ;
 
         foreach ($homeFreelancersData as $data){
-            $freelancer = User::with(['userData','skills','worksHistory','educationsHistory','projects'=>function($query) {
+            $freelancer = User::with(['userData','skills','worksHistory.projects','educationsHistory','projects'=>function($query) {
                 return $query->limit(10);
             }])->where('id',$data->user_id)->first();
 

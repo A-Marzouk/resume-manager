@@ -93,7 +93,7 @@
 
             <div v-if="featuredDevelopers.length < 1">
                 <div class="mainSection__content__description">
-                    Please choose try to change search parameters
+                    Please try to change search parameters
                 </div>
             </div>
         </div>

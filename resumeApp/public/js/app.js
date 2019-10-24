@@ -106440,7 +106440,7 @@ var render = function() {
           ? _c("div", [
               _c("div", { staticClass: "mainSection__content__description" }, [
                 _vm._v(
-                  "\n                Please choose try to change search parameters\n            "
+                  "\n                Please try to change search parameters\n            "
                 )
               ])
             ])

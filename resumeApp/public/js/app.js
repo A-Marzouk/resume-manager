@@ -88836,7 +88836,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'audioError': '',
                 'password': '',
 
-                'programmin_language': '',
+                'programming_language': '',
                 'framework': '',
                 'database': '',
 
@@ -88866,7 +88866,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'linkedin': '',
                 'github': '',
 
-                'programmin_language': '',
+                'programming_language': '',
                 'framework': '',
                 'database': '',
 

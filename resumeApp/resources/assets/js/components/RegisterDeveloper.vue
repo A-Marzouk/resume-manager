@@ -457,7 +457,7 @@
                     'audioError': '',
                     'password': '',
 
-                    'programmin_language': '',
+                    'programming_language': '',
                     'framework': '',
                     'database': '',
 
@@ -487,7 +487,7 @@
                     'linkedin': '',
                     'github': '',
 
-                    'programmin_language': '',
+                    'programming_language': '',
                     'framework': '',
                     'database': '',
 

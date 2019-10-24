@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\classes\Upload;
 use App\Recording;
+use App\Skill;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
@@ -160,21 +161,21 @@ class BusinessSupportController extends Controller
             return ['errors' => $validator->errors()];
         }
 
-        // register a business support user
+        // register a developer
 
-        $businessSupport = $this->create($request->all());
+        $developer = $this->createDeveloper($request->all());
 
-        if ($businessSupport->id && $request->audioType !== 'record') {
+        if ($developer->id && $request->audioType !== 'record') {
             // save the record
             $recordSaver = new RecordingsController;
-            $recordSaver->addRecord($request, $businessSupport->id);
+            $recordSaver->addRecord($request, $developer->id);
 
             // check if cv is uploaded
             if ($request->cv_included && isset($request->included_cv)) {
                 // upload the cv file :
-                $result = Upload::CV('', 'included_cv', $businessSupport->id . '_' . date(time()));
+                $result = Upload::CV('', 'included_cv', $developer->id . '_' . date(time()));
                 if ($result !== false) {
-                    $user = User::where('id', $businessSupport->id)->first();
+                    $user = User::where('id', $developer->id)->first();
                     $user->cv_src = $result['path'];
                     $user->save();
                 }
@@ -182,14 +183,14 @@ class BusinessSupportController extends Controller
 
 
             $data = $request->all();
-            $data['id'] = $businessSupport->id;
+            $data['id'] = $developer->id;
             $notification = new NotificationsController();
             $notification->businessSupportApplication($data);
 
 
             return 'success';
         } else {
-            return $businessSupport->id;
+            return $developer->id;
         }
 
     }
@@ -259,6 +260,63 @@ class BusinessSupportController extends Controller
         return $businessSupport;
 
     }
+
+    protected function createDeveloper(array $data)
+    {
+        User::create([
+            'firstName' => $data['firstName'],
+            'lastName' => $data['lastName'],
+            'email' => $data['email'],
+            'username' => $data['email'],
+            'phone' => $data['phone'],
+            'whatsapp' => $data['phone'],
+            'skype' => $data['skype'],
+            'profession' => 'Developer',
+            'password' => Hash::make($data['password']),
+        ]);
+
+
+        $developer = User::where('email', $data['email'])->first();
+
+        if (!isset($developer->userData)) {
+            $userData = new UserData;
+            $userData->user_id = $developer->id;
+            $userData->availableHours = $data['available_hours'];
+            $userData->salary_month = $data['monthly_rate'];
+            $userData->salary = $data['hourly_rate'];
+            $userData->githubLink = $data['github'];
+            $userData->instagramLink = $data['instagram'];
+            $userData->linkedin = $data['linkedin'];
+            $userData->telegram = $data['phone'];
+            $userData->save();
+        }
+
+        // make 3 for the developer as main skills :
+
+        $skill = new Skill;
+        $skill->user_id = $developer->id;
+        $skill->skill_title =$data['programming_language'];
+        $skill->type = 'programming';
+        $skill->percentage = 95;
+        $skill->save();
+
+        $skill = new Skill;
+        $skill->user_id = $developer->id;
+        $skill->skill_title =$data['framework'];
+        $skill->type = 'frameworks';
+        $skill->percentage = 95;
+        $skill->save();
+
+        $skill = new Skill;
+        $skill->user_id = $developer->id;
+        $skill->skill_title =$data['database'];
+        $skill->type = 'frameworks';
+        $skill->percentage = 95;
+        $skill->save();
+
+        return $developer;
+    }
+
 
     public function applicationSuccess()
     {

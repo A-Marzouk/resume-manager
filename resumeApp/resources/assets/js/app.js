@@ -101,6 +101,9 @@ Vue.component('skills-list', require('./components/skills/skillsComponent.vue'))
 // record while register
 Vue.component('record-input', require('./components/record_while_register.vue'));
 
+// register developer
+Vue.component('register-developer', require('./components/RegisterDeveloper.vue'));
+
 // terms bar component
 Vue.component('terms-bar', require('./components/termsBarComponent.vue'));
 
@@ -186,6 +189,12 @@ if ($("#freelancerResumeShortV2").length !== 0){
 if ($("#record_input").length !== 0){
     let record_input = new Vue({
         el:'#record_input'
+    });
+}
+
+if ($("#registerDeveloper").length !== 0){
+    let registerDeveloper = new Vue({
+        el:'#registerDeveloper'
     });
 }
 

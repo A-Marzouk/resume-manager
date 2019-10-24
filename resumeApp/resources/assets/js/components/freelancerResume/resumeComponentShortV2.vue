@@ -1,7 +1,6 @@
 <template>
-    <div>
+    <div class="d-flex justify-content-center">
         <div class="freelancerCard">
-
             <div class="row">
 
                 <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
@@ -55,7 +54,9 @@
                                     </div>
 
                                     <div class="col-md-4 text-center" style="font-size: 15px; color: white;">
-                                        <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}} hours</span>
+                                        <span style="font-weight: bold;">
+                                            <span v-if="freelancer.user_data.availableHours !== null">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}}</span>
+                                            hours</span>
                                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly
                                             Availability
                                         </div>
@@ -106,7 +107,9 @@
                                     </div>
                                     <div class="text-left" style="font-size: 15px; color: white; padding-top: 5px;">
                                         <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :
-                                            <span style="font-weight: bold;">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}}h/week</span>
+                                            <span style="font-weight: bold;">
+                                                <span v-if="freelancer.user_data.availableHours !== null">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}}</span>
+                                                h/week</span>
                                         </div>
                                     </div>
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
@@ -604,7 +607,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -651,13 +653,16 @@
                     ]
                 },
                 weeks: 4,
-                hours: this.freelancer.user_data.availableHours.replace(/[^0-9]/g, ''),
+                hours: this.freelancer.user_data.availableHours === null ? 0 : this.freelancer.user_data.availableHours.replace(/[^0-9]/g, ''),
                 portfolio: !this.hire,
                 showReferences: false,
             }
         },
         methods: {
             getResizedImage(src) {
+                if(src === null){
+                    src = '' ;
+                }
                 let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
                 if (this.search == false) {
                     return resizedImage;
@@ -888,7 +893,6 @@
                 setTimeout(function () {
                     $(".skills .skill .skill-bar span b").animate({"opacity": "1"}, 1000);
                 }, 2000);
-                console.log('ran');
             }
 
         },

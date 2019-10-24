@@ -15,7 +15,7 @@
         <div class="col-md-10">
 
 
-            <div class="tab-content" style="min-height: 400px;">
+            <div class="tab-content" style="min-height: 400px; overflow-x: auto;">
                 @include('admin.includes.home')
 
                 @include('admin.includes.searches')

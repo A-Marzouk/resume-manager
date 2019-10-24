@@ -87,9 +87,9 @@
 
         <img src="/resumeApp/public/images/home/computer.png" alt="computer" class="bottomBg">
         <div>              <!-- search developers -->
-            <freelancer-resume-long v-for="developer in featuredDevelopers"
+            <freelancer-resume-short-v2 v-for="developer in featuredDevelopers"
                                     :key="developer.id + developer.firstName + 'A'"
-                                    :freelancer="developer" :hire="false" :search="false"></freelancer-resume-long>
+                                    :freelancer="developer" :hire="false" :search="false"></freelancer-resume-short-v2>
 
             <div v-if="featuredDevelopers.length < 1">
                 <div class="mainSection__content__description">
@@ -105,12 +105,14 @@
     import freelancerCardSmall from '../../components/homeDesigners/freelancerSmallCard'
     import freelancerResume from '../freelancerResume/resumeComponent'
     import freelancerResumeLong from '../freelancerResume/resumeComponentLong'
+    import freelancerResumeShortV2 from '../freelancerResume/resumeComponentShortV2'
 
     export default {
         components: {
-            freelancerCardSmall,
+             freelancerCardSmall,
             'freelancer-resume': freelancerResume,
-            'freelancer-resume-long': freelancerResumeLong
+            'freelancer-resume-long': freelancerResumeLong,
+            'freelancer-resume-short-v2': freelancerResumeShortV2
         },
 
         props: ['featured_developers'],

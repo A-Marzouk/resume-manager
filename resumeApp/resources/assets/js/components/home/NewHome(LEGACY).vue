@@ -5,48 +5,42 @@
         <img class="agentsBg-3" src="/resumeApp/public/images/home/agentsBg-3.svg" alt="">
         <img src="/resumeApp/public/images/home/pencilsBg.png" alt="" class="pencilsBg">
         <div class="agentsContainer__searchTools">
-            <button class="btn-first active">
+            <button @click="hideSearchDesignersSection" class="btn-first" :class="{active:!searchDesignersSection}">
                 Search developers
+            </button>
+            <button @click="showSearchDesignersSection" class="btn-second" :class="{active:searchDesignersSection}">
+                Search designers
             </button>
         </div>
 
         <div class="agentsContainer__searchSelects">
-
-            <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'language'}">
-                <select name="language" @change="addSkill($event,'language')" @focus="activeBox = 'language'">
-                    <option value="">Programming language</option>
-                    <option v-for="(language, index) in customValues.programmingLanguages" :value="language"
-                            :key="language + index">{{language}}
+            <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'jobTitle'}">
+                <select name="jobTitle" v-model="searchParams.jobTitle" @focus="activeBox = 'jobTitle'"
+                        @change="searchDesigners">
+                    <option value="">Choose job title</option>
+                    <option v-for="(jobTitle, index) in customValues.jobTitles" :value="jobTitle"
+                            :key="jobTitle + index">{{jobTitle}}
                     </option>
                 </select>
             </div>
-
-            <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'framework'}">
-                <select name="framework" @focus="activeBox = 'framework'"
-                        @change="addSkill($event,'framework')">
-                    <option value="">Framework/Library</option>
-                    <option v-for="(framework, index) in customValues.frameworks" :value="framework"
-                            :key="framework + index">{{framework}}
-                    </option>
-                </select>
+            <div v-show="!searchDesignersSection" class="agentsContainer__selectContainer" :class="{active: activeBox === 'skills'}">
+                <input type="text" name="skills" v-model="searchParams.skills" @focus="activeBox = 'skills'"
+                       @change="searchDesigners" placeholder="Languages, Frameworks.."/>
             </div>
-
-
-            <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'database'}">
-                <select name="database" @focus="activeBox = 'database'"
-                        @change="addSkill($event,'database')">
-                    <option value="">Database</option>
-                    <option v-for="(database, index) in customValues.databases" :value="database"
-                            :key="database + index">{{database}}
-                    </option>
-                </select>
-            </div>
-
             <div class="agentsContainer__customSelect">
+                <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'rate'}">
+                    <select name="rate" v-model="searchParams.salary_hour" @focus="activeBox = 'rate'"
+                            @change="searchDesigners">
+                        <option value="">Choose a rate</option>
+                        <option v-for="(rate, index) in customValues.rates" :value="rate.value"
+                                :key="rate.value + index"> {{rate.name}} hourly
+                        </option>
+                    </select>
+                </div>
                 <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'availability'}">
                     <select name="availability" v-model="searchParams.available_hours"
-                            @focus="activeBox = 'availability'" @change="searchDevelopers">
-                        <option value="">Availability (all)</option>
+                            @focus="activeBox = 'availability'" @change="searchDesigners">
+                        <option value="">Choose an availability</option>
                         <option v-for="(availability, index) in customValues.availabilities" :value="availability.value"
                                 :key="availability.value + index">{{availability.name}} hours weekly
                         </option>
@@ -54,34 +48,33 @@
                 </div>
                 <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'country'}">
                     <select name="country" v-model="searchParams.country" @focus="activeBox = 'country'"
-                            @change="searchDevelopers">
-                        <option value="">Country(all)</option>
+                            @change="searchDesigners">
+                        <option value="">Choose a country</option>
                         <option v-for="(country, index) in customValues.countries" :value="country"
                                 :key="country + index">{{country}}
                         </option>
                     </select>
                 </div>
             </div>
-
-            <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'sort'}">
-                <select name="sort" v-model="sortValue" @focus="activeBox = 'sort'"
-                        @change="sort">
-                    <option value="">Sort by</option>
-                    <option v-for="(rate, index) in customValues.rateSort" :value="rate.value"
-                            :key="rate.value + index">{{rate.label}}
-                    </option>
-                </select>
-            </div>
-
         </div>
 
         <img src="/resumeApp/public/images/home/computer.png" alt="computer" class="bottomBg">
-        <div>              <!-- search developers -->
-            <freelancer-resume-long v-for="developer in featuredDevelopers"
-                                    :key="developer.id + developer.firstName + 'A'"
-                                    :freelancer="developer" :hire="false" :search="false"></freelancer-resume-long>
+        <div v-show="!searchDesignersSection" class="" >              <!-- search developers -->
+
+                <freelancer-resume-long v-for="developer in featuredDevelopers" :key="developer.id + developer.firstName + 'A'"
+                                   :freelancer="developer" :hire="false" :search="false"></freelancer-resume-long>
 
             <div v-if="featuredDevelopers.length < 1">
+                <div class="mainSection__content__description">
+                    Please choose try to change search parameters
+                </div>
+            </div>
+        </div>
+        <div v-show="searchDesignersSection" class="">
+                <freelancer-resume v-for="designer in featuredDesigners" :key="designer.id + designer.firstName + 'B'" :freelancer="designer"
+                                   :hire="false" :search="true"></freelancer-resume>
+
+            <div v-if="featuredDesigners.length < 1">
                 <div class="mainSection__content__description">
                     Please choose try to change search parameters
                 </div>
@@ -103,23 +96,55 @@
             'freelancer-resume-long': freelancerResumeLong
         },
 
-        props: ['featured_developers', 'featured_designers'],
+        props: ['featured_developers','featured_designers'],
 
         data() {
             return {
                 results: [],
-                sortValue:'',
+                searchDesignersSection: false,
+
                 featuredDevelopers: [],
+                featuredDesigners: [],
+
                 searchParams: {
+                    jobTitle: '',
+                    salary_hour: '',
                     available_hours: '',
                     country: '',
                     skills: '',
                 },
-                skills:[],
 
                 activeBox: 'jobTitle',
 
                 customValues: {
+                    jobTitles: [
+                        'UI/UX designer',
+                        'Illustrator',
+                        'Motion designer',
+                        'Digital artist'
+                    ],
+                    rates: [
+                        {
+                            value: '10',
+                            name: 'Max of 10$'
+                        },
+                        {
+                            value: '20',
+                            name: 'Max of 20$'
+                        },
+                        {
+                            value: '30',
+                            name: 'Max of 30$'
+                        },
+                        {
+                            value: '40',
+                            name: 'Max of 40$'
+                        },
+                        {
+                            value: '1000',
+                            name: '$$$'
+                        },
+                    ],
                     availabilities: [
                         {
                             value: '10',
@@ -154,124 +179,47 @@
                         , "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia"
                         , "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay"
                         , "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"],
-                    programmingLanguages: [
-                        'JavaScript',
-                        'HTML/CSS',
-                        'SQL',
-                        'Python',
-                        'Java',
-                        'Bash/Shell/PowerShell',
-                        'C#',
-                        'PHP',
-                        'TypeScript',
-                        'C++',
-                        'C',
-                        'Ruby',
-                        'Go',
-                        'Swift',
-                        'Kotlin',
-                        'R',
-                        'VBA',
-                        'Objective-C',
-                        'Assembly',
-                        'Scala',
-                        'Rust',
-                    ],
-                    frameworks: [
-                        'jQuery',
-                        'Angular/Angular.js',
-                        'React.js',
-                        'ASP.NET',
-                        'Express',
-                        'Spring',
-                        'Vue.js',
-                        'Django',
-                        'Flask',
-                        'Laravel',
-                        'Ruby,on,Rails',
-                        'Drupal',
-                        'Node.js',
-                        '.NET',
-                        '.NET,Core',
-                        'Pandas',
-                        'React,Native',
-                        'Ansible',
-                        'TensorFlow',
-                        'Unity,3D',
-                        'Cordova',
-                        'Xamarin',
-                        'Apache,Spark',
-                        'Hadoop',
-                        'Flutter',
-                        'Wordpress'
-                    ],
-                    databases: [
-                        'MySQL',
-                        'PostgreSQL',
-                        'Microsoft,SQL,Server',
-                        'SQLite',
-                        'MongoDB',
-                        'Redis',
-                        'MariaDB',
-                        'Oracle',
-                        'Elasticsearch',
-                        'Firebase',
-                        'DynamoDB',
-                        'Cassandra',
-                        'Couchbase',
-                    ],
-                    rateSort:[
-                        {
-                            label:'Highest rate',
-                            value:'high'
-                        },
-                        {
-                            label:'Lowest rate',
-                            value:'low'
-                        }
-
-                    ]
                 }
             }
         },
 
         methods: {
+            searchDesigners() {
+                if(!this.searchDesignersSection){
+                    this.searchDevelopers();
+                    return ;
+                }
+                axios.post('/search-designers', this.searchParams).then((response) => {
+                    this.featuredDesigners = response.data;
+                });
+            }, 
+            
             searchDevelopers() {
                 axios.post('/search-developers', this.searchParams).then((response) => {
                     this.featuredDevelopers = response.data;
                 });
             },
-            sort(){
-
+            showSearchDesignersSection() {
+                this.searchDesignersSection = true;
+                this.$emit('update');
             },
-            addSkill(event,type){
-                let skill = event.target.value;
-
-                if(this.skills.length < 1){
-                    this.searchParams.skills = skill ;
-                }else{
-                    this.searchParams.skills = this.searchParams.skills + ',' + skill ;
-                }
-
-                this.skills.push({
-                    title: skill,
-                    type: type
-                });
-
-                this.searchDevelopers();
+            hideSearchDesignersSection() {
+                this.searchDesignersSection = false;
+                this.$emit('update');
             }
-
         },
 
 
         mounted() {
             this.searchParams = {
+                jobTitle: '',
+                salary_hour: '',
                 available_hours: '',
-                country: '',
-                skills:''
+                country: ''
             };
 
-            this.featuredDevelopers = this.featured_developers;
+            this.featuredDevelopers = this.featured_developers ;
+            this.featuredDesigners = this.featured_designers ;
         }
     }
 </script>
@@ -280,23 +228,15 @@
     *:focus {
         outline: 0;
     }
-
     .list-item {
         display: inline-block;
         margin-right: 10px;
     }
-
     .list-enter-active, .list-leave-active {
         transition: all 1s;
     }
-
-    .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */
-    {
+    .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
         opacity: 0;
         transform: translateY(30px);
-    }
-
-    .btn-first {
-        border-radius: 60px 60px 60px 60px !important;
     }
 </style>

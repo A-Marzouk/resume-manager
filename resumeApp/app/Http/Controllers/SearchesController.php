@@ -87,16 +87,6 @@ class SearchesController extends Controller
         $searchArray = [] ;
         $userDatas   = [] ;
 
-        // jobTitle :
-        if(isset($request->jobTitle)){
-            // save filter in session :
-
-            $jobTitleInput = $request->jobTitle ;
-            $jobTitleArr   = explode(' ',$jobTitleInput);
-            foreach ($jobTitleArr as $jobTitleWord){
-                $searchArray [] = ['jobTitle','like','%'.$jobTitleWord.'%'] ;
-            }
-        }
 
         // country :
         if(isset($request->country)){
@@ -104,19 +94,12 @@ class SearchesController extends Controller
             $searchArray[] = ['country','like','%'.$request->country.'%'];
         }
 
-
         // available_hours :
         if(isset($request->available_hours)){
             // save filter in session :
             $searchArray[] = ['availableHours','>=',intval($request->available_hours)];
         }
 
-        // salary_hour :
-        if(isset($request->salary_hour)){
-            // save filter in session :
-            $searchArray[] = ['salary','<=',intval($request->salary_hour)];
-            $searchArray[] = ['salary','!=',0];
-        }
 
         // form the where array :
 
@@ -141,7 +124,6 @@ class SearchesController extends Controller
 
         return array_slice($freelancers,0,10) ;
     }
-
     private function multiExplode($delimiters,$string) {
         return explode($delimiters[0],strtr($string,array_combine(array_slice($delimiters,1),array_fill(0,count($delimiters)-1,array_shift($delimiters)))));
     }

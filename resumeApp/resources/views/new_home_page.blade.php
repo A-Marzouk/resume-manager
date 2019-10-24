@@ -13,10 +13,10 @@
         <h1 class="mainSection__title">Search and hire awesome freelancer's</h1>
         <div class="mainSection__content">
             <div class="mainSection__content__description">
-                Product designers <span class="gold-divider"></span>
-                Javascript Developers <span class="gold-divider"></span>
-                UX/UI designers <br />
-               Full-Stack Engineers <span class="gold-divider"></span>
+                ASP.NET Developers <span class="gold-divider"></span>
+                 Javascript Developers <span class="gold-divider"></span> Front-end Developers <span class="gold-divider"></span>
+                <br />
+                Full-Stack Engineers <span class="gold-divider"></span>
                 Mobile Developers
             </div>
         </div>

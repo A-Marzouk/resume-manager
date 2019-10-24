@@ -101469,7 +101469,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n*[data-v-92252b4e]:focus {\n    outline: 0;\n}\n.list-item[data-v-92252b4e] {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active[data-v-92252b4e], .list-leave-active[data-v-92252b4e] {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter[data-v-92252b4e], .list-leave-to[data-v-92252b4e] /* .list-leave-active below version 2.1.8 */ {\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n", ""]);
+exports.push([module.i, "\n*[data-v-92252b4e]:focus {\n    outline: 0;\n}\n.list-item[data-v-92252b4e] {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active[data-v-92252b4e], .list-leave-active[data-v-92252b4e] {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter[data-v-92252b4e], .list-leave-to[data-v-92252b4e] /* .list-leave-active below version 2.1.8 */\n{\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n.btn-first[data-v-92252b4e] {\n    border-radius: 60px 60px 60px 60px !important;\n}\n", ""]);
 
 // exports
 
@@ -101486,6 +101486,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__freelancerResume_resumeComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__freelancerResume_resumeComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong__ = __webpack_require__(324);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -101589,39 +101596,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             results: [],
-            searchDesignersSection: false,
-
+            sortValue: '',
             featuredDevelopers: [],
-            featuredDesigners: [],
-
             searchParams: {
-                jobTitle: '',
-                salary_hour: '',
                 available_hours: '',
                 country: '',
                 skills: ''
             },
+            skills: [],
 
             activeBox: 'jobTitle',
 
             customValues: {
-                jobTitles: ['UI/UX designer', 'Illustrator', 'Motion designer', 'Digital artist'],
-                rates: [{
-                    value: '10',
-                    name: 'Max of 10$'
-                }, {
-                    value: '20',
-                    name: 'Max of 20$'
-                }, {
-                    value: '30',
-                    name: 'Max of 30$'
-                }, {
-                    value: '40',
-                    name: 'Max of 40$'
-                }, {
-                    value: '1000',
-                    name: '$$$'
-                }],
                 availabilities: [{
                     value: '10',
                     name: '10+'
@@ -101635,51 +101621,57 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     value: '40',
                     name: '40+'
                 }],
-                countries: ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"]
+                countries: ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"],
+                programmingLanguages: ['JavaScript', 'HTML/CSS', 'SQL', 'Python', 'Java', 'Bash/Shell/PowerShell', 'C#', 'PHP', 'TypeScript', 'C++', 'C', 'Ruby', 'Go', 'Swift', 'Kotlin', 'R', 'VBA', 'Objective-C', 'Assembly', 'Scala', 'Rust'],
+                frameworks: ['jQuery', 'Angular/Angular.js', 'React.js', 'ASP.NET', 'Express', 'Spring', 'Vue.js', 'Django', 'Flask', 'Laravel', 'Ruby,on,Rails', 'Drupal', 'Node.js', '.NET', '.NET,Core', 'Pandas', 'React,Native', 'Ansible', 'TensorFlow', 'Unity,3D', 'Cordova', 'Xamarin', 'Apache,Spark', 'Hadoop', 'Flutter', 'Wordpress'],
+                databases: ['MySQL', 'PostgreSQL', 'Microsoft,SQL,Server', 'SQLite', 'MongoDB', 'Redis', 'MariaDB', 'Oracle', 'Elasticsearch', 'Firebase', 'DynamoDB', 'Cassandra', 'Couchbase'],
+                rateSort: [{
+                    label: 'Highest rate',
+                    value: 'high'
+                }, {
+                    label: 'Lowest rate',
+                    value: 'low'
+                }]
             }
         };
     },
 
 
     methods: {
-        searchDesigners: function searchDesigners() {
+        searchDevelopers: function searchDevelopers() {
             var _this = this;
 
-            if (!this.searchDesignersSection) {
-                this.searchDevelopers();
-                return;
-            }
-            axios.post('/search-designers', this.searchParams).then(function (response) {
-                _this.featuredDesigners = response.data;
-            });
-        },
-        searchDevelopers: function searchDevelopers() {
-            var _this2 = this;
-
             axios.post('/search-developers', this.searchParams).then(function (response) {
-                _this2.featuredDevelopers = response.data;
+                _this.featuredDevelopers = response.data;
             });
         },
-        showSearchDesignersSection: function showSearchDesignersSection() {
-            this.searchDesignersSection = true;
-            this.$emit('update');
-        },
-        hideSearchDesignersSection: function hideSearchDesignersSection() {
-            this.searchDesignersSection = false;
-            this.$emit('update');
+        sort: function sort() {},
+        addSkill: function addSkill(event, type) {
+            var skill = event.target.value;
+
+            if (this.skills.length < 1) {
+                this.searchParams.skills = skill;
+            } else {
+                this.searchParams.skills = this.searchParams.skills + ',' + skill;
+            }
+
+            this.skills.push({
+                title: skill,
+                type: type
+            });
+
+            this.searchDevelopers();
         }
     },
 
     mounted: function mounted() {
         this.searchParams = {
-            jobTitle: '',
-            salary_hour: '',
             available_hours: '',
-            country: ''
+            country: '',
+            skills: ''
         };
 
         this.featuredDevelopers = this.featured_developers;
-        this.featuredDesigners = this.featured_designers;
     }
 });
 
@@ -106013,82 +106005,42 @@ var render = function() {
       attrs: { src: "/resumeApp/public/images/home/pencilsBg.png", alt: "" }
     }),
     _vm._v(" "),
-    _c("div", { staticClass: "agentsContainer__searchTools" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn-first",
-          class: { active: !_vm.searchDesignersSection },
-          on: { click: _vm.hideSearchDesignersSection }
-        },
-        [_vm._v("\n            Search developers\n        ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn-second",
-          class: { active: _vm.searchDesignersSection },
-          on: { click: _vm.showSearchDesignersSection }
-        },
-        [_vm._v("\n            Search designers\n        ")]
-      )
-    ]),
+    _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "agentsContainer__searchSelects" }, [
       _c(
         "div",
         {
           staticClass: "agentsContainer__selectContainer",
-          class: { active: _vm.activeBox === "jobTitle" }
+          class: { active: _vm.activeBox === "language" }
         },
         [
           _c(
             "select",
             {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.searchParams.jobTitle,
-                  expression: "searchParams.jobTitle"
-                }
-              ],
-              attrs: { name: "jobTitle" },
+              attrs: { name: "language" },
               on: {
-                focus: function($event) {
-                  _vm.activeBox = "jobTitle"
+                change: function($event) {
+                  _vm.addSkill($event, "language")
                 },
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.searchParams,
-                      "jobTitle",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  },
-                  _vm.searchDesigners
-                ]
+                focus: function($event) {
+                  _vm.activeBox = "language"
+                }
               }
             },
             [
               _c("option", { attrs: { value: "" } }, [
-                _vm._v("Choose job title")
+                _vm._v("Programming language")
               ]),
               _vm._v(" "),
-              _vm._l(_vm.customValues.jobTitles, function(jobTitle, index) {
+              _vm._l(_vm.customValues.programmingLanguages, function(
+                language,
+                index
+              ) {
                 return _c(
                   "option",
-                  { key: jobTitle + index, domProps: { value: jobTitle } },
-                  [_vm._v(_vm._s(jobTitle) + "\n                ")]
+                  { key: language + index, domProps: { value: language } },
+                  [_vm._v(_vm._s(language) + "\n                ")]
                 )
               })
             ],
@@ -106100,122 +106052,78 @@ var render = function() {
       _c(
         "div",
         {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: !_vm.searchDesignersSection,
-              expression: "!searchDesignersSection"
-            }
-          ],
           staticClass: "agentsContainer__selectContainer",
-          class: { active: _vm.activeBox === "skills" }
+          class: { active: _vm.activeBox === "framework" }
         },
         [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.searchParams.skills,
-                expression: "searchParams.skills"
-              }
-            ],
-            attrs: {
-              type: "text",
-              name: "skills",
-              placeholder: "Languages, Frameworks.."
-            },
-            domProps: { value: _vm.searchParams.skills },
-            on: {
-              focus: function($event) {
-                _vm.activeBox = "skills"
-              },
-              change: _vm.searchDesigners,
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c(
+            "select",
+            {
+              attrs: { name: "framework" },
+              on: {
+                focus: function($event) {
+                  _vm.activeBox = "framework"
+                },
+                change: function($event) {
+                  _vm.addSkill($event, "framework")
                 }
-                _vm.$set(_vm.searchParams, "skills", $event.target.value)
               }
-            }
-          })
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [
+                _vm._v("Framework/Library")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.customValues.frameworks, function(framework, index) {
+                return _c(
+                  "option",
+                  { key: framework + index, domProps: { value: framework } },
+                  [_vm._v(_vm._s(framework) + "\n                ")]
+                )
+              })
+            ],
+            2
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "agentsContainer__selectContainer",
+          class: { active: _vm.activeBox === "database" }
+        },
+        [
+          _c(
+            "select",
+            {
+              attrs: { name: "database" },
+              on: {
+                focus: function($event) {
+                  _vm.activeBox = "database"
+                },
+                change: function($event) {
+                  _vm.addSkill($event, "database")
+                }
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [_vm._v("Database")]),
+              _vm._v(" "),
+              _vm._l(_vm.customValues.databases, function(database, index) {
+                return _c(
+                  "option",
+                  { key: database + index, domProps: { value: database } },
+                  [_vm._v(_vm._s(database) + "\n                ")]
+                )
+              })
+            ],
+            2
+          )
         ]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "agentsContainer__customSelect" }, [
-        _c(
-          "div",
-          {
-            staticClass: "agentsContainer__selectContainer",
-            class: { active: _vm.activeBox === "rate" }
-          },
-          [
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.searchParams.salary_hour,
-                    expression: "searchParams.salary_hour"
-                  }
-                ],
-                attrs: { name: "rate" },
-                on: {
-                  focus: function($event) {
-                    _vm.activeBox = "rate"
-                  },
-                  change: [
-                    function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.searchParams,
-                        "salary_hour",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    },
-                    _vm.searchDesigners
-                  ]
-                }
-              },
-              [
-                _c("option", { attrs: { value: "" } }, [
-                  _vm._v("Choose a rate")
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.customValues.rates, function(rate, index) {
-                  return _c(
-                    "option",
-                    {
-                      key: rate.value + index,
-                      domProps: { value: rate.value }
-                    },
-                    [
-                      _vm._v(
-                        " " +
-                          _vm._s(rate.name) +
-                          " hourly\n                    "
-                      )
-                    ]
-                  )
-                })
-              ],
-              2
-            )
-          ]
-        ),
-        _vm._v(" "),
         _c(
           "div",
           {
@@ -106257,13 +106165,13 @@ var render = function() {
                           : $$selectedVal[0]
                       )
                     },
-                    _vm.searchDesigners
+                    _vm.searchDevelopers
                   ]
                 }
               },
               [
                 _c("option", { attrs: { value: "" } }, [
-                  _vm._v("Choose an availability")
+                  _vm._v("Availability (all)")
                 ]),
                 _vm._v(" "),
                 _vm._l(_vm.customValues.availabilities, function(
@@ -106331,13 +106239,13 @@ var render = function() {
                           : $$selectedVal[0]
                       )
                     },
-                    _vm.searchDesigners
+                    _vm.searchDevelopers
                   ]
                 }
               },
               [
                 _c("option", { attrs: { value: "" } }, [
-                  _vm._v("Choose a country")
+                  _vm._v("Country(all)")
                 ]),
                 _vm._v(" "),
                 _vm._l(_vm.customValues.countries, function(country, index) {
@@ -106352,7 +106260,64 @@ var render = function() {
             )
           ]
         )
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "agentsContainer__selectContainer",
+          class: { active: _vm.activeBox === "sort" }
+        },
+        [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.sortValue,
+                  expression: "sortValue"
+                }
+              ],
+              attrs: { name: "sort" },
+              on: {
+                focus: function($event) {
+                  _vm.activeBox = "sort"
+                },
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.sortValue = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  },
+                  _vm.sort
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { value: "" } }, [_vm._v("Sort by")]),
+              _vm._v(" "),
+              _vm._l(_vm.customValues.rateSort, function(rate, index) {
+                return _c(
+                  "option",
+                  { key: rate.value + index, domProps: { value: rate.value } },
+                  [_vm._v(_vm._s(rate.label) + "\n                ")]
+                )
+              })
+            ],
+            2
+          )
+        ]
+      )
     ]),
     _vm._v(" "),
     _c("img", {
@@ -106365,16 +106330,6 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: !_vm.searchDesignersSection,
-            expression: "!searchDesignersSection"
-          }
-        ]
-      },
       [
         _vm._l(_vm.featuredDevelopers, function(developer) {
           return _c("freelancer-resume-long", {
@@ -106394,43 +106349,21 @@ var render = function() {
           : _vm._e()
       ],
       2
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.searchDesignersSection,
-            expression: "searchDesignersSection"
-          }
-        ]
-      },
-      [
-        _vm._l(_vm.featuredDesigners, function(designer) {
-          return _c("freelancer-resume", {
-            key: designer.id + designer.firstName + "B",
-            attrs: { freelancer: designer, hire: false, search: true }
-          })
-        }),
-        _vm._v(" "),
-        _vm.featuredDesigners.length < 1
-          ? _c("div", [
-              _c("div", { staticClass: "mainSection__content__description" }, [
-                _vm._v(
-                  "\n                Please choose try to change search parameters\n            "
-                )
-              ])
-            ])
-          : _vm._e()
-      ],
-      2
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "agentsContainer__searchTools" }, [
+      _c("button", { staticClass: "btn-first active" }, [
+        _vm._v("\n            Search developers\n        ")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

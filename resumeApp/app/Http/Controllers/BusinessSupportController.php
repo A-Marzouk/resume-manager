@@ -8,6 +8,7 @@ use App\Skill;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -187,6 +188,9 @@ class BusinessSupportController extends Controller
             $notification = new NotificationsController();
             $notification->businessSupportApplication($data);
 
+
+            // login user
+            Auth::loginUsingId($developer->id);
 
             return 'success';
         } else {

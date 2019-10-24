@@ -88950,7 +88950,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this2.updateErrors(response.data.errors);
                     _this2.isLoading = false;
                 } else {
-                    window.location.href = '/freelancer/workforce/success';
+                    window.location.href = '/freelancer';
                 }
             });
         },
@@ -92011,7 +92011,7 @@ var staticRenderFns = [
             alt: "edit profile"
           }
         }),
-        _vm._v("\n            Add work\n        ")
+        _vm._v("\n            Add Project\n        ")
       ]
     )
   }

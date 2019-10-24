@@ -22,7 +22,7 @@
         <span class="deleteWorkBtn NoDecor" v-show="this.canAddProject" @click="clearData" style="width:137px">
             <a href="javascript:void(0)" data-toggle="modal" data-target="#addProjectModal">
                 <img src="/resumeApp/resources/assets/images/add_blue.png" alt="edit profile">
-                Add work
+                Add Project
             </a>
         </span>
         <br/>

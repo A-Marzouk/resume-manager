@@ -571,7 +571,7 @@
                         this.updateErrors(response.data.errors);
                         this.isLoading = false;
                     } else {
-                        window.location.href = '/freelancer/workforce/success';
+                        window.location.href = '/freelancer';
                     }
                 });
             },

@@ -10,13 +10,17 @@ namespace App\Http\Controllers;
 
 
 use App\classes\Upload;
-use App\EducationHistory;
 use App\Recording;
 use App\User;
 use Illuminate\Http\Request;
 
 class RecordingsController extends Controller
 {
+    public function __construct()
+    {
+
+    }
+
     public function getRecords(){
        // get current authenticated freelancer :
         $currentUser = auth()->user();

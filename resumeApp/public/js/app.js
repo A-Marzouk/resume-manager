@@ -101390,7 +101390,7 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(311)
+  __webpack_require__(335)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
@@ -101435,46 +101435,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 311 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(312);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("19364e03", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92252b4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHome.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92252b4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHome.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 312 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n*[data-v-92252b4e]:focus {\n    outline: 0;\n}\n.list-item[data-v-92252b4e] {\n    display: inline-block;\n    margin-right: 10px;\n}\n.list-enter-active[data-v-92252b4e], .list-leave-active[data-v-92252b4e] {\n    -webkit-transition: all 1s;\n    transition: all 1s;\n}\n.list-enter[data-v-92252b4e], .list-leave-to[data-v-92252b4e] /* .list-leave-active below version 2.1.8 */\n{\n    opacity: 0;\n    -webkit-transform: translateY(30px);\n            transform: translateY(30px);\n}\n.btn-first[data-v-92252b4e] {\n    border-radius: 60px 60px 60px 60px !important;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 311 */,
+/* 312 */,
 /* 313 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -101486,6 +101448,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__freelancerResume_resumeComponent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__freelancerResume_resumeComponent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong__ = __webpack_require__(324);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__freelancerResume_resumeComponentLong__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -101641,6 +101613,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         searchDevelopers: function searchDevelopers() {
             var _this = this;
 
+            // get skills from the skills array :
+            this.searchParams.skills = '';
+            this.skills.forEach(function (skill) {
+                _this.searchParams.skills = _this.searchParams.skills + ',' + skill.title;
+            });
+
             axios.post('/search-developers', this.searchParams).then(function (response) {
                 _this.featuredDevelopers = response.data;
             });
@@ -101655,18 +101633,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         addSkill: function addSkill(event, type) {
             var skill = event.target.value;
 
-            if (this.skills.length < 1) {
-                this.searchParams.skills = skill;
-            } else {
-                this.searchParams.skills = this.searchParams.skills + ',' + skill;
+            if (skill !== '') {
+                this.skills.push({
+                    title: skill,
+                    type: type
+                });
+
+                this.searchDevelopers();
             }
-
-            this.skills.push({
-                title: skill,
-                type: type
-            });
-
-            this.searchDevelopers();
         },
         sortLowest: function sortLowest() {
             this.featuredDevelopers = this.featuredDevelopers.sort(function (a, b) {
@@ -101677,6 +101651,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.featuredDevelopers = this.featuredDevelopers.sort(function (b, a) {
                 return a.user_data.salary - b.user_data.salary;
             });
+        },
+        removeSkill: function removeSkill(index) {
+            this.$delete(this.skills, index);
+            this.searchDevelopers();
         }
     },
 
@@ -106061,8 +106039,42 @@ var render = function() {
               })
             ],
             2
-          )
-        ]
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.skills, function(skill, index) {
+            return _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: skill.type === "language",
+                    expression: "skill.type === 'language'"
+                  }
+                ],
+                key: skill.title + index,
+                staticClass: "selectedSkills"
+              },
+              [
+                _vm._v("\n                " + _vm._s(skill.title) + " "),
+                _c(
+                  "span",
+                  {
+                    staticClass: "selectedSkills pointer",
+                    on: {
+                      click: function($event) {
+                        _vm.removeSkill(index)
+                      }
+                    }
+                  },
+                  [_vm._v("x")]
+                )
+              ]
+            )
+          })
+        ],
+        2
       ),
       _vm._v(" "),
       _c(
@@ -106099,8 +106111,42 @@ var render = function() {
               })
             ],
             2
-          )
-        ]
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.skills, function(skill, index) {
+            return _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: skill.type === "framework",
+                    expression: "skill.type === 'framework'"
+                  }
+                ],
+                key: skill.title + index,
+                staticClass: "selectedSkills"
+              },
+              [
+                _vm._v("\n                " + _vm._s(skill.title) + " "),
+                _c(
+                  "span",
+                  {
+                    staticClass: "selectedSkills",
+                    on: {
+                      click: function($event) {
+                        _vm.removeSkill(index)
+                      }
+                    }
+                  },
+                  [_vm._v("x")]
+                )
+              ]
+            )
+          })
+        ],
+        2
       ),
       _vm._v(" "),
       _c(
@@ -106135,8 +106181,42 @@ var render = function() {
               })
             ],
             2
-          )
-        ]
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.skills, function(skill, index) {
+            return _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: skill.type === "database",
+                    expression: "skill.type === 'database'"
+                  }
+                ],
+                key: skill.title + index,
+                staticClass: "selectedSkills"
+              },
+              [
+                _vm._v("\n                " + _vm._s(skill.title) + " "),
+                _c(
+                  "span",
+                  {
+                    staticClass: "selectedSkills",
+                    on: {
+                      click: function($event) {
+                        _vm.removeSkill(index)
+                      }
+                    }
+                  },
+                  [_vm._v("x")]
+                )
+              ]
+            )
+          })
+        ],
+        2
       ),
       _vm._v(" "),
       _c("div", { staticClass: "agentsContainer__customSelect" }, [
@@ -106675,6 +106755,49 @@ if (navigator.mediaDevices.getUserMedia) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(336);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("01bd811d", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92252b4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHome.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-92252b4e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewHome.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 336 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n*[data-v-92252b4e]:focus {\n  outline: 0;\n}\n.list-item[data-v-92252b4e] {\n  display: inline-block;\n  margin-right: 10px;\n}\n.list-enter-active[data-v-92252b4e], .list-leave-active[data-v-92252b4e] {\n  -webkit-transition: all 1s;\n  transition: all 1s;\n}\n.list-enter[data-v-92252b4e], .list-leave-to[data-v-92252b4e] {\n  opacity: 0;\n  -webkit-transform: translateY(30px);\n          transform: translateY(30px);\n}\n.btn-first[data-v-92252b4e] {\n  border-radius: 60px 60px 60px 60px !important;\n}\n.selectedSkills[data-v-92252b4e] {\n  border-radius: 4px;\n  padding: 12px 20px;\n  font-weight: bold;\n  color: #4A5464;\n  font-family: Nunito, Arial, Helvetica, sans-serif;\n  font-size: 14px;\n}\n.pointer[data-v-92252b4e]:hover {\n  cursor: pointer;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

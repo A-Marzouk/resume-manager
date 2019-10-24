@@ -19,7 +19,11 @@
                             :key="language + index">{{language}}
                     </option>
                 </select>
+                <div class="selectedSkills" v-for="(skill,index) in skills" :key="skill.title + index" v-show="skill.type === 'language'">
+                    {{skill.title}} <span class="selectedSkills pointer" @click="removeSkill(index)">x</span>
+                </div>
             </div>
+
 
             <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'framework'}">
                 <select name="framework" @focus="activeBox = 'framework'"
@@ -29,6 +33,9 @@
                             :key="framework + index">{{framework}}
                     </option>
                 </select>
+                <div class="selectedSkills" v-for="(skill,index) in skills" :key="skill.title + index" v-show="skill.type === 'framework'">
+                    {{skill.title}} <span class="selectedSkills" @click="removeSkill(index)">x</span>
+                </div>
             </div>
 
 
@@ -40,6 +47,9 @@
                             :key="database + index">{{database}}
                     </option>
                 </select>
+                <div class="selectedSkills" v-for="(skill,index) in skills" :key="skill.title + index" v-show="skill.type === 'database'">
+                    {{skill.title}} <span class="selectedSkills" @click="removeSkill(index)">x</span>
+                </div>
             </div>
 
             <div class="agentsContainer__customSelect">
@@ -237,6 +247,12 @@
 
         methods: {
             searchDevelopers() {
+                // get skills from the skills array :
+                this.searchParams.skills = '';
+                this.skills.forEach( (skill) => {
+                    this.searchParams.skills = this.searchParams.skills + ',' + skill.title ;
+                });
+
                 axios.post('/search-developers', this.searchParams).then((response) => {
                     this.featuredDevelopers = response.data;
                 });
@@ -251,18 +267,15 @@
             addSkill(event,type){
                 let skill = event.target.value;
 
-                if(this.skills.length < 1){
-                    this.searchParams.skills = skill ;
-                }else{
-                    this.searchParams.skills = this.searchParams.skills + ',' + skill ;
+                if(skill !== ''){
+                    this.skills.push({
+                        title: skill,
+                        type: type
+                    });
+
+                    this.searchDevelopers();
                 }
 
-                this.skills.push({
-                    title: skill,
-                    type: type
-                });
-
-                this.searchDevelopers();
             },
 
             sortLowest(){
@@ -271,6 +284,11 @@
 
             sortHighest(){
                 this.featuredDevelopers =  this.featuredDevelopers.sort((b, a) => a.user_data.salary - b.user_data.salary );
+            },
+
+            removeSkill(index){
+                this.$delete(this.skills, index);
+                this.searchDevelopers();
             }
 
         },
@@ -288,7 +306,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     *:focus {
         outline: 0;
     }
@@ -311,4 +329,18 @@
     .btn-first {
         border-radius: 60px 60px 60px 60px !important;
     }
+
+    .selectedSkills{
+        border-radius: 4px;
+        padding: 12px 20px;
+        font-weight: bold;
+        color: #4A5464;
+        font-family: Nunito, Arial, Helvetica, sans-serif;
+        font-size:14px;
+    }
+    
+    .pointer:hover{
+        cursor: pointer;
+    }
+
 </style>

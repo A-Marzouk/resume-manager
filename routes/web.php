@@ -188,6 +188,11 @@ Route::prefix('client')->group(function (){
     // update agents status
     Route::post('/camp/agents/update','AgentsController@updateAgentStatus')->name('client.camp.agents.update');
 
+// client searches
+
+    Route::post('/search/save','SearchesController@saveSearch')->name('client.search.save');
+
+
 });
 Route::prefix('agent')->group(function (){
     Route::post('/logs/add','ActivityLogsController@addLog')->name('add.log');
@@ -456,7 +461,6 @@ Route::get('/freelancer/instagram/','UserDataController@dataFromInstagram');
 // search functions :
 Route::post('/search','SearchesController@searchFreelancers');
 Route::post('/searchAgents','SearchesController@searchAgents');
-Route::post('/save_search','SearchesController@saveSearch');
 Route::get('/search','SearchesController@showSearchPage');
 Route::post('/search_delete','SearchesController@deleteSearch');
 Route::post('/search_delete_freelancer','SearchesController@deleteSearchFreelancer');

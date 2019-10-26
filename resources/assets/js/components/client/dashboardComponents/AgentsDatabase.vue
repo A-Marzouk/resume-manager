@@ -2,24 +2,13 @@
 
     <div>
         <div>
-            <div class="container" style="display: flex;justify-content: center;">
-                <div class="notificationBar" id="notificationBar" style="display: none; position:fixed;">
-                    <div>
-                        {{notificationMessage}}
-                    </div>
-                    <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
-                        x
-                    </a>
-                </div>
-            </div>
-
             <div class="d-flex justify-content-center">
                 <div class="dashboard-box">
                     <div class="agentsSection">
-                        <img class="agentsBg-1" src="/resumeApp/public/images/home/agentsBg-1.svg" alt="">
-                        <img class="agentsBg-2" src="/resumeApp/public/images/home/agentsBg-2.svg" alt="">
-                        <img class="agentsBg-3" src="/resumeApp/public/images/home/agentsBg-3.svg" alt="">
-                        <img src="/resumeApp/public/images/home/pencilsBg.png" alt="" class="pencilsBg">
+                        <img class="agentsBg-1" src="/images/home/agentsBg-1.svg" alt="">
+                        <img class="agentsBg-2" src="/images/home/agentsBg-2.svg" alt="">
+                        <img class="agentsBg-3" src="/images/home/agentsBg-3.svg" alt="">
+                        <img src="/images/home/pencilsBg.png" alt="" class="pencilsBg">
                         <div class="agentsContainer__searchTools">
                             <button  class="btn-first active">
                                 Search developers
@@ -67,7 +56,7 @@
                         </div>
 
                         <!-- form btns -->
-                        <div class="container w-100 d-flex justify-content-end mb-3">
+                        <div class="container w-100 d-flex align-items-center justify-content-end mb-3 NoDecor">
                             <a href="javascript:void(0)" @click="updateSearch"
                                class="btn btn-primary d-flex justify-content-center align-items-center">RESULTS
                             </a>
@@ -76,7 +65,7 @@
 
                         </div>
 
-                        <img src="/resumeApp/public/images/home/computer.png" alt="computer" class="bottomBg">
+                        <img src="/images/home/computer.png" alt="computer" class="bottomBg">
                     </div>
                 </div>
             </div>
@@ -85,10 +74,18 @@
 
         <div class="d-flex justify-content-center" v-if="showSearchResults">
             <div class="main-grid">
-                <div class="header-text">
-                    <img src="/images/client/add_agent/ic/search_results_40px.png" alt="search"
-                         class="icon-margin small-image">
-                    SEARCH RESULTS
+                <div class="header-text d-flex justify-content-between align-items-center">
+                    <div>
+                        <img src="/images/client/add_agent/ic/search_results_40px.png" alt="search"
+                             class="icon-margin small-image">
+                        SEARCH RESULTS
+                    </div>
+
+                    <div class="NoDecor">
+                        <a href="javascript:void(0)" @click="saveSearch"  class="btn btn-primary d-flex justify-content-center align-items-center">
+                            {{searchSaved ? 'Saved' : 'Save search'}}
+                        </a>
+                    </div>
                 </div>
 
                 <div v-show="searchResults.length > 0">
@@ -202,6 +199,7 @@
                     gender: '',
                     salary_hour: '',
                 },
+                searchSaved:false,
                 customValues: {
                     jobTitles: [
                         'UI/UX designer',
@@ -279,7 +277,7 @@
                 searchResults: [],
                 clientCampaigns: [],
                 showSearchResults: false,
-                notificationMessage: 'Successfully added agent to campaign ',
+                notificationMessage: '',
             }
         },
         methods: {
@@ -288,6 +286,7 @@
                     .then((response) => {
                         this.searchResults = response.data;
                         this.showSearchResults = true;
+                        this.searchSaved = false;
 
                         // scroll to search section
                         $('html, body').animate({
@@ -301,14 +300,6 @@
             hideNotification() {
                 $('#notificationBar').css('display', 'none');
             },
-            showSuccessMessage() {
-                $('.notificationBar').css('background', '#FFBA69');
-                this.notificationMessage = 'Successfully added agent to campaign !';
-                $('#notificationBar').fadeIn(600);
-                setTimeout(() => {
-                    $('#notificationBar').fadeOut(1500);
-                }, 4000);
-            },
             showErrorMessage() {
                 this.notificationMessage = 'Error! Agent already exists in the selected campaign.';
                 $('.notificationBar').css('background', 'red');
@@ -317,6 +308,21 @@
                     $('#notificationBar').fadeOut(1500);
                 }, 4000);
             },
+            saveSearch(){
+                if(this.searchSaved){
+                    this.$emit('showPositiveNotification','Already saved!');
+                    return;
+                }
+                axios.post('/client/search/save',{freelancers : this.searchResults})
+                    .then( (response) => {
+                        console.log(response.data);
+                        if (response.data.status === 'success') {
+                            this.$emit('showPositiveNotification','Search successfully saved !');
+                            this.searchSaved = true;
+                        }
+                    })
+                    .catch()
+            }
         },
         mounted() {
             this.clientCampaigns = this.$attrs.clientcampaigns;

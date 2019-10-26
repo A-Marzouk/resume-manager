@@ -306,15 +306,10 @@ class SearchesController extends Controller
     }
 
     public function saveSearch(Request $request){
-
-        $client = Client::where('email',$request->client_email)->first();
-        // make a new search :
-        $search = new ClientSearch;
-        $search->freelancers_id = implode(',',$request->freelancers_id);
-        $search->client_id = $client->id;
-        $search->name = $request->search_name;
-        $search->save();
-        return ['search_id'=> $search->id];
+        return [
+            'freelancers' => $request->freelancers,
+            'status' => 'success'
+        ];
     }
 
     public function deleteSearch(Request $request){

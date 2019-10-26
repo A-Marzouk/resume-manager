@@ -57,8 +57,9 @@
 
                         <!-- form btns -->
                         <div class="container w-100 d-flex align-items-center justify-content-end mb-3 NoDecor">
-                            <a href="javascript:void(0)" @click="toggleSavedSearches" v-show="client.searches.length > 0"
-                               class="btn btn-primary d-flex justify-content-center align-items-center mr-3">View saved searches
+                            <a href="javascript:void(0)" @click="toggleSavedSearches" v-if="client.searches.length > 0"
+                               class="btn btn-primary d-flex justify-content-center align-items-center mr-3">
+                                {{ showSavedSearches ? 'Hide' : 'View'}} saved searches
                             </a>
                             <a href="javascript:void(0)" @click="updateSearch"
                                class="btn btn-primary d-flex justify-content-center align-items-center">RESULTS
@@ -307,7 +308,6 @@
                         }, 2000);
                     })
                     .catch((error) => {
-                        console.log(error.response.data);
                     });
             },
             toggleSavedSearches(){
@@ -342,10 +342,10 @@
                 }
                 axios.post('/client/search/save',{freelancers : this.searchResults})
                     .then( (response) => {
-                        console.log(response.data);
                         if (response.data.status === 'success') {
                             this.$emit('showPositiveNotification','Search successfully saved !');
                             this.searchSaved = true;
+                            this.client.searches.push(response.data.search);
                         }
                     })
                     .catch()
@@ -353,7 +353,6 @@
             getCurrentClient() {
                 axios.get('/client/current').then((response) => {
                     this.client = response.data.client;
-                    console.log(this.client)
                 });
             }
         },

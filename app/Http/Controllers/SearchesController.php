@@ -327,6 +327,7 @@ class SearchesController extends Controller
 
         return [
             'freelancers' => $request->freelancers,
+            'search' => $search,
             'status' => 'success'
         ];
     }

@@ -57,10 +57,20 @@
 
                         <!-- form btns -->
                         <div class="container w-100 d-flex align-items-center justify-content-end mb-3 NoDecor">
+                            <a href="javascript:void(0)" @click="toggleSavedSearches" v-show="client.searches.length > 0"
+                               class="btn btn-primary d-flex justify-content-center align-items-center mr-3">View saved searches
+                            </a>
                             <a href="javascript:void(0)" @click="updateSearch"
                                class="btn btn-primary d-flex justify-content-center align-items-center">RESULTS
                             </a>
                         </div>
+
+                        <div v-show="showSavedSearches">
+                            <div v-for="(search,index) in client.searches" :key="index" class="NoDecor">
+                                 <a href="javascript:void(0)" @click="getSavedSearchAgents(search.id)">- {{search.title}}</a>
+                            </div>
+                        </div>
+
                         <div class="col-12 center-content NoDecor" id="aboveSearchResultsSection">
 
                         </div>
@@ -275,9 +285,12 @@
                 },
                 activeBox: 'job_title',
                 searchResults: [],
-                clientCampaigns: [],
                 showSearchResults: false,
                 notificationMessage: '',
+                showSavedSearches: false,
+                client: {
+                    searches:[]
+                },
             }
         },
         methods: {
@@ -296,6 +309,20 @@
                     .catch((error) => {
                         console.log(error.response.data);
                     });
+            },
+            toggleSavedSearches(){
+                this.showSavedSearches = !this.showSavedSearches
+            },
+            getSavedSearchAgents(search_id){
+                axios.get('/client/search/get/' + search_id)
+                    .then( (response) => {
+                        this.searchResults = response.data ;
+                        this.showSearchResults = true;
+                        // scroll to search section
+                        $('html, body').animate({
+                            scrollTop: $("#aboveSearchResultsSection").offset().top
+                        }, 2000);
+                    })
             },
             hideNotification() {
                 $('#notificationBar').css('display', 'none');
@@ -322,10 +349,16 @@
                         }
                     })
                     .catch()
+            },
+            getCurrentClient() {
+                axios.get('/client/current').then((response) => {
+                    this.client = response.data.client;
+                    console.log(this.client)
+                });
             }
         },
         mounted() {
-            this.clientCampaigns = this.$attrs.clientcampaigns;
+            this.getCurrentClient();
         }
     }
 

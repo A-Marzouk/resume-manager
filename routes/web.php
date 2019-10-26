@@ -191,6 +191,7 @@ Route::prefix('client')->group(function (){
 // client searches
 
     Route::post('/search/save','SearchesController@saveSearch')->name('client.search.save');
+    Route::get('/search/get/{search_id}','SearchesController@getSavedSearchAgentsBySearchID')->name('client.search.get.by.id');
 
 
 });

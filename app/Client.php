@@ -82,7 +82,7 @@ class Client extends Model
 
     public function searches()
     {
-        return $this->hasMany(Search::class);
+        return $this->hasMany(SearchResult::class);
     }
 
     public function bookings()

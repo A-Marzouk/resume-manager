@@ -331,6 +331,18 @@ class SearchesController extends Controller
         ];
     }
 
+
+    public function getSavedSearchAgentsBySearchID($search_id){
+        $search = SearchResult::find($search_id);
+        $agents = $search->agents ;
+        foreach ($agents as &$agent){
+            $agent['user'] = $agent->user;
+            $agent['user']['user_data'] = $agent->user->userData;
+            $agent['user']['languages'] = $agent->user->languages;
+        }
+        return $agents ;
+    }
+
     public function deleteSearch(Request $request){
         $search = Search::where('id',$request->search_id)->first();
         $search->delete();

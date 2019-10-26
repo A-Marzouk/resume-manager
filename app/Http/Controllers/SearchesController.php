@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Client;
-use App\ClientSearch;
+use App\SearchResult;
 use App\User;
 use App\UserData;
 use App\Agent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
@@ -306,6 +307,24 @@ class SearchesController extends Controller
     }
 
     public function saveSearch(Request $request){
+        $time = Carbon::now();
+        // create a search
+
+        $search = SearchResult::create([
+            'title' => 'Saved search at : ' . $time->toDateTimeString(),
+            'client_id' => currentClient()->id,
+        ]);
+
+        $agents = $request->freelancers ;
+        $agents_ids = [] ;
+        foreach ($agents as $agent){
+            $agents_ids [] = $agent['id'] ;
+        }
+
+        $search->agents()->attach($agents_ids);
+        // attach agents to the search :
+
+
         return [
             'freelancers' => $request->freelancers,
             'status' => 'success'
@@ -313,7 +332,7 @@ class SearchesController extends Controller
     }
 
     public function deleteSearch(Request $request){
-        $search = ClientSearch::where('id',$request->search_id)->first();
+        $search = Search::where('id',$request->search_id)->first();
         $search->delete();
         return ['status'=>'ok'];
     }
@@ -369,7 +388,7 @@ class SearchesController extends Controller
 
     public function deleteSearchFreelancer(Request $request){
 
-        $search = ClientSearch::where('id',$request->search_id)->first();
+        $search = Search::where('id',$request->search_id)->first();
         // remove freelancer id from the search freelancers_id
         $freelancer_id = $request->freelancer_id ;
 

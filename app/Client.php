@@ -40,6 +40,11 @@ class Client extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function search()
+    {
+        return $this->hasMany(Search::class);
+    }
+
     public function affiliate()
     {
         return $this->belongsTo(Affiliate::class);
@@ -77,7 +82,7 @@ class Client extends Model
 
     public function searches()
     {
-        return $this->hasMany(ClientSearch::class);
+        return $this->hasMany(Search::class);
     }
 
     public function bookings()

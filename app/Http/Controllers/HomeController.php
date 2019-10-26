@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ClientSearch;
+use App\Search;
 use App\PromotedUser;
 use App\User;
 use App\UserData;
@@ -81,7 +81,7 @@ class HomeController extends Controller
     public function getSearch($search_id)
     {
         $freelancers = [];
-        $search = ClientSearch::where('id', $search_id)->first();
+        $search = Search::where('id', $search_id)->first();
 
         if ($search) {
             $search_name = $search->name;

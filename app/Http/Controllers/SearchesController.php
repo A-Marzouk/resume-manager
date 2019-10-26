@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Client;
-use App\ClientSearch;
+use App\SearchResult;
 use App\User;
 use App\UserData;
 use App\Agent;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 
@@ -306,19 +307,44 @@ class SearchesController extends Controller
     }
 
     public function saveSearch(Request $request){
+        $time = Carbon::now();
+        // create a search
 
-        $client = Client::where('email',$request->client_email)->first();
-        // make a new search :
-        $search = new ClientSearch;
-        $search->freelancers_id = implode(',',$request->freelancers_id);
-        $search->client_id = $client->id;
-        $search->name = $request->search_name;
-        $search->save();
-        return ['search_id'=> $search->id];
+        $search = SearchResult::create([
+            'title' => 'Saved search at : ' . $time->toDateTimeString(),
+            'client_id' => currentClient()->id,
+        ]);
+
+        $agents = $request->freelancers ;
+        $agents_ids = [] ;
+        foreach ($agents as $agent){
+            $agents_ids [] = $agent['id'] ;
+        }
+
+        $search->agents()->attach($agents_ids);
+        // attach agents to the search :
+
+
+        return [
+            'freelancers' => $request->freelancers,
+            'status' => 'success'
+        ];
+    }
+
+
+    public function getSavedSearchAgentsBySearchID($search_id){
+        $search = SearchResult::find($search_id);
+        $agents = $search->agents ;
+        foreach ($agents as &$agent){
+            $agent['user'] = $agent->user;
+            $agent['user']['user_data'] = $agent->user->userData;
+            $agent['user']['languages'] = $agent->user->languages;
+        }
+        return $agents ;
     }
 
     public function deleteSearch(Request $request){
-        $search = ClientSearch::where('id',$request->search_id)->first();
+        $search = Search::where('id',$request->search_id)->first();
         $search->delete();
         return ['status'=>'ok'];
     }
@@ -374,7 +400,7 @@ class SearchesController extends Controller
 
     public function deleteSearchFreelancer(Request $request){
 
-        $search = ClientSearch::where('id',$request->search_id)->first();
+        $search = Search::where('id',$request->search_id)->first();
         // remove freelancer id from the search freelancers_id
         $freelancer_id = $request->freelancer_id ;
 

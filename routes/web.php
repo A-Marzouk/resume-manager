@@ -226,6 +226,13 @@ Route::prefix('agent')->group(function (){
     // update agent
     Route::post('/update', 'AgentsController@updateAgent');
 
+    // campaign shifts for agent
+    Route::post('/shifts/add', 'WorkingShiftController@addShift');
+    Route::post('/shifts/end', 'WorkingShiftController@endShift');
+
+    Route::post('/shifts/pause', 'WorkingShiftController@pauseShift');
+    Route::post('/shifts/resume', 'WorkingShiftController@resumeShift');
+
 });
 
 

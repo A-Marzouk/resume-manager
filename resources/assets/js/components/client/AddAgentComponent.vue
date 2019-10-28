@@ -194,20 +194,12 @@
                                 <div class="container">
                                     <div class="row"
                                          style="margin-top: 14px;">
-                                        <div class="col-12 col-sm-6 col-md-8 right-side">
-                                            <button type="button"
-                                                    class="btn btn-left">VIEW SAVED SEARCHES
-                                            </button>
-                                        </div>
                                         <div class="col-12 col-sm-6 col-md-4">
                                             <div class="row">
                                                 <div class="col-12 center-content">
                                                     <a href="javascript:void(0)" @click="updateSearch"
                                                             class="btn btn-primary d-flex justify-content-center align-items-center">SEARCH FOR AGENTS
                                                     </a>
-                                                </div>
-                                                <div class="col-12 center-content NoDecor" id="aboveSearchResultsSection">
-                                                    <a href="javascript:void(0)" style="font-size:14px; padding-top: 5px;">SAVE THIS SEARCH</a>
                                                 </div>
                                             </div>
                                         </div>

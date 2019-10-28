@@ -29,6 +29,10 @@ class Campaign extends Model
         return $this->belongsToMany(Agent::class)->withPivot('status');
     }
 
+    public function workingShifts(){
+        return $this->hasMany(workingShift::class);
+    }
+
     public function faqs(){
         return $this->hasMany(FAQ::class);
     }

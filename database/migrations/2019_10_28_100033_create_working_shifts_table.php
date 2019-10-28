@@ -16,6 +16,7 @@ class CreateWorkingShiftsTable extends Migration
         Schema::create('working_shifts', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('start_time')->nullable();
+            $table->dateTime('break_time')->nullable();
             $table->dateTime('end_time')->nullable();
             $table->time('total_hours')->nullable();
             $table->tinyInteger('status')->nullable();

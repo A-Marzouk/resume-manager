@@ -230,6 +230,9 @@ Route::prefix('agent')->group(function (){
     Route::post('/shifts/add', 'WorkingShiftController@addShift');
     Route::post('/shifts/end', 'WorkingShiftController@endShift');
 
+    Route::post('/shifts/pause', 'WorkingShiftController@pauseShift');
+    Route::post('/shifts/resume', 'WorkingShiftController@resumeShift');
+
 });
 
 

@@ -49,7 +49,12 @@
                         <div class="actionBtn">
                             <a class="secondary little-padding" href="javascript:;"
                                v-on:click="toggleShift(campaign.id)">
-                                {{ (isShiftStart) ? 'FINISH SHIFT' : 'START SHIFT' }}
+                                {{ (isShiftStart) ? 'FINISH SHIFT'  : 'START SHIFT' }}
+
+                                <span v-if="currentWorkingShift.total_hours != 0">
+                                    | Total time of last shift : {{currentWorkingShift.total_hours}}
+                                </span>
+
                             </a>
                             <a class="little-padding" href="javascript:;" v-on:click="toggleBreak(campaign.id)"
                                v-show="isShiftStart">
@@ -158,7 +163,9 @@
                     6: 'S',
                 },
                 editedLog: {},
-                currentWorkingShift: {}
+                currentWorkingShift: {
+                    total_hours : 0
+                }
 
             }
         },
@@ -212,6 +219,7 @@
                 let shiftData = {
                     start_time: moment().format('YYYY-MM-DD hh:mm:ss'),
                     end_time: '',
+                    break_time: '',
                     total_hours: 0,
                     status: 1, // active
                     agent_id: this.agent.id,
@@ -228,22 +236,78 @@
             },
             endShift(shift_id) {
                 // total hours :
-                 const secs =  new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(this.currentWorkingShift.start_time);
-                 const formatted = moment.utc(secs).format('HH:mm:ss');
+                let totalHours = this.getShiftHours();
 
                 let shiftData = {
                     shift_id: shift_id,
                     end_time: moment().format('YYYY-MM-DD hh:mm:ss'),
-                    total_hours: formatted
+                    total_hours: totalHours,
+                    status: 2
                 };
                 axios.post('/agent/shifts/end', shiftData)
                     .then((response) => {
                         console.log(response.data);
+                        this.currentWorkingShift = response.data;
                     })
                     .catch((error) => {
                         console.log(error);
                     });
             },
+
+            pauseShift(shift_id) {
+                // total hours :
+                let totalHours = this.getShiftHours();
+                let shiftData = {
+                    shift_id: shift_id,
+                    end_time: moment().format('YYYY-MM-DD hh:mm:ss'),
+                    total_hours: totalHours,
+                };
+                axios.post('/agent/shifts/pause', shiftData)
+                    .then((response) => {
+                        console.log(response.data);
+                        this.currentWorkingShift = response.data;
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+
+            resumeShift(shift_id) {
+                // total hours :
+                const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(this.currentWorkingShift.start_time);
+                const formatted = moment.utc(secs).format('HH:mm:ss');
+
+                let shiftData = {
+                    shift_id: shift_id,
+                    break_time: moment().format('YYYY-MM-DD hh:mm:ss'), // the time when I am back from break
+                };
+                axios.post('/agent/shifts/resume', shiftData)
+                    .then((response) => {
+                        console.log(response.data);
+                        this.currentWorkingShift = response.data;
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            getShiftHours() {
+                const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(this.currentWorkingShift.start_time);
+                const formatted = moment.utc(secs).format('HH:mm:ss');
+
+                if (this.currentWorkingShift.total_hours == 0) { // there was no breaks
+                    return formatted;
+                } else {
+                    // there were breaks, so add the formatted time to the time that was there already
+                    var std_count = this.currentWorkingShift.total_hours;
+                    const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(this.currentWorkingShift.break_time);
+                    const formatted = moment.utc(secs).format('HH:mm:ss');
+                    let all = moment.duration(std_count).asSeconds() + moment.duration(formatted).asSeconds();
+                    let total_hours = moment.utc(all*1000).format('HH:mm:ss') ;
+                    return total_hours;
+                }
+
+            },
+
             addShiftEndLog(camp_id) {
                 let logData = {
                     log_text: 'Shift ended at: ' + new Date().toLocaleString(),
@@ -270,9 +334,9 @@
                 };
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
-                        console.log(response.data);
                         let log = response.data;
                         this.addActivityLog(log);
+                        this.pauseShift(this.currentWorkingShift.id);
                     })
                     .catch((error) => {
                         console.log(error);
@@ -287,9 +351,9 @@
                 };
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
-                        console.log(response.data);
                         let log = response.data;
                         this.addActivityLog(log);
+                        this.resumeShift(this.currentWorkingShift.id);
                     })
                     .catch((error) => {
                         console.log(error);

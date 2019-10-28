@@ -51,8 +51,9 @@
                                v-on:click="toggleShift(campaign.id)">
                                 {{ (isShiftStart) ? 'FINISH SHIFT' : 'START SHIFT' }}
                             </a>
-                            <a class="little-padding" href="javascript:;" v-on:click="toggleBreak(campaign.id)" v-show="isShiftStart">
-                                {{ (isBreakStart) ?  'I\'M BACK' :  'I\'M AWAY'}}
+                            <a class="little-padding" href="javascript:;" v-on:click="toggleBreak(campaign.id)"
+                               v-show="isShiftStart">
+                                {{ (isBreakStart) ? 'I\'M BACK' : 'I\'M AWAY'}}
                             </a>
                         </div>
 
@@ -64,13 +65,16 @@
                             </div>
                             <div class="log-text justify-content-between">
                                 <div class="status-selector-component">
-                                    <a class="recording-status icon" style="color:white" v-bind:class="logStatusCode[log.status]">{{ logStatusCodeInitials[log.status] }}</a>
+                                    <a class="recording-status icon" style="color:white"
+                                       v-bind:class="logStatusCode[log.status]">{{ logStatusCodeInitials[log.status]
+                                        }}</a>
                                 </div>
                                 <span class="log-text-content" style="flex:1;">
                                     {{log.log_text}}
                                 </span>
                                 <a href="javascript:void(0)" @click="editedLog = log">
-                                    <img class="icon-edit" src="/images/client/campaign_activity/edit.png" alt="edit icon"
+                                    <img class="icon-edit" src="/images/client/campaign_activity/edit.png"
+                                         alt="edit icon"
                                          style="height: 20px;"/>
                                 </a>
 
@@ -78,7 +82,9 @@
                         </div>
 
                         <div>
-                            <updateEntry :clear="cancelEdit" v-if="editedLog.id === log.id" :log="log" @activityLogUpdated="updateActivityLog" @activityLogDeleted="deleteActivityLog"></updateEntry>
+                            <updateEntry :clear="cancelEdit" v-if="editedLog.id === log.id" :log="log"
+                                         @activityLogUpdated="updateActivityLog"
+                                         @activityLogDeleted="deleteActivityLog"></updateEntry>
                         </div>
                     </div>
                 </div>
@@ -112,6 +118,7 @@
     import addEntry from './addEntry'
     import updateEntry from './updateEntry'
     import statusSelector from '../../status-selector'
+
     export default {
         components: {
             addEntry,
@@ -142,15 +149,16 @@
                     5: 'contacts-received',
                     6: 'successful',
                 },
-                logStatusCodeInitials:{
-                    1:'ER',
-                    2:'CB',
-                    3:'NI',
-                    4:'AS',
-                    5:'CR',
-                    6:'S',
+                logStatusCodeInitials: {
+                    1: 'ER',
+                    2: 'CB',
+                    3: 'NI',
+                    4: 'AS',
+                    5: 'CR',
+                    6: 'S',
                 },
-                editedLog:{}
+                editedLog: {},
+                currentWorkingShift: {}
 
             }
         },
@@ -162,27 +170,29 @@
             },
         },
         methods: {
-            toggleShift(camp_id){
-              // add log of starting the shift
-                if(!this.isShiftStart){
-                    this.isShiftStart = true ;
+            toggleShift(camp_id) {
+                // add log of starting the shift
+                if (!this.isShiftStart) {
+                    this.isShiftStart = true;
+                    this.addShift(camp_id);
                     this.addShiftStartLog(camp_id);
-                }else{
-                    this.isShiftStart = false ;
+                } else {
+                    this.isShiftStart = false;
                     this.addShiftEndLog(camp_id);
+                    this.endShift(this.currentWorkingShift.id);
                 }
             },
-            toggleBreak(camp_id){
+            toggleBreak(camp_id) {
                 // add log of starting the shift
-                if(!this.isBreakStart){
-                    this.isBreakStart = true ;
+                if (!this.isBreakStart) {
+                    this.isBreakStart = true;
                     this.addBreakStartLog(camp_id);
-                }else{
-                    this.isBreakStart = false ;
+                } else {
+                    this.isBreakStart = false;
                     this.addBreakEndLog(camp_id);
                 }
             },
-            addShiftStartLog(camp_id){
+            addShiftStartLog(camp_id) {
                 let logData = {
                     log_text: 'Shift starts at: ' + new Date().toLocaleString(),
                     status: 6,
@@ -191,7 +201,6 @@
                 };
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
-                        console.log(response.data);
                         let log = response.data;
                         this.addActivityLog(log);
                     })
@@ -199,7 +208,43 @@
                         console.log(error);
                     });
             },
-            addShiftEndLog(camp_id){
+            addShift(camp_id) {
+                let shiftData = {
+                    start_time: moment().format('YYYY-MM-DD hh:mm:ss'),
+                    end_time: '',
+                    total_hours: 0,
+                    status: 1, // active
+                    agent_id: this.agent.id,
+                    campaign_id: camp_id
+                };
+                axios.post('/agent/shifts/add', shiftData)
+                    .then((response) => {
+                        console.log(response.data);
+                        this.currentWorkingShift = response.data;
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            endShift(shift_id) {
+                // total hours :
+                 const secs =  new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(this.currentWorkingShift.start_time);
+                 const formatted = moment.utc(secs).format('HH:mm:ss');
+
+                let shiftData = {
+                    shift_id: shift_id,
+                    end_time: moment().format('YYYY-MM-DD hh:mm:ss'),
+                    total_hours: formatted
+                };
+                axios.post('/agent/shifts/end', shiftData)
+                    .then((response) => {
+                        console.log(response.data);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            addShiftEndLog(camp_id) {
                 let logData = {
                     log_text: 'Shift ended at: ' + new Date().toLocaleString(),
                     status: 6,
@@ -208,7 +253,6 @@
                 };
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
-                        console.log(response.data);
                         let log = response.data;
                         this.addActivityLog(log);
                     })
@@ -217,7 +261,7 @@
                     });
             },
 
-            addBreakStartLog(camp_id){
+            addBreakStartLog(camp_id) {
                 let logData = {
                     log_text: 'Break started at: ' + new Date().toLocaleString(),
                     status: 6,
@@ -234,7 +278,7 @@
                         console.log(error);
                     });
             },
-            addBreakEndLog(camp_id){
+            addBreakEndLog(camp_id) {
                 let logData = {
                     log_text: 'Break ends at: ' + new Date().toLocaleString(),
                     status: 6,
@@ -277,24 +321,24 @@
             },
             updateActivityLog(log) {
                 // replace the old log with this one passed here.
-                this.agentLogs.forEach( (oldLog,index) => {
-                    if(oldLog.id === log.id){
-                        this.agentLogs[index] = log ;
+                this.agentLogs.forEach((oldLog, index) => {
+                    if (oldLog.id === log.id) {
+                        this.agentLogs[index] = log;
                     }
-                }) ;
+                });
                 this.$emit('showPositiveNotification', 'Activity log has been successfully Updated !')
 
             },
-            deleteActivityLog(logID){
+            deleteActivityLog(logID) {
                 // splice the old log with this one passed here.
-                this.agentLogs.forEach( (oldLog,index) => {
-                    if(oldLog.id === logID){
-                        this.agentLogs.splice(index,1);
+                this.agentLogs.forEach((oldLog, index) => {
+                    if (oldLog.id === logID) {
+                        this.agentLogs.splice(index, 1);
                     }
                 });
                 this.$emit('showPositiveNotification', 'Activity log has been successfully Deleted !')
             },
-            cancelEdit(){
+            cancelEdit() {
                 this.editedLog = {}
             }
         },
@@ -305,60 +349,61 @@
 </script>
 
 <style scoped lang="scss">
-    .actionBtn{
+    .actionBtn {
         margin-right: 34px;
         justify-content: space-between;
         display: flex;
 
-    @media (max-width:745px) {
-        margin-right: 6px;
-    }
+        @media (max-width: 745px) {
+            margin-right: 6px;
+        }
 
-    a:hover {
-        text-decoration: none;
-    }
-    a {
-    @media (max-width:745px) {
-        min-width: 120px;
-        height: 31px;
-        font-size: 11px;
+        a:hover {
+            text-decoration: none;
+        }
 
-    &.hideOnSm {
-         display: none;
-     }
-    }
+        a {
+            @media (max-width: 745px) {
+                min-width: 120px;
+                height: 31px;
+                font-size: 11px;
 
-    padding: 4px 23px 3px 13px;
-    display:block;
-    min-width: 120px;
-    height: 31px;
-    text-align: center;
-    border-radius: 30px;
-    background: #05A4F4;
+                &.hideOnSm {
+                    display: none;
+                }
+            }
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 24px;
-    letter-spacing: -0.1px;
-    color: #FFFFFF;
-    margin: 0 5px;
+            padding: 4px 23px 3px 13px;
+            display: block;
+            min-width: 120px;
+            height: 31px;
+            text-align: center;
+            border-radius: 30px;
+            background: #05A4F4;
 
-    &.little-padding {
-         padding: 4px 15px;
-     }
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 24px;
+            letter-spacing: -0.1px;
+            color: #FFFFFF;
+            margin: 0 5px;
 
-    &.secondary {
-         background: transparent;
-         color: #05A4F4;
-     }
+            &.little-padding {
+                padding: 4px 15px;
+            }
 
-    img{
-        padding-right: 8px;
-        padding-left: 7px;
-        padding-bottom: 3px;
-    }
-    }
+            &.secondary {
+                background: transparent;
+                color: #05A4F4;
+            }
+
+            img {
+                padding-right: 8px;
+                padding-left: 7px;
+                padding-bottom: 3px;
+            }
+        }
     }
 </style>

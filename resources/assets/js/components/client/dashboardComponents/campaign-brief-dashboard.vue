@@ -150,8 +150,6 @@
                 return event.toLocaleDateString('en-EN', options);
             },
             sortedLogs(logs){
-                // const secs = new Date(logs[0].created_at) - new Date(logs[1].created_at);
-                // const formatted = moment.utc(secs*1000).format('HH:mm:ss');
                return  logs.sort((b, a) => new Date(a.created_at) - new Date(b.created_at));
             }
         },

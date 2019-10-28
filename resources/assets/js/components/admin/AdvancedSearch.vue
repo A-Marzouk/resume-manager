@@ -178,19 +178,11 @@
                                 <div class="container">
                                     <div class="row"
                                          style="margin-top: 14px;">
-                                        <div class="col-12 col-sm-6 col-md-8 right-side">
-                                            <button type="button"
-                                                    class="btn btn-left">VIEW SAVED SEARCH</button>
-                                        </div>
                                         <div class="col-12 col-sm-6 col-md-4">
                                             <div class="row">
                                                 <div class="col-12 center-content">
                                                     <button type="button"
                                                             class="btn btn-right-top">SEARCH FOR AGENTES</button>
-                                                </div>
-                                                <div class="col-12 center-content">
-                                                    <button type="button"
-                                                            class="btn btn-right-bottom">SAVE THIS SEARCH</button>
                                                 </div>
                                             </div>
                                         </div>

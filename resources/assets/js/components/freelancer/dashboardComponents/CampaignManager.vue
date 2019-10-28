@@ -201,7 +201,7 @@
             },
             addShiftEndLog(camp_id){
                 let logData = {
-                    log_text: 'Shift ends at: ' + new Date().toLocaleString(),
+                    log_text: 'Shift ended at: ' + new Date().toLocaleString(),
                     status: 6,
                     agent_id: this.agent.id,
                     campaign_id: camp_id
@@ -219,7 +219,7 @@
 
             addBreakStartLog(camp_id){
                 let logData = {
-                    log_text: 'Break starts at: ' + new Date().toLocaleString(),
+                    log_text: 'Break started at: ' + new Date().toLocaleString(),
                     status: 6,
                     agent_id: this.agent.id,
                     campaign_id: camp_id

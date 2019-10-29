@@ -38,9 +38,9 @@ class Agent extends Model
         return $this->hasMany(Invoice::class);
     }
 
-    public function workingShifts()
+    public function shifts()
     {
-        return $this->hasMany(workingShift::class);
+        return $this->hasMany(WorkingShift::class);
     }
 
     public function businessUser()

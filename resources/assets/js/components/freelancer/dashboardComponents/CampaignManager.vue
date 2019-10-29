@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="agent-logs-block">
-                    <div class="agentInfo d-flex flex-wrap justify-content-between">
+                    <div class="agentInfo d-flex flex-wrap justify-content-between pb-1">
                         <div>
                             <img src="/images/client/dummy.png" alt="">
                             <span class="userName">
@@ -54,15 +54,24 @@
                                 <span v-if="currentWorkingShift.total_hours != 0">
                                     | Total time of last shift : {{currentWorkingShift.total_hours}}
                                 </span>
-
                             </a>
+
                             <a class="little-padding" href="javascript:;" v-on:click="toggleBreak(campaign.id)"
                                v-show="isShiftStart">
                                 {{ (isBreakStart) ? 'I\'M BACK' : 'I\'M AWAY'}}
                             </a>
+
+                            <a href="javascript:void(0)" class="secondary little-padding" @click="viewShifts(campaign.id)">TODAY SHIFTS</a>
                         </div>
 
                     </div>
+
+                    <div class="d-flex flex-column mt-0 mb-2 pr-3 w-100 align-items-end" style="font-size: 14px;" v-if="campaignViewedShifts === campaign.id">
+                        <div v-for="(shift,index) in todayShifts" :key="index" v-if="shift.campaign_id == campaign.id" class="pt-1" style="color: #0D96DB">
+                           {{todaysDate()}} : {{shift.total_hours}}
+                        </div>
+                    </div>
+
                     <div v-for="(log,index) in agentLogs" :key="index + '_LOG'" v-show="log.campaign_id == campaign.id">
                         <div class="log">
                             <div class="log-time">
@@ -135,10 +144,12 @@
             return {
                 rootLink: this.$route.path,
                 addEntry: false,
+                campaignViewedShifts: '',
                 imAway: true,
                 isShiftStart: false,
                 isBreakStart: false,
                 campaigns: this.agent.campaigns,
+                shifts: this.agent.shifts,
                 agentLogs: this.agent.logs,
                 campaignStatusCode: {
                     1: 'Active',
@@ -166,7 +177,6 @@
                 currentWorkingShift: {
                     total_hours : 0
                 }
-
             }
         },
         computed: {
@@ -175,8 +185,32 @@
                     return campaign.status == 1
                 });
             },
+            todayShifts() {
+                return this.agent.shifts.filter((shift) => {
+                    let shiftDate = moment(shift.created_at).format('YYYY-MM-DD');
+                    let today     = moment().format('YYYY-MM-DD');
+                    console.log('shiftDate '+shiftDate);
+                    console.log('today '+today);
+
+                    return moment(shiftDate).isSame(moment(today));
+                });
+            },
         },
         methods: {
+            todaysDate(){
+                return moment().format('YYYY-MM-DD');
+            },
+            viewShifts(camp_id){
+                this.campaigns.map((campaign) => {
+                    if(campaign.id == camp_id){
+                        if(this.campaignViewedShifts == camp_id){
+                            this.campaignViewedShifts = '';
+                        }else {
+                            this.campaignViewedShifts = camp_id;
+                        }
+                    }
+                })
+            },
             toggleShift(camp_id) {
                 // add log of starting the shift
                 if (!this.isShiftStart) {
@@ -248,6 +282,8 @@
                     .then((response) => {
                         console.log(response.data);
                         this.currentWorkingShift = response.data;
+                        this.todayShifts.push(response.data);
+                        this.campaignViewedShifts = response.data.campaign_id;
                     })
                     .catch((error) => {
                         console.log(error);

@@ -48,17 +48,13 @@
 
                         <div class="actionBtn">
                             <a class="secondary little-padding" href="javascript:;"
-                               v-on:click="toggleShift(campaign.id)">
-                                {{ (isShiftStart) ? 'FINISH SHIFT'  : 'START SHIFT' }}
-
-                                <span v-if="currentWorkingShift.total_hours != 0">
-                                    | Total time of last shift : {{currentWorkingShift.total_hours}}
-                                </span>
+                               v-on:click="toggleShift(campaign)">
+                                {{ (campaign.isShiftStart) ? 'FINISH SHIFT'  : 'START SHIFT' }}
                             </a>
 
-                            <a class="little-padding" href="javascript:;" v-on:click="toggleBreak(campaign.id)"
-                               v-show="isShiftStart">
-                                {{ (isBreakStart) ? 'I\'M BACK' : 'I\'M AWAY'}}
+                            <a class="little-padding" href="javascript:;" v-on:click="toggleBreak(campaign)"
+                               v-show="campaign.isShiftStart">
+                                {{ (campaign.isBreakStart) ? 'I\'M BACK' : 'I\'M AWAY'}}
                             </a>
 
                             <a href="javascript:void(0)" class="secondary little-padding" @click="viewShifts(campaign.id)">TODAY SHIFTS</a>
@@ -72,33 +68,35 @@
                         </div>
                     </div>
 
-                    <div v-for="(log,index) in agentLogs" :key="index + '_LOG'" v-show="log.campaign_id == campaign.id">
-                        <div class="log">
-                            <div class="log-time">
-                                {{getDate(log.created_at)}}
-                            </div>
-                            <div class="log-text justify-content-between">
-                                <div class="status-selector-component">
-                                    <a class="recording-status icon" style="color:white"
-                                       v-bind:class="logStatusCode[log.status]">{{ logStatusCodeInitials[log.status]
-                                        }}</a>
+                    <div  class="logsBox">
+                        <div v-for="(log,index) in agentLogs" :key="index + '_LOG'" v-show="log.campaign_id == campaign.id">
+                            <div class="log">
+                                <div class="log-time">
+                                    {{getDate(log.created_at)}}
                                 </div>
-                                <span class="log-text-content" style="flex:1;">
+                                <div class="log-text justify-content-between">
+                                    <div class="status-selector-component">
+                                        <a class="recording-status icon" style="color:white"
+                                           v-bind:class="logStatusCode[log.status]">{{ logStatusCodeInitials[log.status]
+                                            }}</a>
+                                    </div>
+                                    <span class="log-text-content" style="flex:1;">
                                     {{log.log_text}}
                                 </span>
-                                <a href="javascript:void(0)" @click="editedLog = log">
-                                    <img class="icon-edit" src="/images/client/campaign_activity/edit.png"
-                                         alt="edit icon"
-                                         style="height: 20px;"/>
-                                </a>
+                                    <a href="javascript:void(0)" @click="editedLog = log">
+                                        <img class="icon-edit" src="/images/client/campaign_activity/edit.png"
+                                             alt="edit icon"
+                                             style="height: 20px;"/>
+                                    </a>
 
+                                </div>
                             </div>
-                        </div>
 
-                        <div>
-                            <updateEntry :clear="cancelEdit" v-if="editedLog.id === log.id" :log="log"
-                                         @activityLogUpdated="updateActivityLog"
-                                         @activityLogDeleted="deleteActivityLog"></updateEntry>
+                            <div>
+                                <updateEntry :clear="cancelEdit" v-if="editedLog.id === log.id" :log="log"
+                                             @activityLogUpdated="updateActivityLog"
+                                             @activityLogDeleted="deleteActivityLog"></updateEntry>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -146,8 +144,6 @@
                 addEntry: false,
                 campaignViewedShifts: '',
                 imAway: true,
-                isShiftStart: false,
-                isBreakStart: false,
                 campaigns: this.agent.campaigns,
                 shifts: this.agent.shifts,
                 agentLogs: this.agent.logs,
@@ -176,7 +172,9 @@
                 editedLog: {},
                 currentWorkingShift: {
                     total_hours : 0
-                }
+                },
+
+                currentShifts:[]
             }
         },
         computed: {
@@ -187,10 +185,11 @@
             },
             todayShifts() {
                 return this.agent.shifts.filter((shift) => {
-                    let shiftDate = moment(shift.created_at).format('YYYY-MM-DD');
+                    let shiftDate = moment(shift.started_at).format('YYYY-MM-DD');
                     let today     = moment().format('YYYY-MM-DD');
-                    console.log('shiftDate '+shiftDate);
-                    console.log('today '+today);
+
+                    console.log(' shiftDate :' + shiftDate);
+                    console.log(' today :' + today);
 
                     return moment(shiftDate).isSame(moment(today));
                 });
@@ -211,26 +210,26 @@
                     }
                 })
             },
-            toggleShift(camp_id) {
+            toggleShift(campaign) {
                 // add log of starting the shift
-                if (!this.isShiftStart) {
-                    this.isShiftStart = true;
-                    this.addShift(camp_id);
-                    this.addShiftStartLog(camp_id);
+                if (!campaign.isShiftStart) {
+                    campaign.isShiftStart = true;
+                    this.addShift(campaign.id);
+                    this.addShiftStartLog(campaign.id);
                 } else {
-                    this.isShiftStart = false;
-                    this.addShiftEndLog(camp_id);
+                    campaign.isShiftStart = false;
+                    this.addShiftEndLog(campaign.id);
                     this.endShift(this.currentWorkingShift.id);
                 }
             },
-            toggleBreak(camp_id) {
+            toggleBreak(campaign) {
                 // add log of starting the shift
-                if (!this.isBreakStart) {
-                    this.isBreakStart = true;
-                    this.addBreakStartLog(camp_id);
+                if (!campaign.isBreakStart) {
+                    campaign.isBreakStart = true;
+                    this.addBreakStartLog(campaign.id);
                 } else {
-                    this.isBreakStart = false;
-                    this.addBreakEndLog(camp_id);
+                    campaign.isBreakStart = false;
+                    this.addBreakEndLog(campaign.id);
                 }
             },
             addShiftStartLog(camp_id) {
@@ -282,7 +281,7 @@
                     .then((response) => {
                         console.log(response.data);
                         this.currentWorkingShift = response.data;
-                        this.todayShifts.push(response.data);
+                        this.todayShifts.unshift(response.data);
                         this.campaignViewedShifts = response.data.campaign_id;
                     })
                     .catch((error) => {
@@ -416,7 +415,7 @@
                 return event.toLocaleDateString('en-EN', options);
             },
             addActivityLog(log) {
-                this.agentLogs.push(log);
+                this.agentLogs.unshift(log);
                 this.$emit('showPositiveNotification', 'Activity log has been successfully Added!')
             },
             updateActivityLog(log) {
@@ -449,6 +448,11 @@
 </script>
 
 <style scoped lang="scss">
+
+    .logsBox{
+        height: 400px;
+        overflow-x: auto;
+    }
     .actionBtn {
         margin-right: 34px;
         justify-content: space-between;

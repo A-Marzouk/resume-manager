@@ -49,27 +49,36 @@
                         <div class="actionBtn">
                             <a class="secondary little-padding" href="javascript:;"
                                v-on:click="toggleShift(campaign)">
-                                {{ (campaign.isShiftStart) ? 'FINISH SHIFT'  : 'START SHIFT' }}
+                                <span v-if="campaign.currentWorkingShift.status === 1 || campaign.currentWorkingShift.status === 3 ">
+                                    FINISH SHIFT
+                                </span>
+                                <span v-else>
+                                    START SHIFT
+                                </span>
                             </a>
 
                             <a class="little-padding" href="javascript:;" v-on:click="toggleBreak(campaign)"
-                               v-show="campaign.isShiftStart">
-                                {{ (campaign.isBreakStart) ? 'I\'M BACK' : 'I\'M AWAY'}}
+                               v-show="campaign.currentWorkingShift.status === 1">
+                                TOGGLE BREAK
                             </a>
 
-                            <a href="javascript:void(0)" class="secondary little-padding" @click="viewShifts(campaign.id)">TODAY SHIFTS</a>
+                            <a href="javascript:void(0)" class="secondary little-padding"
+                               @click="viewShifts(campaign.id)">TODAY SHIFTS</a>
                         </div>
 
                     </div>
 
-                    <div class="d-flex flex-column mt-0 mb-2 pr-3 w-100 align-items-end" style="font-size: 14px;" v-if="campaignViewedShifts === campaign.id">
-                        <div v-for="(shift,index) in todayShifts" :key="index" v-if="shift.campaign_id == campaign.id" class="pt-1" style="color: #0D96DB">
-                           {{todaysDate()}} : {{shift.total_hours}}
+                    <div class="d-flex flex-column mt-0 mb-2 pr-3 w-100 align-items-end" style="font-size: 14px;"
+                         v-if="campaignViewedShifts === campaign.id">
+                        <div v-for="(shift,index) in todayShifts" :key="index" v-if="shift.campaign_id == campaign.id"
+                             class="pt-1" style="color: #0D96DB">
+                            {{todaysDate()}} : {{shift.total_hours}}
                         </div>
                     </div>
 
-                    <div  class="logsBox">
-                        <div v-for="(log,index) in agentLogs" :key="index + '_LOG'" v-show="log.campaign_id == campaign.id">
+                    <div class="logsBox">
+                        <div v-for="(log,index) in agentLogs" :key="index + '_LOG'"
+                             v-show="log.campaign_id == campaign.id">
                             <div class="log">
                                 <div class="log-time">
                                     {{getDate(log.created_at)}}
@@ -171,10 +180,10 @@
                 },
                 editedLog: {},
                 currentWorkingShift: {
-                    total_hours : 0
+                    total_hours: 0
                 },
 
-                currentShifts:[]
+                currentShifts: []
             }
         },
         computed: {
@@ -186,7 +195,7 @@
             todayShifts() {
                 return this.agent.shifts.filter((shift) => {
                     let shiftDate = moment(shift.started_at).format('YYYY-MM-DD');
-                    let today     = moment().format('YYYY-MM-DD');
+                    let today = moment().format('YYYY-MM-DD');
 
                     console.log(' shiftDate :' + shiftDate);
                     console.log(' today :' + today);
@@ -196,15 +205,15 @@
             },
         },
         methods: {
-            todaysDate(){
+            todaysDate() {
                 return moment().format('YYYY-MM-DD');
             },
-            viewShifts(camp_id){
+            viewShifts(camp_id) {
                 this.campaigns.map((campaign) => {
-                    if(campaign.id == camp_id){
-                        if(this.campaignViewedShifts == camp_id){
+                    if (campaign.id == camp_id) {
+                        if (this.campaignViewedShifts == camp_id) {
                             this.campaignViewedShifts = '';
-                        }else {
+                        } else {
                             this.campaignViewedShifts = camp_id;
                         }
                     }
@@ -212,32 +221,28 @@
             },
             toggleShift(campaign) {
                 // add log of starting the shift
-                if (!campaign.isShiftStart) {
-                    campaign.isShiftStart = true;
-                    this.addShift(campaign.id);
-                    this.addShiftStartLog(campaign.id);
+                if (campaign.currentWorkingShift.status === 1 || campaign.currentWorkingShift.status === 3) {
+                    this.addShiftEndLog(campaign);
+                    this.endShift(campaign.currentWorkingShift.id, campaign);
                 } else {
-                    campaign.isShiftStart = false;
-                    this.addShiftEndLog(campaign.id);
-                    this.endShift(this.currentWorkingShift.id);
+                    this.addShift(campaign);
+                    this.addShiftStartLog(campaign);
                 }
             },
             toggleBreak(campaign) {
                 // add log of starting the shift
-                if (!campaign.isBreakStart) {
-                    campaign.isBreakStart = true;
-                    this.addBreakStartLog(campaign.id);
+                if (campaign.currentWorkingShift.status !== 3) {
+                    this.addBreakStartLog(campaign);
                 } else {
-                    campaign.isBreakStart = false;
-                    this.addBreakEndLog(campaign.id);
+                    this.addBreakEndLog(campaign);
                 }
             },
-            addShiftStartLog(camp_id) {
+            addShiftStartLog(campaign) {
                 let logData = {
                     log_text: 'Shift starts at: ' + new Date().toLocaleString(),
                     status: 6,
                     agent_id: this.agent.id,
-                    campaign_id: camp_id
+                    campaign_id: campaign.id
                 };
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
@@ -248,7 +253,7 @@
                         console.log(error);
                     });
             },
-            addShift(camp_id) {
+            addShift(campaign) {
                 let shiftData = {
                     start_time: moment().format('YYYY-MM-DD hh:mm:ss'),
                     end_time: '',
@@ -256,20 +261,20 @@
                     total_hours: 0,
                     status: 1, // active
                     agent_id: this.agent.id,
-                    campaign_id: camp_id
+                    campaign_id: campaign.id
                 };
                 axios.post('/agent/shifts/add', shiftData)
                     .then((response) => {
                         console.log(response.data);
-                        this.currentWorkingShift = response.data;
+                        campaign.currentWorkingShift = response.data;
                     })
                     .catch((error) => {
                         console.log(error);
                     });
             },
-            endShift(shift_id) {
+            endShift(shift_id, campaign) {
                 // total hours :
-                let totalHours = this.getShiftHours();
+                let totalHours = this.getShiftHours(campaign);
 
                 let shiftData = {
                     shift_id: shift_id,
@@ -280,7 +285,7 @@
                 axios.post('/agent/shifts/end', shiftData)
                     .then((response) => {
                         console.log(response.data);
-                        this.currentWorkingShift = response.data;
+                        campaign.currentWorkingShift = response.data;
                         this.todayShifts.unshift(response.data);
                         this.campaignViewedShifts = response.data.campaign_id;
                     })
@@ -289,9 +294,9 @@
                     });
             },
 
-            pauseShift(shift_id) {
+            pauseShift(shift_id, campaign) {
                 // total hours :
-                let totalHours = this.getShiftHours();
+                let totalHours = this.getShiftHours(campaign);
                 let shiftData = {
                     shift_id: shift_id,
                     end_time: moment().format('YYYY-MM-DD hh:mm:ss'),
@@ -300,16 +305,17 @@
                 axios.post('/agent/shifts/pause', shiftData)
                     .then((response) => {
                         console.log(response.data);
-                        this.currentWorkingShift = response.data;
+                        console.log('status' + response.data.status);
+                        campaign.currentWorkingShift = response.data;
                     })
                     .catch((error) => {
                         console.log(error);
                     });
             },
 
-            resumeShift(shift_id) {
+            resumeShift(shift_id, campaign) {
                 // total hours :
-                const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(this.currentWorkingShift.start_time);
+                const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.start_time);
                 const formatted = moment.utc(secs).format('HH:mm:ss');
 
                 let shiftData = {
@@ -319,36 +325,37 @@
                 axios.post('/agent/shifts/resume', shiftData)
                     .then((response) => {
                         console.log(response.data);
-                        this.currentWorkingShift = response.data;
+                        console.log('status' + response.data.status);
+                        campaign.currentWorkingShift = response.data;
                     })
                     .catch((error) => {
                         console.log(error);
                     });
             },
-            getShiftHours() {
-                const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(this.currentWorkingShift.start_time);
+            getShiftHours(campaign) {
+                const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.start_time);
                 const formatted = moment.utc(secs).format('HH:mm:ss');
 
-                if (this.currentWorkingShift.total_hours == 0) { // there was no breaks
+                if (campaign.currentWorkingShift.total_hours == 0) { // there was no breaks
                     return formatted;
                 } else {
                     // there were breaks, so add the formatted time to the time that was there already
-                    var std_count = this.currentWorkingShift.total_hours;
-                    const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(this.currentWorkingShift.break_time);
+                    var std_count = campaign.currentWorkingShift.total_hours;
+                    const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.break_time);
                     const formatted = moment.utc(secs).format('HH:mm:ss');
                     let all = moment.duration(std_count).asSeconds() + moment.duration(formatted).asSeconds();
-                    let total_hours = moment.utc(all*1000).format('HH:mm:ss') ;
+                    let total_hours = moment.utc(all * 1000).format('HH:mm:ss');
                     return total_hours;
                 }
 
             },
 
-            addShiftEndLog(camp_id) {
+            addShiftEndLog(campaign) {
                 let logData = {
                     log_text: 'Shift ended at: ' + new Date().toLocaleString(),
                     status: 6,
                     agent_id: this.agent.id,
-                    campaign_id: camp_id
+                    campaign_id: campaign.id
                 };
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
@@ -360,35 +367,35 @@
                     });
             },
 
-            addBreakStartLog(camp_id) {
+            addBreakStartLog(campaign) {
                 let logData = {
                     log_text: 'Break started at: ' + new Date().toLocaleString(),
                     status: 6,
                     agent_id: this.agent.id,
-                    campaign_id: camp_id
+                    campaign_id: campaign.id
                 };
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
                         let log = response.data;
                         this.addActivityLog(log);
-                        this.pauseShift(this.currentWorkingShift.id);
+                        this.pauseShift(campaign.currentWorkingShift.id, campaign);
                     })
                     .catch((error) => {
                         console.log(error);
                     });
             },
-            addBreakEndLog(camp_id) {
+            addBreakEndLog(campaign) {
                 let logData = {
                     log_text: 'Break ends at: ' + new Date().toLocaleString(),
                     status: 6,
                     agent_id: this.agent.id,
-                    campaign_id: camp_id
+                    campaign_id: campaign.id
                 };
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
                         let log = response.data;
                         this.addActivityLog(log);
-                        this.resumeShift(this.currentWorkingShift.id);
+                        this.resumeShift(campaign.currentWorkingShift.id, campaign);
                     })
                     .catch((error) => {
                         console.log(error);
@@ -441,6 +448,11 @@
                 this.editedLog = {}
             }
         },
+        created() {
+            this.agent.campaigns.map((campaign) => {
+                campaign.currentWorkingShift = {}
+            });
+        },
         mounted() {
 
         }
@@ -449,10 +461,11 @@
 
 <style scoped lang="scss">
 
-    .logsBox{
+    .logsBox {
         height: 400px;
         overflow-x: auto;
     }
+
     .actionBtn {
         margin-right: 34px;
         justify-content: space-between;

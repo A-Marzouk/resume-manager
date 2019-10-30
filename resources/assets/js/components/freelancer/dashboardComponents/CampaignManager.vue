@@ -47,23 +47,27 @@
                         </div>
 
                         <div class="actionBtn">
-                            <a class="secondary little-padding" href="javascript:;" v-on:click="startShift(campaign)" v-show="campaign.currentWorkingShift.status == 0">
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="startShift(campaign)"
+                               v-show="campaign.currentWorkingShift.status == 0">
                                 START NEW SHIFT | <span :class="'campaign_timer_' + campaign.id">
                                 {{campaign.currentWorkingShift.total_hours}}
                             </span>
                             </a>
 
-                            <a class="secondary little-padding" href="javascript:;" v-on:click="finishShift(campaign)"  v-show="campaign.currentWorkingShift.status == 1 || campaign.currentWorkingShift.status == 3 ">
-                                FINISH SHIFT |   <span :class="'campaign_timer_' + campaign.id">
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="finishShift(campaign)"
+                               v-show="campaign.currentWorkingShift.status == 1 || campaign.currentWorkingShift.status == 3 ">
+                                FINISH SHIFT | <span :class="'campaign_timer_' + campaign.id">
                                 {{campaign.currentWorkingShift.total_hours}}
                             </span>
                             </a>
 
-                            <a class=" little-padding" href="javascript:;" v-on:click="startBreak(campaign)"  v-show="campaign.currentWorkingShift.status == 1">
+                            <a class=" little-padding" href="javascript:;" v-on:click="startBreak(campaign)"
+                               v-show="campaign.currentWorkingShift.status == 1">
                                 I'M AWAY
                             </a>
 
-                            <a class=" little-padding" href="javascript:;" v-on:click="finishBreak(campaign)"  v-show="campaign.currentWorkingShift.status == 3">
+                            <a class=" little-padding" href="javascript:;" v-on:click="finishBreak(campaign)"
+                               v-show="campaign.currentWorkingShift.status == 3">
                                 I'M BACK
                             </a>
 
@@ -221,32 +225,32 @@
                 })
             },
 
-            startShift(campaign){
+            startShift(campaign) {
                 this.startTimer(campaign);
                 this.addShift(campaign);
                 this.addShiftStartLog(campaign);
             },
-            startTimer(campaign){
-                campaign.timerVar = setInterval( () => {
-                    console.log( this.getShiftHours(campaign));
+            startTimer(campaign) {
+                campaign.timerVar = setInterval(() => {
+                    this.getShiftHours(campaign)
                 }, 1000);
             },
-            stopTimer(campaign){
+            stopTimer(campaign) {
                 clearInterval(campaign.timerVar);
             },
-            finishShift(campaign){
+            finishShift(campaign) {
                 this.stopTimer(campaign);
                 this.addShiftEndLog(campaign);
                 this.endShift(campaign.currentWorkingShift.id, campaign);
             },
-            startBreak(campaign){
+            startBreak(campaign) {
                 this.stopTimer(campaign);
-                campaign.currentWorkingShift.status = 3 ;
+                campaign.currentWorkingShift.status = 3;
                 this.addBreakStartLog(campaign);
             },
-            finishBreak(campaign){
+            finishBreak(campaign) {
                 this.startTimer(campaign);
-                campaign.currentWorkingShift.status = 1 ;
+                campaign.currentWorkingShift.status = 1;
                 this.addBreakEndLog(campaign);
             },
 
@@ -278,7 +282,6 @@
                 };
                 axios.post('/agent/shifts/add', shiftData)
                     .then((response) => {
-                        console.log(response.data);
                         campaign.currentWorkingShift = response.data;
                     })
                     .catch((error) => {
@@ -297,9 +300,8 @@
                 };
                 axios.post('/agent/shifts/end', shiftData)
                     .then((response) => {
-                        console.log(response.data);
                         campaign.currentWorkingShift = {
-                            status : 0
+                            status: 0
                         };
                         this.todayShifts.unshift(response.data);
                         this.campaignViewedShifts = response.data.campaign_id;
@@ -319,8 +321,6 @@
                 };
                 axios.post('/agent/shifts/pause', shiftData)
                     .then((response) => {
-                        console.log(response.data);
-                        console.log('status' + response.data.status);
                         campaign.currentWorkingShift = response.data;
                     })
                     .catch((error) => {
@@ -339,8 +339,6 @@
                 };
                 axios.post('/agent/shifts/resume', shiftData)
                     .then((response) => {
-                        console.log(response.data);
-                        console.log('status' + response.data.status);
                         campaign.currentWorkingShift = response.data;
                     })
                     .catch((error) => {
@@ -351,16 +349,20 @@
                 const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.start_time);
                 const formatted = moment.utc(secs).format('HH:mm:ss');
 
-                if (campaign.currentWorkingShift.total_hours == 0 || campaign.currentWorkingShift.break_time == null) { // there was no breaks
+                if (campaign.currentWorkingShift.total_hours == 0 ||  campaign.currentWorkingShift.total_hours == '00:00:00') { // there was no breaks
                     $('.campaign_timer_' + campaign.id).text(formatted);
                     return formatted;
-                } else {
+                } else if (campaign.currentWorkingShift.break_time !== null) {
                     // there were breaks, so add the formatted time to the time that was there already
                     var std_count = campaign.currentWorkingShift.total_hours;
                     const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.break_time);
                     const formatted = moment.utc(secs).format('HH:mm:ss');
                     let all = moment.duration(std_count).asSeconds() + moment.duration(formatted).asSeconds();
                     let total_hours = moment.utc(all * 1000).format('HH:mm:ss');
+                    $('.campaign_timer_' + campaign.id).text(total_hours);
+                    return total_hours;
+                } else {
+                    let total_hours = campaign.currentWorkingShift.total_hours;
                     $('.campaign_timer_' + campaign.id).text(total_hours);
                     return total_hours;
                 }
@@ -468,16 +470,16 @@
         created() {
             this.agent.campaigns.map((campaign) => {
                 campaign.currentWorkingShift = {
-                    status:0,
-                    total_hours:'00:00:00',
+                    status: 0,
+                    total_hours: '00:00:00',
                 };
-                this.agent.shifts.map( (shift) => {
-                    if(shift.campaign_id == campaign.id){
-                        if(shift.status == 1){
-                            campaign.currentWorkingShift = shift ;
+                this.agent.shifts.map((shift) => {
+                    if (shift.campaign_id == campaign.id) {
+                        if (shift.status == 1) {
+                            campaign.currentWorkingShift = shift;
                             this.startTimer(campaign);
-                        }else if(shift.status == 3){
-                            campaign.currentWorkingShift = shift ;
+                        } else if (shift.status == 3) {
+                            campaign.currentWorkingShift = shift;
                             this.getShiftHours(campaign);
                         }
                     }

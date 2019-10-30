@@ -47,19 +47,20 @@
                         </div>
 
                         <div class="actionBtn">
-                            <a class="secondary little-padding" href="javascript:;"
-                               v-on:click="toggleShift(campaign)">
-                                <span v-if="campaign.currentWorkingShift.status === 1 || campaign.currentWorkingShift.status === 3 ">
-                                    FINISH SHIFT
-                                </span>
-                                <span v-else>
-                                    START SHIFT
-                                </span>
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="startShift(campaign)">
+                                START SHIFT
                             </a>
 
-                            <a class="little-padding" href="javascript:;" v-on:click="toggleBreak(campaign)"
-                               v-show="campaign.currentWorkingShift.status === 1">
-                                TOGGLE BREAK
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="finishShift(campaign)">
+                                FINISH SHIFT
+                            </a>
+
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="startBreak(campaign)">
+                                START BREAK
+                            </a>
+
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="finishBreak(campaign)">
+                                FINISH BREAK
                             </a>
 
                             <a href="javascript:void(0)" class="secondary little-padding"
@@ -196,10 +197,6 @@
                 return this.agent.shifts.filter((shift) => {
                     let shiftDate = moment(shift.started_at).format('YYYY-MM-DD');
                     let today = moment().format('YYYY-MM-DD');
-
-                    console.log(' shiftDate :' + shiftDate);
-                    console.log(' today :' + today);
-
                     return moment(shiftDate).isSame(moment(today));
                 });
             },
@@ -219,24 +216,22 @@
                     }
                 })
             },
-            toggleShift(campaign) {
-                // add log of starting the shift
-                if (campaign.currentWorkingShift.status === 1 || campaign.currentWorkingShift.status === 3) {
-                    this.addShiftEndLog(campaign);
-                    this.endShift(campaign.currentWorkingShift.id, campaign);
-                } else {
-                    this.addShift(campaign);
-                    this.addShiftStartLog(campaign);
-                }
+
+            startShift(campaign){
+                this.addShift(campaign);
+                this.addShiftStartLog(campaign);
             },
-            toggleBreak(campaign) {
-                // add log of starting the shift
-                if (campaign.currentWorkingShift.status !== 3) {
-                    this.addBreakStartLog(campaign);
-                } else {
-                    this.addBreakEndLog(campaign);
-                }
+            finishShift(campaign){
+                this.addShiftEndLog(campaign);
+                this.endShift(campaign.currentWorkingShift.id, campaign);
             },
+            startBreak(campaign){
+                this.addBreakStartLog(campaign);
+            },
+            finishBreak(campaign){
+                this.addBreakEndLog(campaign);
+            },
+
             addShiftStartLog(campaign) {
                 let logData = {
                     log_text: 'Shift starts at: ' + new Date().toLocaleString(),
@@ -336,7 +331,7 @@
                 const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.start_time);
                 const formatted = moment.utc(secs).format('HH:mm:ss');
 
-                if (campaign.currentWorkingShift.total_hours == 0) { // there was no breaks
+                if (campaign.currentWorkingShift.total_hours == 0 || campaign.currentWorkingShift.break_time === null) { // there was no breaks
                     return formatted;
                 } else {
                     // there were breaks, so add the formatted time to the time that was there already
@@ -450,7 +445,10 @@
         },
         created() {
             this.agent.campaigns.map((campaign) => {
-                campaign.currentWorkingShift = {}
+                campaign.currentWorkingShift = {
+                    status:0
+                };
+                campaign.isShiftBreak = false ;
             });
         },
         mounted() {

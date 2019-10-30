@@ -449,10 +449,16 @@
         },
         created() {
             this.agent.campaigns.map((campaign) => {
-                campaign.currentWorkingShift = {
-                    status:0
-                };
-                campaign.isShiftBreak = false ;
+
+                this.agent.shifts.map( (shift) => {
+                    if(shift.status === 1){
+                        campaign.currentWorkingShift = shift ;
+                    }else{
+                        campaign.currentWorkingShift = {
+                            status:0
+                        };
+                    }
+                });
             });
         },
         mounted() {

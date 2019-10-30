@@ -226,9 +226,7 @@
             },
 
             startShift(campaign) {
-                this.startTimer(campaign);
                 this.addShift(campaign);
-                this.addShiftStartLog(campaign);
             },
             startTimer(campaign) {
                 campaign.timerVar = setInterval(() => {
@@ -239,17 +237,13 @@
                 clearInterval(campaign.timerVar);
             },
             finishShift(campaign) {
-                this.stopTimer(campaign);
-                this.addShiftEndLog(campaign);
                 this.endShift(campaign.currentWorkingShift.id, campaign);
             },
             startBreak(campaign) {
-                this.stopTimer(campaign);
                 campaign.currentWorkingShift.status = 3;
                 this.addBreakStartLog(campaign);
             },
             finishBreak(campaign) {
-                this.startTimer(campaign);
                 campaign.currentWorkingShift.status = 1;
                 this.addBreakEndLog(campaign);
             },
@@ -265,6 +259,7 @@
                     .then((response) => {
                         let log = response.data;
                         this.addActivityLog(log);
+                        this.startTimer(campaign);
                     })
                     .catch((error) => {
                         console.log(error);
@@ -283,6 +278,7 @@
                 axios.post('/agent/shifts/add', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = response.data;
+                        this.addShiftStartLog(campaign);
                     })
                     .catch((error) => {
                         console.log(error);
@@ -305,6 +301,8 @@
                         };
                         this.todayShifts.unshift(response.data);
                         this.campaignViewedShifts = response.data.campaign_id;
+                        this.addShiftEndLog(campaign);
+
                     })
                     .catch((error) => {
                         console.log(error);
@@ -322,6 +320,7 @@
                 axios.post('/agent/shifts/pause', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = response.data;
+                        this.stopTimer(campaign);
                     })
                     .catch((error) => {
                         console.log(error);
@@ -340,6 +339,7 @@
                 axios.post('/agent/shifts/resume', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = response.data;
+                        this.startTimer(campaign);
                     })
                     .catch((error) => {
                         console.log(error);
@@ -380,6 +380,7 @@
                     .then((response) => {
                         let log = response.data;
                         this.addActivityLog(log);
+                        this.stopTimer(campaign);
                     })
                     .catch((error) => {
                         console.log(error);

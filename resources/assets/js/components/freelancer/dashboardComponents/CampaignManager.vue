@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div v-for="(campaign,index) in activeCampaigns" :key="index">
+        <div v-for="(campaign,index) in campaigns" :key="index">
             <div class="content-block-campaign-brief">
                 <div class="upper-bar p-0">
                     <div class="campaignInfo">
@@ -47,20 +47,20 @@
                         </div>
 
                         <div class="actionBtn">
-                            <a class="secondary little-padding" href="javascript:;" v-on:click="startShift(campaign)">
-                                START SHIFT
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="startShift(campaign)" v-show="campaign.currentWorkingShift.status === 0">
+                                START NEW SHIFT
                             </a>
 
-                            <a class="secondary little-padding" href="javascript:;" v-on:click="finishShift(campaign)">
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="finishShift(campaign)"  v-show="campaign.currentWorkingShift.status === 1 || campaign.currentWorkingShift.status === 3 ">
                                 FINISH SHIFT
                             </a>
 
-                            <a class="secondary little-padding" href="javascript:;" v-on:click="startBreak(campaign)">
-                                START BREAK
+                            <a class=" little-padding" href="javascript:;" v-on:click="startBreak(campaign)"  v-show="campaign.currentWorkingShift.status === 1">
+                                I'M AWAY
                             </a>
 
-                            <a class="secondary little-padding" href="javascript:;" v-on:click="finishBreak(campaign)">
-                                FINISH BREAK
+                            <a class=" little-padding" href="javascript:;" v-on:click="finishBreak(campaign)"  v-show="campaign.currentWorkingShift.status === 3">
+                                I'M BACK
                             </a>
 
                             <a href="javascript:void(0)" class="secondary little-padding"
@@ -226,9 +226,11 @@
                 this.endShift(campaign.currentWorkingShift.id, campaign);
             },
             startBreak(campaign){
+                campaign.currentWorkingShift.status = 3 ;
                 this.addBreakStartLog(campaign);
             },
             finishBreak(campaign){
+                campaign.currentWorkingShift.status = 1 ;
                 this.addBreakEndLog(campaign);
             },
 
@@ -280,7 +282,9 @@
                 axios.post('/agent/shifts/end', shiftData)
                     .then((response) => {
                         console.log(response.data);
-                        campaign.currentWorkingShift = response.data;
+                        campaign.currentWorkingShift = {
+                            status : 0
+                        };
                         this.todayShifts.unshift(response.data);
                         this.campaignViewedShifts = response.data.campaign_id;
                     })

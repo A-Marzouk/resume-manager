@@ -47,19 +47,19 @@
                         </div>
 
                         <div class="actionBtn">
-                            <a class="secondary little-padding" href="javascript:;" v-on:click="startShift(campaign)" v-show="campaign.currentWorkingShift.status === 0">
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="startShift(campaign)" v-show="campaign.currentWorkingShift.status == 0">
                                 START NEW SHIFT
                             </a>
 
-                            <a class="secondary little-padding" href="javascript:;" v-on:click="finishShift(campaign)"  v-show="campaign.currentWorkingShift.status === 1 || campaign.currentWorkingShift.status === 3 ">
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="finishShift(campaign)"  v-show="campaign.currentWorkingShift.status == 1 || campaign.currentWorkingShift.status == 3 ">
                                 FINISH SHIFT
                             </a>
 
-                            <a class=" little-padding" href="javascript:;" v-on:click="startBreak(campaign)"  v-show="campaign.currentWorkingShift.status === 1">
+                            <a class=" little-padding" href="javascript:;" v-on:click="startBreak(campaign)"  v-show="campaign.currentWorkingShift.status == 1">
                                 I'M AWAY
                             </a>
 
-                            <a class=" little-padding" href="javascript:;" v-on:click="finishBreak(campaign)"  v-show="campaign.currentWorkingShift.status === 3">
+                            <a class=" little-padding" href="javascript:;" v-on:click="finishBreak(campaign)"  v-show="campaign.currentWorkingShift.status == 3">
                                 I'M BACK
                             </a>
 
@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="d-flex flex-column mt-0 mb-2 pr-3 w-100 align-items-end" style="font-size: 14px;"
-                         v-if="campaignViewedShifts === campaign.id">
+                         v-if="campaignViewedShifts == campaign.id">
                         <div v-for="(shift,index) in todayShifts" :key="index" v-if="shift.campaign_id == campaign.id"
                              class="pt-1" style="color: #0D96DB">
                             {{todaysDate()}} : {{shift.total_hours}}
@@ -103,7 +103,7 @@
                             </div>
 
                             <div>
-                                <updateEntry :clear="cancelEdit" v-if="editedLog.id === log.id" :log="log"
+                                <updateEntry :clear="cancelEdit" v-if="editedLog.id == log.id" :log="log"
                                              @activityLogUpdated="updateActivityLog"
                                              @activityLogDeleted="deleteActivityLog"></updateEntry>
                             </div>
@@ -335,7 +335,7 @@
                 const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.start_time);
                 const formatted = moment.utc(secs).format('HH:mm:ss');
 
-                if (campaign.currentWorkingShift.total_hours == 0 || campaign.currentWorkingShift.break_time === null) { // there was no breaks
+                if (campaign.currentWorkingShift.total_hours == 0 || campaign.currentWorkingShift.break_time == null) { // there was no breaks
                     return formatted;
                 } else {
                     // there were breaks, so add the formatted time to the time that was there already
@@ -427,7 +427,7 @@
             updateActivityLog(log) {
                 // replace the old log with this one passed here.
                 this.agentLogs.forEach((oldLog, index) => {
-                    if (oldLog.id === log.id) {
+                    if (oldLog.id == log.id) {
                         this.agentLogs[index] = log;
                     }
                 });
@@ -437,7 +437,7 @@
             deleteActivityLog(logID) {
                 // splice the old log with this one passed here.
                 this.agentLogs.forEach((oldLog, index) => {
-                    if (oldLog.id === logID) {
+                    if (oldLog.id == logID) {
                         this.agentLogs.splice(index, 1);
                     }
                 });
@@ -451,12 +451,14 @@
             this.agent.campaigns.map((campaign) => {
 
                 this.agent.shifts.map( (shift) => {
-                    if(shift.status === 1){
+                    if(shift.status == 1){
                         campaign.currentWorkingShift = shift ;
+                        campaign.startTimer = true ;
                     }else{
                         campaign.currentWorkingShift = {
                             status:0
                         };
+                        campaign.startTimer = false ;
                     }
                 });
             });

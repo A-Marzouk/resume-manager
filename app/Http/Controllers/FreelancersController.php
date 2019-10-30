@@ -24,7 +24,7 @@ class FreelancersController extends Controller
 
     public function index()
     {
-        $agent = Agent::where('id',currentAgent()->id)->with('user.userData','campaigns','logs')->first();
+        $agent = Agent::where('id',currentAgent()->id)->with('user.userData','campaigns','logs','shifts')->first();
         return view('freelancer.dashboard', compact('agent'));
     }
 

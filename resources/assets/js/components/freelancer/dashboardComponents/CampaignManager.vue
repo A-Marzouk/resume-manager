@@ -483,15 +483,15 @@
             calculateTodayTotalHours(todayShifts,camp_id){
                 let totalHours = 0;
                 if(this.todayShifts.length < 1){
-                    return;
+                    return '00:00:00';
                 }
                 todayShifts.map( (shift) => {
                     if(shift.campaign_id == camp_id){
                         totalHours += moment.duration(shift.total_hours).asSeconds();
                     }
                 });
-                let totalDayHours = moment.utc(totalHours * 1000).format('HH:mm:ss');
-                return totalDayHours ;
+
+                return  moment.utc(totalHours * 1000).format('HH:mm:ss') ;
             }
         },
         created() {

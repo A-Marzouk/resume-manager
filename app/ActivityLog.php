@@ -27,4 +27,8 @@ class ActivityLog extends Model
         return $this->belongsTo(Campaign::class);
     }
 
+    public function history(){
+        return $this->hasMany(ActivityLogHistory::class,'activity_log_id');
+    }
+
 }

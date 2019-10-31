@@ -72,7 +72,7 @@
                             </a>
 
                             <a href="javascript:void(0)" class="secondary little-padding"
-                               @click="viewShifts(campaign.id)">TODAY SHIFTS</a>
+                               @click="viewShifts(campaign.id)">TIME TODAY | {{calculateTodayTotalHours(todayShifts,campaign.id)}}</a>
                         </div>
 
                     </div>
@@ -98,9 +98,23 @@
                                            v-bind:class="logStatusCode[log.status]">{{ logStatusCodeInitials[log.status]
                                             }}</a>
                                     </div>
-                                    <span class="log-text-content" style="flex:1;">
-                                    {{log.log_text}}
-                                </span>
+                                    <span class="log-text-content NoDecor" style="flex:1;" :class="{ blueColor : log.history.length > 0}">
+                                            {{log.log_text}}
+                                            <a href=javascript:void(0) @click="toggleLogHistory(log)"
+                                               v-show='log.history.length > 0'>
+                                                <small> (Edited)</small>
+                                            </a>
+                                            <br/>
+
+                                        <div class="d-none" :id="'log_history_' + log.id">
+                                              <span v-for="(logHistory, index) in log.history" style="font-weight: 400 !important;"
+                                                    :key=" 'logHistory' + logHistory.id">
+                                                 {{logHistory.log_text}} <small> (Edited at {{logHistory.created_at}}) </small><br/>
+                                              </span>
+
+                                        </div>
+
+                                        </span>
                                     <a href="javascript:void(0)" @click="editedLog = log">
                                         <img class="icon-edit" src="/images/client/campaign_activity/edit.png"
                                              alt="edit icon"
@@ -164,7 +178,7 @@
                 imAway: true,
                 campaigns: this.agent.campaigns,
                 shifts: this.agent.shifts,
-                agentLogs: this.agent.logs,
+                agentLogs: this.agent.logs.sort((b, a) => new Date(a.created_at) - new Date(b.created_at)),
                 campaignStatusCode: {
                     1: 'Active',
                     2: 'Paused',
@@ -224,7 +238,6 @@
                     }
                 })
             },
-
             startShift(campaign) {
                 this.addShift(campaign);
             },
@@ -247,7 +260,6 @@
                 campaign.currentWorkingShift.status = 1;
                 this.addBreakEndLog(campaign);
             },
-
             addShiftStartLog(campaign) {
                 let logData = {
                     log_text: 'Shift starts at: ' + new Date().toLocaleString(),
@@ -308,7 +320,6 @@
                         console.log(error);
                     });
             },
-
             pauseShift(shift_id, campaign) {
                 // total hours :
                 let totalHours = this.getShiftHours(campaign);
@@ -326,7 +337,6 @@
                         console.log(error);
                     });
             },
-
             resumeShift(shift_id, campaign) {
                 // total hours :
                 const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.start_time);
@@ -349,7 +359,7 @@
                 const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.start_time);
                 const formatted = moment.utc(secs).format('HH:mm:ss');
 
-                if (campaign.currentWorkingShift.total_hours == 0 ||  campaign.currentWorkingShift.total_hours == '00:00:00') { // there was no breaks
+                if (campaign.currentWorkingShift.total_hours == 0 || campaign.currentWorkingShift.total_hours == '00:00:00') { // there was no breaks
                     $('.campaign_timer_' + campaign.id).text(formatted);
                     return formatted;
                 } else if (campaign.currentWorkingShift.break_time !== null) {
@@ -368,7 +378,6 @@
                 }
 
             },
-
             addShiftEndLog(campaign) {
                 let logData = {
                     log_text: 'Shift ended at: ' + new Date().toLocaleString(),
@@ -386,7 +395,6 @@
                         console.log(error);
                     });
             },
-
             addBreakStartLog(campaign) {
                 let logData = {
                     log_text: 'Break started at: ' + new Date().toLocaleString(),
@@ -421,8 +429,13 @@
                         console.log(error);
                     });
             },
-
-
+            toggleLogHistory(log) {
+                if ($('#log_history_' + log.id).hasClass('d-none')) {
+                    $('#log_history_' + log.id).removeClass('d-none');
+                } else {
+                    $('#log_history_' + log.id).addClass('d-none');
+                }
+            },
             rootLinkTo(link) {
                 return this.$route.path + '/' + link
             },
@@ -466,6 +479,19 @@
             },
             cancelEdit() {
                 this.editedLog = {}
+            },
+            calculateTodayTotalHours(todayShifts,camp_id){
+                let totalHours = 0;
+                if(this.todayShifts.length < 1){
+                    return;
+                }
+                todayShifts.map( (shift) => {
+                    if(shift.campaign_id == camp_id){
+                        totalHours += moment.duration(shift.total_hours).asSeconds();
+                    }
+                });
+                let totalDayHours = moment.utc(totalHours * 1000).format('HH:mm:ss');
+                return totalDayHours ;
             }
         },
         created() {
@@ -556,5 +582,9 @@
                 padding-bottom: 3px;
             }
         }
+    }
+
+    .blueColor{
+        font-weight: 500!important;
     }
 </style>

@@ -27,6 +27,18 @@ class CreateActivityLogsTable extends Migration
 
             $table->timestamps();
         });
+
+        Schema::create('activity_logs_history', function (Blueprint $table) {
+            $table->increments('id');
+
+            $table->text('log_text')->nullable();
+            $table->tinyInteger('status')->unsigned()->index();
+
+            $table->integer('activity_log_id')->unsigned()->index();
+
+            $table->foreign('activity_log_id')->references('id')->on('activity_logs');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -37,5 +49,6 @@ class CreateActivityLogsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('activity_logs');
+        Schema::dropIfExists('activity_logs_history');
     }
 }

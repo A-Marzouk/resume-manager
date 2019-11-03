@@ -4,25 +4,8 @@
             <div class="content-block freelancer flex-column align-items-center">
                 <div class="content-block-campaign-activity">
                     <div class="data-logs">
-                        <datepicker>
-                            <a href="javascript:void(0)" class="date-picker-btn" data-toggle="modal"
-                               data-target="#pick-date-modal" @click.once="setDatePicker">
-                                <img src="/images/icons/pick_date.svg" alt="pick date"> <span class="hideDate">PICK A DATE</span>
-                            </a>
-                        </datepicker>
-                        <div class="lineDivide"></div>
-                        <div class="member-logs-empty"
-                             v-show="todayLogs.length < 1">
-                            <div class="empty-state-text">
-                                Sorry, no entries for this date
-                            </div>
-                            <div class="empty-state-image">
-                                <img src="/images/client/campaign_activity/empty_state.png" alt="empty state">
-                            </div>
-                        </div>
-                        <div class="member-logs"
-                             v-show="hasLogs">
-                            <div class="agent-logs-block" style="border:none" >
+                        <div class="d-flex align-items-center justify-content-end pr-4">
+                            <div>
                                 <div class="agentInfo d-flex flex-wrap justify-content-end pb-1">
                                     <div class="actionBtn">
                                         <a class="secondary little-padding" href="javascript:;" v-on:click="startShift(campaign)"
@@ -34,7 +17,7 @@
 
                                         <a class="secondary little-padding" href="javascript:;" v-on:click="finishShift(campaign)"
                                            v-show="campaign.currentWorkingShift.status == 1 || campaign.currentWorkingShift.status == 3 ">
-                                                FINISH SHIFT | <span :class="'campaign_timer_' + campaign.id">
+                                            FINISH SHIFT | <span :class="'campaign_timer_' + campaign.id">
                                                 {{campaign.currentWorkingShift.total_hours}}
                                                          </span>
                                         </a>
@@ -52,9 +35,7 @@
                                         <a href="javascript:void(0)" class="secondary little-padding"
                                            @click="viewShifts(campaign.id)">TIME TODAY | {{calculateTodayTotalHours(todayShifts,campaign.id)}}</a>
                                     </div>
-
                                 </div>
-
                                 <div class="d-flex flex-column mt-0 mb-2 pr-3 w-100 align-items-end" style="font-size: 14px;"
                                      v-if="campaignViewedShifts == campaign.id">
                                     <div v-for="(shift,index) in todayShifts" :key="index" v-if="shift.campaign_id == campaign.id"
@@ -62,9 +43,29 @@
                                         {{todaysDateValue}} : {{shift.total_hours}}
                                     </div>
                                 </div>
-
+                            </div>
+                            <div class="date-picker-bar">
+                                <a href="javascript:void(0)" class="date-picker-btn" data-toggle="modal"
+                                   data-target="#pick-date-modal" @click.once="setDatePicker">
+                                    <img src="/images/icons/pick_date.svg" alt="pick date"> <span class="hideDate">PICK A DATE</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="lineDivide"></div>
+                        <div class="member-logs-empty"
+                             v-show="filteredLogs(currentAgent.logs).length < 1">
+                            <div class="empty-state-text">
+                                Sorry, no entries for this date
+                            </div>
+                            <div class="empty-state-image">
+                                <img src="/images/client/campaign_activity/empty_state.png" alt="empty state">
+                            </div>
+                        </div>
+                        <div class="member-logs"
+                             v-show="hasLogs">
+                            <div class="agent-logs-block" style="border:none" >
                                 <div class="logsBox">
-                                    <div v-for="(log,index) in todayLogs" :key="index + '_LOG'"
+                                    <div v-for="(log,index) in filteredLogs(currentAgent.logs)" :key="index + '_LOG'"
                                          v-show="log.campaign_id == campaign.id">
                                         <div class="log">
                                             <div class="log-time">
@@ -212,6 +213,13 @@
             }
         },
         methods: {
+            filteredLogs(logs){
+                return logs.filter((log) => {
+                    let logDate = moment(log.created_at).format('YYYY-MM-DD');
+                    let today = this.todaysDateValue;
+                    return moment(logDate).isSame(moment(today));
+                });
+            },
             dateChanged() {
                 this.selectedDate = $('#selected-date-value').val();
             },
@@ -260,14 +268,14 @@
                 return event.toLocaleDateString('en-EN', options);
             },
             addActivityLog(log) {
-                this.todayLogs.push(log);
+                this.currentAgent.logs.unshift(log);
                 this.$emit('showPositiveNotification', 'Activity log has been successfully Added!')
             },
             updateActivityLog(log) {
                 // replace the old log with this one passed here.
-                this.todayLogs.forEach( (oldLog,index) => {
+                this.currentAgent.logs.forEach( (oldLog,index) => {
                     if(oldLog.id === log.id){
-                        this.todayLogs[index] = log ;
+                        this.currentAgent.logs[index] = log ;
                     }
                 }) ;
                 this.$emit('showPositiveNotification', 'Activity log has been successfully Updated !')
@@ -282,9 +290,9 @@
             },
             deleteActivityLog(logID){
                 // splice the old log with this one passed here.
-                this.todayLogs.forEach( (oldLog,index) => {
+                this.currentAgent.logs.forEach( (oldLog,index) => {
                     if(oldLog.id === logID){
-                        this.todayLogs.splice(index,1);
+                        this.currentAgent.logs.splice(index,1);
                     }
                 });
                 this.$emit('showPositiveNotification', 'Activity log has been successfully Deleted !')
@@ -527,31 +535,6 @@
                     let today = this.todaysDateValue;
                     return moment(shiftDate).isSame(moment(today));
                 });
-            },
-            todayLogs(){
-                return this.currentAgent.logs.filter((log) => {
-                    let logDate = moment(log.created_at).format('YYYY-MM-DD');
-                    let today = this.todaysDateValue;
-                    return moment(logDate).isSame(moment(today));
-                });
-            }
-        },
-        watch :{
-            todaysDateValue : {
-                handler(){
-                    console.log('called');
-                    this.todayShifts = this.currentAgent.shifts.filter((shift) => {
-                        let shiftDate = moment(shift.started_at).format('YYYY-MM-DD');
-                        let today = this.todaysDateValue;
-                        return moment(shiftDate).isSame(moment(today));
-                    });
-
-                    this.todayLogs = this.currentAgent.logs.filter((log) => {
-                        let logDate = moment(log.created_at).format('YYYY-MM-DD');
-                        let today = this.todaysDateValue;
-                        return moment(logDate).isSame(moment(today));
-                    });
-                }
             }
         },
         mounted() {

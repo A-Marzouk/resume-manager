@@ -205,8 +205,6 @@
                 currentWorkingShift: {
                     total_hours: 0
                 },
-
-                currentShifts: [],
             }
         },
         computed: {
@@ -436,6 +434,7 @@
                     $('#log_history_' + log.id).addClass('d-none');
                 }
             },
+
             rootLinkTo(link) {
                 return this.$route.path + '/' + link
             },
@@ -587,4 +586,5 @@
     .blueColor{
         font-weight: 500!important;
     }
+
 </style>

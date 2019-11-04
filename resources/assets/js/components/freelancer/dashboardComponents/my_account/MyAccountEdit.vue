@@ -41,9 +41,9 @@
                             </div>
                             <p class="dz-message little">Maximum allowed size is 45 MB</p>
                             <div id="drop-profile-picture" class="dropzone"></div>
+                            <div class="processBar"></div>
                         </div>
                     </div>
-                    <div class="processBar"></div>
                 </div>
 
                 <div class="account-edit-section">
@@ -172,6 +172,9 @@
     let dropZone
 
     export default {
+        components: {
+            "flag-dropdown": flagDropdown
+        },
       data(){
           return {
               agent:{
@@ -430,22 +433,20 @@
             dropZone = new Dropzone("#drop-profile-picture" , {
                 maxFilesize: 45,
                 dictDefaultMessage: '',
-                dictRemoveFile: '',
+                dictRemoveFile: 'DELETE THE PHOTO',
                 dictCancelUpload: '',
                 url: '/freelancer/edit/avatar/',
-                autoProcessQueue:false,
-                headers: {
-                    'x-csrf-token': CSRF_TOKEN
-                },
-                paramName: 'files',
-                addRemoveLinks: false,
-                addImage: false,
+                // headers: {
+                //     'x-csrf-token': CSRF_TOKEN
+                // },
+                paramName: 'photo',
+                addRemoveLinks: true,
                 uploadMultiple: false,
                 init: function () {
                     this.on('addedfile', (file) => {
                         console.log('addedfile event');
                         component.uploadFile(file);
-                        file.previewElement.innerHTML = "";
+                        // file.previewElement.innerHTML = "";
                         $('.dz-message').hide()
                         $('.dz-input').hide()
                         $('#dropbox').addClass('file-upload')
@@ -464,12 +465,14 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .processBar{
     height: 6px;
     background: lightgreen;
     width: 0%;
+    bottom: -15px;
+    position: absolute;
 }
 
 </style>

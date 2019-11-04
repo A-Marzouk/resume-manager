@@ -30,7 +30,7 @@
                                 Please upload a picture of yourself. There should be only your face
                             </label>
                         </div>
-                        <div id="dropb-profile-picture" class="account-edit-section-edit-btn no-decoration picture-box" :class="{'disabled-btn' : !canSubmit}">
+                        <div id="dropbox" class="account-edit-section-edit-btn no-decoration picture-box" :class="{'disabled-btn' : !canSubmit}">
                             <div class="fallback">
                                 <input type="file" id="photo" name="photo" />
                             </div>
@@ -40,9 +40,10 @@
                                 CHOOSE A FILE
                             </div>
                             <p class="dz-message little">Maximum allowed size is 45 MB</p>
-                            <div id="dropzone" class="dropzone"></div>
+                            <div id="drop-profile-picture" class="dropzone"></div>
                         </div>
                     </div>
+                    <div class="processBar"></div>
                 </div>
 
                 <div class="account-edit-section">
@@ -345,6 +346,8 @@
     import flagDropdown from '../../../flagsDropdown.vue'
     import axios from 'axios'
 
+    let dropZone
+
     export default {
         props: ['agentData'],
         components: {
@@ -361,6 +364,7 @@
                   gender: '',
                   city: '',
                   paypal_acc_number: '',
+                  avatar: null
               },
               errors: {
                 name: '',
@@ -555,6 +559,41 @@
                 })
 
                 this.canSubmit = canSubmit
+            },
+            uploadFile (file) {
+                console.log(file)
+                this.avatar = file
+
+                // upload the file as soon as it is added :
+                let formData = new FormData();
+                formData.append('avatar', file);
+                axios.post('/freelancer/edit/avatar',
+                    formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        onUploadProgress: function(progressEvent) {
+                            this.uploadPercentage = parseInt(Math.round((progressEvent.loaded * 100) / progressEvent.total));
+                            $('.processBar').css('width',this.uploadPercentage+'%');
+                        }.bind(this)
+                    }
+                ).then((response) => {
+                    this.uploadPercentage = 0 ;
+                    $('.processBar').css('width',0);
+
+                    if(response.data.filePath === null){
+                        let notificationMessage = 'File is not accepted !';
+                        this.$emit('showNegativeNotification',notificationMessage);
+                        if (this.agent.avatar.length === 0) dropZone.removeAllFiles();
+                    }else{
+                        this.$emit('showPositiveNotification','File has been successfully uploaded!');
+                        this.agent.avatar = response.data.file;
+                    }
+
+                }).catch((error) => {
+
+                });
             }
       },
 
@@ -566,10 +605,7 @@
 
       mounted () {
           this.agent = { ...this.agent, ...this.agentData }
-
-          this.files = this.campaign.files ;
-            let component   = this;
-            let fileCategory   = this.fileCategory;
+          let component  = this;
 
             let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             dropZone = new Dropzone("#drop-profile-picture" , {
@@ -577,7 +613,7 @@
                 dictDefaultMessage: '',
                 dictRemoveFile: '',
                 dictCancelUpload: '',
-                url: '/client/camp/files/upload',
+                url: '/freelancer/edit/avatar/',
                 autoProcessQueue:false,
                 headers: {
                     'x-csrf-token': CSRF_TOKEN
@@ -591,11 +627,18 @@
                         console.log('addedfile event');
                         component.uploadFile(file);
                         file.previewElement.innerHTML = "";
+                        $('.dz-message').hide()
+                        $('.dz-input').hide()
+                        $('#dropbox').addClass('file-upload')
                     });
 
-                    this.on('error', (error) => {
-                        console.log(error);
-                    });
+                    this.on('error', (error) => console.log(error))
+    
+                    this.on('removedfile', (file) => {
+                        $('.dz-message').show()
+                        $('.dz-input').show()
+                        $('#dropbox').removeClass('file-upload')
+                    })
                 }
             });
       }
@@ -603,5 +646,11 @@
 </script>
 
 <style scoped>
+
+.processBar{
+    height: 6px;
+    background: lightgreen;
+    width: 0%;
+}
 
 </style>

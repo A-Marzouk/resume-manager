@@ -49,7 +49,8 @@ class FreelancersController extends Controller
             'job_title',
             'gender',
             'timezone',
-            'paypal_acc_number'
+            'paypal_acc_number',
+            'avatar'
         )->where('id', currentUser()->data->id)->first();
 
         $agentData->email = currentAgent()->email;

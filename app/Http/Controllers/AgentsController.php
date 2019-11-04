@@ -341,6 +341,8 @@ class AgentsController extends Controller
 
         $user->save();
 
+        $request->image->move(public_path('images'), $imageName);
+
         return(["status" => "success", "user" => $user]);
     }
 

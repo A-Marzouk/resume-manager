@@ -180,7 +180,7 @@
                     this.on('addedfile', (file) => {
                         console.log('addedfile event');
                         component.uploadFile(file);
-                        file.previewElement.innerHTML = "";
+                        // file.previewElement.innerHTML = "";
                     });
 
                     this.on('error', (error) => {

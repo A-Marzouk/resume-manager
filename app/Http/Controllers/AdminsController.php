@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Affiliate;
 use App\Booking;
 use App\Client;
-use App\ClientSearch;
+use App\Search;
 use App\Conversation;
 use App\Job;
 use App\Language;

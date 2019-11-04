@@ -1,6 +1,6 @@
 <template>
     <div class="payments">
-        <div class="invoices">
+        <div class="invoices  mt-0">
             <div class="invoices-heading">
                 <img src="/images/client/payments/invoices_40px.png" alt="invoices icon">
                 YOUR INVOICES
@@ -103,7 +103,9 @@
                 axios.get('/agent/invoices/get')
                     .then((response) => {
                         this.invoices = response.data;
-                        this.invoices_empty_state = false;
+                        if(this.invoices.length > 0){
+                            this.invoices_empty_state = false;
+                        }
                     })
                     .catch((error) => {
 

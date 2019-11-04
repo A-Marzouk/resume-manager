@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 use App\classes\Telegram;
 use App\Client;
-use App\ClientSearch;
+use App\Search;
 use App\Recording;
 use App\User;
 use Illuminate\Http\Request;
@@ -229,7 +229,7 @@ class NotificationsController extends Controller
         $search_id   = $request->search_id ;
 
         $clientName  = Client::where('email',$clientEmail)->first()->name;
-        $searchName  = ClientSearch::where('id',$search_id)->first()->name;
+        $searchName  = Search::where('id',$search_id)->first()->name;
 
         $mailData = [
             'clientName' => $clientName,

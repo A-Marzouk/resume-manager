@@ -178,19 +178,11 @@
                                 <div class="container">
                                     <div class="row"
                                          style="margin-top: 14px;">
-                                        <div class="col-12 col-sm-6 col-md-8 right-side">
-                                            <button type="button"
-                                                    class="btn btn-left">VIEW SAVED SEARCH</button>
-                                        </div>
                                         <div class="col-12 col-sm-6 col-md-4">
                                             <div class="row">
                                                 <div class="col-12 center-content">
                                                     <button type="button"
                                                             class="btn btn-right-top">SEARCH FOR AGENTES</button>
-                                                </div>
-                                                <div class="col-12 center-content">
-                                                    <button type="button"
-                                                            class="btn btn-right-bottom">SAVE THIS SEARCH</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -430,9 +422,6 @@
             var female_gender = document.getElementById('female-gender');
             var bothed_gender = document.getElementById('both-gender');
             var man_gender = document.getElementById('male-gender');
-            console.log(female);
-            console.log(both);
-            console.log(male);
             if (female == true) {
                 $(female_gender).css({ backgroundImage: 'url("/images/client/add_agent/femaleselected.jpg")' });
                 $(bothed_gender).css({ backgroundImage: 'url("/images/client/add_agent/gender/both_gender_icon.png")' });
@@ -467,8 +456,6 @@
             var spanish = document.getElementById('spanish').checked;
             var english_label = document.getElementById('english_label');
             var spanish_label = document.getElementById('spanish_label');
-            console.log(english);
-            console.log(spanish);
             if (english == true) {
                 $(english_label).css({ backgroundImage: 'url("/images/client/add_agent/englishselected.jpg")' });
                 $(spanish_label).css({ backgroundImage: 'url("/images/client/add_agent/spanish.jpg")' });

@@ -142,8 +142,6 @@ export default {
         resumeData: {
             handler(){
                 // check if all resumeData values are filled
-                let values = Object.values(this.resumeData);
-
                 let resume = false;
                 let recording = false;
 

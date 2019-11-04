@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+window.moment = require('moment');
 
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
@@ -192,6 +193,7 @@ Vue.component('campaign-statistics',require('./components/client/campaignCompone
     // dashboard inside components
     import CampaignManager from './components/client/dashboardComponents/CampaignManager.vue';
     import Payments from './components/client/dashboardComponents/Payments.vue';
+    import AgentsDatabase from './components/client/dashboardComponents/AgentsDatabase.vue';
     import MyAccount from './components/client/dashboardComponents/MyAccount.vue';
 
 
@@ -217,6 +219,7 @@ if ($("#clientDashboardComponent").length !== 0){
 
     const routes = [
         { path: '/client/dashboard/my-account', component: MyAccount },
+        { path: '/client/dashboard/agents-database', component: AgentsDatabase },
         { path: '/client/dashboard/payments', component: Payments },
         { path: '/client', component: CampaignManager },
         { path: '/client/dashboard', component: CampaignManager },

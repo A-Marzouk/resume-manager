@@ -188,6 +188,12 @@ Route::prefix('client')->group(function (){
     // update agents status
     Route::post('/camp/agents/update','AgentsController@updateAgentStatus')->name('client.camp.agents.update');
 
+// client searches
+
+    Route::post('/search/save','SearchesController@saveSearch')->name('client.search.save');
+    Route::get('/search/get/{search_id}','SearchesController@getSavedSearchAgentsBySearchID')->name('client.search.get.by.id');
+
+
 });
 Route::prefix('agent')->group(function (){
     Route::post('/logs/add','ActivityLogsController@addLog')->name('add.log');
@@ -220,6 +226,13 @@ Route::prefix('agent')->group(function (){
     // update agent
     Route::post('/update', 'AgentsController@updateAgent');
 
+    // campaign shifts for agent
+    Route::post('/shifts/add', 'WorkingShiftController@addShift');
+    Route::post('/shifts/end', 'WorkingShiftController@endShift');
+
+    Route::post('/shifts/pause', 'WorkingShiftController@pauseShift');
+    Route::post('/shifts/resume', 'WorkingShiftController@resumeShift');
+
 });
 
 
@@ -232,7 +245,7 @@ Route::prefix('freelancer')->group(function (){
     Route::post('/account/edit','AgentsController@editAgentPersonalInfo');
     Route::post('/account/edit/avatar','AgentsController@editAgentPersonalInfo');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
-    //    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
+//    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
 
     // frontend routes
     Route::get('/',function (){
@@ -458,7 +471,6 @@ Route::get('/freelancer/instagram/','UserDataController@dataFromInstagram');
 // search functions :
 Route::post('/search','SearchesController@searchFreelancers');
 Route::post('/searchAgents','SearchesController@searchAgents');
-Route::post('/save_search','SearchesController@saveSearch');
 Route::get('/search','SearchesController@showSearchPage');
 Route::post('/search_delete','SearchesController@deleteSearch');
 Route::post('/search_delete_freelancer','SearchesController@deleteSearchFreelancer');

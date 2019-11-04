@@ -335,7 +335,7 @@ class Upload
     }
 
     public static function mainRecording($name,$newName){
-        $target_dir = storage_path().'/agents_main_recordings/' ;
+        $target_dir = 'uploads/agents_main_recordings/' ;
         $uploadOk = 1;
         if ($_FILES[$name]["size"] > 45000000) { // 45 megabyte
             $uploadOk = 0;
@@ -400,7 +400,7 @@ class Upload
     }
 
     public static function resume($name,$newName){
-        $target_dir = storage_path().'/agents_resume/' ;
+        $target_dir = 'uploads/agents_resume/' ;
         $target_file = $target_dir . $newName .'_' .basename($_FILES[$name]["name"]);
         $uploadOk = 1;
 
@@ -432,4 +432,87 @@ class Upload
             }
         }
     }
+
+    public static function profilePicture($name,$newName){
+        $target_dir = 'uploads/agents_pictures/' ;
+        $target_file = $target_dir . $newName .'_' .basename($_FILES[$name]["name"]);
+        $uploadOk = 1;
+
+        // allowed formats :
+        $formats = [
+            'image/bmp',
+            'image/x-ms-bmp',
+            'image/cgm',
+            'image/g3fax',
+            'image/gif',
+            'image/ief',
+            'image/jpeg',
+            'image/pjpeg',
+            'image/ktx',
+            'image/png',
+            'image/prs.btif',
+            'image/sgi',
+            'image/svg+xml',
+            'image/tiff',
+            'image/vnd.adobe.photoshop' ,
+            'image/vnd.dece.graphic' ,
+            'image/vnd.dvb.subtitle' ,
+            'image/vnd.djvu' ,
+            'image/vnd.dwg' ,
+            'image/vnd.dxf' ,
+            'image/vnd.fastbidsheet' ,
+            'image/vnd.fpx' ,
+            'image/vnd.fst' ,
+            'image/vnd.fujixerox.edmics-mmr' ,
+            'image/vnd.fujixerox.edmics-rlc' ,
+            'image/vnd.ms-modi' ,
+            'image/vnd.ms-photo' ,
+            'image/vnd.net-fpx' ,
+            'image/vnd.wap.wbmp' ,
+            'image/vnd.xiff' ,
+            'image/webp' ,
+            'image/x-3ds' ,
+            'image/x-cmu-raster' ,
+            'image/x-cmx' ,
+            'image/x-freehand' ,
+            'image/x-icon' ,
+            'image/x-mrsid-image' ,
+            'image/x-pcx' ,
+            'image/x-pict' ,
+            'image/x-portable-anymap' ,
+            'image/x-portable-bitmap' ,
+            'image/x-portable-graymap' ,
+            'image/x-portable-pixmap' ,
+            'image/x-rgb' ,
+            'image/x-tga' ,
+            'image/x-xbitmap' ,
+            'image/x-xpixmap' ,
+            'image/x-xwindowdump',
+        ];
+
+        // check file type :
+        if(!in_array($_FILES[$name]['type'],$formats)){
+            $uploadOk = 0 ;
+        }
+
+        // Check file size
+        if ($_FILES[$name]["size"] > 45000000) {
+            $uploadOk = 0;
+        }
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            return false;
+        } else {
+            $array = explode('.', $_FILES[$name]['name']);
+            $extension = end($array);
+            $target_file = $target_dir . $newName .'_'.date(time()).'.'.$extension;
+            if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
+                return $target_file;
+            } else {
+                return false;
+            }
+        }
+    }
+
+
 }

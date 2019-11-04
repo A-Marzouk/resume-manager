@@ -220,7 +220,7 @@ class AgentsController extends Controller
     {
         return User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'agent');
-        })->where('id', currentAgent()->user_id)->with('agent', 'userData', 'languages', 'agent.logs')->first();
+        })->where('id', currentAgent()->user_id)->with('agent.shifts', 'userData','languages', 'agent.logs.history')->first();
     }
 
     public function createAgent(Request $request){
@@ -232,9 +232,9 @@ class AgentsController extends Controller
 
         $agent =  app(User::class)->createAgent([
             'user' => [
-                'email' => 'sswwss'.$personalData['email'],
+                'email' => $personalData['email'],
                 'password' => $request->password,
-                'username' => 'sdswws'.$personalData['email'],
+                'username' => $personalData['email'],
             ],
             'agent' => [
                 'available_hours_per_week' =>  $professionalData['hoursPerWeek'],
@@ -244,7 +244,7 @@ class AgentsController extends Controller
                 'voice_character'          => $professionalData['voice'],
             ],
             'user_data' => [
-                'profession_id'         => 2, // business-support, developer, designer
+                'profession_id'         => 2, // business-support(1), developer (2), designer (3)
                 'currency_id'           => 1, // usd
                 'timezone'              => 1,
                 // personal data
@@ -290,6 +290,16 @@ class AgentsController extends Controller
 
             $agent->update([
                 'cv' => $pathToResume,
+            ]);
+        }
+
+
+        if(isset($_FILES['profilePicture'])){
+            // upload the resume to our storage
+            $pathToPicture = Upload::profilePicture( 'profilePicture', 'profile_picture');
+
+            $agent->user->userData->update([
+                'profile_picture' => $pathToPicture,
             ]);
         }
 

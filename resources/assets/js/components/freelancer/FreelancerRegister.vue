@@ -41,6 +41,7 @@
                 let form_data = new FormData();
                 form_data.append('recordingFile', this.formData.resumeData.recordingFile);
                 form_data.append('resumeFile', this.formData.resumeData.resumeFile);
+                form_data.append('profilePicture', this.formData.profileData.profilePicture);
 
                 form_data.append('resumeData', JSON.stringify(this.formData.resumeData));
                 form_data.append('personalData', JSON.stringify(this.formData.personalData));

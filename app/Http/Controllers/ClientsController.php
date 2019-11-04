@@ -137,7 +137,7 @@ class ClientsController extends Controller
     {
         return User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'client');
-        })->where('id', currentClient()->user_id)->with('client')->first();
+        })->where('id', currentClient()->user_id)->with('client','client.searches')->first();
     }
 
     public function hasAgreed()

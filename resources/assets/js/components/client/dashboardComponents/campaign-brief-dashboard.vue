@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="actionBtn">
-                        <a  style="font-size: 12px;" class="pr-1"
+                        <a style="font-size: 12px;" class="pr-1"
                            v-show="agent.currentWorkingShift.status == 0">
                             NO SHIFT | <span :class="'campaign_timer_' + agent.id">
                                 {{agent.currentWorkingShift.total_hours}}
@@ -53,7 +53,7 @@
                             </span>
                         </a>
 
-                        <a  class="pr-1" style="font-size: 12px; color:#3EBD74; font-weight: bold;"
+                        <a class="pr-1" style="font-size: 12px; color:#3EBD74; font-weight: bold;"
                            v-show="agent.currentWorkingShift.status == 1">
                             ACTIVE
                         </a>
@@ -63,13 +63,14 @@
                             ON BREAK
                         </a>
 
-                        <a href="javascript:void(0)" class="pr-3"  style="font-size: 12px;"
+                        <a href="javascript:void(0)" class="pr-3" style="font-size: 12px;"
                            @click="viewShifts(agent.id)">TIME TODAY | {{calculateTodayTotalHours(agent.shifts)}}</a>
                     </div>
 
                 </div>
 
-                <div class="d-flex flex-column mt-0 mb-2 pr-3 w-100 align-items-end" style="font-size: 13px;" v-if="viewAgentShiftsByID == agent.id">
+                <div class="d-flex flex-column mt-0 mb-2 pr-3 w-100 align-items-end" style="font-size: 13px;"
+                     v-if="viewAgentShiftsByID == agent.id">
                     <div v-for="(shift,index) in agent.shifts" :key="index" class="pt-1" style="color: #0D96DB">
                         {{todaysDate()}} : {{shift.total_hours}}
                     </div>
@@ -116,6 +117,8 @@
 
 <script>
     import statusSelector from '../../status-selector.vue'
+    import db from '../../../firestoreDB' ;
+
 
     export default {
         components: {
@@ -149,23 +152,24 @@
                     5: 'CR',
                     6: 'S',
                 },
-                viewAgentShiftsByID:''
+                viewAgentShiftsByID: '',
+                remotelyAddedLogs: []
             }
         },
         methods: {
             todaysDate() {
                 return moment().format('YYYY-MM-DD');
             },
-            calculateTodayTotalHours(agentShifts){
+            calculateTodayTotalHours(agentShifts) {
                 let totalHours = 0;
-                if(agentShifts.length < 1){
+                if (agentShifts.length < 1) {
                     return '00:00:00';
                 }
-                agentShifts.map( (shift) => {
+                agentShifts.map((shift) => {
                     totalHours += moment.duration(shift.total_hours).asSeconds();
                 });
 
-                return  moment.utc(totalHours * 1000).format('HH:mm:ss') ;
+                return moment.utc(totalHours * 1000).format('HH:mm:ss');
             },
             viewShifts(agent_id) {
                 this.campaignMembers.map((agent) => {
@@ -207,9 +211,9 @@
                     .then((response) => {
                         this.campaignMembers = response.data;
 
-                        this.campaignMembers.map( (agent) => {
+                        this.campaignMembers.map((agent) => {
                             agent.currentWorkingShift = {
-                                total_hours : '00:00:00',
+                                total_hours: '00:00:00',
                                 status: 0
                             };
 
@@ -274,6 +278,60 @@
         mounted() {
             this.setDefaultCampaignStatus();
             this.getCampMembers();
+
+            db.collection('activity_logs').onSnapshot((snapshot) => {
+                snapshot.docChanges().forEach((change) => {
+                    if (change.type === 'added') {
+
+                        this.campaignMembers.map((agent) => {
+                            if (agent.id === change.doc.data().agent_id) {
+                                // check if agent logs doesn't have this log id already
+                                let canAdd = true;
+                                // if it has : delete it
+                                agent.logs.map((log) => {
+                                    if (log.id === change.doc.data().id) {
+                                        // this log exists
+                                        canAdd = false;
+                                        // remove the log from the firestore database
+                                        console.log('delete log');
+                                        // db.collection('activity_logs').doc(change.doc.id).delete();
+                                    }
+                                });
+                                // if not add it :
+                                if (canAdd) {
+                                    agent.logs.push(change.doc.data());
+                                }
+                            }
+                        });
+                    }
+
+                    if (change.type === 'removed') {
+                        console.log('doc deleted');
+                    }
+
+                    if (change.type === 'modified') {
+                        // replace the document with the updated document
+                        this.remotelyAddedLogs.forEach((doc, index) => {
+                            if (doc.id === change.doc.id) {
+                                this.remotelyAddedLogs.splice(index, 1, change.doc);
+                                console.log(change.doc.data());
+                                console.log('doc edited');
+                            }
+                        });
+
+                        this.campaignMembers.map((agent) => {
+                            if (agent.id === change.doc.data().agent_id) {
+                                agent.logs.map((log) => {
+                                    if (log.id === change.doc.data().id) {
+                                        agent.logs.splice(index, 1, change.doc);
+                                    }
+                                });
+                            }
+                        });
+
+                    }
+                });
+            });
         }
     }
 </script>
@@ -285,7 +343,7 @@
     }
 
 
-    .blueColor{
-        font-weight: 500!important;
+    .blueColor {
+        font-weight: 500 !important;
     }
 </style>

@@ -162,6 +162,7 @@
     import addEntry from './addEntry'
     import updateEntry from './updateEntry'
     import statusSelector from '../../status-selector'
+    import db from '../../../firestoreDB' ;
 
     export default {
         components: {
@@ -265,9 +266,11 @@
                     agent_id: this.agent.id,
                     campaign_id: campaign.id
                 };
+
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
                         let log = response.data;
+                        this.addFireStoreLog(log);
                         this.addActivityLog(log);
                         this.startTimer(campaign);
                     })
@@ -383,10 +386,12 @@
                     agent_id: this.agent.id,
                     campaign_id: campaign.id
                 };
+
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
                         let log = response.data;
                         this.addActivityLog(log);
+                        this.addFireStoreLog(log);
                         this.stopTimer(campaign);
                     })
                     .catch((error) => {
@@ -400,9 +405,11 @@
                     agent_id: this.agent.id,
                     campaign_id: campaign.id
                 };
+
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
                         let log = response.data;
+                        this.addFireStoreLog(log);
                         this.addActivityLog(log);
                         this.pauseShift(campaign.currentWorkingShift.id, campaign);
                     })
@@ -420,6 +427,7 @@
                 axios.post('/agent/logs/add', logData)
                     .then((response) => {
                         let log = response.data;
+                        this.addFireStoreLog(log);
                         this.addActivityLog(log);
                         this.resumeShift(campaign.currentWorkingShift.id, campaign);
                     })
@@ -491,6 +499,14 @@
                 });
 
                 return  moment.utc(totalHours * 1000).format('HH:mm:ss') ;
+            },
+
+
+            // firestore functions :
+
+            addFireStoreLog(log){
+                console.log('firestore added : ' + log);
+                db.collection('activity_logs').add(log);
             }
         },
         created() {
@@ -516,6 +532,7 @@
 
         }
     }
+
 </script>
 
 <style scoped lang="scss">

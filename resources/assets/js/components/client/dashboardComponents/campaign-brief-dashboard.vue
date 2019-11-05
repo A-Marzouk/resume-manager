@@ -323,11 +323,11 @@
                     if (change.type === 'added') {
 
                         this.campaignMembers.map((agent) => {
-                            if (agent.id === change.doc.data().agent_id) {
+                            if (agent.id == change.doc.data().agent_id) {
                                 let exists = false;
                                 let logIndex = 0;
                                 agent.logs.map((log, index) => {
-                                    if (log.id === change.doc.data().id) {
+                                    if (log.id == change.doc.data().id) {
                                         exists = true;
                                         logIndex = index;
                                     }
@@ -339,7 +339,7 @@
                                 } else {
                                     console.log(change.doc.data());
                                     // if action is delete
-                                    if (change.doc.data().action === 'delete') {
+                                    if (change.doc.data().action == 'delete') {
                                         agent.logs.splice(logIndex, 1);
                                     } else {
                                         agent.logs.splice(logIndex, 1, change.doc.data());
@@ -358,7 +358,7 @@
                     if (change.type === 'added') {
                         console.log(change.doc.data());
                         this.campaignMembers.map((agent) => {
-                            if (agent.id === change.doc.data().agent_id) {
+                            if (agent.id == change.doc.data().agent_id) {
                                 agent.currentWorkingShift = change.doc.data() ;
 
                                 if(change.doc.data().status == 0 || change.doc.data().status == 3){

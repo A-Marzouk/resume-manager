@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="actionBtn">
-                        <a  style="font-size: 12px;" class="pr-1"
+                        <a style="font-size: 12px;" class="pr-1"
                            v-show="agent.currentWorkingShift.status == 0">
                             NO SHIFT | <span :class="'campaign_timer_' + agent.id">
                                 {{agent.currentWorkingShift.total_hours}}
@@ -53,7 +53,7 @@
                             </span>
                         </a>
 
-                        <a  class="pr-1" style="font-size: 12px; color:#3EBD74; font-weight: bold;"
+                        <a class="pr-1" style="font-size: 12px; color:#3EBD74; font-weight: bold;"
                            v-show="agent.currentWorkingShift.status == 1">
                             ACTIVE
                         </a>
@@ -63,13 +63,14 @@
                             ON BREAK
                         </a>
 
-                        <a href="javascript:void(0)" class="pr-3"  style="font-size: 12px;"
+                        <a href="javascript:void(0)" class="pr-3" style="font-size: 12px;"
                            @click="viewShifts(agent.id)">TIME TODAY | {{calculateTodayTotalHours(agent.shifts)}}</a>
                     </div>
 
                 </div>
 
-                <div class="d-flex flex-column mt-0 mb-2 pr-3 w-100 align-items-end" style="font-size: 13px;" v-if="viewAgentShiftsByID == agent.id">
+                <div class="d-flex flex-column mt-0 mb-2 pr-3 w-100 align-items-end" style="font-size: 13px;"
+                     v-if="viewAgentShiftsByID == agent.id">
                     <div v-for="(shift,index) in agent.shifts" :key="index" class="pt-1" style="color: #0D96DB">
                         {{todaysDate()}} : {{shift.total_hours}}
                     </div>
@@ -77,7 +78,7 @@
 
 
                 <div class="logsBox">
-                    <div v-for="(log,index) in sortedLogs(agent.logs)" :key="index" v-show="agent.logs.length > 0">
+                    <div v-for="(log,index) in agent.logs" :key="index" v-show="agent.logs.length > 0">
                         <div class="log" v-show="log.campaign_id == campaign.id">
                             <div class="log-time">
                                 {{getDate(log.created_at)}}
@@ -88,9 +89,26 @@
                                        v-bind:class="logStatusCode[log.status]">{{ logStatusCodeInitials[log.status]
                                         }}</a>
                                 </div>
-                                <span class="log-text-content">
-                                {{log.log_text}}
-                            </span>
+
+                                <span class="log-text-content NoDecor" style="flex:1;"
+                                      :class="{ blueColor : log.history.length > 0}">
+                                            {{log.log_text}}
+                                            <a href=javascript:void(0) @click="toggleLogHistory(log)"
+                                               v-show='log.history.length > 0'>
+                                                <small> (Edited)</small>
+                                            </a>
+                                            <br/>
+
+                                        <div class="d-none" :id="'log_history_' + log.id">
+                                              <span v-for="(logHistory, index) in log.history"
+                                                    style="font-weight: 400 !important;"
+                                                    :key=" 'logHistory' + logHistory.id">
+                                                 {{logHistory.log_text}} <small> (Edited at {{logHistory.created_at}}) </small><br/>
+                                              </span>
+
+                                        </div>
+
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -116,6 +134,8 @@
 
 <script>
     import statusSelector from '../../status-selector.vue'
+    import db from '../../../firestoreDB' ;
+
 
     export default {
         components: {
@@ -149,23 +169,31 @@
                     5: 'CR',
                     6: 'S',
                 },
-                viewAgentShiftsByID:''
+                viewAgentShiftsByID: '',
+                remotelyAddedLogs: []
             }
         },
         methods: {
             todaysDate() {
                 return moment().format('YYYY-MM-DD');
             },
-            calculateTodayTotalHours(agentShifts){
+            calculateTodayTotalHours(agentShifts) {
                 let totalHours = 0;
-                if(agentShifts.length < 1){
+                if (agentShifts.length < 1) {
                     return '00:00:00';
                 }
-                agentShifts.map( (shift) => {
+                agentShifts.map((shift) => {
                     totalHours += moment.duration(shift.total_hours).asSeconds();
                 });
 
-                return  moment.utc(totalHours * 1000).format('HH:mm:ss') ;
+                return moment.utc(totalHours * 1000).format('HH:mm:ss');
+            },
+            toggleLogHistory(log) {
+                if ($('#log_history_' + log.id).hasClass('d-none')) {
+                    $('#log_history_' + log.id).removeClass('d-none');
+                } else {
+                    $('#log_history_' + log.id).addClass('d-none');
+                }
             },
             viewShifts(agent_id) {
                 this.campaignMembers.map((agent) => {
@@ -207,9 +235,9 @@
                     .then((response) => {
                         this.campaignMembers = response.data;
 
-                        this.campaignMembers.map( (agent) => {
+                        this.campaignMembers.map((agent) => {
                             agent.currentWorkingShift = {
-                                total_hours : '00:00:00',
+                                total_hours: '00:00:00',
                                 status: 0
                             };
 
@@ -235,9 +263,6 @@
                 let event = new Date(date);
                 let options = {hour: 'numeric', minute: 'numeric', month: 'short', day: 'numeric'};
                 return event.toLocaleDateString('en-EN', options);
-            },
-            sortedLogs(logs) {
-                return logs.sort((b, a) => new Date(a.created_at) - new Date(b.created_at));
             },
             getShiftHours(agent) {
                 const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(agent.currentWorkingShift.start_time);
@@ -274,6 +299,95 @@
         mounted() {
             this.setDefaultCampaignStatus();
             this.getCampMembers();
+
+            db.collection('activity_logs').get().then((snapshot) => {
+                if (snapshot.docs.length > 0) {
+                    snapshot.docs.forEach((doc) => {
+                        console.log(doc.id)
+                        db.collection('activity_logs').doc(doc.id).delete();
+                    })
+                }
+            });
+
+            db.collection('shifts').get().then((snapshot) => {
+                if (snapshot.docs.length > 0) {
+                    snapshot.docs.forEach((doc) => {
+                        console.log(doc.id)
+                        db.collection('shifts').doc(doc.id).delete();
+                    })
+                }
+            });
+
+            db.collection('activity_logs').onSnapshot((snapshot) => {
+                snapshot.docChanges().forEach((change) => {
+                    if (change.type === 'added') {
+
+                        this.campaignMembers.map((agent) => {
+                            if (agent.id === change.doc.data().agent_id) {
+                                let exists = false;
+                                let logIndex = 0;
+                                agent.logs.map((log, index) => {
+                                    if (log.id === change.doc.data().id) {
+                                        exists = true;
+                                        logIndex = index;
+                                    }
+                                });
+
+                                // if the log doesn't exist so add
+                                if (!exists) {
+                                    agent.logs.unshift(change.doc.data());
+                                } else {
+                                    console.log(change.doc.data());
+                                    // if action is delete
+                                    if (change.doc.data().action === 'delete') {
+                                        agent.logs.splice(logIndex, 1);
+                                    } else {
+                                        agent.logs.splice(logIndex, 1, change.doc.data());
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                });
+            });
+
+
+            db.collection('shifts').onSnapshot((snapshot) => {
+                snapshot.docChanges().forEach((change) => {
+                    if (change.type === 'added') {
+                        console.log(change.doc.data());
+                        this.campaignMembers.map((agent) => {
+                            if (agent.id === change.doc.data().agent_id) {
+                                agent.currentWorkingShift = change.doc.data() ;
+
+                                if(change.doc.data().status == 0 || change.doc.data().status == 3){
+                                    this.stopTimer(agent);
+                                }else{
+                                    this.startTimer(agent);
+                                }
+
+                                if(change.doc.data().action === 'finish_break'){
+                                    agent.currentWorkingShift.status = 1;
+                                    this.viewAgentShiftsByID = change.doc.data().agent_id;
+                                    this.viewAgentShiftsByID = '' ;
+                                    console.log(change.doc.data().action);
+                                }
+
+                                if(change.doc.data().action === 'start_break'){
+                                    agent.currentWorkingShift.status = 3;
+                                    this.viewAgentShiftsByID = change.doc.data().agent_id;
+                                    this.viewAgentShiftsByID = '' ;
+                                    console.log(change.doc.data().action);
+                                }
+
+                            }
+                        });
+                    }
+                });
+
+            });
+
         }
     }
 </script>
@@ -285,7 +399,7 @@
     }
 
 
-    .blueColor{
-        font-weight: 500!important;
+    .blueColor {
+        font-weight: 500 !important;
     }
 </style>

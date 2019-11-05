@@ -18,7 +18,7 @@ class ActivityLogsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:agent');
+        $this->middleware('auth');
     }
 
     public function getLogsByCampaignID($camp_id)
@@ -79,13 +79,18 @@ class ActivityLogsController extends Controller
         ]);
     }
 
+    public function getLogById($log_id){
+        return ActivityLog::where('id',$log_id)->with('history')->first();
+    }
+
     public function deleteLog(Request $request)
     {
-        // delete job post
-        $activityLog = ActivityLog::where('id', $request->log_id);
+        $activityLog = ActivityLog::find($request->log_id);
+        $activityLog->history()->delete();
         $activityLog->delete();
+
         return [
-            'status' => 'success'
+            'status' => 'success',
         ];
     }
 

@@ -367,14 +367,14 @@
                                     this.startTimer(agent);
                                 }
 
-                                if(change.doc.data().action === 'finish_break'){
+                                if(change.doc.data().action == 'finish_break'){
                                     agent.currentWorkingShift.status = 1;
                                     this.viewAgentShiftsByID = change.doc.data().agent_id;
                                     this.viewAgentShiftsByID = '' ;
                                     console.log(change.doc.data().action);
                                 }
 
-                                if(change.doc.data().action === 'start_break'){
+                                if(change.doc.data().action == 'start_break'){
                                     agent.currentWorkingShift.status = 3;
                                     this.viewAgentShiftsByID = change.doc.data().agent_id;
                                     this.viewAgentShiftsByID = '' ;

@@ -17,7 +17,7 @@
                     <img src="/images/client/more_vert_24px.png" alt="menu">
 
                     <div class="campaignMenu" :class="{opened: openCampaignMenu}">
-                        <a v-if="campaignStatus === 'ACTIVE'" href="javascript:void(0)"
+                        <a v-if="campaignStatus == 'ACTIVE'" href="javascript:void(0)"
                            @click="changeCampaignStatus('PAUSED')">Pause the campaign</a>
                         <a v-else href="javascript:void(0)" @click="changeCampaignStatus('ACTIVE')">Resume the
                             campaign</a>

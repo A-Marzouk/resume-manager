@@ -18,7 +18,7 @@ class ActivityLogsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:agent');
+        $this->middleware('auth');
     }
 
     public function getLogsByCampaignID($camp_id)
@@ -77,6 +77,10 @@ class ActivityLogsController extends Controller
             'activity_log_id' => $log->id,
             'status' => $log->status,
         ]);
+    }
+
+    public function getLogById($log_id){
+        return ActivityLog::where('id',$log_id)->with('history')->first();
     }
 
     public function deleteLog(Request $request)

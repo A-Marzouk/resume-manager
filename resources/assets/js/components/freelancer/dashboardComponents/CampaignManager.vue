@@ -114,7 +114,7 @@
 
                                         </div>
 
-                                        </span>
+                                    </span>
                                     <a href="javascript:void(0)" @click="editedLog = log">
                                         <img class="icon-edit" src="/images/client/campaign_activity/edit.png"
                                              alt="edit icon"

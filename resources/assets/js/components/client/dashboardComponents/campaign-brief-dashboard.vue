@@ -89,9 +89,24 @@
                                        v-bind:class="logStatusCode[log.status]">{{ logStatusCodeInitials[log.status]
                                         }}</a>
                                 </div>
-                                <span class="log-text-content">
-                                {{log.log_text}}
-                            </span>
+
+                                <span class="log-text-content NoDecor" style="flex:1;" :class="{ blueColor : log.history.length > 0}">
+                                            {{log.log_text}}
+                                            <a href=javascript:void(0) @click="toggleLogHistory(log)"
+                                               v-show='log.history.length > 0'>
+                                                <small> (Edited)</small>
+                                            </a>
+                                            <br/>
+
+                                        <div class="d-none" :id="'log_history_' + log.id">
+                                              <span v-for="(logHistory, index) in log.history" style="font-weight: 400 !important;"
+                                                    :key=" 'logHistory' + logHistory.id">
+                                                 {{logHistory.log_text}} <small> (Edited at {{logHistory.created_at}}) </small><br/>
+                                              </span>
+
+                                        </div>
+
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -170,6 +185,13 @@
                 });
 
                 return moment.utc(totalHours * 1000).format('HH:mm:ss');
+            },
+            toggleLogHistory(log) {
+                if ($('#log_history_' + log.id).hasClass('d-none')) {
+                    $('#log_history_' + log.id).removeClass('d-none');
+                } else {
+                    $('#log_history_' + log.id).addClass('d-none');
+                }
             },
             viewShifts(agent_id) {
                 this.campaignMembers.map((agent) => {
@@ -294,7 +316,7 @@
                                         canAdd = false;
                                         // remove the log from the firestore database
                                         console.log('delete log');
-                                        // db.collection('activity_logs').doc(change.doc.id).delete();
+                                        db.collection('activity_logs').doc(change.doc.id).delete();
                                     }
                                 });
                                 // if not add it :

@@ -85,11 +85,12 @@ class ActivityLogsController extends Controller
 
     public function deleteLog(Request $request)
     {
-        // delete job post
-        $activityLog = ActivityLog::where('id', $request->log_id);
+        $activityLog = ActivityLog::find($request->log_id);
+        $activityLog->history()->delete();
         $activityLog->delete();
+
         return [
-            'status' => 'success'
+            'status' => 'success',
         ];
     }
 

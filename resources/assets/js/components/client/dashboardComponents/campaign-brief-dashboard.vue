@@ -78,7 +78,7 @@
 
 
                 <div class="logsBox">
-                    <div v-for="(log,index) in sortedLogs(agent.logs)" :key="index" v-show="agent.logs.length > 0">
+                    <div v-for="(log,index) in agent.logs" :key="index" v-show="agent.logs.length > 0">
                         <div class="log" v-show="log.campaign_id == campaign.id">
                             <div class="log-time">
                                 {{getDate(log.created_at)}}
@@ -262,9 +262,6 @@
                 let options = {hour: 'numeric', minute: 'numeric', month: 'short', day: 'numeric'};
                 return event.toLocaleDateString('en-EN', options);
             },
-            sortedLogs(logs) {
-                return logs.sort((b, a) => new Date(a.created_at) - new Date(b.created_at));
-            },
             getShiftHours(agent) {
                 const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(agent.currentWorkingShift.start_time);
                 const formatted = moment.utc(secs).format('HH:mm:ss');
@@ -313,6 +310,7 @@
             db.collection('activity_logs').onSnapshot((snapshot) => {
                 snapshot.docChanges().forEach((change) => {
                     if (change.type === 'added') {
+
                         this.campaignMembers.map((agent) => {
                             if (agent.id === change.doc.data().agent_id) {
                                 let exists = false ;
@@ -328,9 +326,16 @@
                                 if(!exists){
                                     agent.logs.push(change.doc.data());
                                 }else{
-                                    agent.logs.splice(logIndex,1,change.doc.data());
+                                    console.log(change.doc.data());
+                                    // if action is delete
+                                    if(change.doc.data().action === 'delete'){
+                                        agent.logs.splice(logIndex,1);
+                                    }else{
+                                        agent.logs.splice(logIndex,1,change.doc.data());
+                                    }
                                 }
-                                // if the log exists so replace
+
+
 
 
 

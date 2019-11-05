@@ -42,6 +42,7 @@
 <script>
 
     import logStatusSelector from '../Log-status-selector'
+    import db from '../../../firestoreDB' ;
 
     export default {
         props: ['clear', 'log'],
@@ -82,6 +83,7 @@
                 axios.post('/agent/logs/update', this.editedLog)
                     .then((response) => {
                         let log = response.data;
+                        this.addFireStoreLog(log);
                         this.$emit('activityLogUpdated', log);
                         this.clear();
                     })
@@ -107,6 +109,9 @@
                     .catch(() => {
 
                     });
+            },
+            addFireStoreLog(log){
+                db.collection('activity_logs').add(log);
             }
         }
     }

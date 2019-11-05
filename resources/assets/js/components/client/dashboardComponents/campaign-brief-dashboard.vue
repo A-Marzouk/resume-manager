@@ -301,57 +301,43 @@
             this.setDefaultCampaignStatus();
             this.getCampMembers();
 
+            db.collection('activity_logs').get().then( (snapshot) => {
+                if( snapshot.docs.length > 0){
+                    snapshot.docs.forEach((doc) => {
+                        console.log(doc.id)
+                        db.collection('activity_logs').doc(doc.id).delete();
+                    })
+                }
+            });
+
             db.collection('activity_logs').onSnapshot((snapshot) => {
                 snapshot.docChanges().forEach((change) => {
                     if (change.type === 'added') {
-
                         this.campaignMembers.map((agent) => {
                             if (agent.id === change.doc.data().agent_id) {
-                                // check if agent logs doesn't have this log id already
-                                let canAdd = true;
-                                // if it has : delete it
-                                agent.logs.map((log) => {
-                                    if (log.id === change.doc.data().id) {
-                                        // this log exists
-                                        canAdd = false;
-                                        // remove the log from the firestore database
-                                        console.log('delete log');
-                                        db.collection('activity_logs').doc(change.doc.id).delete();
+                                let exists = false ;
+                                let logIndex  = 0 ;
+                                agent.logs.map( (log,index) => {
+                                    if(log.id ===  change.doc.data().id ){
+                                        exists   = true;
+                                        logIndex = index;
                                     }
                                 });
-                                // if not add it :
-                                if (canAdd) {
+
+                                // if the log doesn't exist so add
+                                if(!exists){
                                     agent.logs.push(change.doc.data());
+                                }else{
+                                    agent.logs.splice(logIndex,1,change.doc.data());
                                 }
+                                // if the log exists so replace
+
+
+
                             }
                         });
                     }
 
-                    if (change.type === 'removed') {
-                        console.log('doc deleted');
-                    }
-
-                    if (change.type === 'modified') {
-                        // replace the document with the updated document
-                        this.remotelyAddedLogs.forEach((doc, index) => {
-                            if (doc.id === change.doc.id) {
-                                this.remotelyAddedLogs.splice(index, 1, change.doc);
-                                console.log(change.doc.data());
-                                console.log('doc edited');
-                            }
-                        });
-
-                        this.campaignMembers.map((agent) => {
-                            if (agent.id === change.doc.data().agent_id) {
-                                agent.logs.map((log) => {
-                                    if (log.id === change.doc.data().id) {
-                                        agent.logs.splice(index, 1, change.doc);
-                                    }
-                                });
-                            }
-                        });
-
-                    }
                 });
             });
         }

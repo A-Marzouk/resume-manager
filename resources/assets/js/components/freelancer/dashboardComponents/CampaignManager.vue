@@ -337,6 +337,8 @@
                 axios.post('/agent/shifts/pause', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = response.data;
+                        campaign.currentWorkingShift.action = 'start_break';
+                        this.addFireStoreShift(campaign.currentWorkingShift);
                         this.stopTimer(campaign);
                     })
                     .catch((error) => {
@@ -355,6 +357,8 @@
                 axios.post('/agent/shifts/resume', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = response.data;
+                        campaign.currentWorkingShift.action = 'finish_break';
+                        this.addFireStoreShift(campaign.currentWorkingShift);
                         this.startTimer(campaign);
                     })
                     .catch((error) => {

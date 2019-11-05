@@ -335,7 +335,7 @@
 
                                 // if the log doesn't exist so add
                                 if (!exists) {
-                                    agent.logs.push(change.doc.data());
+                                    agent.logs.unshift(change.doc.data());
                                 } else {
                                     console.log(change.doc.data());
                                     // if action is delete
@@ -361,10 +361,24 @@
                             if (agent.id === change.doc.data().agent_id) {
                                 agent.currentWorkingShift = change.doc.data() ;
 
-                                if(change.doc.data().status == 0){
+                                if(change.doc.data().status == 0 || change.doc.data().status == 3){
                                     this.stopTimer(agent);
                                 }else{
                                     this.startTimer(agent);
+                                }
+
+                                if(change.doc.data().action === 'finish_break'){
+                                    agent.currentWorkingShift.status = 1;
+                                    this.viewAgentShiftsByID = change.doc.data().agent_id;
+                                    this.viewAgentShiftsByID = '' ;
+                                    console.log(change.doc.data().action);
+                                }
+
+                                if(change.doc.data().action === 'start_break'){
+                                    agent.currentWorkingShift.status = 3;
+                                    this.viewAgentShiftsByID = change.doc.data().agent_id;
+                                    this.viewAgentShiftsByID = '' ;
+                                    console.log(change.doc.data().action);
                                 }
 
                             }

@@ -291,6 +291,7 @@
                 axios.post('/agent/shifts/add', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = response.data;
+                        this.addFireStoreShift(campaign.currentWorkingShift);
                         this.addShiftStartLog(campaign);
                     })
                     .catch((error) => {
@@ -310,8 +311,12 @@
                 axios.post('/agent/shifts/end', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = {
-                            status: 0
+                            status: 0,
+                            agent_id : response.data.agent_id
                         };
+
+                        this.addFireStoreShift(campaign.currentWorkingShift);
+
                         this.todayShifts.unshift(response.data);
                         this.campaignViewedShifts = response.data.campaign_id;
                         this.addShiftEndLog(campaign);
@@ -505,9 +510,13 @@
             // firestore functions :
 
             addFireStoreLog(log){
-                console.log('firestore added : ' + log);
                 db.collection('activity_logs').add(log);
+            },
+
+            addFireStoreShift(shift){
+                db.collection('shifts').add(shift);
             }
+
         },
         created() {
             this.agent.campaigns.map((campaign) => {

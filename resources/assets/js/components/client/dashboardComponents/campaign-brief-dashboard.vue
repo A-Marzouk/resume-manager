@@ -90,7 +90,8 @@
                                         }}</a>
                                 </div>
 
-                                <span class="log-text-content NoDecor" style="flex:1;" :class="{ blueColor : log.history.length > 0}">
+                                <span class="log-text-content NoDecor" style="flex:1;"
+                                      :class="{ blueColor : log.history.length > 0}">
                                             {{log.log_text}}
                                             <a href=javascript:void(0) @click="toggleLogHistory(log)"
                                                v-show='log.history.length > 0'>
@@ -99,7 +100,8 @@
                                             <br/>
 
                                         <div class="d-none" :id="'log_history_' + log.id">
-                                              <span v-for="(logHistory, index) in log.history" style="font-weight: 400 !important;"
+                                              <span v-for="(logHistory, index) in log.history"
+                                                    style="font-weight: 400 !important;"
                                                     :key=" 'logHistory' + logHistory.id">
                                                  {{logHistory.log_text}} <small> (Edited at {{logHistory.created_at}}) </small><br/>
                                               </span>
@@ -298,11 +300,20 @@
             this.setDefaultCampaignStatus();
             this.getCampMembers();
 
-            db.collection('activity_logs').get().then( (snapshot) => {
-                if( snapshot.docs.length > 0){
+            db.collection('activity_logs').get().then((snapshot) => {
+                if (snapshot.docs.length > 0) {
                     snapshot.docs.forEach((doc) => {
                         console.log(doc.id)
                         db.collection('activity_logs').doc(doc.id).delete();
+                    })
+                }
+            });
+
+            db.collection('shifts').get().then((snapshot) => {
+                if (snapshot.docs.length > 0) {
+                    snapshot.docs.forEach((doc) => {
+                        console.log(doc.id)
+                        db.collection('shifts').doc(doc.id).delete();
                     })
                 }
             });
@@ -313,38 +324,56 @@
 
                         this.campaignMembers.map((agent) => {
                             if (agent.id === change.doc.data().agent_id) {
-                                let exists = false ;
-                                let logIndex  = 0 ;
-                                agent.logs.map( (log,index) => {
-                                    if(log.id ===  change.doc.data().id ){
-                                        exists   = true;
+                                let exists = false;
+                                let logIndex = 0;
+                                agent.logs.map((log, index) => {
+                                    if (log.id === change.doc.data().id) {
+                                        exists = true;
                                         logIndex = index;
                                     }
                                 });
 
                                 // if the log doesn't exist so add
-                                if(!exists){
+                                if (!exists) {
                                     agent.logs.push(change.doc.data());
-                                }else{
+                                } else {
                                     console.log(change.doc.data());
                                     // if action is delete
-                                    if(change.doc.data().action === 'delete'){
-                                        agent.logs.splice(logIndex,1);
-                                    }else{
-                                        agent.logs.splice(logIndex,1,change.doc.data());
+                                    if (change.doc.data().action === 'delete') {
+                                        agent.logs.splice(logIndex, 1);
+                                    } else {
+                                        agent.logs.splice(logIndex, 1, change.doc.data());
                                     }
                                 }
-
-
-
-
-
                             }
                         });
                     }
 
                 });
             });
+
+
+            db.collection('shifts').onSnapshot((snapshot) => {
+                snapshot.docChanges().forEach((change) => {
+                    if (change.type === 'added') {
+                        console.log(change.doc.data());
+                        this.campaignMembers.map((agent) => {
+                            if (agent.id === change.doc.data().agent_id) {
+                                agent.currentWorkingShift = change.doc.data() ;
+
+                                if(change.doc.data().status == 0){
+                                    this.stopTimer(agent);
+                                }else{
+                                    this.startTimer(agent);
+                                }
+
+                            }
+                        });
+                    }
+                });
+
+            });
+
         }
     }
 </script>

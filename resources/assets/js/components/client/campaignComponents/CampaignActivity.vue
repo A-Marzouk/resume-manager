@@ -82,10 +82,7 @@
                                     <div class="actionBtn">
                                         <a style="font-size: 12px;" class="pr-1"
                                            v-show="currentAgent.currentWorkingShift.status == 0">
-                                            NO SHIFT |
-                                                <span :class="'campaign_timer_' + currentAgent.id">
-                                                        {{currentAgent.currentWorkingShift.total_hours}}
-                                                </span>
+                                            NO SHIFT | {{currentAgent.currentWorkingShift.total_hours}}
                                         </a>
 
                                         <a class="pr-1" style="font-size: 12px; color:#3EBD74; font-weight: bold;"

@@ -303,6 +303,9 @@
                 });
             },
             setCurrentAgent(agent_id) {
+                if(this.currentAgent.id == agent_id){
+                    return;
+                }
                 $.each(this.campaign.agents, (index, agent) => {
                     if (agent.id === agent_id) {
                         this.currentAgent = agent;

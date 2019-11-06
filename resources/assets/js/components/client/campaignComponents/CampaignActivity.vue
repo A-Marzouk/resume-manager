@@ -61,10 +61,11 @@
                                 <img src="/images/client/dummy.png" alt="member image">
                                 <div class="team-member-info">
                                     <div class="member-name">
-                                        Z. Ibrahimovic
+                                        {{currentAgent.user.user_data.first_name}}
+                                        {{currentAgent.user.user_data.last_name}}
                                     </div>
                                     <div class="job-title">
-                                        Animation
+                                        {{currentAgent.user.user_data.job_title}}
                                     </div>
                                 </div>
                             </div>
@@ -90,27 +91,46 @@
                                 <img src="/images/client/campaign_activity/empty_state.png" alt="empty state">
                             </div>
                         </div>
-                        <div class="member-logs"  v-show="currentAgent.logs.length > 1">
-                            <div class="agent-logs-block" v-if="currentAgent !== undefined">
+                        <div class="member-logs" v-show="currentAgent.logs.length > 0">
+                            <div v-if="currentAgent !== undefined" class="logsBox agent-logs-block">
                                 <div v-for="(log,index) in currentAgent.logs" :key="index">
-                                    <div class="log">
+                                    <div class="log" v-show="log.campaign_id == campaign.id">
                                         <div class="log-time">
                                             {{getDate(log.created_at)}}
                                         </div>
                                         <div class="log-text">
                                             <status-selector :status="logStatusCode[log.status]"></status-selector>
-                                            <span class="log-text-content">
-                                                {{log.log_text}}
-                                            </span>
+
+                                            <span class="log-text-content NoDecor" style="flex:1;"
+                                                  :class="{ blueColor : log.history.length > 0}">
+                                                    {{log.log_text}}
+                                                    <a href=javascript:void(0) @click="toggleLogHistory(log)"
+                                                       v-show='log.history.length > 0'>
+                                                        <small> (Edited)</small>
+                                                    </a>
+                                                <br/>
+
+                                                <div class="d-none" :id="'log_history_' + log.id">
+                                                      <span v-for="(logHistory, index) in log.history"
+                                                            style="font-weight: 400 !important;"
+                                                            :key=" 'logHistory' + logHistory.id">
+                                                         {{logHistory.log_text}} <small> (Edited at {{logHistory.created_at}}) </small><br/>
+                                                      </span>
+                                                </div>
+
+                                             </span>
                                         </div>
                                     </div>
-                                    <div class="showMoreBtn">
-                                        <a href="javascript:void(0)">SHOW RECORDINGS</a>
-                                    </div>
-                                    <div class="lineDivide" v-show="index < currentAgent.logs.length-1"></div>
                                 </div>
+
+                                <div v-show="currentAgent.logs.length < 1" style="padding: 38px;">
+                                    There are no logs for this agent.
+                                </div>
+
                             </div>
                         </div>
+
+
                     </div>
                     <div class="documents-bar">
                         <img src="/images/client/campaign_activity/document.png" alt="document">
@@ -183,7 +203,8 @@
 
 <script>
     import datepicker from '../../datepicker'
-    import statusSelector from '../../status-selector'
+    import statusSelector from '../../status-selector.vue'
+
 
     export default {
         props: ['campaign'],
@@ -197,9 +218,18 @@
                 selectedDate: '',
                 appliedDate: '',
                 currentAgent: {
-                    logs:[]
+                    user_data: {},
+                    logs: []
                 },
                 logStatusCode: {
+                    1: 'ER',
+                    2: 'CB',
+                    3: 'NI',
+                    4: 'AS',
+                    5: 'CR',
+                    6: 'S',
+                },
+                logStatusCodeInitials: {
                     1: 'ER',
                     2: 'CB',
                     3: 'NI',
@@ -231,8 +261,6 @@
             },
             setCurrentAgent(agent_id) {
                 $.each(this.campaign.agents, (index, agent) => {
-                    console.log('Index : ' + index);
-                    console.log('Agent : ' + agent);
                     if (agent.id === agent_id) {
                         this.currentAgent = agent;
                     }
@@ -242,7 +270,7 @@
                 $('.close').click();
             },
             setDefaultAgent() {
-                if(this.campaign.agents[0] !== undefined){
+                if (this.campaign.agents[0] !== undefined) {
                     this.currentAgent = this.campaign.agents[0]
                 }
             },
@@ -251,8 +279,27 @@
                 let options = {hour: 'numeric', minute: 'numeric', month: 'short', day: 'numeric'};
                 return event.toLocaleDateString('en-EN', options);
             },
+
+            toggleLogHistory(log) {
+                if ($('#log_history_' + log.id).hasClass('d-none')) {
+                    $('#log_history_' + log.id).removeClass('d-none');
+                } else {
+                    $('#log_history_' + log.id).addClass('d-none');
+                }
+            },
+            viewShifts(agent_id) {
+                this.campaignMembers.map((agent) => {
+                    if (agent.id == agent_id) {
+                        if (this.viewAgentShiftsByID == agent_id) {
+                            this.viewAgentShiftsByID = '';
+                        } else {
+                            this.viewAgentShiftsByID = agent_id;
+                        }
+                    }
+                })
+            },
         },
-        mounted() {
+        created() {
             this.setDefaultAgent();
         }
     }

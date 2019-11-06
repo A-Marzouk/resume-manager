@@ -82,9 +82,10 @@
                                     <div class="actionBtn">
                                         <a style="font-size: 12px;" class="pr-1"
                                            v-show="currentAgent.currentWorkingShift.status == 0">
-                                            NO SHIFT | <span :class="'campaign_timer_' + currentAgent.id">
-                                                            {{currentAgent.currentWorkingShift.total_hours}}
-                                                       </span>
+                                            NO SHIFT |
+                                                <span :class="'campaign_timer_' + currentAgent.id">
+                                                        {{currentAgent.currentWorkingShift.total_hours}}
+                                                </span>
                                         </a>
 
                                         <a class="pr-1" style="font-size: 12px; color:#3EBD74; font-weight: bold;"
@@ -280,6 +281,12 @@
                     6: 'S',
                 },
                 viewAgentShiftsByID : '' ,
+                timers:[
+                    {
+                        agent_id:'',
+                        timer :''
+                    }
+                ]
             }
         },
         methods: {
@@ -306,12 +313,12 @@
                 if(this.currentAgent.id == agent_id){
                     return;
                 }
-                $.each(this.campaign.agents, (index, agent) => {
-                    if (agent.id === agent_id) {
-                        this.currentAgent = agent;
+
+                axios.get('/agent/get/' + agent_id)
+                    .then( (response) => {
+                        this.currentAgent = response.data ;
                         this.setAgentShift();
-                    }
-                });
+                    });
 
                 // close modal
                 $('.close').click();
@@ -384,12 +391,21 @@
 
             },
             startTimer(agent) {
-                agent.timerVar = setInterval(() => {
+                let timer = setInterval(() => {
                     this.getShiftHours(agent)
                 }, 1000);
+
+                this.timers.push({
+                    agent_id : agent.id,
+                    timer : timer
+                });
             },
             stopTimer(agent) {
-                clearInterval(agent.timerVar);
+                this.timers.map( (timer) => {
+                   if(timer.agent_id == agent.id){
+                       clearInterval(timer.timer) ;
+                   }
+                });
             },
             todaysDate() {
                 return moment().format('YYYY-MM-DD');

@@ -42,6 +42,7 @@
 <script>
 
     import logStatusSelector from '../Log-status-selector'
+    import db from '../../../firestoreDB' ;
 
     export default {
         props: ['clear', 'log'],
@@ -82,6 +83,7 @@
                 axios.post('/agent/logs/update', this.editedLog)
                     .then((response) => {
                         let log = response.data;
+                        this.addFireStoreLogAsUpdate(log);
                         this.$emit('activityLogUpdated', log);
                         this.clear();
                     })
@@ -100,6 +102,7 @@
                 axios.post('/agent/logs/delete', {log_id: logID})
                     .then((response) => {
                         if (response.data.status === 'success') {
+                            this.deleteFireStoreLog(logID);
                             this.$emit('activityLogDeleted', logID);
                             this.clear();
                         }
@@ -107,7 +110,20 @@
                     .catch(() => {
 
                     });
+            },
+            addFireStoreLogAsUpdate(log){
+                db.collection('activity_logs').add(log);
+            },
+
+            deleteFireStoreLog(logID){
+                console.log(logID);
+                db.collection('activity_logs').add({
+                    id:logID,
+                    action:'delete',
+                    agent_id: this.log.agent_id
+                })
             }
+
         }
     }
 

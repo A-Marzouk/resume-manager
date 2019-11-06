@@ -197,6 +197,7 @@ Route::prefix('client')->group(function (){
 });
 Route::prefix('agent')->group(function (){
     Route::post('/logs/add','ActivityLogsController@addLog')->name('add.log');
+    Route::get('/logs/get/{id}','ActivityLogsController@getLogById')->name('get.log');
     Route::post('/logs/update','ActivityLogsController@editLog')->name('edit.log');
     Route::post('/logs/delete','ActivityLogsController@deleteLog')->name('delete.log');
 

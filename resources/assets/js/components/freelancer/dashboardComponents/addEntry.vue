@@ -55,6 +55,7 @@
 <script>
 
     import logStatusSelector from '../Log-status-selector'
+    import db from '../../../firestoreDB' ;
 
     export default {
         props: ['clear', 'campaign_id', 'agent_id'],
@@ -97,6 +98,7 @@
                     .then((response) => {
                         console.log(response.data);
                         let log = response.data;
+                        this.addFireStoreLog(log);
                         this.$emit('activityLogAdded', log);
                         this.clearEntryData();
                         this.clear();
@@ -115,6 +117,10 @@
                     agent_id: this.agent_id,
                     campaign_id: this.campaign_id
                 }
+            },
+            addFireStoreLog(log){
+                console.log('firestore added : ' + log);
+                db.collection('activity_logs').add(log);
             }
         }
     }

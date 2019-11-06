@@ -352,7 +352,6 @@
                 });
             });
 
-
             db.collection('shifts').onSnapshot((snapshot) => {
                 snapshot.docChanges().forEach((change) => {
                     if (change.type === 'added') {

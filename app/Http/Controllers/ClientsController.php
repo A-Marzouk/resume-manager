@@ -26,7 +26,7 @@ class ClientsController extends Controller
 
     public function campaignActivity($campaign_id)
     {
-        $campaign = Campaign::where('id', $campaign_id)->with('agents.user', 'agents.user.userData', 'agents.logs.history', 'faqs', 'links','files')->first();
+        $campaign = Campaign::where('id', $campaign_id)->with('agents.user','agents.shifts', 'agents.user.userData', 'agents.logs.history', 'faqs', 'links','files')->first();
         return view('client.campaign_main', compact('campaign'));
     }
 

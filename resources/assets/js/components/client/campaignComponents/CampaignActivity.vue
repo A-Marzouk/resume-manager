@@ -76,12 +76,53 @@
                         </div>
                     </div>
                     <div class="data-logs">
-                        <datepicker>
-                            <a href="javascript:void(0)" class="date-picker-btn" data-toggle="modal"
-                               data-target="#pick-date-modal" @click.once="setDatePicker">
-                                <img src="/images/icons/pick_date.svg" alt="pick date"> <span class="hideDate">PICK A DATE</span>
-                            </a>
-                        </datepicker>
+                        <div class="d-flex align-items-center justify-content-end pr-4">
+                            <div>
+                                <div class="agentInfo d-flex flex-wrap justify-content-end pb-1">
+                                    <div class="actionBtn">
+                                        <a style="font-size: 12px;" class="pr-1"
+                                           v-show="currentAgent.currentWorkingShift.status == 0">
+                                            NO SHIFT | <span :class="'campaign_timer_' + currentAgent.id">
+                                                            {{currentAgent.currentWorkingShift.total_hours}}
+                                                       </span>
+                                        </a>
+
+                                        <a class="pr-1" style="font-size: 12px; color:#3EBD74; font-weight: bold;"
+                                           v-show="currentAgent.currentWorkingShift.status == 1 || currentAgent.currentWorkingShift.status == 3 ">
+                                            SHIFT | <span :class="'campaign_timer_' + currentAgent.id">
+                                                        {{currentAgent.currentWorkingShift.total_hours}}
+                                                    </span>
+                                        </a>
+
+                                        <a class="pr-1" style="font-size: 12px; color:#3EBD74; font-weight: bold;"
+                                           v-show="currentAgent.currentWorkingShift.status == 1">
+                                            ACTIVE
+                                        </a>
+
+                                        <a class="pr-1" style="font-size: 12px; color:#F66691; font-weight: bold;"
+                                           v-show="currentAgent.currentWorkingShift.status == 3">
+                                            ON BREAK
+                                        </a>
+
+                                        <a href="javascript:void(0)" class="pr-3" style="font-size: 12px;"
+                                           @click="viewShifts(currentAgent.id)">TIME TODAY | {{calculateTodayTotalHours(currentAgent.shifts)}}</a>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-column mt-0 mb-2 pr-3 w-100 align-items-end" style="font-size: 13px;"
+                                     v-if="viewAgentShiftsByID == currentAgent.id">
+                                    <div v-for="(shift,index) in currentAgent.shifts" :key="index" class="pt-1" style="color: #0D96DB">
+                                        {{todaysDate()}} : {{shift.total_hours}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="date-picker-bar">
+                                <a href="javascript:void(0)" class="date-picker-btn" data-toggle="modal"
+                                   data-target="#pick-date-modal" @click.once="setDatePicker">
+                                    <img src="/images/icons/pick_date.svg" alt="pick date"> <span class="hideDate">PICK A DATE</span>
+                                </a>
+                            </div>
+                        </div>
                         <div class="lineDivide"></div>
                         <div class="member-logs-empty" v-show="currentAgent.logs.length < 1">
                             <div class="empty-state-text">
@@ -204,6 +245,7 @@
 <script>
     import datepicker from '../../datepicker'
     import statusSelector from '../../status-selector.vue'
+    import db from '../../../firestoreDB' ;
 
 
     export default {
@@ -237,6 +279,7 @@
                     5: 'CR',
                     6: 'S',
                 },
+                viewAgentShiftsByID : '' ,
             }
         },
         methods: {
@@ -263,6 +306,7 @@
                 $.each(this.campaign.agents, (index, agent) => {
                     if (agent.id === agent_id) {
                         this.currentAgent = agent;
+                        this.setAgentShift();
                     }
                 });
 
@@ -271,8 +315,27 @@
             },
             setDefaultAgent() {
                 if (this.campaign.agents[0] !== undefined) {
-                    this.currentAgent = this.campaign.agents[0]
+                    this.currentAgent = this.campaign.agents[0];
+                    this.setAgentShift();
                 }
+            },
+            setAgentShift(){
+                this.currentAgent.currentWorkingShift = {
+                    total_hours: '00:00:00',
+                    status: 0
+                };
+
+                this.currentAgent.shifts.map((shift) => {
+                    if (shift.campaign_id == this.campaign.id) {
+                        if (shift.status == 1) {
+                            this.currentAgent.currentWorkingShift = shift;
+                            this.startTimer(this.currentAgent);
+                        } else if (shift.status == 3) {
+                            this.currentAgent.currentWorkingShift = shift;
+                            this.getShiftHours(this.currentAgent);
+                        }
+                    }
+                });
             },
             getDate(date) {
                 let event = new Date(date);
@@ -288,19 +351,147 @@
                 }
             },
             viewShifts(agent_id) {
-                this.campaignMembers.map((agent) => {
-                    if (agent.id == agent_id) {
-                        if (this.viewAgentShiftsByID == agent_id) {
-                            this.viewAgentShiftsByID = '';
-                        } else {
-                            this.viewAgentShiftsByID = agent_id;
-                        }
-                    }
-                })
+                if (this.viewAgentShiftsByID == agent_id) {
+                    this.viewAgentShiftsByID = '';
+                } else {
+                    this.viewAgentShiftsByID = agent_id;
+                }
+            },
+            getShiftHours(agent) {
+                const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(agent.currentWorkingShift.start_time);
+                const formatted = moment.utc(secs).format('HH:mm:ss');
+
+                if (agent.currentWorkingShift.total_hours == 0 || agent.currentWorkingShift.total_hours == '00:00:00') { // there was no breaks
+                    $('.campaign_timer_' + agent.id).text(formatted);
+                    return formatted;
+                } else if (agent.currentWorkingShift.break_time !== null) {
+                    // there were breaks, so add the formatted time to the time that was there already
+                    var std_count = agent.currentWorkingShift.total_hours;
+                    const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(agent.currentWorkingShift.break_time);
+                    const formatted = moment.utc(secs).format('HH:mm:ss');
+                    let all = moment.duration(std_count).asSeconds() + moment.duration(formatted).asSeconds();
+                    let total_hours = moment.utc(all * 1000).format('HH:mm:ss');
+                    $('.campaign_timer_' + agent.id).text(total_hours);
+                    return total_hours;
+                } else {
+                    let total_hours = agent.currentWorkingShift.total_hours;
+                    $('.campaign_timer_' + agent.id).text(total_hours);
+                    return total_hours;
+                }
+
+            },
+            startTimer(agent) {
+                agent.timerVar = setInterval(() => {
+                    this.getShiftHours(agent)
+                }, 1000);
+            },
+            stopTimer(agent) {
+                clearInterval(agent.timerVar);
+            },
+            todaysDate() {
+                return moment().format('YYYY-MM-DD');
+            },
+            calculateTodayTotalHours(agentShifts) {
+                let totalHours = 0;
+                if (agentShifts.length < 1) {
+                    return '00:00:00';
+                }
+                agentShifts.map((shift) => {
+                    totalHours += moment.duration(shift.total_hours).asSeconds();
+                });
+
+                return moment.utc(totalHours * 1000).format('HH:mm:ss');
             },
         },
         created() {
             this.setDefaultAgent();
+        },
+
+        mounted(){
+            db.collection('activity_logs').get().then((snapshot) => {
+                if (snapshot.docs.length > 0) {
+                    snapshot.docs.forEach((doc) => {
+                        console.log(doc.id)
+                        db.collection('activity_logs').doc(doc.id).delete();
+                    })
+                }
+            });
+            db.collection('shifts').get().then((snapshot) => {
+                if (snapshot.docs.length > 0) {
+                    snapshot.docs.forEach((doc) => {
+                        console.log(doc.id)
+                        db.collection('shifts').doc(doc.id).delete();
+                    })
+                }
+            });
+
+            db.collection('activity_logs').onSnapshot((snapshot) => {
+                snapshot.docChanges().forEach((change) => {
+                    if (change.type === 'added') {
+                        let agent = this.currentAgent;
+
+                        if (agent.id == change.doc.data().agent_id) {
+                            let exists = false;
+                            let logIndex = 0;
+                            agent.logs.map((log, index) => {
+                                if (log.id == change.doc.data().id) {
+                                    exists = true;
+                                    logIndex = index;
+                                }
+                            });
+
+                            // if the log doesn't exist so add
+                            if (!exists) {
+                                agent.logs.unshift(change.doc.data());
+                            } else {
+                                console.log(change.doc.data());
+                                // if action is delete
+                                if (change.doc.data().action == 'delete') {
+                                    agent.logs.splice(logIndex, 1);
+                                } else {
+                                    agent.logs.splice(logIndex, 1, change.doc.data());
+                                }
+                            }
+                        }
+                    }
+
+                });
+            });
+
+            db.collection('shifts').onSnapshot((snapshot) => {
+                snapshot.docChanges().forEach((change) => {
+                    if (change.type === 'added') {
+                        let agent = this.currentAgent;
+
+                        if (agent.id == change.doc.data().agent_id) {
+                            agent.currentWorkingShift = change.doc.data() ;
+
+                            if(change.doc.data().status == 0 || change.doc.data().status == 3){
+                                this.stopTimer(agent);
+                            }else{
+                                this.startTimer(agent);
+                            }
+
+                            if(change.doc.data().action == 'finish_break'){
+                                agent.currentWorkingShift.status = 1;
+                                this.viewAgentShiftsByID = change.doc.data().agent_id;
+                                this.viewAgentShiftsByID = '' ;
+                                console.log(change.doc.data().action);
+                            }
+
+                            if(change.doc.data().action == 'start_break'){
+                                agent.currentWorkingShift.status = 3;
+                                this.viewAgentShiftsByID = change.doc.data().agent_id;
+                                this.viewAgentShiftsByID = '' ;
+                                console.log(change.doc.data().action);
+                            }
+
+                        }
+                    }
+                });
+
+            });
+
         }
     }
 </script>
@@ -309,4 +500,14 @@
         padding-left: 50px;
         padding-right: 0px;
     }
+
+    .logsBox {
+        max-height: 400px;
+        overflow-x: auto;
+    }
+
+    .blueColor {
+        font-weight: 500 !important;
+    }
+
 </style>

@@ -223,6 +223,11 @@ class AgentsController extends Controller
         })->where('id', currentAgent()->user_id)->with('agent.shifts', 'userData','languages', 'agent.logs.history')->first();
     }
 
+    public function getAgentByID($id)
+    {
+        return Agent::where('id',$id)->with('shifts', 'user.userData', 'logs.history')->first();
+    }
+
     public function createAgent(Request $request){
 
          $resumeData = json_decode( $request->resumeData,true) ;

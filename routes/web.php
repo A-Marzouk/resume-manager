@@ -202,6 +202,7 @@ Route::prefix('agent')->group(function (){
     Route::post('/logs/delete','ActivityLogsController@deleteLog')->name('delete.log');
 
     Route::get('/current','AgentsController@getCurrentAgent')->name('get.current.agent');
+    Route::get('/get/{id}','AgentsController@getAgentByID')->name('get.agent.by.id');
 
     // agreements
     Route::get('/account/service-agreement','AgentsController@viewAgentServiceAgreement')->name('service.agreement');

@@ -405,7 +405,8 @@
                 axios.post('/agent/shifts/end', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = {
-                            status: 0
+                            status: 0,
+                            agent_id : response.data.agent_id
                         };
                         this.addFireStoreShift(campaign.currentWorkingShift);
                         this.todayShifts.unshift(response.data);

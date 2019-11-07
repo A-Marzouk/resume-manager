@@ -75,11 +75,18 @@
                             </a>
                         </div>
                     </div>
+
+
+                    <!-- logs and shifts box -->
+
                     <div class="data-logs">
+
+                        <!-- shifts action bar -->
+
                         <div class="d-flex align-items-center justify-content-end pr-4">
                             <div>
                                 <div class="agentInfo d-flex flex-wrap justify-content-end pb-1">
-                                    <div class="actionBtn">
+                                    <div class="actionBtn" style="margin-left: 12px;">
                                         <a style="font-size: 12px;" class="pr-1"
                                            v-show="currentAgent.currentWorkingShift.status == 0">
                                             NO SHIFT | {{currentAgent.currentWorkingShift.total_hours}}
@@ -119,10 +126,20 @@
                                    data-target="#pick-date-modal" @click.once="setDatePicker">
                                     <img src="/images/icons/pick_date.svg" alt="pick date"> <span class="hideDate">PICK A DATE</span>
                                 </a>
+                                <div style="font-size: 12px; color: #0D96DB" class="ml-2">{{todaysDateValue}}</div>
                             </div>
                         </div>
+
+                        <!-- ebd of shifts action bar -->
+
+
+
                         <div class="lineDivide"></div>
-                        <div class="member-logs-empty" v-show="currentAgent.logs.length < 1">
+
+
+                        <!-- member logs -->
+
+                        <div class="member-logs-empty" v-show="filteredLogs(currentAgent.logs).length < 1">
                             <div class="empty-state-text">
                                 Sorry, no entries for today
                             </div>
@@ -130,9 +147,9 @@
                                 <img src="/images/client/campaign_activity/empty_state.png" alt="empty state">
                             </div>
                         </div>
-                        <div class="member-logs" v-show="currentAgent.logs.length > 0">
+                        <div class="member-logs" v-show="filteredLogs(currentAgent.logs).length > 0">
                             <div v-if="currentAgent !== undefined" class="logsBox agent-logs-block">
-                                <div v-for="(log,index) in currentAgent.logs" :key="index">
+                                <div v-for="(log,index) in filteredLogs(currentAgent.logs)" :key="index">
                                     <div class="log" v-show="log.campaign_id == campaign.id">
                                         <div class="log-time">
                                             {{getDate(log.created_at)}}
@@ -174,14 +191,20 @@
                             </div>
                         </div>
 
+                        <!--end of member logs -->
 
                     </div>
+
+
+                    <!-- campaign document bar -->
                     <div class="documents-bar">
                         <img src="/images/client/campaign_activity/document.png" alt="document">
                         <div class="document-text">
                             Document link: <span>No links.</span>
                         </div>
                     </div>
+                    <!-- end of campaign document bar -->
+
                 </div>
             </div>
         </div>
@@ -222,11 +245,18 @@
                 </div>
             </div>
         </div>
+        <!-- end of agent select modal -->
+
+        <!-- modal to pick a date -->
         <div class="modal" id="pick-date-modal">
             <div class="modal-dialog">
                 <div class="modal-content agent-modal-content date-picker">
                     <!-- Modal body -->
-                    <button type="button" class="close d-none" data-dismiss="modal" id="agentsModal">&times;</button>
+                    <button type="button"
+                            id="close-modal"
+                            class="close d-none"
+                            data-dismiss="modal">&times;
+                    </button>
                     <div class="modal-body">
                         <div id="datepicker"></div>
                         <input type="hidden" name="selected-date-value" id="selected-date-value" @change="dateChanged">
@@ -242,6 +272,8 @@
                 </div>
             </div>
         </div>
+        <!-- end of pick date modal -->
+
     </div>
 </template>
 
@@ -288,21 +320,32 @@
                         agent_id:'',
                         timer :''
                     }
-                ]
+                ],
+                todaysDateValue : moment().format('YYYY-MM-DD')
             }
         },
         methods: {
+            filteredLogs(logs){
+                return logs.filter((log) => {
+                    let logDate = moment(log.created_at).format('YYYY-MM-DD');
+                    let today = this.todaysDateValue;
+                    return moment(logDate).isSame(moment(today));
+                });
+            },
             dateChanged() {
                 this.selectedDate = $('#selected-date-value').val();
             },
             applySelectedDate() {
                 this.appliedDate = this.selectedDate;
+                let formattedAppliedData = this.appliedDate.replace('/','-').replace('/','-');
+                this.todaysDateValue = moment(formattedAppliedData).format('YYYY-MM-DD')
                 $('#close-modal').click();
             },
             cancelDatePicking() {
                 $('#close-modal').click();
             },
             setDatePicker() {
+                console.log('select');
                 $("#datepicker").datepicker({
                     onSelect: function (dateText, inst) {
                         $("input[name='selected-date-value']").val(dateText);

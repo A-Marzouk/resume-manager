@@ -138,7 +138,12 @@
                                             {{getDate(log.created_at)}}
                                         </div>
                                         <div class="log-text">
-                                            <status-selector :status="logStatusCode[log.status]"></status-selector>
+
+                                            <div class="status-selector-component">
+                                                <a class="recording-status icon" style="color:white"
+                                                   v-bind:class="logStatusCode[log.status]">{{ logStatusCodeInitials[log.status]
+                                                    }}</a>
+                                            </div>
 
                                             <span class="log-text-content NoDecor" style="flex:1;"
                                                   :class="{ blueColor : log.history.length > 0}">
@@ -262,12 +267,12 @@
                     logs: []
                 },
                 logStatusCode: {
-                    1: 'ER',
-                    2: 'CB',
-                    3: 'NI',
-                    4: 'AS',
-                    5: 'CR',
-                    6: 'S',
+                    1: 'email-request',
+                    2: 'call-back',
+                    3: 'not-interested',
+                    4: 'appointment-set',
+                    5: 'contacts-received',
+                    6: 'successful',
                 },
                 logStatusCodeInitials: {
                     1: 'ER',

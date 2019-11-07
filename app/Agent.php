@@ -29,7 +29,7 @@ class Agent extends Model
 
     public function logs()
     {
-        return $this->hasMany(ActivityLog::class);
+        return $this->hasMany(ActivityLog::class)->orderBy('created_at','desc');
     }
 
 

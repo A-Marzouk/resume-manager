@@ -49,6 +49,7 @@
                                    data-target="#pick-date-modal" @click.once="setDatePicker">
                                     <img src="/images/icons/pick_date.svg" alt="pick date"> <span class="hideDate">PICK A DATE</span>
                                 </a>
+                                <div style="font-size: 12px; color: #0D96DB" class="ml-2">{{todaysDateValue}}</div>
                             </div>
                         </div>
                         <div class="lineDivide"></div>

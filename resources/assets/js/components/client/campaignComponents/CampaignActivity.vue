@@ -517,8 +517,9 @@
         padding-right: 0px;
     }
 
+
     .logsBox {
-        max-height: 400px;
+        height: 312px;
         overflow-x: auto;
     }
 

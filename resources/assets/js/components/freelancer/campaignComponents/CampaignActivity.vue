@@ -581,10 +581,10 @@
      margin-top:50px !important;
     }
 
-    /*.logsBox {*/
-        /*height: 400px;*/
-        /*overflow-x: auto;*/
-    /*}*/
+    .logsBox {
+        height: 312px;
+        overflow-x: auto;
+    }
 
     .actionBtn {
         margin-right: 34px;

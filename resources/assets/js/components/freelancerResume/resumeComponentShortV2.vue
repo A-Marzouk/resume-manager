@@ -17,7 +17,7 @@
                             <div class="col-lg-3 col-md-4 col-6 freelancerCardLeft">
                                 <div class="nameArea">
                                     <div class="nameCard">
-                                        {{freelancer.firstName}}
+                                        {{freelancer.user_data.first_name}}
                                     </div>
                                     <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;"
                                          :id="'animatedText'+freelancer.id">
@@ -33,7 +33,7 @@
 
 
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
-                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How
+                                        Hi, I am {{freelancer.user_data.first_name}}, I am a {{freelancer.user_data.jobTitle}}, How
                                         can I help
                                         you ?
                                     </div>
@@ -92,7 +92,7 @@
                             <div class="col-6 resumeCardRight">
                                 <div class="nameArea">
                                     <div class="nameCard">
-                                        {{freelancer.firstName}}
+                                        {{freelancer.user_data.first_name}}
                                     </div>
                                     <div class="jobTitle" style="font-size: 17px; padding-left: 0; color: #c1d1ff"
                                          :id="'animatedText' + freelancer.id">
@@ -113,7 +113,7 @@
                                         </div>
                                     </div>
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
-                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How
+                                        Hi, I am {{freelancer.user_data.first_name}}, I am a {{freelancer.user_data.jobTitle}}, How
                                         can I help
                                         you ?
                                     </div>

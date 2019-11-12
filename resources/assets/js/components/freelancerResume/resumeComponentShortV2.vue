@@ -46,7 +46,7 @@
                                 <div class="row hireRow w-100">
                                     <div class="col-md-4 text-center" style="font-size: 15px; color: white;">
                                     <span style="font-weight: bold;">
-                                        {{freelancer.user_data.salary}}
+                                        {{Math.ceil(freelancer.agent.hourly_rate)}}
                                     </span>
                                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly
                                             rate
@@ -101,7 +101,7 @@
                                     <div class="text-left" style="font-size: 15px; color: white; padding-top: 5px;">
                                         <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Hourly rate :
                                             <span style="font-weight: bold;">
-                                            $ {{freelancer.user_data.salary}}
+                                            $ {{Math.ceil(freelancer.agent.hourly_rate)}}
                                         </span>
                                         </div>
                                     </div>

@@ -60,6 +60,11 @@
                     </span>
                 </div>
                 <div class="right no-decoration">
+                    <a href="/freelancer/developer-card" class="normal-link">
+                        DEVELOPER CARD
+                    </a>
+                </div>
+                <div class="right no-decoration">
                     <a href="/freelancer/professional/edit" class="normal-link">
                         EDIT
                     </a>

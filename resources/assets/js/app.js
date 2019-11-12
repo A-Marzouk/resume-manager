@@ -599,6 +599,9 @@ Vue.component('send-invitations', require('./components/mails/sendInvitationMail
 // Freelancers cards
 Vue.component('freelancer-resume', require('./components/resumeAgent/resumeComponentLong.vue'));
 
+
+Vue.component('freelancer-portfolio', require('./components/freelancerResume/portfolio'));
+
 if ($("#freelancerResume").length !== 0) {
     let freelancerResume = new Vue({
         el: "#freelancerResume"
@@ -616,6 +619,12 @@ if ($("#searchFreelancers").length !== 0){
 if ($("#record_input").length !== 0){
     let record_input = new Vue({
         el:'#record_input'
+    });
+}
+
+if ($("#freelancerPortfolio").length !== 0){
+    let freelancerPortfolio = new Vue({
+        el:'#freelancerPortfolio'
     });
 }
 

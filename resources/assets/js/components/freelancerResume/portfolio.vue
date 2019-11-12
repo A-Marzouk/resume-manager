@@ -19,8 +19,8 @@
                         </a>
                     </div>
                     <div class="editBtn NoDecor">
-                        <a href="/freelancer/edit-form">
-                            <img src="/resumeApp/resources/assets/images/edit_profile.png" alt="edit profile">
+                        <a href="/freelancer/developer-card/edit">
+                            <img src="/images/edit_profile.png" alt="edit profile">
                             Edit profile
                         </a>
                     </div>
@@ -45,7 +45,7 @@
                             <div class="col-lg-3 col-md-4 col-6 freelancerCardLeft">
                                 <div class="nameArea">
                                     <div class="nameCard">
-                                        {{freelancer.firstName}}
+                                        {{freelancer.user_data.first_name}}
                                     </div>
                                     <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;"
                                          :id="'animatedText'+freelancer.id">
@@ -61,7 +61,9 @@
 
 
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
-                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How
+                                        Hi, I am
+                                        {{freelancer.user_data.first_name}}
+                                        , I am a {{freelancer.user_data.jobTitle}}, How
                                         can I help
                                         you ?
                                     </div>
@@ -74,7 +76,7 @@
                                 <div class="row hireRow w-100">
                                     <div class="col-md-4 text-center" style="font-size: 15px; color: white;">
                                     <span style="font-weight: bold;">
-                                        {{freelancer.user_data.salary}}
+                                      {{Math.ceil(freelancer.agent.hourly_rate)}}
                                     </span>
                                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly
                                             rate
@@ -82,7 +84,7 @@
                                     </div>
 
                                     <div class="col-md-4 text-center" style="font-size: 15px; color: white;">
-                                        <span style="font-weight: bold;" v-if="freelancer.user_data.availableHours">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}} hours</span>
+                                        <span style="font-weight: bold;" v-if="freelancer.user_data.available_hours_per_week">{{Math.ceil(freelancer.user_data.available_hours_per_week)}} hours</span>
                                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly
                                             Availability
                                         </div>
@@ -118,7 +120,7 @@
                             <div class="col-6 resumeCardRight">
                                 <div class="nameArea">
                                     <div class="nameCard">
-                                        {{freelancer.firstName}}
+                                        {{freelancer.user_data.first_name}}
                                     </div>
                                     <div class="jobTitle" style="font-size: 17px; padding-left: 0; color: #c1d1ff"
                                          :id="'animatedText' + freelancer.id">
@@ -127,17 +129,19 @@
                                     <div class="text-left" style="font-size: 15px; color: white; padding-top: 5px;">
                                         <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Hourly rate :
                                             <span style="font-weight: bold;">
-                                            $ {{freelancer.user_data.salary}}
+                                            $ {{Math.ceil(freelancer.agent.hourly_rate)}}
                                         </span>
                                         </div>
                                     </div>
                                     <div class="text-left" style="font-size: 15px; color: white; padding-top: 5px;">
                                         <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :
-                                            <span style="font-weight: bold;" v-if="freelancer.user_data.availableHours">{{freelancer.user_data.availableHours.replace(/[^0-9]/g,'')}}h/week</span>
+                                            <span style="font-weight: bold;" v-if="freelancer.user_data.available_hours_per_week">{{Math.ceil(freelancer.user_data.available_hours_per_week)}} h/week</span>
                                         </div>
                                     </div>
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
-                                        Hi, I am {{freelancer.firstName}}, I am a {{freelancer.user_data.jobTitle}}, How
+                                        Hi, I am
+                                        {{freelancer.user_data.first_name}}
+                                        , I am a {{freelancer.user_data.jobTitle}}, How
                                         can I help
                                         you ?
                                     </div>
@@ -402,7 +406,7 @@
                                                                             <img :src="getImageSrc(project.mainImage)"
                                                                                  alt="" width="260" slot="image">
                                                                             <img alt="" slot="preloader"
-                                                                                 src="/resumeApp/public/images/spinner-load.gif"
+                                                                                 src="/images/spinner-load.gif"
                                                                                  style="width: 100px; height: 100px;"/>
                                                                         </vue-load-image>
                                                                     </a>
@@ -417,7 +421,7 @@
                                                                            data-toggle="modal"
                                                                            :data-target="'#project_modal_'+project.id"
                                                                            style="outline: none; margin-left: 16px;">
-                                                                            <img src="/resumeApp/public/images/newResume/link.png"
+                                                                            <img src="/images/newResume/link.png"
                                                                                  alt="view work">
                                                                         </a>
                                                                     </div>
@@ -428,7 +432,7 @@
                                                             <!--<a @click="loadHDImage(project.id)" href="javascript:void(0)"   data-toggle="modal" :data-target="'#project_modal_'+project.id" style="outline:0; " >-->
                                                             <!--<vue-load-image>-->
                                                             <!--<img :src="getResizedImage(project.mainImage)" alt="" width="100%" slot="image" height="auto" style="min-height:250px; border-radius:10px;">-->
-                                                            <!--<img  alt="" slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>-->
+                                                            <!--<img  alt="" slot="preloader" src="/images/spinner-load.gif"/>-->
                                                             <!--</vue-load-image>-->
                                                             <!--</a>-->
                                                             <!--</div>-->
@@ -442,7 +446,7 @@
                                                                class="cardLabel_interviews noScroll"
                                                                @click="slidePrev(index)"
                                                                style="color:#697786;">
-                                                                <img src="/resumeApp/resources/assets/images/left_arrow.png"
+                                                                <img src="/images/left_arrow.png"
                                                                      alt="prev" width="15px">
                                                             </a>
 
@@ -452,7 +456,7 @@
                                                                class="cardLabel_interviews noScroll"
                                                                @click="slideNext(index,work.projects.length)"
                                                                style="color:#697786;">
-                                                                <img src="/resumeApp/resources/assets/images/right_arrow.png"
+                                                                <img src="/images/right_arrow.png"
                                                                      alt="next" width="15px">
                                                             </a>
                                                         </div>
@@ -512,13 +516,13 @@
                                         </div>
                                         <div class="hoursBtn NoDecor">
                                             <a href="javascript:void(0)">
-                                                <img src="/resumeApp/public/images/newResume/minus.png"
+                                                <img src="/images/newResume/minus.png"
                                                      style="width: 18px; padding-right: 8px;" alt="minus"
                                                      @click="subtractHours">
                                             </a>
                                             <span>{{hours}}</span> hours
                                             <a href="javascript:void(0)">
-                                                <img src="/resumeApp/public/images/newResume/plus.png"
+                                                <img src="/images/newResume/plus.png"
                                                      style="width: 18px; padding-left: 8px;" alt="plus"
                                                      @click="addHours">
                                             </a>
@@ -532,13 +536,13 @@
                                         </div>
                                         <div class="hoursBtn NoDecor">
                                             <a href="javascript:void(0)">
-                                                <img src="/resumeApp/public/images/newResume/minus.png"
+                                                <img src="/images/newResume/minus.png"
                                                      style="width: 18px; padding-right: 8px;" alt="minus"
                                                      @click="subtractWeeks">
                                             </a>
                                             <span>{{weeks}}</span> weeks
                                             <a href="javascript:void(0)">
-                                                <img src="/resumeApp/public/images/newResume/plus.png"
+                                                <img src="/images/newResume/plus.png"
                                                      style="width: 18px; padding-left: 8px;" alt="plus"
                                                      @click="addWeeks">
                                             </a>
@@ -583,7 +587,7 @@
                             <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
                                 <div class="col-lg-11 col-11 text-left" style="padding: 25px 0 0 20px;">
                                      <span>
-                                         <img src="/resumeApp/public/images/comment-512.png"
+                                         <img src="/images/comment-512.png"
                                               alt="" style="padding-right: 14px; width: 34px;">
                                         <span class="audioText"
                                               style="color: #4E75E8;">  References & Testimonials</span>
@@ -644,7 +648,7 @@
                                         <img :src="getImageSrc(project.mainImage)"
                                              :id="'projectModalPhoto' + project.id" alt="" width="100%" slot="image"
                                              height="auto">
-                                        <img slot="preloader" src="/resumeApp/public/images/spinner-load.gif"/>
+                                        <img slot="preloader" src="/images/spinner-load.gif"/>
                                     </vue-load-image>
                                     <!--<div v-for="(image, index) in getProjectImages(project.images)" :key="index + 'a'">-->
                                     <!--<iframe v-if="image.includes('embed')" height="400" width="100%" :src="image+'?bgcolor=%23191919'" allowfullscreen autoplay style="margin: 0px auto; display: block;"></iframe>-->
@@ -722,7 +726,7 @@
                     ]
                 },
                 weeks: 4,
-                hours: this.freelancer.user_data.availableHours,
+                hours: this.freelancer.user_data.available_hours_per_week,
                 portfolio: !this.hire,
                 showReferences: false,
             }
@@ -760,95 +764,95 @@
             },
             getSkillIconSrc(skill_title) {
                 let arrayOfSkillImages = {
-                    'ui design': '/resumeApp/resources/assets/images/skills_icons/user_interface.png',
-                    'ux design': '/resumeApp/resources/assets/images/skills_icons/user_experience.png',
-                    'logo design': '/resumeApp/resources/assets/images/skills_icons/logo_design.png',
-                    'animation': '/resumeApp/resources/assets/images/skills_icons/animation.jpg',
-                    'motion graphics': '/resumeApp/resources/assets/images/skills_icons/motion_graphics.png',
-                    'illustration': '/resumeApp/resources/assets/images/skills_icons/illustration.png',
-                    'advertising': '/resumeApp/resources/assets/images/skills_icons/advertising.png',
-                    'branding': '/resumeApp/resources/assets/images/skills_icons/branding.png',
-                    'brochure Design': '/resumeApp/resources/assets/images/skills_icons/brochure_design.png',
-                    'website design': '/resumeApp/resources/assets/images/skills_icons/web_design.png',
-                    'game designer': '/resumeApp/resources/assets/images/skills_icons/game_designer.png',
-                    'character design': '/resumeApp/resources/assets/images/skills_icons/character_design.png',
-                    'digital painting': '/resumeApp/resources/assets/images/skills_icons/digital_painting.png',
-                    'creative director': '/resumeApp/resources/assets/images/skills_icons/creative_director.png',
-                    'html / css': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
+                    'ui design': '/images/skills_icons/user_interface.png',
+                    'ux design': '/images/skills_icons/user_experience.png',
+                    'logo design': '/images/skills_icons/logo_design.png',
+                    'animation': '/images/skills_icons/animation.jpg',
+                    'motion graphics': '/images/skills_icons/motion_graphics.png',
+                    'illustration': '/images/skills_icons/illustration.png',
+                    'advertising': '/images/skills_icons/advertising.png',
+                    'branding': '/images/skills_icons/branding.png',
+                    'brochure Design': '/images/skills_icons/brochure_design.png',
+                    'website design': '/images/skills_icons/web_design.png',
+                    'game designer': '/images/skills_icons/game_designer.png',
+                    'character design': '/images/skills_icons/character_design.png',
+                    'digital painting': '/images/skills_icons/digital_painting.png',
+                    'creative director': '/images/skills_icons/creative_director.png',
+                    'html / css': '/images/skills_icons/HTML.png',
                     // 2-
 
-                    'adobe after effects': '/resumeApp/resources/assets/images/skills_icons/AE.png',
-                    'sketch': '/resumeApp/resources/assets/images/skills_icons/Sketch.png',
-                    'adobe illustrator': '/resumeApp/resources/assets/images/skills_icons/Illustrator.png',
-                    'adobe xd': '/resumeApp/resources/assets/images/skills_icons/AdobeXD.png',
-                    'photoshop': '/resumeApp/resources/assets/images/skills_icons/Photoshop.png',
-                    'autocad': '/resumeApp/resources/assets/images/skills_icons/autocad.png',
-                    'solidworks': '/resumeApp/resources/assets/images/skills_icons/solid_works.png',
-                    'adobe flash': '/resumeApp/resources/assets/images/skills_icons/adobe_flash.png',
-                    'digital drawing Tablet': '/resumeApp/resources/assets/images/skills_icons/digital_drawing_tablet.png',
-                    'adobe indesign': '/resumeApp/resources/assets/images/skills_icons/indesign.png',
-                    'coreldraw': '/resumeApp/resources/assets/images/skills_icons/corel_draw.png',
-                    '3d max': '/resumeApp/resources/assets/images/skills_icons/3d_max.png',
+                    'adobe after effects': '/images/skills_icons/AE.png',
+                    'sketch': '/images/skills_icons/Sketch.png',
+                    'adobe illustrator': '/images/skills_icons/Illustrator.png',
+                    'adobe xd': '/images/skills_icons/AdobeXD.png',
+                    'photoshop': '/images/skills_icons/Photoshop.png',
+                    'autocad': '/images/skills_icons/autocad.png',
+                    'solidworks': '/images/skills_icons/solid_works.png',
+                    'adobe flash': '/images/skills_icons/adobe_flash.png',
+                    'digital drawing Tablet': '/images/skills_icons/digital_drawing_tablet.png',
+                    'adobe indesign': '/images/skills_icons/indesign.png',
+                    'coreldraw': '/images/skills_icons/corel_draw.png',
+                    '3d max': '/images/skills_icons/3d_max.png',
 
                     // developer :
                     // 1-
-                    'javascript': '/resumeApp/resources/assets/images/skills_icons/javascript.png',
-                    'sql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
+                    'javascript': '/images/skills_icons/javascript.png',
+                    'sql': '/images/skills_icons/mysql.png',
                     'java': 'resumeApp/resources/assets/images/skills_icons/java.png',
-                    'c#': '/resumeApp/resources/assets/images/skills_icons/c#.png',
-                    'python': '/resumeApp/resources/assets/images/skills_icons/python.png',
-                    'php': '/resumeApp/resources/assets/images/skills_icons/php.png',
-                    'c++': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
-                    'c': '/resumeApp/resources/assets/images/skills_icons/c_language.png',
-                    'typescript': '/resumeApp/resources/assets/images/skills_icons/typescript.png',
-                    'ruby': '/resumeApp/resources/assets/images/skills_icons/ruby.png',
-                    'objective-C': '/resumeApp/resources/assets/images/skills_icons/objective_c.png',
-                    'swift': '/resumeApp/resources/assets/images/skills_icons/swift.png',
-                    'vb.net': '/resumeApp/resources/assets/images/skills_icons/vb_net.png',
-                    'go': '/resumeApp/resources/assets/images/skills_icons/go.png',
-                    'perl': '/resumeApp/resources/assets/images/skills_icons/perl.png',
-                    'scala': '/resumeApp/resources/assets/images/skills_icons/scala.png',
-                    'groovy': '/resumeApp/resources/assets/images/skills_icons/groovy.png',
-                    'assembly': '/resumeApp/resources/assets/images/skills_icons/assembly.png',
-                    'coffeescript': '/resumeApp/resources/assets/images/skills_icons/coffeeScript.png',
-                    'vba': '/resumeApp/resources/assets/images/skills_icons/vba.png',
-                    'r': '/resumeApp/resources/assets/images/skills_icons/r_lang.png',
-                    'matlab': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
-                    'visual basic 6': '/resumeApp/resources/assets/images/skills_icons/matlab.png',
-                    'lua': '/resumeApp/resources/assets/images/skills_icons/lua.png',
-                    'haskell': '/resumeApp/resources/assets/images/skills_icons/haskell.png',
-                    'html': '/resumeApp/resources/assets/images/skills_icons/HTML.png',
-                    'css': '/resumeApp/resources/assets/images/skills_icons/CSS.png',
+                    'c#': '/images/skills_icons/c#.png',
+                    'python': '/images/skills_icons/python.png',
+                    'php': '/images/skills_icons/php.png',
+                    'c++': '/images/skills_icons/c_language.png',
+                    'c': '/images/skills_icons/c_language.png',
+                    'typescript': '/images/skills_icons/typescript.png',
+                    'ruby': '/images/skills_icons/ruby.png',
+                    'objective-C': '/images/skills_icons/objective_c.png',
+                    'swift': '/images/skills_icons/swift.png',
+                    'vb.net': '/images/skills_icons/vb_net.png',
+                    'go': '/images/skills_icons/go.png',
+                    'perl': '/images/skills_icons/perl.png',
+                    'scala': '/images/skills_icons/scala.png',
+                    'groovy': '/images/skills_icons/groovy.png',
+                    'assembly': '/images/skills_icons/assembly.png',
+                    'coffeescript': '/images/skills_icons/coffeeScript.png',
+                    'vba': '/images/skills_icons/vba.png',
+                    'r': '/images/skills_icons/r_lang.png',
+                    'matlab': '/images/skills_icons/matlab.png',
+                    'visual basic 6': '/images/skills_icons/matlab.png',
+                    'lua': '/images/skills_icons/lua.png',
+                    'haskell': '/images/skills_icons/haskell.png',
+                    'html': '/images/skills_icons/HTML.png',
+                    'css': '/images/skills_icons/CSS.png',
 
                     //2-
-                    'angularjs': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
-                    'angular.js': '/resumeApp/resources/assets/images/skills_icons/Angularjs.png',
-                    'node.js': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
-                    'nodejs': '/resumeApp/resources/assets/images/skills_icons/node_js.png',
-                    '.net Core': '/resumeApp/resources/assets/images/skills_icons/netcore.png',
-                    'react': '/resumeApp/resources/assets/images/skills_icons/react.png',
-                    'cordova': '/resumeApp/resources/assets/images/skills_icons/cordava.png',
+                    'angularjs': '/images/skills_icons/Angularjs.png',
+                    'angular.js': '/images/skills_icons/Angularjs.png',
+                    'node.js': '/images/skills_icons/node_js.png',
+                    'nodejs': '/images/skills_icons/node_js.png',
+                    '.net Core': '/images/skills_icons/netcore.png',
+                    'react': '/images/skills_icons/react.png',
+                    'cordova': '/images/skills_icons/cordava.png',
                     'firebase': '',
                     'xamarin': '',
-                    'hadoop': '/resumeApp/resources/assets/images/skills_icons/hadoop.png',
-                    'spark': '/resumeApp/resources/assets/images/skills_icons/spark.png',
-                    'mysql': '/resumeApp/resources/assets/images/skills_icons/mysql.png',
-                    'sql server': '/resumeApp/resources/assets/images/skills_icons/sql server.png',
-                    'postgresql': '/resumeApp/resources/assets/images/skills_icons/postgreSQL.png',
-                    'sqlite': '/resumeApp/resources/assets/images/skills_icons/SQLite.png',
-                    'mongodb': '/resumeApp/resources/assets/images/skills_icons/mongoDB.png',
-                    'oracle': '/resumeApp/resources/assets/images/skills_icons/Oracle.png',
-                    'redis': '/resumeApp/resources/assets/images/skills_icons/redis.png',
-                    'cassandra': '/resumeApp/resources/assets/images/skills_icons/cassandra.png'
+                    'hadoop': '/images/skills_icons/hadoop.png',
+                    'spark': '/images/skills_icons/spark.png',
+                    'mysql': '/images/skills_icons/mysql.png',
+                    'sql server': '/images/skills_icons/sql server.png',
+                    'postgresql': '/images/skills_icons/postgreSQL.png',
+                    'sqlite': '/images/skills_icons/SQLite.png',
+                    'mongodb': '/images/skills_icons/mongoDB.png',
+                    'oracle': '/images/skills_icons/Oracle.png',
+                    'redis': '/images/skills_icons/redis.png',
+                    'cassandra': '/images/skills_icons/cassandra.png'
                 };
                 if (arrayOfSkillImages.hasOwnProperty(skill_title.toLowerCase())) {
                     return arrayOfSkillImages[skill_title.toLowerCase()];
                 }
-                return '/resumeApp/resources/assets/images/skills_icons/skill.png';
+                return '/images/skills_icons/skill.png';
             },
             getImageSrc(src) {
                 if (!src) {
-                    return '/resumeApp/public/images/placeholder.png';
+                    return '/images/placeholder.png';
                 }
 
                 if (src.charAt(0) !== '/' && src.charAt(0) !== 'h') {
@@ -1182,5 +1186,24 @@
         padding-bottom: 20px;
     }
 
+    .summaryBtn {
+        border: none;
+        border-radius: 5px;
+        height: 43px;
+        background-color: #476DDD;
+        padding-top: 12px;
+        color: #FFFFFF;
+        font-family: Roboto;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 16px;
+        text-align: center;
+    }
+
+    .editBtn{
+        a:hover{
+            color: white;
+        }
+    }
 
 </style>

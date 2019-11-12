@@ -59,21 +59,16 @@ class FreelancersController extends Controller
         return view('freelancer.my_account.privacy_agreement');
     }
 
-    public function form()
-    {
-        if (Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce') {
-            return redirect(route('admin.dashboard'));
-        }
-        $data = $this->getFreelancerData();
-        $affiliates = Affiliate::all();
-        return view('freelancer.form', compact('data', 'affiliates'));
+    public function form(){
+        $freelancer = User::with(['userData','agent','skills','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+            return $query->limit(10);
+        }])->where('username',Auth::user()->username)->first();
+
+        return view('freelancerResume.portfolio', compact('freelancer','affiliates'));
     }
 
     public function showEditForm()
     {
-        if (Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce') {
-            return redirect(route('admin.dashboard'));
-        }
         $data = $this->getFreelancerData();
         return view('freelancer.edit_form', compact('data'));
     }

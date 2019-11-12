@@ -145,6 +145,7 @@
                         percentage: this.currSkill.percentage
                     }
                 ).then((response) => {
+                    console.log(response.data)
                     let newSkill = {
                         id: response.data.id,
                         skill_title: this.currSkill.skill_title,

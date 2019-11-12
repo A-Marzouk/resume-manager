@@ -37,6 +37,7 @@ class SkillsController extends Controller
         if(isset($request->icon)) {
             $skill->icon = $request->icon;
         }
+
         $skill->save();
 
         return ['id'=>$skill->id];

@@ -73,12 +73,12 @@
                                         letter-spacing: 0.09px;
                                         line-height: 15px;"
                                     id="jobTitle" name="jobTitle">
-                                <? if($profession == 'Developer'):?>
+                                <? if($profession_id == 2):?>
                                 <option value="" selected disabled>-- Developer --</option>
                                 <? foreach($developer as $job):?>
                                 <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?> >{{$job}}</option>
                                 <? endforeach;?>
-                                <?elseif($profession == 'Designer'):?>
+                                <?elseif($profession_id == 3):?>
                                 <option value="" disabled selected>-- Designer --</option>
                                 <? foreach($designer as $job):?>
                                 <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?>>{{$job}}</option>

@@ -126,6 +126,7 @@ class FreelancersController extends Controller
             'terms' => $currFreelancer->userData->terms ?? '',
             'username' => auth()->user()->username,
             'profession' => auth()->user()->profession,
+            'profession_id' => $currFreelancer->userData->profession_id,
             'personalSite' => $currFreelancer->userData->personalSite ?? '',
             'behanceLink' => $currFreelancer->userData->behanceLink ?? '',
             'instagramLink' => $currFreelancer->userData->instagramLink ?? '',

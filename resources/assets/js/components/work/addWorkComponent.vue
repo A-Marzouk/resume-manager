@@ -65,6 +65,7 @@
                // post data :
                 axios.post('/freelancer/addwork',this.toBeEditedWork).then( (response) => {
                     //
+                    console.log(response.data);
                     if(this.toBeEditedWork.id === ""){
                         this.$emit('workAdded',this.toBeEditedWork);
                     }

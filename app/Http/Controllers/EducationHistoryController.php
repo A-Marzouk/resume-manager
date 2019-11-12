@@ -41,10 +41,10 @@ class EducationHistoryController extends Controller
         $educationH->school_title = $request->school_title;
         $educationH->description = $request->description;
         $educationH->date_from = $request->date_from;
-        if($request->currently_learning !== true){
+        if($request->is_currently_learning !== true){
             $educationH->date_to = $request->date_to;
         }
-        $educationH->currently_learning = $request->currently_learning;
+        $educationH->is_currently_learning = $request->is_currently_learning;
 
         $educationH->save();
 
@@ -66,9 +66,9 @@ class EducationHistoryController extends Controller
         $educationH->school_title = $request->school_title;
         $educationH->description = $request->description;
         $educationH->date_from = $request->date_from;
-        if($request->currently_learning!== true){
+        if($request->is_currently_learning!== true){
             $educationH->date_to = $request->date_to;
-            $educationH->currently_learning = $request->currently_learning;
+            $educationH->is_currently_learning = $request->is_currently_learning;
         }
         $educationH->save();
     }

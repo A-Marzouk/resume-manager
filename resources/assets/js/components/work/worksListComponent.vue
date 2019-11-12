@@ -24,8 +24,8 @@
         <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">{{work.job_title}}</b><br />
         {{work.company}}<br />
         Start :{{work.date_from}}
-        <span v-show="work.date_to && work.currently_working !== true"> End : {{work.date_to}}</span>
-        <span v-show="work.currently_working !== false"> - Present</span><br />
+        <span v-show="work.date_to && work.is_currently_working !== true"> End : {{work.date_to}}</span>
+        <span v-show="work.is_currently_working !== false"> - Present</span><br />
         <div class="desc"
              style="color: #30323D;font-family: Roboto;">{{work.job_description}}</div>
       </work-history>
@@ -54,7 +54,7 @@ export default {
         'company': '',
         'date_from': '',
         'date_to': '',
-        'currently_working': ''
+        'is_currently_working': ''
       }
     }
   },
@@ -65,10 +65,10 @@ export default {
         (response) => {
           let currWorks = response.data;
           $.each(currWorks, function(i) {
-            if (currWorks[i].currently_working == "0") {
-              currWorks[i].currently_working = false;
+            if (currWorks[i].is_currently_working == "0") {
+              currWorks[i].is_currently_working = false;
             } else {
-              currWorks[i].currently_working = true;
+              currWorks[i].is_currently_working = true;
             }
           });
           this.works = currWorks;
@@ -134,7 +134,7 @@ export default {
         'company': '',
         'date_from': '',
         'date_to': '',
-        'currently_working': ''
+        'is_currently_working': ''
       };
     }
   },

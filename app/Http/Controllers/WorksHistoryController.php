@@ -43,10 +43,10 @@ class WorksHistoryController extends Controller
         $workH->company = $request->company;
         $workH->job_description = $request->job_description;
         $workH->date_from = $request->date_from;
-        if($request->currently_working !== true){
+        if($request->is_currently_working !== true){
             $workH->date_to = $request->date_to;
         }
-        $workH->is_currently_working = $request->currently_working;
+        $workH->is_currently_working = $request->is_currently_working;
 
 
         $workH->save();
@@ -70,9 +70,9 @@ class WorksHistoryController extends Controller
         $workH->company = $request->company;
         $workH->job_description = $request->job_description;
         $workH->date_from = $request->date_from;
-        if($request->currently_working !== true){
+        if($request->is_currently_working !== true){
             $workH->date_to = $request->date_to;
-            $workH->currently_working = $request->currently_working;
+            $workH->is_currently_working = $request->is_currently_working;
         }
         $workH->save();
     }

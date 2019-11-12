@@ -28,14 +28,14 @@
                                     <label for="date_from" class="panelFormLabel">Start :</label>
                                     <input type="date" class="form-control" id="date_from" name="date_from" v-model="toBeEditedWork.date_from" required>
                                 </div>
-                              <div class="form-group col-md-6" v-show="!toBeEditedWork.currently_working">
+                              <div class="form-group col-md-6" v-show="!toBeEditedWork.is_currently_working">
                                     <label for="date_from" class="panelFormLabel">End :</label>
                                     <input type="date" class="form-control" id="date_to" name="date_to" v-model="toBeEditedWork.date_to">
                                 </div>
 
                               <div class="form-group col-md-12">
                                   <label class="form-check-label checkBoxText checkBoxContainer">
-                                      <input id="currently_working" class="form-check-input" style="@if($errors->has('design_skills_checkbox')) border:1px solid red; @endif" type="checkbox" name="currently_working" :checked="toBeEditedWork.currently_working" v-model="toBeEditedWork.currently_working">
+                                      <input id="is_currently_working" class="form-check-input" style="@if($errors->has('design_skills_checkbox')) border:1px solid red; @endif" type="checkbox" name="is_currently_working" :checked="toBeEditedWork.is_currently_working" v-model="toBeEditedWork.is_currently_working">
                                       Present
                                       <span class="checkmark"></span>
                                   </label>

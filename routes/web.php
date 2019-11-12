@@ -283,6 +283,10 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/has_agreed','FreelancersController@hasAgreed');
     Route::post('/set_terms','FreelancersController@setTerms');
 
+    // freelancer resume
+    Route::get('/v2/{username}','HomeController@ResumePageV2');
+    Route::get('/v2/short/{username}','HomeController@ResumePageShortV2');
+
 });
 
 Route::get('/clear-cache', function() {

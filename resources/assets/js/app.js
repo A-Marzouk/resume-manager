@@ -49,6 +49,11 @@ Vue.component('admin-agent-edit-professional-info', require('./components/admin/
 Vue.component('admin-agent-edit-record-resume', require('./components/admin/editAgent/EditRecordResumeInfo.vue'));
 
 
+// resume component
+Vue.component('freelancer-resume-long-v2', require('./components/freelancerResume/resumeComponentLongV2.vue'));
+Vue.component('freelancer-resume-short-v2', require('./components/freelancerResume/resumeComponentShortV2.vue'));
+
+
 import AdminAgentRegisterPage1 from './components/admin/registerAgent/page1.vue'
 import AdminAgentRegisterPage2 from './components/admin/registerAgent/page2.vue'
 import AdminAgentRegisterPage3 from './components/admin/registerAgent/page3.vue'
@@ -59,6 +64,21 @@ import AdminAgentRegisterCompleted from './components/admin/registerAgent/finish
 import AdminAgents from './components/admin/dashboard/Agents.vue';
 import AdminClients from './components/admin/dashboard/Clients.vue';
 import AdminCampaigns from './components/admin/dashboard/Campaigns.vue';
+
+
+
+
+if ($("#freelancerResumeLongV2").length !== 0){
+    let freelancerResumeLongV2 = new Vue({
+        el:'#freelancerResumeLongV2'
+    });
+}
+
+if ($("#freelancerResumeShortV2").length !== 0){
+    let freelancerResumeShortV2 = new Vue({
+        el:'#freelancerResumeShortV2'
+    });
+}
 
 
 if ($("#adminEditAgentPersonalInfo").length !== 0){

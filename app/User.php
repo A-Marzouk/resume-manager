@@ -261,11 +261,6 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(WorkHistory::class);
     }
 
-    public function activityLogs()
-    {
-        return $this->hasMany(ActivityLog::class);
-    }
-
     public function invoices()
     {
         return $this->hasMany(User::class);
@@ -288,7 +283,7 @@ class User extends Authenticatable implements HasMedia
 
     public function skills()
     {
-        return $this->belongsToMany(Skill::class, 'skill_user');
+        return $this->hasMany(Skill::class);
     }
 
     public function bookings()

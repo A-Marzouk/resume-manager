@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="text-left"  style="font-size: 15px; color: white; padding-top: 5px;">
-                <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->availableHours)}}h/week</span></div>
+                <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :  <span id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->available_hours_per_week)}}h/week</span></div>
             </div>
             <div id="welcomeText{{$freelancer->id}}{{$value['id']}}" class="d-none">
                 Hi, I am {{$freelancer->firstName}}, I am a {{$freelancer->userData->jobTitle}}, How can I help
@@ -50,7 +50,7 @@
     </div>
 
     <div class="col-12" style="padding: 10px 20px 16px 20px;">
-        @if($freelancer->userData->availableHours !=0)
+        @if($freelancer->userData->available_hours_per_week !=0)
             <div class="text-center cardRow NoDecor">
             @if(isset($portfolioModal) && !$isClient)
                 <a class="hireCardBtn btn-block showHireSection" href="{{route('client.login')}}">

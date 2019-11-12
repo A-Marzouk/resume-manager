@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except('privacyView', 'getSearch', 'termsView', 'welcomePage', 'ResumePage', 'ResumeSample',
-        'homeDesigners');
+        'homeDesigners','ResumePageV2','ResumePageShortV2');
     }
 
     /**
@@ -41,6 +41,24 @@ class HomeController extends Controller
         $charSkills = explode(',', $user->charSkills);
         return view('resume', compact('user', 'profession', 'primarySkills', 'charSkills', 'user1'));
     }
+
+
+
+
+    public function ResumePageV2($username){
+        $freelancer = User::with(['userData','skills','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+            return $query->limit(10);
+        }])->where('username',$username)->first();
+        return view('freelancerResume.resumeLongV2', compact('freelancer'));
+    }
+
+    public function ResumePageShortV2($username){
+        $freelancer = User::with(['userData','skills','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+            return $query->limit(10);
+        }])->where('username',$username)->first();
+        return view('freelancerResume.resumeShortV2', compact('freelancer'));
+    }
+
 
     public function ResumeSample($username)
     {

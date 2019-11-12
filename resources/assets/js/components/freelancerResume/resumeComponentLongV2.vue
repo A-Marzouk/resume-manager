@@ -58,7 +58,7 @@
                                 <div class="row hireRow w-100">
                                     <div class="col-md-4 text-center" style="font-size: 15px; color: white;">
                                     <span style="font-weight: bold;">
-                                        {{freelancer.user_data.salary}}
+                                        {{Math.ceil(freelancer.agent.hourly_rate)}}
                                     </span>
                                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly
                                             rate
@@ -66,7 +66,7 @@
                                     </div>
 
                                     <div class="col-md-4 text-center" style="font-size: 15px; color: white;">
-                                        <span style="font-weight: bold;">{{freelancer.user_data.available_hours_per_week}} hours</span>
+                                        <span style="font-weight: bold;">{{Math.ceil(freelancer.user_data.available_hours_per_week)}} hours</span>
                                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly
                                             Availability
                                         </div>
@@ -111,7 +111,7 @@
                                     <div class="text-left" style="font-size: 15px; color: white; padding-top: 5px;">
                                         <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Hourly rate :
                                             <span style="font-weight: bold;">
-                                            $ {{freelancer.user_data.salary}}
+                                               $ {{Math.ceil(freelancer.agent.hourly_rate)}}
                                         </span>
                                         </div>
                                     </div>

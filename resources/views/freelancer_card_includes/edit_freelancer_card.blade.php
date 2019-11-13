@@ -14,7 +14,7 @@
                         <?
                         $defaultSrc = '/images/add_profile_photo.png';
 
-                        $photoSrc = $freelancer->userData->photo;
+                        $photoSrc = $freelancer->userData->profile_picture;
                         if (!empty($photoSrc)) {
                             if ($photoSrc[0] !== '/' && $photoSrc[0] !== 'h') {
                                 $photoSrc = '/' . $photoSrc;
@@ -76,17 +76,17 @@
                                 <? if($profession_id == 2):?>
                                 <option value="" selected disabled>-- Developer --</option>
                                 <? foreach($developer as $job):?>
-                                <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?> >{{$job}}</option>
+                                <option value="{{$job}}" <?if($freelancer->userData->job_title == $job):?>selected<?endif;?> >{{$job}}</option>
                                 <? endforeach;?>
                                 <?elseif($profession_id == 3):?>
                                 <option value="" disabled selected>-- Designer --</option>
                                 <? foreach($designer as $job):?>
-                                <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?>>{{$job}}</option>
+                                <option value="{{$job}}" <?if($freelancer->userData->job_title == $job):?>selected<?endif;?>>{{$job}}</option>
                                 <? endforeach;?>
                                 <?else:?>
                                 <option value="" disabled selected>-- Bussiness support --</option>
                                 <? foreach($businessSupport as $job):?>
-                                <option value="{{$job}}" <?if($jobTitle == $job):?>selected<?endif;?>>{{$job}}</option>
+                                <option value="{{$job}}" <?if($freelancer->userData->job_title == $job):?>selected<?endif;?>>{{$job}}</option>
                                 <? endforeach;?>
                                 <? endif;?>
                             </select>
@@ -137,7 +137,7 @@
                                     </div>
 
                                     <div class="col-md-8 col-8 textBox">
-                                        <span id="numberOfDollars{{$freelancer->id}}">{{$freelancer->userData->salary}}</span>
+                                        <span id="numberOfDollars{{$freelancer->id}}">{{ (int) $freelancer->agent->hourly_rate}}</span>
                                         $<br/>
                                         <span style="font-size: 13px; font-weight: normal">Hourly Rate</span>
                                     </div>
@@ -164,8 +164,8 @@
                                         </a>
                                     </div>
                                     <div class="col-md-8 col-8 textBox">
-                                        <span id="numberOfHours{{$freelancer->id}}">@if($freelancer->userData->availableHours==0)
-                                                0 @else {{$freelancer->userData->availableHours}} @endif</span>
+                                        <span id="numberOfHours{{$freelancer->id}}">@if($freelancer->userData->available_hours_per_week==0)
+                                                0 @else {{(int) $freelancer->userData->available_hours_per_week}} @endif</span>
                                         hours<br/>
                                         <span id="maxHours{{$freelancer->id}}" class="d-none">60</span>
                                         <span style="font-size: 13px; font-weight: normal">Weekly Availability</span>
@@ -196,8 +196,8 @@
                     echo '';
                 }?>">
                 <input type="text" id="availableHours{{$freelancer->id}}" name="availableHours"
-                       style="width: 1px; height: 1px; opacity: 0; right:145%;" value="<? if (!empty($availableHours)) {
-                    echo $availableHours;
+                       style="width: 1px; height: 1px; opacity: 0; right:145%;" value="<? if (!empty($available_hours_per_week)) {
+                    echo $available_hours_per_week;
                 } else {
                     echo '';
                 }?>">

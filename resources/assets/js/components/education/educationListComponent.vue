@@ -23,8 +23,8 @@
                 </span>
         <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">{{education.school_title}}</b><br />
         Start :{{education.date_from}}
-        <span v-show="education.date_to && education.currently_learning !== true"> End : {{education.date_to}}</span>
-        <span v-show="education.currently_learning !== false"> - Present</span><br />
+        <span v-show="education.date_to && education.is_currently_learning !== true"> End : {{education.date_to}}</span>
+        <span v-show="education.is_currently_learning !== false"> - Present</span><br />
         <div style="color: #30323D;font-family: Roboto;">{{education.description}}</div>
       </education-history>
     </transition-group>
@@ -51,7 +51,7 @@ export default {
         'description': '',
         'date_from': '',
         'date_to': '',
-        'currently_learning': ''
+        'is_currently_learning': ''
       }
     }
   },
@@ -62,10 +62,10 @@ export default {
         (response) => {
           let currEducations = response.data;
           $.each(currEducations, function(i) {
-            if (currEducations[i].currently_learning == "0") {
-              currEducations[i].currently_learning = false;
+            if (currEducations[i].is_currently_learning == "0") {
+              currEducations[i].is_currently_learning = false;
             } else {
-              currEducations[i].currently_learning = true;
+              currEducations[i].is_currently_learning = true;
             }
           });
           this.educations = currEducations;
@@ -130,7 +130,7 @@ export default {
         'description': '',
         'date_from': '',
         'date_to': '',
-        'currently_learning': ''
+        'is_currently_learning': ''
       };
     }
   },

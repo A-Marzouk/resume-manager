@@ -245,7 +245,8 @@ $(document).ready(function() {
 
           return xhr;
         },
-        success: function() {
+        success: function(response) {
+          console.log(response);
           if ($('#video_file').val()) {
             // load the video
             $('#videoFileFrame')[0].load();
@@ -578,7 +579,7 @@ function uploadByDrop(elementID, elementName) {
         contentType: false,
         cache: false,
         processData: false,
-        success: function() {
+        success: function(response) {
           // changes are saved on - off
           $('#changesSaved').fadeIn('slow');
           setTimeout(function() {

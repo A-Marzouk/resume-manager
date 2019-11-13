@@ -22,7 +22,8 @@ class ProjectsController extends Controller
     }
 
     public function addProject(Request $request){
-        $currentUser = auth()->user();
+
+        $currentUser = currentUser();
         $request->validate([
             'projectName' => 'max:190',
             'projectDesc' => 'max:1500',
@@ -46,6 +47,7 @@ class ProjectsController extends Controller
         $project->link = $request->link;
         $project->isActive = $request->isActive;
         $project->order = $request->order;
+        $project->work_history_id = $request->relatedWorkID;
         if(isset($request->mainImage)){
             $path  = Upload::projectPhoto('','mainImage','');
             $project->mainImage = '/'. $path ;
@@ -69,7 +71,6 @@ class ProjectsController extends Controller
             $project->images = implode(',',$moreImages);
 
         }
-
 
         $project->save();
 

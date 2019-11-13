@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('freelancer.layouts.freelancer_frame')
 
 {{-- variables : $data . freelancer userdata --}}
 <?
@@ -11,9 +11,6 @@ $freelancer = auth()->user();
         You are viewing as Admin
     </div>
     <? endif;?>
-    <div id="agent_terms_bar">
-        <agent-terms-bar></agent-terms-bar>
-    </div>
     <div class="container m-auto infoBar container">
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
         <div class="col-md-2 offset-md-10">
@@ -56,7 +53,7 @@ $freelancer = auth()->user();
                 <div class="col-md-2">
 
                 </div>
-                <div class="progressBtn">
+                <div class="progressBtn NoDecor">
                     <a href="javascript:void(0)">
                        <span>
                             70% Complete
@@ -70,7 +67,7 @@ $freelancer = auth()->user();
                     {{--</a>--}}
                 {{--</div>--}}
                 <div class="editBtn NoDecor" style="margin-left: 10px;">
-                    <a href="{{route('freelancer.dashboard')}}">
+                    <a href="/freelancer/developer-card">
                         <img src="/images/check_24px.png" alt="edit profile">
                         Finish editing
                     </a>

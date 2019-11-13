@@ -347,7 +347,7 @@
                                                     <div class="year">
                                                         <span class="work">
                                                             {{getDate(work.date_from)}}
-                                                            <span v-if="work.currently_working"> - Present </span>
+                                                            <span v-if="work.is_currently_working"> - Present </span>
                                                             <span v-else> - {{getDate(work.date_to)}}</span>
                                                         </span>
                                                     </div>
@@ -463,7 +463,7 @@
                                                     <div class="year">
                                                         <span class="work">
                                                             {{getDate(education.date_from)}}
-                                                            <span v-if="education.currently_learning"> - Present </span>
+                                                            <span v-if="education.is_currently_learning"> - Present </span>
                                                             <span v-else> - {{getDate(education.date_to)}}</span>
                                                         </span>
                                                     </div>

@@ -33,6 +33,29 @@
             </div>
         </nav>
 
+        <div class="js-side-nav-container side-nav-container">
+            <div class="js-side-nav side-nav">
+                <a href="javascript:void(0)" class="js-menu-close menu-close" id="close-menu"></a>
+                <div class="welcome-box border-0 d-flex justify-content-start align-items-center">
+                    <img src="/images/client/dummy.png" alt="profile">
+                    <div class="d-flex flex-column">
+                        <div>
+                            Welcome,
+                        </div>
+                        <div style="font-weight: 500">
+                            {{freelancer.user_data.first_name}} {{freelancer.user_data.last_name}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="logoutBtn border-0">
+                    <a href="/logout">
+                        LOG OUT
+                    </a>
+                </div>
+            </div>
+        </div>
+
         <div class="marginMobile-0">
             <div class="freelancerCard" style="margin-bottom: -16px; height: auto;">
                 <div class="row actionRow">

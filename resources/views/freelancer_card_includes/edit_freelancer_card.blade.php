@@ -1,5 +1,5 @@
 {{-- photo and name + multimedia--}}
-<div class="freelancerCard m-0">
+<div class="freelancerCard m-0 freelancerCard_updated">
     <div class="resumeCardRight">
         <div class="row nameRow">
             <form method="post"

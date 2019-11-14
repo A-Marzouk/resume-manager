@@ -24,20 +24,20 @@
               <div class="col-md-4">
                 <form action="/freelancer/addproject/" method="post" @submit.prevent="submitProjectForm">
                   <div class="row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group d-flex flex-column align-items-start  col-md-12">
                       <label for="projectName" class="panelFormLabel">Name :</label>
-                      <input type="text" class="form-control" id="projectName" name="projectName" v-model="toBeEditedProject.projectName" required>
+                      <input type="text" class="form-control p-2" id="projectName" name="projectName" v-model="toBeEditedProject.projectName" required>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group d-flex flex-column align-items-start  col-md-12">
                       <label for="link" class="panelFormLabel">Link:</label>
-                      <input type="text" class="form-control" id="link" name="link" v-model="toBeEditedProject.link">
+                      <input type="text" class="form-control p-2" id="link" name="link" v-model="toBeEditedProject.link">
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group d-flex flex-column align-items-start  col-md-12">
                       <label for="projectDesc" class="panelFormLabel">Description :</label>
-                      <textarea class="form-control" rows="3" id="projectDesc" name="projectDesc" v-model="toBeEditedProject.projectDesc">
+                      <textarea class="form-control p-2" rows="3" id="projectDesc" name="projectDesc" v-model="toBeEditedProject.projectDesc">
                                             </textarea>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group d-flex flex-column align-items-start  col-md-12">
                       <label for="order" class="panelFormLabel">Choose project order
                       </label>
                       <select class="custom-select" style="@if($errors->has('jobTitle')) border:1px solid red; @endif padding-top: 12px !important; padding-bottom: 12px !important; height: auto!important;" id="order" name="order"  v-model="toBeEditedProject.order">
@@ -45,7 +45,7 @@
                       </select>
                     </div>
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group d-flex flex-column align-items-start  col-md-12">
                       <label for="order" class="panelFormLabel">Choose related work experience</label>
                       <select  class="custom-select" name="relatedWorkID" v-model="toBeEditedProject.work_history_id" required>
                         <option value="null">-- select related work --</option>
@@ -57,7 +57,7 @@
 
 
 
-                    <div class="form-group col-md-12">
+                    <div class="form-group d-flex flex-column align-items-start  col-md-12">
                       <div class="custom-file" style="padding-top: 5px;">
                         <input type="file" id="mainImage" ref="file" class="custom-file-input panelFormInput" name="mainImage" @change="handleFile" accept="image/*">
                         <label class="custom-file-label" id="mainImageLabel">
@@ -65,7 +65,7 @@
                         </label>
                       </div>
                     </div>
-                    <div class="form-group col-md-12" style="opacity: 0; height: 0.1px !important; width:0.1px; !important">
+                    <div class="form-group d-flex flex-column align-items-start  col-md-12" style="opacity: 0; height: 0.1px !important; width:0.1px; !important">
                       <div class="custom-file" style="padding-top: 5px;">
                         <input type="file" id="newImage" class="custom-file-input panelFormInput" name="newImage" @change="handleNewImage" accept="image/*">
                         <label class="custom-file-label" id="newImageLabel">
@@ -73,7 +73,7 @@
                         </label>
                       </div>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group d-flex flex-column align-items-start  col-md-12">
                       <label class="form-check-label checkBoxText checkBoxContainer">
                         <input id="isActive" class="form-check-input" style="@if($errors->has('design_skills_checkbox')) border:1px solid red; @endif" type="checkbox" name="isActive" :checked="toBeEditedProject.isActive" v-model="toBeEditedProject.isActive">
                         Active
@@ -148,8 +148,6 @@
 
 
         axios.post('/freelancer/addproject',this.form_data).then( (response) => {
-          console.log(response.data);
-
           if(this.toBeEditedProject.id === ""){
             this.$emit('projectAdded',this.toBeEditedProject);
           }
@@ -203,7 +201,6 @@
           this.toBeEditedProject.images.splice(index, 1);
           // delete from db
           axios.post('/freelancer/delete_project_image',deleteData).then( (response) => {
-            console.log(response.data);
           });
           // delete from files if exist :
           if(this.toBeEditedProject.imagesFiles.length > 0){
@@ -221,7 +218,6 @@
         axios.get('/freelancer/workshistory').then(
                 (response) => {
                   this.worksHistory =  response.data;
-                  console.log(response.data);
                 }
         );
       },

@@ -40,12 +40,32 @@ $freelancer = auth()->user();
         </div>
     </nav>
 
-    <div style="display: flex;
-    flex-direction: column;
-    align-items: center;">
+    <div class="js-side-nav-container side-nav-container">
+        <div class="js-side-nav side-nav">
+            <a href="javascript:void(0)" class="js-menu-close menu-close" id="close-menu"></a>
+            <div class="welcome-box border-0 d-flex justify-content-start align-items-center">
+                <img src="/images/client/dummy.png" alt="profile">
+                <div class="d-flex flex-column">
+                    <div>
+                        Welcome,
+                    </div>
+                    <div style="font-weight: 500">
+                        {{$freelancer->userData->first_name}} {{$freelancer->userData->last_name}}
+                    </div>
+                </div>
+            </div>
 
+            <div class="logoutBtn border-0">
+                <a href="/logout">
+                    LOG OUT
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column align-items-center">
         <div class="marginMobile-0">
-            <div class="freelancerCard m-0" style="background: none;">
+            <div class="freelancerCard m-0 freelancerCard_updated" style="background: none;">
                 <div id="loadingText" class="d-none" style="color:lightseagreen; padding: 10px;">
         <span id="spanTextAudio">
             Processing audio...
@@ -60,10 +80,9 @@ $freelancer = auth()->user();
                 </div>
             </div>
         </div>
-
         {{-- include the freelancer card + the new edit row--}}
         <div  class="marginMobile-0">
-            <div class="freelancerCard ml-0 mr-0" style="margin-bottom:-3px">
+            <div class="freelancerCard ml-0 mr-0 freelancerCard_updated" style="margin-bottom:-3px">
                 <div class="row actionRow">
                     <div class="importBtn NoDecor">
                         <span>Import : </span>&nbsp;
@@ -103,7 +122,6 @@ $freelancer = auth()->user();
                 @include('freelancer_card_includes.edit_freelancer_card')
             </div>
         </div>
-
     </div>
 
 @endsection

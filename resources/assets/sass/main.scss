@@ -3346,3 +3346,19 @@ body {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+.freelancerCard_updated{
+  @media only screen and (max-width: 1200px) {
+    width: 910px !important;
+  }
+  @media only screen and (max-width: 786px) {
+    width: 710px  !important;
+  }
+  @media only screen and (max-width: 500px) {
+    width: 315px  !important;
+  }
+
+  @media only screen and (max-width: 780px) {
+    width: 100%  !important;
+  }
+}

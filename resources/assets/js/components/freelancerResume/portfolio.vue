@@ -1,5 +1,38 @@
 <template>
     <div>
+        <nav class="navbar navbar-light fixed-top dashboard_navbar" id="sideNav">
+
+            <a href="javascript:void(0)" class="js-menu-open menu-open" id="menu-open-icon">
+                <img src="/images/client/Group.png" alt="menu">
+            </a>
+
+            <a href="javascript:void(0)" class="js-menu-close d-none">
+                <img src="/images/client/close.png" alt="menu">
+            </a>
+
+            <a class="navbar-brand" href="/freelancer/dashboard">
+                <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
+            </a>
+            <div class="form-inline my-2 my-lg-0">
+
+            </div>
+            <div class="form-inline my-2 my-lg-0 name">
+                <div class="logoutButton">
+                    <a href="/logout">
+                        <img src="/images/client/log_out.png" alt="logout">
+                    </a>
+                </div>
+                <div class="NoDecor">
+                    <a href="/freelancer/dashboard">
+                        {{freelancer.user_data.first_name}} {{freelancer.user_data.last_name}}
+                    </a>
+                </div>
+                <div class="avatar">
+                    <img :src="getImageSrc(freelancer.user_data.profile_picture)" alt="logout">
+                </div>
+            </div>
+        </nav>
+
         <div class="marginMobile-0">
             <div class="freelancerCard" style="margin-bottom: -16px; height: auto;">
                 <div class="row actionRow">
@@ -37,7 +70,7 @@
                         <div class="row nameRow">
                             <div class="col-lg-2 col-6 imageCol">
                                 <div class="imageContainer" style="padding: 10px;">
-                                    <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer"
+                                    <img :src="getImageSrc(freelancer.user_data.profile_picture)" alt="freelancer"
                                          class="freelancerImg"
                                          width="120" height="120">
                                 </div>
@@ -49,7 +82,7 @@
                                     </div>
                                     <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;"
                                          :id="'animatedText'+freelancer.id">
-                                        {{freelancer.user_data.jobTitle}}
+                                        {{freelancer.user_data.job_title}}
                                     </div>
 
                                     <form action="/chat-room/start_conversation" method="post">

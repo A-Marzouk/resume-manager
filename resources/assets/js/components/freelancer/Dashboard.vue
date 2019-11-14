@@ -22,11 +22,13 @@
                         <img src="/images/client/log_out.png" alt="logout">
                     </a>
                 </div>
-                <div>
-                   {{agent.user.user_data.first_name}} {{agent.user.user_data.last_name}}
+                <div class="NoDecor">
+                    <a href="/freelancer/dashboard">
+                        {{agent.user.user_data.first_name}} {{agent.user.user_data.last_name}}
+                    </a>
                 </div>
                 <div class="avatar">
-                    <img src="/images/client/dummy.png" alt="logout">
+                    <img :src="getImageSrc(agent.user.user_data.profile_picture)" alt="profile picture">
                 </div>
             </div>
         </nav>
@@ -234,6 +236,17 @@
             },
             setSelectedInvoice(invoice){
                 this.selectedInvoice = invoice ;
+            },
+            getImageSrc(src) {
+                if (!src) {
+                    return '/images/placeholder.png';
+                }
+
+                if (src.charAt(0) !== '/' && src.charAt(0) !== 'h') {
+                    return '/' + src;
+                }
+
+                return src;
             },
         },
         mounted() {

@@ -59,12 +59,11 @@
                         PROFESSIONAL INFORMATION
                     </span>
                 </div>
-                <div class="right no-decoration">
-                    <a href="/freelancer/developer-card" class="normal-link">
+
+                <div class="right no-decoration d-flex">
+                    <a href="/freelancer/developer-card" class="normal-link mr-3">
                         DEVELOPER CARD
                     </a>
-                </div>
-                <div class="right no-decoration">
                     <a href="/freelancer/professional/edit" class="normal-link">
                         EDIT
                     </a>

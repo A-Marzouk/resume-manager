@@ -43,7 +43,7 @@
                             Welcome,
                         </div>
                         <div style="font-weight: 500">
-                            Ahmed R. Marzouk
+                            {{agent.user.user_data.first_name}} {{agent.user.user_data.last_name}}
                         </div>
                     </div>
                 </div>

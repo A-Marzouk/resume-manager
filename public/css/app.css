@@ -3421,6 +3421,30 @@ body {
 
 
 
+@media only screen and (max-width: 1200px) {
+  .freelancerCard_updated {
+    width: 910px !important;
+  }
+}
+
+@media only screen and (max-width: 786px) {
+  .freelancerCard_updated {
+    width: 710px  !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .freelancerCard_updated {
+    width: 315px  !important;
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  .freelancerCard_updated {
+    width: 100%  !important;
+  }
+}
+
 #invoice .agentName {
   color: #2997c8;
   font-family: Roboto;

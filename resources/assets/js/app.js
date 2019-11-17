@@ -54,6 +54,11 @@ Vue.component('freelancer-resume-long-v2', require('./components/freelancerResum
 Vue.component('freelancer-resume-short-v2', require('./components/freelancerResume/resumeComponentShortV2.vue'));
 
 
+// register developer
+Vue.component('register-developer', require('./components/RegisterDeveloper.vue'));
+
+
+
 import AdminAgentRegisterPage1 from './components/admin/registerAgent/page1.vue'
 import AdminAgentRegisterPage2 from './components/admin/registerAgent/page2.vue'
 import AdminAgentRegisterPage3 from './components/admin/registerAgent/page3.vue'
@@ -73,6 +78,14 @@ if ($("#freelancerResumeLongV2").length !== 0){
         el:'#freelancerResumeLongV2'
     });
 }
+
+
+if ($("#registerDeveloper").length !== 0){
+    let registerDeveloper = new Vue({
+        el:'#registerDeveloper'
+    });
+}
+
 
 if ($("#freelancerResumeShortV2").length !== 0){
     let freelancerResumeShortV2 = new Vue({

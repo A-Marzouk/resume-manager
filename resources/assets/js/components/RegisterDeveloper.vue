@@ -565,7 +565,6 @@
                         }.bind(this)
                     }
                 ).then((response) => {
-                    console.log(response.data);
                     if (response.data.errors) {
                         this.updateErrors(response.data.errors);
                         this.isLoading = false;

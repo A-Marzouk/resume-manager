@@ -9,8 +9,12 @@
 namespace App\Http\Controllers;
 
 
+use App\Agent;
 use App\classes\Upload;
+use App\Skill;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -22,7 +26,8 @@ class DevelopersController extends Controller
         $this->middleware('guest');
     }
 
-    public function developerForm(){
+    public function developerForm()
+    {
         return view('auth.developer-register');
     }
 
@@ -46,7 +51,7 @@ class DevelopersController extends Controller
             'email' => 'required|string|email|max:191|unique:users',
             'phone' => 'required|max:191|min:7',
             'whatsapp' => 'max:191',
-            'skype' => 'nullable|max:191|unique:users',
+            'skype' => 'nullable|max:191',
             'password' => 'required|max:191|min:6|confirmed',
 
             'programming_language' => 'max:191|required',
@@ -87,6 +92,7 @@ class DevelopersController extends Controller
 
         $developer = $this->createDeveloper($request->all());
 
+
         if ($developer->id && $request->audioType !== 'record') {
             // save the record
             $recordSaver = new RecordingsController;
@@ -97,18 +103,15 @@ class DevelopersController extends Controller
                 // upload the cv file :
                 $result = Upload::CV('', 'included_cv', $developer->id . '_' . date(time()));
                 if ($result !== false) {
-                    $user = User::where('id', $developer->id)->first();
-                    $user->cv_src = $result['path'];
-                    $user->save();
+                    $agent = Agent::where('user_id', $developer->id)->first();
+                    $agent->cv = $result['path'];
+                    $agent->save();
                 }
             }
 
 
             $data = $request->all();
             $data['id'] = $developer->id;
-            $notification = new NotificationsController();
-            $notification->businessSupportApplication($data);
-
 
             // login user
             Auth::loginUsingId($developer->id);
@@ -123,56 +126,62 @@ class DevelopersController extends Controller
 
     protected function createDeveloper(array $data)
     {
-        User::create([
-            'firstName' => $data['firstName'],
-            'lastName' => $data['lastName'],
-            'email' => $data['email'],
-            'username' => $data['email'],
-            'phone' => $data['phone'],
-            'whatsapp' => $data['phone'],
-            'skype' => $data['skype'],
-            'profession' => 'Developer',
-            'password' => Hash::make($data['password']),
+        $developer = app(User::class)->createAgent([
+            'user' => [
+                'email' => $data['email'],
+                'password' => $data['password'],
+                'username' => $data['email'],
+            ],
+            'agent' => [
+                'available_hours_per_week' => $data['available_hours'],
+                'hourly_rate' => $data['hourly_rate'],
+            ],
+            'user_data' => [
+                'profession_id' => 2, // business-support(1), developer (2), designer (3)
+                'currency_id' => 1, // usd
+                'timezone' => 1,
+                // personal data
+                'first_name' => $data['firstName'],
+                'last_name' => $data['lastName'],
+                'city' => '',
+                'phone' => $data['phone'],
+                'skype' => $data['skype'],
+                'telegram' => $data['phone'],
+                'linkedin' => $data['linkedin'],
+                'github' => $data['github'],
+                'monthly_salary' => $data['monthly_rate'],
+                'instagram' => $data['instagram'],
+//                // professional data
+                'job_title' => $data['programming_language'] . ' Developer',
+            ]
         ]);
-
 
         $developer = User::where('email', $data['email'])->first();
 
-        if (!isset($developer->userData)) {
-            $userData = new UserData;
-            $userData->user_id = $developer->id;
-            $userData->availableHours = $data['available_hours'];
-            $userData->salary_month = $data['monthly_rate'];
-            $userData->salary = $data['hourly_rate'];
-            $userData->githubLink = $data['github'];
-            $userData->instagramLink = $data['instagram'];
-            $userData->linkedin = $data['linkedin'];
-            $userData->telegram = $data['phone'];
-            $userData->save();
-        }
 
         // make 3 for the developer as main skills :
 
         $skill = new Skill;
         $skill->user_id = $developer->id;
-        $skill->skill_title =$data['programming_language'];
+        $skill->skill_title = $data['programming_language'];
         $skill->type = 'programming';
         $skill->percentage = 95;
         $skill->save();
 
         $skill = new Skill;
         $skill->user_id = $developer->id;
-        $skill->skill_title =$data['framework'];
+        $skill->skill_title = $data['framework'];
         $skill->type = 'frameworks';
         $skill->percentage = 95;
         $skill->save();
 
         $skill = new Skill;
         $skill->user_id = $developer->id;
-        $skill->skill_title =$data['database'];
+        $skill->skill_title = $data['database'];
         $skill->type = 'frameworks';
         $skill->percentage = 95;
         $skill->save();
+
 
         return $developer;
     }

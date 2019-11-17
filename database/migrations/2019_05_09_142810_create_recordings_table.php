@@ -15,8 +15,13 @@ class CreateRecordingsTable extends Migration
     {
         Schema::create('recordings', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-
             $table->increments('id');
+            $table->integer('user_id')->unsigned()->index();
+
+            $table->string('title')->nullable();
+            $table->text('src')->nullable();
+            $table->text('transcription')->nullable();
+
             $table->timestamps();
         });
     }

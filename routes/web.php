@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function (){
     Route::get('/add-behance-designer','AdminsController@addBehanceDesigner')->name('add.behance.designer');
 
     // fetching data routs
-    Route::get('/api/agents/{professionName}','AdminsController@getAgentsByProfessionName')->name('get.agents');
+    Route::get('/api/agents/','AdminsController@getAgentsByProfessionName')->name('get.agents');
     Route::get('/api/agent/{user_id}','AdminsController@getAgentByID')->name('get.agent.by.id');
     Route::get('/api/clients','AdminsController@getClients')->name('get.clients');
 

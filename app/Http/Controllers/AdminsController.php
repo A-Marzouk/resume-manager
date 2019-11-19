@@ -18,6 +18,7 @@ use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Lang;
 
 class AdminsController extends Controller
@@ -75,23 +76,25 @@ class AdminsController extends Controller
 
     // api ( fetching data from the DB )
 
-    public function getAgentsByProfessionName($professionName){
+    public function getAgentsByProfessionName(){
         // user -> data -> profession -> name === $professionName
-        $Agents = [] ;
-        $users = User::whereHas('roles', function ($query) {
-            $query->where('name', '=', 'agent');
-        })->with('data','agent','languages')->get();
+        // 1 => business-support
+        // 2 => developer
+        // 3 => designer
+        $profession_id = Input::get('profession_id') ?? '';
+        $limit = Input::get('limit') ?? '';
+        $paginatedData = User::whereHas('data', function ($query) use ($profession_id) {
+            $query->where('profession_id', '=', $profession_id);
+        })->with('data','agent','languages')->paginate($limit);
 
-        foreach ($users as $user){
-            if($user->data->profession->name === $professionName){
+
+        foreach ($paginatedData as $user){
                 $user->is_details_opened = false;
                 $user->is_edited = false;
                 $user->is_skill_edited = false;
-                $Agents [] = $user ;
-            }
         }
 
-        return $Agents ;
+        return $paginatedData ;
     }
 
     public function getAgentByID($user_id){
@@ -101,9 +104,10 @@ class AdminsController extends Controller
 
     public function getClients(){
 
+        $limit = Input::get('limit') ?? '';
         return User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'client');
-        })->with('data','client')->get();
+        })->with('data','client')->paginate($limit);
 
     }
 

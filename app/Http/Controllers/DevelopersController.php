@@ -61,6 +61,9 @@ class DevelopersController extends Controller
             'instagram' => 'max:191',
             'linkedin' => 'max:191',
             'github' => 'max:191',
+            'website' => 'max:191',
+            'facebook' => 'max:191',
+            'second_email' => 'max:191|email',
 
 
             'hourly_rate' => 'max:191|required',
@@ -149,6 +152,9 @@ class DevelopersController extends Controller
                 'telegram' => $data['phone'],
                 'linkedin' => $data['linkedin'],
                 'github' => $data['github'],
+                'website' => $data['website'],
+                'facebook' => $data['facebook'],
+                'second_email' => $data['second_email'],
                 'monthly_salary' => $data['monthly_rate'],
                 'instagram' => $data['instagram'],
 //                // professional data

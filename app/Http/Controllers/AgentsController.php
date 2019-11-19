@@ -330,6 +330,38 @@ class AgentsController extends Controller
 
     }
 
+    public function editAgentPersonalInfo (Request $request) {
+        $requestArray = $request->toArray();
+
+        $user = currentUser();
+
+        foreach ($requestArray as $prop => $value) {
+
+            if ($prop != 'email' && $prop != 'password' && $prop != 'password_confirmation') {
+                $user->data[$prop] = $value;
+            }
+        }
+
+        $user->data->save();
+        $user->email = $requestArray['email'];
+
+        // Set password
+
+        if (isset($requestArray['password']) && !empty($requestArray['password'])) {
+            $this->validate($request, [
+                'password' => 'confirmed|min:6',
+            ]);
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->save();
+
+        $request->image->move(public_path('images'), $imageName);
+
+        return(["status" => "success", "user" => $user]);
+    }
+
+
     public function updateAgent(Request $request)
     {
         $requestArray = $request->toArray();

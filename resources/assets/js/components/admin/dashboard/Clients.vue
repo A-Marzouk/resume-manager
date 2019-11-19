@@ -399,9 +399,9 @@
 
                 return  this.selectedClients.filter( function (user) {
 
-                    let fullName        = user.client.contact ;
-                    let agency          = user.client.agency ;
-                    let email           = user.email ;
+                    let fullName        = user.client.contact ? user.client.contact : '' ;
+                    let agency          = user.client.agency ? user.client.agency : '' ;
+                    let email           = user.email ? user.email : '' ;
 
                     let SearchFilter = email.toLowerCase().trim().indexOf(search) > -1 || agency.toLowerCase().trim().indexOf(search) > -1  || fullName.toLowerCase().trim().indexOf(search) > -1 ;
                     let activeFilter  = true ;

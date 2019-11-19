@@ -237,20 +237,20 @@
                         Total : {{orderedSelectedClients.length}}
                     </div>
                     <div>
-                        <img src="/images/new_theme/arrow@2x.png" alt="" style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;">
-                        <span v-for="i in 9" style="padding-right:10px;">
-                                 <b v-if="i === 5">
+                        <img src="/images/new_theme/arrow@2x.png" alt="" class="cursorPointer"  @click="toPrevPage" style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;">
+                        <span v-for="i in lastPage" style="padding-right:10px;">
+                                 <b v-if="i === currentPage">
                                      {{i}}
                                  </b>
-                                 <span v-else style="font-size: 13px;">
+                                 <span v-else style="font-size: 13px;" class="cursorPointer"  @click="toSpecificPage(i)">
                                      {{i}}
                                  </span>
                              </span>
-                        <img src="/images/new_theme/arrow@2x.png" alt="" style="width:7.5px; height:12px;">
+                        <img src="/images/new_theme/arrow@2x.png" class="cursorPointer"  @click="toNextPage" alt="" style="width:7.5px; height:12px;">
                     </div>
                     <div class="no-decoration">
                         <a href="javascript:void(0)" class="paginationBox d-flex align-items-center justify-content-center" @click="showUsersNumSelection = true">
-                            Users per page :
+                            Clients per page :
                             <span v-if="usersNumber === 15 ">15</span>
                             <span v-if="usersNumber === 25 ">25</span>
                             <span v-if="usersNumber === 50 ">50</span>
@@ -274,16 +274,16 @@
 
                 <div class="pagination-bar flex-column justify-content-center align-items-center hideFrom-600 w-100">
                     <div>
-                        <img src="/images/new_theme/arrow@2x.png" alt="" style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;">
-                        <span v-for="i in 9" style="padding-right:10px; font-size: 12px; ">
-                                 <b v-if="i === 5">
+                        <img src="/images/new_theme/arrow@2x.png" class="cursorPointer"  @click="toPrevPage" alt="" style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;">
+                        <span v-for="i in lastPage" style="padding-right:10px; font-size: 12px; ">
+                                 <b v-if="i == currentPage">
                                      {{i}}
                                  </b>
-                                 <span v-else>
+                                 <span v-else class="cursorPointer"  @click="toSpecificPage(i)">
                                      {{i}}
                                  </span>
                              </span>
-                        <img src="/images/new_theme/arrow@2x.png" alt="" style="width:7.5px; height:12px;">
+                        <img src="/images/new_theme/arrow@2x.png" class="cursorPointer" @click="toNextPage" alt="" style="width:7.5px; height:12px;">
                     </div>
                     <div class="d-flex justify-content-between align-items-center w-100" style="padding-top: 24px;">
                         <div class="base-text" style="font-size: 12px;">
@@ -382,7 +382,9 @@
                         43: "(GMT +12:45) Chatham Islands",
                         44: "(GMT +13:00) Apia, Nukualofa",
                         45: "(GMT +14:00) Line Islands, Tokelau",
-                }
+                },
+                lastPage:'',
+                currentPage:1
             }
         },
         computed: {
@@ -426,9 +428,15 @@
         },
         methods: {
             getClients(){
-                axios.get('/admin/api/clients').then( (response) => {
-                    this.selectedClients =  response.data ;
+                axios.get('/admin/api/clients?page='+ this.currentPage + '&&limit=' + this.usersNumber).then( (response) => {
+                    this.selectedClients =  response.data.data ;
+                    this.lastPage = response.data.last_page ;
                 });
+
+                //scroll to the box
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 1500);
             },
             selectSort(sort){
                 this.sort = sort ;
@@ -438,10 +446,24 @@
                 this.status = status ;
                 this.showStatusSelection = false;
             },
-
             selectUsersNum(number){
                 this.usersNumber = number ;
+                this.currentPage = 1 ;
                 this.showUsersNumSelection = false;
+                this.getClients();
+            },
+
+            toNextPage(){
+                this.currentPage++;
+                this.getClients();
+            },
+            toPrevPage(){
+                this.currentPage--;
+                this.getClients();
+            },
+            toSpecificPage(page){
+                this.currentPage = page;
+                this.getClients();
             }
         },
         mounted() {
@@ -451,5 +473,9 @@
 </script>
 
 <style scoped>
+
+    .cursorPointer:hover{
+        cursor: pointer ;
+    }
 
 </style>

@@ -104,9 +104,10 @@ class AdminsController extends Controller
 
     public function getClients(){
 
+        $limit = Input::get('limit') ?? '';
         return User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'client');
-        })->with('data','client')->get();
+        })->with('data','client')->paginate($limit);
 
     }
 

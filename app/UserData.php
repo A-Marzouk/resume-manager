@@ -24,6 +24,8 @@ class UserData extends Model
         'job_title',
         'intro',
         'github',
+        'facebook',
+        'second_email',
         'behance',
         'instagram',
         'dribble',

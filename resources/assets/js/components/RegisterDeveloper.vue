@@ -218,6 +218,44 @@
                         </span>
                     </div>
                 </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="website" class="panelFormLabel">Website</label>
+                        <input id="website" type="text" class="panelFormInput form-control"
+                               v-model="freelancerData.website" name="website">
+
+                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                            <strong>{{ errors.website }}</strong>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="facebook" class="panelFormLabel">Facebook</label>
+                        <input id="facebook" type="text" class="panelFormInput form-control"
+                               v-model="freelancerData.facebook" name="facebook">
+
+                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                            <strong>{{ errors.facebook }}</strong>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="second_email" class="panelFormLabel">Second email</label>
+                        <input id="second_email" type="text" class="panelFormInput form-control"
+                               v-model="freelancerData.second_email" name="second_email">
+
+                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                            <strong>{{ errors.second_email }}</strong>
+                        </span>
+                    </div>
+                </div>
+
+
             </div>
 
             <hr>
@@ -463,6 +501,9 @@
                     'skype': '',
                     'instagram': '',
                     'linkedin': '',
+                    'website': '',
+                    'facebook': '',
+                    'second_email': '',
                     'github': '',
 
                     'hourly_rate': '',
@@ -484,6 +525,9 @@
                     'skype': '',
                     'instagram': '',
                     'linkedin': '',
+                    'website': '',
+                    'facebook': '',
+                    'second_email': '',
                     'github': '',
 
                     'programming_language': '',

@@ -431,12 +431,15 @@
                 axios.get('/admin/api/clients?page='+ this.currentPage + '&&limit=' + this.usersNumber).then( (response) => {
                     this.selectedClients =  response.data.data ;
                     this.lastPage = response.data.last_page ;
+
+
+                    //scroll to the box
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 1500);
+
                 });
 
-                //scroll to the box
-                $('html, body').animate({
-                    scrollTop: 0
-                }, 1500);
             },
             selectSort(sort){
                 this.sort = sort ;

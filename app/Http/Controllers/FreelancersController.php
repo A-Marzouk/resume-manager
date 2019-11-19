@@ -41,7 +41,8 @@ class FreelancersController extends Controller
 
     public function viewAccountEditPage()
     {
-        return view('freelancer.my_account.account_information_edition');
+        $currentUser = User::where('id',currentUser()->id)->with('agent','userData')->first();
+        return view('freelancer.my_account.account_information_edition', compact('currentUser'));
     }
 
     public function viewProfessionalEditPage()

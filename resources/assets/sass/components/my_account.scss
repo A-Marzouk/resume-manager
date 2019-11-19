@@ -607,6 +607,9 @@
   .dz-preview {
     height: 200px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
   
     .dz-details,

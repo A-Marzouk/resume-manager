@@ -257,19 +257,19 @@
 
                 <div class="pagination-bar justify-content-between showFrom-600">
                     <div class="base-text">
-                        Total : {{filteredSelectedAgents.length}}
+                        Page total : {{filteredSelectedAgents.length}}
                     </div>
                     <div>
-                        <img src="/images/new_theme/arrow@2x.png" alt="" style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;">
-                        <span v-for="i in 9" style="padding-right:10px;">
-                                 <b v-if="i === 5">
+                        <img src="/images/new_theme/arrow@2x.png" class="cursorPointer" alt="prev page" @click="toPrevPage" style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;">
+                        <span v-for="i in lastPage" style="padding-right:10px;">
+                                 <b v-if="i == currentPage">
                                      {{i}}
                                  </b>
-                                 <span v-else style="font-size: 13px;">
+                                 <span v-else style="font-size: 13px;" @click="toSpecificPage(i)" class="cursorPointer" >
                                      {{i}}
                                  </span>
                              </span>
-                        <img src="/images/new_theme/arrow@2x.png" alt="" style="width:7.5px; height:12px;">
+                        <img src="/images/new_theme/arrow@2x.png" alt="next page" @click="toNextPage" style="width:7.5px; height:12px;" class="cursorPointer" >
                     </div>
                     <div class="no-decoration">
                         <a href="javascript:void(0)" class="paginationBox d-flex align-items-center justify-content-center" @click="showUsersNumSelection = true">
@@ -297,16 +297,16 @@
 
                 <div class="pagination-bar flex-column justify-content-center align-items-center hideFrom-600 w-100">
                     <div>
-                        <img src="/images/new_theme/arrow@2x.png" alt="" style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;">
-                        <span v-for="i in 9" style="padding-right:10px; font-size: 12px; ">
-                                 <b v-if="i === 5">
+                        <img src="/images/new_theme/arrow@2x.png" alt="" style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;" class="cursorPointer" >
+                        <span v-for="i in  lastPage" style="padding-right:10px; font-size: 12px; ">
+                                 <b v-if="i == currentPage">
                                      {{i}}
                                  </b>
-                                 <span v-else>
+                                 <span v-else @click="toSpecificPage(i)" class="cursorPointer" >
                                      {{i}}
                                  </span>
                              </span>
-                        <img src="/images/new_theme/arrow@2x.png" alt="" style="width:7.5px; height:12px;">
+                        <img src="/images/new_theme/arrow@2x.png" class="cursorPointer"  alt="" style="width:7.5px; height:12px;">
                     </div>
                     <div class="d-flex justify-content-between align-items-center w-100" style="padding-top: 24px;">
                         <div class="base-text" style="font-size: 12px;">
@@ -356,7 +356,7 @@
                 developers:[],
                 sort:'old_first',
                 filter:'show_all',
-                usersNumber:15,
+                usersNumber:50,
                 showSortSelection : false,
                 showFilterSelection : false,
                 showUsersNumSelection : false,
@@ -373,7 +373,9 @@
                     9:'Unapproved'
                 },
 
-                searchValue:''
+                searchValue:'',
+                currentPage:1,
+                lastPage:'',
             }
         },
         computed: {
@@ -387,10 +389,9 @@
 
 
                 return  this.selectedAgents.filter( function (agent) {
-
-                    let fullName = agent.data.first_name + ' ' +  agent.data.last_name ;
-                    let jobTitle = agent.data.job_title ;
-                    let email    = agent.email ;
+                    let fullName = (agent.data.first_name + ' ' +  agent.data.last_name) ? (agent.data.first_name + ' ' +  agent.data.last_name) : '' ;
+                    let jobTitle = agent.data.job_title ? agent.data.job_title : '' ;
+                    let email    = agent.email ? agent.email : '';
 
                     let SearchFilter = email.toLowerCase().trim().indexOf(search) > -1  || jobTitle.toLowerCase().trim().indexOf(search) > -1  || fullName.toLowerCase().trim().indexOf(search) > -1 ;
                     let applicationFilter = true ;
@@ -417,22 +418,32 @@
         },
         methods: {
             getAgentsByProfession(){
-                if(this.agentsExist(this.profession)){
-                    return;
+                let profession_id = 0 ;
+                switch (this.profession) {
+                    case 'business-support': profession_id = 1; break;
+                    case 'developer'       : profession_id = 2; break;
+                    case 'designer'        : profession_id = 3; break;
                 }
-                axios.get('/admin/api/agents/' + this.profession).then( (response) => {
-                    this.selectedAgents =  response.data ;
+                axios.get('/admin/api/agents?profession_id=' + profession_id + '&&limit=' + this.usersNumber + '&&page=' + this.currentPage).then( (response) => {
+                    this.selectedAgents =  response.data.data ;
+                    this.lastPage  =  response.data.last_page ;
                     switch (this.profession) {
                         case 'business-support':
-                            this.businessSupportAgents = response.data ;
+                            this.businessSupportAgents = response.data.data;
                             break;
                         case 'designer':
-                            this.designers = response.data ;
+                            this.designers = response.data.data ;
                             break;
                         case 'developer':
-                            this.developers = response.data ;
+                            this.developers = response.data.data ;
                             break;
                     }
+
+                    //scroll to the box
+                    $('html, body').animate({
+                        scrollTop: 0
+                    }, 1500);
+
                 });
             },
             agentsExist(profession){
@@ -471,7 +482,9 @@
 
             selectUsersNum(number){
                 this.usersNumber = number ;
+                this.currentPage = 1 ;
                 this.showUsersNumSelection = false;
+                this.getAgentsByProfession();
             },
             checkDefaultRadio(){
                 $('#defaultRadio').click();
@@ -481,6 +494,7 @@
             },
             setActiveTab(tabName){
                 this.activeTab = tabName ;
+                this.currentPage = 1 ;
                 this.setCurrentSelectedProfession(tabName);
                 this.getAgentsByProfession();
             },
@@ -559,6 +573,20 @@
                     this.$emit('showPositiveNotification',notificationMessage);
                     console.log(response) ;
                 });
+            },
+
+            toNextPage(){
+                this.currentPage++;
+                this.getAgentsByProfession();
+            },
+            toPrevPage(){
+                this.currentPage--;
+                this.getAgentsByProfession();
+
+            },
+            toSpecificPage(page){
+                this.currentPage = page;
+                this.getAgentsByProfession();
             }
         },
         mounted() {
@@ -572,5 +600,9 @@
         font-size:13px;
         color:gray;
         padding-top:8px;
+    }
+
+    .cursorPointer:hover{
+        cursor: pointer ;
     }
 </style>

@@ -15,11 +15,16 @@ class WorkHistory extends Model
 {
     protected $table = 'work_histories';
     protected $fillable = [
-        'job_title','company','job_description','date_to','date_from','currently_working'
+        'job_title','company','job_description','date_to','date_from','is_currently_working'
     ];
 
 
     public function freelancer(){
         return $this->belongsTo(User::class);
     }
+
+    public function projects(){
+        return $this->hasMany(Project::class);
+    }
+
 }

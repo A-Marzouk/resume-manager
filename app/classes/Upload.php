@@ -14,7 +14,7 @@ class Upload
 {
 
     public static function audio($src,$name,$newName){
-        $target_dir = "resumeApp/uploads/";
+        $target_dir = "uploads/";
         $uploadOk = 1;
         if ($_FILES[$name]["size"] > 175000000) { // 175 megabyte
             $uploadOk = 0;
@@ -79,7 +79,7 @@ class Upload
     }
 
     public static function checkAudio($src,$name,$newName){
-        $target_dir = "resumeApp/uploads/";
+        $target_dir = "uploads/";
         $uploadOk = 1;
         if ($_FILES[$name]["size"] > 175000000) { // 175 megabyte
             $uploadOk = 0;
@@ -137,7 +137,7 @@ class Upload
     }
 
     public static function video($src,$name,$newName){
-        $target_dir = "resumeApp/uploads/videos/";
+        $target_dir = "uploads/videos/";
         $uploadOk = 1;
         if ($_FILES[$name]["size"] > 100000000) { // 100 megabyte
             $uploadOk = 0;
@@ -163,7 +163,7 @@ class Upload
     }
 
     public static function photo($src,$name,$newName){
-        $target_dir = "resumeApp/uploads/";
+        $target_dir = "uploads/";
         $target_file = $target_dir . $newName. basename($_FILES[$name]["name"]);
         $uploadOk = 1;
 // Check if image file is a actual image or fake image
@@ -202,7 +202,7 @@ class Upload
     }
 
     public static function chatFile($src,$name,$newName){
-        $target_dir = "resumeApp/storage/chat_shared_files/";
+        $target_dir = "storage/chat_shared_files/";
         $target_file = $target_dir . basename($_FILES[$name]["name"]). '_'.$newName;
         $uploadOk = 1;
 
@@ -237,7 +237,7 @@ class Upload
     }
 
     public static function projectPhoto($src,$name,$newName){
-        $target_dir = "resumeApp/uploads/";
+        $target_dir = "uploads/projects/";
         $target_file = $target_dir . $newName. basename($_FILES[$name]["name"]);
         $uploadOk = 1;
 // Check if image file is a actual image or fake image
@@ -265,7 +265,7 @@ class Upload
     }
 
     public static function CV($src,$name,$newName){
-        $target_dir = "resumeApp/uploads/CVs/";
+        $target_dir = "uploads/CVs/";
         $target_file = $target_dir . $newName .'_' .basename($_FILES[$name]["name"]);
         $uploadOk = 1;
 

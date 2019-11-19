@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function (){
     Route::get('/add-behance-designer','AdminsController@addBehanceDesigner')->name('add.behance.designer');
 
     // fetching data routs
-    Route::get('/api/agents/{professionName}','AdminsController@getAgentsByProfessionName')->name('get.agents');
+    Route::get('/api/agents/','AdminsController@getAgentsByProfessionName')->name('get.agents');
     Route::get('/api/agent/{user_id}','AdminsController@getAgentByID')->name('get.agent.by.id');
     Route::get('/api/clients','AdminsController@getClients')->name('get.clients');
 
@@ -202,6 +202,7 @@ Route::prefix('agent')->group(function (){
     Route::post('/logs/delete','ActivityLogsController@deleteLog')->name('delete.log');
 
     Route::get('/current','AgentsController@getCurrentAgent')->name('get.current.agent');
+    Route::get('/get/{id}','AgentsController@getAgentByID')->name('get.agent.by.id');
 
     // agreements
     Route::get('/account/service-agreement','AgentsController@viewAgentServiceAgreement')->name('service.agreement');
@@ -236,6 +237,10 @@ Route::prefix('agent')->group(function (){
 
 });
 
+Route::get('/freelancer/it/register','DevelopersController@developerForm')->name('developer.from');
+Route::post('/freelancer/it/register/validate','DevelopersController@developerRegisterValidator')->name('developer.from.validate');
+Route::post('/freelancer/it/register/submit','DevelopersController@registerDeveloper')->name('developer.register');
+
 
 Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
@@ -246,7 +251,8 @@ Route::prefix('freelancer')->group(function (){
     Route::post('/account/edit','AgentsController@editAgentPersonalInfo');
     Route::post('/account/edit/avatar','AgentsController@editAgentPersonalInfo');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
-//    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
+    Route::get('/developer-card/edit','FreelancersController@showEditForm')->name('freelancer.dashboard');
+    Route::get('/developer-card','FreelancersController@form')->name('freelancer.dashboard');
 
     // frontend routes
     Route::get('/',function (){
@@ -283,6 +289,10 @@ Route::prefix('freelancer')->group(function (){
 
     Route::get('/has_agreed','FreelancersController@hasAgreed');
     Route::post('/set_terms','FreelancersController@setTerms');
+
+    // freelancer resume
+    Route::get('/v2/{username}','HomeController@ResumePageV2');
+    Route::get('/v2/short/{username}','HomeController@ResumePageShortV2');
 
 });
 

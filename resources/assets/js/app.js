@@ -49,6 +49,16 @@ Vue.component('admin-agent-edit-professional-info', require('./components/admin/
 Vue.component('admin-agent-edit-record-resume', require('./components/admin/editAgent/EditRecordResumeInfo.vue'));
 
 
+// resume component
+Vue.component('freelancer-resume-long-v2', require('./components/freelancerResume/resumeComponentLongV2.vue'));
+Vue.component('freelancer-resume-short-v2', require('./components/freelancerResume/resumeComponentShortV2.vue'));
+
+
+// register developer
+Vue.component('register-developer', require('./components/RegisterDeveloper.vue'));
+
+
+
 import AdminAgentRegisterPage1 from './components/admin/registerAgent/page1.vue'
 import AdminAgentRegisterPage2 from './components/admin/registerAgent/page2.vue'
 import AdminAgentRegisterPage3 from './components/admin/registerAgent/page3.vue'
@@ -59,6 +69,29 @@ import AdminAgentRegisterCompleted from './components/admin/registerAgent/finish
 import AdminAgents from './components/admin/dashboard/Agents.vue';
 import AdminClients from './components/admin/dashboard/Clients.vue';
 import AdminCampaigns from './components/admin/dashboard/Campaigns.vue';
+
+
+
+
+if ($("#freelancerResumeLongV2").length !== 0){
+    let freelancerResumeLongV2 = new Vue({
+        el:'#freelancerResumeLongV2'
+    });
+}
+
+
+if ($("#registerDeveloper").length !== 0){
+    let registerDeveloper = new Vue({
+        el:'#registerDeveloper'
+    });
+}
+
+
+if ($("#freelancerResumeShortV2").length !== 0){
+    let freelancerResumeShortV2 = new Vue({
+        el:'#freelancerResumeShortV2'
+    });
+}
 
 
 if ($("#adminEditAgentPersonalInfo").length !== 0){
@@ -579,6 +612,9 @@ Vue.component('send-invitations', require('./components/mails/sendInvitationMail
 // Freelancers cards
 Vue.component('freelancer-resume', require('./components/resumeAgent/resumeComponentLong.vue'));
 
+
+Vue.component('freelancer-portfolio', require('./components/freelancerResume/portfolio'));
+
 if ($("#freelancerResume").length !== 0) {
     let freelancerResume = new Vue({
         el: "#freelancerResume"
@@ -596,6 +632,12 @@ if ($("#searchFreelancers").length !== 0){
 if ($("#record_input").length !== 0){
     let record_input = new Vue({
         el:'#record_input'
+    });
+}
+
+if ($("#freelancerPortfolio").length !== 0){
+    let freelancerPortfolio = new Vue({
+        el:'#freelancerPortfolio'
     });
 }
 

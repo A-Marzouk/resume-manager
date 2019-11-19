@@ -24,7 +24,7 @@ class ReferencesController extends Controller
     }
 
     public function addReference(Request $request){
-        $currentUser = auth()->user();
+        $currentUser = currentUser();
         $request->validate([
             'title' => 'max:190|required',
             'name' => 'max:190',
@@ -62,8 +62,8 @@ class ReferencesController extends Controller
             $reference->email = $request->email;
         }
 
-        $reference->save();
 
+        $reference->save();
 
         return ['id'=>$reference->id];
 

@@ -15,11 +15,16 @@ class Project extends Model
 {
     protected $table = 'projects';
     protected $fillable = [
-        'projectName','isActive','link','projectDesc','images','mainImage','order'
+        'projectName','isActive','link','projectDesc','images','mainImage','order','user_id','work_history_id'
     ];
 
 
     public function freelancer(){
         return $this->belongsTo(User::class);
     }
+
+    public function workHistory(){
+        return $this->belongsTo(WorkHistory::class,'work_history_id');
+    }
+
 }

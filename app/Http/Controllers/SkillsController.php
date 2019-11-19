@@ -21,7 +21,7 @@ class SkillsController extends Controller
     }
 
     public function addSkill(Request $request){
-        $currentUser = auth()->user();
+        $currentUser = currentUser();
         $request->validate([
             'skill_title' => 'max:190',
             'type' => 'max:190',
@@ -33,9 +33,11 @@ class SkillsController extends Controller
         $skill->user_id = $currentUser->id;
         $skill->skill_title = $request->skill_title;
         $skill->type = $request->type;
+        $skill->percentage = $request->percentage;
         if(isset($request->icon)) {
             $skill->icon = $request->icon;
         }
+
         $skill->save();
 
         return ['id'=>$skill->id];

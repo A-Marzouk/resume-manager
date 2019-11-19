@@ -11,27 +11,27 @@
                     <div class="modal-body">
                         <form action="/freelancer/addeducation/" method="post" @submit.prevent="submitForm">
                           <div class="row">
-                              <div class="form-group col-md-6">
+                              <div class="form-group d-flex flex-column align-items-start col-md-6">
                                   <label for="school_title" class="panelFormLabel">Title :</label>
-                                  <input type="text" class="form-control" id="school_title" name="school_title" v-model="toBeEditedEducation.school_title" required>
+                                  <input type="text" class="form-control p2" id="school_title" name="school_title" v-model="toBeEditedEducation.school_title" required>
                               </div>
-                              <div class="form-group col-md-12">
+                              <div class="form-group d-flex flex-column align-items-start col-md-12">
                                     <label for="description" class="panelFormLabel">Description :</label>
-                                    <textarea class="form-control" rows="3" id="description" name="description" v-model="toBeEditedEducation.description" required>
+                                    <textarea class="form-control p2" rows="3" id="description" name="description" v-model="toBeEditedEducation.description" required>
                                     </textarea>
                                 </div>
-                              <div class="form-group col-md-6">
+                              <div class="form-group d-flex flex-column align-items-start col-md-6">
                                     <label for="date_from" class="panelFormLabel">Start :</label>
-                                    <input type="date" class="form-control" id="date_from" name="date_from" v-model="toBeEditedEducation.date_from" required>
+                                    <input type="date" class="form-control p2" id="date_from" name="date_from" v-model="toBeEditedEducation.date_from" required>
                                 </div>
-                              <div class="form-group col-md-6" v-show="!toBeEditedEducation.currently_learning">
+                              <div class="form-group d-flex flex-column align-items-start col-md-6" v-show="!toBeEditedEducation.is_currently_learning">
                                     <label for="date_from" class="panelFormLabel">End :</label>
-                                    <input type="date" class="form-control" id="date_to" name="date_to" v-model="toBeEditedEducation.date_to">
+                                    <input type="date" class="form-control p2" id="date_to" name="date_to" v-model="toBeEditedEducation.date_to">
                                 </div>
 
-                              <div class="form-group col-md-12">
+                              <div class="form-group d-flex flex-column align-items-start col-md-12">
                                   <label class="form-check-label checkBoxText checkBoxContainer">
-                                      <input id="currently_learning" class="form-check-input" style="@if($errors->has('design_skills_checkbox')) border:1px solid red; @endif" type="checkbox" name="currently_learning" :checked="toBeEditedEducation.currently_learning" v-model="toBeEditedEducation.currently_learning">
+                                      <input id="is_currently_learning" class="form-check-input" style="@if($errors->has('design_skills_checkbox')) border:1px solid red; @endif" type="checkbox" name="is_currently_learning" :checked="toBeEditedEducation.is_currently_learning" v-model="toBeEditedEducation.is_currently_learning">
                                       Present
                                       <span class="checkmark"></span>
                                   </label>

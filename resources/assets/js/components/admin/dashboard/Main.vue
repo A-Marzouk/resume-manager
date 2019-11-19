@@ -23,7 +23,7 @@
                     </a>
                 </div>
                 <div>
-                    Ahmed R. Marzouk
+                    Admin
                 </div>
                 <div class="avatar">
                     <img src="/images/client/dummy.png" alt="logout">
@@ -41,7 +41,7 @@
                             Welcome,
                         </div>
                         <div style="font-weight: 500">
-                            Ahmed R. Marzouk
+                            Admin
                         </div>
                     </div>
                 </div>

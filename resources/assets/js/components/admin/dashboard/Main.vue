@@ -18,8 +18,8 @@
             </div>
             <div class="form-inline my-2 my-lg-0 name">
                 <div class="logoutButton">
-                    <a href="javascript:void(0)" @click="logoutClient">
-                        <img src="/images/client/log_out.png" alt="logout" style="">
+                    <a href="/logout">
+                        <img src="/images/client/log_out.png" alt="logout">
                     </a>
                 </div>
                 <div>

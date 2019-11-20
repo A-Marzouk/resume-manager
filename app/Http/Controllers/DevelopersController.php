@@ -63,7 +63,7 @@ class DevelopersController extends Controller
             'github' => 'max:191',
             'website' => 'max:191',
             'facebook' => 'max:191',
-            'second_email' => 'max:191|email',
+            'second_email' => 'nullable|max:191|email',
 
 
             'hourly_rate' => 'max:191|required',

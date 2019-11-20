@@ -342,8 +342,7 @@
                                 <br>
                                 <a href="javascript:void(0)" id="playAudio" class="d-none">Play</a><br/>
                                 <a href="javascript:void(0)" id="downloadAudio" class="d-none">Download</a><br/>
-                                <a href="javascript:void(0)" @click="clearUploadMethod" class="d-none">Cancel</a><br/>
-                                <a href="javascript:void(0)" @click="$('#startRecord').click()" class="d-none">New record</a><br/>
+                                <a href="javascript:void(0)" id="discardAudio" class="d-none" @click="resetAudio">Discard</a>
                             </div>
                         </div>
                     </div>
@@ -649,6 +648,13 @@
                     }
                 });
             },
+            resetAudio(){
+                $('#startRecord').removeClass('d-none');
+
+                $('#playAudio').addClass('d-none');
+                $('#downloadAudio').addClass('d-none');
+                $('#discardAudio').addClass('d-none');
+            }
 
         },
         mounted() {

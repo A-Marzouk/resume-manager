@@ -217,6 +217,7 @@ if ( navigator.mediaDevices.getUserMedia ) {
             $('#businessRegisterForm').removeClass('d-none');
             return;
         }
+        console.log('came here ');
         // get the cv file :
         var cv = $('#cv').prop('files')[0];
         data.append('file', blob);
@@ -232,15 +233,24 @@ if ( navigator.mediaDevices.getUserMedia ) {
         data.append('skype',$('#business_skype').val() );
         data.append('whatsapp',$('#whatsapp').val() );
         data.append('facebook',$('#facebook').val() );
-        data.append('business_github',$('#github').val() );
+        data.append('github',$('#github').val() );
         data.append('website',$('#website').val() );
         data.append('second_email',$('#second_email').val() );
         data.append('instagram',$('#business_instagram').val() );
         data.append('linkedin',$('#business_linkedin').val() );
+        data.append('password',$('#business_password').val() );
+        data.append('programming_language',$('#programming_language').val() );
+        data.append('framework',$('#framework').val() );
+        data.append('database',$('#database').val() );
+        data.append('available_hours',$('#available_hours').val() );
+        data.append('monthly_rate',$('#monthly_rate').val() );
+        data.append('hourly_rate',$('#hourly_rate').val() );
+        data.append('password_confirmation',$('#business_password_confirmation').val() );
         data.append('audioType','record');
 
         axios.post('/audio/save_for_register',data).then( (response) => {
-            console.log('response.data');
+            console.log(response.data);
+            return;
             if(response.data.status === 'Success'){
                 window.location.href = '/freelancer/dashboard';
             }
@@ -248,6 +258,7 @@ if ( navigator.mediaDevices.getUserMedia ) {
         (error)=>{
             console.log(error);
         });
+
     }
 
     function play() {

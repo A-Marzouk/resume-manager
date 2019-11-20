@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Agent;
 use App\classes\Upload;
+use App\Recording;
 use App\Skill;
 use App\User;
 use Illuminate\Http\Request;
@@ -74,7 +75,8 @@ class DevelopersController extends Controller
     }
 
     public function saveAudioForRegister(Request $request){
-        $id = $this->registerDeveloper($request);
+
+         $id = $this->registerDeveloper($request);
 
         if(isset($_FILES['file']) and !$_FILES['file']['error']){
             $fname = "Record_".date(time()).'.ogg';

@@ -504,7 +504,7 @@ Route::get('/freelancer/owners/show_owner_page/{owner_id}','OwnersController@sho
 // audio record :
 Route::post('/audio/save','UserDataController@saveAudio');
 Route::post('/audio/save_for_chat','UserDataController@saveAudioForChat');
-Route::post('/audio/save_for_register','BusinessSupportController@saveAudioForRegister');
+//Route::post('/audio/save_for_register','BusinessSupportController@saveAudioForRegister');
 
 // chat new :
 Route::get('/chat-room','NewChatController@showChatPage')->name('chat-room');

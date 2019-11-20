@@ -266,7 +266,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="password" class="panelFormLabel">Password *</label>
-                        <input id="password" type="password" class="panelFormInput form-control" name="password"
+                        <input id="business_password" type="password" class="panelFormInput form-control" name="password"
                                v-model="freelancerData.password" required autofocus>
 
                         <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
@@ -276,8 +276,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="password_confirmation" class="panelFormLabel">Password confirmation *</label>
-                        <input id="password_confirmation" type="password" class="panelFormInput form-control" name="password_confirmation"
+                        <label for="business_password_confirmation" class="panelFormLabel">Password confirmation *</label>
+                        <input id="business_password_confirmation" type="password" class="panelFormInput form-control" name="password_confirmation"
                                v-model="freelancerData.password_confirmation" required autofocus>
                     </div>
                 </div>

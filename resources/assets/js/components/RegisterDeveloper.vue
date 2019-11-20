@@ -649,7 +649,10 @@
                 });
             },
             resetAudio(){
-                $('#startRecord').removeClass('d-none');
+                let startBtn =  $('#startRecord') ;
+                startBtn.removeClass('d-none');
+                startBtn.css('display','block');
+                $('#record_status').fadeOut().addClass('d-none');
 
                 $('#playAudio').addClass('d-none');
                 $('#downloadAudio').addClass('d-none');

@@ -285,7 +285,7 @@
 
             <hr>
 
-            <div class="row">
+            <div class="row flex-column d-flex">
 
                 <div class="form-group">
                     <div class="col-md-12 text-left panelFormLabel">
@@ -342,6 +342,8 @@
                                 <br>
                                 <a href="javascript:void(0)" id="playAudio" class="d-none">Play</a><br/>
                                 <a href="javascript:void(0)" id="downloadAudio" class="d-none">Download</a><br/>
+                                <a href="javascript:void(0)" @click="clearUploadMethod" class="d-none">Cancel</a><br/>
+                                <a href="javascript:void(0)" @click="$('#startRecord').click()" class="d-none">New record</a><br/>
                             </div>
                         </div>
                     </div>
@@ -354,7 +356,7 @@
             </div>
             <div class="row">
                 <div class="col-4">
-                    <a href="javascript:void(0)" class="btn btn-primary" @click="clearUploadMethod"
+                    <a href="javascript:void(0)" class="btn btn-primary" style=" padding-top: 10px;" @click="clearUploadMethod"
                        v-show="uploadMethod.length > 0"> Back </a>
                 </div>
                 <div class="col-12">

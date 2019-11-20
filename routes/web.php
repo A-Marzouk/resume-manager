@@ -250,6 +250,7 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/campaign/{campaign_id}','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
     Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
     Route::post('/account/personal/submit','AgentsController@editAgentPersonalInfo');
+    Route::post('/account/professional/submit','AgentsController@editAgentProfessionalInfo');
     Route::post('/account/edit/avatar','AgentsController@editAgentPersonalInfo');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
     Route::get('/developer-card/edit','FreelancersController@showEditForm')->name('freelancer.dashboard');

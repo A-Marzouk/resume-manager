@@ -12,31 +12,41 @@
 </head>
 <body>
 <?
-    $curPage = url()->current();
-    $admin = false;
-    $isClient = true;
+$curPage = url()->current();
+$admin = false;
+$isClient = true;
+$isAgent = true;
 
-    if(strpos($curPage, 'client') !== false){
-        $curPage = 'client';
-    }else{
-        $curPage = 'home';
+if (strpos($curPage, 'client') !== false) {
+    $curPage = 'client';
+} else {
+    $curPage = 'home';
+}
+
+$user = auth()->user();
+if ($user) {
+    if ($user->admin == 1) {
+        $admin = true;
     }
+}
 
-    $user = auth()->user();
-    if($user){
-        if($user->admin == 1){
-            $admin = true;
-        }
-    }
-
-    if(currentUser() === null ){
+if (currentUser() === null) {
+    $isClient = false;
+}
+if (currentUser() !== null) {
+    if (currentClient() === null) {
         $isClient = false;
     }
-    if(currentUser() !== null){
-        if(currentClient() === null){
-            $isClient = false;
-        }
+}
+
+if (currentUser() === null) {
+    $isAgent = false;
+}
+if (currentUser() !== null) {
+    if (currentAgent() === null) {
+        $isAgent = false;
     }
+}
 
 ?>
 
@@ -45,7 +55,9 @@
         <a class="navbar-brand col-md-2 col-9" href="{{ url('/') }}">
             <img src="/images/newResume/123wf_logo.png" alt="logo">
         </a>
-        <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" style="border: none;" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" style="border: none;"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" style="background-image: url('/images/newResume/menu.png');"></span>
         </button>
 
@@ -54,9 +66,11 @@
             <ul class="navbar-nav">
                 {{-- if guest : --}}
                 <? if(!$isClient):?>
-                    <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>" href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
+                <a class="nav-item nav-link customNavLink <?if($curPage == 'client'):?>active<?endif;?>"
+                   href="/client/register/" data-toggle="modal" data-target="#exampleModalCenter">Become a client</a>
                 <? endif; ?>
-                <a class="nav-item nav-link customNavLink" href="#" data-toggle="modal" data-target="#talkToSales">Talk to sales</a>
+                <a class="nav-item nav-link customNavLink" href="#" data-toggle="modal" data-target="#talkToSales">Talk
+                    to sales</a>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -65,25 +79,26 @@
                 <a class="nav-item nav-link customNavLink" href="/admin" style="color:#0290D8;">Admin-area</a>
                 <?else :?>
                 {{--<a class="nav-item nav-link customNavLink" href="#chatOn" id="liveChat" style="color:#0290D8;">--}}
-                    {{--<img src="/images/textsms_24px.png" alt="chat img" width="16px">--}}
-                    {{--&nbsp; Chat with us!--}}
+                {{--<img src="/images/textsms_24px.png" alt="chat img" width="16px">--}}
+                {{--&nbsp; Chat with us!--}}
                 {{--</a>--}}
                 <? endif;?>
             </li>
             <ul class="navbar-nav">
                 <!-- Authentication Links -->
                 <li></li>
-            <?php if(!$isClient): ?>
-                    <li class="nav-link loginBtn">
-                        <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal" style="padding-left: 30px; padding-right: 30px;">{{ __('Log in') }}</a>
-                    </li>
+                <?php if(!$isClient && !$isAgent): ?>
+                <li class="nav-link loginBtn">
+                    <a href="{{ route('client.login') }}" data-toggle="modal" data-target="#loginModal"
+                       style="padding-left: 30px; padding-right: 30px;">{{ __('Log in') }}</a>
+                </li>
                 <? else: ?>
-                    <a class="nav-item nav-link customNavLink" href="/client">
-                        {{ currentClient()->contact}}
-                    </a>
-                    <a class="nav-item nav-link customNavLink" href="/logout">
-                        Logout
-                    </a>
+                <a class="nav-item nav-link customNavLink" href="/dashboard">
+                    @if($isClient) {{ currentClient()->contact}} @endif @if($isAgent) {{currentUser()->userData->first_name}} @endif
+                </a>
+                <a class="nav-item nav-link customNavLink" href="/logout">
+                    Logout
+                </a>
 
                 <? endif;?>
             </ul>
@@ -96,8 +111,8 @@
 </div>
 
 
-    {{-- chat minimized --}}
-    <div class="chatMinimized d-none" id="chatMinBox">
+{{-- chat minimized --}}
+<div class="chatMinimized d-none" id="chatMinBox">
     <a href="javascript:void(0)" class="row" id="chatMin">
         <div class="col-2 col-md-1 col-lg-2 chatImage">
         <span>
@@ -110,18 +125,18 @@
     </a>
 </div>
 
-    {{--@include('layouts.includes.terms')--}}
-    @include('layouts.footer')
+{{--@include('layouts.includes.terms')--}}
+@include('layouts.footer')
 
-    {{-- Chat box --}}
-    <div>
-        <? if(!$admin):?>
-            @include('includes.chat')
-        <? endif;?>
-    </div>
+{{-- Chat box --}}
+<div>
+    <? if(!$admin):?>
+    @include('includes.chat')
+    <? endif;?>
+</div>
 
-    @include('layouts.includes.modals')
-    @include('layouts.includes.scripts')
+@include('layouts.includes.modals')
+@include('layouts.includes.scripts')
 
 
 </body>

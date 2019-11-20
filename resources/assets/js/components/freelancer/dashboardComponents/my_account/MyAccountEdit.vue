@@ -271,14 +271,12 @@
 
                 axios.post('/freelancer/account/personal/submit', form_data)
                     .then((response) => {
-                        console.log(response.data);
                         this.agentData.profile_picture = this.getImageSrc(response.data.profile_picture);
                         this.showSuccessMessage();
                     })
                     .catch((error) => {
                         if (typeof error.response.data === 'object') {
                             this.errors = error.response.data.errors;
-                            console.log(this.errors);
                         } else {
                             this.errors = ['Something went wrong. Please try again.'];
                         }

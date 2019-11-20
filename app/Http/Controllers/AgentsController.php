@@ -249,7 +249,7 @@ class AgentsController extends Controller
                 'voice_character'          => $professionalData['voice'],
             ],
             'user_data' => [
-                'profession_id'         => 2, // business-support(1), developer (2), designer (3)
+                'profession_id'         => 1, // business-support(1), developer (2), designer (3)
                 'currency_id'           => 1, // usd
                 'timezone'              => 1,
                 // personal data
@@ -338,7 +338,7 @@ class AgentsController extends Controller
             'phone' => 'min:7|max:191|required',
             'city' => 'max:191',
             'paypal_acc_number' => 'max:1500',
-            'password' => 'min:6|max:191|confirmed',
+            'password' => 'nullable|min:6|max:191|confirmed',
         ]);
 
         $user = currentUser();
@@ -369,6 +369,45 @@ class AgentsController extends Controller
         return  $user->userData ;
     }
 
+    public function editAgentProfessionalInfo(Request $request){
+        $request->validate([
+            'job_title' => 'max:191|required',
+            'voice_character' => 'max:191',
+            'experience' => 'max:1500|required',
+            'technologies' => 'max:1500|required',
+            'available_hours_per_week' => 'max:191|required',
+            'language' => 'max:1500',
+        ]);
+
+        $user = currentUser();
+
+        $user->userData->update([
+            'job_title' => $request->job_title
+        ]);
+
+
+        $user->agent->update([
+            'voice_character' => $request->voice_character ?? '',
+            'experience' => $request->experience ?? '',
+            'technologies' => $request->technologies ?? '',
+            'available_hours_per_week' =>$request->available_hours_per_week,
+        ]);
+
+        if(isset($request->language)){
+            $language = Language::where('name','english')->first();
+            if($request->language == 'spanish'){
+                $language = Language::where('name','spanish')->first();
+            }
+            // attach language to user
+            $user->languages()->sync($language->id);
+        }
+
+        return [
+            'status' => 'success'
+        ];
+
+
+    }
 
     public function updateAgent(Request $request)
     {

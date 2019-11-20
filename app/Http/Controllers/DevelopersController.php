@@ -111,6 +111,9 @@ class DevelopersController extends Controller
             $data = $request->all();
             $data['id']      = $id;
 
+            // login user
+            Auth::loginUsingId($id);
+
             return ['status' => 'Success'];
         }
 

@@ -73,6 +73,47 @@ class DevelopersController extends Controller
         ]);
     }
 
+    public function saveAudioForRegister(Request $request){
+        $id = $this->registerDeveloper($request);
+
+        if(isset($_FILES['file']) and !$_FILES['file']['error']){
+            $fname = "Record_".date(time()).'.ogg';
+            $target_file = "uploads/register_audios/" . $fname ;
+
+            if (file_exists($target_file)) {
+                unlink($target_file);
+            }
+
+            move_uploaded_file($_FILES['file']['tmp_name'], $target_file);
+
+            // save record :
+            $record = new Recording;
+            $record->user_id = $id;
+            $record->src = '/'.$target_file;
+            $record->title = 'Recorded application (record)';
+            $record->transcription = '';
+
+            $record->save();
+
+            // check if cv is uploaded
+            if($request->cv_included == 'true' && isset($request->included_cv)){
+                // upload the cv file :
+                $result = Upload::CV('','included_cv',$id.'_'.date(time()));
+                if($result !== false){
+                    $agent = Agent::where('user_id', $id)->first();
+                    $agent->cv = $result['path'];
+                    $agent->save();
+                }
+            }
+
+            $data = $request->all();
+            $data['id']      = $id;
+
+            return ['status' => 'Success'];
+        }
+
+    }
+
 
     public function registerDeveloper(Request $request)
     {

@@ -240,6 +240,7 @@ Route::prefix('agent')->group(function (){
 Route::get('/freelancer/it/register','DevelopersController@developerForm')->name('developer.from');
 Route::post('/freelancer/it/register/validate','DevelopersController@validateDeveloperForm')->name('developer.from.validate');
 Route::post('/freelancer/it/register/submit','DevelopersController@registerDeveloper')->name('developer.register');
+Route::post('/audio/save_for_register','DevelopersController@saveAudioForRegister');
 
 
 Route::prefix('freelancer')->group(function (){

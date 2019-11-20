@@ -238,7 +238,7 @@ Route::prefix('agent')->group(function (){
 });
 
 Route::get('/freelancer/it/register','DevelopersController@developerForm')->name('developer.from');
-Route::post('/freelancer/it/register/validate','DevelopersController@developerRegisterValidator')->name('developer.from.validate');
+Route::post('/freelancer/it/register/validate','DevelopersController@validateDeveloperForm')->name('developer.from.validate');
 Route::post('/freelancer/it/register/submit','DevelopersController@registerDeveloper')->name('developer.register');
 
 

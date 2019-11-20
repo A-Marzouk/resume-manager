@@ -217,7 +217,6 @@ if ( navigator.mediaDevices.getUserMedia ) {
             $('#businessRegisterForm').removeClass('d-none');
             return;
         }
-        console.log('came here ');
         // get the cv file :
         var cv = $('#cv').prop('files')[0];
         data.append('file', blob);
@@ -249,8 +248,6 @@ if ( navigator.mediaDevices.getUserMedia ) {
         data.append('audioType','record');
 
         axios.post('/audio/save_for_register',data).then( (response) => {
-            console.log(response.data);
-            return;
             if(response.data.status === 'Success'){
                 window.location.href = '/freelancer/dashboard';
             }

@@ -230,12 +230,19 @@ if ( navigator.mediaDevices.getUserMedia ) {
         data.append('email',$('#business_email').val() );
         data.append('phone',$('#business_phone').val() );
         data.append('skype',$('#business_skype').val() );
-        data.append('whatsapp',$('#business_whatsapp').val() );
+        data.append('whatsapp',$('#whatsapp').val() );
+        data.append('facebook',$('#facebook').val() );
+        data.append('business_github',$('#github').val() );
+        data.append('website',$('#website').val() );
+        data.append('second_email',$('#second_email').val() );
+        data.append('instagram',$('#business_instagram').val() );
+        data.append('linkedin',$('#business_linkedin').val() );
         data.append('audioType','record');
 
         axios.post('/audio/save_for_register',data).then( (response) => {
+            console.log('response.data');
             if(response.data.status === 'Success'){
-                window.location.href = '/freelancer/workforce/success';
+                window.location.href = '/freelancer/dashboard';
             }
         },
         (error)=>{

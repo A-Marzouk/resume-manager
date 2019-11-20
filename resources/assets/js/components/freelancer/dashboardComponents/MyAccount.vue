@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="right no-decoration d-flex">
-                    <a href="/freelancer/developer-card" class="normal-link mr-3">
+                    <a href="/freelancer/developer-card" class="normal-link mr-3" v-show="user.user_data.profession_id == 2">
                         DEVELOPER CARD
                     </a>
                     <a href="/freelancer/professional/edit" class="normal-link">

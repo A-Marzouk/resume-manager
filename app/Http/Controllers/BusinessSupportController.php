@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Agent;
 use App\classes\Upload;
 use App\Recording;
 use App\User;
@@ -29,7 +30,7 @@ class BusinessSupportController extends Controller
 
         if(isset($_FILES['file']) and !$_FILES['file']['error']){
             $fname = "Record_".date(time()).'.ogg';
-            $target_file = "resumeApp/uploads/register_audios/" . $fname ;
+            $target_file = "uploads/register_audios/" . $fname ;
 
             if (file_exists($target_file)) {
                 unlink($target_file);
@@ -41,7 +42,7 @@ class BusinessSupportController extends Controller
             $record = new Recording;
             $record->user_id = $id;
             $record->src = '/'.$target_file;
-            $record->title = 'Recorded business application (record)';
+            $record->title = 'Recorded application (record)';
             $record->transcription = '';
 
             $record->save();
@@ -51,16 +52,17 @@ class BusinessSupportController extends Controller
                 // upload the cv file :
                 $result = Upload::CV('','included_cv',$id.'_'.date(time()));
                 if($result !== false){
-                    $user = User::where('id',$id)->first();
-                    $user->cv_src = $result['path'] ;
-                    $user->save();
+                    $agent = Agent::where('user_id', $id)->first();
+                    $agent->cv = $result['path'];
+                    $agent->save();
                 }
             }
 
             $data = $request->all();
             $data['id']      = $id;
-            $notification = new NotificationsController();
-            $notification->businessSupportApplication($data);
+
+//            $notification = new NotificationsController();
+//            $notification->businessSupportApplication($data);
 
 
             return ['status' => 'Success'];

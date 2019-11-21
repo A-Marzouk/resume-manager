@@ -1,407 +1,435 @@
 <template>
-    <div :class="{loader : isLoading}" id="loaderArea">
-        <form action="/freelancer/workforce/register_business" :class="{'d-none' : isLoading}" id="businessRegisterForm"
-              method="post" @submit.prevent="submitForm">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="business_firstName" class="panelFormLabel">First name *</label>
-                        <input id="business_firstName" type="text" class="panelFormInput form-control" name="firstName"
-                               v-model="freelancerData.firstName" required autofocus>
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.firstName }}</strong>
-                        </span>
+    <div>
+        <div class="d-flex justify-content-center flex-column align-items-center w-100">
+            <div class="account-info-edit-wrapper">
+                <nav class="navbar navbar-light fixed-top dashboard_navbar">
+                    <div class="backBtn">
+                        <a href="/admin/agents">
+                            <img src="/images/client/arrow_back.png" alt="back-icon">
+                        </a>
+                        <span>AGENT REGISTER</span>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="business_lastName" class="panelFormLabel">Last name *</label>
-                        <input id="business_lastName" type="text" class="panelFormInput form-control " name="lastName"
-                               v-model="freelancerData.lastName" required autofocus>
+                </nav>
 
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.lastName }}</strong>
-                        </span>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="business_email" class="panelFormLabel">Email *</label>
-
-                        <input id="business_email" type="email" class="panelFormInput form-control" name="email"
-                               v-model="freelancerData.email" required>
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{errors.email}}</strong>
-                        </span>
-                    </div> <!-- email -->
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="business_phone" class="panelFormLabel">Phone *</label>
-
-                        <input id="business_phone" type="tel" class="panelFormInput form-control" name="phone"
-                               v-model="freelancerData.phone" required>
-
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="whatsapp"
-                                   v-model="freelancerData.whatsapp">
-                            <label class="form-check-label" for="whatsapp">Whatsapp</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="telegram"
-                                   v-model="freelancerData.telegram">
-                            <label class="form-check-label" for="telegram">Telegram</label>
-                        </div>
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.phone }}</strong>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-            <h5 class="panelFormLabel">Main skills</h5><br/>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="programming_language" class="panelFormLabel">Primary programming language *</label>
-                        <select id="programming_language" class="panelFormInput form-control"
-                                v-model="freelancerData.programming_language" name="programming_language" required>
-                            <option value="">Programming language</option>
-                            <option v-for="(language, index) in customValues.programmingLanguages" :value="language"
-                                    :key="language + index">{{language}}
-                            </option>
-                        </select>
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.programming_language }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="framework" class="panelFormLabel">Primary Framework / Library *</label>
-                        <select id="framework" class="panelFormInput form-control"
-                                v-model="freelancerData.framework" name="programming_language">
-                            <option value="">Primary Framework / Library</option>
-                            <option v-for="(framework, index) in customValues.frameworks" :value="framework"
-                                    :key="framework + index">{{framework}}
-                            </option>
-                        </select>
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.framework }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="database" class="panelFormLabel">Primary Database *</label>
-                        <select id="database" class="panelFormInput form-control"
-                                v-model="freelancerData.database" name="database">
-                            <option value="">Database</option>
-                            <option v-for="(database, index) in customValues.databases" :value="database"
-                                    :key="database + index">{{database}}
-                            </option>
-                        </select>
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.database }}</strong>
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
-            <h5 class="panelFormLabel">Professional info</h5><br/>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="hourly_rate" class="panelFormLabel">Hourly rate *</label>
-                        <input id="hourly_rate" type="number" min="0" max="9999999" step="any"
-                               class="panelFormInput form-control" v-model="freelancerData.hourly_rate" name="hourly_rate">
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.hourly_rate }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="monthly_rate" class="panelFormLabel">Monthly rate *</label>
-                        <input id="monthly_rate" type="number" min="0" max="9999999" step="any"
-                               class="panelFormInput form-control" v-model="freelancerData.monthly_rate" name="monthly_rate">
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.monthly_rate }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="available_hours" class="panelFormLabel">available hours *</label>
-                        <input id="available_hours" type="number" min="0" max="9999999" step="any"
-                               class="panelFormInput form-control" v-model="freelancerData.available_hours"
-                               name="available_hours">
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.available_hours }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-
-            </div>
-
-
-            <hr>
-            <h5 class="panelFormLabel">Social apps</h5><br/>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="business_skype" class="panelFormLabel">Skype</label>
-                        <input id="business_skype" type="text" class="panelFormInput form-control"
-                               v-model="freelancerData.skype" name="skype">
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.skype }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="business_linkedin" class="panelFormLabel">linkedin</label>
-                        <input id="business_linkedin" type="text" class="panelFormInput form-control"
-                               v-model="freelancerData.Linkedin" name="linkedin">
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.linkedin }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="business_instagram" class="panelFormLabel">Instagram</label>
-                        <input id="business_instagram" type="text" class="panelFormInput form-control"
-                               v-model="freelancerData.instagram" name="instagram">
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.instagram }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="business_github" class="panelFormLabel">Github</label>
-                        <input id="business_github" type="text" class="panelFormInput form-control"
-                               v-model="freelancerData.github" name="github">
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.github }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="website" class="panelFormLabel">Website</label>
-                        <input id="website" type="text" class="panelFormInput form-control"
-                               v-model="freelancerData.website" name="website">
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.website }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="facebook" class="panelFormLabel">Facebook</label>
-                        <input id="facebook" type="text" class="panelFormInput form-control"
-                               v-model="freelancerData.facebook" name="facebook">
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.facebook }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <label for="second_email" class="panelFormLabel">Second email</label>
-                        <input id="second_email" type="text" class="panelFormInput form-control"
-                               v-model="freelancerData.second_email" name="second_email">
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.second_email }}</strong>
-                        </span>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <hr>
-
-            <h5 class="panelFormLabel">Password</h5><br/>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="password" class="panelFormLabel">Password *</label>
-                        <input id="business_password" type="password" class="panelFormInput form-control" name="password"
-                               v-model="freelancerData.password" required autofocus>
-
-                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                            <strong>{{ errors.password }}</strong>
-                        </span>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="business_password_confirmation" class="panelFormLabel">Password confirmation *</label>
-                        <input id="business_password_confirmation" type="password" class="panelFormInput form-control" name="password_confirmation"
-                               v-model="freelancerData.password_confirmation" required autofocus>
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
-            <div class="row flex-column d-flex">
-
-                <div class="form-group">
-                    <div class="col-md-12 text-left panelFormLabel">
-                        Please upload / record a short audio recording describing your previous experience as a developer ( Ideal recording length from 1 - 2 minutes ).
-                        <br/>
-                        <div style="width:100%;margin-top:.25rem;font-size:100%;color:#dc3545">
-                            <strong>{{ errors.audioError }}</strong>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group col-md-12" v-show="uploadMethod.length < 1">
-                    <div class="panelFormLabel" style="padding-bottom: 15px;">
-                        Please choose uploading method :
-                    </div>
-                    <div class="row w-100">
-                        <div class="col-md-4 col-12" style="padding-top:10px;">
-                            <a href="javascript:void(0)" class="d-flex align-items-center btn btn-primary btn-block"
-                               @click="setUploadMethod('upload')">Upload audio file</a>
-                        </div>
-                        <div class="col-md-4 col-12" style="padding-top:10px;">
-                            <a href="javascript:void(0)" class="d-flex align-items-center btn btn-primary btn-block"
-                               @click="setUploadMethod('record')">Record audio</a>
-                        </div>
-                        <div class="col-md-4 col-12" style="padding-top:10px;">
-                            <a href="javascript:void(0)" class="d-flex align-items-center btn btn-primary btn-block"
-                               @click="setUploadMethod('url')">Link</a>
-                        </div>
-                    </div>
-                    <br/>
-                </div>
-
-                <div id="uploadFile" v-show="uploadMethod == 'upload'">
-                    <div class="form-group col-md-12">
-                        <input type="file" id="file" ref="file" v-on:change="handleFileUpload"/>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12" v-show="uploadPercentage > 0">
-                            <progress style="width: 300px;height:5px;" max="100"
-                                      :value.prop="uploadPercentage"></progress>
-                        </div>
-                    </div>
-                </div>
-                <div id="recordAudio" class="form-group" v-show="uploadMethod == 'record'">
-                    <div class="recorder_wrapper recorder_wrapper_phone">
-                        <div class="recorder">
-                            <div id="recordImg">
-                                <img src="/images/Microphone_1.png" alt="mic" width="30px">
-                            </div>
-                            <p id="record_status"></p>
-                            <div class="NoDecor">
-                                <a href="javascript:void(0)" id="startRecord" class="btn btn-default">New record</a>
-                                <a href="javascript:void(0)" id="stopAudio" style="padding-top: 20px;" class="d-none">Stop</a>
-                                <br>
-                                <a href="javascript:void(0)" id="playAudio" class="d-none">Play</a><br/>
-                                <a href="javascript:void(0)" id="downloadAudio" class="d-none">Download</a><br/>
-                                <a href="javascript:void(0)" id="discardAudio" class="d-none" @click="resetAudio">Discard</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="urlToAudio" class="form-group col-md-12" v-show="uploadMethod == 'url'">
-                    <label class="panelFormLabel">Link to your record :</label>
-                    <input type="text" class="form-control panelFormInput" v-model="toBeEditedRecord.src">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                    <a href="javascript:void(0)" class="btn btn-primary" style=" padding-top: 10px;" @click="clearUploadMethod"
-                       v-show="uploadMethod.length > 0"> Back </a>
-                </div>
-                <div class="col-12">
-                    <hr>
-                    <div class="form-group">
-                        <input type="checkbox" @click="cv_included = !cv_included" name="cv_included"
-                               v-model="cv_included">
-                        Include resume (PDF)
-                    </div>
-
-                    <div class="form-group" v-show="cv_included">
-                        <input type="file" id="cv" ref="cv_file" name="included_cv" v-on:change="handleCVUpload"/>
-                    </div>
-                    <span id="cv_included_value" class="d-none">{{cv_included}}</span>
-                </div>
-            </div>
-            <div class="row w-100">
-                <div class="col-12">
-                    <div class="form-group d-flex align-items-center">
-                        <div class="buttonMain text-center">
-                            <a href="javascript:void(0)" style="padding: 15px 100px 15px 100px;" @click="submitForm"
-                               class="hireBtn" v-show="uploadMethod != 'record'"
-                               v-bind:disabled="toBeEditedRecord.src.length < 1 && !fileChosen">
-                                Apply
-                            </a>
-
-                            <a href="javascript:void(0)" class="hireBtn"
-                               style="padding: 15px 100px 15px 100px; color:white!important;" @click="validateForm"
-                               v-show="uploadMethod == 'record'">
-                                Apply
-                                <!--record-->
-                            </a>
-                            <a href="javascript:void(0)" class="d-none" id="saveAudioRegister"></a>
-                        </div>
-                        <div class="text-center">
-                            <div class="smallText">
-                                <br/>Already have an account?
-                                <span>
-                                <a href="/freelancer/login"> Log in!</a>
+                <div class="account-info-edit dashboard-box">
+                    <div class="account-info-edit-heading dashboard-box-heading">
+                        <div class="left">
+                            <img src="/images/dashboard/info.svg" alt="info icon">
+                            <span>
+                                FILL IN THE INFORMATION TO REGISTER
                             </span>
+                        </div>
+                    </div>
+
+                    <div class="account-edit-section">
+                        <div class="account-edit-section-heading">
+                            BASIC INFORMATION
+                        </div>
+
+                        <div class="account-edit-section-inputs">
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    name
+                                </label>
+                                <div class="faq-input" :class="{ 'error-input' : errors.firstName}">
+                                    <input type="text" placeholder="Enter your name" v-model="freelancerData.firstName">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.firstName.length > 0"
+                                         @click="clearInput('firstName')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.firstName">
+                                    {{errors.firstName}}
+                                </div>
+                            </div>
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    surname
+                                </label>
+                                <div class="faq-input" :class="{ 'error-input' : errors.lastName}">
+                                    <input type="text" placeholder="Enter your surname"
+                                           v-model="freelancerData.lastName">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.lastName.length > 0"
+                                         @click="clearInput('lastName')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.lastName">
+                                    {{errors.lastName}}
+                                </div>
+                            </div>
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    primary Email
+                                </label>
+                                <div class="faq-input" :class="{ 'error-input' : errors.email}">
+                                    <input type="email" placeholder="Enter your email" v-model="freelancerData.email">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.email.length > 0"
+                                         @click="clearInput('email')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.email">
+                                    {{errors.email}}
+                                </div>
+                            </div>
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    phone number
+                                </label>
+                                <div class="faq-input" :class="{ 'error-input' : errors.phone}">
+                                    <input type="tel" placeholder="Enter your phone number"
+                                           v-model="freelancerData.phone">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.phone.length > 0"
+                                         @click="clearInput('phone')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.phone">
+                                    {{errors.phone}}
+                                </div>
+                            </div>
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    city
+                                </label>
+                                <div class="faq-input" :class="{ 'error-input' : errors.city}">
+                                    <input type="text" placeholder="Enter your surname" v-model="freelancerData.city">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.city.length > 0"
+                                         @click="clearInput('city')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.city">
+                                    {{errors.city}}
+                                </div>
+                            </div>
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    Select your time zone
+                                </label>
+                                <div class="faq-input" :class="{ 'error-input' : errors.timezone}">
+                                    <div class="select-icon"></div>
+                                    <select class="form-control" id="timeZone" style="height: 56px;"
+                                            v-model="freelancerData.lastName">
+                                        <option value="" selected="selected">Select your timezone</option>
+                                        <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00)
+                                            Eastern
+                                            Time (US & Canada), Bogota, Lima
+                                        </option>
+                                        <option value="(GMT -6:00) Central Time (US & Canada), Mexico City">(GMT -6:00)
+                                            Central
+                                            Time
+                                            (US & Canada), Mexico City
+                                        </option>
+                                        <option value="(GMT -7:00) Mountain Time (US & Canada)">(GMT -7:00) Mountain
+                                            Time (US &
+                                            Canada)
+                                        </option>
+                                        <option value="(GMT -8:00) Pacific Time (US & Canada)">(GMT -8:00) Pacific Time
+                                            (US &
+                                            Canada)
+                                        </option>
+                                        <option value="(GMT -9:00) Alaska">(GMT -9:00) Alaska</option>
+                                        <option value="">--------------</option>
+                                        <option value="(GMT -12:00) Eniwetok, Kwajalein">(GMT -12:00) Eniwetok,
+                                            Kwajalein
+                                        </option>
+                                        <option value="(GMT -11:00) Midway Island, Samoa">(GMT -11:00) Midway Island,
+                                            Samoa
+                                        </option>
+                                        <option value="(GMT -10:00) Hawaii">(GMT -10:00) Hawaii</option>
+                                        <option value="(GMT -9:30) Taiohae">(GMT -9:30) Taiohae</option>
+                                        <option value="(GMT -9:00) Alaska">(GMT -9:00) Alaska</option>
+                                        <option value="(GMT -8:00) Pacific Time (US & Canada)">(GMT -8:00) Pacific Time
+                                            (US &
+                                            Canada)
+                                        </option>
+                                        <option value="(GMT -7:00) Mountain Time (US & Canada)">(GMT -7:00) Mountain
+                                            Time (US &
+                                            Canada)
+                                        </option>
+                                        <option value="(GMT -6:00) Central Time (US & Canada), Mexico City">(GMT -6:00)
+                                            Central
+                                            Time
+                                            (US & Canada), Mexico City
+                                        </option>
+                                        <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00)
+                                            Eastern
+                                            Time (US & Canada), Bogota, Lima
+                                        </option>
+                                        <option value="(GMT -4:30) Caracas">(GMT -4:30) Caracas</option>
+                                        <option value="(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz">(GMT -4:00)
+                                            Atlantic
+                                            Time (Canada), Caracas, La Paz
+                                        </option>
+                                        <option value="(GMT -3:30) Newfoundland">(GMT -3:30) Newfoundland</option>
+                                        <option value="(GMT -3:00) Brazil, Buenos Aires, Georgetown">(GMT -3:00) Brazil,
+                                            Buenos
+                                            Aires, Georgetown
+                                        </option>
+                                        <option value="(GMT -2:00) Mid-Atlantic">(GMT -2:00) Mid-Atlantic</option>
+                                        <option value="(GMT -1:00) Azores, Cape Verde Islands">(GMT -1:00) Azores, Cape
+                                            Verde
+                                            Islands
+                                        </option>
+                                        <option value="(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca">(GMT
+                                            +0:00)
+                                            Western Europe Time, London, Lisbon, Casablanca
+                                        </option>
+                                        <option value="(GMT +1:00) Brussels, Copenhagen, Madrid, Paris">(GMT +1:00)
+                                            Brussels,
+                                            Copenhagen, Madrid, Paris
+                                        </option>
+                                        <option value="(GMT +2:00) Kaliningrad, South Africa">(GMT +2:00) Kaliningrad,
+                                            South
+                                            Africa
+                                        </option>
+                                        <option value="(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg">(GMT +3:00)
+                                            Baghdad,
+                                            Riyadh, Moscow, St. Petersburg
+                                        </option>
+                                        <option value="(GMT +3:30) Tehran">(GMT +3:30) Tehran</option>
+                                        <option value="(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi">(GMT +4:00) Abu
+                                            Dhabi,
+                                            Muscat,
+                                            Baku, Tbilisi
+                                        </option>
+                                        <option value="(GMT +4:30) Kabul">(GMT +4:30) Kabul</option>
+                                        <option value="(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent">(GMT
+                                            +5:00)
+                                            Ekaterinburg, Islamabad, Karachi, Tashkent
+                                        </option>
+                                        <option value="(GMT +5:30) Bombay, Calcutta, Madras, New Delhi">(GMT +5:30)
+                                            Bombay,
+                                            Calcutta, Madras, New Delhi
+                                        </option>
+                                        <option value="(GMT +5:45) Kathmandu, Pokhara">(GMT +5:45) Kathmandu, Pokhara
+                                        </option>
+                                        <option value="(GMT +6:00) Almaty, Dhaka, Colombo">(GMT +6:00) Almaty, Dhaka,
+                                            Colombo
+                                        </option>
+                                        <option value="(GMT +6:30) Yangon, Mandalay">(GMT +6:30) Yangon, Mandalay
+                                        </option>
+                                        <option value="(GMT +7:00) Bangkok, Hanoi, Jakarta">(GMT +7:00) Bangkok, Hanoi,
+                                            Jakarta
+                                        </option>
+                                        <option value="(GMT +8:00) Beijing, Perth, Singapore, Hong Kong">(GMT +8:00)
+                                            Beijing,
+                                            Perth,
+                                            Singapore, Hong Kong
+                                        </option>
+                                        <option value="(GMT +8:45) Eucla">(GMT +8:45) Eucla</option>
+                                        <option value="(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk">(GMT +9:00)
+                                            Tokyo,
+                                            Seoul,
+                                            Osaka, Sapporo, Yakutsk
+                                        </option>
+                                        <option value="(GMT +9:30) Adelaide, Darwin">(GMT +9:30) Adelaide, Darwin
+                                        </option>
+                                        <option value="(GMT +10:00) Eastern Australia, Guam, Vladivostok">(GMT +10:00)
+                                            Eastern
+                                            Australia, Guam, Vladivostok
+                                        </option>
+                                        <option value="(GMT +10:30) Lord Howe Island">(GMT +10:30) Lord Howe Island
+                                        </option>
+                                        <option value="(GMT +11:00) Magadan, Solomon Islands, New Caledonia">(GMT
+                                            +11:00)
+                                            Magadan,
+                                            Solomon Islands, New Caledonia
+                                        </option>
+                                        <option value="(GMT +11:30) Norfolk Island">(GMT +11:30) Norfolk Island</option>
+                                        <option value="(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka">(GMT +12:00)
+                                            Auckland,
+                                            Wellington, Fiji, Kamchatka
+                                        </option>
+                                        <option value="(GMT +12:45) Chatham Islands">(GMT +12:45) Chatham Islands
+                                        </option>
+                                        <option value="(GMT +13:00) Apia, Nukualofa">(GMT +13:00) Apia, Nukualofa
+                                        </option>
+                                        <option value="(GMT +14:00) Line Islands, Tokelau">(GMT +14:00) Line Islands,
+                                            Tokelau
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="error" v-if="errors.timezone">
+                                    {{errors.timezone}}
+                                </div>
+                            </div>
+                        </div>
+
+                            <!-- small inputs social -->
+
+                            <div class="account-edit-section-heading">
+                                SOCIAL INFORMATION
+                            </div>
+
+                        <div class="account-edit-section-inputs">
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    Skype ID
+                                </label>
+                                <div class="faq-input small" :class="{ 'error-input' : errors.skype}">
+                                    <input type="text" placeholder="Enter your Skype ID" v-model="freelancerData.skype">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.skype.length > 0"
+                                         @click="clearInput('skype')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.skype">
+                                    {{errors.skype}}
+                                </div>
+                            </div>
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    Github
+                                </label>
+                                <div class="faq-input small" :class="{ 'error-input' : errors.github}">
+                                    <input type="text" placeholder="Github account url" v-model="freelancerData.github">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.github.length > 0"
+                                         @click="clearInput('github')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.github">
+                                    {{errors.github}}
+                                </div>
+                            </div>
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    Linkedin
+                                </label>
+                                <div class="faq-input small" :class="{ 'error-input' : errors.linkedin}">
+                                    <input type="text" placeholder="Linkedin profile url"
+                                           v-model="freelancerData.linkedin">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.linkedin.length > 0"
+                                         @click="clearInput('linkedin')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.linkedin">
+                                    {{errors.linkedin}}
+                                </div>
+                            </div>
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    Website
+                                </label>
+                                <div class="faq-input small" :class="{ 'error-input' : errors.website}">
+                                    <input type="text" placeholder="Enter your Website url"
+                                           v-model="freelancerData.website">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.website.length > 0"
+                                         @click="clearInput('website')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.website">
+                                    {{errors.website}}
+                                </div>
+                            </div>
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    Facebook
+                                </label>
+                                <div class="faq-input small" :class="{ 'error-input' : errors.facebook}">
+                                    <input type="text" placeholder="Facebook profile url"
+                                           v-model="freelancerData.facebook">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.facebook.length > 0"
+                                         @click="clearInput('facebook')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.facebook">
+                                    {{errors.facebook}}
+                                </div>
+                            </div>
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    Instagram
+                                </label>
+                                <div class="faq-input small" :class="{ 'error-input' : errors.instagram}">
+                                    <input type="text" placeholder="Instagram profile url"
+                                           v-model="freelancerData.instagram">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.instagram.length > 0"
+                                         @click="clearInput('instagram')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.instagram">
+                                    {{errors.instagram}}
+                                </div>
+                            </div>
+                        </div>
+
+                            <hr>
+                            <!-- small inputs end-->
+
+                            <div class="account-edit-section-heading">
+                                PASSWORD
+                            </div>
+
+                        <div class="account-edit-section-inputs">
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    password
+                                </label>
+                                <div class="faq-input" :class="{ 'error-input' : errors.password}">
+                                    <input type="password" placeholder="Enter your password"
+                                           v-model="freelancerData.password">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.password.length > 0"
+                                         @click="clearInput('password')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.password">
+                                    {{errors.password}}
+                                </div>
+                            </div>
+                            <div class="faq-question-input account-edit-input">
+                                <label class="faq-input-label">
+                                    Confirm your password
+                                </label>
+                                <div class="faq-input" :class="{ 'error-input' : errors.password_confirmation}">
+                                    <input type="password" placeholder="Confirm your password"
+                                           v-model="freelancerData.password_confirmation">
+                                    <img src="/images/client/campaign_activity/close_black.png"
+                                         alt="delete icon"
+                                         v-show="freelancerData.password_confirmation.length > 0"
+                                         @click="clearInput('password_confirmation')"
+                                    >
+                                </div>
+                                <div class="error" v-if="errors.password_confirmation">
+                                    {{errors.password_confirmation}}
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="account-edit-section-edit-btn no-decoration"
+                         id="submitBtnWrapper">
+                        <a class="btn-primary" href="javascript:void(0)">
+                            CONTINUE
+                        </a>
+                    </div>
                 </div>
+
             </div>
-        </form>
+
+            <div class="pt-3 no-decoration d-flex justify-content-center base-text align-items-center">
+                Already have an account ? <a href="#" class="ml-2 base-link"> LOG IN </a>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -506,6 +534,7 @@
                     'facebook': '',
                     'second_email': '',
                     'github': '',
+                    'timezone': '',
 
                     'hourly_rate': '',
                     'available_hours': '',
@@ -517,11 +546,13 @@
                     'lastName': '',
                     'phone': '',
                     'email': '',
+                    'city': '',
                     'password': '',
                     'password_confirmation': '',
 
                     'whatsapp': false,
                     'telegram': false,
+                    'timezone': '',
 
                     'skype': '',
                     'instagram': '',
@@ -553,7 +584,7 @@
             validateForm() {
                 let formData = new FormData();
 
-                $.each( this.freelancerData, (field) => {
+                $.each(this.freelancerData, (field) => {
                     formData.append(field, this.freelancerData[field]);
                 });
 
@@ -590,8 +621,8 @@
                 formData.append('audioType', 'uploaded');
 
 
-                $.each( this.freelancerData, (field) => {
-                    if(!formData.has(field)){
+                $.each(this.freelancerData, (field) => {
+                    if (!formData.has(field)) {
                         formData.append(field, this.freelancerData[field]);
                     }
                 });
@@ -626,8 +657,8 @@
                 }, 2000);
             },
             clearErrors() {
-                $.each( this.errors , (error) => {
-                    this.errors[error] = '' ;
+                $.each(this.errors, (error) => {
+                    this.errors[error] = '';
                 });
 
             },
@@ -642,16 +673,16 @@
                 $('#saveAudio').addClass('d-none');
             },
             updateErrors(responseErrors) {
-                $.each( this.errors , (error) => {
-                    if(responseErrors[error]){
+                $.each(this.errors, (error) => {
+                    if (responseErrors[error]) {
                         this.errors[error] = responseErrors[error][0];
                     }
                 });
             },
-            resetAudio(){
-                let startBtn =  $('#startRecord') ;
+            resetAudio() {
+                let startBtn = $('#startRecord');
                 startBtn.removeClass('d-none');
-                startBtn.css('display','block');
+                startBtn.css('display', 'block');
                 $('#record_status').fadeOut().addClass('d-none');
 
                 $('#playAudio').addClass('d-none');
@@ -665,7 +696,7 @@
     }
 </script>
 
-<style>
+<style scoped lang="scss">
     .loader {
         border: 15px solid lightblue;
         border-radius: 50%;
@@ -704,12 +735,29 @@
     }
 
 
-    .form-group{
+    .form-group {
         margin-bottom: 1rem;
         display: flex;
         flex-direction: column;
         align-items: start;
         justify-content: start;
+    }
+
+    .faq-input-label {
+        text-transform: capitalize;
+    }
+
+    .faq-input.small {
+        width: 250px !important;
+        max-width: 100%;
+
+
+        @media (max-width: 1240px) {
+            width: 307px!important;
+        }
+        @media (max-width: 600px) {
+            width: 100% !important;
+        }
     }
 
 </style>

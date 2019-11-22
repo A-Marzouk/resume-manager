@@ -29,7 +29,7 @@
                         <div class="account-edit-section-inputs">
                             <div class="faq-question-input account-edit-input">
                                 <label class="faq-input-label">
-                                    name
+                                    name <small style="color:red;"> *</small>
                                 </label>
                                 <div class="faq-input" :class="{ 'error-input' : errors.firstName}">
                                     <input type="text" placeholder="Enter your name" v-model="freelancerData.firstName">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="faq-question-input account-edit-input">
                                 <label class="faq-input-label">
-                                    surname
+                                    surname <small style="color:red;"> *</small>
                                 </label>
                                 <div class="faq-input" :class="{ 'error-input' : errors.lastName}">
                                     <input type="text" placeholder="Enter your surname"
@@ -62,7 +62,7 @@
                             </div>
                             <div class="faq-question-input account-edit-input">
                                 <label class="faq-input-label">
-                                    primary Email
+                                    primary Email <small style="color:red;"> *</small>
                                 </label>
                                 <div class="faq-input" :class="{ 'error-input' : errors.email}">
                                     <input type="email" placeholder="Enter your email" v-model="freelancerData.email">
@@ -78,24 +78,45 @@
                             </div>
                             <div class="faq-question-input account-edit-input">
                                 <label class="faq-input-label">
-                                    phone number
+                                    phone number <small style="color:red;"> *</small>
                                 </label>
                                 <div class="faq-input" :class="{ 'error-input' : errors.phone}">
                                     <input type="tel" placeholder="Enter your phone number"
-                                           v-model="freelancerData.phone">
+                                           v-model="freelancerData.phone" style="margin-bottom: 14px;">
                                     <img src="/images/client/campaign_activity/close_black.png"
                                          alt="delete icon"
                                          v-show="freelancerData.phone.length > 0"
                                          @click="clearInput('phone')"
                                     >
                                 </div>
+                                <div class="d-flex">
+                                    <div class="checkbox mr-3">
+                                        <label class="checkBoxText checkBoxContainer">
+                                            <input type="checkbox"
+                                                   name="remember"
+                                                   v-model="freelancerData.telegram">
+                                            <span class="rememberText">Telegram</span>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label class="checkBoxText checkBoxContainer">
+                                            <input type="checkbox"
+                                                   name="remember"
+                                                   v-model="freelancerData.whatsapp">
+                                            <span class="rememberText">Whatsapp</span>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
                                 <div class="error" v-if="errors.phone">
                                     {{errors.phone}}
                                 </div>
                             </div>
+
                             <div class="faq-question-input account-edit-input">
                                 <label class="faq-input-label">
-                                    city
+                                    city <small style="color:red;"> *</small>
                                 </label>
                                 <div class="faq-input" :class="{ 'error-input' : errors.city}">
                                     <input type="text" placeholder="Enter your surname" v-model="freelancerData.city">
@@ -111,12 +132,12 @@
                             </div>
                             <div class="faq-question-input account-edit-input">
                                 <label class="faq-input-label">
-                                    Select your time zone
+                                    Select your time zone <small style="color:red;">             *</small>
                                 </label>
                                 <div class="faq-input" :class="{ 'error-input' : errors.timezone}">
                                     <div class="select-icon"></div>
                                     <select class="form-control" id="timeZone" style="height: 56px;"
-                                            v-model="freelancerData.lastName">
+                                            v-model="freelancerData.timezone">
                                         <option value="" selected="selected">Select your timezone</option>
                                         <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00)
                                             Eastern
@@ -382,7 +403,7 @@
                         <div class="account-edit-section-inputs">
                             <div class="faq-question-input account-edit-input">
                                 <label class="faq-input-label">
-                                    password
+                                    password <small style="color:red;"> *</small>
                                 </label>
                                 <div class="faq-input" :class="{ 'error-input' : errors.password}">
                                     <input type="password" placeholder="Enter your password"
@@ -399,7 +420,7 @@
                             </div>
                             <div class="faq-question-input account-edit-input">
                                 <label class="faq-input-label">
-                                    Confirm your password
+                                    Confirm your password <small style="color:red;"> *</small>
                                 </label>
                                 <div class="faq-input" :class="{ 'error-input' : errors.password_confirmation}">
                                     <input type="password" placeholder="Confirm your password"
@@ -418,7 +439,7 @@
                     </div>
                     <div class="account-edit-section-edit-btn no-decoration"
                          id="submitBtnWrapper">
-                        <a class="btn-primary" href="javascript:void(0)">
+                        <a class="btn-primary" href="javascript:void(0)" @click="submitForm">
                             CONTINUE
                         </a>
                     </div>
@@ -520,25 +541,17 @@
                     'lastName': '',
                     'phone': '',
                     'email': '',
-                    'audioError': '',
                     'password': '',
-
-                    'programming_language': '',
-                    'framework': '',
-                    'database': '',
 
                     'skype': '',
                     'instagram': '',
                     'linkedin': '',
                     'website': '',
                     'facebook': '',
-                    'second_email': '',
                     'github': '',
                     'timezone': '',
+                    'city': '',
 
-                    'hourly_rate': '',
-                    'available_hours': '',
-                    'monthly_rate': '',
                 },
                 freelancerData: {
                     'id': '',
@@ -559,29 +572,14 @@
                     'linkedin': '',
                     'website': '',
                     'facebook': '',
-                    'second_email': '',
                     'github': '',
-
-                    'programming_language': '',
-                    'framework': '',
-                    'database': '',
-
-                    'hourly_rate': '',
-                    'available_hours': '',
-                    'monthly_rate': '',
 
                 }
             }
         },
         methods: {
-            handleFileUpload() {
-                this.file = this.$refs.file.files[0];
-                this.fileChosen = true;
-            },
-            handleCVUpload() {
-                this.cv_file = this.$refs.cv_file.files[0];
-            },
-            validateForm() {
+            submitForm() {
+                this.isLoading = true;
                 let formData = new FormData();
 
                 $.each(this.freelancerData, (field) => {
@@ -589,72 +587,17 @@
                 });
 
                 this.clearErrors();
-                this.isLoading = true;
-
-                axios.post('/freelancer/it/register/validate', formData).then((response) => {
-                    console.log(response.data);
-                    if (response.data.errors) {
-                        this.updateErrors(response.data.errors);
-                        this.isLoading = false;
-                    } else {
-                        $('#saveAudioRegister').click();
-                        this.isLoading = true;
-                    }
-                });
-
-            },
-            submitForm() {
-                if (this.toBeEditedRecord.src.length < 1 && this.file.length < 1) {
-                    alert('Please upload the required record..');
-                    return;
-                }
-                this.isLoading = true;
-                let formData = new FormData();
-                formData.append('audioFile', this.file);
-                if (this.cv_file !== '') {
-                    formData.append('included_cv', this.cv_file);
-                }
-                formData.append('cv_included', this.cv_included);
-                formData.append('src', this.toBeEditedRecord.src);
-                formData.append('title', 'Business support application (uploaded/link)');
-                formData.append('transcription', "");
-                formData.append('audioType', 'uploaded');
-
-
-                $.each(this.freelancerData, (field) => {
-                    if (!formData.has(field)) {
-                        formData.append(field, this.freelancerData[field]);
-                    }
-                });
-
-                this.clearErrors();
 
                 axios.post('/freelancer/it/register/submit',
                     formData,
-                    {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        onUploadProgress: function (progressEvent) {
-                            this.uploadPercentage = parseInt(Math.round((progressEvent.loaded * 100) / progressEvent.total));
-                        }.bind(this)
-                    }
                 ).then((response) => {
                     if (response.data.errors) {
                         this.updateErrors(response.data.errors);
                         this.isLoading = false;
                     } else {
-                        window.location.href = '/freelancer';
+                        window.location.href = '/freelancer/dashboard/my-account';
                     }
                 });
-            },
-            changesSaved() {
-                // changes saved :
-                $('#changesSaved').fadeIn('slow');
-                setTimeout(function () {
-                    $('#changesSaved').fadeOut();
-                }, 2000);
             },
             clearErrors() {
                 $.each(this.errors, (error) => {
@@ -662,32 +605,16 @@
                 });
 
             },
-            setUploadMethod(method) {
-                this.uploadMethod = method;
+            clearInput(field) {
+                this.freelancerData[field] = '';
             },
-            clearUploadMethod() {
-                this.uploadMethod = '';
-            },
-            loadingBtn() {
-                $('#loadingBtn').removeClass('d-none');
-                $('#saveAudio').addClass('d-none');
-            },
+
             updateErrors(responseErrors) {
                 $.each(this.errors, (error) => {
                     if (responseErrors[error]) {
                         this.errors[error] = responseErrors[error][0];
                     }
                 });
-            },
-            resetAudio() {
-                let startBtn = $('#startRecord');
-                startBtn.removeClass('d-none');
-                startBtn.css('display', 'block');
-                $('#record_status').fadeOut().addClass('d-none');
-
-                $('#playAudio').addClass('d-none');
-                $('#downloadAudio').addClass('d-none');
-                $('#discardAudio').addClass('d-none');
             }
 
         },
@@ -759,5 +686,7 @@
             width: 100% !important;
         }
     }
+
+
 
 </style>

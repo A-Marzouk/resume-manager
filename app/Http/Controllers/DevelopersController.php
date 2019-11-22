@@ -44,7 +44,7 @@ class DevelopersController extends Controller
     }
 
 
-    protected function developerRegisterValidator(array $data)
+    protected function developerRegisterValidatorALLFIELDS(array $data)
     {
         return Validator::make($data, [
             'firstName' => 'required|string|max:191|min:3',
@@ -71,6 +71,28 @@ class DevelopersController extends Controller
             'available_hours' => 'max:191|required',
             'monthly_rate' => 'max:191|required',
 
+        ]);
+    }
+
+
+    protected function developerRegisterValidator(array $data)
+    {
+        return Validator::make($data, [
+            'firstName' => 'required|string|max:191|min:3',
+            'lastName' => 'required|string|max:191|min:3',
+            'email' => 'required|string|email|max:191|unique:users',
+            'phone' => 'required|max:191|min:7',
+            'city' => 'required|max:191',
+            'timezone' => 'required|max:191',
+            'whatsapp' => 'max:191',
+            'skype' => 'nullable|max:191',
+            'password' => 'required|max:191|min:6|confirmed',
+
+            'instagram' => 'max:191',
+            'linkedin' => 'max:191',
+            'github' => 'max:191',
+            'website' => 'max:191',
+            'facebook' => 'max:191',
         ]);
     }
 
@@ -120,7 +142,7 @@ class DevelopersController extends Controller
     }
 
 
-    public function registerDeveloper(Request $request)
+    public function registerDeveloperOLD(Request $request)
     {
         // validate data
         if ($request->audioType == 'uploaded' && isset($request->audioFile)) {
@@ -163,7 +185,7 @@ class DevelopersController extends Controller
             $data['id'] = $developer->id;
 
             // login user
-            Auth::loginUsingId($developer->id);
+            Auth::loginUsingId($developer->user_id);
 
             return 'success';
         } else {
@@ -172,7 +194,21 @@ class DevelopersController extends Controller
 
     }
 
+    public function registerDeveloper(Request $request){
+        $validator = $this->developerRegisterValidator($request->all());
+        if ($validator->fails()) {
+            return ['errors' => $validator->errors()];
+        }
 
+
+        $developer = $this->createDeveloperInitially($request->all());
+
+        // login user
+        Auth::loginUsingId($developer->id);
+
+        return 'success';
+
+    }
     protected function createDeveloper(array $data)
     {
         $developer = app(User::class)->createAgent([
@@ -234,6 +270,40 @@ class DevelopersController extends Controller
         $skill->percentage = 95;
         $skill->save();
 
+        return $developer;
+    }
+
+    protected function createDeveloperInitially(array $data)
+    {
+        $developer = app(User::class)->createAgent([
+            'user' => [
+                'email' => $data['email'],
+                'password' => $data['password'],
+                'username' => $data['email'],
+            ],
+            'agent' => [],
+            'user_data' => [
+                'profession_id' => 2, // business-support(1), developer (2), designer (3)
+                'currency_id' => 1, // usd
+                'timezone' => 1,
+                // personal data
+                'first_name' => $data['firstName'],
+                'last_name' => $data['lastName'],
+                'city' => $data['city'],
+                'phone' => $data['phone'],
+                'skype' => $data['skype'],
+                'telegram' => $data['telegram'] ? $data['phone'] : '' ,
+                'whatsapp' => $data['whatsapp'] ? $data['phone'] : '' ,
+                'linkedin' => $data['linkedin'],
+                'github' => $data['github'],
+                'website' => $data['website'],
+                'facebook' => $data['facebook'],
+                'instagram' => $data['instagram'],
+
+            ]
+        ]);
+
+        $developer = User::where('email', $data['email'])->first();
 
         return $developer;
     }

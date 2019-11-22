@@ -283,7 +283,7 @@ class User extends Authenticatable implements HasMedia
 
     public function skills()
     {
-        return $this->hasMany(Skill::class);
+        return $this->hasMany(Skill::class)->orderBy('created_at', 'desc');
     }
 
     public function bookings()

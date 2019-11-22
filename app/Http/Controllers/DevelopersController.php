@@ -285,7 +285,7 @@ class DevelopersController extends Controller
             'user_data' => [
                 'profession_id' => 2, // business-support(1), developer (2), designer (3)
                 'currency_id' => 1, // usd
-                'timezone' => 1,
+                'timezone' => $data['timezone'],
                 // personal data
                 'first_name' => $data['firstName'],
                 'last_name' => $data['lastName'],

@@ -242,7 +242,6 @@ Route::post('/freelancer/it/register/validate','DevelopersController@validateDev
 Route::post('/freelancer/it/register/submit','DevelopersController@registerDeveloper')->name('developer.register');
 Route::post('/audio/save_for_register','DevelopersController@saveAudioForRegister');
 
-
 Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
     Route::get('/logout','Auth\LoginController@logout')->name('freelancer.logout');
@@ -251,8 +250,10 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
     Route::post('/account/personal/submit','AgentsController@editAgentPersonalInfo');
     Route::post('/account/professional/submit','AgentsController@editAgentProfessionalInfo');
+    Route::post('/developer/professional/submit','AgentsController@editDeveloperProfessionalInfo');
     Route::post('/account/edit/avatar','AgentsController@editAgentPersonalInfo');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
+    Route::get('/professional/it/edit','FreelancersController@viewProfessionalITEditPage')->name('freelancer.professional.edit');
     Route::get('/developer-card/edit','FreelancersController@showEditForm')->name('freelancer.dashboard');
     Route::get('/developer-card','FreelancersController@form')->name('freelancer.dashboard');
 

@@ -509,7 +509,7 @@
                         this.updateErrors(response.data.errors);
                         this.isLoading = false;
                     } else {
-                        window.location.href = '/freelancer/dashboard/my-account';
+                        window.location.href = '/freelancer/professional/it/edit';
                     }
                 });
             },

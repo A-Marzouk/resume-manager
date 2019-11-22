@@ -64,7 +64,10 @@
                     <a href="/freelancer/developer-card" class="normal-link mr-3" v-show="user.user_data.profession_id == 2">
                         DEVELOPER CARD
                     </a>
-                    <a href="/freelancer/professional/edit" class="normal-link">
+                    <a href="/freelancer/professional/edit" class="normal-link"  v-show="user.user_data.profession_id != 2">
+                        EDIT
+                    </a>
+                    <a href="/freelancer/professional/it/edit" class="normal-link"  v-show="user.user_data.profession_id == 2">
                         EDIT
                     </a>
                 </div>

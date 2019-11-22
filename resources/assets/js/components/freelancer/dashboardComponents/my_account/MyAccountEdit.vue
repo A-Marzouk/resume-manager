@@ -31,152 +31,374 @@
                     </div>
                 </div>
 
+
+
                 <div class="account-edit-section">
                     <div class="account-edit-section-heading">
-                        PROFILE PICTURE
+                        BASIC INFORMATION
                     </div>
-
-                    <div class="avatar">
-                        <img :src="getImageSrc(agentData.profile_picture)" alt="profile picture">
-                    </div>
-
                     <div class="account-edit-section-inputs">
-                        <div class="faq-question-input account-edit-input full-width">
-                            <label class="faq-input-description">
-                                Please upload a picture of yourself. There should be only your face
-                            </label>
-                        </div>
-
-                        <input type="file" ref="file" @change=handleFileUpload>
-                    </div>
-                </div>
-
-                <div class="account-edit-section">
-                    <div class="account-edit-section-heading">
-                        PERSONAL INFORMATION
-                    </div>
-                    <div class="account-edit-section-inputs row">
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter your name
+                                name <small style="color:red;"> *</small>
                             </label>
                             <div class="faq-input" :class="{ 'error-input' : errors.first_name}">
-                                <input
-                                        v-model="agentData.first_name"
-                                        type="text"
-                                        name="faq"
-                                        placeholder="Jose">
-                                <img
-                                        v-show="agentData.first_name"
-                                        v-on:click="clearInput('first_name')"
-                                        src="/images/client/campaign_activity/close_black.png"
-                                        alt="delete icon">
+                                <input type="text" placeholder="Enter your name" v-model="agentData.first_name">
+                                <img src="/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="agentData.first_name"
+                                     @click="clearInput('first_name')"
+                                >
                             </div>
                             <div class="error" v-if="errors.first_name">
-                                {{errors.first_name[0]}}
+                                {{errors.first_name}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter your surname
+                                surname <small style="color:red;"> *</small>
                             </label>
                             <div class="faq-input" :class="{ 'error-input' : errors.last_name}">
-                                <input
-                                        v-model="agentData.last_name"
-                                        type="text"
-                                        name="faq"
-                                        placeholder="Quintero">
-                                <img
-                                        v-show="agentData.last_name"
-                                        v-on:click="clearInput('last_name')"
-                                        src="/images/client/campaign_activity/close_black.png"
-                                        alt="delete icon">
+                                <input type="text" placeholder="Enter your surname"
+                                       v-model="agentData.last_name">
+                                <img src="/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="agentData.last_name"
+                                     @click="clearInput('last_name')"
+                                >
                             </div>
                             <div class="error" v-if="errors.last_name">
-                                {{errors.last_name[0]}}
+                                {{errors.last_name}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Choose your gender
+                                primary Email <small style="color:red;"> *</small>
                             </label>
-                            <div class="img-container">
-                                <div class="faq-input" :class="{ 'error-input' : errors.gender}">
-                                    <img v-on:click="agentData.gender = 'm'"
-                                         :src="`/images/icons/${(agentData.gender === 'm') ? 'male_icon_pressed' : 'male_icon'}.svg`">
-                                    <img v-on:click="agentData.gender = 'f'"
-                                         :src="`/images/icons/${(agentData.gender === 'f') ? 'female_icon_pressed' : 'female_icon'}.svg`">
+                            <div class="faq-input" :class="{ 'error-input' : errors.email}">
+                                <input type="email"  v-model="agentData.email" disabled>
+                            </div>
+                            <div class="error" v-if="errors.email">
+                                {{errors.email}}
+                            </div>
+                        </div>
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
+                                phone number <small style="color:red;"> *</small>
+                            </label>
+                            <div class="faq-input" :class="{ 'error-input' : errors.phone}">
+                                <input type="tel" placeholder="Enter your phone number"
+                                       v-model="agentData.phone" style="margin-bottom: 14px;">
+                                <img src="/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="agentData.phone"
+                                     @click="clearInput('phone')"
+                                >
+                            </div>
+                            <div class="d-flex">
+                                <div class="checkbox mr-3">
+                                    <label class="checkBoxText checkBoxContainer">
+                                        <input type="checkbox"
+                                               name="remember"
+                                               v-model="agentData.telegram">
+                                        <span class="rememberText">Telegram</span>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label class="checkBoxText checkBoxContainer">
+                                        <input type="checkbox"
+                                               name="remember"
+                                               v-model="agentData.whatsapp">
+                                        <span class="rememberText">Whatsapp</span>
+                                        <span class="checkmark"></span>
+                                    </label>
                                 </div>
                             </div>
-                            <div class="error" v-if="errors.gender">
-                                {{errors.gender[0]}}
-                            </div>
-                        </div>
-                        <div class="faq-question-input account-edit-input">
-                            <label class="faq-input-label">
-                                Enter your phone number
-                            </label>
-                            <div class="faq-input" :class="{'error-input': errors.phone}">
-                                <input
-                                        v-model="agentData.phone"
-                                        type="tel"
-                                        name="phone"
-                                        placeholder="123-3534634"
-                                >
-                                <img
-                                        v-show="agentData.phone"
-                                        v-on:click="clearInput('phone')"
-                                        src="/images/client/campaign_activity/close_black.png"
-                                        alt="delete icon">
-                            </div>
                             <div class="error" v-if="errors.phone">
-                                {{errors.phone[0]}}
+                                {{errors.phone}}
                             </div>
                         </div>
+
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter your city name
+                                city <small style="color:red;"> *</small>
                             </label>
-                            <div class="faq-input" :class="{'error-input': errors.city}">
-                                <input
-                                        v-model="agentData.city"
-                                        type="text"
-                                        name="faq"
-                                        placeholder="London"
+                            <div class="faq-input" :class="{ 'error-input' : errors.city}">
+                                <input type="text" placeholder="Enter your surname" v-model="agentData.city">
+                                <img src="/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="agentData.city"
+                                     @click="clearInput('city')"
                                 >
-                                <img
-                                        v-show="agentData.city"
-                                        v-on:click="clearInput('city')"
-                                        src="/images/client/campaign_activity/close_black.png"
-                                        alt="delete icon">
                             </div>
                             <div class="error" v-if="errors.city">
-                                {{errors.city[0]}}
+                                {{errors.city}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">
-                                Enter your PayPal acc number
+                                Select your time zone <small style="color:red;">             *</small>
                             </label>
-                            <div class="faq-input" :class="{'error-input': errors.paypal_acc_number}">
-                                <input
-                                        v-model="agentData.paypal_acc_number"
-                                        type="text"
-                                        name="faq"
-                                        placeholder="9128412945"
-                                >
-                                <img
-                                        v-show="agentData.paypal_acc_number"
-                                        v-on:click="clearInput('paypal_acc_number')"
-                                        src="/images/client/campaign_activity/close_black.png"
-                                        alt="delete icon">
+                            <div class="faq-input" :class="{ 'error-input' : errors.timezone}">
+                                <div class="select-icon"></div>
+                                <select class="form-control" id="timeZone" style="height: 56px;"
+                                        v-model="agentData.timezone">
+                                    <option value="" selected="selected">Select your timezone</option>
+                                    <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00)
+                                        Eastern
+                                        Time (US & Canada), Bogota, Lima
+                                    </option>
+                                    <option value="(GMT -6:00) Central Time (US & Canada), Mexico City">(GMT -6:00)
+                                        Central
+                                        Time
+                                        (US & Canada), Mexico City
+                                    </option>
+                                    <option value="(GMT -7:00) Mountain Time (US & Canada)">(GMT -7:00) Mountain
+                                        Time (US &
+                                        Canada)
+                                    </option>
+                                    <option value="(GMT -8:00) Pacific Time (US & Canada)">(GMT -8:00) Pacific Time
+                                        (US &
+                                        Canada)
+                                    </option>
+                                    <option value="(GMT -9:00) Alaska">(GMT -9:00) Alaska</option>
+                                    <option value="">--------------</option>
+                                    <option value="(GMT -12:00) Eniwetok, Kwajalein">(GMT -12:00) Eniwetok,
+                                        Kwajalein
+                                    </option>
+                                    <option value="(GMT -11:00) Midway Island, Samoa">(GMT -11:00) Midway Island,
+                                        Samoa
+                                    </option>
+                                    <option value="(GMT -10:00) Hawaii">(GMT -10:00) Hawaii</option>
+                                    <option value="(GMT -9:30) Taiohae">(GMT -9:30) Taiohae</option>
+                                    <option value="(GMT -9:00) Alaska">(GMT -9:00) Alaska</option>
+                                    <option value="(GMT -8:00) Pacific Time (US & Canada)">(GMT -8:00) Pacific Time
+                                        (US &
+                                        Canada)
+                                    </option>
+                                    <option value="(GMT -7:00) Mountain Time (US & Canada)">(GMT -7:00) Mountain
+                                        Time (US &
+                                        Canada)
+                                    </option>
+                                    <option value="(GMT -6:00) Central Time (US & Canada), Mexico City">(GMT -6:00)
+                                        Central
+                                        Time
+                                        (US & Canada), Mexico City
+                                    </option>
+                                    <option value="(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima">(GMT -5:00)
+                                        Eastern
+                                        Time (US & Canada), Bogota, Lima
+                                    </option>
+                                    <option value="(GMT -4:30) Caracas">(GMT -4:30) Caracas</option>
+                                    <option value="(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz">(GMT -4:00)
+                                        Atlantic
+                                        Time (Canada), Caracas, La Paz
+                                    </option>
+                                    <option value="(GMT -3:30) Newfoundland">(GMT -3:30) Newfoundland</option>
+                                    <option value="(GMT -3:00) Brazil, Buenos Aires, Georgetown">(GMT -3:00) Brazil,
+                                        Buenos
+                                        Aires, Georgetown
+                                    </option>
+                                    <option value="(GMT -2:00) Mid-Atlantic">(GMT -2:00) Mid-Atlantic</option>
+                                    <option value="(GMT -1:00) Azores, Cape Verde Islands">(GMT -1:00) Azores, Cape
+                                        Verde
+                                        Islands
+                                    </option>
+                                    <option value="(GMT +0:00) Western Europe Time, London, Lisbon, Casablanca">(GMT
+                                        +0:00)
+                                        Western Europe Time, London, Lisbon, Casablanca
+                                    </option>
+                                    <option value="(GMT +1:00) Brussels, Copenhagen, Madrid, Paris">(GMT +1:00)
+                                        Brussels,
+                                        Copenhagen, Madrid, Paris
+                                    </option>
+                                    <option value="(GMT +2:00) Kaliningrad, South Africa">(GMT +2:00) Kaliningrad,
+                                        South
+                                        Africa
+                                    </option>
+                                    <option value="(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg">(GMT +3:00)
+                                        Baghdad,
+                                        Riyadh, Moscow, St. Petersburg
+                                    </option>
+                                    <option value="(GMT +3:30) Tehran">(GMT +3:30) Tehran</option>
+                                    <option value="(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi">(GMT +4:00) Abu
+                                        Dhabi,
+                                        Muscat,
+                                        Baku, Tbilisi
+                                    </option>
+                                    <option value="(GMT +4:30) Kabul">(GMT +4:30) Kabul</option>
+                                    <option value="(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent">(GMT
+                                        +5:00)
+                                        Ekaterinburg, Islamabad, Karachi, Tashkent
+                                    </option>
+                                    <option value="(GMT +5:30) Bombay, Calcutta, Madras, New Delhi">(GMT +5:30)
+                                        Bombay,
+                                        Calcutta, Madras, New Delhi
+                                    </option>
+                                    <option value="(GMT +5:45) Kathmandu, Pokhara">(GMT +5:45) Kathmandu, Pokhara
+                                    </option>
+                                    <option value="(GMT +6:00) Almaty, Dhaka, Colombo">(GMT +6:00) Almaty, Dhaka,
+                                        Colombo
+                                    </option>
+                                    <option value="(GMT +6:30) Yangon, Mandalay">(GMT +6:30) Yangon, Mandalay
+                                    </option>
+                                    <option value="(GMT +7:00) Bangkok, Hanoi, Jakarta">(GMT +7:00) Bangkok, Hanoi,
+                                        Jakarta
+                                    </option>
+                                    <option value="(GMT +8:00) Beijing, Perth, Singapore, Hong Kong">(GMT +8:00)
+                                        Beijing,
+                                        Perth,
+                                        Singapore, Hong Kong
+                                    </option>
+                                    <option value="(GMT +8:45) Eucla">(GMT +8:45) Eucla</option>
+                                    <option value="(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk">(GMT +9:00)
+                                        Tokyo,
+                                        Seoul,
+                                        Osaka, Sapporo, Yakutsk
+                                    </option>
+                                    <option value="(GMT +9:30) Adelaide, Darwin">(GMT +9:30) Adelaide, Darwin
+                                    </option>
+                                    <option value="(GMT +10:00) Eastern Australia, Guam, Vladivostok">(GMT +10:00)
+                                        Eastern
+                                        Australia, Guam, Vladivostok
+                                    </option>
+                                    <option value="(GMT +10:30) Lord Howe Island">(GMT +10:30) Lord Howe Island
+                                    </option>
+                                    <option value="(GMT +11:00) Magadan, Solomon Islands, New Caledonia">(GMT
+                                        +11:00)
+                                        Magadan,
+                                        Solomon Islands, New Caledonia
+                                    </option>
+                                    <option value="(GMT +11:30) Norfolk Island">(GMT +11:30) Norfolk Island</option>
+                                    <option value="(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka">(GMT +12:00)
+                                        Auckland,
+                                        Wellington, Fiji, Kamchatka
+                                    </option>
+                                    <option value="(GMT +12:45) Chatham Islands">(GMT +12:45) Chatham Islands
+                                    </option>
+                                    <option value="(GMT +13:00) Apia, Nukualofa">(GMT +13:00) Apia, Nukualofa
+                                    </option>
+                                    <option value="(GMT +14:00) Line Islands, Tokelau">(GMT +14:00) Line Islands,
+                                        Tokelau
+                                    </option>
+                                </select>
                             </div>
-                            <div class="error" v-if="errors.paypal_acc_number">
-                                {{errors.paypal_acc_number[0]}}
+                            <div class="error" v-if="errors.timezone">
+                                {{errors.timezone}}
                             </div>
                         </div>
                     </div>
+                    <!-- small inputs social -->
+                    <div class="account-edit-section-heading">
+                        SOCIAL INFORMATION
+                    </div>
+                    <div class="account-edit-section-inputs">
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
+                                Skype ID
+                            </label>
+                            <div class="faq-input small" :class="{ 'error-input' : errors.skype}">
+                                <input type="text" placeholder="Enter your Skype ID" v-model="agentData.skype">
+                                <img src="/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="agentData.skype"
+                                     @click="clearInput('skype')"
+                                >
+                            </div>
+                            <div class="error" v-if="errors.skype">
+                                {{errors.skype}}
+                            </div>
+                        </div>
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
+                                Github
+                            </label>
+                            <div class="faq-input small" :class="{ 'error-input' : errors.github}">
+                                <input type="text" placeholder="Github account url" v-model="agentData.github">
+                                <img src="/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="agentData.github"
+                                     @click="clearInput('github')"
+                                >
+                            </div>
+                            <div class="error" v-if="errors.github">
+                                {{errors.github}}
+                            </div>
+                        </div>
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
+                                Linkedin
+                            </label>
+                            <div class="faq-input small" :class="{ 'error-input' : errors.linkedin}">
+                                <input type="text" placeholder="Linkedin profile url"
+                                       v-model="agentData.linkedin">
+                                <img src="/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="agentData.linkedin"
+                                     @click="clearInput('linkedin')"
+                                >
+                            </div>
+                            <div class="error" v-if="errors.linkedin">
+                                {{errors.linkedin}}
+                            </div>
+                        </div>
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
+                                Website
+                            </label>
+                            <div class="faq-input small" :class="{ 'error-input' : errors.website}">
+                                <input type="text" placeholder="Enter your Website url"
+                                       v-model="agentData.website">
+                                <img src="/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="agentData.website"
+                                     @click="clearInput('website')"
+                                >
+                            </div>
+                            <div class="error" v-if="errors.website">
+                                {{errors.website}}
+                            </div>
+                        </div>
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
+                                Facebook
+                            </label>
+                            <div class="faq-input small" :class="{ 'error-input' : errors.facebook}">
+                                <input type="text" placeholder="Facebook profile url"
+                                       v-model="agentData.facebook">
+                                <img src="/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="agentData.facebook"
+                                     @click="clearInput('facebook')"
+                                >
+                            </div>
+                            <div class="error" v-if="errors.facebook">
+                                {{errors.facebook}}
+                            </div>
+                        </div>
+                        <div class="faq-question-input account-edit-input">
+                            <label class="faq-input-label">
+                                Instagram
+                            </label>
+                            <div class="faq-input small" :class="{ 'error-input' : errors.instagram}">
+                                <input type="text" placeholder="Instagram profile url"
+                                       v-model="agentData.instagram">
+                                <img src="/images/client/campaign_activity/close_black.png"
+                                     alt="delete icon"
+                                     v-show="agentData.instagram"
+                                     @click="clearInput('instagram')"
+                                >
+                            </div>
+                            <div class="error" v-if="errors.instagram">
+                                {{errors.instagram}}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- small inputs end-->
                 </div>
+
+
                 <div class="account-edit-section sub-section">
                     <div class="account-edit-section-heading">
                         PASSWORD
@@ -236,19 +458,26 @@
     export default {
         data() {
             return {
-                user: {},
-                agent: {},
                 errors: [],
                 agentData: {
-                    'profile_picture': this.$attrs.current_user.user_data.profile_picture,
                     'first_name': this.$attrs.current_user.user_data.first_name,
                     'last_name': this.$attrs.current_user.user_data.last_name,
-                    'gender': this.$attrs.current_user.user_data.gender,
                     'phone': this.$attrs.current_user.user_data.phone,
+                    'email': this.$attrs.current_user.email,
                     'city': this.$attrs.current_user.user_data.city,
-                    'paypal_acc_number': this.$attrs.current_user.user_data.paypal_acc_number,
                     'password': '',
                     'password_confirmation': '',
+
+                    'whatsapp': this.$attrs.current_user.user_data.whatsapp === 'false' ? false : true,
+                    'telegram': this.$attrs.current_user.user_data.telegram === 'false' ? false : true,
+                    'timezone': this.$attrs.current_user.user_data.timezone,
+
+                    'skype': this.$attrs.current_user.user_data.skype,
+                    'instagram': this.$attrs.current_user.user_data.instagram,
+                    'linkedin': this.$attrs.current_user.user_data.linkedin,
+                    'website': this.$attrs.current_user.user_data.website,
+                    'facebook': this.$attrs.current_user.user_data.facebook,
+                    'github': this.$attrs.current_user.user_data.github,
                 },
                 isLoading: false,
                 notificationMessage:'',
@@ -262,29 +491,22 @@
                 $.each(this.agentData, (field) => {
                     form_data.append(field, this.agentData[field]);
                 });
-                if(this.profilePicture){
-                    form_data.append('profilePicture', this.profilePicture);
-                }
 
                 this.clearErrors();
                 this.isLoading = true;
 
                 axios.post('/freelancer/account/personal/submit', form_data)
                     .then((response) => {
-                        this.agentData.profile_picture = this.getImageSrc(response.data.profile_picture);
                         this.showSuccessMessage();
                     })
                     .catch((error) => {
                         if (typeof error.response.data === 'object') {
                             this.errors = error.response.data.errors;
+                            this.updateErrors(error.response.data.errors);
                         } else {
                             this.errors = ['Something went wrong. Please try again.'];
                         }
                     })
-            },
-            handleFileUpload() {
-                this.profilePicture = this.$refs.file.files[0];
-                this.agentData.profile_picture = URL.createObjectURL(this.profilePicture) ;
             },
             clearErrors() {
                 $.each(this.errors, (error) => {
@@ -295,16 +517,12 @@
             clearInput(field) {
                 this.agentData[field] = '';
             },
-            getImageSrc(src) {
-                if (!src) {
-                    return '/images/placeholder.png';
-                }
-
-                if (src.charAt(0) !== '/' && src.charAt(0) !== 'h' && src.charAt(0) !== 'b') {
-                    return '/' + src;
-                }
-
-                return src;
+            updateErrors(responseErrors) {
+                $.each(this.errors, (error) => {
+                    if (responseErrors[error]) {
+                        this.errors[error] = responseErrors[error][0];
+                    }
+                });
             },
             showSuccessMessage(){
                 $('.notificationBar').css('background','#FFBA69') ;
@@ -362,4 +580,18 @@
     .main-box-margin{
         margin-top: 22px;
     }
+
+    .faq-input.small {
+        width: 250px !important;
+        max-width: 100%;
+
+
+        @media (max-width: 1240px) {
+            width: 307px!important;
+        }
+        @media (max-width: 600px) {
+            width: 100% !important;
+        }
+    }
+
 </style>

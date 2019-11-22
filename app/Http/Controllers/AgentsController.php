@@ -332,33 +332,30 @@ class AgentsController extends Controller
 
     public function editAgentPersonalInfo (Request $request) {
         $request->validate([
-            'profile_picture' => 'max:1500|required',
             'first_name' => 'max:191|required',
             'last_name' => 'max:191|required',
-            'phone' => 'min:7|max:191|required',
-            'city' => 'max:191',
-            'paypal_acc_number' => 'max:1500',
             'password' => 'nullable|min:6|max:191|confirmed',
+
+            'phone' => 'min:7|max:191|required',
+            'city' => 'max:191|required',
+
+            'timezone' => 'required|max:191',
+            'whatsapp' => 'max:191',
+            'telegram' => 'max:191',
+            'skype' => 'nullable|max:191',
+
+            'instagram' => 'max:191',
+            'linkedin' => 'max:191',
+            'github' => 'max:191',
+            'website' => 'max:191',
+            'facebook' => 'max:191',
         ]);
 
         $user = currentUser();
 
-        if(isset($_FILES['profilePicture'])){
-            $pathToPicture = Upload::profilePicture( 'profilePicture', 'profile_picture');
-            $user->userData->update([
-                'profile_picture' => $pathToPicture,
-            ]);
-        }
-
-        $user->userData->update([
-            'first_name' => $request->first_name ?? '',
-            'last_name' => $request->last_name ?? '',
-            'gender' => $request->gender ?? '',
-            'phone' => $request->phone ?? '',
-            'city' => $request->city != null ? $request->city : '',
-            'timezone' => 1,
-            'paypal_acc_number' => $request->paypal_acc_number != null ? $request->paypal_acc_number : '',
-        ]);
+        $user->userData->update(
+          $request->toArray()
+        );
 
         if(isset($request->password)){
             $user->update([

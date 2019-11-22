@@ -13,6 +13,7 @@ use App\Agent;
 use App\classes\Upload;
 use App\Language;
 use App\Recording;
+use App\Skill;
 use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -404,6 +405,102 @@ class AgentsController extends Controller
         ];
 
 
+    }
+
+
+    public function editDeveloperProfessionalInfo(Request $request){
+
+        $request->validate([
+            'job_title' => 'max:191|required',
+            'available_hours_per_week' => 'max:191|required',
+            'hourly_rate' => 'max:191|required',
+            'monthly_salary' => 'max:191|required',
+            'monthly_salary_part_time' => 'max:191|required',
+        ]);
+
+        $user = currentUser();
+
+        $user->userData->update([
+            'job_title' => $request->job_title,
+        ]);
+
+
+        $user->agent->update([
+            'available_hours_per_week' => $request->available_hours_per_week === 'null' ? 0 : intval($request->available_hours_per_week) ,
+            'monthly_salary' =>$request->monthly_salary === 'null' ? 0 : intval($request->monthly_salary) ,
+            'monthly_salary_part_time' => $request->monthly_salary_part_time === 'null' ? 0 : intval($request->monthly_salary_part_time) ,
+            'hourly_rate' => intval($request->hourly_rate)
+        ]);
+
+
+        // make 6 for the developer as main skills :
+
+        $this->createSkills($request,$user);
+
+
+        return [
+            'status' => 'success'
+        ];
+
+
+    }
+
+    protected function createSkills($request,$user){
+
+        if(isset($request->programming_language1)){
+            $skill = new Skill;
+            $skill->user_id = $user->id;
+            $skill->skill_title = $request->programming_language1;
+            $skill->type = 'programming';
+            $skill->percentage = 95;
+            $skill->save();
+        }
+
+        if(isset($request->programming_language2)) {
+            $skill = new Skill;
+            $skill->user_id = $user->id;
+            $skill->skill_title = $request->programming_language2;
+            $skill->type = 'programming';
+            $skill->percentage = 95;
+            $skill->save();
+        }
+
+        if(isset($request->framework1)) {
+            $skill = new Skill;
+            $skill->user_id = $user->id;
+            $skill->skill_title = $request->framework1;
+            $skill->type = 'frameworks';
+            $skill->percentage = 95;
+            $skill->save();
+        }
+
+        if(isset($request->framework2)) {
+            $skill = new Skill;
+            $skill->user_id = $user->id;
+            $skill->skill_title = $request->framework2;
+            $skill->type = 'frameworks';
+            $skill->percentage = 95;
+            $skill->save();
+        }
+
+
+        if(isset($request->database1)) {
+            $skill = new Skill;
+            $skill->user_id = $user->id;
+            $skill->skill_title = $request->database1;
+            $skill->type = 'database';
+            $skill->percentage = 95;
+            $skill->save();
+        }
+
+        if(isset($request->database2)) {
+            $skill = new Skill;
+            $skill->user_id = $user->id;
+            $skill->skill_title = $request->database2;
+            $skill->type = 'database';
+            $skill->percentage = 95;
+            $skill->save();
+        }
     }
 
     public function updateAgent(Request $request)

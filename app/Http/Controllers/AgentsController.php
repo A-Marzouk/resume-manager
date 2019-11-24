@@ -408,6 +408,48 @@ class AgentsController extends Controller
     }
 
 
+    public function editAgentMedialInfo(Request $request){
+
+        $user = User::where('id',currentUser()->id)->with('agent','userData')->first();
+
+        $errors = [] ;
+
+        if(isset($_FILES['profile_picture'])){
+            // upload the resume to our storage
+            $pathToPicture = Upload::profilePicture( 'profile_picture', 'profile_picture');
+            if(!$pathToPicture){
+                $errors['profile_picture'] = [
+                    '0' => 'Error while uploading profile picture.'
+                ];
+            }
+            $user->userData->update([
+                'profile_picture' => $pathToPicture,
+            ]);
+        }
+
+        if(isset($_FILES['cv'])){
+            // upload the resume to our storage
+            $pathToResume = Upload::resume( 'cv', 'main_resume');
+
+            if(!$pathToResume){
+                $errors['cv'] = [
+                    '0' => 'Error while uploading file.'
+                ];
+            }
+            $user->agent->update([
+                'cv' => $pathToResume,
+            ]);
+        }
+
+        if(count($errors) > 0){
+            return [
+                'errors' => $errors
+            ] ;
+        }
+
+        return $user ;
+    }
+
     public function editDeveloperProfessionalInfo(Request $request){
 
         $request->validate([

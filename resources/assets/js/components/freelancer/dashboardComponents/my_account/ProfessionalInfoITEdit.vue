@@ -231,7 +231,7 @@
 
                     <div class="account-edit-section-edit-btn no-decoration">
                         <a href="javascript:void(0)" @click="submitForm">
-                            SAVE EDITS
+                            SAVE & CONTINUE
                         </a>
                     </div>
                 </div>
@@ -365,12 +365,11 @@
 
                 axios.post('/freelancer/developer/professional/submit', form_data)
                     .then((response) => {
-                        console.log(response.data);
                         this.showSuccessMessage();
+                        window.location.href = '/freelancer/media/edit';
                     })
                     .catch((error) => {
                         if (typeof error.response.data === 'object') {
-                            console.log(error.response.data.errors);
                             this.errors = error.response.data.errors;
                         } else {
                             this.errors = ['Something went wrong. Please try again.'];
@@ -434,6 +433,12 @@
         }
         @media (max-width: 600px) {
             width: 100% !important;
+        }
+    }
+
+    .no-decoration{
+        a:hover{
+            color:white;
         }
     }
 

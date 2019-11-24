@@ -49,6 +49,40 @@
 
                         <input type="file" ref="file" @change=handleFileUpload>
                     </div>
+                    <div class="error" v-if="errors.profile_picture">
+                        {{errors.profile_picture[0]}}
+                    </div>
+                </div>
+
+
+                <div class="account-edit-section">
+                    <div class="account-edit-section-heading">
+                        RESUME
+                    </div>
+
+                    <div class="account-edit-section-inputs flex-column d-flex">
+                        <div class="faq-question-input account-edit-input full-width">
+                            <label class="faq-input-description">
+                                Please upload your resume ( Only PDF allowed )
+                            </label>
+                        </div>
+
+                        <div class="avatar mt-3" v-show="agentData.cv">
+                            <img src="/images/pdf.png" alt="pdf uploaded" style="width: 40px;height: 50px; border-radius:0;">
+                        </div>
+
+                        <div class="mt-2">
+                            <a :href="'/'+agentData.cv" target="_blank" >View uploaded Resume</a>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="file" id="cv" ref="cv_file" name="included_cv" v-on:change="handleCVUpload"/>
+                        </div>
+
+                    </div>
+                    <div class="error" v-if="errors.cv">
+                        {{errors.cv[0]}}
+                    </div>
                 </div>
 
                 <div class="account-edit-section-edit-btn no-decoration">
@@ -73,30 +107,41 @@
                 errors: [],
                 agentData: {
                     'profile_picture': this.$attrs.current_user.user_data.profile_picture,
+                    'cv': this.$attrs.current_user.agent.cv,
                 },
                 isLoading: false,
                 notificationMessage:'',
-                profilePicture:''
+                profile_picture:'',
+                cv:'',
             }
         },
         methods: {
             submitForm() {
                 let form_data = new FormData();
 
-                $.each(this.agentData, (field) => {
-                    form_data.append(field, this.agentData[field]);
-                });
-                if(this.profilePicture){
-                    form_data.append('profilePicture', this.profilePicture);
+                if(this.profile_picture){
+                    form_data.append('profile_picture', this.profile_picture);
+                }
+
+                if(this.cv){
+                    form_data.append('cv', this.cv);
                 }
 
                 this.clearErrors();
                 this.isLoading = true;
 
-                axios.post('/freelancer/account/personal/submit', form_data)
+                axios.post('/freelancer/account/media/submit', form_data)
                     .then((response) => {
-                        this.agentData.profile_picture = this.getImageSrc(response.data.profile_picture);
+
+                        if(response.data.errors){
+                            this.errors = response.data.errors;
+                            return ;
+                        }
+
+                        this.agentData.profile_picture = this.getImageSrc(response.data.user_data.profile_picture);
+                        this.agentData.cv = response.data.agent.cv;
                         this.showSuccessMessage();
+
                     })
                     .catch((error) => {
                         if (typeof error.response.data === 'object') {
@@ -107,8 +152,11 @@
                     })
             },
             handleFileUpload() {
-                this.profilePicture = this.$refs.file.files[0];
-                this.agentData.profile_picture = URL.createObjectURL(this.profilePicture) ;
+                this.profile_picture = this.$refs.file.files[0];
+                this.agentData.profile_picture = URL.createObjectURL(this.profile_picture) ;
+            },
+            handleCVUpload() {
+                this.cv = this.$refs.cv_file.files[0];
             },
             clearErrors() {
                 $.each(this.errors, (error) => {

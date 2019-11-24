@@ -250,10 +250,12 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
     Route::post('/account/personal/submit','AgentsController@editAgentPersonalInfo');
     Route::post('/account/professional/submit','AgentsController@editAgentProfessionalInfo');
+    Route::post('/account/media/submit','AgentsController@editAgentMedialInfo');
     Route::post('/developer/professional/submit','AgentsController@editDeveloperProfessionalInfo');
     Route::post('/account/edit/avatar','AgentsController@editAgentPersonalInfo');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
     Route::get('/professional/it/edit','FreelancersController@viewProfessionalITEditPage')->name('freelancer.professional.edit');
+    Route::get('/media/edit','FreelancersController@viewMediaEditPage')->name('freelancer.professional.edit');
     Route::get('/developer-card/edit','FreelancersController@showEditForm')->name('freelancer.dashboard');
     Route::get('/developer-card','FreelancersController@form')->name('freelancer.dashboard');
 

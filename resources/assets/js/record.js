@@ -154,6 +154,10 @@ if ( navigator.mediaDevices.getUserMedia ) {
         saveAudioForRegister();
     });
 
+    $('#saveAudioMedia').on('click',function () {
+        saveAudioForMediaUpdate();
+    });
+
 
     function saveToDB() {
 
@@ -255,6 +259,40 @@ if ( navigator.mediaDevices.getUserMedia ) {
         (error)=>{
             console.log(error);
         });
+
+    }
+
+    function saveAudioForMediaUpdate(){
+        var data = new FormData();
+        if(blob == undefined){
+            alert('Recorded file is not detected. please try to register again.');
+            $('#loaderArea').removeClass('loader');
+            $('#businessRegisterForm').removeClass('d-none');
+            return;
+        }
+        // get the cv file :
+        let cv = $('#cv').prop('files')[0];
+        let profile_picture = $('#profile_picture').prop('files')[0];
+        data.append('file', blob);
+        data.append('type', blob.type);
+        if(cv !== undefined){
+            data.append('cv',cv);
+        }
+
+        if(profile_picture !== undefined){
+            data.append('profile_picture',profile_picture);
+        }
+
+        data.append('audioType','record');
+
+        axios.post('/audio/save_for_media',data).then( (response) => {
+                if(response.data.status === 'Success'){
+                    window.location.href = '/freelancer/dashboard';
+                }
+            },
+            (error)=>{
+                console.log(error);
+            });
 
     }
 

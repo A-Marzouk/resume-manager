@@ -241,6 +241,8 @@ Route::get('/freelancer/it/register','DevelopersController@developerForm')->name
 Route::post('/freelancer/it/register/validate','DevelopersController@validateDeveloperForm')->name('developer.from.validate');
 Route::post('/freelancer/it/register/submit','DevelopersController@registerDeveloper')->name('developer.register');
 Route::post('/audio/save_for_register','DevelopersController@saveAudioForRegister');
+Route::post('/audio/save_for_media','AgentsController@saveAudioForMedia');
+
 
 Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');

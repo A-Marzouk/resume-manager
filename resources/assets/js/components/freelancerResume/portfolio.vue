@@ -75,7 +75,7 @@
                         </a>
                     </div>
                     <div class="editBtn NoDecor">
-                        <a href="/freelancer/developer-card/edit">
+                        <a :href="'/freelancer/developer-card/edit?user_id=' + freelancer.id">
                             <img src="/images/edit_profile.png" alt="edit profile">
                             Edit profile
                         </a>

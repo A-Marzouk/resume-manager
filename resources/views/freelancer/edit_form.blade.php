@@ -2,8 +2,14 @@
 
 {{-- variables : $data . freelancer userdata --}}
 <?
-extract($data);
-$freelancer = auth()->user();
+use App\User;use Illuminate\Support\Facades\Input;extract($data);
+
+if(Input::get('user_id') && currentUser()->is_admin){
+    $freelancer = User::where('id',Input::get('user_id'))->first();
+}else{
+    $freelancer = currentUser();
+}
+
 ?>
 @section('content')
 
@@ -112,7 +118,7 @@ $freelancer = auth()->user();
                     {{--</div>--}}
                     <div class="editBtn NoDecor" style="margin-left: 10px;">
                         <a href="/freelancer/developer-card">
-                            <img src="/images/check_24px.png" alt="edit profile">
+                            <img src="/images/check_24px.png" alt="finish profile">
                             Finish editing
                         </a>
                     </div>

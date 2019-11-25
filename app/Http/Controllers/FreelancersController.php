@@ -12,6 +12,7 @@ use App\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
 
 class FreelancersController extends Controller
 {
@@ -19,11 +20,14 @@ class FreelancersController extends Controller
 
     public function __construct()
     {
-        $this->middleware('role:agent');
+        $this->middleware('role:agent|admin');
     }
 
     public function index()
     {
+        if(currentUser()->is_admin){
+            return redirect('/admin');
+        }
         $agent = Agent::where('id',currentAgent()->id)->with('user.userData','campaigns','logs.history','shifts')->first();
         return view('freelancer.dashboard', compact('agent'));
     }
@@ -84,20 +88,23 @@ class FreelancersController extends Controller
 
     public function showEditForm()
     {
-        $data = $this->getFreelancerData();
+        if(Input::get('user_id') && currentUser()->is_admin){
+            $data = $this->getFreelancerData(User::where('id',Input::get('user_id'))->with('agent')->first());
+        }else{
+            $data = $this->getFreelancerData(currentUser());
+        }
         return view('freelancer.edit_form', compact('data'));
     }
 
     public function showOldForm()
     {
-        $data = $this->getFreelancerData();
+        $data = $this->getFreelancerData(currentUser());
         $affiliates = Affiliate::all();
         return view('freelancer.old_form', compact('data', 'affiliates'));
     }
 
-    public function getFreelancerData()
+    public function getFreelancerData($currFreelancer)
     {
-        $currFreelancer = auth()->user();
         if (!isset($currFreelancer->userData)) {
             $userData = new UserData;
             $userData->user_id = $currFreelancer->id;

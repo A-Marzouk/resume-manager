@@ -168,7 +168,7 @@
                                     </td>
                                 </tr>
                                 <tr v-show="user.is_details_opened">
-                                    <td colspan="4" style="border-top:0; padding-top:0">
+                                    <td colspan="4" v-if="profession != 'developer'" style="border-top:0; padding-top:0">
                                         <div v-show="user.status < 4 " class="action-buttons-bar">
                                             <div class="disapprove-btn no-decoration">
                                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#disapprove-agent" @click="checkDefaultRadioDisapprove">
@@ -247,6 +247,11 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </td>
+                                    <td colspan="4" v-else style="border-top:0; padding-top:0">
+                                        <div id="freelancerPortfolio"  style="width: 95%;" class="d-flex justify-content-center">
+                                            <freelancer-portfolio :freelancer="user"></freelancer-portfolio>
                                         </div>
                                     </td>
                                 </tr>
@@ -595,7 +600,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .userEmailText{
         font-size:13px;
         color:gray;
@@ -604,5 +609,14 @@
 
     .cursorPointer:hover{
         cursor: pointer ;
+    }
+
+    .freelancerCard .navRow .navTab a{
+        border:none !important;
+    }
+
+    .freelancerCard .navRow .navTab.active {
+        border-bottom: 5px solid #4E75E8;
+        padding-bottom: 17px !important;
     }
 </style>

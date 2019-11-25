@@ -7,6 +7,7 @@
                   enctype="multipart/form-data"
                   class="container freelancerForm formDisplay"
             >
+                <span id="user_id" class="d-none">{{$freelancer->id}}</span>
                 {{csrf_field()}}
 
                 <div class="col-lg-2 col-6 imageCol">
@@ -259,7 +260,7 @@
 
                         {{-- Skills area --}}
                         <div id="freelancer_skills">
-                            <skills-list></skills-list>
+                            <skills-list :user_id="{{$freelancer->id}}"></skills-list>
                         </div>
 
 

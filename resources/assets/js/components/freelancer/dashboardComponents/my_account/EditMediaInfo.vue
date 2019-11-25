@@ -256,7 +256,7 @@
                         this.agentData.cv = response.data.agent.cv;
                         this.agentData.recordings = response.data.recordings;
                         this.showSuccessMessage();
-
+                        window.location.href = '/freelancer/media/edit';
                     })
                     .catch((error) => {
                         if (typeof error.response.data === 'object') {

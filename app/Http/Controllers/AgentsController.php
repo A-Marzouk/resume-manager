@@ -531,9 +531,6 @@ class AgentsController extends Controller
                 $record->title = 'Recorded application (record)';
                 $record->transcription = '';
                 $record->save();
-
-                return ['status' => 'Success'];
-
             }
         }
 
@@ -564,6 +561,8 @@ class AgentsController extends Controller
                 'cv' => $pathToResume,
             ]);
         }
+
+        return ['status' => 'Success'];
 
     }
 

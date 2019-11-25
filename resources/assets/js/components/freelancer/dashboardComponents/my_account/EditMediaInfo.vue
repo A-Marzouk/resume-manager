@@ -184,6 +184,7 @@
                        href="javascript:void(0)" v-show="uploadMethod != 'record'">
                         SAVE EDITS
                     </a>
+                    <a href="javascript:void(0)" class="d-none" id="saveAudioMedia"></a>
 
                 </div>
             </div>
@@ -217,8 +218,7 @@
         },
         methods: {
             submitFormWithRecord(){
-
-
+                $('#saveAudioMedia').click();
             },
             submitForm() {
                 let form_data = new FormData();

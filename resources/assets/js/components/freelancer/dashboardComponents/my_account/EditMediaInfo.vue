@@ -47,7 +47,7 @@
                             </label>
                         </div>
 
-                        <input type="file" ref="profile_picture" @change=handleProfilePictureUpload>
+                        <input type="file" ref="profile_picture" id="profile_picture" @change=handleProfilePictureUpload>
                     </div>
                     <div class="error" v-if="errors.profile_picture">
                         {{errors.profile_picture[0]}}

@@ -266,8 +266,6 @@ if ( navigator.mediaDevices.getUserMedia ) {
         var data = new FormData();
         if(blob == undefined){
             alert('Recorded file is not detected. please try to register again.');
-            $('#loaderArea').removeClass('loader');
-            $('#businessRegisterForm').removeClass('d-none');
             return;
         }
         // get the cv file :
@@ -287,13 +285,12 @@ if ( navigator.mediaDevices.getUserMedia ) {
 
         axios.post('/audio/save_for_media',data).then( (response) => {
                 if(response.data.status === 'Success'){
-                    window.location.href = '/freelancer/dashboard';
+                    window.location.href = '/freelancer/media/edit';
                 }
             },
             (error)=>{
                 console.log(error);
             });
-
     }
 
     function play() {

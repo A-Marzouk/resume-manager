@@ -85,13 +85,14 @@ class AdminsController extends Controller
         $limit = Input::get('limit') ?? '';
         $paginatedData = User::whereHas('data', function ($query) use ($profession_id) {
             $query->where('profession_id', '=', $profession_id);
-        })->with('data','agent','languages')->paginate($limit);
+        })->with(['data','agent','skills','projects'  => function ($query) {return $query->limit(10);},'languages','worksHistory.projects','references','educationsHistory'])->paginate($limit);
 
 
         foreach ($paginatedData as $user){
                 $user->is_details_opened = false;
                 $user->is_edited = false;
                 $user->is_skill_edited = false;
+                $user->user_data = $user->data ;
         }
 
         return $paginatedData ;

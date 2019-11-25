@@ -13,6 +13,7 @@ use Behance\Client;
 use http\Exception;
 use Illuminate\Http\Request;
 use App\classes\Telegram;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 use Laravel\Socialite\Facades\Socialite;
@@ -24,7 +25,12 @@ class UserDataController extends Controller
 
     public function store(Request $request)
     {
-        $userData = UserData::where('user_id', currentUser()->id)->first();
+        if(isset($request->user_id)){
+            $user_id = $request->user_id;
+        }else{
+            $user_id =  currentUser()->id ;
+        }
+        $userData = UserData::where('user_id',$user_id)->first();
         if ($userData) {
             $data = $request->all();
             foreach ($data as $key => $value) {
@@ -74,12 +80,13 @@ class UserDataController extends Controller
                 }
                 else {
                     $userData->job_title = $request->jobTitle;
-                    $userData->first_name = $request->name;
+                    $userData->first_name = explode(' ',$request->name)[0];
+                    $userData->last_name = explode(' ',$request->name)[1];
                     if($request->availableHours != null){
                         $userData->available_hours_per_week = $request->availableHours;
                     }
 
-                    $agent = Agent::where('user_id', currentUser()->id)->first() ;
+                    $agent = Agent::where('user_id',$user_id)->first() ;
                     if($request->salary != null){
                         $agent->hourly_rate = $request->salary ;
                         $agent->save();

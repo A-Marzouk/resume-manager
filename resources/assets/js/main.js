@@ -48,7 +48,6 @@ $(document).ready(function() {
       freelancer_id,
     search_id };
     axios.post('/search_delete_freelancer', deleteData).then((response) => {
-      console.log(response.data);
 
       // hide the deleted column slowly :
       $('#selectedFreelancerSearch' + freelancer_id).fadeOut(2000);
@@ -201,7 +200,9 @@ $(document).ready(function() {
         contentType: false,
         cache: false,
         processData: false,
-        beforeSend: function() {},
+        beforeSend: function() {
+          this.data.append('user_id',$('#user_id').html());
+        },
         xhr: function() {
           var xhr = new window.XMLHttpRequest();
           xhr.upload.addEventListener("progress", function(evt) {
@@ -246,7 +247,6 @@ $(document).ready(function() {
           return xhr;
         },
         success: function(response) {
-          console.log(response);
           if ($('#video_file').val()) {
             // load the video
             $('#videoFileFrame')[0].load();

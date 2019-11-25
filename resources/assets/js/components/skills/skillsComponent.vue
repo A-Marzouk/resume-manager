@@ -88,6 +88,7 @@
 
 <script>
     export default {
+        props:['user_id'],
         data() {
             return {
                 skills: [],
@@ -101,7 +102,7 @@
         },
         methods: {
             getSkills() {
-                axios.get('/freelancer/skills').then(
+                axios.get('/freelancer/skills?user_id=' + this.user_id).then(
                     (response) => {
                         this.skills = response.data;
                         setTimeout(() => {
@@ -142,10 +143,11 @@
                     {
                         skill_title: this.currSkill.skill_title,
                         type: this.currType,
-                        percentage: this.currSkill.percentage
+                        percentage: this.currSkill.percentage,
+                        user_id: this.user_id,
                     }
                 ).then((response) => {
-                    console.log(response.data)
+                    console.log(response.data);
                     let newSkill = {
                         id: response.data.id,
                         skill_title: this.currSkill.skill_title,

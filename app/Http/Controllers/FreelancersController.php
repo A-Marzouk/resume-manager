@@ -54,7 +54,7 @@ class FreelancersController extends Controller
 
     public function viewMediaEditPage()
     {
-        $currentUser = User::where('id',currentUser()->id)->with('agent','userData','languages','skills')->first();
+        $currentUser = User::where('id',currentUser()->id)->with('agent','userData','recordings')->first();
         return view('freelancer.my_account.media_info_edit',compact('currentUser'));
     }
 

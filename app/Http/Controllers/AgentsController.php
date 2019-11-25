@@ -410,7 +410,7 @@ class AgentsController extends Controller
 
     public function editAgentMedialInfo(Request $request){
 
-        $user = User::where('id',currentUser()->id)->with('agent','userData')->first();
+        $user = User::where('id',currentUser()->id)->with('agent','userData','recordings')->first();
 
         $errors = [] ;
 
@@ -441,14 +441,132 @@ class AgentsController extends Controller
             ]);
         }
 
+        if(isset($_FILES['file']) && $request->uploadMethod === 'upload'){
+
+            $userRecordings = Recording::where('user_id',currentUser()->id)->get();
+
+            $fname = "Record_".date(time()).'.ogg';
+            $target_file = "uploads/register_audios/" . $fname ;
+
+            if (file_exists($target_file)) {
+                unlink($target_file);
+            }
+
+            if(!move_uploaded_file($_FILES['file']['tmp_name'], $target_file)){
+                $errors['audio'] = [
+                    '0' => 'Error while uploading file.'
+                ];
+            }else{
+
+                foreach ($userRecordings as $record){
+                    if (file_exists(public_path() . '/' .$record->src)) {
+                        unlink(public_path() . '/' .$record->src);
+                    }
+                    $record->delete();
+                }
+
+                // save record :
+                $record = new Recording;
+                $record->user_id = currentUser()->id;
+                $record->src = '/'.$target_file;
+                $record->title = 'Recorded application (record)';
+                $record->transcription = '';
+                $record->save();
+            }
+        }
+
+
+        if ($request->uploadMethod === 'url'){
+            // save record :
+            $record = new Recording;
+            $record->user_id = currentUser()->id;
+            $record->src = $request->link;
+            $record->title = 'Recorded application (Link)';
+            $record->transcription = '';
+            $record->save();
+        }
+
         if(count($errors) > 0){
             return [
                 'errors' => $errors
             ] ;
         }
 
+        $user = User::where('id',currentUser()->id)->with('agent','userData','recordings')->first();
+
         return $user ;
     }
+
+
+    public function saveAudioForMedia(Request $request){
+
+        $userRecordings = Recording::where('user_id',currentUser()->id)->get();
+        $user = User::where('id',currentUser()->id)->with('agent','userData','recordings')->first();
+
+        if(isset($_FILES['file']) and !$_FILES['file']['error']){
+            $fname = "Record_".date(time()).'.ogg';
+            $target_file = "uploads/register_audios/" . $fname ;
+
+            if (file_exists($target_file)) {
+                unlink($target_file);
+            }
+
+            if(!move_uploaded_file($_FILES['file']['tmp_name'], $target_file)){
+                $errors['audio'] = [
+                    '0' => 'Error while uploading file.'
+                ];
+            }else{
+
+                foreach ($userRecordings as $record){
+                    if (file_exists(public_path() . '/' .$record->src)) {
+                        unlink(public_path() . '/' .$record->src);
+                    }
+                    $record->delete();
+                }
+
+                // save record :
+                $record = new Recording;
+                $record->user_id = currentUser()->id;
+                $record->src = '/'.$target_file;
+                $record->title = 'Recorded application (record)';
+                $record->transcription = '';
+                $record->save();
+
+                return ['status' => 'Success'];
+
+            }
+        }
+
+
+        if(isset($_FILES['profile_picture'])){
+            // upload the resume to our storage
+            $pathToPicture = Upload::profilePicture( 'profile_picture', 'profile_picture');
+            if(!$pathToPicture){
+                $errors['profile_picture'] = [
+                    '0' => 'Error while uploading profile picture.'
+                ];
+            }
+            $user->userData->update([
+                'profile_picture' => $pathToPicture,
+            ]);
+        }
+
+        if(isset($_FILES['cv'])){
+            // upload the resume to our storage
+            $pathToResume = Upload::resume( 'cv', 'main_resume');
+
+            if(!$pathToResume){
+                $errors['cv'] = [
+                    '0' => 'Error while uploading file.'
+                ];
+            }
+            $user->agent->update([
+                'cv' => $pathToResume,
+            ]);
+        }
+
+    }
+
 
     public function editDeveloperProfessionalInfo(Request $request){
 

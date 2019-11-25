@@ -47,7 +47,7 @@
                             </label>
                         </div>
 
-                        <input type="file" ref="file" @change=handleFileUpload>
+                        <input type="file" ref="profile_picture" id="profile_picture" @change=handleProfilePictureUpload>
                     </div>
                     <div class="error" v-if="errors.profile_picture">
                         {{errors.profile_picture[0]}}
@@ -78,6 +78,7 @@
                         <div class="form-group mt-3">
                             <input type="file" id="cv" ref="cv_file" name="included_cv" v-on:change="handleCVUpload"/>
                         </div>
+                        <span id="cv_included_value" class="d-none"></span>
 
                     </div>
                     <div class="error" v-if="errors.cv">
@@ -85,12 +86,105 @@
                     </div>
                 </div>
 
+
+                <div class="row flex-column d-flex">
+
+                    <div class="form-group">
+                        <div class="text-left">
+                            Please upload / record a short audio recording describing your previous experience as a developer ( Ideal recording length from 1 - 2 minutes ).
+                            <br/>
+                            <div style="width:100%;margin-top:.25rem;font-size:100%;color:#dc3545">
+                                <strong>{{ errors.audioError }}</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex flex-column align-items-start" v-show="uploadMethod.length < 1">
+                        <div class="text-left" style="padding-bottom: 15px;">
+                            Please choose uploading method :
+                        </div>
+                        <div class="text-left" style="padding-bottom: 15px;">
+                            <span v-if="agentData.recordings[0] !== undefined"><a :href="agentData.recordings[0].src" target="_blank">Listen to uploaded audio</a></span>
+                        </div>
+                        <div class="row w-100">
+                            <div class="col-md-4 col-12" style="padding-top:10px;">
+                                <a href="javascript:void(0)" class="d-flex align-items-center btn btn-primary btn-block"
+                                   @click="setUploadMethod('upload')">Upload audio file</a>
+                            </div>
+                            <div class="col-md-4 col-12" style="padding-top:10px;">
+                                <a href="javascript:void(0)" class="d-flex align-items-center btn btn-primary btn-block"
+                                   @click="setUploadMethod('record')">Record audio</a>
+                            </div>
+                            <div class="col-md-4 col-12" style="padding-top:10px;">
+                                <a href="javascript:void(0)" class="d-flex align-items-center btn btn-primary btn-block"
+                                   @click="setUploadMethod('url')">Link</a>
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+
+                    <div id="uploadFile" v-show="uploadMethod == 'upload'">
+                        <div class="form-group col-md-12">
+                            <input type="file" id="file" ref="file" v-on:change="handleFileUpload"/>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" v-show="uploadPercentage > 0">
+                                <progress style="width: 300px;height:5px;" max="100"
+                                          :value.prop="uploadPercentage"></progress>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="recordAudio" class="form-group" v-show="uploadMethod == 'record'">
+                        <div class="recorder_wrapper recorder_wrapper_phone">
+                            <div class="recorder">
+                                <div id="recordImg">
+                                    <img src="/images/Microphone_1.png" alt="mic" width="30px">
+                                </div>
+                                <p id="record_status"></p>
+                                <div class="NoDecor">
+                                    <a href="javascript:void(0)" id="startRecord" class="btn btn-default">New record</a>
+                                    <a href="javascript:void(0)" id="stopAudio" style="padding-top: 20px;" class="d-none">Stop</a>
+                                    <br>
+                                    <a href="javascript:void(0)" id="playAudio" class="d-none">Play</a><br/>
+                                    <a href="javascript:void(0)" id="downloadAudio" class="d-none">Download</a><br/>
+                                    <a href="javascript:void(0)" id="discardAudio" class="d-none" @click="resetAudio">Discard</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="urlToAudio" class="form-group col-md-12" v-show="uploadMethod == 'url'">
+                        <label class="panelFormLabel">Link to your record :</label>
+                        <input type="text" class="form-control panelFormInput" v-model="link">
+                    </div>
+                </div>
+
+                <div class="error" v-if="errors.audio">
+                    {{errors.audio[0]}}
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        <a href="javascript:void(0)" class="btn btn-primary" style=" padding-top: 10px;" @click="clearUploadMethod"
+                           v-show="uploadMethod.length > 0"> Back </a>
+                    </div>
+                </div>
+
+
+
                 <div class="account-edit-section-edit-btn no-decoration">
                     <a class="btn-primary"
-                       v-on:click="submitForm"
-                       href="javascript:void(0)">
+                       v-on:click="submitFormWithRecord"
+                       href="javascript:void(0)" v-show="uploadMethod == 'record'">
                         SAVE EDITS
                     </a>
+
+                    <a class="btn-primary"
+                       v-on:click="submitForm"
+                       href="javascript:void(0)" v-show="uploadMethod != 'record'">
+                        SAVE EDITS
+                    </a>
+
                 </div>
             </div>
 
@@ -105,17 +199,27 @@
                 user: {},
                 agent: {},
                 errors: [],
+                file: '',
+                fileChosen: false,
+                uploadPercentage: 0,
+                uploadMethod: '',
                 agentData: {
                     'profile_picture': this.$attrs.current_user.user_data.profile_picture,
                     'cv': this.$attrs.current_user.agent.cv,
+                    'recordings': this.$attrs.current_user.recordings,
                 },
                 isLoading: false,
                 notificationMessage:'',
                 profile_picture:'',
                 cv:'',
+                link:''
             }
         },
         methods: {
+            submitFormWithRecord(){
+
+
+            },
             submitForm() {
                 let form_data = new FormData();
 
@@ -126,6 +230,16 @@
                 if(this.cv){
                     form_data.append('cv', this.cv);
                 }
+
+                if(this.file && this.uploadMethod === 'upload'){
+                    form_data.append('file', this.file);
+                }
+
+                if(this.link.length > 0 && this.uploadMethod === 'url'){
+                    form_data.append('link', this.link);
+                }
+
+                form_data.append('uploadMethod',this.uploadMethod);
 
                 this.clearErrors();
                 this.isLoading = true;
@@ -140,6 +254,7 @@
 
                         this.agentData.profile_picture = this.getImageSrc(response.data.user_data.profile_picture);
                         this.agentData.cv = response.data.agent.cv;
+                        this.agentData.recordings = response.data.recordings;
                         this.showSuccessMessage();
 
                     })
@@ -151,12 +266,33 @@
                         }
                     })
             },
-            handleFileUpload() {
-                this.profile_picture = this.$refs.file.files[0];
+
+            resetAudio(){
+                let startBtn =  $('#startRecord') ;
+                startBtn.removeClass('d-none');
+                startBtn.css('display','block');
+                $('#record_status').fadeOut().addClass('d-none');
+
+                $('#playAudio').addClass('d-none');
+                $('#downloadAudio').addClass('d-none');
+                $('#discardAudio').addClass('d-none');
+            },
+            setUploadMethod(method) {
+                this.uploadMethod = method;
+            },
+            clearUploadMethod() {
+                this.uploadMethod = '';
+            },
+            handleProfilePictureUpload() {
+                this.profile_picture = this.$refs.profile_picture.files[0];
                 this.agentData.profile_picture = URL.createObjectURL(this.profile_picture) ;
             },
             handleCVUpload() {
                 this.cv = this.$refs.cv_file.files[0];
+            },
+            handleFileUpload() {
+                this.file = this.$refs.file.files[0];
+                this.fileChosen = true;
             },
             clearErrors() {
                 $.each(this.errors, (error) => {

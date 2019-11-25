@@ -175,18 +175,24 @@
                 <div class="account-edit-section-edit-btn no-decoration">
                     <a class="btn-primary"
                        v-on:click="submitFormWithRecord"
-                       href="javascript:void(0)" v-show="uploadMethod == 'record'">
+                       href="javascript:void(0)" v-show="uploadMethod == 'record' && !isLoading">
                         SAVE EDITS
                     </a>
 
                     <a class="btn-primary"
                        v-on:click="submitForm"
-                       href="javascript:void(0)" v-show="uploadMethod != 'record'">
+                       href="javascript:void(0)" v-show="uploadMethod != 'record' && !isLoading">
                         SAVE EDITS
                     </a>
-                    <a href="javascript:void(0)" class="d-none" id="saveAudioMedia"></a>
 
+                    <a class="btn-primary"  href="javascript:void(0)"
+                       v-show="isLoading">
+                        Loading..
+                    </a>
+
+                    <a href="javascript:void(0)" class="d-none" id="saveAudioMedia"></a>
                 </div>
+
             </div>
 
         </div>
@@ -213,14 +219,19 @@
                 notificationMessage:'',
                 profile_picture:'',
                 cv:'',
-                link:''
+                link:'',
             }
         },
         methods: {
             submitFormWithRecord(){
+                this.isLoading = true ;
                 $('#saveAudioMedia').click();
+                setTimeout(() => {
+                    this.isLoading = false ;
+                },3000);
             },
             submitForm() {
+                this.isLoading = true ;
                 let form_data = new FormData();
 
                 if(this.profile_picture){
@@ -242,7 +253,6 @@
                 form_data.append('uploadMethod',this.uploadMethod);
 
                 this.clearErrors();
-                this.isLoading = true;
 
                 axios.post('/freelancer/account/media/submit', form_data)
                     .then((response) => {
@@ -259,6 +269,7 @@
                         window.location.href = '/freelancer/media/edit';
                     })
                     .catch((error) => {
+                        this.isLoading = false ;
                         if (typeof error.response.data === 'object') {
                             this.errors = error.response.data.errors;
                         } else {

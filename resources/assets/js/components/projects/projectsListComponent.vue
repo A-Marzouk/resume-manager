@@ -32,6 +32,7 @@
 
 <script>
     export default {
+        props:['user_id'],
         data() {
             return {
                 projects: [],
@@ -39,6 +40,7 @@
                 canAddProject:true,
                 toBeEditedProject:{
                     'id':'',
+                    'user_id':this.user_id,
                     'projectName' :'',
                     'isActive':'',
                     'link' :'',
@@ -53,7 +55,7 @@
 
         methods: {
             getCurrentProjects() {
-                axios.get('/freelancer/projects').then(
+                axios.get('/freelancer/projects?user_id=' + this.user_id).then(
                     (response) => {
                         let currProjects =  response.data;
                         this.projects = currProjects;
@@ -123,6 +125,7 @@
             clearData(){
                 this.toBeEditedProject={
                     'id':'',
+                    'user_id':this.user_id,
                     'projectName' :'',
                     'isActive':'',
                     'link' :'',

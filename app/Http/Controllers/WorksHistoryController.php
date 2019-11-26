@@ -9,19 +9,29 @@
 namespace App\Http\Controllers;
 
 
+use App\User;
 use App\WorkHistory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class WorksHistoryController extends Controller
 {
     public function getWorks(){
        // get current authenticated freelancer :
-        $currentUser = auth()->user();
+        if(currentUser()->is_admin){
+            $currentUser = User::where('id',Input::get('user_id'))->first();
+        }else{
+            $currentUser = currentUser();
+        }
         return $currentUser->worksHistory;
     }
 
     public function addWork(Request $request){
-        $currentUser = currentUser();
+        if(currentUser()->is_admin){
+            $currentUser = User::where('id',$request->user_id)->first();
+        }else{
+            $currentUser = currentUser();
+        }
         $request->validate([
             'job_title' => 'max:190|required',
             'job_description' => 'max:1500|required',

@@ -138,7 +138,7 @@
                     </a>
                 </div>
                 <keep-alive>
-                    <router-view @showPositiveNotification="showNotification"></router-view>
+                    <router-view @showPositiveNotification="showNotification"  @openFreelancerPortfolio="openPortfolioModal"></router-view>
                 </keep-alive>
             </div>
         </div>
@@ -319,6 +319,23 @@
             </div>
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="freelancer_portfolio" tabindex="-1" role="dialog" aria-hidden="true" >
+            <div class="modal-dialog" role="document" style="width: 100%; height: 100%;padding: 0;">
+                <div class="modal-content border-0" style="height: auto; background: none;min-height: 100%;">
+                    <div class="modal-body">
+                        <div id="freelancerPortfolioPopUp" class="d-flex justify-content-center" v-if="selectedUserPortfolio">
+                            <freelancer-portfolio-popup :freelancer="selectedUserPortfolio"></freelancer-portfolio-popup>
+                        </div>
+                        <div v-else>
+                            Loading data..
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="modal fade centered-modal"
              id="add-agent"
              tabindex="-1"
@@ -391,10 +408,16 @@
                 selection: 'disapprove',
                 disapproveStatus: 'process',
                 notificationMessage: '',
-                typeOfAddedAgent:'business-support'
+                typeOfAddedAgent:'business-support',
+                selectedUserPortfolio:''
             }
         },
         methods:{
+            openPortfolioModal(user){
+                this.selectedUserPortfolio = user ;
+                let modalBtn = $('#freelancer_portfolio_btn');
+                modalBtn.click();
+            },
             selectTab(tabName){
                 this.activeTab = tabName ;
             },

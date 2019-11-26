@@ -11,19 +11,31 @@ namespace App\Http\Controllers;
 
 use App\classes\Upload;
 use App\Project;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ProjectsController extends Controller
 {
     public function getProjects(){
        // get current authenticated freelancer :
-        $currentUser = auth()->user();
+        if(currentUser()->is_admin){
+            $currentUser = User::where('id',Input::get('user_id'))->first();
+        }else{
+            $currentUser = currentUser();
+        }
+
         return $currentUser->projects;
     }
 
     public function addProject(Request $request){
 
-        $currentUser = currentUser();
+        if(currentUser()->is_admin){
+            $currentUser = User::where('id',$request->user_id)->first();
+        }else{
+            $currentUser = currentUser();
+        }
+
         $request->validate([
             'projectName' => 'max:190',
             'projectDesc' => 'max:1500',

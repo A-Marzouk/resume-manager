@@ -125,6 +125,7 @@
         // post data :
         this.form_data = new FormData;
         this.form_data.append('id',this.toBeEditedProject.id);
+        this.form_data.append('user_id',this.toBeEditedProject.user_id);
         this.form_data.append('projectName',this.toBeEditedProject.projectName ||'');
         this.form_data.append('link',this.toBeEditedProject.link||'');
         this.form_data.append('projectDesc',this.toBeEditedProject.projectDesc||'');
@@ -215,7 +216,7 @@
         return '/'+ src ;
       },
       getCurrentWorks() {
-        axios.get('/freelancer/workshistory').then(
+        axios.get('/freelancer/workshistory?user_id=' + this.toBeEditedProject.user_id).then(
                 (response) => {
                   this.worksHistory =  response.data;
                 }

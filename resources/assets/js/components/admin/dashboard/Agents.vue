@@ -137,7 +137,8 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <img src="/images/admin/down_arrow.png" alt="down arrow" :id="'detailsArrow'+user.id" @click="toggleDetails(user.id)">
+                                        <img v-if="profession !== 'developer'" src="/images/admin/down_arrow.png" alt="down arrow" :id="'detailsArrow'+user.id" @click="toggleDetails(user.id)">
+                                        <img v-else src="/images/client/payments/show_invoice.png" alt="open portfolio arrow" style="margin-top: -5px;"  @click="openFreelancerPortfolio(user)">
                                     </td>
                                     <td>
                                         <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
@@ -250,9 +251,7 @@
                                         </div>
                                     </td>
                                     <td colspan="4" v-else style="border-top:0; padding-top:0">
-                                        <div id="freelancerPortfolio"  style="width: 95%;" class="d-flex justify-content-center">
-                                            <freelancer-portfolio :freelancer="user"></freelancer-portfolio>
-                                        </div>
+                                        <a href="javascript:void(0)" id="freelancer_portfolio_btn" data-target="#freelancer_portfolio" data-toggle="modal"></a>
                                     </td>
                                 </tr>
                             </template>
@@ -343,9 +342,8 @@
                 </div>
 
             </div>
-
-
         </div>
+
     </div>
 </template>
 
@@ -422,6 +420,10 @@
             }
         },
         methods: {
+            openFreelancerPortfolio(user){
+                console.log('1'+user);
+                this.$emit('openFreelancerPortfolio',user);
+            },
             getAgentsByProfession(){
                 let profession_id = 0 ;
                 switch (this.profession) {
@@ -615,8 +617,4 @@
         border:none !important;
     }
 
-    .freelancerCard .navRow .navTab.active {
-        border-bottom: 5px solid #4E75E8;
-        padding-bottom: 17px !important;
-    }
 </style>

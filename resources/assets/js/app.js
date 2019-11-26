@@ -631,6 +631,7 @@ Vue.component('freelancer-resume', require('./components/resumeAgent/resumeCompo
 
 
 Vue.component('freelancer-portfolio', require('./components/freelancerResume/portfolio'));
+Vue.component('freelancer-portfolio-popup', require('./components/freelancerResume/PortfolioPopUp'));
 
 if ($("#freelancerResume").length !== 0) {
     let freelancerResume = new Vue({
@@ -655,6 +656,12 @@ if ($("#record_input").length !== 0){
 if ($("#freelancerPortfolio").length !== 0){
     let freelancerPortfolio = new Vue({
         el:'#freelancerPortfolio'
+    });
+}
+
+if ($("#freelancerPortfolioPopUp").length !== 0){
+    let freelancerPortfolioPopUp = new Vue({
+        el:'#freelancerPortfolioPopUp'
     });
 }
 

@@ -119,7 +119,7 @@
                                     city <small style="color:red;"> *</small>
                                 </label>
                                 <div class="faq-input" :class="{ 'error-input' : errors.city}">
-                                    <input type="text" placeholder="Enter your surname" v-model="freelancerData.city">
+                                    <input type="text" placeholder="Enter your city" v-model="freelancerData.city">
                                     <img src="/images/client/campaign_activity/close_black.png"
                                          alt="delete icon"
                                          v-show="freelancerData.city.length > 0"
@@ -495,8 +495,13 @@
             submitForm() {
                 this.isLoading = true;
                 let formData = new FormData();
-
                 $.each(this.freelancerData, (field) => {
+
+                    if( (/^http:\/\//.test(this.freelancerData[field])) || (/^https:\/\//.test(this.freelancerData[field])))
+                    {
+                        this.freelancerData[field] = this.freelancerData[field].replace(/(^\w+:|^)\/\//, '');
+                    }
+
                     formData.append(field, this.freelancerData[field]);
                 });
 

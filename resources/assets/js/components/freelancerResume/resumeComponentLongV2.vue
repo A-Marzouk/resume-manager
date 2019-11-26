@@ -713,6 +713,18 @@
                 showReferences: false,
             }
         },
+        watch: {
+            freelancer: function () {
+                // update freelancer data when prop changes
+                this.skills = this.freelancer.skills;
+                this.worksHistory = this.freelancer.works_history;
+                this.educationsHistory = this.freelancer.educations_history;
+                this.references = this.freelancer.references;
+                setTimeout(()=>{
+                    this.skillsBar();
+                },1000);
+            }
+        },
         methods: {
             getResizedImage(src) {
                 let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');

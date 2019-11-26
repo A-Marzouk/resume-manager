@@ -119,16 +119,9 @@
                                     </div>
                                     <div class="visiblty">
                                         <div class="pt-2 NoDecor">
-                                            <a href="javascript:void(0)" class="btn btn-primar btn-radius btn-responsive">
-                                                VISIT AGENT'S PROFILE
+                                            <a href="javascript:void(0)" @click="viewAgentCard(agent.user)" class="btn btn-primar btn-radius btn-responsive">
+                                                VIEW AGENT'S CARD
                                             </a>
-                                        </div>
-                                        <div>
-                                            <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center">
-                                                <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                                                     style="margin-right: 15px;"/>
-                                                LISTEN TO THE RECORD
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -141,34 +134,19 @@
                                          class="primaryjob-icon"/>
                                     {{agent.user.user_data.job_title}}
                                 </div>
-                                <div style="font-size: 16px; color : #4a5464; margin: 20px 0 20px;">
-                                    <span style="font-weight: 500;">Sector experience: </span> {{agent.experience}}
-                                </div>
-                                <div>
-                                    <span style="font-weight: 500; word-break: break-all;">Technologies, software: </span> {{agent.technologies}}
-                                </div>
-                                <div style="margin: 20px 0 ;">
-                                    <span style="font-weight: 500;">Languages: </span>
-                                    <span v-for="(language,index) in agent.user.languages"
-                                          :key="index"> {{language.label}}</span>
-                                </div>
                                 <div>
                                     <span style="font-weight: 500;">No. hours per week: </span>{{Math.trunc(agent.available_hours_per_week)}}
                                     hours
+                                </div>
+                                <div>
+                                    <span style="font-weight: 500;">Hourly rate :</span>{{Math.trunc(agent.hourly_rate)}}
+                                    $
                                 </div>
                             </div>
                             <div class="invisiblty">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <button class="btn btn-left btn-radius btn-responsive d-flex align-items-center"
-                                                style="width: 136px;!important">
-                                            <img src="/images/client/add_agent/search_result/ic/play_rec/Vector.png"
-                                                 style="margin-right: 15px;"/>
-                                            LISTEN TO THE RECORD
-                                        </button>
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-primar btn-radius btn-responsive">VISIT PROFILE</button>
+                                        <button class="btn btn-primar btn-radius btn-responsive" @click="viewAgentCard(agent.user)">VIEW CARD</button>
                                     </div>
                                 </div>
                             </div>
@@ -193,6 +171,11 @@
                 </div>
             </div>
         </div>
+
+        <a href="javascript:void(0)" id="openCardBtn" class="d-none" data-toggle="modal" data-target="#freelancer_portfolio"></a>
+
+
+
 
     </div>
 
@@ -295,6 +278,9 @@
             }
         },
         methods: {
+            viewAgentCard(user){
+                this.$emit('openFreelancerPortfolio',user);
+            },
             updateSearch() {
                 axios.post('/client/agents/search', this.searchParams)
                     .then((response) => {

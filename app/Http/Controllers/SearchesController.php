@@ -391,7 +391,10 @@ class SearchesController extends Controller
                 $query->where($searchArray);
             })
 
-            ->with('user.userData','user.languages')->get();
+            ->with(['user.userData','user.agent','user.languages','user.skills','user.worksHistory.projects','user.references','user.educationsHistory','user.projects'=>function($query) {
+                return $query->limit(10);
+            }])->get();
+
 
 
 

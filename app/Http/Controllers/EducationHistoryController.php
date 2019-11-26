@@ -10,18 +10,29 @@ namespace App\Http\Controllers;
 
 
 use App\EducationHistory;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class EducationHistoryController extends Controller
 {
     public function getEducations(){
        // get current authenticated freelancer :
-        $currentUser = auth()->user();
+        if(currentUser()->is_admin){
+            $currentUser = User::where('id',Input::get('user_id'))->first();
+        }else{
+            $currentUser = currentUser();
+        }
         return $currentUser->educationsHistory;
     }
 
     public function addEducation(Request $request){
-        $currentUser = auth()->user();
+        if(currentUser()->is_admin){
+            $currentUser = User::where('id',$request->user_id)->first();
+        }else{
+            $currentUser = currentUser();
+        }
+
         $request->validate([
             'school_title' => 'max:190|required',
             'description' => 'max:1500|required',

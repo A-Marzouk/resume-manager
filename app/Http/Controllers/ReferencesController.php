@@ -13,18 +13,28 @@ use App\classes\Upload;
 use App\EducationHistory;
 use App\Recording;
 use App\Reference;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ReferencesController extends Controller
 {
     public function getReferences(){
        // get current authenticated freelancer :
-        $currentUser = auth()->user();
+        if(currentUser()->is_admin){
+            $currentUser = User::where('id',Input::get('user_id'))->first();
+        }else{
+            $currentUser = currentUser();
+        }
         return $currentUser->references;
     }
 
     public function addReference(Request $request){
-        $currentUser = currentUser();
+        if(currentUser()->is_admin){
+            $currentUser = User::where('id',$request->user_id)->first();
+        }else{
+            $currentUser = currentUser();
+        }
         $request->validate([
             'title' => 'max:190|required',
             'name' => 'max:190',

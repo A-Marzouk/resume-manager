@@ -309,7 +309,7 @@
                 <div class="" style="padding-top: 17px; padding-bottom: 17px;">
                     <div class="col-md-12">
                         <div id="freelancer_educations">
-                            <educations-list></educations-list>
+                            <educations-list  :user_id="{{$freelancer->id}}"></educations-list>
                         </div>
                     </div>
                 </div>
@@ -319,7 +319,7 @@
                 <div class="" style="padding-top: 17px; padding-bottom: 17px;">
                     <div class="col-md-12">
                         <div id="freelancer_references">
-                            <references-list></references-list>
+                            <references-list  :user_id="{{$freelancer->id}}"></references-list>
                         </div>
                     </div>
                 </div>

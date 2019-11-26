@@ -739,6 +739,7 @@
                 this.skills = this.freelancer.skills;
                 this.worksHistory = this.freelancer.works_history;
                 this.educationsHistory = this.freelancer.educations_history;
+                this.references = this.freelancer.references;
                 setTimeout(()=>{
                     this.skillsBar();
                 },1000);

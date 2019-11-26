@@ -84,7 +84,8 @@
                                     </div>
 
                                     <div class="col-md-4 text-center" style="font-size: 15px; color: white;">
-                                        <span style="font-weight: bold;" v-if="freelancer.user_data.available_hours_per_week">{{Math.ceil(freelancer.user_data.available_hours_per_week)}} hours</span>
+                                        <span style="font-weight: bold;"
+                                              v-if="freelancer.user_data.available_hours_per_week">{{Math.ceil(freelancer.user_data.available_hours_per_week)}} hours</span>
                                         <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly
                                             Availability
                                         </div>
@@ -135,7 +136,8 @@
                                     </div>
                                     <div class="text-left" style="font-size: 15px; color: white; padding-top: 5px;">
                                         <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :
-                                            <span style="font-weight: bold;" v-if="freelancer.user_data.available_hours_per_week">{{Math.ceil(freelancer.user_data.available_hours_per_week)}} h/week</span>
+                                            <span style="font-weight: bold;"
+                                                  v-if="freelancer.user_data.available_hours_per_week">{{Math.ceil(freelancer.user_data.available_hours_per_week)}} h/week</span>
                                         </div>
                                     </div>
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
@@ -731,6 +733,17 @@
                 showReferences: false,
             }
         },
+        watch: {
+            freelancer: function () {
+                // update freelancer data when prop changes
+                this.skills = this.freelancer.skills;
+                this.worksHistory = this.freelancer.works_history;
+                this.educationsHistory = this.freelancer.educations_history;
+                setTimeout(()=>{
+                    this.skillsBar();
+                },1000);
+            }
+        },
         methods: {
             getResizedImage(src) {
                 let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
@@ -1200,8 +1213,8 @@
         text-align: center;
     }
 
-    .editBtn{
-        a:hover{
+    .editBtn {
+        a:hover {
             color: white;
         }
     }

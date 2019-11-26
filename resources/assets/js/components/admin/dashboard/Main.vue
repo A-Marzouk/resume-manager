@@ -415,7 +415,6 @@
         methods:{
             openPortfolioModal(user){
                 this.selectedUserPortfolio = user ;
-                console.log(user);
                 let modalBtn = $('#freelancer_portfolio_btn');
                 modalBtn.click();
             },

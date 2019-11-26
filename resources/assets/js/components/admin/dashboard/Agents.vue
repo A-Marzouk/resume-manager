@@ -421,7 +421,6 @@
         },
         methods: {
             openFreelancerPortfolio(user){
-                console.log('1'+user);
                 this.$emit('openFreelancerPortfolio',user);
             },
             getAgentsByProfession(){

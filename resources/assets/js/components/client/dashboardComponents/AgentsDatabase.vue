@@ -10,26 +10,31 @@
                         <img class="agentsBg-3" src="/images/home/agentsBg-3.svg" alt="">
                         <img src="/images/home/pencilsBg.png" alt="" class="pencilsBg">
                         <div class="agentsContainer__searchTools">
-                            <button  class="btn-first active">
+                            <button class="btn-first active">
                                 Search developers
                             </button>
                         </div>
 
                         <div class="agentsContainer__searchSelects">
                             <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'job_title'}">
-                                <input type="text" name="job_title" v-model="searchParams.job_title" @focus="activeBox = 'job_title'"
-                                        placeholder="Job title"/>
+                                <input type="text" name="job_title" v-model="searchParams.job_title"
+                                       @focus="activeBox = 'job_title'"
+                                       placeholder="Job title"/>
                             </div>
                             <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'frameworks'}">
-                                <input type="text" name="skills" v-model="searchParams.frameworks" @focus="activeBox = 'frameworks'"
-                                        placeholder="Languages, Frameworks.."/>
+                                <input type="text" name="skills" v-model="searchParams.frameworks"
+                                       @focus="activeBox = 'frameworks'"
+                                       placeholder="Languages, Frameworks.."/>
                             </div>
                             <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'experience'}">
-                                <input type="text" name="experience" v-model="searchParams.experience" @focus="activeBox = 'experience'"
-                                        placeholder="Experience"/>
+                                <input type="text" name="experience" v-model="searchParams.experience"
+                                       @focus="activeBox = 'experience'"
+                                       placeholder="Experience"/>
                             </div>
-                            <div class="agentsContainer__selectContainer" :class="{active: activeBox === 'available_hours'}">
-                                <input type="number" min="0" max="99" step="1/2" name="available_hours" v-model="searchParams.available_hours" @focus="activeBox = 'available_hours'"
+                            <div class="agentsContainer__selectContainer"
+                                 :class="{active: activeBox === 'available_hours'}">
+                                <input type="number" min="0" max="99" step="1/2" name="available_hours"
+                                       v-model="searchParams.available_hours" @focus="activeBox = 'available_hours'"
                                        placeholder="Available hours"/>
                             </div>
 
@@ -61,14 +66,15 @@
                                class="btn btn-primary d-flex justify-content-center align-items-center mr-3">
                                 {{ showSavedSearches ? 'Hide' : 'View'}} saved searches
                             </a>
-                            <a href="javascript:void(0)" @click="updateSearch"
+                            <a href="javascript:void(0)" @click="newSearch"
                                class="btn btn-primary d-flex justify-content-center align-items-center">RESULTS
                             </a>
                         </div>
 
                         <div v-show="showSavedSearches">
                             <div v-for="(search,index) in client.searches" :key="index" class="NoDecor">
-                                 <a href="javascript:void(0)" @click="getSavedSearchAgents(search.id)">- {{search.title}}</a>
+                                <a href="javascript:void(0)" @click="getSavedSearchAgents(search.id)">-
+                                    {{search.title}}</a>
                             </div>
                         </div>
 
@@ -93,7 +99,8 @@
                     </div>
 
                     <div class="NoDecor">
-                        <a href="javascript:void(0)" @click="saveSearch"  class="btn btn-primary d-flex justify-content-center align-items-center">
+                        <a href="javascript:void(0)" @click="saveSearch"
+                           class="btn btn-primary d-flex justify-content-center align-items-center">
                             {{searchSaved ? 'Saved' : 'Save search'}}
                         </a>
                     </div>
@@ -106,7 +113,8 @@
                             <!--image-->
                             <div class="d-flex">
                                 <div class="p-2">
-                                    <img src="/images/client/add_agent/search_result/ic/user/user123.png" class="avator"/>
+                                    <img :src="getImageSrc(agent.user.user_data.profile_picture)" class="avator"
+                                         style="width: 80px;height: 80px;"/>
                                 </div>
                                 <!--location-->
                                 <div class="p-2">
@@ -119,7 +127,8 @@
                                     </div>
                                     <div class="visiblty">
                                         <div class="pt-2 NoDecor">
-                                            <a href="javascript:void(0)" @click="viewAgentCard(agent.user)" class="btn btn-primar btn-radius btn-responsive">
+                                            <a href="javascript:void(0)" @click="viewAgentCard(agent.user)"
+                                               class="btn btn-primar btn-radius btn-responsive">
                                                 VIEW AGENT'S CARD
                                             </a>
                                         </div>
@@ -146,7 +155,9 @@
                             <div class="invisiblty">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
-                                        <button class="btn btn-primar btn-radius btn-responsive" @click="viewAgentCard(agent.user)">VIEW CARD</button>
+                                        <button class="btn btn-primar btn-radius btn-responsive"
+                                                @click="viewAgentCard(agent.user)">VIEW CARD
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -156,8 +167,8 @@
 
                     <!-- buttons -->
                     <div class="justify-content-center d-flex pt-4">
-                        <button type="button"
-                                class="btn btn-footer btn-radius align-item-center">
+                        <button type="button" id="loadMore"
+                                class="btn btn-footer btn-radius align-item-center" @click="loadMoreResults">
                             <img src="/images/client/add_agent/search_result/btn/refresh-arrow.png" alt=""
                                  class="refresh-icon">
                             LOAD MORE
@@ -172,9 +183,8 @@
             </div>
         </div>
 
-        <a href="javascript:void(0)" id="openCardBtn" class="d-none" data-toggle="modal" data-target="#freelancer_portfolio"></a>
-
-
+        <a href="javascript:void(0)" id="openCardBtn" class="d-none" data-toggle="modal"
+           data-target="#freelancer_portfolio"></a>
 
 
     </div>
@@ -193,7 +203,7 @@
                     gender: '',
                     salary_hour: '',
                 },
-                searchSaved:false,
+                searchSaved: false,
                 customValues: {
                     jobTitles: [
                         'UI/UX designer',
@@ -206,9 +216,9 @@
                         'Spanish',
                     ],
                     genders: [
-                        {label: 'Male' , value: 'm'},
-                        {label: 'Female' , value: 'f'},
-                        {label: 'Both' , value: 'b'}
+                        {label: 'Male', value: 'm'},
+                        {label: 'Female', value: 'f'},
+                        {label: 'Both', value: 'b'}
                     ],
                     rates: [
                         {
@@ -273,36 +283,66 @@
                 notificationMessage: '',
                 showSavedSearches: false,
                 client: {
-                    searches:[]
+                    searches: []
                 },
+                currentPage: 1,
+                lastPage: ''
             }
         },
         methods: {
-            viewAgentCard(user){
-                this.$emit('openFreelancerPortfolio',user);
+            loadMoreResults() {
+                if (this.currentPage < this.lastPage) {
+                    this.currentPage++;
+                    this.updateSearch();
+                } else {
+                    $('#loadMore').html('NO MORE RESULTS');
+                }
+            },
+            viewAgentCard(user) {
+                this.$emit('openFreelancerPortfolio', user);
+            },
+            newSearch() {
+                this.searchResults = [];
+                this.updateSearch();
             },
             updateSearch() {
-                axios.post('/client/agents/search', this.searchParams)
+                axios.post('/client/agents/search?page=' + this.currentPage, this.searchParams)
                     .then((response) => {
-                        this.searchResults = response.data;
+                        console.log(response.data);
+                        this.lastPage = response.data.last_page;
+                        this.currentPage = response.data.current_page;
+                        this.searchResults = [...this.searchResults, ...response.data.data];
                         this.showSearchResults = true;
                         this.searchSaved = false;
 
                         // scroll to search section
-                        $('html, body').animate({
-                            scrollTop: $("#aboveSearchResultsSection").offset().top
-                        }, 2000);
+                        if (this.currentPage === 1) {
+                            $('html, body').animate({
+                                scrollTop: $("#aboveSearchResultsSection").offset().top
+                            }, 2000);
+                        }
                     })
                     .catch((error) => {
                     });
             },
-            toggleSavedSearches(){
+            getImageSrc(src) {
+                if (!src) {
+                    return 'images/placeholder.png';
+                }
+
+                if (src.charAt(0) !== '/' && src.charAt(0) !== 'h') {
+                    return '/' + src;
+                }
+
+                return src;
+            },
+            toggleSavedSearches() {
                 this.showSavedSearches = !this.showSavedSearches
             },
-            getSavedSearchAgents(search_id){
+            getSavedSearchAgents(search_id) {
                 axios.get('/client/search/get/' + search_id)
-                    .then( (response) => {
-                        this.searchResults = response.data ;
+                    .then((response) => {
+                        this.searchResults = response.data;
                         this.showSearchResults = true;
                         // scroll to search section
                         $('html, body').animate({
@@ -321,15 +361,15 @@
                     $('#notificationBar').fadeOut(1500);
                 }, 4000);
             },
-            saveSearch(){
-                if(this.searchSaved){
-                    this.$emit('showPositiveNotification','Already saved!');
+            saveSearch() {
+                if (this.searchSaved) {
+                    this.$emit('showPositiveNotification', 'Already saved!');
                     return;
                 }
-                axios.post('/client/search/save',{freelancers : this.searchResults})
-                    .then( (response) => {
+                axios.post('/client/search/save', {freelancers: this.searchResults})
+                    .then((response) => {
                         if (response.data.status === 'success') {
-                            this.$emit('showPositiveNotification','Search successfully saved !');
+                            this.$emit('showPositiveNotification', 'Search successfully saved !');
                             this.searchSaved = true;
                             this.client.searches.push(response.data.search);
                         }
@@ -419,8 +459,8 @@
     .btn-primar:hover {
         color: white;
     }
-    
-    .agentsSection{
+
+    .agentsSection {
         padding: 30px 30px 10px 30px !important;
     }
 

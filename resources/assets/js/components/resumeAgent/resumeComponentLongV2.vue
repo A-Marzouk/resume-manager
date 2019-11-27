@@ -21,7 +21,7 @@
                         <div class="row nameRow">
                             <div class="col-lg-2 col-6 imageCol">
                                 <div class="imageContainer" style="padding: 10px;">
-                                    <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer"
+                                    <img :src="getImageSrc(freelancer.user_data.profile_picture)" alt="freelancer"
                                          class="freelancerImg"
                                          width="120" height="120">
                                 </div>
@@ -94,7 +94,7 @@
                         <div class="row cardMainInfo_mob">
                             <div class="col-6">
                                 <div class="imageContainer" style="padding: 20px 10px 10px 10px;">
-                                    <img :src="getImageSrc(freelancer.user_data.photo)" alt="freelancer"
+                                    <img :src="getImageSrc(freelancer.user_data.profile_picture)" alt="freelancer"
                                          class="freelancerImg"
                                          width="120" height="120">
                                 </div>

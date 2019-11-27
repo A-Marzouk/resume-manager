@@ -34,6 +34,7 @@ class User extends Authenticatable implements HasMedia
         'password',
         'username',
         'referral_code',
+        'referred_by_code',
         'status',
         'reviewed_at',
         'stage',

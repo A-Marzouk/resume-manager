@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="clientRegister">
-        <client-register></client-register>
+        <client-register referral_code="{{$referral_code}}"></client-register>
     </div>
 
 @endsection

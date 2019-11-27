@@ -26,9 +26,12 @@
                             <label class="faq-input-label">
                                 Enter primary job title
                             </label>
-                            <div class="faq-input">
+                            <div class="faq-input" :class="{'error-input': errors.job_title}">
                                 <input type="text" name="faq" placeholder="Telemarketing" >
                                 <img src="/images/client/campaign_activity/close_black.png" alt="delete icon">
+                            </div>
+                            <div class="error" v-if="showErrors && errors.job_title">
+                                {{errors.job_title}}
                             </div>
                         </div>
                         <div class="faq-question-input account-edit-input">

@@ -106,7 +106,7 @@
                             <!--image-->
                             <div class="d-flex">
                                 <div class="p-2">
-                                    <img src="/images/client/add_agent/search_result/ic/user/user123.png" class="avator"/>
+                                    <img :src="getImageSrc(agent.user.user_data.profile_picture)" class="avator" style="width: 80px;height: 80px;"/>
                                 </div>
                                 <!--location-->
                                 <div class="p-2">
@@ -295,6 +295,17 @@
                     })
                     .catch((error) => {
                     });
+            },
+            getImageSrc(src) {
+                if (!src) {
+                    return 'images/placeholder.png';
+                }
+
+                if (src.charAt(0) !== '/' && src.charAt(0) !== 'h') {
+                    return '/' + src;
+                }
+
+                return src;
             },
             toggleSavedSearches(){
                 this.showSavedSearches = !this.showSavedSearches

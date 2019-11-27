@@ -393,9 +393,7 @@ class SearchesController extends Controller
 
             ->with(['user.userData','user.agent','user.languages','user.skills','user.worksHistory.projects','user.references','user.educationsHistory','user.projects'=>function($query) {
                 return $query->limit(10);
-            }])->get();
-
-
+            }])->paginate(6);
 
 
         return $agents ;

@@ -1,5 +1,6 @@
 <template>
     <div class="my-account">
+        
         <div class="account-info dashboard-box">
             <div class="account-info-heading dashboard-box-heading">
                 <div class="left">
@@ -92,6 +93,35 @@
                 </div>
             </div>
         </div>
+
+        <div class="contracts dashboard-box">
+            <div class="account-info-heading dashboard-box-heading">
+                <div class="left">
+                    <img src="/images/client/my_account/contract_40px.png" alt="info icon">
+                    <span>
+                        BECOME AN AFFILIATE
+                    </span>
+                </div>
+            </div>
+            <div class="account-info-content-wrapper">
+                <div class="account-info-content p-0">
+                    <div class="agreement">
+                        <div class="right">
+                            <img src="/images/client/my_account/service.png" alt="service icon">
+                            <div>
+                                Invite others
+                            </div>
+                        </div>
+                        <div class="left no-decoration">
+                            <a href="javascript:void(0)" @click="copyLink(user.referral_code)">
+                                <span>COPY INVITE LINK</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="faqs dashboard-box">
             <div class="account-info-heading dashboard-box-heading">
                 <div class="left">
@@ -179,9 +209,23 @@
                 user: {
                     client:{}
                 },
+                notificationMessage: 'Invitation link copied!'
             }
         },
         methods: {
+            copyLink(referral_code) {
+                let getUrl = window.location;
+                let baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+
+                let $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(baseUrl + '/register?referral_code=' + referral_code).select();
+                document.execCommand("copy");
+                $temp.remove();
+
+                // notification copied :
+                this.showSuccessMessage();
+            },
             toggleAnswer(faq_id) {
                 let faqs = this.faqs;
                 $.each(faqs, function (i) {
@@ -200,7 +244,10 @@
                 axios.get('/client/current').then((response) => {
                     this.user = response.data;
                 });
-            }
+            },
+            showSuccessMessage() {
+                this.$emit('showPositiveNotification',this.notificationMessage);
+            },
         },
         mounted() {
             this.getCurrentClient();

@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="logoutBtn">
-                    <a href="#">
+                    <a href="/logout">
                         LOG OUT
                     </a>
                 </div>

@@ -11,7 +11,7 @@
             </a>
 
             <a class="navbar-brand" href="/client">
-                <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
+                <img src="/images/client/logo_123.png" alt="logo" style="width: 177px;">
             </a>
             <div class="form-inline my-2 my-lg-0">
 
@@ -26,7 +26,7 @@
                     {{client.contact}}
                 </div>
                 <div class="avatar">
-                    <img src="/images/client/dummy.png" alt="logout">
+                    <img src="/images/client/dummy.png" alt="photo">
                 </div>
             </div>
         </nav>
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="logoutBtn">
-                    <a href="#">
+                    <a href="/logout">
                         LOG OUT
                     </a>
                 </div>

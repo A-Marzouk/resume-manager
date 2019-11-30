@@ -43,6 +43,23 @@ class AgentsController extends Controller
         ];
     }
 
+    public function editAgentUsername(Request $request){
+        $request->validate([
+            'username' => 'max:191|required|unique:users|alpha_dash',
+        ]);
+
+        $user = User::where('id',$request->user_id)->first();
+        if($user){
+            $user->update([
+                'username' => $request->username
+            ]);
+        }
+
+        return [
+            'username' => $user->username
+        ];
+    }
+
     public function viewAgentServiceAgreement()
     {
         return view('freelancer.my_account.service_agreement');

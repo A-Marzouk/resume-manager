@@ -137,8 +137,8 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <img v-if="profession !== 'developer'" src="/images/admin/down_arrow.png" alt="down arrow" :id="'detailsArrow'+user.id" @click="toggleDetails(user.id)">
-                                        <img v-else src="/images/client/payments/show_invoice.png" alt="open portfolio arrow" style="margin-top: -5px;"  @click="openFreelancerPortfolio(user)">
+                                        <img v-if="profession === 'developer'" class="mr-3" src="/images/client/payments/show_invoice.png" alt="open portfolio arrow" style="margin-top: -5px;"  @click="openFreelancerPortfolio(user)">
+                                        <img src="/images/admin/down_arrow.png" alt="down arrow" :id="'detailsArrow'+user.id" @click="toggleDetails(user.id)">
                                     </td>
                                     <td>
                                         <div class="invoice-service  base-text hour-text"  style="font-weight: normal;">
@@ -169,7 +169,7 @@
                                     </td>
                                 </tr>
                                 <tr v-show="user.is_details_opened">
-                                    <td colspan="4" v-if="profession != 'developer'" style="border-top:0; padding-top:0">
+                                    <td colspan="4" v-if="profession !== 'developer'" style="border-top:0; padding-top:0">
                                         <div v-show="user.status < 4 " class="action-buttons-bar">
                                             <div class="disapprove-btn no-decoration">
                                                 <a href="javascript:void(0)" data-toggle="modal" data-target="#disapprove-agent" @click="checkDefaultRadioDisapprove">
@@ -252,6 +252,41 @@
                                     </td>
                                     <td colspan="4" v-else style="border-top:0; padding-top:0">
                                         <a href="javascript:void(0)" id="freelancer_portfolio_btn" data-target="#freelancer_portfolio" data-toggle="modal"></a>
+                                        <div class="agreement" style="height:auto; padding-top: 15px; padding-bottom: 15px;">
+                                            <div class="flex-column">
+                                                <div class="right">
+                                                    <img src="/images/client/my_account/edit_orange.png" alt="service icon">
+                                                    <div>
+                                                        Edit profile link
+                                                    </div>
+                                                </div>
+                                                <div class="account-edit-section-inputs d-flex flex-row">
+                                                    <div class="faq-question-input account-edit-input">
+                                                        <label class="faq-input-label">
+                                                            {{baseUrl()}}
+                                                        </label>
+                                                        <div class="faq-input" style="width: 300px;"
+                                                             :class="{ 'error-input' : errors.username}">
+                                                            <input type="text" placeholder="Link.." v-model="user.username">
+                                                        </div>
+                                                        <div class="error" v-if="errors.username">
+                                                            {{errors.username[0]}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="left no-decoration">
+                                                <a href="javascript:void(0)" class="mb-3" @click="copyProfileLink(user.username)">
+                                                    <span>COPY PROFILE LINK</span>
+                                                </a>
+                                                <a href="javascript:void(0)" @click="editUsername(user)" v-show="!isUsernameChanged(user)">
+                                                    <span>SAVE</span>
+                                                </a>
+                                                <a href="javascript:void(0)" style="cursor: not-allowed; opacity:30%;" v-show="isUsernameChanged(user)">
+                                                    <span>SAVE</span>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             </template>
@@ -375,7 +410,7 @@
                     8:'Unapproved',
                     9:'Unapproved'
                 },
-
+                errors: [],
                 searchValue:'',
                 currentPage:1,
                 lastPage:'',
@@ -420,6 +455,53 @@
             }
         },
         methods: {
+            copyProfileLink(username) {
+                let getUrl = window.location;
+                let baseUrl = getUrl.protocol + "//" + getUrl.host;
+
+                let $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(baseUrl + '/' + username).select();
+                document.execCommand("copy");
+                $temp.remove();
+
+                // notification copied :
+                this.showSuccessMessage('Invitation link copied!');
+            },
+            baseUrl(){
+                let getUrl = window.location;
+                return getUrl.protocol + "//" + getUrl.host + '/' ;
+            },
+            showSuccessMessage(notificationMessage) {
+                this.$emit('showPositiveNotification', notificationMessage);
+            },
+            clearErrors() {
+                $.each(this.errors, (error) => {
+                    this.errors[error] = '';
+                });
+
+            },
+            isUsernameChanged(user){
+                return  user.usernameOldValue.trim() === user.username.trim() ;
+            },
+            editUsername(user) {
+                this.clearErrors();
+
+                axios.post('/freelancer/account/edit/username', {username: user.username, user_id: user.id})
+                    .then((response) => {
+                        console.log(response.data);
+                        this.showSuccessMessage('Profile link updated!');
+                    })
+                    .catch(error => {
+                        this.canSubmit = true;
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                    });
+            },
+
             openFreelancerPortfolio(user){
                 this.$emit('openFreelancerPortfolio',user);
             },

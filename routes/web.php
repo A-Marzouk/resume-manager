@@ -251,6 +251,7 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/campaign/{campaign_id}','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
     Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
     Route::post('/account/personal/submit','AgentsController@editAgentPersonalInfo');
+    Route::post('/account/edit/username','AgentsController@editAgentUsername');
     Route::post('/account/professional/submit','AgentsController@editAgentProfessionalInfo');
     Route::post('/account/media/submit','AgentsController@editAgentMedialInfo');
     Route::post('/developer/professional/submit','AgentsController@editDeveloperProfessionalInfo');
@@ -601,7 +602,7 @@ Route::get('/workforce/terms_and_conditions','HomeController@termsView')->name('
 Route::get('/workforce/privacy_policy','HomeController@privacyView')->name('privacy');
 Route::get('/resume_sample/{username}','HomeController@ResumeSample');
 //Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
-Route::get('/{username}','HomeController@ResumePage');
+Route::get('/{username}','ResumeController@agentsResume');
 
 Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-desginers');
 

@@ -61,13 +61,16 @@
                 </div>
 
                 <div class="right no-decoration d-flex">
-                    <a href="/freelancer/developer-card" class="normal-link mr-3" v-show="user.user_data.profession_id == 2">
+                    <a href="/freelancer/developer-card" class="normal-link mr-3"
+                       v-show="user.user_data.profession_id == 2">
                         DEVELOPER CARD
                     </a>
-                    <a href="/freelancer/professional/edit" class="normal-link"  v-show="user.user_data.profession_id != 2">
+                    <a href="/freelancer/professional/edit" class="normal-link"
+                       v-show="user.user_data.profession_id != 2">
                         EDIT
                     </a>
-                    <a href="/freelancer/professional/it/edit" class="normal-link"  v-show="user.user_data.profession_id == 2">
+                    <a href="/freelancer/professional/it/edit" class="normal-link"
+                       v-show="user.user_data.profession_id == 2">
                         EDIT
                     </a>
                 </div>
@@ -130,16 +133,16 @@
             <div class="account-info-content-wrapper">
                 <div class="account-info-content p-0">
                     <div class="agreement">
-                       <div class="right">
-                           <img src="/images/client/my_account/privacy.png" alt="privacy icon">
-                           <div>
-                               Privacy agreement
-                           </div>
-                       </div>
+                        <div class="right">
+                            <img src="/images/client/my_account/privacy.png" alt="privacy icon">
+                            <div>
+                                Privacy agreement
+                            </div>
+                        </div>
                         <div class="left no-decoration">
                             <a href="/agent/account/privacy-agreement">
                                 <span v-if="user.agreed_with_privacy_agreement_at === null">COMPLETE AGREEMENT</span>
-                                <span v-else >SHOW AGREEMENT</span>
+                                <span v-else>SHOW AGREEMENT</span>
                             </a>
                         </div>
                     </div>
@@ -153,7 +156,7 @@
                         <div class="left no-decoration">
                             <a href="/agent/account/service-agreement">
                                 <span v-if="user.agreed_with_service_agreement_at === null">COMPLETE AGREEMENT</span>
-                                <span v-else >SHOW AGREEMENT</span>
+                                <span v-else>SHOW AGREEMENT</span>
                             </a>
                         </div>
                     </div>
@@ -164,7 +167,7 @@
         <div class="contracts dashboard-box">
             <div class="account-info-heading dashboard-box-heading">
                 <div class="left">
-                    <img src="/images/client/my_account/contract_40px.png" alt="info icon">
+                    <img src="/images/client/my_account/faq_40px.png" alt="info icon">
                     <span>
                         BECOME AN AFFILIATE
                     </span>
@@ -189,6 +192,68 @@
             </div>
         </div>
 
+        <div class="contracts dashboard-box">
+            <div class="account-info-heading dashboard-box-heading">
+                <div class="left">
+                    <img src="/images/client/my_account/contract_40px.png" alt="info icon">
+                    <span>
+                        SHARE YOUR PROFILE
+                    </span>
+                </div>
+            </div>
+            <div class="account-info-content-wrapper">
+                <div class="account-info-content p-0">
+                    <div class="agreement">
+                        <div class="right">
+                            <img src="/images/client/my_account/share.png" alt="service icon">
+                            <div>
+                                Share with others
+                            </div>
+                        </div>
+                        <div class="left no-decoration">
+                            <a href="javascript:void(0)" @click="copyProfileLink(user.username)">
+                                <span>COPY PROFILE LINK</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="agreement" style="height:auto; padding-top: 15px; padding-bottom: 15px;">
+                        <div class="flex-column">
+                            <div class="right">
+                                <img src="/images/client/my_account/edit_orange.png" alt="service icon">
+                                <div>
+                                    Edit profile link
+                                </div>
+                            </div>
+                            <div class="account-edit-section-inputs d-flex flex-row">
+                                <div class="faq-question-input account-edit-input">
+                                    <label class="faq-input-label">
+                                       {{baseUrl()}}
+                                    </label>
+                                    <div class="faq-input" style="width: 300px;"
+                                         :class="{ 'error-input' : errors.username}">
+                                        <input type="text" placeholder="Link.." v-model="user.username">
+                                    </div>
+                                    <div class="error" v-if="errors.username">
+                                        {{errors.username[0]}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left no-decoration" v-show="!isUsernameChanged()">
+                            <a href="javascript:void(0)" @click="editUsername">
+                                <span>SAVE</span>
+                            </a>
+                        </div>
+                        <div class="left no-decoration" v-show="isUsernameChanged()" style="opacity:30%;">
+                            <a href="javascript:void(0)" style="cursor: not-allowed;">
+                                <span>SAVE</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="faqs dashboard-box">
             <div class="account-info-heading dashboard-box-heading">
                 <div class="left">
@@ -203,21 +268,22 @@
                 <div class="faq-questions-list">
                     <div v-for="(faq,index) in faqs" v-bind:key="index" class="question-container">
                         <div class="faq-question">
-                        <div class="faq-numbering">
-                            <span>{{index+1}}</span>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-item-question">
-                                {{faq.question}}
+                            <div class="faq-numbering">
+                                <span>{{index+1}}</span>
                             </div>
-                            <div class="faq-item-answer" v-show="faq.opened">
-                                {{faq.answer}}
+                            <div class="faq-item">
+                                <div class="faq-item-question">
+                                    {{faq.question}}
+                                </div>
+                                <div class="faq-item-answer" v-show="faq.opened">
+                                    {{faq.answer}}
+                                </div>
+                            </div>
+                            <div class="faq-edit">
+                                <img src="/images/client/my_account/dropdown.png" :id="'toggleIcon_'+faq.id"
+                                     alt="toggle icon" @click="toggleAnswer(faq.id)">
                             </div>
                         </div>
-                        <div class="faq-edit">
-                            <img src="/images/client/my_account/dropdown.png" :id="'toggleIcon_'+faq.id" alt="toggle icon" @click="toggleAnswer(faq.id)">
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>
@@ -227,61 +293,61 @@
 </template>
 <script>
     export default {
-        data(){
-            return{
-                faqs:[
+        data() {
+            return {
+                faqs: [
                     {
-                        id:1,
-                        opened:false,
-                        question:'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                        id: 1,
+                        opened: false,
+                        question: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit,' +
                             ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                        answer:'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                        answer: 'Lorem 1111 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
                             ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
                             ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
                             ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
                     },
                     {
-                        id:2,
-                        opened:false,
-                        question:'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                        id: 2,
+                        opened: false,
+                        question: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit,' +
                             ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                        answer:'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                        answer: 'Lorem 2222 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
                             ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
                             ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
                             ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
                     },
                     {
-                        id:3,
-                        opened:false,
-                        question:'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                        id: 3,
+                        opened: false,
+                        question: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit,' +
                             ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                        answer:'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                        answer: 'Lorem 3333 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
                             ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
                             ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
                             ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
                     },
                     {
-                        id:4,
-                        opened:false,
-                        question:'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit,' +
+                        id: 4,
+                        opened: false,
+                        question: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit,' +
                             ' sed do eiusmod tempor incididunt ut labore et dolore magna aliqu ?',
-                        answer:'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
+                        answer: 'Lorem 4444 ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.' +
                             ' Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' +
                             ' Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.' +
                             ' Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
                     },
 
                 ],
-
-
                 user: {
-                    agent:{},
-                    user_data:{},
+                    agent: {},
+                    user_data: {},
                 },
+                errors: [],
                 notificationMessage: 'Invitation link copied!',
+                usernameOldValue: ''
             }
         },
-        methods:{
+        methods: {
             copyLink(referral_code) {
                 let getUrl = window.location;
                 let baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
@@ -295,18 +361,35 @@
                 // notification copied :
                 this.showSuccessMessage();
             },
-            showSuccessMessage() {
-                this.$emit('showPositiveNotification',this.notificationMessage);
+            copyProfileLink(username) {
+                let getUrl = window.location;
+                let baseUrl = getUrl.protocol + "//" + getUrl.host;
+
+                let $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(baseUrl + '/' + username).select();
+                document.execCommand("copy");
+                $temp.remove();
+
+                // notification copied :
+                this.showSuccessMessage('Invitation link copied!');
             },
-            toggleAnswer(faq_id){
+            baseUrl(){
+                let getUrl = window.location;
+                return getUrl.protocol + "//" + getUrl.host + '/' ;
+            },
+            showSuccessMessage(notificationMessage) {
+                this.$emit('showPositiveNotification', notificationMessage);
+            },
+            toggleAnswer(faq_id) {
                 let faqs = this.faqs;
-                $.each(faqs, function(i){
-                    if(faqs[i].id === faq_id) {
-                        faqs[i].opened = !faqs[i].opened ;
-                        if(faqs[i].opened){
-                            $('#toggleIcon_'+faq_id).css('transform','rotate(180deg)');
-                        }else{
-                            $('#toggleIcon_'+faq_id).css('transform','rotate(0deg)');
+                $.each(faqs, function (i) {
+                    if (faqs[i].id === faq_id) {
+                        faqs[i].opened = !faqs[i].opened;
+                        if (faqs[i].opened) {
+                            $('#toggleIcon_' + faq_id).css('transform', 'rotate(180deg)');
+                        } else {
+                            $('#toggleIcon_' + faq_id).css('transform', 'rotate(0deg)');
                         }
                     }
 
@@ -315,11 +398,42 @@
             getCurrentAgent() {
                 axios.get('/agent/current').then((response) => {
                     this.user = response.data;
+                    this.usernameOldValue = this.user.username;
                 });
             },
+            clearErrors() {
+                $.each(this.errors, (error) => {
+                    this.errors[error] = '';
+                });
+
+            },
+            isUsernameChanged(){
+                return  this.usernameOldValue.trim() === this.user.username.trim() ;
+            },
+            editUsername() {
+                if(this.usernameOldValue.trim() === this.user.username.trim()){
+                    return;
+                }
+                this.clearErrors();
+
+                axios.post('/freelancer/account/edit/username', {username: this.user.username, user_id: this.user.id})
+                    .then((response) => {
+                        console.log(response.data);
+                        this.usernameOldValue = this.user.username;
+                        this.showSuccessMessage('Profile link updated!');
+                    })
+                    .catch(error => {
+                        this.canSubmit = true;
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                    });
+            }
 
         },
-        mounted(){
+        mounted() {
             this.getCurrentAgent();
         }
     }

@@ -408,7 +408,11 @@
 
             },
             isUsernameChanged(){
-                return  this.usernameOldValue.trim() === this.user.username.trim() ;
+                if(!this.user.username){
+                    return;
+                }else{
+                    return  this.usernameOldValue.trim() === this.user.username.trim() ;
+                }
             },
             editUsername() {
                 if(this.usernameOldValue.trim() === this.user.username.trim()){

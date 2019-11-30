@@ -93,6 +93,7 @@ class AdminsController extends Controller
                 $user->is_edited = false;
                 $user->is_skill_edited = false;
                 $user->user_data = $user->data ;
+                $user->usernameOldValue = $user->username ;
         }
 
         return $paginatedData ;

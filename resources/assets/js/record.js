@@ -154,6 +154,10 @@ if ( navigator.mediaDevices.getUserMedia ) {
         saveAudioForRegister();
     });
 
+    $('#saveAudioMedia').on('click',function () {
+        saveAudioForMediaUpdate();
+    });
+
 
     function saveToDB() {
 
@@ -230,17 +234,63 @@ if ( navigator.mediaDevices.getUserMedia ) {
         data.append('email',$('#business_email').val() );
         data.append('phone',$('#business_phone').val() );
         data.append('skype',$('#business_skype').val() );
-        data.append('whatsapp',$('#business_whatsapp').val() );
+        data.append('whatsapp',$('#whatsapp').val() );
+        data.append('facebook',$('#facebook').val() );
+        data.append('github',$('#github').val() );
+        data.append('website',$('#website').val() );
+        data.append('second_email',$('#second_email').val() );
+        data.append('instagram',$('#business_instagram').val() );
+        data.append('linkedin',$('#business_linkedin').val() );
+        data.append('password',$('#business_password').val() );
+        data.append('programming_language',$('#programming_language').val() );
+        data.append('framework',$('#framework').val() );
+        data.append('database',$('#database').val() );
+        data.append('available_hours',$('#available_hours').val() );
+        data.append('monthly_rate',$('#monthly_rate').val() );
+        data.append('hourly_rate',$('#hourly_rate').val() );
+        data.append('password_confirmation',$('#business_password_confirmation').val() );
         data.append('audioType','record');
 
         axios.post('/audio/save_for_register',data).then( (response) => {
             if(response.data.status === 'Success'){
-                window.location.href = '/freelancer/workforce/success';
+                window.location.href = '/freelancer/dashboard';
             }
         },
         (error)=>{
             console.log(error);
         });
+
+    }
+
+    function saveAudioForMediaUpdate(){
+        var data = new FormData();
+        if(blob == undefined){
+            alert('Recorded file is not detected. please try to register again.');
+            return;
+        }
+        // get the cv file :
+        let cv = $('#cv').prop('files')[0];
+        let profile_picture = $('#profile_picture').prop('files')[0];
+        data.append('file', blob);
+        data.append('type', blob.type);
+        if(cv !== undefined){
+            data.append('cv',cv);
+        }
+
+        if(profile_picture !== undefined){
+            data.append('profile_picture',profile_picture);
+        }
+
+        data.append('audioType','record');
+
+        axios.post('/audio/save_for_media',data).then( (response) => {
+                if(response.data.status === 'Success'){
+                    window.location.href = '/freelancer/media/edit';
+                }
+            },
+            (error)=>{
+                console.log(error);
+            });
     }
 
     function play() {

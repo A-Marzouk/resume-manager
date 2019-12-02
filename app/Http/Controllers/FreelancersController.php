@@ -12,6 +12,7 @@ use App\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
 
 class FreelancersController extends Controller
 {
@@ -19,12 +20,16 @@ class FreelancersController extends Controller
 
     public function __construct()
     {
-        $this->middleware('role:agent');
+        $this->middleware('role:agent|admin');
     }
 
     public function index()
     {
+        if(currentUser()->is_admin){
+            return redirect('/admin');
+        }
         $agent = Agent::where('id',currentAgent()->id)->with('user.userData','campaigns','logs.history','shifts')->first();
+        $agent['user']['affiliates'] = $agent->user->myAffiliates() ;
         return view('freelancer.dashboard', compact('agent'));
     }
 
@@ -41,28 +46,27 @@ class FreelancersController extends Controller
 
     public function viewAccountEditPage()
     {
-        $agentData = UserData::select(
-            'first_name',
-            'last_name',
-            'phone',
-            'city',
-            'job_title',
-            'gender',
-            'timezone',
-            'paypal_acc_number',
-            'avatar'
-        )->where('id', currentUser()->data->id)->first();
-
-        $agentData->email = currentAgent()->email;
-
-        // dd(currentUser());
-
-        return view('freelancer.my_account.account_information_edition', compact('agentData'));
+        $currentUser = User::where('id',currentUser()->id)->with('agent','userData')->first();
+        return view('freelancer.my_account.account_information_edition', compact('currentUser'));
     }
 
     public function viewProfessionalEditPage()
     {
-        return view('freelancer.my_account.professional_information_edition');
+        $currentUser = User::where('id',currentUser()->id)->with('agent','userData','languages','skills')->first();
+        return view('freelancer.my_account.professional_information_edition',compact('currentUser'));
+    }
+
+
+    public function viewMediaEditPage()
+    {
+        $currentUser = User::where('id',currentUser()->id)->with('agent','userData','recordings')->first();
+        return view('freelancer.my_account.media_info_edit',compact('currentUser'));
+    }
+
+    public function viewProfessionalITEditPage()
+    {
+        $currentUser = User::where('id',currentUser()->id)->with('agent','userData','languages','skills')->first();
+        return view('freelancer.my_account.professional_information_it_edition',compact('currentUser'));
     }
 
     public function viewFreelancerServiceAgreement()
@@ -75,35 +79,33 @@ class FreelancersController extends Controller
         return view('freelancer.my_account.privacy_agreement');
     }
 
-    public function form()
-    {
-        if (Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce') {
-            return redirect(route('admin.dashboard'));
-        }
-        $data = $this->getFreelancerData();
-        $affiliates = Affiliate::all();
-        return view('freelancer.form', compact('data', 'affiliates'));
+    public function form(){
+        $freelancer = User::with(['userData','agent','skills','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+            return $query->limit(10);
+        }])->where('username',Auth::user()->username)->first();
+
+        return view('freelancerResume.portfolio', compact('freelancer','affiliates'));
     }
 
     public function showEditForm()
     {
-        if (Auth::user()->admin == 1 && Auth::user()->username == 'admin_workforce') {
-            return redirect(route('admin.dashboard'));
+        if(Input::get('user_id') && currentUser()->is_admin){
+            $data = $this->getFreelancerData(User::where('id',Input::get('user_id'))->with('agent')->first());
+        }else{
+            $data = $this->getFreelancerData(currentUser());
         }
-        $data = $this->getFreelancerData();
         return view('freelancer.edit_form', compact('data'));
     }
 
     public function showOldForm()
     {
-        $data = $this->getFreelancerData();
+        $data = $this->getFreelancerData(currentUser());
         $affiliates = Affiliate::all();
         return view('freelancer.old_form', compact('data', 'affiliates'));
     }
 
-    public function getFreelancerData()
+    public function getFreelancerData($currFreelancer)
     {
-        $currFreelancer = auth()->user();
         if (!isset($currFreelancer->userData)) {
             $userData = new UserData;
             $userData->user_id = $currFreelancer->id;
@@ -147,6 +149,7 @@ class FreelancersController extends Controller
             'terms' => $currFreelancer->userData->terms ?? '',
             'username' => auth()->user()->username,
             'profession' => auth()->user()->profession,
+            'profession_id' => $currFreelancer->userData->profession_id,
             'personalSite' => $currFreelancer->userData->personalSite ?? '',
             'behanceLink' => $currFreelancer->userData->behanceLink ?? '',
             'instagramLink' => $currFreelancer->userData->instagramLink ?? '',

@@ -34,6 +34,7 @@ class CreateUserDatasTable extends Migration
             $table->string('job_title')->nullable();
             $table->text('intro')->nullable();
             $table->string('github')->nullable();
+            $table->string('linkedin')->nullable();
             $table->string('behance')->nullable();
             $table->string('instagram')->nullable();
             $table->string('dribble')->nullable();

@@ -11,7 +11,7 @@
             </a>
 
             <a class="navbar-brand" href="/client">
-                <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
+                <img src="/images/client/logo_123.png" alt="logo" style="width: 177px;">
             </a>
             <div class="form-inline my-2 my-lg-0">
 
@@ -26,7 +26,7 @@
                     {{client.contact}}
                 </div>
                 <div class="avatar">
-                    <img src="/images/client/dummy.png" alt="logout">
+                    <img src="/images/client/dummy.png" alt="photo">
                 </div>
             </div>
         </nav>
@@ -91,7 +91,7 @@
                 </div>
 
                 <div class="logoutBtn">
-                    <a href="#">
+                    <a href="/logout">
                         LOG OUT
                     </a>
                 </div>
@@ -152,7 +152,7 @@
                 </div>
 
                 <keep-alive>
-                    <router-view  @showPositiveNotification="showNotification" @openInvoice="setSelectedInvoice"></router-view>
+                    <router-view  @showPositiveNotification="showNotification" @openInvoice="setSelectedInvoice"  @openFreelancerPortfolio="openPortfolioModal"></router-view>
                 </keep-alive>
             </div>
         </div>
@@ -178,6 +178,24 @@
             </div>
         </div>
 
+
+        <!-- Modal -->
+        <div class="modal fade" id="freelancer_portfolio" tabindex="-1" role="dialog" aria-hidden="true" >
+            <div class="modal-dialog" role="document" style="width: 100%; height: 100%;padding: 0;">
+                <div class="modal-content border-0" style="height: auto; background: none;min-height: 100%;">
+                    <div class="modal-body">
+                        <div v-if="selectedUserPortfolio" id="freelancerResumeLongV2" class="d-flex justify-content-center">
+                            <freelancer-resume-long-v2 :freelancer="selectedUserPortfolio"></freelancer-resume-long-v2>
+                        </div>
+                        <div v-else>
+                            Loading data..
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </template>
 <script>
@@ -200,10 +218,18 @@
                         campaign:{},
                         start_date:''
                     }
-                }
+                },
+                selectedUserPortfolio:'',
             }
         },
         methods:{
+
+            openPortfolioModal(user){
+                this.selectedUserPortfolio = user ;
+                let modalBtn = $('#openCardBtn');
+                modalBtn.click();
+            },
+
             selectTab(tabName){
                 this.activeTab = tabName ;
             },

@@ -26,7 +26,7 @@ class ClientsController extends Controller
 
     public function campaignActivity($campaign_id)
     {
-        $campaign = Campaign::where('id', $campaign_id)->with('agents.user', 'agents.user.userData', 'agents.logs', 'faqs', 'links','files')->first();
+        $campaign = Campaign::where('id', $campaign_id)->with('agents.user','agents.shifts', 'agents.user.userData', 'agents.logs.history', 'faqs', 'links','files')->first();
         return view('client.campaign_main', compact('campaign'));
     }
 
@@ -135,9 +135,14 @@ class ClientsController extends Controller
 
     public function getCurrentClient()
     {
-        return User::whereHas('roles', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'client');
         })->where('id', currentClient()->user_id)->with('client','client.searches')->first();
+        $results = $user->affiliatesWithTotalSpent( $user->myAffiliates());
+        $user['affiliates'] = $results['users'];
+        $user['total_spent_all'] = $results['total_spent_all'];
+
+        return $user;
     }
 
     public function hasAgreed()

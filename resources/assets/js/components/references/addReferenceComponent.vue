@@ -60,6 +60,8 @@
                 // post data :
                 axios.post('/freelancer/addreference',this.toBeEditedReference).then( (response) => {
                     //
+                    console.log(response.data);
+
                     if(this.toBeEditedReference.id === ""){
                         this.$emit('referenceAdded',this.toBeEditedReference);
                     }

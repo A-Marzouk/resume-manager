@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function (){
     Route::get('/add-behance-designer','AdminsController@addBehanceDesigner')->name('add.behance.designer');
 
     // fetching data routs
-    Route::get('/api/agents/{professionName}','AdminsController@getAgentsByProfessionName')->name('get.agents');
+    Route::get('/api/agents/','AdminsController@getAgentsByProfessionName')->name('get.agents');
     Route::get('/api/agent/{user_id}','AdminsController@getAgentByID')->name('get.agent.by.id');
     Route::get('/api/clients','AdminsController@getClients')->name('get.clients');
 
@@ -202,6 +202,7 @@ Route::prefix('agent')->group(function (){
     Route::post('/logs/delete','ActivityLogsController@deleteLog')->name('delete.log');
 
     Route::get('/current','AgentsController@getCurrentAgent')->name('get.current.agent');
+    Route::get('/get/{id}','AgentsController@getAgentByID')->name('get.agent.by.id');
 
     // agreements
     Route::get('/account/service-agreement','AgentsController@viewAgentServiceAgreement')->name('service.agreement');
@@ -236,6 +237,12 @@ Route::prefix('agent')->group(function (){
 
 });
 
+Route::get('/freelancer/it/register','DevelopersController@developerForm')->name('developer.from');
+Route::post('/freelancer/it/register/validate','DevelopersController@validateDeveloperForm')->name('developer.from.validate');
+Route::post('/freelancer/it/register/submit','DevelopersController@registerDeveloper')->name('developer.register');
+Route::post('/audio/save_for_register','DevelopersController@saveAudioForRegister');
+Route::post('/audio/save_for_media','AgentsController@saveAudioForMedia');
+
 
 Route::prefix('freelancer')->group(function (){
     Route::get('/login','Auth\LoginController@showLoginForm')->name('freelancer.login');
@@ -243,10 +250,17 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/campaigns-archive','FreelancersController@campaignArchives')->name('freelancer.campaign.archives');
     Route::get('/campaign/{campaign_id}','FreelancersController@campaignActivity')->name('freelancer.campaign.main');
     Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
-    Route::post('/account/edit','AgentsController@editAgentPersonalInfo');
+    Route::post('/account/personal/submit','AgentsController@editAgentPersonalInfo');
+    Route::post('/account/edit/username','AgentsController@editAgentUsername');
+    Route::post('/account/professional/submit','AgentsController@editAgentProfessionalInfo');
+    Route::post('/account/media/submit','AgentsController@editAgentMedialInfo');
+    Route::post('/developer/professional/submit','AgentsController@editDeveloperProfessionalInfo');
     Route::post('/account/edit/avatar','AgentsController@editAgentPersonalInfo');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
-//    Route::get('/portfolio','FreelancersController@form')->name('freelancer.dashboard');
+    Route::get('/professional/it/edit','FreelancersController@viewProfessionalITEditPage')->name('freelancer.professional.edit');
+    Route::get('/media/edit','FreelancersController@viewMediaEditPage')->name('freelancer.professional.edit');
+    Route::get('/developer-card/edit','FreelancersController@showEditForm')->name('freelancer.dashboard');
+    Route::get('/developer-card','FreelancersController@form')->name('freelancer.dashboard');
 
     // frontend routes
     Route::get('/',function (){
@@ -283,6 +297,10 @@ Route::prefix('freelancer')->group(function (){
 
     Route::get('/has_agreed','FreelancersController@hasAgreed');
     Route::post('/set_terms','FreelancersController@setTerms');
+
+    // freelancer resume
+    Route::get('/v2/{username}','HomeController@ResumePageV2');
+    Route::get('/v2/short/{username}','HomeController@ResumePageShortV2');
 
 });
 
@@ -493,7 +511,7 @@ Route::get('/freelancer/owners/show_owner_page/{owner_id}','OwnersController@sho
 // audio record :
 Route::post('/audio/save','UserDataController@saveAudio');
 Route::post('/audio/save_for_chat','UserDataController@saveAudioForChat');
-Route::post('/audio/save_for_register','BusinessSupportController@saveAudioForRegister');
+//Route::post('/audio/save_for_register','BusinessSupportController@saveAudioForRegister');
 
 // chat new :
 Route::get('/chat-room','NewChatController@showChatPage')->name('chat-room');
@@ -574,6 +592,9 @@ Route::get('logout', 'Auth\LoginController@logout')
 
 // public routes :
 Route::get('/apply','BusinessSupportController@showRegistrationForm')->name('freelancer.register');
+Route::get('/register',function (){
+    return redirect('/freelancer/register');
+})->name('freelancer.register');
 Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/jobs/view_post/{job_id}','JobsController@viewSingleJobPost')->name('jobs.view_single');
 Route::get('/search/{search_id}','HomeController@getSearch')->name('public.search');
@@ -581,7 +602,7 @@ Route::get('/workforce/terms_and_conditions','HomeController@termsView')->name('
 Route::get('/workforce/privacy_policy','HomeController@privacyView')->name('privacy');
 Route::get('/resume_sample/{username}','HomeController@ResumeSample');
 //Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
-Route::get('/{username}','HomeController@ResumePage');
+Route::get('/{username}','ResumeController@agentsResume');
 
 Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-desginers');
 

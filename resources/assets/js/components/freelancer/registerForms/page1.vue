@@ -4,7 +4,7 @@
             <div class="left">
                 <img src="/images/dashboard/info.svg" alt="info icon">
                 <span>
-            FILL IN THE INFORMATION TO REGISTER AN AGENT
+            FILL IN THE INFORMATION TO REGISTER
         </span>
             </div>
         </div>

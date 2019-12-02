@@ -205,21 +205,10 @@ class ResumeController extends Controller
 
     public function agentsResume($username) {
 
-        $agentData = $this->getAgentData($username);
-
-        if ($agentData) {
-
-            return view('freelancer.resume_test', [
-                "username" => $agentData['username'],
-                "agent" => $agentData['agent'],
-                "user" => $agentData['user'],
-                "user_data" => $agentData['user_data'],
-                "skills" => $agentData['skills'],
-                "worksHistory" => $agentData['worksHistory'],
-                "educationsHistory" => $agentData['educationsHistory']
-            ]);
-        }
-        
+        $freelancer = User::where('username',$username)->with(['userData','skills','agent','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+            return $query->limit(10);
+        }])->where('username',$username)->first();
+        return view('freelancerResume.resumeLongV2', compact('freelancer'));
         
     }
 }

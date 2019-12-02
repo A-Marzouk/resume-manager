@@ -1718,7 +1718,7 @@ body {
 }
 
 .carousel-item.active .tabsArea .tabText {
-  border-bottom: 2px solid  #AC81FC;
+  border-bottom: 2px solid #AC81FC;
 }
 
 .carousel-indicators li {
@@ -3280,6 +3280,10 @@ body {
   width: 118px;
 }
 
+.editBtn a:hover {
+  color: white;
+}
+
 .editBtn a {
   color: #FFFFFF;
   font-family: Roboto;
@@ -3309,6 +3313,11 @@ body {
   border: 1px solid #6186F5;
   height: 30px;
   width: 104px;
+}
+
+.progressBtn a:hover {
+  color: white;
+  text-decoration: none;
 }
 
 .progressBtn a {
@@ -3411,6 +3420,30 @@ body {
 }
 
 
+
+@media only screen and (max-width: 1200px) {
+  .freelancerCard_updated {
+    width: 910px !important;
+  }
+}
+
+@media only screen and (max-width: 786px) {
+  .freelancerCard_updated {
+    width: 710px  !important;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .freelancerCard_updated {
+    width: 315px  !important;
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  .freelancerCard_updated {
+    width: 100%  !important;
+  }
+}
 
 #invoice .agentName {
   color: #2997c8;

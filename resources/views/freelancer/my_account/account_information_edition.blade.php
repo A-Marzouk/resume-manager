@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="freelancer_account_info_edit">
-        <freelancer-account-info-edit :agent-data="{{ json_encode($agentData) }}"></freelancer-account-info-edit>
+        <freelancer-account-info-edit :current_user="{{ json_encode($currentUser) }}"></freelancer-account-info-edit>
     </div>
 
 @endsection

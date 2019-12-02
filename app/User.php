@@ -34,6 +34,7 @@ class User extends Authenticatable implements HasMedia
         'password',
         'username',
         'referral_code',
+        'referred_by_code',
         'status',
         'reviewed_at',
         'stage',
@@ -134,6 +135,37 @@ class User extends Authenticatable implements HasMedia
     public function agent()
     {
         return $this->hasOne(Agent::class);
+    }
+
+    public function myAffiliates()
+    {
+        return User::where('referred_by_code',$this->referral_code)->with('client','agent','userData')->get();
+    }
+
+    public function affiliatesWithTotalSpent($users)
+    {
+
+        $total_spent_all = 0 ;
+        foreach ($users as &$user){
+            $invoices = Invoice::where([
+                ['client_id','=', $user->client->id],
+                ['status','=','1']
+            ])->get();
+
+            $total = 0 ;
+            foreach ($invoices as $invoice){
+                $total += $invoice->total ;
+            }
+
+            $user->total_spent = $total;
+            $total_spent_all += $total ;
+
+        }
+
+        return [
+            'users' => $users,
+            'total_spent_all' => $total_spent_all
+        ] ;
     }
 
     /**
@@ -261,11 +293,6 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany(WorkHistory::class);
     }
 
-    public function activityLogs()
-    {
-        return $this->hasMany(ActivityLog::class);
-    }
-
     public function invoices()
     {
         return $this->hasMany(User::class);
@@ -288,7 +315,7 @@ class User extends Authenticatable implements HasMedia
 
     public function skills()
     {
-        return $this->belongsToMany(Skill::class, 'skill_user');
+        return $this->hasMany(Skill::class)->orderBy('created_at', 'desc');
     }
 
     public function bookings()

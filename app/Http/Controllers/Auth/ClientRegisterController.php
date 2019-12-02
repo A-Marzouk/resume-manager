@@ -10,6 +10,7 @@ use App\Mail\Clients\ClientRegistered;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -23,13 +24,15 @@ class ClientRegisterController extends Controller
         $this->middleware('guest:client');
     }
 
-    public function showRegistrationForm(Request $request)
+    public function showRegistrationForm()
     {
-        if (isset($request->ownerCode)) {
-            $this->affiliate($request->ownerCode);
+        $referral_code = '' ;
+        if (Input::get('referral_code')) {
+            // it means this client is refered by someone.
+            $referral_code = Input::get('referral_code') ;
         }
 
-        return view('auth.client-register');
+        return view('auth.client-register',compact('referral_code'));
     }
 
     public function register(Request $request)
@@ -38,7 +41,11 @@ class ClientRegisterController extends Controller
 
         $client = $this->create($request->all());
 
-//        Mail::send(new ClientRegistered($client));
+        if(isset($request->referral_code)){
+            $client->user->update([
+                'referred_by_code' => $request->referral_code
+            ]);
+        }
 
         auth()->login($client->user);
 

@@ -1,5 +1,6 @@
 <template>
     <div class="my-account">
+        
         <div class="account-info dashboard-box">
             <div class="account-info-heading dashboard-box-heading">
                 <div class="left">
@@ -92,6 +93,58 @@
                 </div>
             </div>
         </div>
+
+        <div class="contracts dashboard-box">
+            <div class="account-info-heading dashboard-box-heading">
+                <div class="left">
+                    <img src="/images/client/my_account/contract_40px.png" alt="info icon">
+                    <span>
+                        BECOME AN AFFILIATE
+                    </span>
+                </div>
+            </div>
+            <div class="account-info-content-wrapper">
+                <div class="account-info-content p-0">
+                    <div class="agreement">
+                        <div class="right">
+                            <img src="/images/client/my_account/service.png" alt="service icon">
+                            <div>
+                                Invite others
+                            </div>
+                        </div>
+                        <div class="left no-decoration">
+                            <a href="javascript:void(0)" @click="copyLink(user.referral_code)">
+                                <span>COPY INVITE LINK</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="agreement" style="height:auto; padding-top: 15px; padding-bottom: 15px;">
+                        <div class="flex-column">
+                            <div class="right">
+                                <img src="/images/dashboard/experience.svg" alt="service icon">
+                                <div>
+                                    My clients list | <small>Total amount spent: {{user.total_spent_all}} $</small>
+                                </div>
+                            </div>
+                            <div class="pl-5 pt-2">
+                                <div v-for="(affiliate,index) in user.affiliates" :key="index + 'affiliate'">
+                                    <div style="color:#05A4F4;">- {{affiliate.client.contact}} | Spent: {{affiliate.total_spent}} $</div>
+                                </div>
+                            </div>
+                            <div v-if="user.affiliates.length < 1" class="pl-5 pt-1">
+                                - No invited clients.
+                            </div>
+                        </div>
+                        <div class="left no-decoration">
+                            <a style="height:auto;">
+                                <span style="color:#05A4F4;">My percentage : {{user.affiliate_percentage}} % <br/> Amount : {{(user.affiliate_percentage/100) * user.total_spent_all}} $</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="faqs dashboard-box">
             <div class="account-info-heading dashboard-box-heading">
                 <div class="left">
@@ -177,11 +230,26 @@
                 ],
 
                 user: {
-                    client:{}
+                    client:{},
+                    affiliates:[]
                 },
+                notificationMessage: 'Invitation link copied!'
             }
         },
         methods: {
+            copyLink(referral_code) {
+                let getUrl = window.location;
+                let baseUrl = getUrl.protocol + "//" + getUrl.host ;
+
+                let $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(baseUrl + '/client/register?referral_code=' + referral_code).select();
+                document.execCommand("copy");
+                $temp.remove();
+
+                // notification copied :
+                this.showSuccessMessage('Invitation link copied!');
+            },
             toggleAnswer(faq_id) {
                 let faqs = this.faqs;
                 $.each(faqs, function (i) {
@@ -200,7 +268,10 @@
                 axios.get('/client/current').then((response) => {
                     this.user = response.data;
                 });
-            }
+            },
+            showSuccessMessage() {
+                this.$emit('showPositiveNotification',this.notificationMessage);
+            },
         },
         mounted() {
             this.getCurrentClient();

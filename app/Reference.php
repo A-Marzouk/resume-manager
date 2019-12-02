@@ -15,11 +15,12 @@ class Reference extends Model
 {
     protected $table = 'user_references';
     protected $fillable = [
-        'title','name','company','phone','email','details'
+        'title','name','company','phone','email','details','user_id'
     ];
 
 
     public function freelancer(){
         return $this->belongsTo(User::class);
     }
+
 }

@@ -3,7 +3,7 @@
         <div class="dashboard_content campaign_activity">
             <div class="content-block freelancer flex-column align-items-center">
                 <div class="content-block-campaign-activity">
-                    <div class="data-logs">
+                    <div class="data-logs" style="height: auto!important;">
                         <div class="d-flex align-items-center justify-content-end pr-4">
                             <div>
                                 <div class="agentInfo d-flex flex-wrap justify-content-end pb-1">
@@ -49,6 +49,7 @@
                                    data-target="#pick-date-modal" @click.once="setDatePicker">
                                     <img src="/images/icons/pick_date.svg" alt="pick date"> <span class="hideDate">PICK A DATE</span>
                                 </a>
+                                <div style="font-size: 12px; color: #0D96DB" class="ml-2">{{todaysDateValue}}</div>
                             </div>
                         </div>
                         <div class="lineDivide"></div>
@@ -124,17 +125,20 @@
                     </div>
                 </div>
 
-                <div :id=" 'entryBox_' + campaign.id"class=" w-100" :class="{ 'marginTop50' : addEntry }">
+                <div :id=" 'entryBox_' + campaign.id"class="w-100" style="max-width:1200px;">
                     <addEntry :clear="clear" v-show="addEntry" :agent_id="currentAgent.id" :campaign_id="campaign.id"
                               @activityLogAdded="addActivityLog" ></addEntry>
                 </div>
 
-                <div class="documents-bar w-100"  :class="{ 'marginTop50' : !addEntry }">
-                    <img src="/images/client/campaign_activity/document.png" alt="document">
-                    <div class="document-text">
-                        Campaign links: <span>No links.</span>
+                <div class="w-100" style="max-width:1200px;">
+                    <div class="documents-bar">
+                        <img src="/images/client/campaign_activity/document.png" alt="document">
+                        <div class="document-text">
+                            Campaign links: <span>No links.</span>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <!-- date select modal -->
@@ -173,6 +177,7 @@
     import addEntry from '../dashboardComponents/addEntry'
     import updateEntry from '../dashboardComponents/updateEntry'
     import statusSelector from '../../status-selector'
+    import db from '../../../firestoreDB' ;
 
     export default {
         components: {
@@ -361,6 +366,7 @@
                     .then((response) => {
                         let log = response.data;
                         this.addActivityLog(log);
+                        this.addFireStoreLog(log);
                         this.startTimer(campaign);
                     })
                     .catch((error) => {
@@ -380,6 +386,7 @@
                 axios.post('/agent/shifts/add', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = response.data;
+                        this.addFireStoreShift(campaign.currentWorkingShift);
                         this.addShiftStartLog(campaign);
                     })
                     .catch((error) => {
@@ -399,8 +406,10 @@
                 axios.post('/agent/shifts/end', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = {
-                            status: 0
+                            status: 0,
+                            agent_id : response.data.agent_id
                         };
+                        this.addFireStoreShift(campaign.currentWorkingShift);
                         this.todayShifts.unshift(response.data);
                         this.campaignViewedShifts = response.data.campaign_id;
                         this.addShiftEndLog(campaign);
@@ -421,6 +430,8 @@
                 axios.post('/agent/shifts/pause', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = response.data;
+                        campaign.currentWorkingShift.action = 'start_break';
+                        this.addFireStoreShift(campaign.currentWorkingShift);
                         this.stopTimer(campaign);
                     })
                     .catch((error) => {
@@ -439,6 +450,8 @@
                 axios.post('/agent/shifts/resume', shiftData)
                     .then((response) => {
                         campaign.currentWorkingShift = response.data;
+                        campaign.currentWorkingShift.action = 'finish_break';
+                        this.addFireStoreShift(campaign.currentWorkingShift);
                         this.startTimer(campaign);
                     })
                     .catch((error) => {
@@ -479,6 +492,7 @@
                     .then((response) => {
                         let log = response.data;
                         this.addActivityLog(log);
+                        this.addFireStoreLog(log);
                         this.stopTimer(campaign);
                     })
                     .catch((error) => {
@@ -496,6 +510,7 @@
                     .then((response) => {
                         let log = response.data;
                         this.addActivityLog(log);
+                        this.addFireStoreLog(log);
                         this.pauseShift(campaign.currentWorkingShift.id, campaign);
                     })
                     .catch((error) => {
@@ -513,6 +528,7 @@
                     .then((response) => {
                         let log = response.data;
                         this.addActivityLog(log);
+                        this.addFireStoreLog(log);
                         this.resumeShift(campaign.currentWorkingShift.id, campaign);
                     })
                     .catch((error) => {
@@ -526,6 +542,16 @@
                     $('#log_history_' + log.id).addClass('d-none');
                 }
             },
+
+            // firestore functions :
+
+            addFireStoreLog(log){
+                db.collection('activity_logs').add(log);
+            },
+
+            addFireStoreShift(shift){
+                db.collection('shifts').add(shift);
+            }
 
         },
         computed: {
@@ -557,10 +583,10 @@
      margin-top:50px !important;
     }
 
-    /*.logsBox {*/
-        /*height: 400px;*/
-        /*overflow-x: auto;*/
-    /*}*/
+    .logsBox {
+        height: 312px;
+        overflow-x: auto;
+    }
 
     .actionBtn {
         margin-right: 34px;
@@ -623,4 +649,6 @@
     .blueColor{
         font-weight: 500!important;
     }
+
+
 </style>

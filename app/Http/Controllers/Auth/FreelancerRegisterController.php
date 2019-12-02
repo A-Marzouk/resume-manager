@@ -19,15 +19,11 @@ class FreelancerRegisterController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('guest:freelancer');
+         $this->middleware('guest');
     }
 
     public function showRegistrationForm(Request $request)
     {
-        if(isset($request->ownerCode)){
-            $this->affiliate($request->ownerCode) ;
-        }
-
         return view('auth.agent-register');
     }
 

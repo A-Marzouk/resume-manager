@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('freelancer.layouts.freelancer_frame')
 
 {{-- variables : $data -> freelancer userdata  and $owners --}}
 <?
@@ -12,31 +12,7 @@ if(!isset($value['id'])){
 
 ?>
 @section('content')
-    <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
-        <div class="row container">
-            <div class="col-3 alert-success alert"  style="margin-left: 15px;">
-               Viewing as admin
-            </div>
-        </div>
 
-        <div class="row container">
-            <div class="col-6">
-                <div class="form-group">
-                    <label class="panelFormLabel">Assigned owner</label>
-                    <select class="custom-select" style="@if($errors->has('jobTitle')) border:1px solid red; @endif padding-top: 12px !important; padding-bottom: 12px !important; height: auto!important;" id="ownerEmail" name="ownerEmail">
-                        <option value="" disabled selected>-- Owner's Email --</option>
-                        <? foreach($affiliates as $affiliate):?>
-                            <option value="{{$affiliate->id}}"<?if($freelancer->affiliate['email'] == $affiliate->email):?>selected<?endif;?>>{{$affiliate->email}}</option>
-                        <? endforeach;?>
-                    </select>
-                    <a href="javascript:void(0)" id="saveOwner" class="btn btn-outline-primary d-none" style="margin-top: 6px;">Save</a>
-                </div> <!-- owner assignment -->
-            </div>
-        </div>
-    <? endif;?>
-    <div id="agent_terms_bar">
-        <agent-terms-bar></agent-terms-bar>
-    </div>
     <div class="row container">
         <? if(session()->get('admin') && session()->get('admin') == 'AdminWasHere'):?>
         <div class="col-md-2">
@@ -69,7 +45,7 @@ if(!isset($value['id'])){
                     </a>
                 </div>
                 <div class="editBtn NoDecor">
-                    <a href="{{route('show.edit_form')}}">
+                    <a href="/freelancer/developer-card/edit">
                         <img src="/images/edit_profile.png" alt="edit profile">
                         Edit profile
                     </a>

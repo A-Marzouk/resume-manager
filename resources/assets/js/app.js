@@ -49,6 +49,16 @@ Vue.component('admin-agent-edit-professional-info', require('./components/admin/
 Vue.component('admin-agent-edit-record-resume', require('./components/admin/editAgent/EditRecordResumeInfo.vue'));
 
 
+// resume component
+Vue.component('freelancer-resume-long-v2', require('./components/freelancerResume/resumeComponentLongV2.vue'));
+Vue.component('freelancer-resume-short-v2', require('./components/freelancerResume/resumeComponentShortV2.vue'));
+
+
+// register developer
+Vue.component('register-developer', require('./components/RegisterDeveloper.vue'));
+
+
+
 import AdminAgentRegisterPage1 from './components/admin/registerAgent/page1.vue'
 import AdminAgentRegisterPage2 from './components/admin/registerAgent/page2.vue'
 import AdminAgentRegisterPage3 from './components/admin/registerAgent/page3.vue'
@@ -59,6 +69,29 @@ import AdminAgentRegisterCompleted from './components/admin/registerAgent/finish
 import AdminAgents from './components/admin/dashboard/Agents.vue';
 import AdminClients from './components/admin/dashboard/Clients.vue';
 import AdminCampaigns from './components/admin/dashboard/Campaigns.vue';
+
+
+
+
+if ($("#freelancerResumeLongV2").length !== 0){
+    let freelancerResumeLongV2 = new Vue({
+        el:'#freelancerResumeLongV2'
+    });
+}
+
+
+if ($("#registerDeveloper").length !== 0){
+    let registerDeveloper = new Vue({
+        el:'#registerDeveloper'
+    });
+}
+
+
+if ($("#freelancerResumeShortV2").length !== 0){
+    let freelancerResumeShortV2 = new Vue({
+        el:'#freelancerResumeShortV2'
+    });
+}
 
 
 if ($("#adminEditAgentPersonalInfo").length !== 0){
@@ -355,6 +388,8 @@ Vue.component('freelancer-campaign-archives', require('./components/freelancer/C
 Vue.component('freelancer-campaign-main', require('./components/freelancer/CampaignMainComponent.vue'))
 Vue.component('freelancer-account-info-edit', require('./components/freelancer/dashboardComponents/my_account/MyAccountEdit.vue'));
 Vue.component('freelancer-professional-info-edit', require('./components/freelancer/dashboardComponents/my_account/ProfessionalInfoEdit.vue'));
+Vue.component('freelancer-professional-info-it-edit', require('./components/freelancer/dashboardComponents/my_account/ProfessionalInfoITEdit.vue'));
+Vue.component('freelancer-media-info-edit', require('./components/freelancer/dashboardComponents/my_account/EditMediaInfo.vue'));
 
 Vue.component('service-agreement',require('./components/freelancer/dashboardComponents/my_account/ServiceAgreement.vue'));
 Vue.component('privacy-agreement',require('./components/freelancer/dashboardComponents/my_account/PrivacyAgreement.vue'));
@@ -443,6 +478,21 @@ if ($("#freelancer_professional_info_edit").length !== 0){
         el:'#freelancer_professional_info_edit'
     });
 }
+
+if ($("#freelancer_media_info_edit").length !== 0){
+
+    let freelancer_media_info_edit = new Vue({
+        el:'#freelancer_media_info_edit'
+    });
+}
+
+if ($("#freelancer_professional_info_it_edit").length !== 0){
+
+    let freelancer_professional_info_it_edit = new Vue({
+        el:'#freelancer_professional_info_it_edit'
+    });
+}
+
 
 if ($("#serviceAgreementFreelancer").length !== 0){
 
@@ -579,6 +629,10 @@ Vue.component('send-invitations', require('./components/mails/sendInvitationMail
 // Freelancers cards
 Vue.component('freelancer-resume', require('./components/resumeAgent/resumeComponentLong.vue'));
 
+
+Vue.component('freelancer-portfolio', require('./components/freelancerResume/portfolio'));
+Vue.component('freelancer-portfolio-popup', require('./components/freelancerResume/PortfolioPopUp'));
+
 if ($("#freelancerResume").length !== 0) {
     let freelancerResume = new Vue({
         el: "#freelancerResume"
@@ -596,6 +650,18 @@ if ($("#searchFreelancers").length !== 0){
 if ($("#record_input").length !== 0){
     let record_input = new Vue({
         el:'#record_input'
+    });
+}
+
+if ($("#freelancerPortfolio").length !== 0){
+    let freelancerPortfolio = new Vue({
+        el:'#freelancerPortfolio'
+    });
+}
+
+if ($("#freelancerPortfolioPopUp").length !== 0){
+    let freelancerPortfolioPopUp = new Vue({
+        el:'#freelancerPortfolioPopUp'
     });
 }
 

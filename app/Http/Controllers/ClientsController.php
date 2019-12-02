@@ -135,9 +135,11 @@ class ClientsController extends Controller
 
     public function getCurrentClient()
     {
-        return User::whereHas('roles', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'client');
         })->where('id', currentClient()->user_id)->with('client','client.searches')->first();
+        $user['affiliates'] = $user->myAffiliates();
+        return $user ;
     }
 
     public function hasAgreed()

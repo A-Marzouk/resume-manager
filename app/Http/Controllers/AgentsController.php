@@ -236,9 +236,11 @@ class AgentsController extends Controller
 
     public function getCurrentAgent()
     {
-        return User::whereHas('roles', function ($query) {
+        $user =  User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'agent');
         })->where('id', currentAgent()->user_id)->with('agent.shifts', 'userData','languages', 'agent.logs.history')->first();
+        $user['affiliates'] = $user->myAffiliates();
+        return $user;
     }
 
     public function getAgentByID($id)

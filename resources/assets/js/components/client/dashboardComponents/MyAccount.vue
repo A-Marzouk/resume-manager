@@ -118,6 +118,29 @@
                             </a>
                         </div>
                     </div>
+                    <div class="agreement" style="height:auto; padding-top: 15px; padding-bottom: 15px;">
+                        <div class="flex-column">
+                            <div class="right">
+                                <img src="/images/dashboard/experience.svg" alt="service icon">
+                                <div>
+                                    My clients list
+                                </div>
+                            </div>
+                            <div class="pl-5 pt-2">
+                                <div v-for="(user,index) in user.affiliates" :key="index + 'affiliate'">
+                                    <div style="color:#05A4F4;">- {{user.client.contact}}</div>
+                                </div>
+                            </div>
+                            <div v-if="user.affiliates.length < 1" class="pl-5 pt-1">
+                                - No invited clients.
+                            </div>
+                        </div>
+                        <div class="left no-decoration">
+                            <a>
+                                <span style="color:#05A4F4;">My percentage : {{user.affiliate_percentage}} %</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -207,7 +230,8 @@
                 ],
 
                 user: {
-                    client:{}
+                    client:{},
+                    affiliates:[]
                 },
                 notificationMessage: 'Invitation link copied!'
             }
@@ -215,16 +239,16 @@
         methods: {
             copyLink(referral_code) {
                 let getUrl = window.location;
-                let baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                let baseUrl = getUrl.protocol + "//" + getUrl.host ;
 
                 let $temp = $("<input>");
                 $("body").append($temp);
-                $temp.val(baseUrl + '/register?referral_code=' + referral_code).select();
+                $temp.val(baseUrl + '/client/register?referral_code=' + referral_code).select();
                 document.execCommand("copy");
                 $temp.remove();
 
                 // notification copied :
-                this.showSuccessMessage();
+                this.showSuccessMessage('Invitation link copied!');
             },
             toggleAnswer(faq_id) {
                 let faqs = this.faqs;

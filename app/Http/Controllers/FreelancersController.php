@@ -29,6 +29,7 @@ class FreelancersController extends Controller
             return redirect('/admin');
         }
         $agent = Agent::where('id',currentAgent()->id)->with('user.userData','campaigns','logs.history','shifts')->first();
+        $agent['user']['affiliates'] = $agent->user->myAffiliates() ;
         return view('freelancer.dashboard', compact('agent'));
     }
 

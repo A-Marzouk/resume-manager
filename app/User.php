@@ -137,6 +137,11 @@ class User extends Authenticatable implements HasMedia
         return $this->hasOne(Agent::class);
     }
 
+    public function myAffiliates()
+    {
+        return User::where('referred_by_code',$this->referral_code)->with('client','agent','userData')->get();
+    }
+
     /**
      * Create a new agent.
      *

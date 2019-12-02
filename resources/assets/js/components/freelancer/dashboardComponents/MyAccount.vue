@@ -188,6 +188,29 @@
                             </a>
                         </div>
                     </div>
+                    <div class="agreement" style="height:auto; padding-top: 15px; padding-bottom: 15px;">
+                        <div class="flex-column">
+                            <div class="right">
+                                <img src="/images/dashboard/experience.svg" alt="service icon">
+                                <div>
+                                    My clients list
+                                </div>
+                            </div>
+                            <div class="pl-5 pt-2">
+                                <div v-for="(user,index) in user.affiliates" :key="index + 'affiliate'">
+                                    <div style="color:#05A4F4;">- {{user.client.contact}}</div>
+                                </div>
+                            </div>
+                            <div v-if="user.affiliates.length < 1" class="pl-5 pt-2">
+                                - No invited clients.
+                            </div>
+                        </div>
+                        <div class="left no-decoration">
+                            <a>
+                                <span style="color:#05A4F4;">My percentage : {{user.affiliate_percentage}} %</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -227,7 +250,7 @@
                             <div class="account-edit-section-inputs d-flex flex-row">
                                 <div class="faq-question-input account-edit-input">
                                     <label class="faq-input-label">
-                                       {{baseUrl()}}
+                                        {{baseUrl()}}
                                     </label>
                                     <div class="faq-input" style="width: 300px;"
                                          :class="{ 'error-input' : errors.username}">
@@ -350,16 +373,16 @@
         methods: {
             copyLink(referral_code) {
                 let getUrl = window.location;
-                let baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                let baseUrl = getUrl.protocol + "//" + getUrl.host;
 
                 let $temp = $("<input>");
                 $("body").append($temp);
-                $temp.val(baseUrl + '/register?referral_code=' + referral_code).select();
+                $temp.val(baseUrl + '/client/register?referral_code=' + referral_code).select();
                 document.execCommand("copy");
                 $temp.remove();
 
                 // notification copied :
-                this.showSuccessMessage();
+                this.showSuccessMessage('Invitation link copied!');
             },
             copyProfileLink(username) {
                 let getUrl = window.location;
@@ -374,9 +397,9 @@
                 // notification copied :
                 this.showSuccessMessage('Invitation link copied!');
             },
-            baseUrl(){
+            baseUrl() {
                 let getUrl = window.location;
-                return getUrl.protocol + "//" + getUrl.host + '/' ;
+                return getUrl.protocol + "//" + getUrl.host + '/';
             },
             showSuccessMessage(notificationMessage) {
                 this.$emit('showPositiveNotification', notificationMessage);
@@ -407,15 +430,15 @@
                 });
 
             },
-            isUsernameChanged(){
-                if(!this.user.username){
+            isUsernameChanged() {
+                if (!this.user.username) {
                     return;
-                }else{
-                    return  this.usernameOldValue.trim() === this.user.username.trim() ;
+                } else {
+                    return this.usernameOldValue.trim() === this.user.username.trim();
                 }
             },
             editUsername() {
-                if(this.usernameOldValue.trim() === this.user.username.trim()){
+                if (this.usernameOldValue.trim() === this.user.username.trim()) {
                     return;
                 }
                 this.clearErrors();

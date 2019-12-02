@@ -142,6 +142,32 @@ class User extends Authenticatable implements HasMedia
         return User::where('referred_by_code',$this->referral_code)->with('client','agent','userData')->get();
     }
 
+    public function affiliatesWithTotalSpent($users)
+    {
+
+        $total_spent_all = 0 ;
+        foreach ($users as &$user){
+            $invoices = Invoice::where([
+                ['client_id','=', $user->client->id],
+                ['status','=','1']
+            ])->get();
+
+            $total = 0 ;
+            foreach ($invoices as $invoice){
+                $total += $invoice->total ;
+            }
+
+            $user->total_spent = $total;
+            $total_spent_all += $total ;
+
+        }
+
+        return [
+            'users' => $users,
+            'total_spent_all' => $total_spent_all
+        ] ;
+    }
+
     /**
      * Create a new agent.
      *

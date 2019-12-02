@@ -123,12 +123,12 @@
                             <div class="right">
                                 <img src="/images/dashboard/experience.svg" alt="service icon">
                                 <div>
-                                    My clients list
+                                    My clients list | <small>Total amount spent: {{user.total_spent_all}} $</small>
                                 </div>
                             </div>
                             <div class="pl-5 pt-2">
-                                <div v-for="(user,index) in user.affiliates" :key="index + 'affiliate'">
-                                    <div style="color:#05A4F4;">- {{user.client.contact}}</div>
+                                <div v-for="(affiliate,index) in user.affiliates" :key="index + 'affiliate'">
+                                    <div style="color:#05A4F4;">- {{affiliate.client.contact}} | Spent: {{affiliate.total_spent}} $</div>
                                 </div>
                             </div>
                             <div v-if="user.affiliates.length < 1" class="pl-5 pt-1">
@@ -136,8 +136,8 @@
                             </div>
                         </div>
                         <div class="left no-decoration">
-                            <a>
-                                <span style="color:#05A4F4;">My percentage : {{user.affiliate_percentage}} %</span>
+                            <a style="height:auto;">
+                                <span style="color:#05A4F4;">My percentage : {{user.affiliate_percentage}} % <br/> Amount : {{(user.affiliate_percentage/100) * user.total_spent_all}} $</span>
                             </a>
                         </div>
                     </div>

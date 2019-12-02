@@ -61,6 +61,25 @@ class AgentsController extends Controller
         ];
     }
 
+
+    public function editAgentAffiliatePercentage(Request $request)
+    {
+        $request->validate([
+            'affiliate_percentage' => 'max:191|required|numeric',
+        ]);
+
+        $user = User::where('id', $request->user_id)->first();
+        if ($user) {
+            $user->update([
+                'affiliate_percentage' => $request->affiliate_percentage
+            ]);
+        }
+
+        return [
+            'affiliate_percentage' => $user->affiliate_percentage
+        ];
+    }
+
     public function viewAgentServiceAgreement()
     {
         return view('freelancer.my_account.service_agreement');

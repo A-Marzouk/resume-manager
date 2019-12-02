@@ -101,7 +101,10 @@ class AdminsController extends Controller
 
     public function getAgentByID($user_id){
         $user = User::where('id',$user_id)->with('data','agent','languages')->first();
-        return $user ;
+        $results = $user->affiliatesWithTotalSpent($user->myAffiliates());
+        $user['affiliates'] = $results['users'];
+        $user['total_spent_all'] = $results['total_spent_all'];
+        return $user;
     }
 
     public function getClients(){

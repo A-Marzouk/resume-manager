@@ -23,7 +23,7 @@ class AgentsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('viewAgents', 'isAdmin', 'getAgents','createAgent');
+        $this->middleware('auth')->except('viewAgents', 'isAdmin', 'getAgents', 'createAgent');
     }
 
 
@@ -43,13 +43,14 @@ class AgentsController extends Controller
         ];
     }
 
-    public function editAgentUsername(Request $request){
+    public function editAgentUsername(Request $request)
+    {
         $request->validate([
             'username' => 'max:191|required|unique:users|alpha_dash',
         ]);
 
-        $user = User::where('id',$request->user_id)->first();
-        if($user){
+        $user = User::where('id', $request->user_id)->first();
+        if ($user) {
             $user->update([
                 'username' => $request->username
             ]);
@@ -236,51 +237,54 @@ class AgentsController extends Controller
 
     public function getCurrentAgent()
     {
-        $user =  User::whereHas('roles', function ($query) {
+        $user = User::whereHas('roles', function ($query) {
             $query->where('name', '=', 'agent');
-        })->where('id', currentAgent()->user_id)->with('agent.shifts', 'userData','languages', 'agent.logs.history')->first();
-        $user['affiliates'] = $user->myAffiliates();
+        })->where('id', currentAgent()->user_id)->with('agent.shifts', 'userData', 'languages', 'agent.logs.history')->first();
+        $results = $user->affiliatesWithTotalSpent($user->myAffiliates());
+        $user['affiliates'] = $results['users'];
+        $user['total_spent_all'] = $results['total_spent_all'];
         return $user;
     }
 
     public function getAgentByID($id)
     {
-        return Agent::where('id',$id)->with('shifts', 'user.userData', 'logs.history')->first();
+        return Agent::where('id', $id)->with('shifts', 'user.userData', 'logs.history')->first();
     }
 
-    public function createAgent(Request $request){
+    public function createAgent(Request $request)
+    {
 
-         $resumeData = json_decode( $request->resumeData,true) ;
-         $professionalData = json_decode( $request->professionalData,true) ;
-         $personalData = json_decode( $request->personalData,true) ;
+        $resumeData = json_decode($request->resumeData, true);
+        $professionalData = json_decode($request->professionalData, true);
+        $personalData = json_decode($request->personalData, true);
 
 
-        $agent =  app(User::class)->createAgent([
+        $agent = app(User::class)->createAgent([
             'user' => [
                 'email' => $personalData['email'],
                 'password' => $request->password,
                 'username' => $personalData['email'],
             ],
             'agent' => [
-                'available_hours_per_week' =>  $professionalData['hoursPerWeek'],
-                'experience'               => $professionalData['sector'],
-                'technologies'             => implode(',',$professionalData['techs']),
-                'hourly_rate'              => 5,
-                'voice_character'          => $professionalData['voice'],
+                'available_hours_per_week' => $professionalData['hoursPerWeek'],
+                'experience' => $professionalData['sector'],
+                'technologies' => implode(',', $professionalData['techs']),
+                'hourly_rate' => 5,
+                'voice_character' => $professionalData['voice'],
             ],
             'user_data' => [
-                'profession_id'         => 1, // business-support(1), developer (2), designer (3)
-                'currency_id'           => 1, // usd
-                'timezone'              => 1,
+                'profession_id' => 1, // business-support(1), developer (2), designer (3)
+                'currency_id' => 1, // usd
+                'timezone' => 1,
                 // personal data
-                'first_name'            => $personalData['name'],
-                'last_name'             => $personalData['surname'],
-                'city'                  => $personalData['cityName'],
-                'phone'                 => $personalData['phone'],
-                'gender'                => $personalData['gender'],
-                'paypal_acc_number'     => $personalData['paypal'],
+                'first_name' => $personalData['name'],
+                'last_name' => $personalData['surname'],
+                'city' => $personalData['cityName'],
+                'phone' => $personalData['phone'],
+                'gender' => $personalData['gender'],
+                'paypal_acc_number' => $personalData['paypal'],
 //                // professional data
-                'job_title'             => $professionalData['primaryJob'],
+                'job_title' => $professionalData['primaryJob'],
             ]
         ]);
 
@@ -288,20 +292,19 @@ class AgentsController extends Controller
 
         $languageSymbol = $professionalData['lang'];
 
-        $language = Language::where('name','english')->first();
-        if($languageSymbol == 'es'){
-            $language = Language::where('name','spanish')->first();
+        $language = Language::where('name', 'english')->first();
+        if ($languageSymbol == 'es') {
+            $language = Language::where('name', 'spanish')->first();
         }
 
         // attach user to language
         $language->users()->attach($agent->user_id);
 
 
-
 //         upload recording and resume files
-        if($resumeData['typeOfRecording'] === 'file'){
+        if ($resumeData['typeOfRecording'] === 'file') {
             // upload the recording to our storage
-            $pathToAudio = Upload::mainRecording( 'recordingFile', 'main_record');
+            $pathToAudio = Upload::mainRecording('recordingFile', 'main_record');
 
             $agent->update([
                 'recording' => $pathToAudio,
@@ -309,9 +312,9 @@ class AgentsController extends Controller
             ]);
         }
 
-        if(isset($_FILES['resumeFile'])){
+        if (isset($_FILES['resumeFile'])) {
             // upload the resume to our storage
-            $pathToResume = Upload::resume( 'resumeFile', 'main_resume');
+            $pathToResume = Upload::resume('resumeFile', 'main_resume');
 
             $agent->update([
                 'cv' => $pathToResume,
@@ -319,9 +322,9 @@ class AgentsController extends Controller
         }
 
 
-        if(isset($_FILES['profilePicture'])){
+        if (isset($_FILES['profilePicture'])) {
             // upload the resume to our storage
-            $pathToPicture = Upload::profilePicture( 'profilePicture', 'profile_picture');
+            $pathToPicture = Upload::profilePicture('profilePicture', 'profile_picture');
 
             $agent->user->userData->update([
                 'profile_picture' => $pathToPicture,
@@ -329,15 +332,12 @@ class AgentsController extends Controller
         }
 
 
-
-        if($resumeData['typeOfRecording'] === 'link'){
+        if ($resumeData['typeOfRecording'] === 'link') {
             $agent->update([
-                'recording'      => $resumeData['recordingLink'],
+                'recording' => $resumeData['recordingLink'],
                 'recording_type' => 'link'
             ]);
         }
-
-
 
 
         // login the agent after register
@@ -350,7 +350,8 @@ class AgentsController extends Controller
 
     }
 
-    public function editAgentPersonalInfo (Request $request) {
+    public function editAgentPersonalInfo(Request $request)
+    {
         $request->validate([
             'first_name' => 'max:191|required',
             'last_name' => 'max:191|required',
@@ -374,19 +375,20 @@ class AgentsController extends Controller
         $user = currentUser();
 
         $user->userData->update(
-          $request->toArray()
+            $request->toArray()
         );
 
-        if(isset($request->password)){
+        if (isset($request->password)) {
             $user->update([
                 'password' => $request->password
             ]);
         }
 
-        return  $user->userData ;
+        return $user->userData;
     }
 
-    public function editAgentProfessionalInfo(Request $request){
+    public function editAgentProfessionalInfo(Request $request)
+    {
         $request->validate([
             'job_title' => 'max:191|required',
             'voice_character' => 'max:191',
@@ -407,13 +409,13 @@ class AgentsController extends Controller
             'voice_character' => $request->voice_character ?? '',
             'experience' => $request->experience ?? '',
             'technologies' => $request->technologies ?? '',
-            'available_hours_per_week' =>$request->available_hours_per_week,
+            'available_hours_per_week' => $request->available_hours_per_week,
         ]);
 
-        if(isset($request->language)){
-            $language = Language::where('name','english')->first();
-            if($request->language == 'spanish'){
-                $language = Language::where('name','spanish')->first();
+        if (isset($request->language)) {
+            $language = Language::where('name', 'english')->first();
+            if ($request->language == 'spanish') {
+                $language = Language::where('name', 'spanish')->first();
             }
             // attach language to user
             $user->languages()->sync($language->id);
@@ -427,16 +429,17 @@ class AgentsController extends Controller
     }
 
 
-    public function editAgentMedialInfo(Request $request){
+    public function editAgentMedialInfo(Request $request)
+    {
 
-        $user = User::where('id',currentUser()->id)->with('agent','userData','recordings')->first();
+        $user = User::where('id', currentUser()->id)->with('agent', 'userData', 'recordings')->first();
 
-        $errors = [] ;
+        $errors = [];
 
-        if(isset($_FILES['profile_picture'])){
+        if (isset($_FILES['profile_picture'])) {
             // upload the resume to our storage
-            $pathToPicture = Upload::profilePicture( 'profile_picture', 'profile_picture');
-            if(!$pathToPicture){
+            $pathToPicture = Upload::profilePicture('profile_picture', 'profile_picture');
+            if (!$pathToPicture) {
                 $errors['profile_picture'] = [
                     '0' => 'Error while uploading profile picture.'
                 ];
@@ -446,11 +449,11 @@ class AgentsController extends Controller
             ]);
         }
 
-        if(isset($_FILES['cv'])){
+        if (isset($_FILES['cv'])) {
             // upload the resume to our storage
-            $pathToResume = Upload::resume( 'cv', 'main_resume');
+            $pathToResume = Upload::resume('cv', 'main_resume');
 
-            if(!$pathToResume){
+            if (!$pathToResume) {
                 $errors['cv'] = [
                     '0' => 'Error while uploading file.'
                 ];
@@ -460,26 +463,26 @@ class AgentsController extends Controller
             ]);
         }
 
-        if(isset($_FILES['file']) && $request->uploadMethod === 'upload'){
+        if (isset($_FILES['file']) && $request->uploadMethod === 'upload') {
 
-            $userRecordings = Recording::where('user_id',currentUser()->id)->get();
+            $userRecordings = Recording::where('user_id', currentUser()->id)->get();
 
-            $fname = "Record_".date(time()).'.ogg';
-            $target_file = "uploads/register_audios/" . $fname ;
+            $fname = "Record_" . date(time()) . '.ogg';
+            $target_file = "uploads/register_audios/" . $fname;
 
             if (file_exists($target_file)) {
                 unlink($target_file);
             }
 
-            if(!move_uploaded_file($_FILES['file']['tmp_name'], $target_file)){
+            if (!move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
                 $errors['audio'] = [
                     '0' => 'Error while uploading file.'
                 ];
-            }else{
+            } else {
 
-                foreach ($userRecordings as $record){
-                    if (file_exists(public_path() . '/' .$record->src)) {
-                        unlink(public_path() . '/' .$record->src);
+                foreach ($userRecordings as $record) {
+                    if (file_exists(public_path() . '/' . $record->src)) {
+                        unlink(public_path() . '/' . $record->src);
                     }
                     $record->delete();
                 }
@@ -487,7 +490,7 @@ class AgentsController extends Controller
                 // save record :
                 $record = new Recording;
                 $record->user_id = currentUser()->id;
-                $record->src = '/'.$target_file;
+                $record->src = '/' . $target_file;
                 $record->title = 'Recorded application (record)';
                 $record->transcription = '';
                 $record->save();
@@ -495,7 +498,7 @@ class AgentsController extends Controller
         }
 
 
-        if ($request->uploadMethod === 'url'){
+        if ($request->uploadMethod === 'url') {
             // save record :
             $record = new Recording;
             $record->user_id = currentUser()->id;
@@ -505,40 +508,41 @@ class AgentsController extends Controller
             $record->save();
         }
 
-        if(count($errors) > 0){
+        if (count($errors) > 0) {
             return [
                 'errors' => $errors
-            ] ;
+            ];
         }
 
-        $user = User::where('id',currentUser()->id)->with('agent','userData','recordings')->first();
+        $user = User::where('id', currentUser()->id)->with('agent', 'userData', 'recordings')->first();
 
-        return $user ;
+        return $user;
     }
 
 
-    public function saveAudioForMedia(Request $request){
+    public function saveAudioForMedia(Request $request)
+    {
 
-        $userRecordings = Recording::where('user_id',currentUser()->id)->get();
-        $user = User::where('id',currentUser()->id)->with('agent','userData','recordings')->first();
+        $userRecordings = Recording::where('user_id', currentUser()->id)->get();
+        $user = User::where('id', currentUser()->id)->with('agent', 'userData', 'recordings')->first();
 
-        if(isset($_FILES['file']) and !$_FILES['file']['error']){
-            $fname = "Record_".date(time()).'.ogg';
-            $target_file = "uploads/register_audios/" . $fname ;
+        if (isset($_FILES['file']) and !$_FILES['file']['error']) {
+            $fname = "Record_" . date(time()) . '.ogg';
+            $target_file = "uploads/register_audios/" . $fname;
 
             if (file_exists($target_file)) {
                 unlink($target_file);
             }
 
-            if(!move_uploaded_file($_FILES['file']['tmp_name'], $target_file)){
+            if (!move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
                 $errors['audio'] = [
                     '0' => 'Error while uploading file.'
                 ];
-            }else{
+            } else {
 
-                foreach ($userRecordings as $record){
-                    if (file_exists(public_path() . '/' .$record->src)) {
-                        unlink(public_path() . '/' .$record->src);
+                foreach ($userRecordings as $record) {
+                    if (file_exists(public_path() . '/' . $record->src)) {
+                        unlink(public_path() . '/' . $record->src);
                     }
                     $record->delete();
                 }
@@ -546,7 +550,7 @@ class AgentsController extends Controller
                 // save record :
                 $record = new Recording;
                 $record->user_id = currentUser()->id;
-                $record->src = '/'.$target_file;
+                $record->src = '/' . $target_file;
                 $record->title = 'Recorded application (record)';
                 $record->transcription = '';
                 $record->save();
@@ -554,10 +558,10 @@ class AgentsController extends Controller
         }
 
 
-        if(isset($_FILES['profile_picture'])){
+        if (isset($_FILES['profile_picture'])) {
             // upload the resume to our storage
-            $pathToPicture = Upload::profilePicture( 'profile_picture', 'profile_picture');
-            if(!$pathToPicture){
+            $pathToPicture = Upload::profilePicture('profile_picture', 'profile_picture');
+            if (!$pathToPicture) {
                 $errors['profile_picture'] = [
                     '0' => 'Error while uploading profile picture.'
                 ];
@@ -567,11 +571,11 @@ class AgentsController extends Controller
             ]);
         }
 
-        if(isset($_FILES['cv'])){
+        if (isset($_FILES['cv'])) {
             // upload the resume to our storage
-            $pathToResume = Upload::resume( 'cv', 'main_resume');
+            $pathToResume = Upload::resume('cv', 'main_resume');
 
-            if(!$pathToResume){
+            if (!$pathToResume) {
                 $errors['cv'] = [
                     '0' => 'Error while uploading file.'
                 ];
@@ -586,7 +590,8 @@ class AgentsController extends Controller
     }
 
 
-    public function editDeveloperProfessionalInfo(Request $request){
+    public function editDeveloperProfessionalInfo(Request $request)
+    {
 
         $request->validate([
             'job_title' => 'max:191|required',
@@ -604,16 +609,16 @@ class AgentsController extends Controller
 
 
         $user->agent->update([
-            'available_hours_per_week' => $request->available_hours_per_week === 'null' ? 0 : intval($request->available_hours_per_week) ,
-            'monthly_salary' =>$request->monthly_salary === 'null' ? 0 : intval($request->monthly_salary) ,
-            'monthly_salary_part_time' => $request->monthly_salary_part_time === 'null' ? 0 : intval($request->monthly_salary_part_time) ,
+            'available_hours_per_week' => $request->available_hours_per_week === 'null' ? 0 : intval($request->available_hours_per_week),
+            'monthly_salary' => $request->monthly_salary === 'null' ? 0 : intval($request->monthly_salary),
+            'monthly_salary_part_time' => $request->monthly_salary_part_time === 'null' ? 0 : intval($request->monthly_salary_part_time),
             'hourly_rate' => intval($request->hourly_rate)
         ]);
 
 
         // make 6 for the developer as main skills :
 
-        $this->createSkills($request,$user);
+        $this->createSkills($request, $user);
 
 
         return [
@@ -623,9 +628,10 @@ class AgentsController extends Controller
 
     }
 
-    protected function createSkills($request,$user){
+    protected function createSkills($request, $user)
+    {
 
-        if(isset($request->programming_language1)){
+        if (isset($request->programming_language1)) {
             $skill = new Skill;
             $skill->user_id = $user->id;
             $skill->skill_title = $request->programming_language1;
@@ -634,7 +640,7 @@ class AgentsController extends Controller
             $skill->save();
         }
 
-        if(isset($request->programming_language2)) {
+        if (isset($request->programming_language2)) {
             $skill = new Skill;
             $skill->user_id = $user->id;
             $skill->skill_title = $request->programming_language2;
@@ -643,7 +649,7 @@ class AgentsController extends Controller
             $skill->save();
         }
 
-        if(isset($request->framework1)) {
+        if (isset($request->framework1)) {
             $skill = new Skill;
             $skill->user_id = $user->id;
             $skill->skill_title = $request->framework1;
@@ -652,7 +658,7 @@ class AgentsController extends Controller
             $skill->save();
         }
 
-        if(isset($request->framework2)) {
+        if (isset($request->framework2)) {
             $skill = new Skill;
             $skill->user_id = $user->id;
             $skill->skill_title = $request->framework2;
@@ -662,7 +668,7 @@ class AgentsController extends Controller
         }
 
 
-        if(isset($request->database1)) {
+        if (isset($request->database1)) {
             $skill = new Skill;
             $skill->user_id = $user->id;
             $skill->skill_title = $request->database1;
@@ -671,7 +677,7 @@ class AgentsController extends Controller
             $skill->save();
         }
 
-        if(isset($request->database2)) {
+        if (isset($request->database2)) {
             $skill = new Skill;
             $skill->user_id = $user->id;
             $skill->skill_title = $request->database2;

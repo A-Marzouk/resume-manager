@@ -349,7 +349,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center w-100" style="padding-top: 24px;">
                         <div class="base-text" style="font-size: 12px;">
-                            Total : 124
+                            Page total : {{filteredSelectedAgents.length}}
                         </div>
                         <div class="no-decoration">
                             <a href="javascript:void(0)" class="paginationBox d-flex align-items-center justify-content-center" @click="showUsersNumSelection = true">

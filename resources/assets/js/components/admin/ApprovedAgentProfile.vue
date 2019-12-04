@@ -151,7 +151,7 @@
                             </div>
                         </div>
                         <div class="left no-decoration">
-                            <a href="javascript:void(0)" @click="copyLink(user.referral_code)">
+                            <a href="javascript:void(0)" @click="copyLink(currentUser.referral_code)">
                                 <span>COPY INVITE LINK</span>
                             </a>
                         </div>
@@ -360,6 +360,19 @@
                     this.errors[error] = '';
                 });
 
+            },
+            copyLink(referral_code) {
+                let getUrl = window.location;
+                let baseUrl = getUrl.protocol + "//" + getUrl.host ;
+
+                let $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(baseUrl + '/client/register?referral_code=' + referral_code).select();
+                document.execCommand("copy");
+                $temp.remove();
+
+                // notification copied :
+                this.showSuccessMessage('Invitation link copied!');
             },
             saveAffiliatePercentage(user) {
                 this.clearErrors();

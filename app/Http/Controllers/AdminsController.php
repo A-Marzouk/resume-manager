@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Affiliate;
 use App\Booking;
+use App\Campaign;
 use App\Client;
 use App\Search;
 use App\Conversation;
@@ -97,6 +98,12 @@ class AdminsController extends Controller
         }
 
         return $paginatedData ;
+    }
+
+
+    public function getCampaigns(){
+        $limit = Input::get('limit') ?? '';
+        return Campaign::with('agents.user.userData','client.user','subscription')->paginate($limit);
     }
 
     public function getAgentByID($user_id){

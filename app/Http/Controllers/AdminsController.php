@@ -103,7 +103,7 @@ class AdminsController extends Controller
 
     public function getCampaigns(){
         $limit = Input::get('limit') ?? '';
-        return Campaign::with('agents.user.userData','client','subscription')->paginate($limit);
+        return Campaign::with('agents.user.userData','client.user','subscription')->paginate($limit);
     }
 
     public function getAgentByID($user_id){

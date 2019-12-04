@@ -27,35 +27,10 @@
                 <div class="d-flex align-items-center">
                     <div class="searchBox mt-3 mt-md-0 mb-3 mb-xl-0">
                         <img src="/images/admin/magnifier-tool.svg" alt="">
-                        <input type="text" placeholder="Search by name, e-mail" style="width: 246px;">
+                        <input type="text" placeholder="Search by name, e-mail" style="width: 246px;" v-model="searchValue">
                     </div>
                 </div>
                 <div class="d-flex align-items-center right no-decoration" style="padding-right: 24px;">
-                    <div>
-                        <a href="javascript:void(0)" class="filterBox d-flex align-items-center"
-                           @click="showFilterSelection = true">
-                            <img src="/images/admin/filter.svg" alt="">
-                            <div>
-                                Filter :
-                                <span v-if="filter=== 'show_all' ">All applications</span>
-                                <span v-if="filter=== 'show_new' ">New applications</span>
-                                <span v-if="filter=== 'show_in_process' ">In process</span>
-                            </div>
-                        </a>
-                        <div class="select-popup" v-show="showFilterSelection">
-                            <ul class="select-popup-list">
-                                <li @click="selectFilter('show_all')">
-                                    Show all applications
-                                </li>
-                                <li @click="selectFilter('show_new')">
-                                    Show new applications
-                                </li>
-                                <li @click="selectFilter('show_in_process')">
-                                    Show applications in process
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                     <div>
                         <a href="javascript:void(0)" class="sortingBox d-flex align-items-center"
                            @click="showSortSelection = true">
@@ -86,6 +61,7 @@
                         <thead>
                         <tr>
                             <th scope="col">CLIENT'S NAME</th>
+                            <th scope="col">&nbsp;</th>
                             <th scope="col">HOURS PER WEEK</th>
                             <th scope="col">CAMPAIGN STATUS</th>
                             <th scope="col">ACTIONS</th>
@@ -93,7 +69,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <template v-for="(campaign,index) in campaigns">
+                            <template v-for="(campaign,index) in OrderedCampaigns">
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
@@ -105,10 +81,12 @@
                                                     {{campaign.client.contact}}
                                                 </div>
                                             </div>
-                                            <div class="name-text">
-                                                <img src="/images/admin/down_arrow.png" alt="down arrow" class="campaignArrow" :id="'campaignArrow_' + campaign.id"
-                                                      @click="openCampaign(campaign)">
-                                            </div>
+                                        </div>
+                                    </td>
+                                    <td @click="openCampaign(campaign)">
+                                        <div class="name-text">
+                                            <img src="/images/admin/down_arrow.png" alt="down arrow" class="campaignArrow" :id="'campaignArrow_' + campaign.id"
+                                                 >
                                         </div>
                                     </td>
                                     <td>
@@ -154,7 +132,7 @@
                                                     {{campaign.agents.length}} agent<span v-if="campaign.agents.length > 1">s are</span> <span v-else> is</span>  currently working on the company
                                                 </div>
                                                 <div class="base-text" style="font-size:14px; margin-top:29px;" v-for="(agent,index) in campaign.agents" :key="index + 'Agent'">
-                                                    <img src="/images/client/add_agent/search_result/ic/user/user123.png"
+                                                    <img :src="getImageSrc(agent.user.user_data.profile_picture)"
                                                          alt="user image"
                                                          style="width:26px; margin-right:10px; border-radius: 50%;">
                                                     {{agent.user.user_data.first_name}} {{agent.user.user_data.last_name}}
@@ -172,7 +150,7 @@
 
                 <div class="pagination-bar justify-content-between showFrom-600">
                     <div class="base-text">
-                        Page total : {{campaigns.length}}
+                        Total : {{campaigns.length}}
                     </div>
                     <div>
                         <img src="/images/new_theme/arrow@2x.png" class="cursorPointer" alt="prev page" @click="toPrevPage" style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;">
@@ -225,7 +203,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center w-100" style="padding-top: 24px;">
                         <div class="base-text" style="font-size: 12px;">
-                            Page total : {{campaigns.length}}
+                            Total : {{campaigns.length}}
                         </div>
                         <div class="no-decoration">
                             <a href="javascript:void(0)" class="paginationBox d-flex align-items-center justify-content-center" @click="showUsersNumSelection = true">
@@ -283,6 +261,44 @@
                 openedCampaign:{}
             }
         },
+        computed: {
+            filteredCampaigns() {
+                const search   = this.searchValue.toLowerCase().trim();
+                let  activeTab = this.activeTab ;
+
+                let filteredCamps = this.campaigns.filter( function (campaign) {
+                    if(activeTab === 'active-camps'){
+                        return campaign.status == 1;
+                    }else if (activeTab === 'paused-camps') {
+                        return campaign.status == 2;
+                    }else if (activeTab === 'finished-camps'){
+                        return campaign.status == 3;
+                    }
+                });
+
+                if (!search){
+                    return filteredCamps;
+                }
+
+
+                return  filteredCamps.filter( function (campaign) {
+                    let fullName =  campaign.client.contact ? campaign.client.contact : '' ;
+                    let campaignTitle = campaign.title ? campaign.title : '' ;
+                    let email    = campaign.client.user.email ? campaign.client.user.email : '';
+
+                    let SearchFilter = email.toLowerCase().trim().indexOf(search) > -1  || campaignTitle.toLowerCase().trim().indexOf(search) > -1  || fullName.toLowerCase().trim().indexOf(search) > -1 ;
+                    return  (SearchFilter);
+                });
+
+            },
+            OrderedCampaigns: function () {
+                let sorting = 'desc';
+                if(this.sort === 'old_first'){
+                    sorting = 'asc';
+                }
+                return _.orderBy(this.filteredCampaigns, 'created_at' , sorting)
+            }
+        },
         methods: {
             getCampaigns() {
                 axios.get('/admin/api/campaigns?limit=' + this.limit + '&&page=' + this.currentPage)
@@ -301,6 +317,17 @@
                 }, 1500);
             },
 
+            getImageSrc(src) {
+                if (!src) {
+                    return '/images/placeholder.png';
+                }
+
+                if (src.charAt(0) !== '/' && src.charAt(0) !== 'h') {
+                    return '/' + src;
+                }
+
+                return src;
+            },
             openCampaign(campaign){
                 if(this.openedCampaign.id === campaign.id){
                     this.openedCampaign = {};

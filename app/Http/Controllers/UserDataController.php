@@ -81,7 +81,7 @@ class UserDataController extends Controller
                 else {
                     $userData->job_title = $request->jobTitle;
                     $userData->first_name = explode(' ',$request->name)[0];
-                    $userData->last_name = explode(' ',$request->name)[1];
+                    $userData->last_name = explode(' ',$request->name)[1] ?? '' ;
                     if($request->availableHours != null){
                         $userData->available_hours_per_week = $request->availableHours;
                     }

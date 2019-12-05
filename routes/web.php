@@ -240,6 +240,8 @@ Route::prefix('agent')->group(function (){
     // resume tabs :
     Route::get('/resume-tabs/{agent_id}','ResumeTabsController@getResumeTabsByAgentID');
 
+    Route::get('/resume/editor','AgentsController@viewResumeEditorPage');
+
 });
 
 Route::get('/freelancer/it/register','DevelopersController@developerForm')->name('developer.from');

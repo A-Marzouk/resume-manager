@@ -18,6 +18,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class AgentsController extends Controller
 {
@@ -447,6 +448,17 @@ class AgentsController extends Controller
 
     }
 
+    public function viewResumeEditorPage()
+    {
+
+        if (Input::get('user_id') && currentUser()->is_admin) {
+            $freelancer = User::where('id', Input::get('user_id'))->with('agent')->first();
+        } else {
+            $freelancer = currentUser();
+        }
+
+        return view('freelancer.resume_editor',compact('freelancer'));
+    }
 
     public function editAgentMedialInfo(Request $request)
     {

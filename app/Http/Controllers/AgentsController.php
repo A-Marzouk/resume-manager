@@ -13,6 +13,7 @@ use App\Agent;
 use App\classes\Upload;
 use App\Language;
 use App\Recording;
+use App\ResumeTab;
 use App\Skill;
 use App\User;
 use Illuminate\Http\Request;
@@ -452,19 +453,20 @@ class AgentsController extends Controller
     {
 
         if (Input::get('user_id') && currentUser()->is_admin) {
-            $freelancer = User::with(['userData','skills','agent.resumeTabs','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+            $freelancer = User::with(['userData', 'skills', 'agent.resumeTabs', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
                 return $query->limit(10);
-            }])->where('id',Input::get('user_id'))->first();
+            }])->where('id', Input::get('user_id'))->first();
         } else {
             $freelancer = currentUser();
         }
 
-        return view('freelancer.resume_editor',compact('freelancer'));
+        return view('freelancer.resume_editor', compact('freelancer'));
     }
 
-    public function updateCardData(Request $request){
+    public function updateCardData(Request $request)
+    {
         if ($request->user_id && currentUser()->is_admin) {
-            $freelancer = User::where('id',$request->user_id)->first();
+            $freelancer = User::where('id', $request->user_id)->first();
         } else {
             $freelancer = currentUser();
         }
@@ -472,13 +474,21 @@ class AgentsController extends Controller
         $freelancer->userData->update($request->user_data);
         $freelancer->agent->update($request->agent);
 
-        return $freelancer ;
+        return $freelancer;
     }
 
-    public function updateProfilePicture(Request $request){
+    public function updateTab(Request $request)
+    {
+        $tab = ResumeTab::where('id', $request->id)->first();
+        $tab->update($request->toArray());
+        return $tab;
+    }
+
+    public function updateProfilePicture(Request $request)
+    {
 
         if ($request->user_id && currentUser()->is_admin) {
-            $freelancer = User::where('id',$request->user_id)->first();
+            $freelancer = User::where('id', $request->user_id)->first();
         } else {
             $freelancer = currentUser();
         }
@@ -496,6 +506,67 @@ class AgentsController extends Controller
             ]);
         }
 
+    }
+
+    public function createDefaultResumeTab($user_id)
+    {
+        $user = User::where('id',$user_id)->first();
+        $agent_id = $user->agent->id;
+        if(count($user->agent->resumeTabs) > 1){
+            return $user->agent->resumeTabs ;
+        }
+        ResumeTab::insert([
+            [
+                'agent_id' => $agent_id,
+                'name' => 'portfolio',
+                'label' => 'Portfolio',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 1,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'skills',
+                'label' => 'Skills',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 1,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'work',
+                'label' => 'Work',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 1,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'education',
+                'label' => 'Education',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 1,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'recordings',
+                'label' => 'Recordings',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 1,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'references',
+                'label' => 'References',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 1,
+            ]
+        ]);
+
+        return Agent::where('user_id',$user->id)->first()->resumeTabs;
     }
 
     public function editAgentMedialInfo(Request $request)

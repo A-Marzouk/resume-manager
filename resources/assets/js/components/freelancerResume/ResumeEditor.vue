@@ -43,26 +43,32 @@
 
                                     <div class="col-lg-2 col-6 imageCol">
                                         <div class="imageContainer" style="padding: 10px;">
-                                            <img :src="getImageSrc(freelancer.user_data.profile_picture)" alt="freelancer" class="freelancerImg"
+                                            <img :src="getImageSrc(freelancer.user_data.profile_picture)"
+                                                 alt="freelancer" class="freelancerImg"
                                                  width="108" height="108" id="photoPreview_card">
                                             <div class="row NoDecor">
-                                                <a class="addImageContainer" href="javascript:void(0)" @click="browseFile">
+                                                <a class="addImageContainer" href="javascript:void(0)"
+                                                   @click="browseFile">
                                                     <img src="/images/add_photo.png" alt="add photo">
                                                 </a>
                                             </div>
-                                            <input type="file" ref="profile_picture" id="profile_picture"  style="width: 1px; height: 1px; opacity: 0; right:145%;" @change=handleProfilePictureUpload>
+                                            <input type="file" ref="profile_picture" id="profile_picture"
+                                                   style="width: 1px; height: 1px; opacity: 0; right:145%;"
+                                                   @change=handleProfilePictureUpload>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-12 freelancerCardLeft freelancerCardLeft_edit_card mobile-auto-margin">
                                         <div class="nameArea nameArea_edit_Card">
                                             <div class="nameCard">
                                                 <input type="text" class="form-control cardInput"
-                                                       placeholder="Name" v-model="freelancer.user_data.first_name" @blur="updateFreelancerCardData">
+                                                       placeholder="Name" v-model="freelancer.user_data.first_name"
+                                                       @blur="updateFreelancerCardData">
                                             </div>
                                             <div class="jobTitle jobTitle_edit_card"
                                                  style="color: white; font-size: 14px; padding-top: 7px;">
                                                 <input type="text" class="form-control cardSelect"
-                                                       placeholder="Job title" v-model="freelancer.user_data.job_title" @blur="updateFreelancerCardData">
+                                                       placeholder="Job title" v-model="freelancer.user_data.job_title"
+                                                       @blur="updateFreelancerCardData">
                                             </div>
                                         </div>
                                     </div>
@@ -114,7 +120,7 @@
 
                                                         <div class="col-md-8 col-8 textBox">
                                                             <span>{{Math.trunc(freelancer.agent.hourly_rate)}}</span>
-                                                             $<br/>
+                                                            $<br/>
                                                             <span style="font-size: 13px; font-weight: normal">Hourly Rate</span>
                                                         </div>
 
@@ -135,19 +141,20 @@
                                                     <div class="row">
                                                         <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                                             <a href="javascript:void(0)"
-                                                               class="hoursMinus"  @click="changeAvailableHours(-5)">
+                                                               class="hoursMinus" @click="changeAvailableHours(-5)">
                                                                 <img src="/images/newResume/minus copy 6.png"
                                                                      style="width: 18px; padding-right: 8px;"
                                                                      alt="minus">
                                                             </a>
                                                         </div>
                                                         <div class="col-md-8 col-8 textBox">
-                                                            <span>{{Math.trunc(freelancer.agent.available_hours_per_week)}}</span> hours<br/>
+                                                            <span>{{Math.trunc(freelancer.agent.available_hours_per_week)}}</span>
+                                                            hours<br/>
                                                             <span style="font-size: 13px; font-weight: normal">Weekly Availability</span>
                                                         </div>
                                                         <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                                             <a href="javascript:void(0)"
-                                                               class="hoursPlus"  @click="changeAvailableHours(5)">
+                                                               class="hoursPlus" @click="changeAvailableHours(5)">
                                                                 <img src="/images/newResume/plus copy 6.png"
                                                                      style="width: 18px; padding-left: 8px;" alt="plus">
                                                             </a>
@@ -172,93 +179,125 @@
 
                         <div id="nav-taps-resume-card">
                             <ul class="nav nav-tabs navRow" role="tablist">
-                                <li class="offset-md-2 nav-item col-md-2 col-4 NoDecor">
-                                    <a class="nav-link navTab text-center active" href="#skills" role="tab"
+                                <li class="nav-item col-md-2 col-4 NoDecor" v-for="(tab,index) in mainTabs"
+                                    :key="index + 'tab'" :class="{halfOpacity : !tab.is_active}">
+                                    <a class="nav-link navTab text-center d-flex align-items-center"
+                                       :class="{active : tab.name === currentMainTab.name}"
+                                       @click="currentMainTab = tab" :href="'#' + tab.name" role="tab"
                                        data-toggle="tab">
-                                        Skills
-                                    </a>
-                                </li>
-
-                                <li class="col-md-2 col-4 nav-item NoDecor">
-                                    <a class="nav-link navTab text-center " href="#recordings" role="tab"
-                                       data-toggle="tab">
-                                        Recordings
-                                    </a>
-                                </li>
-
-                                <li class="col-md-2 col-4 nav-item NoDecor">
-                                    <a class="nav-link navTab text-center " href="#portfolio" role="tab"
-                                       data-toggle="tab">
-                                        Projects
-                                    </a>
-                                </li>
-
-
-                                <li class="nav-item col-md-2 col-4 NoDecor">
-                                    <a class="nav-link navTab text-center" href="#work" role="tab" data-toggle="tab">
-                                        Work
-                                    </a>
-                                </li>
-                                <li class="nav-item col-md-2 col-4 NoDecor d-none">
-                                    <a class="nav-link navTab text-center" id="showReferences"
-                                       href="#references" role="tab" data-toggle="tab">
-                                    </a>
-                                </li>
-
-                                <li class="nav-item col-md-2 col-4 NoDecor">
-                                    <a class="nav-link navTab text-center" href="#education" role="tab"
-                                       data-toggle="tab">
-                                        Education
+                                        <img src="/images/new_theme/arrow@2x.png" alt=""
+                                             style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;"
+                                             class="cursorPointer">
+                                        <div>
+                                            {{tab.label}}
+                                        </div>
+                                        <img src="/images/new_theme/arrow@2x.png" class="cursorPointer" alt=""
+                                             style="margin-left:10px; width:7.5px; height:12px;">
                                     </a>
                                 </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active firstItem" id="skills">
+                                <div role="tabpanel" class="tab-pane firstItem"
+                                     :class="{active : currentMainTab.name === 'skills'}" id="skills">
                                     <div class="row" style="padding-bottom: 16px;background: #fdfdfd;">
                                         <div class="col-md-12">
+                                            <div class="d-flex justify-content-center">
+                                                <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
+                                                   :class="{active : currentMainTab.is_active}"
+                                                   @click="toggleTabActive(currentMainTab)">
+                                                    <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
+                                                    <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
+                                                </a>
+                                            </div>
                                             <skills-list :user_id="user.id"></skills-list>
                                         </div>
                                     </div>
                                 </div>
 
 
-                                <div role="tabpanel" class="tab-pane  firstItem" id="recordings">
+                                <div role="tabpanel" class="tab-pane firstItem"
+                                     :class="{active : currentMainTab.name === 'recordings'}" id="recordings">
                                     <div class="row"
                                          style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                         <div class="col-md-12">
+                                            <div class="d-flex justify-content-center">
+                                                <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
+                                                   :class="{active : currentMainTab.is_active}"
+                                                   @click="toggleTabActive(currentMainTab)">
+                                                    <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
+                                                    <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
+                                                </a>
+                                            </div>
                                             <records-list :user_id="user.id"></records-list>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div role="tabpanel" class="tab-pane firstItem" id="portfolio">
+                                <div role="tabpanel" class="tab-pane firstItem"
+                                     :class="{active : currentMainTab.name === 'portfolio'}" id="portfolio">
                                     <div class="row"
                                          style="padding-top:17px; padding-bottom: 16px;background: #fdfdfd;">
                                         <div class="col-md-12">
+                                            <div class="d-flex justify-content-center">
+                                                <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
+                                                   :class="{active : currentMainTab.is_active}"
+                                                   @click="toggleTabActive(currentMainTab)">
+                                                    <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
+                                                    <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
+                                                </a>
+                                            </div>
                                             <projects-list :user_id="user.id"></projects-list>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div role="tabpanel" class="tab-pane fade" id="work">
+                                <div role="tabpanel" class="tab-pane" id="work"
+                                     :class="{active : currentMainTab.name === 'work'}">
                                     <div style="padding-top: 17px; padding-bottom: 17px;">
                                         <div class="col-md-12">
+                                            <div class="d-flex justify-content-center">
+                                                <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
+                                                   :class="{active : currentMainTab.is_active}"
+                                                   @click="toggleTabActive(currentMainTab)">
+                                                    <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
+                                                    <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
+                                                </a>
+                                            </div>
                                             <works-list :user_id="user.id"></works-list>
                                         </div>
                                     </div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane fade" id="education">
+
+                                <div role="tabpanel" class="tab-pane" id="education"
+                                     :class="{active : currentMainTab.name === 'education'}">
                                     <div class="" style="padding-top: 17px; padding-bottom: 17px;">
                                         <div class="col-md-12">
+                                            <div class="d-flex justify-content-center">
+                                                <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
+                                                   :class="{active : currentMainTab.is_active}"
+                                                   @click="toggleTabActive(currentMainTab)">
+                                                    <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
+                                                    <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
+                                                </a>
+                                            </div>
                                             <educations-list :user_id="user.id"></educations-list>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div role="tabpanel" class="tab-pane fade" id="references">
+                                <div role="tabpanel" class="tab-pane" id="references"
+                                     :class="{active : currentMainTab.name === 'references'}">
                                     <div class="" style="padding-top: 17px; padding-bottom: 17px;">
                                         <div class="col-md-12">
+                                            <div class="d-flex justify-content-center">
+                                                <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
+                                                   :class="{active : currentMainTab.is_active}"
+                                                   @click="toggleTabActive(currentMainTab)">
+                                                    <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
+                                                    <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
+                                                </a>
+                                            </div>
                                             <references-list :user_id="user.id"></references-list>
                                         </div>
                                     </div>
@@ -272,12 +311,14 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="behanceDataModal" tabindex="-1" role="dialog" aria-labelledby="behanceDataModalLabel"
+        <div class="modal fade" id="behanceDataModal" tabindex="-1" role="dialog"
+             aria-labelledby="behanceDataModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header" style="border: none;">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeBehanceModal"
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                id="closeBehanceModal"
                                 style="outline: none;">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -286,7 +327,8 @@
                         <form method="post" action="" id="behanceDataForm">
                             <div class="form-group d-flex flex-column align-items-start">
                                 <label for="behanceLink" class="panelFormLabel">Your Behance profile link :</label>
-                                <input type="text" class="form-control panelFormInput" id="behanceLink" name="behanceLink"
+                                <input type="text" class="form-control panelFormInput" id="behanceLink"
+                                       name="behanceLink"
                                        value="" required>
                                 <div id="behanceLinkError" class="d-none" style="color: red;">Link is not correct.</div>
                                 <div id="behanceLinkWait" class="d-none" style="color: gray;">
@@ -328,45 +370,49 @@
         props: ['user'],
         data() {
             return {
-                freelancer:{
-                  user_data:{},
-                  agent:{},
+                freelancer: {
+                    user_data: {},
+                    agent: {},
                 },
-                errors:[],
-                profile_picture:''
-            }
-        },
-        computed:{
-            mainTabs: function () {
-                return this.user.agent.resume_tabs.filter( (tab) => {
-                    return tab.type === 'main_tab'
-                });
+                errors: [],
+                profile_picture: '',
+                currentMainTab: {},
+                mainTabs:[]
             }
         },
         methods: {
-            updateFreelancerCardData(){
+            updateFreelancerCardData() {
                 let updatedData = {
-                    agent:{
-                        hourly_rate:this.freelancer.agent.hourly_rate,
-                        available_hours_per_week :this.freelancer.agent.available_hours_per_week,
+                    agent: {
+                        hourly_rate: this.freelancer.agent.hourly_rate,
+                        available_hours_per_week: this.freelancer.agent.available_hours_per_week,
                     },
-                    user_data:{
+                    user_data: {
                         first_name: this.freelancer.user_data.first_name,
                         job_title: this.freelancer.user_data.job_title,
                     },
-                    user_id : this.user.id
+                    user_id: this.user.id
                 };
-                axios.post('/agent/resume/editor/submit',updatedData)
-                    .then( (response) => {
+                axios.post('/agent/resume/editor/submit', updatedData)
+                    .then((response) => {
 
                     })
-                    .catch( error => {
+                    .catch(error => {
                         if (typeof error.response.data === 'object') {
                             this.errors = error.response.data.errors;
                         } else {
                             this.errors = ['Something went wrong. Please try again.'];
                         }
                     });
+            },
+            updateTab(tab) {
+                axios.post('/agent/resume/tab/update', tab)
+                    .then((response) => {})
+                    .catch()
+            },
+            toggleTabActive(tab) {
+                tab.is_active = !tab.is_active;
+                this.updateTab(tab);
             },
             getImageSrc(src) {
                 if (!src) {
@@ -381,21 +427,21 @@
             },
             handleProfilePictureUpload() {
                 this.profile_picture = this.$refs.profile_picture.files[0];
-                this.freelancer.user_data.profile_picture = URL.createObjectURL(this.profile_picture) ;
+                this.freelancer.user_data.profile_picture = URL.createObjectURL(this.profile_picture);
                 this.uploadProfilePicture();
             },
-            uploadProfilePicture(){
+            uploadProfilePicture() {
                 let form_data = new FormData();
-                if(this.profile_picture){
+                if (this.profile_picture) {
                     form_data.append('profile_picture', this.profile_picture);
                 }
                 form_data.append('user_id', this.user.id);
 
                 axios.post('/freelancer/account/media/profile_picture', form_data)
                     .then((response) => {
-                        if(response.data.errors){
+                        if (response.data.errors) {
                             this.errors = response.data.errors;
-                            return ;
+                            return;
                         }
                     })
                     .catch((error) => {
@@ -406,32 +452,82 @@
                         }
                     })
             },
-            browseFile(){
+            browseFile() {
                 $('#profile_picture').click();
             },
-            changeAvailableHours(value){
-                this.freelancer.agent.available_hours_per_week = parseInt(this.freelancer.agent.available_hours_per_week) + value ;
+            changeAvailableHours(value) {
+                this.freelancer.agent.available_hours_per_week = parseInt(this.freelancer.agent.available_hours_per_week) + value;
                 this.updateFreelancerCardData();
             },
-            changeHourlyRate(value){
-                this.freelancer.agent.hourly_rate = parseInt(this.freelancer.agent.hourly_rate) + value ;
+            changeHourlyRate(value) {
+                this.freelancer.agent.hourly_rate = parseInt(this.freelancer.agent.hourly_rate) + value;
                 this.updateFreelancerCardData();
             },
+            setCurrentTab() {
+                this.currentMainTab = this.mainTabs[0];
+            },
+            createDefaultResumeTab() {
+                axios.get('/agent/resume/create-default-tabs/' + this.user.id)
+                    .then((response) => {
+                            this.user.agent.resume_tabs = response.data;
+                            this.setMainTabs();
+                        }
+                    )
+                    .catch()
+            },
+            setMainTabs(){
+                this.mainTabs = this.user.agent.resume_tabs.filter((tab) => {
+                    return tab.type === 'main_tab'
+                });
+                this.setCurrentTab();
+            }
 
         },
         mounted() {
-            this.freelancer = this.user ;
-            console.log(this.freelancer.agent.resume_tabs);
+            this.freelancer = this.user;
+            if (this.user.agent.resume_tabs.length < 1) {
+                this.createDefaultResumeTab();
+            } else {
+                this.setMainTabs();
+            }
         }
     }
 </script>
 
 <style scoped lang="scss">
 
-    .whiteHover{
-        a:hover{
-            color:white;
+    .whiteHover {
+        a:hover {
+            color: white;
         }
+    }
+
+    #skills {
+        padding-top: 17px;
+    }
+
+    #work {
+        padding-top: 0;
+    }
+
+    #nav-taps-resume-card .navRow .navTab.active {
+        border-bottom: 5px solid #4E75E8 !important;
+    }
+
+
+    .activeBtn {
+        background-color: lightgrey;
+        color: black;
+    }
+
+    .activeBtn.active {
+        background-color: lightgreen;
+        color: white;
+        font-weight: bold;
+    }
+
+    .halfOpacity {
+        opacity: 0.5;
     }
 
 </style>

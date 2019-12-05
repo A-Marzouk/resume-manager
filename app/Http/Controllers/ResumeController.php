@@ -13,14 +13,14 @@ class ResumeController extends Controller
         $freelancer = User::where('username',$username)->with(['userData','skills','agent','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
         }])->where('username',$username)->first();
-        dd($freelancer);
+        // dd($freelancer);
 
         if ($freelancer) {
 
             $view = \View::make('freelancer.resume_pdf', compact('freelancer'))->render();
             $pdf = \App::make('dompdf.wrapper');
             $pdf->loadHTML($view);
-            // return $pdf->stream($freelancer->userData['first_name'].' '.$freelancer->userData['last_name'].'.pdf');
+            return $pdf->stream($freelancer->userData['first_name'].' '.$freelancer->userData['last_name'].'.pdf');
         }
     }
 

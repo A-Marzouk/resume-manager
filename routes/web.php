@@ -241,6 +241,7 @@ Route::prefix('agent')->group(function (){
     Route::get('/resume-tabs/{agent_id}','ResumeTabsController@getResumeTabsByAgentID');
 
     Route::get('/resume/editor','AgentsController@viewResumeEditorPage');
+    Route::post('/resume/editor/submit','AgentsController@updateCardData');
 
 });
 
@@ -262,6 +263,7 @@ Route::prefix('freelancer')->group(function (){
     Route::post('/account/edit/affiliate_percentage','AgentsController@editAgentAffiliatePercentage');
     Route::post('/account/professional/submit','AgentsController@editAgentProfessionalInfo');
     Route::post('/account/media/submit','AgentsController@editAgentMedialInfo');
+    Route::post('/account/media/profile_picture','AgentsController@updateProfilePicture');
     Route::post('/developer/professional/submit','AgentsController@editDeveloperProfessionalInfo');
     Route::post('/account/edit/avatar','AgentsController@editAgentPersonalInfo');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');

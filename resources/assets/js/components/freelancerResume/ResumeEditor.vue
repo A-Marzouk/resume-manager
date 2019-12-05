@@ -4,15 +4,15 @@
             <div class="marginMobile-0">
                 <div class="freelancerCard ml-0 mr-0 freelancerCard_updated" style="margin-bottom:-3px">
                     <div class="row actionRow">
-                        <div class="importBtn NoDecor">
+                        <div class="importBtn NoDecor whiteHover">
                             <span>Import : </span>&nbsp;
                             <a href="javascript:void(0)" id="importBehanceData" data-toggle="modal"
                                data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
                             <a href="javascript:void(0)"> linkedIn</a>
                         </div>
-                        <div class="importBtn importBtn_upload NoDecor">
+                        <div class="importBtn importBtn_upload NoDecor whiteHover">
                             <a href="javascript:void(0)" class="uploadReferences">
-                                Upload References / Testimonials
+                                References / Testimonials
                             </a>
                         </div>
                         <div class="col-md-2">
@@ -43,42 +43,26 @@
 
                                     <div class="col-lg-2 col-6 imageCol">
                                         <div class="imageContainer" style="padding: 10px;">
-                                            <img :src="getImageSrc('')" alt="freelancer" class="freelancerImg"
+                                            <img :src="getImageSrc(freelancer.user_data.profile_picture)" alt="freelancer" class="freelancerImg"
                                                  width="108" height="108" id="photoPreview_card">
                                             <div class="row NoDecor">
-                                                <a class="addImageContainer" href="javascript:void(0)"
-                                                   id="addPhoto_card">
+                                                <a class="addImageContainer" href="javascript:void(0)" @click="browseFile">
                                                     <img src="/images/add_photo.png" alt="add photo">
                                                 </a>
                                             </div>
+                                            <input type="file" ref="profile_picture" id="profile_picture"  style="width: 1px; height: 1px; opacity: 0; right:145%;" @change=handleProfilePictureUpload>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-12 freelancerCardLeft freelancerCardLeft_edit_card mobile-auto-margin">
                                         <div class="nameArea nameArea_edit_Card">
                                             <div class="nameCard">
                                                 <input type="text" class="form-control cardInput"
-                                                       id="fullName" name="name"
-                                                       placeholder="Enter your name..">
+                                                       placeholder="Name" v-model="freelancer.user_data.first_name" @blur="updateFreelancerCardData">
                                             </div>
                                             <div class="jobTitle jobTitle_edit_card"
                                                  style="color: white; font-size: 14px; padding-top: 7px;">
-                                                <select class="custom-select cardSelect"
-                                                        style="
-                                        background-color: rgba(67,103,211,0.5);
-                                        background:rgba(67,103,211,0.5) url('/images/white_arrow.png')  no-repeat right .75rem center;
-                                        background-size: 19px 11px;
-                                        border-radius: 5px;
-                                        height: 38px;
-                                        border: 1px solid #FFFFFF;
-                                        color: #FDFDFD;
-                                        font-family: Roboto;
-                                        font-size: 13px;
-                                        font-weight: bold;
-                                        letter-spacing: 0.09px;
-                                        line-height: 15px;"
-                                                        id="jobTitle" name="jobTitle">
-                                                    <option value=""> Option</option>
-                                                </select>
+                                                <input type="text" class="form-control cardSelect"
+                                                       placeholder="Job title" v-model="freelancer.user_data.job_title" @blur="updateFreelancerCardData">
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +105,7 @@
                                                     <div class="row">
                                                         <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                                             <a href="javascript:void(0)"
-                                                               class="dollarsMinus">
+                                                               class="dollarsMinus" @click="changeHourlyRate(-1)">
                                                                 <img src="/images/newResume/minus copy 6.png"
                                                                      style="width: 18px; padding-right: 8px;"
                                                                      alt="minus">
@@ -129,14 +113,14 @@
                                                         </div>
 
                                                         <div class="col-md-8 col-8 textBox">
-                                                            <span>999</span>
-                                                            $<br/>
+                                                            <span>{{Math.trunc(freelancer.agent.hourly_rate)}}</span>
+                                                             $<br/>
                                                             <span style="font-size: 13px; font-weight: normal">Hourly Rate</span>
                                                         </div>
 
                                                         <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                                             <a href="javascript:void(0)"
-                                                               class="dollarsPlus">
+                                                               class="dollarsPlus" @click="changeHourlyRate(1)">
                                                                 <img src="/images/newResume/plus copy 6.png"
                                                                      style="width: 18px; padding-left: 8px;" alt="plus">
                                                             </a>
@@ -151,19 +135,19 @@
                                                     <div class="row">
                                                         <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                                             <a href="javascript:void(0)"
-                                                               class="hoursMinus">
+                                                               class="hoursMinus"  @click="changeAvailableHours(-5)">
                                                                 <img src="/images/newResume/minus copy 6.png"
                                                                      style="width: 18px; padding-right: 8px;"
                                                                      alt="minus">
                                                             </a>
                                                         </div>
                                                         <div class="col-md-8 col-8 textBox">
-                                                            <span>0</span>hours<br/>
+                                                            <span>{{Math.trunc(freelancer.agent.available_hours_per_week)}}</span> hours<br/>
                                                             <span style="font-size: 13px; font-weight: normal">Weekly Availability</span>
                                                         </div>
                                                         <div class="col-md-2 col-2" style="padding: 9px 0 0 0;">
                                                             <a href="javascript:void(0)"
-                                                               class="hoursPlus">
+                                                               class="hoursPlus"  @click="changeAvailableHours(5)">
                                                                 <img src="/images/newResume/plus copy 6.png"
                                                                      style="width: 18px; padding-left: 8px;" alt="plus">
                                                             </a>
@@ -177,8 +161,6 @@
                                     <input type="file" id="audioFile" name="audioFile"
                                            style="width: 1px; height: 1px; opacity: 0; right:145%;">
                                     <input type="file" id="video_file" name="video_file"
-                                           style="width: 1px; height: 1px; opacity: 0; right:145%;">
-                                    <input type="file" id="photoInput" name="photo"
                                            style="width: 1px; height: 1px; opacity: 0; right:145%;">
                                     <input type="text" name="salary"
                                            style="width: 1px; height: 1px; opacity: 0; right:145%;">
@@ -236,7 +218,7 @@
                                 <div role="tabpanel" class="tab-pane active firstItem" id="skills">
                                     <div class="row" style="padding-bottom: 16px;background: #fdfdfd;">
                                         <div class="col-md-12">
-                                            <skills-list :user_id="freelancer.id"></skills-list>
+                                            <skills-list :user_id="user.id"></skills-list>
                                         </div>
                                     </div>
                                 </div>
@@ -246,7 +228,7 @@
                                     <div class="row"
                                          style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                         <div class="col-md-12">
-                                            <records-list :user_id="freelancer.id"></records-list>
+                                            <records-list :user_id="user.id"></records-list>
                                         </div>
                                     </div>
                                 </div>
@@ -255,7 +237,7 @@
                                     <div class="row"
                                          style="padding-top:17px; padding-bottom: 16px;background: #fdfdfd;">
                                         <div class="col-md-12">
-                                            <projects-list :user_id="freelancer.id"></projects-list>
+                                            <projects-list :user_id="user.id"></projects-list>
                                         </div>
                                     </div>
                                 </div>
@@ -263,14 +245,14 @@
                                 <div role="tabpanel" class="tab-pane fade" id="work">
                                     <div style="padding-top: 17px; padding-bottom: 17px;">
                                         <div class="col-md-12">
-                                            <works-list :user_id="freelancer.id"></works-list>
+                                            <works-list :user_id="user.id"></works-list>
                                         </div>
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="education">
                                     <div class="" style="padding-top: 17px; padding-bottom: 17px;">
                                         <div class="col-md-12">
-                                            <educations-list :user_id="freelancer.id"></educations-list>
+                                            <educations-list :user_id="user.id"></educations-list>
                                         </div>
                                     </div>
                                 </div>
@@ -278,7 +260,7 @@
                                 <div role="tabpanel" class="tab-pane fade" id="references">
                                     <div class="" style="padding-top: 17px; padding-bottom: 17px;">
                                         <div class="col-md-12">
-                                            <references-list :user_id="freelancer.id"></references-list>
+                                            <references-list :user_id="user.id"></references-list>
                                         </div>
                                     </div>
                                 </div>
@@ -287,6 +269,40 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="behanceDataModal" tabindex="-1" role="dialog" aria-labelledby="behanceDataModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header" style="border: none;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeBehanceModal"
+                                style="outline: none;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                        <form method="post" action="" id="behanceDataForm">
+                            <div class="form-group d-flex flex-column align-items-start">
+                                <label for="behanceLink" class="panelFormLabel">Your Behance profile link :</label>
+                                <input type="text" class="form-control panelFormInput" id="behanceLink" name="behanceLink"
+                                       value="" required>
+                                <div id="behanceLinkError" class="d-none" style="color: red;">Link is not correct.</div>
+                                <div id="behanceLinkWait" class="d-none" style="color: gray;">
+                                    Please wait, importing your data from Behance..
+                                </div>
+                            </div>
+
+                            <div class="modal-footer" style="border: none;">
+                                <div class="buttonMain col-md-3 offset-md-9" style="margin-top: 0;">
+                                    <button type="submit" class="btn-block hireBtn" id="importBtn">Import</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -310,29 +326,106 @@
             'educations-list': educationsList,
             'references-list': referencesList,
         },
-        props: ['freelancer'],
+        props: ['user'],
         data() {
-            return {}
+            return {
+                freelancer:{
+                  user_data:{},
+                  agent:{},
+                },
+                errors:[],
+                profile_picture:''
+            }
         },
         methods: {
+            updateFreelancerCardData(){
+                let updatedData = {
+                    agent:{
+                        hourly_rate:this.freelancer.agent.hourly_rate,
+                        available_hours_per_week :this.freelancer.agent.available_hours_per_week,
+                    },
+                    user_data:{
+                        first_name: this.freelancer.user_data.first_name,
+                        job_title: this.freelancer.user_data.job_title,
+                    },
+                    user_id : this.user.id
+                };
+                axios.post('/agent/resume/editor/submit',updatedData)
+                    .then( (response) => {
+                        console.log(response.data);
+                    })
+                    .catch( error => {
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                    });
+            },
             getImageSrc(src) {
                 if (!src) {
                     return '/images/placeholder.png';
                 }
 
-                if (src.charAt(0) !== '/' && src.charAt(0) !== 'h') {
+                if (src.charAt(0) !== '/' && src.charAt(0) !== 'h' && src.charAt(0) !== 'b') {
                     return '/' + src;
                 }
 
                 return src;
             },
+            handleProfilePictureUpload() {
+                this.profile_picture = this.$refs.profile_picture.files[0];
+                this.freelancer.user_data.profile_picture = URL.createObjectURL(this.profile_picture) ;
+                this.uploadProfilePicture();
+            },
+            uploadProfilePicture(){
+                let form_data = new FormData();
+                if(this.profile_picture){
+                    form_data.append('profile_picture', this.profile_picture);
+                }
+                form_data.append('user_id', this.user.id);
+
+                axios.post('/freelancer/account/media/profile_picture', form_data)
+                    .then((response) => {
+                        if(response.data.errors){
+                            this.errors = response.data.errors;
+                            return ;
+                        }
+                    })
+                    .catch((error) => {
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                    })
+            },
+            browseFile(){
+                $('#profile_picture').click();
+            },
+            changeAvailableHours(value){
+                this.freelancer.agent.available_hours_per_week = parseInt(this.freelancer.agent.available_hours_per_week) + value ;
+                this.updateFreelancerCardData();
+            },
+            changeHourlyRate(value){
+                this.freelancer.agent.hourly_rate = parseInt(this.freelancer.agent.hourly_rate) + value ;
+                this.updateFreelancerCardData();
+            },
+
         },
         mounted() {
+            this.freelancer = this.user ;
             console.log(this.freelancer);
         }
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+    .whiteHover{
+        a:hover{
+            color:white;
+        }
+    }
 
 </style>

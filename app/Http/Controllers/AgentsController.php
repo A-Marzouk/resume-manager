@@ -462,6 +462,42 @@ class AgentsController extends Controller
         return view('freelancer.resume_editor',compact('freelancer'));
     }
 
+    public function updateCardData(Request $request){
+        if ($request->user_id && currentUser()->is_admin) {
+            $freelancer = User::where('id',$request->user_id)->first();
+        } else {
+            $freelancer = currentUser();
+        }
+
+        $freelancer->userData->update($request->user_data);
+        $freelancer->agent->update($request->agent);
+
+        return $freelancer ;
+    }
+
+    public function updateProfilePicture(Request $request){
+
+        if ($request->user_id && currentUser()->is_admin) {
+            $freelancer = User::where('id',$request->user_id)->first();
+        } else {
+            $freelancer = currentUser();
+        }
+
+        if (isset($_FILES['profile_picture'])) {
+            // upload the resume to our storage
+            $pathToPicture = Upload::profilePicture('profile_picture', 'profile_picture');
+            if (!$pathToPicture) {
+                $errors['profile_picture'] = [
+                    '0' => 'Error while uploading profile picture.'
+                ];
+            }
+            $freelancer->userData->update([
+                'profile_picture' => $pathToPicture,
+            ]);
+        }
+
+    }
+
     public function editAgentMedialInfo(Request $request)
     {
 

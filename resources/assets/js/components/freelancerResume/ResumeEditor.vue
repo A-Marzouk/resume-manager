@@ -172,7 +172,6 @@
 
                         <div id="nav-taps-resume-card">
                             <ul class="nav nav-tabs navRow" role="tablist">
-
                                 <li class="offset-md-2 nav-item col-md-2 col-4 NoDecor">
                                     <a class="nav-link navTab text-center active" href="#skills" role="tab"
                                        data-toggle="tab">
@@ -337,6 +336,13 @@
                 profile_picture:''
             }
         },
+        computed:{
+            mainTabs: function () {
+                return this.user.agent.resume_tabs.filter( (tab) => {
+                    return tab.type === 'main_tab'
+                });
+            }
+        },
         methods: {
             updateFreelancerCardData(){
                 let updatedData = {
@@ -352,7 +358,7 @@
                 };
                 axios.post('/agent/resume/editor/submit',updatedData)
                     .then( (response) => {
-                        console.log(response.data);
+
                     })
                     .catch( error => {
                         if (typeof error.response.data === 'object') {
@@ -415,7 +421,7 @@
         },
         mounted() {
             this.freelancer = this.user ;
-            console.log(this.freelancer);
+            console.log(this.freelancer.agent.resume_tabs);
         }
     }
 </script>

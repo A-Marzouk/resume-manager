@@ -452,7 +452,9 @@ class AgentsController extends Controller
     {
 
         if (Input::get('user_id') && currentUser()->is_admin) {
-            $freelancer = User::where('id', Input::get('user_id'))->with('agent')->first();
+            $freelancer = User::with(['userData','skills','agent.resumeTabs','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+                return $query->limit(10);
+            }])->where('id',Input::get('user_id'))->first();
         } else {
             $freelancer = currentUser();
         }

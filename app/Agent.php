@@ -32,6 +32,11 @@ class Agent extends Model
         return $this->hasMany(ActivityLog::class)->orderBy('created_at','desc');
     }
 
+    public function resumeTabs()
+    {
+        return $this->hasMany(ResumeTab::class)->orderBy('view_order','asc');
+    }
+
 
     public function invoices()
     {

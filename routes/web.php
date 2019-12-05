@@ -236,6 +236,10 @@ Route::prefix('agent')->group(function (){
     Route::post('/shifts/pause', 'WorkingShiftController@pauseShift');
     Route::post('/shifts/resume', 'WorkingShiftController@resumeShift');
 
+
+    // resume tabs :
+    Route::get('/resume-tabs/{agent_id}','ResumeTabsController@getResumeTabsByAgentID');
+
 });
 
 Route::get('/freelancer/it/register','DevelopersController@developerForm')->name('developer.from');
@@ -299,10 +303,6 @@ Route::prefix('freelancer')->group(function (){
 
     Route::get('/has_agreed','FreelancersController@hasAgreed');
     Route::post('/set_terms','FreelancersController@setTerms');
-
-    // freelancer resume
-    Route::get('/v2/{username}','HomeController@ResumePageV2');
-    Route::get('/v2/short/{username}','HomeController@ResumePageShortV2');
 
 });
 
@@ -612,7 +612,10 @@ Route::get('/home_test/sales', function () {
     return view('new_home_sales');
 });
 
-Route::get('/resume/{username}', 'ResumeController@agentsResume');
+// freelancer resume
+Route::get('/v2/{username}','HomeController@ResumePageV2');
+Route::get('/v2/short/{username}','HomeController@ResumePageShortV2');
+Route::get('/v1/{username}','HomeController@ResumePage');
 
 Route::get('/freelancer/resume/{username}/download', 'ResumeController@downloadPDFResume')->name('download-pdf-resume');
 

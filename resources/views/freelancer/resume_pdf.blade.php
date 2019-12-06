@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/pdf" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{ $freelancer->userData["first_name"].' '.$freelancer->userData["last_name"] }} Resume</title>
@@ -128,20 +128,25 @@
       font-size: 12px;
     }
 
+    .resume__content__details .skillIcon {
+      height: 14px;
+      margin-right: 5px;
+    }
+
     .resume__content__details .skillBar {
       width: 100%;
+      height: 3px;
+      background: #f6f6f6;
+      position: relative;
     }
 
     .resume__content__details .skillBar .percentage {
       background: #4367D3;
       height: 3px;
-      float: left;
-    }
-
-    .resume__content__details .skillBar .right {
-      height: 3px;
-      background: #f6f6f6;
-      float: right;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .resume__content__details__companyName {
@@ -227,11 +232,12 @@
             <div class="container">
               <div class="resume__content__details__subtitle">Programming Languages</div>
               @foreach ($programmingSkills as $skill)
-                <div class="skillName">{{ $skill['skill_title'] }}</div>
+                <div class="skillName">
+                    <img class="skillIcon" src="{{ public_path().'/images/skills_icons/'.str_replace([' ', '.'], '_', strtolower($skill["skill_title"])).'.png' }}" />{{ $skill['skill_title'] }}
+                </div>
 
                 <div class="skillBar">
                   <div style="width: {{ $skill['percentage'] }}%;" class="percentage"></div>
-                  <div style="width: {{ 100 - $skill['percentage'] }}%;" class="right"></div>
                 </div>
               @endforeach
             @endif
@@ -241,11 +247,13 @@
               <div class="container">
                 <div class="resume__content__details__subtitle">Frameworks / Databases</div>
                 @foreach ($frameworkOrDatabaseSkills as $skill)
-                  <div class="skillName">{{ $skill['skill_title'] }}</div>
+                  <div class="skillName">
+                      <img class="skillIcon" src="{{ public_path().'/images/skills_icons/'.str_replace([' ', '.'], '_', strtolower($skill["skill_title"])).'.png' }}" />{{ $skill['skill_title'] }}
+                  </div>
     
                   <div class="skillBar">
                     <div style="width: {{ $skill['percentage'] }}%;" class="percentage"></div>
-                  <div style="width: {{ 100 - $skill['percentage'] }}%;" class="right"></div>
+
                   </div>
                 @endforeach
               @endif
@@ -255,11 +263,13 @@
               <div class="container">
                 <div class="resume__content__details__subtitle">Software</div>
                 @foreach ($softwareSkills as $skill)
-                  <div class="skillName">{{ $skill['skill_title'] }}</div>
+                  <div class="skillName">
+                      <img class="skillIcon" src="{{ public_path().'/images/skills_icons/'.str_replace([' ', '.'], '_', strtolower($skill["skill_title"])).'.png' }}" />{{ $skill['skill_title'] }}
+                  </div>
     
                   <div class="skillBar">
                     <div style="width: {{ $skill['percentage'] }}%;" class="percentage"></div>
-                    <div style="width: {{ 100 - $skill['percentage'] }}%;" class="right"></div>
+  
                   </div>
                 @endforeach
               @endif
@@ -269,11 +279,13 @@
               <div class="container">
                 <div class="resume__content__details__subtitle">Design Skills</div>
                 @foreach ($designSkills as $skill)
-                  <div class="skillName">{{ $skill['skill_title'] }}</div>
+                  <div class="skillName">
+                    <img class="skillIcon" src="{{ public_path().'/images/skills_icons/'.str_replace([' ', '.'], '_', strtolower($skill["skill_title"])).'.png' }}" />{{ $skill['skill_title'] }}
+                  </div>
     
                   <div class="skillBar">
                     <div style="width: {{ $skill['percentage'] }}%;" class="percentage"></div>
-                    <div style="width: {{ 100 - $skill['percentage'] }}%;" class="right"></div>
+  
                   </div>
                 @endforeach
               @endif

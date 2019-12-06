@@ -21,4 +21,8 @@ class Skill extends Model
     public function freelancer(){
         return $this->belongsTo(User::class);
     }
+
+    public function icon () {
+        return file_exists(public_path() . '/images/skill_icons/')
+    }
 }

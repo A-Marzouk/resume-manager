@@ -55,7 +55,7 @@ class EducationHistoryController extends Controller
         if($request->is_currently_learning !== true){
             $educationH->date_to = $request->date_to;
         }
-        $educationH->is_currently_learning = $request->is_currently_learning;
+        $educationH->is_currently_learning = $request->is_currently_learning ? true : false;
 
         $educationH->save();
 

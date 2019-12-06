@@ -110,12 +110,6 @@ if(Input::get('user_id') && currentUser()->is_admin){
                        </span>
                         </a>
                     </div>
-                    {{--<div class="editBtn NoDecor" style="width: 97px;">--}}
-                    {{--<a href="{{route('show.new_form')}}">--}}
-                    {{--<img src="/images/close_24px.png" alt="edit profile">--}}
-                    {{--Discard--}}
-                    {{--</a>--}}
-                    {{--</div>--}}
                     <div class="editBtn NoDecor" style="margin-left: 10px;">
                         <a @if(currentUser()->is_admin) href="/admin/agents" @else href="/freelancer/developer-card" @endif>
                             <img src="/images/check_24px.png" alt="finish profile">
@@ -128,6 +122,7 @@ if(Input::get('user_id') && currentUser()->is_admin){
                 @include('freelancer_card_includes.edit_freelancer_card')
             </div>
         </div>
+
     </div>
 
 @endsection

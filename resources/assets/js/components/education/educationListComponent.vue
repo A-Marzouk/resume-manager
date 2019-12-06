@@ -41,8 +41,12 @@
     </div>
 </template>
 <script>
+    import addEducationModal from './addEducationComponent';
     export default {
         props: ['user_id'],
+        components:{
+            'add-education-modal': addEducationModal
+        },
         data() {
             return {
                 educations: [],

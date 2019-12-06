@@ -43,8 +43,12 @@
     </div>
 </template>
 <script>
+    import addWorkModal from './addWorkComponent';
     export default {
         props: ['user_id'],
+        components:{
+            'add-work-modal' : addWorkModal
+        },
         data() {
             return {
                 works: [],

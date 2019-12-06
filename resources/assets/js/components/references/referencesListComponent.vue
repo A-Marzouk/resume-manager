@@ -42,8 +42,12 @@
     </div>
 </template>
 <script>
+    import addReferenceModal from './addReferenceComponent';
     export default {
         props: ['user_id'],
+        components:{
+            'add-reference-modal' : addReferenceModal
+        },
         data() {
             return {
                 references: [],
@@ -63,7 +67,7 @@
 
         methods: {
             getCurrentReferences() {
-                axios.get('/freelancer/references').then(
+                axios.get('/freelancer/references?user_id=' + this.user_id).then(
                     (response) => {
                         let currReferences = response.data;
                         $.each(currReferences, function (i) {

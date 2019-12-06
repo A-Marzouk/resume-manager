@@ -31,8 +31,12 @@
 </template>
 
 <script>
+    import addProjectModal from './addProjectComponent' ;
     export default {
         props:['user_id'],
+        components:{
+            'add-project-modal' : addProjectModal
+        },
         data() {
             return {
                 projects: [],

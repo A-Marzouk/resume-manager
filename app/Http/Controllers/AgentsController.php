@@ -530,7 +530,7 @@ class AgentsController extends Controller
                 'label' => 'Skills',
                 'type' => 'main_tab',
                 'is_active' => 1,
-                'view_order' => 1,
+                'view_order' => 2,
             ],
             [
                 'agent_id' => $agent_id,
@@ -538,7 +538,7 @@ class AgentsController extends Controller
                 'label' => 'Work',
                 'type' => 'main_tab',
                 'is_active' => 1,
-                'view_order' => 1,
+                'view_order' => 3,
             ],
             [
                 'agent_id' => $agent_id,
@@ -546,7 +546,7 @@ class AgentsController extends Controller
                 'label' => 'Education',
                 'type' => 'main_tab',
                 'is_active' => 1,
-                'view_order' => 1,
+                'view_order' => 4,
             ],
             [
                 'agent_id' => $agent_id,
@@ -554,7 +554,7 @@ class AgentsController extends Controller
                 'label' => 'Recordings',
                 'type' => 'main_tab',
                 'is_active' => 1,
-                'view_order' => 1,
+                'view_order' => 5,
             ],
             [
                 'agent_id' => $agent_id,
@@ -562,7 +562,7 @@ class AgentsController extends Controller
                 'label' => 'References',
                 'type' => 'main_tab',
                 'is_active' => 1,
-                'view_order' => 1,
+                'view_order' => 6,
             ]
         ]);
 

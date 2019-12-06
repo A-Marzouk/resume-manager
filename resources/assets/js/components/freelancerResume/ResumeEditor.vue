@@ -185,14 +185,14 @@
                                        :class="{active : tab.name === currentMainTab.name}"
                                        @click="currentMainTab = tab" :href="'#' + tab.name" role="tab"
                                        data-toggle="tab">
-                                        <img src="/images/new_theme/arrow@2x.png" alt=""
+                                        <img src="/images/new_theme/arrow@2x.png" alt="change order" @click="tabToLeft(tab)"
                                              style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;"
-                                             class="cursorPointer">
+                                             class="cursorPointer" v-show="index != 0">
                                         <div>
                                             {{tab.label}}
                                         </div>
-                                        <img src="/images/new_theme/arrow@2x.png" class="cursorPointer" alt=""
-                                             style="margin-left:10px; width:7.5px; height:12px;">
+                                        <img src="/images/new_theme/arrow@2x.png" class="cursorPointer" alt="" @click="tabToRight(tab)"
+                                             style="margin-left:10px; width:7.5px; height:12px;" v-show="index != mainTabs.length-1">
                                     </a>
                                 </li>
                             </ul>
@@ -410,6 +410,45 @@
                     .then((response) => {})
                     .catch()
             },
+            tabToLeft(myTab){
+                let tabs = this.mainTabs ;
+                this.setTabActive(myTab);
+
+                tabs.forEach( (tab,index) => {
+                    if(myTab.view_order == tab.view_order){
+                        tabs[index].view_order--;
+                        tabs[index-1].view_order++;
+
+                        this.updateTab(tabs[index]);
+                        this.updateTab(tabs[index-1]);
+                    }
+                });
+                this.sortTabs();
+            },
+            tabToRight(myTab){
+                let tabs = this.mainTabs ;
+                this.setTabActive(myTab);
+                tabs.forEach( (tab,index) => {
+                    if(myTab.view_order == tab.view_order){
+                        tabs[index].view_order++;
+                        tabs[index+1].view_order--;
+
+                        this.updateTab(tabs[index]);
+                        this.updateTab(tabs[index+1]);
+                    }
+                });
+                this.sortTabs();
+            },
+            setTabActive(myTab){
+                let tabs = this.mainTabs ;
+                tabs.forEach( (tab,index) => {
+                    if(myTab.id == tab.id){
+                        tab.is_active = 1 ;
+                    }else{
+                        tab.is_active = 0 ;
+                    }
+                });
+            },
             toggleTabActive(tab) {
                 tab.is_active = !tab.is_active;
                 this.updateTab(tab);
@@ -480,6 +519,9 @@
                     return tab.type === 'main_tab'
                 });
                 this.setCurrentTab();
+            },
+            sortTabs(){
+                this.mainTabs = _.orderBy(this.mainTabs, 'view_order')
             }
 
         },

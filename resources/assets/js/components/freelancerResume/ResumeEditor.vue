@@ -183,7 +183,7 @@
                                     :key="index + 'tab'" :class="{halfOpacity : !tab.is_active}">
                                     <a class="nav-link navTab text-center d-flex align-items-center"
                                        :class="{active : tab.name === currentMainTab.name}"
-                                       @click="currentMainTab = tab" :href="'#' + tab.name" role="tab"
+                                       @click="currentMainTab = tab" :href="'#' + tab.name" :id=" tab.name + '_ref'" role="tab"
                                        data-toggle="tab">
                                         <img src="/images/new_theme/arrow@2x.png" alt="change order" @click="tabToLeft(tab)"
                                              style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;"
@@ -412,8 +412,6 @@
             },
             tabToLeft(myTab){
                 let tabs = this.mainTabs ;
-                this.setTabActive(myTab);
-
                 tabs.forEach( (tab,index) => {
                     if(myTab.view_order == tab.view_order){
                         tabs[index].view_order--;
@@ -427,7 +425,6 @@
             },
             tabToRight(myTab){
                 let tabs = this.mainTabs ;
-                this.setTabActive(myTab);
                 tabs.forEach( (tab,index) => {
                     if(myTab.view_order == tab.view_order){
                         tabs[index].view_order++;
@@ -438,16 +435,6 @@
                     }
                 });
                 this.sortTabs();
-            },
-            setTabActive(myTab){
-                let tabs = this.mainTabs ;
-                tabs.forEach( (tab,index) => {
-                    if(myTab.id == tab.id){
-                        tab.is_active = 1 ;
-                    }else{
-                        tab.is_active = 0 ;
-                    }
-                });
             },
             toggleTabActive(tab) {
                 tab.is_active = !tab.is_active;
@@ -521,7 +508,14 @@
                 this.setCurrentTab();
             },
             sortTabs(){
-                this.mainTabs = _.orderBy(this.mainTabs, 'view_order')
+                this.mainTabs = _.orderBy(this.mainTabs, 'view_order');
+                setTimeout( () => {
+                    this.mainTabs.forEach( (tab) => {
+                        if(this.currentMainTab.id != tab.id){
+                            $('#' + tab.name + '_ref').removeClass('active');
+                        }
+                    });
+                },200);
             }
 
         },

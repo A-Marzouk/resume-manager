@@ -22,8 +22,13 @@
                         Edit
                     </a>
                 </span>
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">Title
-                    : {{record.title}}</b><br/>
+                <div class="job-title d-flex align-items-center">
+                    <img :src="tab_default_icon" alt="tab icon" class="mr-2 tab-icon">
+                    <div>
+                        {{record.title}}
+                    </div>
+                </div>
+                <br/>
                 <div style="color: #30323D;font-family: Roboto;">Transcription : {{record.transcription}}</div>
                 <div style="color: #30323D;font-family: Roboto;"> Audio :
                     {{record.src.replace('/resumeApp/uploads/','')}}
@@ -56,8 +61,9 @@
 </template>
 <script>
     import addRecordModal from './addRecordComponent';
+
     export default {
-        props: ['user_id'],
+        props: ['user_id', 'tab_default_icon'],
         components: {
             'add-record-modal': addRecordModal
         },
@@ -192,4 +198,16 @@
         opacity: 0;
         transform: translateY(30px);
     }
+
+
+    .job-title{
+        font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold;
+    }
+
+    .tab-icon{
+        width:14px;
+        height:14px;
+    }
+
+
 </style>

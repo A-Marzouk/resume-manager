@@ -15,7 +15,7 @@ class ResumeTab extends Model
 {
     protected $table = 'resume_tabs';
     protected $fillable = [
-        'name','label','type','view_order','is_active','agent_id'
+        'name','label','type','view_order','default_icon_src','is_active','agent_id'
     ];
 
     public function agent(){

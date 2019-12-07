@@ -22,7 +22,13 @@
                         Edit
                     </a>
                 </span>
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">{{education.school_title}}</b><br/>
+                <div class="job-title d-flex align-items-center">
+                    <img :src="tab_default_icon" alt="tab icon" class="mr-2 tab-icon">
+                    <div>
+                        {{education.school_title}}
+                    </div>
+                </div>
+
                 Start :{{education.date_from}}
                 <span v-show="education.date_to && education.is_currently_learning !== true"> End : {{education.date_to}}</span>
                 <span v-show="education.is_currently_learning !== false"> - Present</span><br/>
@@ -43,7 +49,7 @@
 <script>
     import addEducationModal from './addEducationComponent';
     export default {
-        props: ['user_id'],
+        props: ['user_id','tab_default_icon'],
         components:{
             'add-education-modal': addEducationModal
         },
@@ -167,4 +173,14 @@
         opacity: 0;
         transform: translateY(30px);
     }
+
+    .job-title{
+        font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold;
+    }
+
+    .tab-icon{
+        width:14px;
+        height:14px;
+    }
+
 </style>

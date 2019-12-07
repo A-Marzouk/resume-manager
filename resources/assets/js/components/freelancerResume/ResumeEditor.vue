@@ -202,7 +202,7 @@
                                      :class="{active : currentMainTab.name === 'skills'}" id="skills">
                                     <div class="row" style="padding-bottom: 16px;background: #fdfdfd;">
                                         <div class="col-md-12">
-                                            <div class="d-flex justify-content-center">
+                                            <div class="d-flex justify-content-start flex-column align-items-start">
                                                 <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
                                                    :class="{active : currentMainTab.is_active}"
                                                    @click="toggleTabActive(currentMainTab)">
@@ -221,15 +221,23 @@
                                     <div class="row"
                                          style="padding-top: 17px;padding-bottom: 16px;background: #fdfdfd;">
                                         <div class="col-md-12">
-                                            <div class="d-flex justify-content-center">
+                                            <div class="d-flex justify-content-start flex-column align-items-start">
                                                 <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
                                                    :class="{active : currentMainTab.is_active}"
                                                    @click="toggleTabActive(currentMainTab)">
                                                     <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
                                                     <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
                                                 </a>
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" @click="openIconsBar(currentMainTab)">
+                                                    Choose tab default icon
+                                                </a>
+                                                <div class="icons-bar d-flex" v-if="this.openedIconsTabID === currentMainTab.id">
+                                                    <div v-for="(icon,index) in iconsList" class="icon" @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
+                                                        <img :src="'/images/resume_tabs_icons/' + icon"  alt="icon" class="tab-icon">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <records-list :user_id="user.id"></records-list>
+                                            <records-list class="mt-3" :user_id="user.id" :tab_default_icon="currentMainTab.default_icon_src"></records-list>
                                         </div>
                                     </div>
                                 </div>
@@ -239,7 +247,7 @@
                                     <div class="row"
                                          style="padding-top:17px; padding-bottom: 16px;background: #fdfdfd;">
                                         <div class="col-md-12">
-                                            <div class="d-flex justify-content-center">
+                                            <div class="d-flex justify-content-start flex-column align-items-start">
                                                 <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
                                                    :class="{active : currentMainTab.is_active}"
                                                    @click="toggleTabActive(currentMainTab)">
@@ -256,15 +264,23 @@
                                      :class="{active : currentMainTab.name === 'work'}">
                                     <div style="padding-top: 17px; padding-bottom: 17px;">
                                         <div class="col-md-12">
-                                            <div class="d-flex justify-content-center">
+                                            <div class="d-flex justify-content-start flex-column align-items-start">
                                                 <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
                                                    :class="{active : currentMainTab.is_active}"
                                                    @click="toggleTabActive(currentMainTab)">
                                                     <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
                                                     <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
                                                 </a>
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" @click="openIconsBar(currentMainTab)">
+                                                    Choose tab default icon
+                                                </a>
+                                                <div class="icons-bar d-flex" v-if="this.openedIconsTabID === currentMainTab.id">
+                                                    <div v-for="(icon,index) in iconsList" class="icon" @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
+                                                        <img :src="'/images/resume_tabs_icons/' + icon"  alt="icon" class="tab-icon">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <works-list :user_id="user.id"></works-list>
+                                            <works-list class="mt-3" :user_id="user.id" :tab_default_icon="currentMainTab.default_icon_src"></works-list>
                                         </div>
                                     </div>
                                 </div>
@@ -273,15 +289,23 @@
                                      :class="{active : currentMainTab.name === 'education'}">
                                     <div class="" style="padding-top: 17px; padding-bottom: 17px;">
                                         <div class="col-md-12">
-                                            <div class="d-flex justify-content-center">
+                                            <div class="d-flex justify-content-start flex-column align-items-start">
                                                 <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
                                                    :class="{active : currentMainTab.is_active}"
                                                    @click="toggleTabActive(currentMainTab)">
                                                     <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
                                                     <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
                                                 </a>
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" @click="openIconsBar(currentMainTab)">
+                                                    Choose tab default icon
+                                                </a>
+                                                <div class="icons-bar d-flex" v-if="this.openedIconsTabID === currentMainTab.id">
+                                                    <div v-for="(icon,index) in iconsList" class="icon" @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
+                                                        <img :src="'/images/resume_tabs_icons/' + icon"  alt="icon" class="tab-icon">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <educations-list :user_id="user.id"></educations-list>
+                                            <educations-list class="mt-3" :user_id="user.id" :tab_default_icon="currentMainTab.default_icon_src"></educations-list>
                                         </div>
                                     </div>
                                 </div>
@@ -290,15 +314,23 @@
                                      :class="{active : currentMainTab.name === 'references'}">
                                     <div class="" style="padding-top: 17px; padding-bottom: 17px;">
                                         <div class="col-md-12">
-                                            <div class="d-flex justify-content-center">
+                                            <div class="d-flex justify-content-start flex-column align-items-start">
                                                 <a href="javascript:void(0)" class="btn btn-sm activeBtn mb-2 mt-2"
                                                    :class="{active : currentMainTab.is_active}"
                                                    @click="toggleTabActive(currentMainTab)">
                                                     <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
                                                     <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
                                                 </a>
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" @click="openIconsBar(currentMainTab)">
+                                                    Choose tab default icon
+                                                </a>
+                                                <div class="icons-bar d-flex" v-if="this.openedIconsTabID === currentMainTab.id">
+                                                    <div v-for="(icon,index) in iconsList" class="icon" @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
+                                                        <img :src="'/images/resume_tabs_icons/' + icon"  alt="icon" class="tab-icon">
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <references-list :user_id="user.id"></references-list>
+                                            <references-list class="mt-3" :user_id="user.id" :tab_default_icon="currentMainTab.default_icon_src"></references-list>
                                         </div>
                                     </div>
                                 </div>
@@ -377,7 +409,20 @@
                 errors: [],
                 profile_picture: '',
                 currentMainTab: {},
-                mainTabs:[]
+                mainTabs:[],
+                iconsList:[
+                    'listicon_1.png',
+                    'listicon_2.png',
+                    'listicon_3.png',
+                    'listicon_4.png',
+                    'listicon_5.png',
+                    'listicon_6.png',
+                    'listicon_7.png',
+                    'listicon_8.png',
+                    'listicon_9.png',
+                    'listicon_10.png',
+                ],
+                openedIconsTabID:0
             }
         },
         methods: {
@@ -516,8 +561,19 @@
                         }
                     });
                 },200);
+            },
+            setTabIcon(tab,src){
+                tab.default_icon_src = src ;
+                this.updateTab(tab);
+                this.openedIconsTabID = 0 ;
+            },
+            openIconsBar(tab){
+                if(this.openedIconsTabID === tab.id){
+                    this.openedIconsTabID = 0 ;
+                }else{
+                    this.openedIconsTabID = tab.id ;
+                }
             }
-
         },
         mounted() {
             this.freelancer = this.user;
@@ -564,6 +620,20 @@
 
     .halfOpacity {
         opacity: 0.5;
+    }
+
+    .tab-icon{
+        width:25px;
+        height:25px;
+        margin:10px;
+        cursor : pointer ;
+    }
+
+    .icons-bar{
+        border: #007bff 1px solid;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
 </style>

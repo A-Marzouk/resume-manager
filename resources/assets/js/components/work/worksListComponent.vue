@@ -199,7 +199,7 @@
     }
 
     .tab-icon{
-        width:12px;
-        height:12px;
+        width:14px;
+        height:14px;
     }
 </style>

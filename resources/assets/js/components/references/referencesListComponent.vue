@@ -22,8 +22,15 @@
                         Edit
                     </a>
                 </span>
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">Title
-                    : {{reference.title}}</b><br/>
+
+                <div class="job-title d-flex align-items-center">
+                    <img :src="tab_default_icon" alt="tab icon" class="mr-2 tab-icon">
+                    <div>
+                        {{reference.title}}
+                    </div>
+                </div>
+
+
                 <div style="color: #30323D;font-family: Roboto;">Details : {{reference.details}}</div>
                 <div style="color: #30323D;font-family: Roboto;">Company : {{reference.company}}</div>
                 <div style="color: #30323D;font-family: Roboto;">phone : {{reference.phone}}</div>
@@ -44,7 +51,7 @@
 <script>
     import addReferenceModal from './addReferenceComponent';
     export default {
-        props: ['user_id'],
+        props: ['user_id','tab_default_icon'],
         components:{
             'add-reference-modal' : addReferenceModal
         },
@@ -164,5 +171,14 @@
     {
         opacity: 0;
         transform: translateY(30px);
+    }
+
+    .job-title{
+        font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold;
+    }
+
+    .tab-icon{
+        width:14px;
+        height:14px;
     }
 </style>

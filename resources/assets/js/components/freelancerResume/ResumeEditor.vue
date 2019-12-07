@@ -26,7 +26,7 @@
                             </a>
                         </div>
                         <div class="editBtn NoDecor" style="margin-left: 10px;">
-                            <a href="/freelancer/developer-card">
+                            <a href="/admin/agents">
                                 <img src="/images/check_24px.png" alt="finish profile">
                                 Finish editing
                             </a>

@@ -453,12 +453,14 @@ class AgentsController extends Controller
     {
 
         if (Input::get('user_id') && currentUser()->is_admin) {
-            $freelancer = User::with(['userData', 'skills', 'agent.resumeTabs', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
-                return $query->limit(10);
-            }])->where('id', Input::get('user_id'))->first();
+            $user_id = Input::get('user_id');
         } else {
-            $freelancer = currentUser();
+            $user_id = currentUser()->id;
         }
+
+        $freelancer = User::with(['userData', 'skills', 'agent.resumeTabs', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
+            return $query->limit(10);
+        }])->where('id',$user_id)->first();
 
         return view('freelancer.resume_editor', compact('freelancer'));
     }
@@ -510,10 +512,10 @@ class AgentsController extends Controller
 
     public function createDefaultResumeTab($user_id)
     {
-        $user = User::where('id',$user_id)->first();
+        $user = User::where('id', $user_id)->first();
         $agent_id = $user->agent->id;
-        if(count($user->agent->resumeTabs) > 1){
-            return $user->agent->resumeTabs ;
+        if (count($user->agent->resumeTabs) > 1) {
+            return $user->agent->resumeTabs;
         }
         ResumeTab::insert([
             [
@@ -566,7 +568,7 @@ class AgentsController extends Controller
             ]
         ]);
 
-        return Agent::where('user_id',$user->id)->first()->resumeTabs;
+        return Agent::where('user_id', $user->id)->first()->resumeTabs;
     }
 
     public function editAgentMedialInfo(Request $request)

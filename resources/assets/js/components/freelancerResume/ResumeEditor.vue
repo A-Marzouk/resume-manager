@@ -264,7 +264,7 @@
                                                     <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
                                                 </a>
                                             </div>
-                                            <works-list :user_id="user.id"></works-list>
+                                            <works-list :user_id="user.id" :tab_default_icon="currentMainTab.default_icon_src"></works-list>
                                         </div>
                                     </div>
                                 </div>

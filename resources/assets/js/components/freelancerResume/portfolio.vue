@@ -58,27 +58,21 @@
 
         <div class="marginMobile-0">
             <div class="freelancerCard" style="margin-bottom: -16px; height: auto;">
-                <div class="row actionRow">
-                    <div class="importBtn importBtn_upload NoDecor">
-                        <a href="javascript:void(0)" style="outline: none;" @click="showReferencesSection">
-                            References / Testimonials
-                        </a>
-                    </div>
-                    <div class="col-md-5">
-
-                    </div>
-                    <div class="progressBtn">
-                        <a href="javascript:void(0)">
-                   <span>
-                        70% Complete
-                   </span>
-                        </a>
-                    </div>
-                    <div class="editBtn NoDecor">
-                        <a :href="'/freelancer/developer-card/edit?user_id=' + freelancer.id">
-                            <img src="/images/edit_profile.png" alt="edit profile">
-                            Edit profile
-                        </a>
+                <div class="row actionRow d-flex justify-content-end">
+                    <div class="d-flex  mr-3">
+                        <div class="progressBtn">
+                            <a href="javascript:void(0)">
+                           <span>
+                                70% Complete
+                           </span>
+                            </a>
+                        </div>
+                        <div class="editBtn NoDecor">
+                            <a :href="'/agent/resume/editor?user_id=' + freelancer.id">
+                                <img src="/images/edit_profile.png" alt="edit profile">
+                                Edit profile
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,9 +134,10 @@
                                     </div>
 
                                     <div class="col-md-4 text-center" style="font-size: 15px; color: white;">
-                                        <span style="font-weight: bold;" v-if="freelancer.user_data.available_hours_per_week">{{Math.ceil(freelancer.user_data.available_hours_per_week)}} hours</span>
-                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly
-                                            Availability
+                                        <span style="font-weight: bold;"
+                                              v-if="freelancer.agent.available_hours_per_week">{{Math.trunc(freelancer.agent.available_hours_per_week)}} hours</span>
+                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">
+                                            Weekly Availability
                                         </div>
                                     </div>
 
@@ -191,7 +186,8 @@
                                     </div>
                                     <div class="text-left" style="font-size: 15px; color: white; padding-top: 5px;">
                                         <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :
-                                            <span style="font-weight: bold;" v-if="freelancer.user_data.available_hours_per_week">{{Math.ceil(freelancer.user_data.available_hours_per_week)}} h/week</span>
+                                            <span style="font-weight: bold;"
+                                                  v-if="freelancer.agent.available_hours_per_week">{{Math.ceil(freelancer.agent.available_hours_per_week)}} h/week</span>
                                         </div>
                                     </div>
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
@@ -230,9 +226,9 @@
                         <div v-show="portfolio">
                             <!-- nav row section -->
 
-                            <div class="row navRow">
+                            <div class="row navRow" v-if="freelancer.agent.resume_tabs.length < 1">
                                 <div class="col-md-2 offset-md-3 col-4 text-center"
-                                     style="border-right:1px solid #EBEDEF;" @click="setTab('skills')">
+                                     style="border-right:1px solid #EBEDEF;" @click="setTabName('skills')">
                                     <div class="navTab NoDecor" :class="{active: currentTab === 'skills' }">
                                         <a href="javascript:void(0)">
                                             Skills
@@ -241,7 +237,7 @@
                                 </div>
 
                                 <div class="col-md-2 col-4 text-center" style="border-right:1px solid #EBEDEF;"
-                                     @click="setTab('work')">
+                                     @click="setTabName('work')">
                                     <div class="navTab NoDecor" :class="{active: currentTab === 'work' }">
                                         <a href="javascript:void(0)">
                                             Work
@@ -249,7 +245,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-2 col-4 text-center" @click="setTab('education')">
+                                <div class="col-md-2 col-4 text-center" @click="setTabName('education')">
                                     <div class="navTab NoDecor" :class="{active: currentTab === 'education' }">
                                         <a href="javascript:void(0)">
                                             Education
@@ -258,9 +254,21 @@
                                 </div>
                             </div>
 
+                            <div v-else class="row navRow d-flex justify-content-center">
+                                <div class="col-md-2 col-4 text-center" style="border-right:1px solid #EBEDEF;"
+                                     @click="setTab(tab)" v-for="(tab,index) in freelancer.agent.resume_tabs"
+                                     v-if="tab.is_active">
+                                    <div class="navTab NoDecor" :class="{active: currentTab.name === tab.name }">
+                                        <a href="javascript:void(0)">
+                                            {{tab.label}}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- portfolio section -->
 
-                            <div v-show="currentTab === 'skills'">
+                            <div v-show="currentTab.name === 'skills'">
                                 <div id="nav-taps-resume" style="padding-top:2px">
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li class="nav-item">
@@ -415,27 +423,28 @@
                                 </div>
                             </div>
 
-                            <div v-show="currentTab === 'work'">
+                            <div v-show="currentTab.name === 'work'">
                                 <!-- work section -->
-
                                 <div class="row" style="padding-top: 10px;">
                                     <div class="col-12 educationSection">
                                         <div class="aboutText">
                                             <div class="row" v-for="(work, index) in worksHistory" :key="index + 'V'">
                                                 <div class="col-md-12 aboutSubText">
-                                                    <div class="title work d-flex">
-                                                        <span class="circle"></span>
-                                                        <span class="seduHeader">{{work.job_title}}</span>
+                                                    <div class="job-title d-flex align-items-center">
+                                                        <img :src="currentTab.default_icon_src" alt="tab icon" class="mr-2 tab-icon">
+                                                        <div>
+                                                            {{work.job_title}}
+                                                        </div>
                                                     </div>
-                                                    <div class="company">{{work.company}}</div>
+                                                    <div class="company pl-0 mt-3">{{work.company}}</div>
                                                     <div class="year">
-                                                        <span class="work">
+                                                        <span class="work pl-0">
                                                             {{getDate(work.date_from)}}
                                                             <span v-if="work.is_currently_working"> - Present </span>
                                                             <span v-else> - {{getDate(work.date_to)}}</span>
                                                         </span>
                                                     </div>
-                                                    <div class="desc">{{work.job_description}}</div>
+                                                    <div class="desc pl-0">{{work.job_description}}</div>
                                                 </div>
 
                                                 <!-- related projects list -->
@@ -524,10 +533,9 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
 
-                            <div v-show="currentTab === 'education'">
+                            <div v-show="currentTab.name === 'education'">
                                 <!-- education section -->
 
                                 <div class="row" style="padding-top: 10px;">
@@ -537,7 +545,7 @@
                                                  :key="index + 'E'">
                                                 <div class="col-md-12 aboutSubText">
                                                     <div class="title work d-flex">
-                                                        <span class="circle"></span>
+                                                        <img :src="currentTab.default_icon_src" alt="tab icon" class="mr-2 tab-icon">
                                                         <span class="seduHeader">
                                                             {{education.school_title}}
                                                         </span>
@@ -554,6 +562,140 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div v-show="currentTab.name === 'references'">
+                                <!-- education section -->
+                                <div class="row" style="padding-top: 10px;">
+                                    <div class="col-12 educationSection">
+                                        <div class="aboutText">
+                                            <div class="row" v-for="(reference, index) in references"
+                                                 :key="index + 'R'">
+                                                <div class="col-md-12 aboutSubText">
+                                                    <div class="title work">
+                                                        <img :src="currentTab.default_icon_src" alt="tab icon" class="mr-2 tab-icon">
+                                                        {{reference.title}}
+                                                    </div>
+                                                    <div class="year">
+                                                        <span class="work">
+                                                            {{reference.company}}
+                                                        </span>
+                                                    </div>
+                                                    <div class="year">
+                                                        <span class="work">
+                                                            {{reference.email}}
+                                                        </span>
+                                                    </div>
+                                                    <div class="year">
+                                                        <span class="work">
+                                                            {{reference.phone}}
+                                                        </span>
+                                                    </div>
+                                                    <div class="desc">{{reference.details}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div v-show="currentTab.name === 'recordings'">
+                                <!-- education section -->
+                                <div class="row" style="padding-top: 10px;">
+                                    <div class="col-12 educationSection">
+                                        <div class="aboutText">
+                                            <div v-for="(record,index) in records"
+                                                 v-bind:key="index"
+                                                 class="list-item workExperience col-12"
+                                                 style="margin: 0px 10px 20px;">
+
+                                                <div class="job-title d-flex align-items-center">
+                                                    <img :src="currentTab.default_icon_src" alt="tab icon" class="mr-2 tab-icon">
+                                                    <div>
+                                                        {{record.title}}
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div style="color: #30323D;font-family: Roboto;">Transcription :
+                                                    {{record.transcription}}
+                                                </div>
+                                                <div style="color: #30323D;font-family: Roboto;"> Audio :
+                                                    {{record.src.replace('/resumeApp/uploads/','')}}
+                                                </div>
+                                                <div class="row"
+                                                     style="padding-top: 30px;">
+                                                    <div class="col-12">
+                                                        <audio :id="'record'+record.id"
+                                                               controls
+                                                               style="padding-bottom: 10px;"
+                                                               preload="auto">
+                                                            <source :src="getRecordSrc(record.src)">
+                                                            Your browser does not support the audio element.
+                                                        </audio>
+                                                        <!--/.audio-container-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div v-show="currentTab.name === 'portfolio'">
+                                <div>
+                                    <!-- portfolio section -->
+                                    <slick class="projectsSection" :id="'portfolio_section_' + freelancer.id" ref="slick" :options="slickOptions">
+                                        <div  v-for="(project,index) in projects" :key="index + 'A'" >
+                                            <!-- class="d-flex justify-content-center" style="height: 250px !important; padding: 0 2px 0 2px; overflow: hidden;" -->
+
+                                            <div class="workCard" style="margin:10px; margin-bottom: 0px;">
+                                                <div class="workImg">
+                                                    <a href="javascript:void(0)"
+                                                       style="outline: none;"
+                                                       data-toggle="modal" :data-target="'#project_modal_'+project.id" @click="loadHDImage(project.id)">
+
+                                                        <vue-load-image class="d-flex justify-content-center align-items-center">
+                                                            <img :src="getImageSrc(project.mainImage)" alt="" width="260" slot="image">
+                                                            <img  alt="" slot="preloader" src="/images/spinner-load.gif" style="width: 100px; height: 100px;" />
+                                                        </vue-load-image>
+                                                    </a>
+                                                </div>
+                                                <div class="workTitle">
+                                                    <div class="row">
+                                                        <div class="col-md-10 col-9">
+                                                            {{project.projectName}}
+                                                        </div>
+                                                        <a class="col-md-1 col-1" href="javascript:void(0)"
+                                                           data-toggle="modal" :data-target="'#project_modal_'+project.id"
+                                                           style="outline: none; margin-left: 16px;">
+                                                            <img src="/images/newResume/link.png"
+                                                                 alt="view work">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </slick>
+
+                                    <div class="row carouselControls" style="width: 100%;">
+                                        <div class=" col-12 text-center NoDecor">
+                                            <a href="javascript:void(0)" class="cardLabel_interviews noScroll" @click="slidePrev"
+                                               style="color:#697786;">
+                                                <img src="/images/left_arrow.png"
+                                                     alt="prev" width="15px">
+                                            </a>
+
+                                            <span class="jobTitle" style="padding: 0 5px 0 5px"> <span>{{slideNumber}}</span> / <span> {{numberOfSlides}} </span></span>
+
+                                            <a href="javascript:void(0)" role="button" data-slide="next" class="cardLabel_interviews noScroll" @click="slideNext"
+                                               style="color:#697786;">
+                                                <img src="/images/right_arrow.png"
+                                                     alt="next" width="15px">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- end of portfolio section -->
                                 </div>
                             </div>
 
@@ -628,59 +770,11 @@
                                     </div>
                                     <div class="col-md-4 col-12 NoDecor whiteOnHover"
                                          style="padding-top: 17px; padding-bottom: 30px;">
-                                        <a class="btn d-flex btn-block summaryBtn"
-                                           :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks ">Booking
-                                            Summary</a>
+                                        <a class="btn d-flex btn-block summaryBtn justify-content-center"
+                                           :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks ">
+                                            Booking Summary</a>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </transition>
-
-                    <transition name="slide-fade-left">
-                        <!--references content-->
-                        <div v-show="showReferences">
-                            <div class="row" style="border-bottom: 1px solid whitesmoke; padding-bottom: 25px;">
-                                <div class="col-lg-11 col-11 text-left" style="padding: 25px 0 0 20px;">
-                                     <span>
-                                         <img src="/images/comment-512.png"
-                                              alt="" style="padding-right: 14px; width: 34px;">
-                                        <span class="audioText"
-                                              style="color: #4E75E8;">  References & Testimonials</span>
-                                    </span>
-                                </div>
-                                <div class="col-lg-1 col-1 text-center NoDecor" style="padding: 24px 0 0 0;">
-                                    <a href="javascript:void(0)" @click="hideReferencesSection"
-                                       class="audioText audioDismiss" style="color: #4E75E8; font-size: large;"> x </a>
-                                </div>
-                            </div>
-                            <div style="padding-bottom: 35px;">
-
-                                <div class="row" v-for="(reference, index) in references" :key="index + 'R'">
-                                    <div class="col-md-12 aboutSubText">
-                                        <div class="title work">
-                                            <span class="circle"></span>
-                                            {{reference.title}}
-                                        </div>
-                                        <div class="year">
-                                            <span class="work">
-                                                {{reference.company}}
-                                            </span>
-                                        </div>
-                                        <div class="year">
-                                            <span class="work">
-                                                {{reference.email}}
-                                            </span>
-                                        </div>
-                                        <div class="year">
-                                            <span class="work">
-                                                {{reference.phone}}
-                                            </span>
-                                        </div>
-                                        <div class="desc">{{reference.details}}</div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </transition>
@@ -714,19 +808,13 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group" style="padding-top: 25px;">
-                                        <label class="panelFormLabel"> Name
-                                            <hr>
-                                        </label><br/>
                                         <div class="panelFormLabel">
-                                            {{project.projectName}}
+                                            Name: {{project.projectName}}
                                         </div>
                                     </div>
                                     <div class="form-group" style="padding-top: 25px;">
-                                        <label class="panelFormLabel"> Description
-                                            <hr>
-                                        </label><br/>
                                         <div class="panelFormLabel">
-                                            {{project.projectDesc}}
+                                            Description : {{project.projectDesc}}
                                         </div>
                                     </div>
                                 </div>
@@ -752,9 +840,12 @@
         data() {
             return {
                 slides: [],
+                slideNumber : 1 ,
                 numberOfSlides: this.calculateNumberOfSlides(),
                 skills: this.freelancer.skills,
                 worksHistory: this.freelancer.works_history,
+                records: this.freelancer.recordings,
+                projects: this.freelancer.projects,
                 educationsHistory: this.freelancer.educations_history,
                 references: this.freelancer.references,
                 currentTab: 'skills',
@@ -782,9 +873,8 @@
                     ]
                 },
                 weeks: 4,
-                hours: this.freelancer.user_data.available_hours_per_week,
+                hours: this.freelancer.agent.available_hours_per_week,
                 portfolio: !this.hire,
-                showReferences: false,
             }
         },
         methods: {
@@ -795,7 +885,15 @@
                 }
                 return this.getImageSrc(src);
             },
-            setTab(tabName) {
+            setTab(tab) {
+                this.currentTab = tab;
+                if (tab.name === 'work' || tab.name === 'portfolio') {
+                    this.$nextTick(() => {
+                        this.updateSlick();
+                    });
+                }
+            },
+            setTabName(tabName) {
                 this.currentTab = tabName;
                 if (tabName === 'work') {
                     this.$nextTick(() => {
@@ -931,28 +1029,9 @@
                     this.hire = true;
                 }, 800);
                 this.portfolio = false;
-                this.showReferences = false;
-            },
-
-            showReferencesSection() {
-                setTimeout(() => {
-                    this.showReferences = true;
-                }, 800);
-                this.portfolio = false;
-                this.hire = false;
-
-            },
-
-            hideReferencesSection() {
-                this.hire = false;
-                this.showReferences = false;
-                setTimeout(() => {
-                    this.portfolio = true;
-                }, 800);
             },
             hideHireSection() {
                 this.hire = false;
-                this.showReferences = false;
                 setTimeout(() => {
                     this.portfolio = true;
                 }, 800);
@@ -1022,9 +1101,28 @@
                     $(".skills .skill .skill-bar span b").animate({"opacity": "1"}, 1000);
                 }, 2000);
             },
+            getRecordSrc(source) {
+                if (source.includes('drive.google.com')) {
+                    let fileID = '';
+                    let arrayOfSource = source.split('/');
+                    $.each(arrayOfSource, function (i) {
+                        if (arrayOfSource[i].length > 20) {
+                            fileID = arrayOfSource[i];
+                        }
+                    });
+
+                    let gDriveSrc = "https://drive.google.com/uc?export=download&id=" + fileID + "&key=AIzaSyC0bK_7ASw3QylYDzs_Pqo_TeoI7jfFj8M";
+                    return gDriveSrc;
+                } else {
+                    return source;
+                }
+            }
         },
         mounted() {
             this.skillsBar();
+            if(this.freelancer.agent.resume_tabs.length > 0){
+                this.setTab(this.freelancer.agent.resume_tabs[0]);
+            }
         },
         created: function () {
             this.$parent.$on('update', this.updateSlick);
@@ -1256,10 +1354,20 @@
         text-align: center;
     }
 
-    .editBtn{
-        a:hover{
+    .editBtn {
+        a:hover {
             color: white;
         }
     }
+
+    .job-title{
+        font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold;
+    }
+
+    .tab-icon{
+        width:14px;
+        height:14px;
+    }
+
 
 </style>

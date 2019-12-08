@@ -80,7 +80,7 @@ class FreelancersController extends Controller
     }
 
     public function form(){
-        $freelancer = User::with(['userData','agent','skills','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::with(['userData','agent.resumeTabs','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
         }])->where('username',Auth::user()->username)->first();
 

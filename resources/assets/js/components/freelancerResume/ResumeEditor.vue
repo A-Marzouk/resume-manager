@@ -3,33 +3,27 @@
         <div class="d-flex flex-column align-items-center">
             <div class="marginMobile-0">
                 <div class="freelancerCard ml-0 mr-0 freelancerCard_updated" style="margin-bottom:-3px">
-                    <div class="row actionRow">
+                    <div class="row actionRow d-flex justify-content-between">
                         <div class="importBtn NoDecor whiteHover">
                             <span>Import : </span>&nbsp;
                             <a href="javascript:void(0)" id="importBehanceData" data-toggle="modal"
                                data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
                             <a href="javascript:void(0)"> linkedIn</a>
                         </div>
-                        <div class="importBtn importBtn_upload NoDecor whiteHover">
-                            <a href="javascript:void(0)" class="uploadReferences">
-                                References / Testimonials
-                            </a>
-                        </div>
-                        <div class="col-md-2">
-
-                        </div>
-                        <div class="progressBtn NoDecor">
-                            <a href="javascript:void(0)">
-                       <span>
-                            70% Complete
-                       </span>
-                            </a>
-                        </div>
-                        <div class="editBtn NoDecor" style="margin-left: 10px;">
-                            <a href="/admin/agents">
-                                <img src="/images/check_24px.png" alt="finish profile">
-                                Finish editing
-                            </a>
+                        <div class="d-flex mr-3">
+                            <div class="progressBtn NoDecor">
+                                <a href="javascript:void(0)">
+                               <span>
+                                    70% Complete
+                               </span>
+                                </a>
+                            </div>
+                            <div class="editBtn NoDecor" style="margin-left: 10px;">
+                                <a href="/freelancer/developer-card">
+                                    <img src="/images/check_24px.png" alt="finish profile">
+                                    Finish editing
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

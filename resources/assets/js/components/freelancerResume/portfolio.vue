@@ -225,7 +225,6 @@
                     <transition name="slide-fade">
                         <div v-show="portfolio">
                             <!-- nav row section -->
-
                             <div class="row navRow" v-if="freelancer.agent.resume_tabs.length < 1">
                                 <div class="col-md-2 offset-md-3 col-4 text-center"
                                      style="border-right:1px solid #EBEDEF;" @click="setTabName('skills')">
@@ -253,7 +252,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div v-else class="row navRow d-flex justify-content-center">
                                 <div class="col-md-2 col-4 text-center" style="border-right:1px solid #EBEDEF;"
                                      @click="setTab(tab)" v-for="(tab,index) in freelancer.agent.resume_tabs"
@@ -265,9 +263,7 @@
                                     </div>
                                 </div>
                             </div>
-
                             <!-- portfolio section -->
-
                             <div v-show="currentTab.name === 'skills'">
                                 <div id="nav-taps-resume" style="padding-top:2px">
                                     <ul class="nav nav-tabs" role="tablist">

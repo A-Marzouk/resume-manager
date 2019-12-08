@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Agent;
 use App\User;
@@ -205,9 +206,10 @@ class ResumeController extends Controller
 
     public function agentsResume($username) {
 
-        $freelancer = User::where('username',$username)->with(['userData','skills','agent','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::with(['userData','agent.resumeTabs','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
-        }])->where('username',$username)->first();
+        }])->where('username',Auth::user()->username)->first();
+
         return view('freelancerResume.resumeLongV2', compact('freelancer'));
         
     }

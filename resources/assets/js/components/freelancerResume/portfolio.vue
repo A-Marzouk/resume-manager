@@ -545,7 +545,7 @@
                                                  :key="index + 'E'">
                                                 <div class="col-md-12 aboutSubText">
                                                     <div class="title work d-flex">
-                                                        <span class="circle"></span>
+                                                        <img :src="currentTab.default_icon_src" alt="tab icon" class="mr-2 tab-icon">
                                                         <span class="seduHeader">
                                                             {{education.school_title}}
                                                         </span>
@@ -574,23 +574,23 @@
                                                  :key="index + 'R'">
                                                 <div class="col-md-12 aboutSubText">
                                                     <div class="title work">
-                                                        <span class="circle"></span>
+                                                        <img :src="currentTab.default_icon_src" alt="tab icon" class="mr-2 tab-icon">
                                                         {{reference.title}}
                                                     </div>
                                                     <div class="year">
-                                            <span class="work">
-                                                {{reference.company}}
-                                            </span>
+                                                        <span class="work">
+                                                            {{reference.company}}
+                                                        </span>
                                                     </div>
                                                     <div class="year">
-                                            <span class="work">
-                                                {{reference.email}}
-                                            </span>
+                                                        <span class="work">
+                                                            {{reference.email}}
+                                                        </span>
                                                     </div>
                                                     <div class="year">
-                                            <span class="work">
-                                                {{reference.phone}}
-                                            </span>
+                                                        <span class="work">
+                                                            {{reference.phone}}
+                                                        </span>
                                                     </div>
                                                     <div class="desc">{{reference.details}}</div>
                                                 </div>
@@ -770,9 +770,9 @@
                                     </div>
                                     <div class="col-md-4 col-12 NoDecor whiteOnHover"
                                          style="padding-top: 17px; padding-bottom: 30px;">
-                                        <a class="btn d-flex btn-block summaryBtn"
-                                           :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks ">Booking
-                                            Summary</a>
+                                        <a class="btn d-flex btn-block summaryBtn justify-content-center"
+                                           :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks ">
+                                            Booking Summary</a>
                                     </div>
                                 </div>
                             </div>

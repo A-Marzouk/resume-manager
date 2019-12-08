@@ -75,7 +75,7 @@
                         </a>
                     </div>
                     <div class="editBtn NoDecor">
-                        <a :href="'/freelancer/developer-card/edit?user_id=' + freelancer.id">
+                        <a :href="'/agent/resume/editor?user_id=' + freelancer.id">
                             <img src="/images/edit_profile.png" alt="edit profile">
                             Edit profile
                         </a>
@@ -140,9 +140,9 @@
                                     </div>
 
                                     <div class="col-md-4 text-center" style="font-size: 15px; color: white;">
-                                        <span style="font-weight: bold;" v-if="freelancer.user_data.available_hours_per_week">{{Math.ceil(freelancer.user_data.available_hours_per_week)}} hours</span>
-                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly
-                                            Availability
+                                        <span style="font-weight: bold;" v-if="freelancer.agent.available_hours_per_week">{{Math.trunc(freelancer.agent.available_hours_per_week)}} hours</span>
+                                        <div class="cardLabel" style="font-size: 13px; font-weight: normal;">
+                                            Weekly Availability
                                         </div>
                                     </div>
 
@@ -191,7 +191,7 @@
                                     </div>
                                     <div class="text-left" style="font-size: 15px; color: white; padding-top: 5px;">
                                         <div class="cardLabel" style="font-weight: 300; font-size:14px ;">Availability :
-                                            <span style="font-weight: bold;" v-if="freelancer.user_data.available_hours_per_week">{{Math.ceil(freelancer.user_data.available_hours_per_week)}} h/week</span>
+                                            <span style="font-weight: bold;" v-if="freelancer.agent.available_hours_per_week">{{Math.ceil(freelancer.agent.available_hours_per_week)}} h/week</span>
                                         </div>
                                     </div>
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
@@ -782,7 +782,7 @@
                     ]
                 },
                 weeks: 4,
-                hours: this.freelancer.user_data.available_hours_per_week,
+                hours: this.freelancer.agent.available_hours_per_week,
                 portfolio: !this.hire,
                 showReferences: false,
             }

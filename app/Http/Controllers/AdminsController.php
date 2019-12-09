@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Affiliate;
 use App\Booking;
+use App\Campaign;
 use App\Client;
 use App\Search;
 use App\Conversation;
@@ -99,9 +100,18 @@ class AdminsController extends Controller
         return $paginatedData ;
     }
 
+
+    public function getCampaigns(){
+        $limit = Input::get('limit') ?? '';
+        return Campaign::with('agents.user.userData','client.user','subscription')->paginate($limit);
+    }
+
     public function getAgentByID($user_id){
         $user = User::where('id',$user_id)->with('data','agent','languages')->first();
-        return $user ;
+        $results = $user->affiliatesWithTotalSpent($user->myAffiliates());
+        $user['affiliates'] = $results['users'];
+        $user['total_spent_all'] = $results['total_spent_all'];
+        return $user;
     }
 
     public function getClients(){

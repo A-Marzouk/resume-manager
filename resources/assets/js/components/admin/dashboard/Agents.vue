@@ -129,8 +129,8 @@
                             <template v-for="(user, index) in OrderedSelectedAgents">
                                 <tr>
                                     <td>
-                                        <div class="invoice-number base-text name-text" style="font-weight: 500;">
-                                            {{user.data.first_name}} {{user.data.last_name}}
+                                        <div class="invoice-number base-text name-text NoDecor" style="font-weight: 500;">
+                                            <a :href="'/admin/agent-profile/' + user.id" target="_blank">{{user.data.first_name}} {{user.data.last_name}}</a>
                                         </div>
                                         <div v-show="searchValue.length > 0" class="userEmailText">
                                             {{user.email}}
@@ -188,7 +188,7 @@
                                                 <!--image-->
                                                 <div class="d-flex">
                                                     <div class="">
-                                                        <img :src="user.data.avatar" class="avator" style="width: 50px;"/>
+                                                        <img :src="user.data.profile_picture" class="avator" style="width: 50px;"/>
                                                     </div>
                                                     <!--location-->
                                                     <div class="p-2">
@@ -349,7 +349,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center w-100" style="padding-top: 24px;">
                         <div class="base-text" style="font-size: 12px;">
-                            Total : 124
+                            Page total : {{filteredSelectedAgents.length}}
                         </div>
                         <div class="no-decoration">
                             <a href="javascript:void(0)" class="paginationBox d-flex align-items-center justify-content-center" @click="showUsersNumSelection = true">

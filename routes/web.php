@@ -45,6 +45,7 @@ Route::prefix('admin')->group(function (){
 
     // fetching data routs
     Route::get('/api/agents/','AdminsController@getAgentsByProfessionName')->name('get.agents');
+    Route::get('/api/campaigns/','AdminsController@getCampaigns')->name('get.campaigns');
     Route::get('/api/agent/{user_id}','AdminsController@getAgentByID')->name('get.agent.by.id');
     Route::get('/api/clients','AdminsController@getClients')->name('get.clients');
 
@@ -235,6 +236,15 @@ Route::prefix('agent')->group(function (){
     Route::post('/shifts/pause', 'WorkingShiftController@pauseShift');
     Route::post('/shifts/resume', 'WorkingShiftController@resumeShift');
 
+
+    // resume tabs :
+    Route::get('/resume-tabs/{agent_id}','ResumeTabsController@getResumeTabsByAgentID');
+
+    Route::get('/resume/editor','AgentsController@viewResumeEditorPage');
+    Route::get('/resume/create-default-tabs/{user_id}','AgentsController@createDefaultResumeTab');
+    Route::post('/resume/editor/submit','AgentsController@updateCardData');
+    Route::post('/resume/tab/update','AgentsController@updateTab');
+
 });
 
 Route::get('/freelancer/it/register','DevelopersController@developerForm')->name('developer.from');
@@ -252,8 +262,10 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/account/edit','FreelancersController@viewAccountEditPage')->name('freelancer.account.edit');
     Route::post('/account/personal/submit','AgentsController@editAgentPersonalInfo');
     Route::post('/account/edit/username','AgentsController@editAgentUsername');
+    Route::post('/account/edit/affiliate_percentage','AgentsController@editAgentAffiliatePercentage');
     Route::post('/account/professional/submit','AgentsController@editAgentProfessionalInfo');
     Route::post('/account/media/submit','AgentsController@editAgentMedialInfo');
+    Route::post('/account/media/profile_picture','AgentsController@updateProfilePicture');
     Route::post('/developer/professional/submit','AgentsController@editDeveloperProfessionalInfo');
     Route::post('/account/edit/avatar','AgentsController@editAgentPersonalInfo');
     Route::get('/professional/edit','FreelancersController@viewProfessionalEditPage')->name('freelancer.professional.edit');
@@ -297,10 +309,6 @@ Route::prefix('freelancer')->group(function (){
 
     Route::get('/has_agreed','FreelancersController@hasAgreed');
     Route::post('/set_terms','FreelancersController@setTerms');
-
-    // freelancer resume
-    Route::get('/v2/{username}','HomeController@ResumePageV2');
-    Route::get('/v2/short/{username}','HomeController@ResumePageShortV2');
 
 });
 
@@ -612,6 +620,10 @@ Route::get('/home_test/sales', function () {
 
 Route::get('/resume/{username}', 'ResumeController@agentsResume');
 Route::get('/resume/test/{username}', 'ResumeController@agentsTestResume');
+// freelancer resume
+Route::get('/v2/{username}','HomeController@ResumePageV2');
+Route::get('/v2/short/{username}','HomeController@ResumePageShortV2');
+Route::get('/v1/{username}','HomeController@ResumePage');
 
 Route::get('/resume/test/{username}/download', 'ResumeController@downloadPDFResume')->name('download-pdf-resume');
 

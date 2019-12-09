@@ -2,33 +2,54 @@
     <div>
         <transition-group name="list"
                           class="row">
-            <work-history v-for="(work,index) in works"
-                          v-bind:key="index"
-                          class="list-item workExperience col-12"
-                          style="margin: 0px 10px 20px;">
-        <span class="deleteWorkBtn NoDecor" @click="deleteWork(work)">
-                    <a href="javascript:void(0)">
-                        <img src="/images/close_blue.png" alt="edit profile">
-                        Delete
-                    </a>
-                </span>
-                <span class="deleteWorkBtn NoDecor" @click="editWork(work.id)" style=" width: 75px; margin-right:5px;">
-                    <a href="javascript:void(0)" data-target="#addWorkModal" data-toggle="modal">
-                        <img src="/images/edit_blue.png" alt="edit profile" style="width: 20px;
-    padding-right: 7px;
-    padding-bottom: 2px;
-    height: 15px;">
-                        Edit
-                    </a>
-                </span>
-                <b style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">{{work.job_title}}</b><br/>
-                {{work.company}}<br/>
-                Start :{{work.date_from}}
-                <span v-show="work.date_to && work.is_currently_working !== true"> End : {{work.date_to}}</span>
-                <span v-show="work.is_currently_working !== false"> - Present</span><br/>
-                <div class="desc"
-                     style="color: #30323D;font-family: Roboto;">{{work.job_description}}
+            <work-history v-for="(work,index) in works" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
+
+                <div class="d-flex flex-row  justify-content-between">
+                    <div>
+                        <div class="job-title d-flex align-items-center">
+                            <img :src="tab_default_icon" alt="tab icon" class="mr-2 tab-icon">
+                            <div>
+                                {{work.job_title}}
+                            </div>
+                        </div>
+                        <div>
+                            {{work.company}}
+                        </div>
+                        <div class="d-flex">
+                            <div class="mr-2">
+                                Start :{{work.date_from}}
+                            </div>
+                            <div class="mr-2" v-show="work.date_to && work.is_currently_working !== true">
+                                End : {{work.date_to}}
+                            </div>
+                            <div class="mr-2" v-show="work.is_currently_working !== false">
+                                - Present
+                            </div>
+                        </div>
+
+                        <div class="desc" style="color: black;font-family: Roboto;">
+                            {{work.job_description}}
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="deleteWorkBtn NoDecor mr-3" @click="deleteWork(work)">
+                            <a href="javascript:void(0)">
+                                <img src="/images/close_blue.png" alt="edit profile">
+                                Delete
+                            </a>
+                        </div>
+                        <div class="deleteWorkBtn NoDecor" @click="editWork(work.id)" style=" width: 75px; margin-right:5px;">
+                            <a href="javascript:void(0)" data-target="#addWorkModal" data-toggle="modal">
+                                <img src="/images/edit_blue.png" alt="edit profile" style="width: 20px;
+            padding-right: 7px;
+            padding-bottom: 2px;
+            height: 15px;">
+                                Edit
+                            </a>
+                        </div>
+                    </div>
                 </div>
+
             </work-history>
         </transition-group>
         <span class="deleteWorkBtn NoDecor" v-show="this.canAdd" @click="clearData" style="width:137px">
@@ -43,8 +64,13 @@
     </div>
 </template>
 <script>
+    import addWorkModal from './addWorkComponent';
+
     export default {
-        props: ['user_id'],
+        props: ['user_id', 'tab_default_icon'],
+        components: {
+            'add-work-modal': addWorkModal
+        },
         data() {
             return {
                 works: [],
@@ -148,7 +174,7 @@
         }
     }
 </script>
-<style lang="css">
+<style lang="scss" scoped>
     .list-item {
         display: inline-block;
         margin-right: 10px;
@@ -166,5 +192,14 @@
     {
         opacity: 0;
         transform: translateY(30px);
+    }
+
+    .job-title{
+        font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold;
+    }
+
+    .tab-icon{
+        width:14px;
+        height:14px;
     }
 </style>

@@ -13,11 +13,13 @@ use App\Agent;
 use App\classes\Upload;
 use App\Language;
 use App\Recording;
+use App\ResumeTab;
 use App\Skill;
 use App\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class AgentsController extends Controller
 {
@@ -58,6 +60,25 @@ class AgentsController extends Controller
 
         return [
             'username' => $user->username
+        ];
+    }
+
+
+    public function editAgentAffiliatePercentage(Request $request)
+    {
+        $request->validate([
+            'affiliate_percentage' => 'max:191|required|numeric',
+        ]);
+
+        $user = User::where('id', $request->user_id)->first();
+        if ($user) {
+            $user->update([
+                'affiliate_percentage' => $request->affiliate_percentage
+            ]);
+        }
+
+        return [
+            'affiliate_percentage' => $user->affiliate_percentage
         ];
     }
 
@@ -428,6 +449,127 @@ class AgentsController extends Controller
 
     }
 
+    public function viewResumeEditorPage()
+    {
+
+        if (Input::get('user_id') && currentUser()->is_admin) {
+            $user_id = Input::get('user_id');
+        } else {
+            $user_id = currentUser()->id;
+        }
+
+        $freelancer = User::with(['userData', 'skills', 'agent.resumeTabs', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
+            return $query->limit(10);
+        }])->where('id',$user_id)->first();
+
+        return view('freelancer.resume_editor', compact('freelancer'));
+    }
+
+    public function updateCardData(Request $request)
+    {
+        if ($request->user_id && currentUser()->is_admin) {
+            $freelancer = User::where('id', $request->user_id)->first();
+        } else {
+            $freelancer = currentUser();
+        }
+
+        $freelancer->userData->update($request->user_data);
+        $freelancer->agent->update($request->agent);
+
+        return $freelancer;
+    }
+
+    public function updateTab(Request $request)
+    {
+        $tab = ResumeTab::where('id', $request->id)->first();
+        $tab->update($request->toArray());
+        return $tab;
+    }
+
+    public function updateProfilePicture(Request $request)
+    {
+
+        if ($request->user_id && currentUser()->is_admin) {
+            $freelancer = User::where('id', $request->user_id)->first();
+        } else {
+            $freelancer = currentUser();
+        }
+
+        if (isset($_FILES['profile_picture'])) {
+            // upload the resume to our storage
+            $pathToPicture = Upload::profilePicture('profile_picture', 'profile_picture');
+            if (!$pathToPicture) {
+                $errors['profile_picture'] = [
+                    '0' => 'Error while uploading profile picture.'
+                ];
+            }
+            $freelancer->userData->update([
+                'profile_picture' => $pathToPicture,
+            ]);
+        }
+
+    }
+
+    public function createDefaultResumeTab($user_id)
+    {
+        $user = User::where('id', $user_id)->first();
+        $agent_id = $user->agent->id;
+        if (count($user->agent->resumeTabs) > 1) {
+            return $user->agent->resumeTabs;
+        }
+        ResumeTab::insert([
+            [
+                'agent_id' => $agent_id,
+                'name' => 'portfolio',
+                'label' => 'Portfolio',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 1,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'skills',
+                'label' => 'Skills',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 2,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'work',
+                'label' => 'Work',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 3,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'education',
+                'label' => 'Education',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 4,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'recordings',
+                'label' => 'Recordings',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 5,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'references',
+                'label' => 'References',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 6,
+            ]
+        ]);
+
+        return Agent::where('user_id', $user->id)->first()->resumeTabs;
+    }
 
     public function editAgentMedialInfo(Request $request)
     {

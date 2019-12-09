@@ -5,12 +5,22 @@
                 <a href="/admin/agents">
                     <img src="/images/client/arrow_back.png" alt="back-icon">
                 </a>
-                JASON MORGENSTERN PROFILE
+                {{currentUser.data.first_name}} {{currentUser.data.last_name}}
             </div>
         </nav>
         <!--navbar-->
 
+        <div class="notificationBar" id="notificationBar" style="display:none;position: fixed; max-width: 1164px; width: 100%; margin-top:-7px;">
+            <div>
+                {{notificationMessage}}
+            </div>
+            <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                x
+            </a>
+        </div>
+
         <div class="account-info-edit dashboard-box mt-2">
+
             <div class="account-info-edit-heading dashboard-box-heading mr-0 ml-0 align-items-center">
                 <div class="left">
                     <img src="/images/admin/applicant-profile/main_40px.svg" alt=""  class="icon-margin small-image">
@@ -18,9 +28,9 @@
                         PERSONAL INFORMATION
                     </span>
                 </div>
-                <div class="blue-text no-decoration right">
-                    <a :href="'/admin/agent/update/'+ user_id + '/personal'">EDIT</a>
-                </div>
+                <!--<div class="blue-text no-decoration right">-->
+                    <!--<a :href="'/admin/agent/update/'+ user_id + '/personal'">EDIT</a>-->
+                <!--</div>-->
             </div>
             <div class="account-info-content-wrapper pb-2">
                 <div class="account-info-content ">
@@ -34,7 +44,7 @@
                             <img src="/images/admin/female.svg" alt="" class="ml-2" v-if=" currentUser.data.gender.toLowerCase() === 'f'">
                         </div>
                         <div class="acc-info-timezone">
-                            {{timezones[currentUser.data.timezone]}}
+                            <small>{{timezones[currentUser.data.timezone]}}</small>
                         </div>
                     </div>
                     <div class="acc-info-content-item">
@@ -72,9 +82,9 @@
                         PROFESSIONAL INFORMATION
                     </span>
                 </div>
-                <div class="blue-text no-decoration right">
-                    <a href="#">EDIT</a>
-                </div>
+                <!--<div class="blue-text no-decoration right">-->
+                    <!--<a href="#">EDIT</a>-->
+                <!--</div>-->
 
             </div>
             <div class="account-info-content-wrapper  pb-2">
@@ -121,66 +131,144 @@
                 </div>
             </div>
         </div>
+
         <div class="account-info-edit dashboard-box mt-2">
             <div class="account-info-edit-heading dashboard-box-heading mr-0 ml-0">
                 <div class="left">
                     <img src="/images/admin/applicant-profile/recording_resume_40px.svg" alt=""  class="icon-margin small-image">
                     <span>
-                        RECORDING AND RESUME
+                        Affiliates information
                     </span>
                 </div>
-                <div class="blue-text no-decoration right">
-                    <a href="#">EDIT</a>
-                </div>
             </div>
-            <div class="account-info-content-wrapper  pb-2">
-                <div class="account-info-content pt-0 ">
-                    <div class="acc-info-content-item">
-                        <div>
-                            <b>Recording of the applicant’s voice</b>
+            <div class="account-info-content-wrapper">
+                <div class="account-info-content p-0">
+                    <div class="agreement">
+                        <div class="right">
+                            <img src="/images/client/my_account/service.png" alt="service icon">
+                            <div>
+                                Invite others
+                            </div>
+                        </div>
+                        <div class="left no-decoration">
+                            <a href="javascript:void(0)" @click="copyLink(currentUser.referral_code)">
+                                <span>COPY INVITE LINK</span>
+                            </a>
                         </div>
                     </div>
-                    <div class="recorder-bar justify-content-between">
-                        <div class="d-flex align-items-center ml-2">
-                            <img src="/images/admin/applicant-profile/pause.svg" alt="" style="margin-top: -3px; margin-right: 8px;" >
-                            <div style="font-size: 12px;">
-                                Title_o...
+                    <div class="agreement" style="height:auto; padding-top: 15px; padding-bottom: 15px;">
+                        <div class="flex-column">
+                            <div class="right">
+                                <img src="/images/dashboard/experience.svg" alt="service icon">
+                                <div>
+                                    User clients list | <small>Total amount spent: {{currentUser.total_spent_all}} $</small>
+                                </div>
+                            </div>
+                            <div class="pl-5 pt-2">
+                                <div v-for="(affiliate,index) in currentUser.affiliates" :key="index + 'affiliate'">
+                                    <div style="color:#05A4F4;">- {{affiliate.client.contact}} | Spent: {{affiliate.total_spent}} $</div>
+                                </div>
+                            </div>
+                            <div v-if="currentUser.affiliates.length < 1" class="pl-5 pt-1">
+                                - No invited clients.
                             </div>
                         </div>
-                        <div class="d-flex align-items-center mr-2">
-                            <div class="time mr-4">
-                                25:15
-                            </div>
-                            <img src="/images/admin/applicant-profile/download.svg" style="margin-top: -3px; margin-right: 8px;" >
+                        <div class="left no-decoration">
+                            <a style="height:auto;">
+                                <span style="color:#05A4F4;">User percentage : {{currentUser.affiliate_percentage}} % <br/> Amount : {{(currentUser.affiliate_percentage/100) * currentUser.total_spent_all}} $</span>
+                            </a>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="account-info-content-wrapper pt-0 pb-2">
-                <div class="account-info-content pt-0 ">
-                    <div class="acc-info-content-item">
-                        <div>
-                            <b>Applicant’s resume</b>
-                        </div>
-                    </div>
-                    <div class="acc-info-content-item d-flex justify-content-between flex-small-column">
-                        <div class="d-flex align-items-center">
-                            <img src="/images/admin/applicant-profile/resume.svg" alt="phone icon" style="    margin-top: -3px; margin-right: 8px;" >
-                            <div style="font-size: 12px;">
-                                Title_of_...df.pdf
+                    <div class="agreement" style="height:auto; padding-top: 15px; padding-bottom: 15px;">
+                        <div class="flex-column">
+                            <div class="right">
+                                <img src="/images/client/my_account/edit_orange.png" alt="service icon">
+                                <div>
+                                    Edit user percentage
+                                </div>
+                            </div>
+                            <div class="account-edit-section-inputs d-flex flex-row">
+                                <div class="faq-question-input account-edit-input">
+                                    <div class="faq-input" style="width: 300px;"
+                                         :class="{ 'error-input' : errors.affiliate_percentage}">
+                                        <input type="number" min="0" max="99" step="1" placeholder="Percentage.." v-model="currentUser.affiliate_percentage">
+                                    </div>
+                                    <div class="error" v-if="errors.affiliate_percentage">
+                                        {{errors.affiliate_percentage[0]}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="d-flex align-items-center">
-                            <div class="open-resume-text mr-4">
-                                OPEN RESUME
-                            </div>
-                            <img src="/images/admin/applicant-profile/download.svg" style="    margin-top: -3px; margin-right: 8px;" >
+                        <div class="left no-decoration">
+                            <a href="javascript:void(0)" class="mb-3" @click="saveAffiliatePercentage(currentUser)">
+                                <span>SAVE</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!--<div class="account-info-edit dashboard-box mt-2">-->
+            <!--<div class="account-info-edit-heading dashboard-box-heading mr-0 ml-0">-->
+                <!--<div class="left">-->
+                    <!--<img src="/images/admin/applicant-profile/recording_resume_40px.svg" alt=""  class="icon-margin small-image">-->
+                    <!--<span>-->
+                        <!--RECORDING AND RESUME-->
+                    <!--</span>-->
+                <!--</div>-->
+                <!--<div class="blue-text no-decoration right">-->
+                    <!--<a href="#">EDIT</a>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="account-info-content-wrapper  pb-2">-->
+                <!--<div class="account-info-content pt-0 ">-->
+                    <!--<div class="acc-info-content-item">-->
+                        <!--<div>-->
+                            <!--<b>Recording of the applicant’s voice</b>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="recorder-bar justify-content-between">-->
+                        <!--<div class="d-flex align-items-center ml-2">-->
+                            <!--<img src="/images/admin/applicant-profile/pause.svg" alt="" style="margin-top: -3px; margin-right: 8px;" >-->
+                            <!--<div style="font-size: 12px;">-->
+                                <!--Title_o...-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="d-flex align-items-center mr-2">-->
+                            <!--<div class="time mr-4">-->
+                                <!--25:15-->
+                            <!--</div>-->
+                            <!--<img src="/images/admin/applicant-profile/download.svg" style="margin-top: -3px; margin-right: 8px;" >-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="account-info-content-wrapper pt-0 pb-2">-->
+                <!--<div class="account-info-content pt-0 ">-->
+                    <!--<div class="acc-info-content-item">-->
+                        <!--<div>-->
+                            <!--<b>Applicant’s resume</b>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="acc-info-content-item d-flex justify-content-between flex-small-column">-->
+                        <!--<div class="d-flex align-items-center">-->
+                            <!--<img src="/images/admin/applicant-profile/resume.svg" alt="phone icon" style="    margin-top: -3px; margin-right: 8px;" >-->
+                            <!--<div style="font-size: 12px;">-->
+                                <!--Title_of_...df.pdf-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="d-flex align-items-center">-->
+                            <!--<div class="open-resume-text mr-4">-->
+                                <!--OPEN RESUME-->
+                            <!--</div>-->
+                            <!--<img src="/images/admin/applicant-profile/download.svg" style="    margin-top: -3px; margin-right: 8px;" >-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
 
     </div>
@@ -191,7 +279,14 @@
         props:['user_id'],
         data(){
             return{
-                currentUser:{},
+                currentUser:{
+                    data:{
+                        gender:''
+                    },
+                    agent:{},
+                    languages:[],
+                    affiliates:[],
+                },
                 timezones:{
                     0 : "(GMT - 8) ",
                     1 : "(GMT -5:00) Eastern Time (US & Canada), Bogota, Lima ",
@@ -239,7 +334,9 @@
                     43: "(GMT +12:45) Chatham Islands",
                     44: "(GMT +13:00) Apia, Nukualofa",
                     45: "(GMT +14:00) Line Islands, Tokelau",
-                }
+                },
+                errors:[],
+                notificationMessage:''
             }
         },
         methods:{
@@ -247,8 +344,52 @@
               axios.get('/admin/api/agent/' + this.user_id).then( (response) =>{
                   this.currentUser = response.data;
               });
-              console.log(this.currentUser);
-            }
+            },
+            showSuccessMessage(notificationMessage){
+                this.notificationMessage = notificationMessage ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
+            },
+            clearErrors() {
+                $.each(this.errors, (error) => {
+                    this.errors[error] = '';
+                });
+
+            },
+            copyLink(referral_code) {
+                let getUrl = window.location;
+                let baseUrl = getUrl.protocol + "//" + getUrl.host ;
+
+                let $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(baseUrl + '/client/register?referral_code=' + referral_code).select();
+                document.execCommand("copy");
+                $temp.remove();
+
+                // notification copied :
+                this.showSuccessMessage('Invitation link copied!');
+            },
+            saveAffiliatePercentage(user) {
+                this.clearErrors();
+
+                axios.post('/freelancer/account/edit/affiliate_percentage', {affiliate_percentage: user.affiliate_percentage, user_id: user.id})
+                    .then((response) => {
+                        this.showSuccessMessage('Affiliate percentage changed!');
+                    })
+                    .catch(error => {
+                        this.canSubmit = true;
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                    });
+            },
         },
         mounted() {
             this.getCurrentUser();

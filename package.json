@@ -26,6 +26,7 @@
         "moment": "^2.24.0",
         "puppeteer": "^2.0.0",
         "pusher-js": "^4.2.2",
+        "vue-color": "^2.7.0",
         "vue-load-image": "^0.1.8",
         "vue-moment": "^4.0.0",
         "vue-router": "^3.0.6",

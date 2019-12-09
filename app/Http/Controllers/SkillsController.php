@@ -19,7 +19,7 @@ class SkillsController extends Controller
     public function getSkills(){
        // get current authenticated freelancer :
 
-        if(currentUser()->is_admin){
+        if(Input::get('user_id') && currentUser()->is_admin){
             $currentUser = User::where('id',Input::get('user_id'))->first();
         }else{
             $currentUser = currentUser();
@@ -28,7 +28,7 @@ class SkillsController extends Controller
     }
 
     public function addSkill(Request $request){
-        if(currentUser()->is_admin){
+        if(Input::get('user_id') && currentUser()->is_admin){
             $currentUser = User::where('id',$request->user_id)->first();
         }else{
             $currentUser = currentUser();

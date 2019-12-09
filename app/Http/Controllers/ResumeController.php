@@ -206,7 +206,7 @@ class ResumeController extends Controller
 
     public function agentsResume($username) {
 
-        $freelancer = User::with(['userData','agent.resumeTabs','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::with(['userData','agent.customResume','agent.resumeTabs','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
         }])->where('username',Auth::user()->username)->first();
 

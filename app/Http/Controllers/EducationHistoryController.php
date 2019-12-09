@@ -18,7 +18,7 @@ class EducationHistoryController extends Controller
 {
     public function getEducations(){
        // get current authenticated freelancer :
-        if(currentUser()->is_admin){
+        if(Input::get('user_id') && currentUser()->is_admin){
             $currentUser = User::where('id',Input::get('user_id'))->first();
         }else{
             $currentUser = currentUser();
@@ -27,7 +27,7 @@ class EducationHistoryController extends Controller
     }
 
     public function addEducation(Request $request){
-        if(currentUser()->is_admin){
+        if(Input::get('user_id') && currentUser()->is_admin){
             $currentUser = User::where('id',$request->user_id)->first();
         }else{
             $currentUser = currentUser();

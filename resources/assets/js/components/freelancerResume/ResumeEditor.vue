@@ -411,10 +411,10 @@
             return {
                 showColorPicker:false,
                 colors:{
-                    hex: this.user.agent.custom_resume.background_color,
+                    hex: this.user.agent.custom_resume ? this.user.agent.custom_resume.background_color : '#4E75E8',
                 },
                 oldColors:{
-                    hex: this.user.agent.custom_resume.background_color,
+                    hex: this.user.agent.custom_resume ? this.user.agent.custom_resume.background_color : '#4E75E8',
                 },
                 freelancer: {
                     user_data: {},

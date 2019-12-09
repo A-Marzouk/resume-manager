@@ -38,7 +38,7 @@ class ResumeCustomsController extends Controller
         $user = User::where('id', $user_id)->first();
         $agent_id = $user->agent->id;
         if ($user->agent->customResume) {
-            $user->agent->customResume ;
+           return  $user->agent->customResume ;
         }
         ResumeCustom::insert([
             [

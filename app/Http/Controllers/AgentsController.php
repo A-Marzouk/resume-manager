@@ -13,6 +13,7 @@ use App\Agent;
 use App\classes\Upload;
 use App\Language;
 use App\Recording;
+use App\ResumeCustom;
 use App\ResumeTab;
 use App\Skill;
 use App\User;
@@ -461,6 +462,16 @@ class AgentsController extends Controller
         $freelancer = User::with(['userData', 'skills', 'agent.resumeTabs','agent.customResume', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
             return $query->limit(10);
         }])->where('id',$user_id)->first();
+
+        if (!$freelancer->agent->customResume) {
+            ResumeCustom::insert([
+                [
+                    'agent_id' => $freelancer->agent->id,
+                    'background_color' => '#4E75E8',
+                ],
+            ]);
+        }
+
 
         return view('freelancer.resume_editor', compact('freelancer'));
     }

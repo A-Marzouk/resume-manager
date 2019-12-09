@@ -7,6 +7,7 @@ use App\Agent;
 use App\Campaign;
 use App\Job;
 use App\Project;
+use App\ResumeCustom;
 use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
@@ -83,6 +84,16 @@ class FreelancersController extends Controller
         $freelancer = User::with(['userData','agent.resumeTabs','agent.customResume','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
         }])->where('username',Auth::user()->username)->first();
+
+        if (!$freelancer->agent->customResume) {
+            ResumeCustom::insert([
+                [
+                    'agent_id' => $freelancer->agent->id,
+                    'background_color' => '#4E75E8',
+                ],
+            ]);
+        }
+
         return view('freelancerResume.portfolio', compact('freelancer','affiliates'));
     }
 

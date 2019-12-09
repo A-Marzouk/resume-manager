@@ -241,9 +241,15 @@ Route::prefix('agent')->group(function (){
     Route::get('/resume-tabs/{agent_id}','ResumeTabsController@getResumeTabsByAgentID');
 
     Route::get('/resume/editor','AgentsController@viewResumeEditorPage');
-    Route::get('/resume/create-default-tabs/{user_id}','AgentsController@createDefaultResumeTab');
+    Route::get('/resume/create-default-tabs/{user_id}','ResumeTabsController@createDefaultResumeTab');
+    Route::post('/resume/tab/update','ResumeTabsController@updateTab');
     Route::post('/resume/editor/submit','AgentsController@updateCardData');
-    Route::post('/resume/tab/update','AgentsController@updateTab');
+
+    // resume Customs
+    Route::get('/resume-custom/{agent_id}','ResumeCustomsController@getResumeCustomsByAgentID');
+    Route::get('/resume/create-default-custom-resume/{user_id}','ResumeCustomsController@createDefaultCustomResume');
+    Route::post('/resume/custom/update','ResumeCustomsController@updateResume');
+
 
 });
 

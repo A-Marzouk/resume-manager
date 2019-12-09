@@ -14,12 +14,13 @@ use App\EducationHistory;
 use App\Recording;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class RecordingsController extends Controller
 {
     public function getRecords(){
         // get current authenticated freelancer :
-        if(currentUser()->is_admin){
+        if(Input::get('user_id') && currentUser()->is_admin){
             $currentUser = User::where('id',Input::get('user_id'))->first();
         }else{
             $currentUser = currentUser();
@@ -31,7 +32,7 @@ class RecordingsController extends Controller
         if(!empty($businessSupport_id)){
             $currentUser = User::where('id',$businessSupport_id)->first();
         }else{
-            if(currentUser()->is_admin){
+            if(Input::get('user_id') && currentUser()->is_admin){
                 $currentUser = User::where('id',Input::get('user_id'))->first();
             }else{
                 $currentUser = currentUser();

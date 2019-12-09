@@ -19,7 +19,7 @@
                                 </a>
                             </div>
                             <div class="editBtn NoDecor" style="margin-left: 10px;">
-                                <a href="/freelancer/developer-card">
+                                <a href="/freelancer">
                                     <img src="/images/check_24px.png" alt="finish profile">
                                     Finish editing
                                 </a>
@@ -34,7 +34,7 @@
                         <div class="resumeCardRight">
                             <div class="row nameRow d-flex flex-column" :style="'background-color:' + colors.hex">
                                 <div class="d-flex justify-content-end w-100">
-                                    <img src="/images/changeColor.png" alt="changeColro" @click="showColorPicker = true" style="width:20px; height:20px;">
+                                    <img src="/images/changeColor.png" alt="changeColro" @click="colorChoose" style="width:20px; height:20px;">
                                 </div>
                                 <form class="container freelancerForm formDisplay">
                                     <div class="col-lg-2 col-6 imageCol">
@@ -411,10 +411,10 @@
             return {
                 showColorPicker:false,
                 colors:{
-                    hex: '#4E75E8',
+                    hex: this.user.agent.custom_resume.background_color,
                 },
                 oldColors:{
-                    hex: '#4E75E8',
+                    hex: this.user.agent.custom_resume.background_color,
                 },
                 freelancer: {
                     user_data: {},
@@ -436,7 +436,7 @@
                     'listicon_9.png',
                     'listicon_10.png',
                 ],
-                openedIconsTabID:0
+                openedIconsTabID:0,
             }
         },
         methods: {
@@ -447,7 +447,15 @@
 
             saveColorEdit(){
                 this.oldColors = this.colors;
+                this.user.agent.custom_resume.background_color = this.colors.hex ;
+                this.updateResume();
                 this.showColorPicker = false ;
+            },
+            updateResume(){
+                let customResume = this.user.agent.custom_resume ;
+                axios.post('/agent/resume/custom/update', customResume)
+                    .then()
+                    .catch()
             },
             updateFreelancerCardData() {
                 let updatedData = {
@@ -569,6 +577,14 @@
                     )
                     .catch()
             },
+            createDefaultCustomResume() {
+                axios.get('/agent/resume/create-default-custom-resume/' + this.user.id)
+                    .then((response) => {
+                            this.user.agent.custom_resume = response.data;
+                        }
+                    )
+                    .catch()
+            },
             setMainTabs(){
                 this.mainTabs = this.user.agent.resume_tabs.filter((tab) => {
                     return tab.type === 'main_tab'
@@ -599,17 +615,23 @@
             },
             getBackgroundColor(){
                 if(!this.colors.rgba){
-                    return;
+                    let currentBG = this.colors.hex.replace('#', '');
+                    let r = parseInt(currentBG.substring(0, 2), 16);
+                    let g = parseInt(currentBG.substring(2, 4), 16);
+                    let b = parseInt(currentBG.substring(4, 6), 16);
+                    let a = 0.85;
+                    return 'background-color:rgba(' + r + ',' + g + ',' + b + ',' + a + ')' ;
                 }
+
                 let currentBG = this.colors.rgba ;
                 let r = currentBG.r;
                 let b = currentBG.b;
                 let g = currentBG.g;
-                let a = 0.7;
-
-                let bg = `background-color:rgba(${r},${g},${b},${a})`;
-
-                return bg;
+                let a = 0.85;
+                return  `background-color:rgba(${r},${g},${b},${a})`;
+            },
+            colorChoose(){
+                this.showColorPicker = true ;
             }
         },
         mounted() {
@@ -619,12 +641,14 @@
             } else {
                 this.setMainTabs();
             }
+            if (!this.user.agent.custom_resume) {
+                this.createDefaultCustomResume();
+            }
         }
     }
 </script>
 
 <style scoped lang="scss">
-
     .whiteHover {
         a:hover {
             color: white;

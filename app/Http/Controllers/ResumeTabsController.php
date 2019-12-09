@@ -14,6 +14,7 @@ use App\ActivityLogHistory;
 use App\Agent;
 use App\Campaign;
 use App\ResumeTab;
+use App\User;
 use Illuminate\Http\Request;
 
 class ResumeTabsController extends Controller
@@ -39,9 +40,72 @@ class ResumeTabsController extends Controller
         return $tab ;
     }
 
+
+    public function createDefaultResumeTab($user_id)
+    {
+        $user = User::where('id', $user_id)->first();
+        $agent_id = $user->agent->id;
+        if (count($user->agent->resumeTabs) > 1) {
+            return $user->agent->resumeTabs;
+        }
+        ResumeTab::insert([
+            [
+                'agent_id' => $agent_id,
+                'name' => 'portfolio',
+                'label' => 'Portfolio',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 1,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'skills',
+                'label' => 'Skills',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 2,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'work',
+                'label' => 'Work',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 3,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'education',
+                'label' => 'Education',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 4,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'recordings',
+                'label' => 'Recordings',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 5,
+            ],
+            [
+                'agent_id' => $agent_id,
+                'name' => 'references',
+                'label' => 'References',
+                'type' => 'main_tab',
+                'is_active' => 1,
+                'view_order' => 6,
+            ]
+        ]);
+
+        return Agent::where('user_id', $user->id)->first()->resumeTabs;
+    }
+
+
     public function updateTab(Request $request)
     {
-        $tab = ResumeTab::where('id', $request->agent_id)->first();
+        $tab = ResumeTab::where('id', $request->id)->first();
         $tab->update($request->toArray());
         return $tab;
     }

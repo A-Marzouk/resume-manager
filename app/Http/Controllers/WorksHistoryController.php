@@ -18,7 +18,7 @@ class WorksHistoryController extends Controller
 {
     public function getWorks(){
        // get current authenticated freelancer :
-        if(currentUser()->is_admin){
+        if(Input::get('user_id') && currentUser()->is_admin){
             $currentUser = User::where('id',Input::get('user_id'))->first();
         }else{
             $currentUser = currentUser();
@@ -27,7 +27,7 @@ class WorksHistoryController extends Controller
     }
 
     public function addWork(Request $request){
-        if(currentUser()->is_admin){
+        if(Input::get('user_id') && currentUser()->is_admin){
             $currentUser = User::where('id',$request->user_id)->first();
         }else{
             $currentUser = currentUser();

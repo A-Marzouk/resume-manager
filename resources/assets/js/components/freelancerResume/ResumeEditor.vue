@@ -3,8 +3,8 @@
         <div class="d-flex flex-column align-items-center">
             <div class="marginMobile-0">
                 <div class="freelancerCard ml-0 mr-0 freelancerCard_updated" style="margin-bottom:-3px">
-                    <div class="row actionRow d-flex justify-content-between">
-                        <div class="importBtn NoDecor whiteHover">
+                    <div class="row actionRow d-flex justify-content-between"  :style="getBackgroundColor()">
+                        <div class="importBtn NoDecor whiteHover border-0">
                             <span>Import : </span>&nbsp;
                             <a href="javascript:void(0)" id="importBehanceData" data-toggle="modal"
                                data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
@@ -32,9 +32,11 @@
                 <div>
                     <div class="freelancerCard m-0 freelancerCard_updated">
                         <div class="resumeCardRight">
-                            <div class="row nameRow">
+                            <div class="row nameRow d-flex flex-column" :style="'background-color:' + colors.hex">
+                                <div class="d-flex justify-content-end w-100">
+                                    <img src="/images/changeColor.png" alt="changeColro" @click="showColorPicker = true" style="width:20px; height:20px;">
+                                </div>
                                 <form class="container freelancerForm formDisplay">
-
                                     <div class="col-lg-2 col-6 imageCol">
                                         <div class="imageContainer" style="padding: 10px;">
                                             <img :src="getImageSrc(freelancer.user_data.profile_picture)"
@@ -372,6 +374,14 @@
                 </div>
             </div>
         </div>
+
+        <div class="colorPicker d-flex flex-column">
+            <div class="d-flex mb-2 justify-content-end align-items-center" v-if="showColorPicker">
+                <img src="/images/check_black.png" alt="save" class="mr-3 editIcon" style="width:20px; height:18px;" @click="saveColorEdit">
+                <img src="/images/close_black.png" alt="cancel" class="editIcon" style="width:24px; height:24px;" @click="cancelColorEdit">
+            </div>
+            <chrome-picker v-model="colors" v-show="showColorPicker" />
+        </div>
     </div>
 </template>
 
@@ -382,6 +392,8 @@
     import worksList from '../work/worksListComponent' ;
     import educationsList from '../education/educationListComponent' ;
     import referencesList from '../references/referencesListComponent' ;
+    import chrome from 'vue-color/src/components/Chrome'
+
 
     export default {
         name: "ResumeEditor",
@@ -392,10 +404,18 @@
             'works-list': worksList,
             'educations-list': educationsList,
             'references-list': referencesList,
+            'chrome-picker': chrome,
         },
         props: ['user'],
         data() {
             return {
+                showColorPicker:false,
+                colors:{
+                    hex: '#4E75E8',
+                },
+                oldColors:{
+                    hex: '#4E75E8',
+                },
                 freelancer: {
                     user_data: {},
                     agent: {},
@@ -420,6 +440,15 @@
             }
         },
         methods: {
+            cancelColorEdit(){
+                this.colors = this.oldColors;
+                this.showColorPicker = false ;
+            },
+
+            saveColorEdit(){
+                this.oldColors = this.colors;
+                this.showColorPicker = false ;
+            },
             updateFreelancerCardData() {
                 let updatedData = {
                     agent: {
@@ -567,6 +596,20 @@
                 }else{
                     this.openedIconsTabID = tab.id ;
                 }
+            },
+            getBackgroundColor(){
+                if(!this.colors.rgba){
+                    return;
+                }
+                let currentBG = this.colors.rgba ;
+                let r = currentBG.r;
+                let b = currentBG.b;
+                let g = currentBG.g;
+                let a = 0.7;
+
+                let bg = `background-color:rgba(${r},${g},${b},${a})`;
+
+                return bg;
             }
         },
         mounted() {
@@ -629,5 +672,16 @@
         margin-top: 10px;
         margin-bottom: 10px;
     }
+
+    .colorPicker{
+        position:fixed;
+        bottom:40px;
+        right:40px;
+    }
+
+    .editIcon:hover {
+        cursor: pointer;
+    }
+
 
 </style>

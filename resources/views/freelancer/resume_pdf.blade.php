@@ -43,10 +43,10 @@
 
     .resume__header__invoiceData {
       background-color: #4367D3;
-      padding: 0 50px;
+      padding: 0 25px;
       border-radius: 5px;
-      width: 250px;
-      height: 55px;
+      width: 300px;
+      height: 60px;
       float: right;
       margin-top: 50px;
     }
@@ -68,6 +68,20 @@
     .resume__header__invoiceData .value {
       font-size: 18px;
       margin-top: 7px;
+    }
+
+    .resume__header__invoiceData .hireLink {
+      width: 100px;
+    }
+
+    .resume__header__invoiceData .hireLink a {
+      display: block;
+      background: #fff;
+      border-radius: 5px;
+      padding: 12px 0;
+      text-decoration: none;
+      color: #4E75E8;
+      margin: 0 auto;
     }
 
     .resume__header__invoiceData p {
@@ -190,6 +204,7 @@
           <tr class="resume__header__invoiceData__hourlyRate">
             <td class="value"><b>{{ number_format(floatval($freelancer->agent["hourly_rate"]), 2) }}</b></td>
             <td class="value"><b>{{ intval($freelancer->agent["available_hours_per_week"]) }} hours</b></td>
+            <td class="hireLink"><a href="http://www.123workforce.com">Hire me</a></td>
           </tr>
           <tr class="resume__header__invoiceData__weeklyAvailability">
             <td class="little">hourly rate</td>
@@ -197,7 +212,6 @@
           </tr>
         </table>
       </div>
-
     </header>
 
     <div class="resume__content">
@@ -233,7 +247,7 @@
               <div class="resume__content__details__subtitle">Programming Languages</div>
               @foreach ($programmingSkills as $skill)
                 <div class="skillName">
-                    <img class="skillIcon" src="{{ public_path().'/images/skills_icons/'.str_replace([' ', '.'], '_', strtolower($skill["skill_title"])).'.png' }}" />{{ $skill['skill_title'] }}
+                    <img class="skillIcon" src="{{ $skill->icon()}}" />{{ $skill['skill_title'] }}
                 </div>
 
                 <div class="skillBar">
@@ -248,7 +262,7 @@
                 <div class="resume__content__details__subtitle">Frameworks / Databases</div>
                 @foreach ($frameworkOrDatabaseSkills as $skill)
                   <div class="skillName">
-                      <img class="skillIcon" src="{{ public_path().'/images/skills_icons/'.str_replace([' ', '.'], '_', strtolower($skill["skill_title"])).'.png' }}" />{{ $skill['skill_title'] }}
+                      <img class="skillIcon" src="{{ $skill->icon() }}" />{{ $skill['skill_title'] }}
                   </div>
     
                   <div class="skillBar">
@@ -264,7 +278,7 @@
                 <div class="resume__content__details__subtitle">Software</div>
                 @foreach ($softwareSkills as $skill)
                   <div class="skillName">
-                      <img class="skillIcon" src="{{ public_path().'/images/skills_icons/'.str_replace([' ', '.'], '_', strtolower($skill["skill_title"])).'.png' }}" />{{ $skill['skill_title'] }}
+                      <img class="skillIcon" src="{{ $skill->icon() }}" />{{ $skill['skill_title'] }}
                   </div>
     
                   <div class="skillBar">
@@ -280,7 +294,7 @@
                 <div class="resume__content__details__subtitle">Design Skills</div>
                 @foreach ($designSkills as $skill)
                   <div class="skillName">
-                    <img class="skillIcon" src="{{ public_path().'/images/skills_icons/'.str_replace([' ', '.'], '_', strtolower($skill["skill_title"])).'.png' }}" />{{ $skill['skill_title'] }}
+                    <img class="skillIcon" src="{{ $skill->icon() }}" />{{ $skill['skill_title'] }}
                   </div>
     
                   <div class="skillBar">

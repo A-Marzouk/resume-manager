@@ -20,7 +20,12 @@ class ResumeController extends Controller
             $pdf = \App::make('dompdf.wrapper');
             $pdf->loadHTML($view);
             ob_end_clean();
+            $skillPaths = [];
+            foreach ($freelancer->skills as $skill) {
+                $skillPaths[$skill->skill_title] = $skill->icon();
+            }
 
+            // dd($skillPaths);
             return $pdf->stream($freelancer->userData['first_name'].' '.$freelancer->userData['last_name'].'.pdf');
         }
     }

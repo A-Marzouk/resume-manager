@@ -69,14 +69,18 @@
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center">
+                                            <a href="javascript:void(0)" @click="togglePercentage(skill)" class="mr-2">
+                                                <img src="/images/client/payments/show_invoice.png" :class="{'notActive' : skill.is_percentage_active}" alt="edit" style="width:16px">
+                                            </a>
                                             <a href="javascript:void(0)" @click="editedSkill = skill" class="mr-2"><img
                                                     src="/images/edit.png" alt="edit" style="width:16px"></a>
+
                                             <a href="javascript:void(0)" @click="deleteSkill(skill)"><img
                                                     src="/images/close_black.png" alt="edit" style="width:16px"></a>
                                         </div>
                                     </div>
                                     <!-- bar -->
-                                    <div class="skill-bar" :data-bar="skill.percentage">
+                                    <div class="skill-bar" :data-bar="skill.percentage" :class="{'halfOpacity' : !skill.is_percentage_active}">
                                         <span></span>
                                     </div>
                                 </div>
@@ -164,6 +168,10 @@
                         percentage: '',
                     }
                 });
+            },
+            togglePercentage(skill) {
+                skill.is_percentage_active = !skill.is_percentage_active ;
+                axios.post('/freelancer/update-skill', skill).then((response) => {});
             },
             addSkill() {
                 // disable the input :
@@ -415,6 +423,17 @@
         font-weight: 400;
         top: -13px;
     }
+
+    .notActive{
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+    }
+
+    .halfOpacity {
+        opacity: 0.2;
+    }
+
+
 
 </style>
 

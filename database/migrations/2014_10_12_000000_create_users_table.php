@@ -26,6 +26,9 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('status')->unsigned()->index();
             $table->timestamp('reviewed_at')->nullable();
             $table->tinyInteger('stage')->unsigned()->index();
+            $table->integer('affiliate_percentage')->nullable();
+            $table->string('referred_by_code')->nullable();
+
 
             $table->string('timezone')->nullable();
             $table->timestamp('agreed_with_privacy_agreement_at')->nullable();

@@ -129,6 +129,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="activationEye" @click="toggleResumeCustomField('is_weekly_rate_active')">
+                                                    <img src="/images/client/payments/show_invoice.png" :class="{'notActive' : !user.agent.custom_resume.is_weekly_rate_active}" alt="edit">
+                                                </div>
                                             </div>
 
                                             <div class="text-center hireRow calculateBox" style="margin-left: 7px;">
@@ -156,6 +159,9 @@
                                                             </a>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="activationEye" @click="toggleResumeCustomField('is_available_hours_active')">
+                                                    <img src="/images/client/payments/show_invoice.png" :class="{'notActive' : !user.agent.custom_resume.is_available_hours_active}" alt="edit">
                                                 </div>
                                             </div>
                                         </div>
@@ -440,6 +446,12 @@
             }
         },
         methods: {
+
+            toggleResumeCustomField(fieldName){
+                this.user.agent.custom_resume[fieldName] = !this.user.agent.custom_resume[fieldName];
+                this.updateResume();
+            },
+
             cancelColorEdit(){
                 this.colors = this.oldColors;
                 this.showColorPicker = false ;
@@ -707,5 +719,20 @@
         cursor: pointer;
     }
 
+    .notActive{
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+        background: lightgray !important;
+    }
+
+    .activationEye{
+        img{
+            width: 20px;
+            margin-top: 20px;
+            background: white;
+            border-radius: 50%;
+            padding: 2px;
+        }
+    }
 
 </style>

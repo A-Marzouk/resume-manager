@@ -53,27 +53,48 @@
                                    Your skills section looks empty. Please add your skills.
                              </span>
 
-                            <div @mouseover="highlightSkill(skill,0)"
-                                 @mouseleave="highlightSkill(skill,100)"
-                                 v-for="(skill,index) in skills" :key="index"
-                                 v-show="skill.type === currType"
-                                 class="highlightSkill skills">
+                            <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)"
+                                 v-for="(skill,index) in skills" :key="index" v-show="skill.type === currType"
+                                 class="highlightSkill skills d-flex flex-column w-100">
                                 <!-- skill -->
                                 <div class="skill text-left">
                                     <!-- title -->
-                                    <div class="skill-title">
-                                        <img style="width: 17px;padding-bottom: 3px;"
-                                             :src="getSkillIconSrc(skill.skill_title)"
-                                             alt="skill" :id="'skillImage_' + skill.id">
-                                        {{skill.skill_title}}
-                                        <button type="button" class="close" style="padding: 2px; outline: none;" @click="deleteSkill(skill)">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                    <div class="skill-title d-flex justify-content-between align-items-center">
+                                        <div class="d-flex align-items-center">
+                                            <img style="width: 17px;padding-bottom: 3px;" class="mr-2"
+                                                 :src="getSkillIconSrc(skill.skill_title)" alt="skill"
+                                                 :id="'skillImage_' + skill.id">
+                                            <div>
+                                                {{skill.skill_title}}
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <a href="javascript:void(0)" @click="editedSkill = skill" class="mr-2"><img
+                                                    src="/images/edit.png" alt="edit" style="width:16px"></a>
+                                            <a href="javascript:void(0)" @click="deleteSkill(skill)"><img
+                                                    src="/images/close_black.png" alt="edit" style="width:16px"></a>
+                                        </div>
                                     </div>
                                     <!-- bar -->
                                     <div class="skill-bar" :data-bar="skill.percentage">
                                         <span></span>
                                     </div>
+                                </div>
+                                <div class="form-group" v-show="editedSkill.id === skill.id">
+                                    <input type="text" placeholder="Skill title" class="form-control"
+                                           name="skill_title"
+                                           v-model="editedSkill.skill_title"
+                                           required
+                                           style=" background:white url('/images/add_skill.png')  no-repeat right .75rem center;
+                                        background-size: 15px 15px;"
+                                    >
+
+                                    <input type="number" min="50" max="100" step="10" placeholder="Percentage %"
+                                           class="form-control" v-model="editedSkill.percentage" required>
+
+                                    <a href="javascript:void(0)"
+                                       v-show="editedSkill.skill_title.length > 0 && editedSkill.percentage.length > 0"
+                                       @click="updateSkill" class="btn btn-outline-dark">SAVE</a>
                                 </div>
                                 <!-- #skill -->
                             </div>
@@ -88,7 +109,7 @@
 
 <script>
     export default {
-        props:['user_id'],
+        props: ['user_id'],
         data() {
             return {
                 skills: [],
@@ -98,6 +119,10 @@
                     percentage: '',
                 },
                 currType: '',
+                editedSkill: {
+                    skill_title: '',
+                    percentage: '',
+                }
             }
         },
         methods: {
@@ -107,7 +132,7 @@
                         this.skills = response.data;
                         setTimeout(() => {
                             this.skillsBar();
-                        },500);
+                        }, 500);
 
                     }
                 );
@@ -130,12 +155,22 @@
 
                 });
             },
+            updateSkill() {
+                axios.post('/freelancer/update-skill', this.editedSkill).then((response) => {
+                    console.log(response.data);
+                    this.skillsBar();
+                    this.editedSkill = {
+                        skill_title: '',
+                        percentage: '',
+                    }
+                });
+            },
             addSkill() {
                 // disable the input :
                 $('#skill_title').attr('disabled', true);
                 $('#skill_title').css('background-color', 'lightgrey');
                 // post data :
-                if(this.currSkill.percentage > 100){
+                if (this.currSkill.percentage > 100) {
                     alert('Percentage can not be greater than 100');
                     return;
                 }
@@ -165,7 +200,7 @@
 
                     setTimeout(() => {
                         this.skillsBar();
-                    },500);
+                    }, 500);
 
 
                     // changes saved :

@@ -484,6 +484,7 @@ Route::post('/workforce/agent/delete_record','AgentsController@deleteAgentRecord
 // skills
 Route::get('/freelancer/skills','SkillsController@getskills')->name('get.skills');
 Route::post('/freelancer/addskill/','SkillsController@addSkill')->name('add.skill');
+Route::post('/freelancer/update-skill/','SkillsController@updateSkill')->name('update.skill');
 Route::post('/freelancer/deleteskill/','SkillsController@deleteSkill')->name('delete.skill');
 
 // projects overview

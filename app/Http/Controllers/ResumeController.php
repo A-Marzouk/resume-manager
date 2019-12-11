@@ -60,7 +60,7 @@ class ResumeController extends Controller
 
         $freelancer = User::with(['userData','agent.customResume','agent.resumeTabs','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
-        }])->where('username',Auth::user()->username)->first();
+        }])->where('username',$username)->first();
 
         if (!$freelancer->agent->customResume) {
             ResumeCustom::insert([

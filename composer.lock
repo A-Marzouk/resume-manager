@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4cca191350951f0e73ac7cad80a55ce5",
+    "content-hash": "c28df920da9829079a02ca2b990a78e4",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -3047,6 +3047,62 @@
             "time": "2016-07-19T19:14:21+00:00"
         },
         {
+            "name": "spatie/browsershot",
+            "version": "3.26.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/browsershot.git",
+                "reference": "42dd2120577d9a4c6937773d7a233fffe72a06c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/42dd2120577d9a4c6937773d7a233fffe72a06c7",
+                "reference": "42dd2120577d9a4c6937773d7a233fffe72a06c7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "spatie/image": "^1.4",
+                "spatie/temporary-directory": "^1.1",
+                "symfony/process": "^3.0|^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.1|^7.0",
+                "spatie/phpunit-snapshot-assertions": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Browsershot\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://github.com/freekmurze",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Convert a webpage to an image or pdf using headless Chrome",
+            "homepage": "https://github.com/spatie/browsershot",
+            "keywords": [
+                "chrome",
+                "convert",
+                "headless",
+                "image",
+                "pdf",
+                "puppeteer",
+                "screenshot",
+                "webpage"
+            ],
+            "time": "2018-10-18T17:24:07+00:00"
+        },
+        {
             "name": "spatie/image",
             "version": "1.7.1",
             "source": {
@@ -4470,6 +4526,57 @@
             "time": "2017-11-27T11:13:29+00:00"
         },
         {
+            "name": "verumconsilium/laravel-browsershot",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/verumconsilium/laravel-browsershot.git",
+                "reference": "7ac097c0b948db6e8cd0eacd05d3c0e4e4c6e4bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/verumconsilium/laravel-browsershot/zipball/7ac097c0b948db6e8cd0eacd05d3c0e4e4c6e4bc",
+                "reference": "7ac097c0b948db6e8cd0eacd05d3c0e4e4c6e4bc",
+                "shasum": ""
+            },
+            "require": {
+                "spatie/browsershot": "^3.19"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.6",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "VerumConsilium\\Browsershot\\BrowsershotServiceProvider"
+                    ],
+                    "aliases": {
+                        "PDF": "VerumConsilium\\Browsershot\\Facades\\PDF",
+                        "Screenshot": "VerumConsilium\\Browsershot\\Facades\\Screenshot"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "VerumConsilium\\Browsershot\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Verum Consilium",
+                    "homepage": "https://verumconsilium.com"
+                }
+            ],
+            "description": "Browsershot Laravel wrapper to generate PDF files and Screenshots using Headless Chrome",
+            "time": "2019-04-15T22:36:04+00:00"
+        },
+        {
             "name": "vinkla/instagram",
             "version": "9.0.1",
             "source": {
@@ -5664,6 +5771,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-04-11T04:50:36+00:00"
         },
         {

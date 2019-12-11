@@ -624,11 +624,13 @@ Route::get('/home_test/sales', function () {
     return view('new_home_sales');
 });
 
+Route::get('/resume/{username}', 'ResumeController@agentsResume');
+Route::get('/resume/test/{username}', 'ResumeController@agentsTestResume');
 // freelancer resume
 Route::get('/v2/{username}','HomeController@ResumePageV2');
 Route::get('/v2/short/{username}','HomeController@ResumePageShortV2');
 Route::get('/v1/{username}','HomeController@ResumePage');
 
-Route::get('/freelancer/resume/{username}/download', 'ResumeController@downloadPDFResume')->name('download-pdf-resume');
+Route::get('/resume/test/{username}/download', 'ResumeController@downloadPDFResume')->name('download-pdf-resume');
 
 Route::get('/create/new_agents', 'TestController@createAgents');

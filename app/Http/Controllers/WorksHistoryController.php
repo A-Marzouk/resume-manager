@@ -56,7 +56,7 @@ class WorksHistoryController extends Controller
         if($request->is_currently_working !== true){
             $workH->date_to = $request->date_to;
         }
-        $workH->is_currently_working = $request->is_currently_working;
+        $workH->is_currently_working = $request->is_currently_working ? true : false;
 
 
         $workH->save();

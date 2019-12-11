@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/pdf" charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{{ $agent["firstName"] }} Resume</title>
+  <title>{{ $freelancer->userData["first_name"].' '.$freelancer->userData["last_name"] }} Resume</title>
   <style>
   
     body,
@@ -43,10 +43,10 @@
 
     .resume__header__invoiceData {
       background-color: #4367D3;
-      padding: 0 50px;
+      padding: 0 25px;
       border-radius: 5px;
-      width: 250px;
-      height: 55px;
+      width: 300px;
+      height: 60px;
       float: right;
       margin-top: 50px;
     }
@@ -68,6 +68,20 @@
     .resume__header__invoiceData .value {
       font-size: 18px;
       margin-top: 7px;
+    }
+
+    .resume__header__invoiceData .hireLink {
+      width: 100px;
+    }
+
+    .resume__header__invoiceData .hireLink a {
+      display: block;
+      background: #fff;
+      border-radius: 5px;
+      padding: 12px 0;
+      text-decoration: none;
+      color: #4E75E8;
+      margin: 0 auto;
     }
 
     .resume__header__invoiceData p {
@@ -128,22 +142,25 @@
       font-size: 12px;
     }
 
+    .resume__content__details .skillIcon {
+      height: 14px;
+      margin-right: 5px;
+    }
+
     .resume__content__details .skillBar {
       width: 100%;
-    }
-
-    .resume__content__details .skillBar .right {
-      background: #4367D3;
-      width: 50%;
-      height: 3px;
-      float: right;
-    }
-
-    .resume__content__details .skillBar .left {
-      width: 50%;
       height: 3px;
       background: #f6f6f6;
-      float: right;
+      position: relative;
+    }
+
+    .resume__content__details .skillBar .percentage {
+      background: #4367D3;
+      height: 3px;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .resume__content__details__companyName {
@@ -160,8 +177,7 @@
     .resume__content__details__educationDetails {
       margin-top: 10px;
       margin-bottom: 20px;
-    }
-
+    }    
   </style>
 </head>
 <body>
@@ -174,20 +190,21 @@
   <main class="resume">
     <header class="resume__header">
       <picture class="resume__header__userImg">
-        @if($user_data['photo'] != null)
-          <img src="{{public_path().$user_data['photo']}}" alt="">
+        @if($freelancer->userData['profile_picture'] != null)
+          <img src="{{public_path().'/'.$freelancer->userData['profile_picture']}}" alt="">
         @endif
       </picture>
       <div class="resume__header__userInfo">
-        <h2>{{ $agent['firstName'].' '.$agent["lastName"] }}</h2>
-        <p>{{ $user_data["job_title"] }}</p>
+        <h2>{{ $freelancer->userData['first_name'].' '.$freelancer->userData["last_name"] }}</h2>
+        <p>{{ $freelancer->userData["job_title"] }}</p>
       </div>
 
       <div class="resume__header__invoiceData">
         <table>
           <tr class="resume__header__invoiceData__hourlyRate">
-            <td class="value"><b>{{ number_format(floatval($user_data["salary"]), 2) }}</b></td>
-            <td class="value"><b>{{ intval($user_data["available_hours_per_week"]) }} hours</b></td>
+            <td class="value"><b>{{ number_format(floatval($freelancer->agent["hourly_rate"]), 2) }}</b></td>
+            <td class="value"><b>{{ intval($freelancer->agent["available_hours_per_week"]) }} hours</b></td>
+            <td class="hireLink"><a href="http://www.123workforce.com">Hire me</a></td>
           </tr>
           <tr class="resume__header__invoiceData__weeklyAvailability">
             <td class="little">hourly rate</td>
@@ -195,12 +212,11 @@
           </tr>
         </table>
       </div>
-
     </header>
 
     <div class="resume__content">
 
-      @if (!empty($skills))
+      @if (!empty($freelancer->skills))
         <section>
           <div class="resume__content__titleWrapper">
             <div class="title">Skills</div>
@@ -208,19 +224,19 @@
           </div>
 
           <?
-            $programmingSkills = $skills->filter(function ($item_values) {
+            $programmingSkills = $freelancer->skills->filter(function ($item_values) {
               return ($item_values['type'] == 'programming' ? true : false);
             });
 
-            $frameworkOrDatabaseSkills = $skills->filter(function ($item_values) {
-              return ($item_values['type'] == 'framework' || $item_values['type'] == 'database' ? true : false);
+            $frameworkOrDatabaseSkills = $freelancer->skills->filter(function ($item_values) {
+              return ($item_values['type'] == 'frameworks' || $item_values['type'] == 'database' ? true : false);
             });
 
-            $softwareSkills = $skills->filter(function ($item_values) {
+            $softwareSkills = $freelancer->skills->filter(function ($item_values) {
               return ($item_values['type'] == 'software' ? true : false);
             });
             
-            $designSkills = $skills->filter(function ($item_values) {
+            $designSkills = $freelancer->skills->filter(function ($item_values) {
               return ($item_values['type'] == 'design' ? true : false);
             });
           ?>
@@ -230,11 +246,12 @@
             <div class="container">
               <div class="resume__content__details__subtitle">Programming Languages</div>
               @foreach ($programmingSkills as $skill)
-                <div class="skillName">{{ $skill['name'] }}</div>
+                <div class="skillName">
+                    <img class="skillIcon" src="{{ $skill->icon()}}" />{{ $skill['skill_title'] }}
+                </div>
 
                 <div class="skillBar">
-                  <div class="left"></div>
-                  <div class="right"></div>
+                  <div style="width: {{ $skill['percentage'] }}%;" class="percentage"></div>
                 </div>
               @endforeach
             @endif
@@ -244,11 +261,13 @@
               <div class="container">
                 <div class="resume__content__details__subtitle">Frameworks / Databases</div>
                 @foreach ($frameworkOrDatabaseSkills as $skill)
-                  <div class="skillName">{{ $skill['skill_title'] }}</div>
+                  <div class="skillName">
+                      <img class="skillIcon" src="{{ $skill->icon() }}" />{{ $skill['skill_title'] }}
+                  </div>
     
                   <div class="skillBar">
-                    <div class="left"></div>
-                    <div class="right"></div>
+                    <div style="width: {{ $skill['percentage'] }}%;" class="percentage"></div>
+
                   </div>
                 @endforeach
               @endif
@@ -258,11 +277,13 @@
               <div class="container">
                 <div class="resume__content__details__subtitle">Software</div>
                 @foreach ($softwareSkills as $skill)
-                  <div class="skillName">{{ $skill['skill_title'] }}</div>
+                  <div class="skillName">
+                      <img class="skillIcon" src="{{ $skill->icon() }}" />{{ $skill['skill_title'] }}
+                  </div>
     
                   <div class="skillBar">
-                    <div class="left"></div>
-                    <div class="right"></div>
+                    <div style="width: {{ $skill['percentage'] }}%;" class="percentage"></div>
+  
                   </div>
                 @endforeach
               @endif
@@ -272,11 +293,13 @@
               <div class="container">
                 <div class="resume__content__details__subtitle">Design Skills</div>
                 @foreach ($designSkills as $skill)
-                  <div class="skillName">{{ $skill['skill_title'] }}</div>
+                  <div class="skillName">
+                    <img class="skillIcon" src="{{ $skill->icon() }}" />{{ $skill['skill_title'] }}
+                  </div>
     
                   <div class="skillBar">
-                    <div class="left"></div>
-                    <div class="right"></div>
+                    <div style="width: {{ $skill['percentage'] }}%;" class="percentage"></div>
+  
                   </div>
                 @endforeach
               @endif
@@ -285,7 +308,7 @@
         </section>
       @endif
 
-      @if (!empty($worksHistory))
+      @if ($freelancer->worksHistory->count() > 0)
           
         <section>
           <div class="resume__content__titleWrapper">
@@ -294,7 +317,7 @@
           </div>
 
           <div class="resume__content__details">
-            @foreach ($worksHistory as $work)
+            @foreach ($freelancer->worksHistory as $work)
               <section>
                 <div class="resume__content__details__companyName">
                   {{ $work['company'] }}
@@ -320,7 +343,7 @@
         </section>
       @endif
 
-      @if (!empty($educationHistory))
+      @if ($freelancer->educationsHistory->count() > 0)
         <section>
           <div class="resume__content__titleWrapper">
             <div class="title">Education</div>
@@ -328,7 +351,7 @@
           </div>
 
           <div class="resume__content__details">
-            @foreach ($educationHistory as $education)
+            @foreach ($freelancer->educationsHistory as $education)
               <section>
                 <div class="resume__content__details__companyName">
                     {{ $education['school_title'] }}

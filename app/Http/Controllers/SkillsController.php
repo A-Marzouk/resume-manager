@@ -62,14 +62,9 @@ class SkillsController extends Controller
         return 'Skill deleted';
     }
 
-    public function editSkill(Request $request){
-        $skill = Skill::where('id',$request->id);
-
-        $skill->skill_title = $request->skill_title;
-        $skill->type = $request->type;
-        if(isset($request->icon)) {
-            $skill->icon = $request->icon;
-        }
-        $skill->save();
+    public function updateSkill(Request $request){
+        $skill = Skill::where('id',$request->id)->first();
+        $skill->update($request->toArray());
+        return $skill;
     }
 }

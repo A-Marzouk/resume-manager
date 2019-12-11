@@ -45,6 +45,9 @@
                             <div class="error" v-if="errors.job_title">
                                 {{errors.job_title[0]}}
                             </div>
+                            <div class="error" v-if="showErrors && errors.job_title">
+                                {{errors.job_title}}
+                            </div>
                         </div>
                         <div class="faq-question-input account-edit-input">
                             <label class="faq-input-label">

@@ -19,7 +19,7 @@ class ProjectsController extends Controller
 {
     public function getProjects(){
        // get current authenticated freelancer :
-        if(currentUser()->is_admin){
+        if(Input::get('user_id') && currentUser()->is_admin){
             $currentUser = User::where('id',Input::get('user_id'))->first();
         }else{
             $currentUser = currentUser();
@@ -30,7 +30,7 @@ class ProjectsController extends Controller
 
     public function addProject(Request $request){
 
-        if(currentUser()->is_admin){
+        if(Input::get('user_id') && currentUser()->is_admin){
             $currentUser = User::where('id',$request->user_id)->first();
         }else{
             $currentUser = currentUser();

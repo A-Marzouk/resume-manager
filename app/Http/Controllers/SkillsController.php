@@ -19,7 +19,7 @@ class SkillsController extends Controller
     public function getSkills(){
        // get current authenticated freelancer :
 
-        if(currentUser()->is_admin){
+        if(Input::get('user_id') && currentUser()->is_admin){
             $currentUser = User::where('id',Input::get('user_id'))->first();
         }else{
             $currentUser = currentUser();
@@ -28,7 +28,7 @@ class SkillsController extends Controller
     }
 
     public function addSkill(Request $request){
-        if(currentUser()->is_admin){
+        if(Input::get('user_id') && currentUser()->is_admin){
             $currentUser = User::where('id',$request->user_id)->first();
         }else{
             $currentUser = currentUser();
@@ -62,14 +62,9 @@ class SkillsController extends Controller
         return 'Skill deleted';
     }
 
-    public function editSkill(Request $request){
-        $skill = Skill::where('id',$request->id);
-
-        $skill->skill_title = $request->skill_title;
-        $skill->type = $request->type;
-        if(isset($request->icon)) {
-            $skill->icon = $request->icon;
-        }
-        $skill->save();
+    public function updateSkill(Request $request){
+        $skill = Skill::where('id',$request->id)->first();
+        $skill->update($request->toArray());
+        return $skill;
     }
 }

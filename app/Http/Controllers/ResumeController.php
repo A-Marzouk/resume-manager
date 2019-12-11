@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ResumeCustom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,7 @@ class ResumeController extends Controller
 
         $user = User::where('username', $username)->get();
         $agent = Agent::where('user_id', $user[0]->id)->get();
-        
+
         if (!empty($agent)) {
             // The user is an agent
 
@@ -57,9 +58,18 @@ class ResumeController extends Controller
 
     public function agentsResume($username) {
 
-        $freelancer = User::with(['userData','agent.resumeTabs','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::with(['userData','agent.customResume','agent.resumeTabs','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
         }])->where('username',Auth::user()->username)->first();
+
+        if (!$freelancer->agent->customResume) {
+            ResumeCustom::insert([
+                [
+                    'agent_id' => $freelancer->agent->id,
+                    'background_color' => '#4E75E8',
+                ],
+            ]);
+        }
 
         return view('freelancerResume.resumeLongV2', compact('freelancer'));
         

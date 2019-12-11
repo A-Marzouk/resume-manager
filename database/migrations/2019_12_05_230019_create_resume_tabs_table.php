@@ -21,7 +21,7 @@ class CreateResumeTabsTable extends Migration
             $table->string('default_icon_src')->nullable();
             $table->integer('is_active')->default(1);
             $table->integer('view_order')->default(1);
-            $table->integer('agent_id')->nullable(1);
+            $table->integer('agent_id')->nullable();
             $table->timestamps();
         });
     }

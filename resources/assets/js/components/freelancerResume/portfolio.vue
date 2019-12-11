@@ -58,7 +58,14 @@
 
         <div class="marginMobile-0">
             <div class="freelancerCard" style="margin-bottom: -16px; height: auto;">
-                <div class="row actionRow d-flex justify-content-end">
+                <div class="row actionRow d-flex justify-content-between align-items-center"  :style="getBackgroundColor()">
+                    <div class="ml-3">
+                        <div class="editButton NoDecor">
+                            <a :href="'/' + freelancer.username" target="_blank" class="d-flex align-items-center">
+                                Open resume
+                            </a>
+                        </div>
+                    </div>
                     <div class="d-flex  mr-3">
                         <div class="progressBtn">
                             <a href="javascript:void(0)">
@@ -67,7 +74,7 @@
                            </span>
                             </a>
                         </div>
-                        <div class="editBtn NoDecor">
+                        <div class="editButton NoDecor">
                             <a :href="'/agent/resume/editor?user_id=' + freelancer.id">
                                 <img src="/images/edit_profile.png" alt="edit profile">
                                 Edit profile
@@ -84,7 +91,7 @@
                 <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
                     <div class="showOnlyOnmd">
                         <!-- main card info -->
-                        <div class="row nameRow">
+                        <div class="row nameRow" :style="'background-color:' + colors.hex">
                             <div class="col-lg-2 col-6 imageCol">
                                 <div class="imageContainer" style="padding: 10px;">
                                     <img :src="getImageSrc(freelancer.user_data.profile_picture)" alt="freelancer"
@@ -316,7 +323,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -346,7 +353,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -376,7 +383,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -406,7 +413,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -427,7 +434,8 @@
                                             <div class="row" v-for="(work, index) in worksHistory" :key="index + 'V'">
                                                 <div class="col-md-12 aboutSubText">
                                                     <div class="job-title d-flex align-items-center">
-                                                        <img :src="currentTab.default_icon_src" alt="tab icon" class="mr-2 tab-icon">
+                                                        <img :src="currentTab.default_icon_src" alt="tab icon"
+                                                             class="mr-2 tab-icon">
                                                         <div>
                                                             {{work.job_title}}
                                                         </div>
@@ -541,7 +549,8 @@
                                                  :key="index + 'E'">
                                                 <div class="col-md-12 aboutSubText">
                                                     <div class="title work d-flex">
-                                                        <img :src="currentTab.default_icon_src" alt="tab icon" class="mr-2 tab-icon">
+                                                        <img :src="currentTab.default_icon_src" alt="tab icon"
+                                                             class="mr-2 tab-icon">
                                                         <span class="seduHeader">
                                                             {{education.school_title}}
                                                         </span>
@@ -570,7 +579,8 @@
                                                  :key="index + 'R'">
                                                 <div class="col-md-12 aboutSubText">
                                                     <div class="title work">
-                                                        <img :src="currentTab.default_icon_src" alt="tab icon" class="mr-2 tab-icon">
+                                                        <img :src="currentTab.default_icon_src" alt="tab icon"
+                                                             class="mr-2 tab-icon">
                                                         {{reference.title}}
                                                     </div>
                                                     <div class="year">
@@ -607,7 +617,8 @@
                                                  style="margin: 0px 10px 20px;">
 
                                                 <div class="job-title d-flex align-items-center">
-                                                    <img :src="currentTab.default_icon_src" alt="tab icon" class="mr-2 tab-icon">
+                                                    <img :src="currentTab.default_icon_src" alt="tab icon"
+                                                         class="mr-2 tab-icon">
                                                     <div>
                                                         {{record.title}}
                                                     </div>
@@ -641,19 +652,24 @@
                             <div v-show="currentTab.name === 'portfolio'">
                                 <div>
                                     <!-- portfolio section -->
-                                    <slick class="projectsSection" :id="'portfolio_section_' + freelancer.id" ref="slick" :options="slickOptions">
-                                        <div  v-for="(project,index) in projects" :key="index + 'A'" >
+                                    <slick class="projectsSection" :id="'portfolio_section_' + freelancer.id"
+                                           ref="slick" :options="slickOptions">
+                                        <div v-for="(project,index) in projects" :key="index + 'A'">
                                             <!-- class="d-flex justify-content-center" style="height: 250px !important; padding: 0 2px 0 2px; overflow: hidden;" -->
 
                                             <div class="workCard" style="margin:10px; margin-bottom: 0px;">
                                                 <div class="workImg">
                                                     <a href="javascript:void(0)"
                                                        style="outline: none;"
-                                                       data-toggle="modal" :data-target="'#project_modal_'+project.id" @click="loadHDImage(project.id)">
+                                                       data-toggle="modal" :data-target="'#project_modal_'+project.id"
+                                                       @click="loadHDImage(project.id)">
 
-                                                        <vue-load-image class="d-flex justify-content-center align-items-center">
-                                                            <img :src="getImageSrc(project.mainImage)" alt="" width="260" slot="image">
-                                                            <img  alt="" slot="preloader" src="/images/spinner-load.gif" style="width: 100px; height: 100px;" />
+                                                        <vue-load-image
+                                                                class="d-flex justify-content-center align-items-center">
+                                                            <img :src="getImageSrc(project.mainImage)" alt=""
+                                                                 width="260" slot="image">
+                                                            <img alt="" slot="preloader" src="/images/spinner-load.gif"
+                                                                 style="width: 100px; height: 100px;"/>
                                                         </vue-load-image>
                                                     </a>
                                                 </div>
@@ -663,7 +679,8 @@
                                                             {{project.projectName}}
                                                         </div>
                                                         <a class="col-md-1 col-1" href="javascript:void(0)"
-                                                           data-toggle="modal" :data-target="'#project_modal_'+project.id"
+                                                           data-toggle="modal"
+                                                           :data-target="'#project_modal_'+project.id"
                                                            style="outline: none; margin-left: 16px;">
                                                             <img src="/images/newResume/link.png"
                                                                  alt="view work">
@@ -676,15 +693,18 @@
 
                                     <div class="row carouselControls" style="width: 100%;">
                                         <div class=" col-12 text-center NoDecor">
-                                            <a href="javascript:void(0)" class="cardLabel_interviews noScroll" @click="slidePrev"
+                                            <a href="javascript:void(0)" class="cardLabel_interviews noScroll"
+                                               @click="slidePrev"
                                                style="color:#697786;">
                                                 <img src="/images/left_arrow.png"
                                                      alt="prev" width="15px">
                                             </a>
 
-                                            <span class="jobTitle" style="padding: 0 5px 0 5px"> <span>{{slideNumber}}</span> / <span> {{numberOfSlides}} </span></span>
+                                            <span class="jobTitle"
+                                                  style="padding: 0 5px 0 5px"> <span>{{slideNumber}}</span> / <span> {{numberOfSlides}} </span></span>
 
-                                            <a href="javascript:void(0)" role="button" data-slide="next" class="cardLabel_interviews noScroll" @click="slideNext"
+                                            <a href="javascript:void(0)" role="button" data-slide="next"
+                                               class="cardLabel_interviews noScroll" @click="slideNext"
                                                style="color:#697786;">
                                                 <img src="/images/right_arrow.png"
                                                      alt="next" width="15px">
@@ -836,7 +856,7 @@
         data() {
             return {
                 slides: [],
-                slideNumber : 1 ,
+                slideNumber: 1,
                 numberOfSlides: this.calculateNumberOfSlides(),
                 skills: this.freelancer.skills,
                 worksHistory: this.freelancer.works_history,
@@ -871,6 +891,9 @@
                 weeks: 4,
                 hours: this.freelancer.agent.available_hours_per_week,
                 portfolio: !this.hire,
+                colors:{
+                    hex: this.freelancer.agent.custom_resume ? this.freelancer.agent.custom_resume.background_color : '#4E75E8',
+                },
             }
         },
         methods: {
@@ -1075,7 +1098,6 @@
                 }
                 return (Math.ceil(numberOfProjects / 2));
             },
-
             calculateNumberOfRelatedSlides(numberOfProjects) {
                 var width = $(window).width();
                 if (width < 991) {
@@ -1112,11 +1134,28 @@
                 } else {
                     return source;
                 }
-            }
+            },
+            getBackgroundColor(){
+                if(!this.colors.rgba){
+                    let currentBG = this.colors.hex.replace('#', '');
+                    let r = parseInt(currentBG.substring(0, 2), 16);
+                    let g = parseInt(currentBG.substring(2, 4), 16);
+                    let b = parseInt(currentBG.substring(4, 6), 16);
+                    let a = 0.85;
+                    return 'background-color:rgba(' + r + ',' + g + ',' + b + ',' + a + ')' ;
+                }
+
+                let currentBG = this.colors.rgba ;
+                let r = currentBG.r;
+                let b = currentBG.b;
+                let g = currentBG.g;
+                let a = 0.85;
+                return  `background-color:rgba(${r},${g},${b},${a})`;
+            },
         },
         mounted() {
             this.skillsBar();
-            if(this.freelancer.agent.resume_tabs.length > 0){
+            if (this.freelancer.agent.resume_tabs.length > 0) {
                 this.setTab(this.freelancer.agent.resume_tabs[0]);
             }
         },
@@ -1356,13 +1395,42 @@
         }
     }
 
-    .job-title{
-        font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold;
+    .job-title {
+        font-size: 16px;
+        color: #30323D;
+        font-family: Roboto;
+        line-height: 19px;
+        font-weight: bold;
     }
 
-    .tab-icon{
-        width:14px;
-        height:14px;
+    .tab-icon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .editButton {
+        a {
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: center;
+            font-weight: 500;
+            height: 30px;
+            border: 1px solid #FFFFFF;
+            border-radius: 5px;
+            font-size: 13px;
+            width: 118px;
+
+            img {
+                width: 14px;
+                margin-right: 5px;
+            }
+        }
+
+    }
+
+    .progressBtn{
+        margin-top:0;
     }
 
 

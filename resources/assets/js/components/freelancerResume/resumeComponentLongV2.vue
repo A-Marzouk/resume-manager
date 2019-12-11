@@ -2,7 +2,7 @@
     <div>
         <div class="marginMobile-0">
             <div class="freelancerCard" style="margin-bottom: -16px; height: auto;">
-                <div class="row actionRow">
+                <div class="row actionRow"  :style="getBackgroundColor()">
                     <div class="importBtn importBtn_upload NoDecor">
                         <a href="javascript:void(0)" style="outline: none;" @click="showReferencesSection">
                             References / Testimonials
@@ -18,7 +18,7 @@
                 <div class="col-lg-12 col-md-12 col-12 resumeCardRight">
                     <div class="showOnlyOnmd">
                         <!-- main card info -->
-                        <div class="row nameRow">
+                        <div class="row nameRow" :style="'background-color:' + colors.hex">
                             <div class="col-lg-2 col-6 imageCol">
                                 <div class="imageContainer" style="padding: 10px;">
                                     <img :src="getImageSrc(freelancer.user_data.profile_picture)" alt="freelancer"
@@ -244,7 +244,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -274,7 +274,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -304,7 +304,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -334,7 +334,7 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage">
+                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -819,6 +819,9 @@
         },
         data() {
             return {
+                colors:{
+                    hex: this.freelancer.agent.custom_resume ? this.freelancer.agent.custom_resume.background_color : '#4E75E8',
+                },
                 slides: [],
                 slideNumber : 1 ,
                 numberOfSlides: this.calculateNumberOfSlides(),
@@ -871,6 +874,23 @@
             }
         },
         methods: {
+            getBackgroundColor(){
+                if(!this.colors.rgba){
+                    let currentBG = this.colors.hex.replace('#', '');
+                    let r = parseInt(currentBG.substring(0, 2), 16);
+                    let g = parseInt(currentBG.substring(2, 4), 16);
+                    let b = parseInt(currentBG.substring(4, 6), 16);
+                    let a = 0.85;
+                    return 'background-color:rgba(' + r + ',' + g + ',' + b + ',' + a + ')' ;
+                }
+
+                let currentBG = this.colors.rgba ;
+                let r = currentBG.r;
+                let b = currentBG.b;
+                let g = currentBG.g;
+                let a = 0.85;
+                return  `background-color:rgba(${r},${g},${b},${a})`;
+            },
             getResizedImage(src) {
                 let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
                 if (this.search == false) {

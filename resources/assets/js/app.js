@@ -52,6 +52,7 @@ Vue.component('admin-agent-edit-record-resume', require('./components/admin/edit
 // resume component
 Vue.component('freelancer-resume-long-v2', require('./components/freelancerResume/resumeComponentLongV2.vue'));
 Vue.component('freelancer-resume-short-v2', require('./components/freelancerResume/resumeComponentShortV2.vue'));
+Vue.component('freelancer-resume-download', require('./components/freelancerResume/resumeDownloadComponent.vue'));
 Vue.component('freelancer-resume-editor', require('./components/freelancerResume/ResumeEditor.vue'));
 
 
@@ -78,6 +79,12 @@ if ($("#freelancerResumeLongV2").length !== 0){
     let freelancerResumeLongV2 = new Vue({
         el:'#freelancerResumeLongV2'
     });
+}
+
+if ($("#freelancerResumeDownload").length !== 0){
+    let freelancerResumeDownload = new Vue({
+        el:'#freelancerResumeDownload'
+    })
 }
 
 if ($("#freelancerResumeEditor").length !== 0){

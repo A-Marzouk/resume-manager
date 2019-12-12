@@ -442,9 +442,9 @@
                                                     </div>
                                                     <div>
                                                         <a href="javascript:void(0)" class="btn btn-sm activeBtn"
-                                                           :class="{active : user.agent.custom_resume.is_hire_me_active}"
+                                                           :class="{active : user.agent.custom_resume.is_hire_me_active == 1 ? true : false}"
                                                            @click="toggleResumeCustomField('is_hire_me_active')">
-                                                       <span v-if="user.agent.custom_resume.is_hire_me_active">
+                                                       <span v-if="user.agent.custom_resume.is_hire_me_active == 1 ? true : false">
                                                            ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
                                                        </span>
                                                             <span v-else>

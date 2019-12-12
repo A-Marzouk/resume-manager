@@ -633,7 +633,7 @@
                 $('#customize').addClass('active');
             },
             toggleResumeCustomField(fieldName) {
-                this.user.agent.custom_resume[fieldName] = !this.user.agent.custom_resume[fieldName];
+                this.user.agent.custom_resume[fieldName] = this.user.agent.custom_resume[fieldName] == 1 ? false : true;
                 this.updateResume();
             },
 

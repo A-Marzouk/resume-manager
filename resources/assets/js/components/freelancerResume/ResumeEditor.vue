@@ -372,9 +372,9 @@
                                                 </div>
                                                 <div>
                                                     <a href="javascript:void(0)" class="btn btn-sm activeBtn"
-                                                       :class="{active : user.agent.custom_resume.is_weekly_rate_active}"
+                                                       :class="{active : user.agent.custom_resume.is_weekly_rate_active == 1 ? true : false}"
                                                        @click="toggleResumeCustomField('is_weekly_rate_active')">
-                                                       <span v-if="user.agent.custom_resume.is_weekly_rate_active">
+                                                       <span v-if="user.agent.custom_resume.is_weekly_rate_active == 1 ? true : false">
                                                            ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
                                                        </span>
                                                         <span v-else>
@@ -389,9 +389,9 @@
                                                 </div>
                                                 <div>
                                                     <a href="javascript:void(0)" class="btn btn-sm activeBtn"
-                                                       :class="{active : user.agent.custom_resume.is_available_hours_active}"
+                                                       :class="{active : user.agent.custom_resume.is_available_hours_active == 1 ? true : false}"
                                                        @click="toggleResumeCustomField('is_available_hours_active')">
-                                                       <span v-if="user.agent.custom_resume.is_available_hours_active">
+                                                       <span v-if="user.agent.custom_resume.is_available_hours_active == 1 ? true : false">
                                                            ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
                                                        </span>
                                                         <span v-else>
@@ -406,9 +406,9 @@
                                                 </div>
                                                 <div>
                                                     <a href="javascript:void(0)" class="btn btn-sm activeBtn"
-                                                       :class="{active : user.agent.custom_resume.is_audio_interview_active}"
+                                                       :class="{active : user.agent.custom_resume.is_audio_interview_active == 1 ? true : false}"
                                                        @click="toggleResumeCustomField('is_audio_interview_active')">
-                                                       <span v-if="user.agent.custom_resume.is_audio_interview_active">
+                                                       <span v-if="user.agent.custom_resume.is_audio_interview_active == 1 ? true : false">
                                                            ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
                                                        </span>
                                                         <span v-else>
@@ -423,9 +423,9 @@
                                                 </div>
                                                 <div>
                                                     <a href="javascript:void(0)" class="btn btn-sm activeBtn"
-                                                       :class="{active : user.agent.custom_resume.is_video_interview_active}"
+                                                       :class="{active : user.agent.custom_resume.is_video_interview_active == 1 ? true : false}"
                                                        @click="toggleResumeCustomField('is_video_interview_active')">
-                                                       <span v-if="user.agent.custom_resume.is_video_interview_active">
+                                                       <span v-if="user.agent.custom_resume.is_video_interview_active == 1 ? true : false">
                                                            ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
                                                        </span>
                                                         <span v-else>
@@ -478,9 +478,9 @@
                                                 </div>
                                                 <div>
                                                     <a href="javascript:void(0)" class="btn btn-sm activeBtn"
-                                                       :class="{active : user.agent.custom_resume.is_chat_with_me_active}"
+                                                       :class="{active : user.agent.custom_resume.is_chat_with_me_active == 1 ? true : false}"
                                                        @click="toggleResumeCustomField('is_chat_with_me_active')">
-                                                       <span v-if="user.agent.custom_resume.is_chat_with_me_active">
+                                                       <span v-if="user.agent.custom_resume.is_chat_with_me_active == 1 ? true : false">
                                                            ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
                                                        </span>
                                                         <span v-else>

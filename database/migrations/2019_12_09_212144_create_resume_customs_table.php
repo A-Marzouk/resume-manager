@@ -24,6 +24,7 @@ class CreateResumeCustomsTable extends Migration
             $table->tinyInteger('is_video_interview_active')->default(1);
             $table->tinyInteger('is_hire_me_active')->default(1);
             $table->tinyInteger('is_chat_with_me_active')->default(1);
+            $table->string('hire_me_link')->nullable();
 
             $table->timestamps();
         });

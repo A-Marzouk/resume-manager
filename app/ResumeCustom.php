@@ -22,6 +22,7 @@ class ResumeCustom extends Model
         'is_video_interview_active',
         'is_hire_me_active',
         'is_chat_with_me_active',
+        'hire_me_link',
     ];
 
     public function agent(){

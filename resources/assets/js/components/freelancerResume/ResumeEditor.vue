@@ -3,22 +3,30 @@
         <div class="d-flex flex-column align-items-center">
             <div class="marginMobile-0">
                 <div class="freelancerCard ml-0 mr-0 freelancerCard_updated" style="margin-bottom:-3px">
-                    <div class="row actionRow d-flex justify-content-between"  :style="getBackgroundColor()">
-                        <div class="importBtn NoDecor whiteHover border-0">
-                            <span>Import : </span>&nbsp;
-                            <a href="javascript:void(0)" id="importBehanceData" data-toggle="modal"
-                               data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
-                            <a href="javascript:void(0)"> linkedIn</a>
+                    <div class="row actionRow d-flex justify-content-between align-items-center"
+                         :style="getBackgroundColor()">
+                        <div class="d-flex">
+                            <div class="importBtn NoDecor whiteHover border-0 mr-3 mt-0">
+                                <span>Import : </span>&nbsp;
+                                <a href="javascript:void(0)" id="importBehanceData" data-toggle="modal"
+                                   data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
+                                <a href="javascript:void(0)"> linkedIn</a>
+                            </div>
+                            <div class="editButton NoDecor">
+                                <a href="javascript:void(0)" @click="toggleCustomize">
+                                    Customize resume
+                                </a>
+                            </div>
                         </div>
                         <div class="d-flex mr-3">
-                            <div class="progressBtn NoDecor">
+                            <div class="progressBtn NoDecor mt-0">
                                 <a href="javascript:void(0)">
                                <span>
                                     70% Complete
                                </span>
                                 </a>
                             </div>
-                            <div class="editBtn NoDecor" style="margin-left: 10px;">
+                            <div class="editButton NoDecor" style="margin-left: 10px;">
                                 <a href="/freelancer">
                                     <img src="/images/check_24px.png" alt="finish profile">
                                     Finish editing
@@ -34,7 +42,8 @@
                         <div class="resumeCardRight">
                             <div class="row nameRow d-flex flex-column" :style="'background-color:' + colors.hex">
                                 <div class="d-flex justify-content-end w-100">
-                                    <img src="/images/changeColor.png" alt="changeColro" @click="colorChoose" style="width:20px; height:20px;">
+                                    <img src="/images/changeColor.png" alt="changeColro" @click="colorChoose"
+                                         style="width:20px; height:20px;">
                                 </div>
                                 <form class="container freelancerForm formDisplay">
                                     <div class="col-lg-2 col-6 imageCol">
@@ -179,16 +188,20 @@
                                     :key="index + 'tab'" :class="{halfOpacity : !tab.is_active}">
                                     <a class="nav-link navTab text-center d-flex align-items-center"
                                        :class="{active : tab.name === currentMainTab.name}"
-                                       @click="currentMainTab = tab" :href="'#' + tab.name" :id=" tab.name + '_ref'" role="tab"
+                                       @click="currentMainTab = tab" :href="'#' + tab.name" :id=" tab.name + '_ref'"
+                                       role="tab"
                                        data-toggle="tab">
-                                        <img src="/images/new_theme/arrow@2x.png" alt="change order" @click="tabToLeft(tab)"
+                                        <img src="/images/new_theme/arrow@2x.png" alt="change order"
+                                             @click="tabToLeft(tab)"
                                              style="transform: rotate(180deg); margin-right:10px; width:7.5px; height:12px;"
                                              class="cursorPointer" v-show="index != 0">
                                         <div>
                                             {{tab.label}}
                                         </div>
-                                        <img src="/images/new_theme/arrow@2x.png" class="cursorPointer" alt="" @click="tabToRight(tab)"
-                                             style="margin-left:10px; width:7.5px; height:12px;" v-show="index != mainTabs.length-1">
+                                        <img src="/images/new_theme/arrow@2x.png" class="cursorPointer" alt=""
+                                             @click="tabToRight(tab)"
+                                             style="margin-left:10px; width:7.5px; height:12px;"
+                                             v-show="index != mainTabs.length-1">
                                     </a>
                                 </li>
                             </ul>
@@ -211,7 +224,6 @@
                                     </div>
                                 </div>
 
-
                                 <div role="tabpanel" class="tab-pane firstItem"
                                      :class="{active : currentMainTab.name === 'recordings'}" id="recordings">
                                     <div class="row"
@@ -224,16 +236,21 @@
                                                     <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
                                                     <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
                                                 </a>
-                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" @click="openIconsBar(currentMainTab)">
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary"
+                                                   @click="openIconsBar(currentMainTab)">
                                                     Choose tab default icon
                                                 </a>
-                                                <div class="icons-bar d-flex" v-if="this.openedIconsTabID === currentMainTab.id">
-                                                    <div v-for="(icon,index) in iconsList" class="icon" @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
-                                                        <img :src="'/images/resume_tabs_icons/' + icon"  alt="icon" class="tab-icon">
+                                                <div class="icons-bar d-flex"
+                                                     v-if="this.openedIconsTabID === currentMainTab.id">
+                                                    <div v-for="(icon,index) in iconsList" class="icon"
+                                                         @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
+                                                        <img :src="'/images/resume_tabs_icons/' + icon" alt="icon"
+                                                             class="tab-icon">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <records-list class="mt-3" :user_id="user.id" :tab_default_icon="currentMainTab.default_icon_src"></records-list>
+                                            <records-list class="mt-3" :user_id="user.id"
+                                                          :tab_default_icon="currentMainTab.default_icon_src"></records-list>
                                         </div>
                                     </div>
                                 </div>
@@ -267,16 +284,21 @@
                                                     <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
                                                     <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
                                                 </a>
-                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" @click="openIconsBar(currentMainTab)">
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary"
+                                                   @click="openIconsBar(currentMainTab)">
                                                     Choose tab default icon
                                                 </a>
-                                                <div class="icons-bar d-flex" v-if="this.openedIconsTabID === currentMainTab.id">
-                                                    <div v-for="(icon,index) in iconsList" class="icon" @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
-                                                        <img :src="'/images/resume_tabs_icons/' + icon"  alt="icon" class="tab-icon">
+                                                <div class="icons-bar d-flex"
+                                                     v-if="this.openedIconsTabID === currentMainTab.id">
+                                                    <div v-for="(icon,index) in iconsList" class="icon"
+                                                         @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
+                                                        <img :src="'/images/resume_tabs_icons/' + icon" alt="icon"
+                                                             class="tab-icon">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <works-list class="mt-3" :user_id="user.id" :tab_default_icon="currentMainTab.default_icon_src"></works-list>
+                                            <works-list class="mt-3" :user_id="user.id"
+                                                        :tab_default_icon="currentMainTab.default_icon_src"></works-list>
                                         </div>
                                     </div>
                                 </div>
@@ -292,16 +314,21 @@
                                                     <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
                                                     <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
                                                 </a>
-                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" @click="openIconsBar(currentMainTab)">
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary"
+                                                   @click="openIconsBar(currentMainTab)">
                                                     Choose tab default icon
                                                 </a>
-                                                <div class="icons-bar d-flex" v-if="this.openedIconsTabID === currentMainTab.id">
-                                                    <div v-for="(icon,index) in iconsList" class="icon" @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
-                                                        <img :src="'/images/resume_tabs_icons/' + icon"  alt="icon" class="tab-icon">
+                                                <div class="icons-bar d-flex"
+                                                     v-if="this.openedIconsTabID === currentMainTab.id">
+                                                    <div v-for="(icon,index) in iconsList" class="icon"
+                                                         @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
+                                                        <img :src="'/images/resume_tabs_icons/' + icon" alt="icon"
+                                                             class="tab-icon">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <educations-list class="mt-3" :user_id="user.id" :tab_default_icon="currentMainTab.default_icon_src"></educations-list>
+                                            <educations-list class="mt-3" :user_id="user.id"
+                                                             :tab_default_icon="currentMainTab.default_icon_src"></educations-list>
                                         </div>
                                     </div>
                                 </div>
@@ -317,19 +344,155 @@
                                                     <span v-show="currentMainTab.is_active">TAB IS ACTIVE (CLICK TO DEACTIVATE)</span>
                                                     <span v-show="!currentMainTab.is_active">TAB IS NOT ACTIVE (CLICK TO ACTIVATE)</span>
                                                 </a>
-                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" @click="openIconsBar(currentMainTab)">
+                                                <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary"
+                                                   @click="openIconsBar(currentMainTab)">
                                                     Choose tab default icon
                                                 </a>
-                                                <div class="icons-bar d-flex" v-if="this.openedIconsTabID === currentMainTab.id">
-                                                    <div v-for="(icon,index) in iconsList" class="icon" @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
-                                                        <img :src="'/images/resume_tabs_icons/' + icon"  alt="icon" class="tab-icon">
+                                                <div class="icons-bar d-flex"
+                                                     v-if="this.openedIconsTabID === currentMainTab.id">
+                                                    <div v-for="(icon,index) in iconsList" class="icon"
+                                                         @click="setTabIcon(currentMainTab,'/images/resume_tabs_icons/' + icon)">
+                                                        <img :src="'/images/resume_tabs_icons/' + icon" alt="icon"
+                                                             class="tab-icon">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <references-list class="mt-3" :user_id="user.id" :tab_default_icon="currentMainTab.default_icon_src"></references-list>
+                                            <references-list class="mt-3" :user_id="user.id"
+                                                             :tab_default_icon="currentMainTab.default_icon_src"></references-list>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div role="tabpanel" class="tab-pane" id="customize" :class="{active : customize}">
+                                    <div style="padding-top: 17px; padding-bottom: 17px;">
+                                        <div class="d-flex flex-column ml-3 mr-3">
+                                            <div class="d-flex mb-2 justify-content-between">
+                                                <div class="resumeFieldText">
+                                                    Hourly rate
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0)" class="btn btn-sm activeBtn"
+                                                       :class="{active : user.agent.custom_resume.is_weekly_rate_active}"
+                                                       @click="toggleResumeCustomField('is_weekly_rate_active')">
+                                                       <span v-if="user.agent.custom_resume.is_weekly_rate_active">
+                                                           ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
+                                                       </span>
+                                                        <span v-else>
+                                                           ELEMENT IS NOT ACTIVE (CLICK TO ACTIVATE)
+                                                       </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex mb-2 justify-content-between">
+                                                <div class="resumeFieldText">
+                                                    Weekly Availability
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0)" class="btn btn-sm activeBtn"
+                                                       :class="{active : user.agent.custom_resume.is_available_hours_active}"
+                                                       @click="toggleResumeCustomField('is_available_hours_active')">
+                                                       <span v-if="user.agent.custom_resume.is_available_hours_active">
+                                                           ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
+                                                       </span>
+                                                        <span v-else>
+                                                           ELEMENT IS NOT ACTIVE (CLICK TO ACTIVATE)
+                                                       </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex mb-2 justify-content-between">
+                                                <div class="resumeFieldText">
+                                                    Audio interview
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0)" class="btn btn-sm activeBtn"
+                                                       :class="{active : user.agent.custom_resume.is_audio_interview_active}"
+                                                       @click="toggleResumeCustomField('is_audio_interview_active')">
+                                                       <span v-if="user.agent.custom_resume.is_audio_interview_active">
+                                                           ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
+                                                       </span>
+                                                        <span v-else>
+                                                           ELEMENT IS NOT ACTIVE (CLICK TO ACTIVATE)
+                                                       </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex mb-2 justify-content-between">
+                                                <div class="resumeFieldText">
+                                                    Video interview
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0)" class="btn btn-sm activeBtn"
+                                                       :class="{active : user.agent.custom_resume.is_video_interview_active}"
+                                                       @click="toggleResumeCustomField('is_video_interview_active')">
+                                                       <span v-if="user.agent.custom_resume.is_video_interview_active">
+                                                           ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
+                                                       </span>
+                                                        <span v-else>
+                                                           ELEMENT IS NOT ACTIVE (CLICK TO ACTIVATE)
+                                                       </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="d-flex mb-2 flex-column">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="resumeFieldText">
+                                                        Hire me btn
+                                                    </div>
+                                                    <div>
+                                                        <a href="javascript:void(0)" class="btn btn-sm activeBtn"
+                                                           :class="{active : user.agent.custom_resume.is_hire_me_active}"
+                                                           @click="toggleResumeCustomField('is_hire_me_active')">
+                                                       <span v-if="user.agent.custom_resume.is_hire_me_active">
+                                                           ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
+                                                       </span>
+                                                            <span v-else>
+                                                           ELEMENT IS NOT ACTIVE (CLICK TO ACTIVATE)
+                                                       </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="form-group d-flex flex-column align-items-start">
+                                                        <label for="customized_link">Customized link for Hire me btn
+                                                            :</label>
+                                                        <input type="text" class="form-control" id="customized_link"
+                                                               placeholder="my-website.com"
+                                                               v-model="user.agent.custom_resume.hire_me_link"
+                                                               @keyup="showSaveBtnForHireLinkInput = true">
+                                                        <a href="javascript:(0)"
+                                                           class="btn btn-sm btn-outline-primary mt-2"
+                                                           v-show="showSaveBtnForHireLinkInput"
+                                                           @click="updateHireMeLink">Save</a>
+                                                        <div v-if="errors.hireMeLink" class="error">
+                                                            {{errors.hireMeLink}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="d-flex mb-2 justify-content-between">
+                                                <div class="resumeFieldText">
+                                                    Tab to chat btn
+                                                </div>
+                                                <div>
+                                                    <a href="javascript:void(0)" class="btn btn-sm activeBtn"
+                                                       :class="{active : user.agent.custom_resume.is_chat_with_me_active}"
+                                                       @click="toggleResumeCustomField('is_chat_with_me_active')">
+                                                       <span v-if="user.agent.custom_resume.is_chat_with_me_active">
+                                                           ELEMENT IS ACTIVE (CLICK TO DEACTIVATE)
+                                                       </span>
+                                                        <span v-else>
+                                                           ELEMENT IS NOT ACTIVE (CLICK TO ACTIVATE)
+                                                       </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -377,10 +540,12 @@
 
         <div class="colorPicker d-flex flex-column">
             <div class="d-flex mb-2 justify-content-end align-items-center" v-if="showColorPicker">
-                <img src="/images/check_black.png" alt="save" class="mr-3 editIcon" style="width:20px; height:18px;" @click="saveColorEdit">
-                <img src="/images/close_black.png" alt="cancel" class="editIcon" style="width:24px; height:24px;" @click="cancelColorEdit">
+                <img src="/images/check_black.png" alt="save" class="mr-3 editIcon" style="width:20px; height:18px;"
+                     @click="saveColorEdit">
+                <img src="/images/close_black.png" alt="cancel" class="editIcon" style="width:24px; height:24px;"
+                     @click="cancelColorEdit">
             </div>
-            <chrome-picker v-model="colors" v-show="showColorPicker" />
+            <chrome-picker v-model="colors" v-show="showColorPicker"/>
         </div>
     </div>
 </template>
@@ -409,11 +574,11 @@
         props: ['user'],
         data() {
             return {
-                showColorPicker:false,
-                colors:{
+                showColorPicker: false,
+                colors: {
                     hex: this.user.agent.custom_resume ? this.user.agent.custom_resume.background_color : '#4E75E8',
                 },
-                oldColors:{
+                oldColors: {
                     hex: this.user.agent.custom_resume ? this.user.agent.custom_resume.background_color : '#4E75E8',
                 },
                 freelancer: {
@@ -423,8 +588,8 @@
                 errors: [],
                 profile_picture: '',
                 currentMainTab: {},
-                mainTabs:[],
-                iconsList:[
+                mainTabs: [],
+                iconsList: [
                     'listicon_1.png',
                     'listicon_2.png',
                     'listicon_3.png',
@@ -436,23 +601,55 @@
                     'listicon_9.png',
                     'listicon_10.png',
                 ],
-                openedIconsTabID:0,
+                openedIconsTabID: 0,
+                customize: false,
+                showSaveBtnForHireLinkInput: false,
+                errors:{}
             }
         },
         methods: {
-            cancelColorEdit(){
-                this.colors = this.oldColors;
-                this.showColorPicker = false ;
+            validURL(str) {
+                var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+                    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+                    '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+                    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+                    '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+                    '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+                return !!pattern.test(str);
+            },
+            updateHireMeLink() {
+                this.errors = {};
+                if(!this.validURL(this.user.agent.custom_resume.hire_me_link)){
+                    this.errors = {
+                      hireMeLink : 'Not a valid URL.'
+                    };
+                    return;
+                }
+                this.updateResume();
+                this.showSaveBtnForHireLinkInput = false;
+            },
+            toggleCustomize() {
+                this.currentMainTab = {};
+                $('#customize').addClass('active');
+            },
+            toggleResumeCustomField(fieldName) {
+                this.user.agent.custom_resume[fieldName] = !this.user.agent.custom_resume[fieldName];
+                this.updateResume();
             },
 
-            saveColorEdit(){
-                this.oldColors = this.colors;
-                this.user.agent.custom_resume.background_color = this.colors.hex ;
-                this.updateResume();
-                this.showColorPicker = false ;
+            cancelColorEdit() {
+                this.colors = this.oldColors;
+                this.showColorPicker = false;
             },
-            updateResume(){
-                let customResume = this.user.agent.custom_resume ;
+
+            saveColorEdit() {
+                this.oldColors = this.colors;
+                this.user.agent.custom_resume.background_color = this.colors.hex;
+                this.updateResume();
+                this.showColorPicker = false;
+            },
+            updateResume() {
+                let customResume = this.user.agent.custom_resume;
                 axios.post('/agent/resume/custom/update', customResume)
                     .then()
                     .catch()
@@ -483,31 +680,32 @@
             },
             updateTab(tab) {
                 axios.post('/agent/resume/tab/update', tab)
-                    .then((response) => {})
+                    .then((response) => {
+                    })
                     .catch()
             },
-            tabToLeft(myTab){
-                let tabs = this.mainTabs ;
-                tabs.forEach( (tab,index) => {
-                    if(myTab.view_order == tab.view_order){
+            tabToLeft(myTab) {
+                let tabs = this.mainTabs;
+                tabs.forEach((tab, index) => {
+                    if (myTab.view_order == tab.view_order) {
                         tabs[index].view_order--;
-                        tabs[index-1].view_order++;
+                        tabs[index - 1].view_order++;
 
                         this.updateTab(tabs[index]);
-                        this.updateTab(tabs[index-1]);
+                        this.updateTab(tabs[index - 1]);
                     }
                 });
                 this.sortTabs();
             },
-            tabToRight(myTab){
-                let tabs = this.mainTabs ;
-                tabs.forEach( (tab,index) => {
-                    if(myTab.view_order == tab.view_order){
+            tabToRight(myTab) {
+                let tabs = this.mainTabs;
+                tabs.forEach((tab, index) => {
+                    if (myTab.view_order == tab.view_order) {
                         tabs[index].view_order++;
-                        tabs[index+1].view_order--;
+                        tabs[index + 1].view_order--;
 
                         this.updateTab(tabs[index]);
-                        this.updateTab(tabs[index+1]);
+                        this.updateTab(tabs[index + 1]);
                     }
                 });
                 this.sortTabs();
@@ -585,53 +783,53 @@
                     )
                     .catch()
             },
-            setMainTabs(){
+            setMainTabs() {
                 this.mainTabs = this.user.agent.resume_tabs.filter((tab) => {
                     return tab.type === 'main_tab'
                 });
                 this.setCurrentTab();
             },
-            sortTabs(){
+            sortTabs() {
                 this.mainTabs = _.orderBy(this.mainTabs, 'view_order');
-                setTimeout( () => {
-                    this.mainTabs.forEach( (tab) => {
-                        if(this.currentMainTab.id != tab.id){
+                setTimeout(() => {
+                    this.mainTabs.forEach((tab) => {
+                        if (this.currentMainTab.id != tab.id) {
                             $('#' + tab.name + '_ref').removeClass('active');
                         }
                     });
-                },200);
+                }, 200);
             },
-            setTabIcon(tab,src){
-                tab.default_icon_src = src ;
+            setTabIcon(tab, src) {
+                tab.default_icon_src = src;
                 this.updateTab(tab);
-                this.openedIconsTabID = 0 ;
+                this.openedIconsTabID = 0;
             },
-            openIconsBar(tab){
-                if(this.openedIconsTabID === tab.id){
-                    this.openedIconsTabID = 0 ;
-                }else{
-                    this.openedIconsTabID = tab.id ;
+            openIconsBar(tab) {
+                if (this.openedIconsTabID === tab.id) {
+                    this.openedIconsTabID = 0;
+                } else {
+                    this.openedIconsTabID = tab.id;
                 }
             },
-            getBackgroundColor(){
-                if(!this.colors.rgba){
+            getBackgroundColor() {
+                if (!this.colors.rgba) {
                     let currentBG = this.colors.hex.replace('#', '');
                     let r = parseInt(currentBG.substring(0, 2), 16);
                     let g = parseInt(currentBG.substring(2, 4), 16);
                     let b = parseInt(currentBG.substring(4, 6), 16);
                     let a = 0.85;
-                    return 'background-color:rgba(' + r + ',' + g + ',' + b + ',' + a + ')' ;
+                    return 'background-color:rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
                 }
 
-                let currentBG = this.colors.rgba ;
+                let currentBG = this.colors.rgba;
                 let r = currentBG.r;
                 let b = currentBG.b;
                 let g = currentBG.g;
                 let a = 0.85;
-                return  `background-color:rgba(${r},${g},${b},${a})`;
+                return `background-color:rgba(${r},${g},${b},${a})`;
             },
-            colorChoose(){
-                this.showColorPicker = true ;
+            colorChoose() {
+                this.showColorPicker = true;
             }
         },
         mounted() {
@@ -683,29 +881,77 @@
         opacity: 0.5;
     }
 
-    .tab-icon{
-        width:25px;
-        height:25px;
-        margin:10px;
-        cursor : pointer ;
+    .tab-icon {
+        width: 25px;
+        height: 25px;
+        margin: 10px;
+        cursor: pointer;
     }
 
-    .icons-bar{
+    .icons-bar {
         border: #007bff 1px solid;
         border-radius: 5px;
         margin-top: 10px;
         margin-bottom: 10px;
     }
 
-    .colorPicker{
-        position:fixed;
-        bottom:40px;
-        right:40px;
+    .colorPicker {
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
     }
 
     .editIcon:hover {
         cursor: pointer;
     }
 
+    .notActive {
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+        background: lightgray !important;
+    }
+
+    .activationEye {
+        img {
+            width: 20px;
+            margin-top: 20px;
+            background: white;
+            border-radius: 50%;
+            padding: 2px;
+        }
+    }
+
+    .editButton {
+        a {
+            display: flex;
+            align-items: center;
+            color: white;
+            justify-content: center;
+            font-weight: 600;
+            height: 30px;
+            border: 1px solid #FFFFFF;
+            border-radius: 5px;
+            font-size: 13px;
+            width: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        img {
+            width: 14px;
+            margin-right: 5px;
+        }
+
+    }
+
+    .resumeFieldText {
+        font-weight: 600;
+    }
+
+    .error{
+        color: red;
+        font-weight: 600;
+        margin-top: 10px;
+    }
 
 </style>

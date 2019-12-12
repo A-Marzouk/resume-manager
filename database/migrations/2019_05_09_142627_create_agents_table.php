@@ -29,6 +29,8 @@ class CreateAgentsTable extends Migration
             $table->string('cv')->nullable();
             $table->string('recording')->nullable();
             $table->string('recording_type')->nullable();
+            $table->decimal('monthly_salary', 16, 2)->nullable();
+            $table->decimal('monthly_salary_part_time', 16, 2)->nullable();
 
 
             $table->integer('user_id')->unsigned()->index();

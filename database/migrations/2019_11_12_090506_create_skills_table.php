@@ -20,6 +20,7 @@ class CreateSkillsTable extends Migration
             $table->string('type')->nullable();
             $table->string('icon')->nullable();
             $table->string('percentage')->nullable();
+            $table->tinyInteger('is_percentage_active')->default(1);
             $table->timestamps();
         });
     }

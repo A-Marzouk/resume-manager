@@ -60,54 +60,54 @@
                                    Your skills section looks empty. Please add your skills.
                              </span>
 
-                            <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)"
-                                 v-for="(skill,index) in skills" :key="index" v-show="skill.type === currType"
-                                 class="highlightSkill skills d-flex flex-column w-100">
-                                <!-- skill -->
-                                <div class="skill text-left">
-                                    <!-- title -->
-                                    <div class="skill-title d-flex justify-content-between align-items-center">
-                                        <div class="d-flex align-items-center">
-                                            <img style="width: 17px;padding-bottom: 3px;" class="mr-2"
-                                                 :src="getSkillIconSrc(skill.skill_title)" alt="skill"
-                                                 :id="'skillImage_' + skill.id">
-                                            <div>
-                                                {{skill.skill_title}}
+                            <div v-for="(skill,index) in skills" v-show="skill.type === currType">
+                                <div @mouseover="highlightSkill(skill,0)" @mouseleave="highlightSkill(skill,100)" class="highlightSkill d-flex skills  flex-column w-100">
+                                    <!-- skill -->
+                                    <div class="skill text-left">
+                                        <!-- title -->
+                                        <div class="skill-title d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center">
+                                                <img style="width: 17px;padding-bottom: 3px;" class="mr-2"
+                                                     :src="getSkillIconSrc(skill.skill_title)" alt="skill"
+                                                     :id="'skillImage_' + skill.id">
+                                                <div>
+                                                    {{skill.skill_title}}
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <a href="javascript:void(0)" @click="togglePercentage(skill)" class="mr-2">
+                                                    <img src="/images/client/payments/show_invoice.png" :class="{'notActive' : skill.is_percentage_active}" alt="edit" style="width:16px">
+                                                </a>
+                                                <a href="javascript:void(0)" @click="editedSkill = skill" class="mr-2"><img
+                                                        src="/images/edit.png" alt="edit" style="width:16px"></a>
+
+                                                <a href="javascript:void(0)" @click="deleteSkill(skill)"><img
+                                                        src="/images/close_black.png" alt="edit" style="width:16px"></a>
                                             </div>
                                         </div>
-                                        <div class="d-flex align-items-center">
-                                            <a href="javascript:void(0)" @click="togglePercentage(skill)" class="mr-2">
-                                                <img src="/images/client/payments/show_invoice.png" :class="{'notActive' : skill.is_percentage_active}" alt="edit" style="width:16px">
-                                            </a>
-                                            <a href="javascript:void(0)" @click="editedSkill = skill" class="mr-2"><img
-                                                    src="/images/edit.png" alt="edit" style="width:16px"></a>
-
-                                            <a href="javascript:void(0)" @click="deleteSkill(skill)"><img
-                                                    src="/images/close_black.png" alt="edit" style="width:16px"></a>
+                                        <!-- bar -->
+                                        <div class="skill-bar" :data-bar="skill.percentage" :class="{'halfOpacity' : !skill.is_percentage_active}">
+                                            <span></span>
                                         </div>
                                     </div>
-                                    <!-- bar -->
-                                    <div class="skill-bar" :data-bar="skill.percentage" :class="{'halfOpacity' : !skill.is_percentage_active}">
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="form-group" v-show="editedSkill.id === skill.id">
-                                    <input type="text" placeholder="Skill title" class="form-control"
-                                           name="skill_title"
-                                           v-model="editedSkill.skill_title"
-                                           required
-                                           style=" background:white url('/images/add_skill.png')  no-repeat right .75rem center;
+                                    <div class="form-group" v-show="editedSkill.id === skill.id">
+                                        <input type="text" placeholder="Skill title" class="form-control"
+                                               name="skill_title"
+                                               v-model="editedSkill.skill_title"
+                                               required
+                                               style=" background:white url('/images/add_skill.png')  no-repeat right .75rem center;
                                         background-size: 15px 15px;"
-                                    >
+                                        >
 
-                                    <input type="number" min="50" max="100" step="10" placeholder="Percentage %"
-                                           class="form-control" v-model="editedSkill.percentage" required>
+                                        <input type="number" min="50" max="100" step="10" placeholder="Percentage %"
+                                               class="form-control" v-model="editedSkill.percentage" required>
 
-                                    <a href="javascript:void(0)"
-                                       v-show="editedSkill.skill_title.length > 0 && editedSkill.percentage.length > 0"
-                                       @click="updateSkill" class="btn btn-outline-dark">SAVE</a>
+                                        <a href="javascript:void(0)"
+                                           v-show="editedSkill.skill_title.length > 0 && editedSkill.percentage.length > 0"
+                                           @click="updateSkill" class="btn btn-outline-dark">SAVE</a>
+                                    </div>
+                                    <!-- #skill -->
                                 </div>
-                                <!-- #skill -->
                             </div>
                         </div>
                     </div>

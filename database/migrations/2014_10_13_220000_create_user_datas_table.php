@@ -61,6 +61,9 @@ class CreateUserDatasTable extends Migration
             $table->timestamp('agreed_with_terms_at')->nullable();
             $table->text('avatar')->nullable();
             $table->text('paypal_acc_number')->nullable();
+            $table->string('telegram')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('second_email')->nullable();
 
             // $table->string('address_line_1')->nullable();
             // $table->string('address_line_2')->nullable();

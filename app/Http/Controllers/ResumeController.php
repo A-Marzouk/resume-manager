@@ -22,7 +22,9 @@ class ResumeController extends Controller
             $pdf = \App::make('dompdf.wrapper');
             $pdf->loadHTML($view);
             ob_end_clean();
+            // dd($freelancer);
             return $pdf->stream($freelancer->userData['first_name'].' '.$freelancer->userData['last_name'].'.pdf');
+            // return view('freelancer.resume_pdf', compact('freelancer'));
         }
     }
 

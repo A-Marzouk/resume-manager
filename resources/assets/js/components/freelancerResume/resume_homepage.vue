@@ -1,0 +1,360 @@
+<template>
+  <div>
+    <section class="resume-main">
+      <div class="container">
+        <h1 class="resume-main__title">Make Your Online Resume</h1>
+        <h2 class="resume-main__subtitle">Choose Your Username</h2>
+      </div>
+      <div class="container username">
+        <div class="styled-input">
+          <img src="/images/resume_builder/arrow-username.svg" alt="snippet arrow" />
+          <span class="url">123workforce.com/</span>
+          <input type="text" id="username" placeholder="Your username"/>
+        </div>
+        <button class="btn filled">Build Your Resume</button>
+      </div>
+
+      <picture class="main-asset">
+        <img src="/images/resume_builder/asset1.svg" alt="resume builder asset 123workforce">
+      </picture>
+    </section>
+
+    <section class="resume-samples">
+      <div class="professions-slider-container">
+        <slick class="professions-slider-tabs"
+          ref="slick"
+          :options="slickOptions"
+        >
+          <li v-for="(profession, index) in professions" 
+            :key="profession"
+          ><a @click="handleSetPosition(index)">{{ profession }}</a></li>
+        </slick>
+      </div>
+
+      <div class="resume-preview">
+        <transition name="fade">
+          <img :key="actualProfessionSlug" :src="`/images/resume_builder/resume-${actualProfessionSlug}.png`" alt="resume preview">
+        </transition>
+      </div>
+    </section>
+  </div>
+</template>
+<script>
+import Slick from 'vue-slick'
+
+export default {
+  components: { Slick },
+  data: () => ({
+    professions: [
+      'Virtual Assistant',
+      'UI/UX Designer',
+      'Graphic Designer',
+      '3D designer',
+      'Copywriter',
+      'Web Developer',
+      'Bookkeper',
+      'Fullstack Developer',
+      'Frontend Developer',
+      'Backend Developer',
+      'DBA Specialist',
+      'Mobile Developer',
+      'Animator',
+      'Multimedia productor'
+    ],
+    slickOptions: {
+      infinite: false,
+      centerMode: true,
+      slidesToShow: 5,
+      slidesToScroll: 5,
+      speed: 300,
+      adaptiveHeight: true,
+      initialSlide: 4
+    },
+    actualProfession: null
+  }),
+  methods: {
+    handleSetPosition(index) {
+      this.$refs.slick.goTo(index)
+      this.actualProfession = this.professions[index]
+    },
+    reInit () {
+      this.$nextTick(() => {
+        this.$refs.slick.reSlick();
+      });
+    },
+  },
+  computed: {
+    actualProfessionSlug: function () {
+      return this.actualProfession ? this.actualProfession.replace(' ', '_').toLowerCase() : 'default'
+    }
+  },
+  mounted () {
+    this.actualProfession = this.professions[this.$refs.slick.currentSlide()]
+  }
+}
+</script>
+<style lang="scss">
+  // Styles for the resume builder view
+$text-color: #1f3445;
+$primary: #0290d8;
+$bg-color: white;
+$input-bg: #F2F9FD;
+$placeholder-color: #9ba1ad;
+
+.no-bg {
+  background: $bg-color;
+}
+
+.filled {
+  background: $primary;
+  color: $bg-color;
+}
+
+.btn.filled {
+  padding: 0 2rem !important;
+  border-radius: 10px;
+  margin: 0 1.5rem;
+}
+
+.resume-builder-nav {
+  position: fixed !important;
+  top: 0;
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
+  z-index: 500;
+
+  .navbar-brand img {
+    width: 244px;
+  }
+
+  @media (max-width: 1480px) {
+
+    .navbar-brand img {
+      width: 180px;
+    }
+  }
+}
+
+.loginBtn {
+
+  &.no-outline {
+    border: 0;
+    margin-right: 0;
+
+    a {
+      color: $text-color;
+      font-weight: normal;
+    }
+  }
+
+  &.filled {
+    background: $primary;
+    border-radius: 5px;
+
+    a {
+      color: $bg-color;
+      width: 150px;
+      font-weight: 700;
+    }
+  }
+
+  &.filled,
+  &.no-outline {
+    a {
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 1480px) {
+    &.filled,
+    &.no-outline {
+    a {
+      width: 120px;
+      height: 35px;
+      font-size: 16px;
+    }
+  }
+  }
+}
+
+.resume-main {
+  padding: 8rem 2rem 13rem;
+  color: $text-color;
+  position: relative;
+
+  &__title {
+    font-size: 70px;
+    max-width: 512px;
+  }
+
+  &__subtitle {
+    font-size: 30px;
+    margin-top: 20px;
+  }
+
+  .username {
+    display: flex;
+    margin-top: 60px;
+  }
+
+  .main-asset {
+    position: absolute;
+    right: -60px;
+    top: 8rem;
+  }
+
+  .styled-input {
+    background: $input-bg;
+    border-radius: 9.5px;
+    width: 679px;
+    height: 99px;    
+    display: flex;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: -120px;
+      left: 400px;
+      width: 200px;
+    }
+
+    .url {
+      height: 100%;
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+    }
+
+    input {
+      height: 100%;
+      width: 40%;
+      border: none;
+      border-left: 1px solid rgba(0, 0, 0, .15);
+      background: transparent;
+      font-size: 30px;
+      padding: 1rem 1.5rem;
+
+      &::placeholder {
+        color: $placeholder-color;
+        text-align: center;
+      }
+    }
+  }
+
+  @media (max-width: 1480px) {
+    &__title {
+      font-size: 52px;
+      max-width: 360px;
+    }
+
+    &__subtitle {
+      font-size: 20px;
+      font-weight: normal;
+    }
+
+    .main-asset {
+      img {
+        height: 75vh;
+      }
+    }
+
+    .styled-input {
+      border-radius: 9.5px;
+      width: 450px;
+      height: 60px;
+
+      .url,
+      input {
+        font-size: 16px;
+      }
+    }
+  }
+
+}
+
+.resume-samples {
+  .professions-slider-container {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: $input-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .professions-slider-tabs {
+    width: 100%;
+    list-style: none;
+    padding: 0 2rem;
+
+    .slick-current {
+      a {
+          background: $primary;
+          color: $bg-color;
+          border-radius: 10px;
+        }
+    }
+
+    li {
+      // float: left;
+      padding: 0 20px;
+      margin: 0;
+      position: relative;
+      
+      a {
+        padding: 5px 10px;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        color: $text-color;
+
+        &:hover {
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        right: 0;
+        top: 0;
+        height: 90%;
+        border-right: 1px solid $placeholder-color;
+      }
+    }
+  }
+}
+
+.resume-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  padding: 0 2rem;
+  min-height: 750px;
+  position: relative;
+
+  img {
+    height: 700px;
+    position: absolute;
+    top: 0;
+  }
+}
+
+// Transitions effects
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s ease;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+</style>

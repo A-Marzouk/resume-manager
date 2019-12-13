@@ -325,6 +325,9 @@ Route::get('/clear-cache', function() {
     return redirect()->back();
 });
 
+// Resume landing page
+Route::get('/resume-builder', 'ResumeController@resumeBuilder')->name('resume-builder');
+
 // admin area :
 Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');
 //Route::get('/admin/send_mail/approved_users','AdminsController@sendMailApprovedUsers')->name('admin.dashboard');

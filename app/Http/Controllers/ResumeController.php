@@ -11,6 +11,10 @@ use App\User;
 
 class ResumeController extends Controller
 {
+    public function resumeBuilder () {
+        return view('resume_builder.index');
+    }
+
     public function downloadPDFResume($username) {
         $freelancer = User::where('username',$username)->with(['userData','skills','agent','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);

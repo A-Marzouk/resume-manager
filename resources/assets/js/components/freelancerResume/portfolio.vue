@@ -155,8 +155,7 @@
                                     <div class="col-md-4" style="padding: 0;">
 
                                         <div class="row text-center cardRow NoDecor">
-                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)"
-                                               @click="showContactSection()">
+                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="goToExternalURL(freelancer.agent.custom_resume.hire_me_link)">
                                                 Hire me
                                             </a>
                                         </div>
@@ -223,7 +222,7 @@
 
                             <div class="col-12" style="padding: 10px 20px 16px 20px;">
                                 <div class="text-center cardRow NoDecor">
-                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)">
+                                    <a class="hireCardBtn btn-block showHireSection"  href="javascript:void(0)" @click="goToExternalURL(freelancer.agent.custom_resume.hire_me_link)">
                                         Hire me
                                     </a>
                                 </div>
@@ -883,6 +882,14 @@
         },
         methods: {
             submitContactForm(){
+
+            },
+            goToExternalURL(link){
+                if(link.includes('http')){
+                    window.location = link ;
+                }else{
+                    window.location = 'http://' + link ;
+                }
 
             },
             showSuccessMessage(message){

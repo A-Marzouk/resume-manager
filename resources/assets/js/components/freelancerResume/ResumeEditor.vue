@@ -19,13 +19,6 @@
                             </div>
                         </div>
                         <div class="d-flex mr-3">
-                            <div class="progressBtn NoDecor mt-0">
-                                <a href="javascript:void(0)">
-                               <span>
-                                    70% Complete
-                               </span>
-                                </a>
-                            </div>
                             <div class="editButton NoDecor" style="margin-left: 10px;">
                                 <a href="/freelancer">
                                     <img src="/images/check_24px.png" alt="finish profile">

@@ -114,7 +114,7 @@
                                     </div>
 
                                     <div class="NoDecor" style="margin-top:12px;">
-                                        <a href="javascript:void(0)" class="tap-to-chat ">
+                                        <a href="javascript:void(0)" class="tap-to-chat" @click="showContactSection()">
                                             TAP TO CHAT
                                         </a>
                                     </div>
@@ -156,7 +156,7 @@
 
                                         <div class="row text-center cardRow NoDecor">
                                             <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)"
-                                               @click="showHireSection()">
+                                               @click="showContactSection()">
                                                 Hire me
                                             </a>
                                         </div>
@@ -223,8 +223,7 @@
 
                             <div class="col-12" style="padding: 10px 20px 16px 20px;">
                                 <div class="text-center cardRow NoDecor">
-                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)"
-                                       @click="showHireSection()">
+                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)">
                                         Hire me
                                     </a>
                                 </div>
@@ -725,74 +724,52 @@
 
 
                     <transition name="slide-fade-left">
-                        <div v-show="hire">
-                            <div style="border-top: 1px solid #EBEDEF; ">
-                                <div class="row">
-                                    <div class="offset-md-4 col-md-4 col-12">
-                                        <div class="hireText">
-                                            Select the number of Hours you need per week:
-                                        </div>
-                                        <div class="hoursBtn NoDecor">
-                                            <a href="javascript:void(0)">
-                                                <img src="/images/newResume/minus.png"
-                                                     style="width: 18px; padding-right: 8px;" alt="minus"
-                                                     @click="subtractHours">
-                                            </a>
-                                            <span>{{hours}}</span> hours
-                                            <a href="javascript:void(0)">
-                                                <img src="/images/newResume/plus.png"
-                                                     style="width: 18px; padding-left: 8px;" alt="plus"
-                                                     @click="addHours">
-                                            </a>
-                                        </div>
-                                    </div>
+                        <div v-show="contact">
+                            <div class="form pb-2 pt-4">
+                                <div class="form-group d-flex flex-column align-items-start">
+                                    <label for="name" class="panelFormLabel">Full name *</label>
+                                    <input id="name" type="text" class="panelFormInput form-control" placeholder="John doe"
+                                           v-model="contactFormData.name" required autofocus>
+                                    <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.name }}</strong>
+                                    </span>
                                 </div>
-                                <div class="row">
-                                    <div class="offset-md-4 col-md-4 col-12">
-                                        <div class="hireText">
-                                            How many weeks would you like to book for?
-                                        </div>
-                                        <div class="hoursBtn NoDecor">
-                                            <a href="javascript:void(0)">
-                                                <img src="/images/newResume/minus.png"
-                                                     style="width: 18px; padding-right: 8px;" alt="minus"
-                                                     @click="subtractWeeks">
-                                            </a>
-                                            <span>{{weeks}}</span> weeks
-                                            <a href="javascript:void(0)">
-                                                <img src="/images/newResume/plus.png"
-                                                     style="width: 18px; padding-left: 8px;" alt="plus"
-                                                     @click="addWeeks">
-                                            </a>
-                                        </div>
-                                    </div>
+                                <div class="form-group d-flex flex-column align-items-start">
+                                    <label for="email" class="panelFormLabel">Email *</label>
+                                    <input id="email" type="email" class="panelFormInput form-control" placeholder="example@example.com"
+                                           v-model="contactFormData.email" required >
+                                    <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.email }}</strong>
+                                    </span>
+                                </div>
+                                <div class="form-group d-flex flex-column align-items-start">
+                                    <label for="title" class="panelFormLabel">Title *</label>
+                                    <input id="title" type="text" class="panelFormInput form-control" placeholder="Message title"
+                                           v-model="contactFormData.title" required >
+                                    <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.title }}</strong>
+                                    </span>
+                                </div>
+                                <div class="form-group d-flex flex-column align-items-start">
+                                    <label for="message" class="panelFormLabel">Message *</label>
+                                    <textarea id="message" type="text" rows="4" class="form-control"
+                                              v-model="contactFormData.message" required  style="resize: none;"></textarea>
+                                    <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.message }}</strong>
+                                    </span>
                                 </div>
 
-                                <div class="row" style="padding-top:50px; padding-bottom: 50px;">
-                                    <div class="offset-md-2 col-12 col-md-8" style="border-top: 1px solid #EBEDEF;">
-                                        <div class="row">
-                                            <div class="col-md-2 col-4 text-left jobTitle"
-                                                 style="font-size: 12px; color: #30323D;">
-                                                Monthly rate
-                                            </div>
-                                            <div class="col-md-2 col-3 offset-5 offset-md-8 text-right jobTitle"
-                                                 style="font-weight: bold;font-size: 12px; color: #30323D;">
-                                                {{freelancer.user_data.salary_month}} $
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #EBEDEF; ">
                                 <div class="row" style="border-top: 1px solid #EBEDEF;">
                                     <div class="col-md-4 offset-md-2 col-12 NoDecor" style="padding-top: 17px;">
                                         <a href="javascript:void(0)"
                                            class="justify-content-center d-flex btn-block cancelBtn"
-                                           @click="hideHireSection">Cancel Booking</a>
+                                           @click="hideContactSection">Cancel</a>
                                     </div>
                                     <div class="col-md-4 col-12 NoDecor whiteOnHover"
                                          style="padding-top: 17px; padding-bottom: 30px;">
-                                        <a class="btn d-flex btn-block summaryBtn justify-content-center"
-                                           :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks ">
-                                            Booking Summary</a>
+                                        <a class="btn d-flex btn-block summaryBtn justify-content-center" @click="submitContactForm" href="javascript:void(0)">Send</a>
                                     </div>
                                 </div>
                             </div>
@@ -859,8 +836,11 @@
         },
         data() {
             return {
+                contactFormData:{},
+                errors:{},
                 slides: [],
                 slideNumber: 1,
+                contact: false,
                 numberOfSlides: this.calculateNumberOfSlides(),
                 skills: this.freelancer.skills,
                 worksHistory: this.freelancer.works_history,
@@ -894,7 +874,7 @@
                 },
                 weeks: 4,
                 hours: this.freelancer.agent.available_hours_per_week,
-                portfolio: !this.hire,
+                portfolio: !this.contact,
                 colors:{
                     hex: this.freelancer.agent.custom_resume ? this.freelancer.agent.custom_resume.background_color : '#4E75E8',
                 },
@@ -902,6 +882,9 @@
             }
         },
         methods: {
+            submitContactForm(){
+
+            },
             showSuccessMessage(message){
                 this.notificationMessage = message;
                 $('.notificationBar').css('background','#FFBA69') ;
@@ -1072,14 +1055,14 @@
                     }
                 });
             },
-            showHireSection() {
+            showContactSection() {
                 setTimeout(() => {
-                    this.hire = true;
+                    this.contact = true;
                 }, 800);
                 this.portfolio = false;
             },
-            hideHireSection() {
-                this.hire = false;
+            hideContactSection() {
+                this.contact = false;
                 setTimeout(() => {
                     this.portfolio = true;
                 }, 800);

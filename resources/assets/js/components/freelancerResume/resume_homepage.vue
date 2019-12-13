@@ -11,7 +11,7 @@
           <span class="url">123workforce.com/</span>
           <input type="text" id="username" placeholder="Your username"/>
         </div>
-        <button class="btn filled">Build Your Resume</button>
+        <button class="btn filled">Build My Resume</button>
       </div>
 
       <picture class="main-asset">
@@ -35,6 +35,26 @@
         <transition name="fade">
           <img :key="actualProfessionSlug" :src="`/images/resume_builder/resume-${actualProfessionSlug}.png`" alt="resume preview">
         </transition>
+      </div>
+    </section>
+    <section class="subscriptions-plans">
+      <h2 class="section-title">The Ultimate Tool <br /> for Professional's Resumes</h2>
+      <div class="input-container">
+        <div class="input-wrapper">
+          <span>123workforce.com/</span>
+          <input placeholder="Your Name" type="text">
+        </div>
+        <button class="btn filled">Build My Resume</button>
+      </div>
+
+      <div class="plans">
+        <div class="toggle-panel">
+          <div class="aux-fill" :class="{left: selectedPlan === 'monthly', right: selectedPlan === 'yearly'}"></div>
+          <div class="buttons">
+            <button v-on:click="selectedPlan = 'monthly'" class="toggle-btn monthly">Monthly</button>
+            <button v-on:click="selectedPlan = 'yearly'" class="toggle-btn yearly">Yearly</button>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -70,7 +90,8 @@ export default {
       adaptiveHeight: true,
       initialSlide: 4
     },
-    actualProfession: null
+    actualProfession: null,
+    selectedPlan: 'monthly'
   }),
   methods: {
     handleSetPosition(index) {
@@ -347,6 +368,137 @@ $placeholder-color: #9ba1ad;
     height: 700px;
     position: absolute;
     top: 0;
+  }
+}
+
+.section-title {
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 50px;
+
+  @media (max-width: 1480px) {
+    font-size: 32px;
+    line-height: 48px;
+  }
+}
+
+.subscriptions-plans {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .input-container {
+    display: flex;
+    margin: 0 auto;
+    height: 60px;
+    width: 100%;
+    justify-content: center;
+
+  }
+
+  .input-wrapper {
+    height: 100%;
+    background: $input-bg;
+    border-radius: 9.5px;
+    padding: 0 2rem;
+
+    input {
+      height: 100%;
+      border: none;
+      background: transparent;
+    }
+  }
+}
+
+.plans {
+  
+}
+
+.toggle-panel {
+  border: solid 1.3px $primary;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  padding: 5px 10px;
+  height: 40px;
+  width: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .aux-fill {
+    width: 100%;
+    position: absolute;
+    background: $primary;
+    border-radius: 20px;
+    height: 100%;
+    top: 0;
+
+    &.left {
+      animation-name: swipeToLeft;
+      animation-duration: .3s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+
+      & ~ .buttons .monthly {
+        color: $bg-color;
+        transition: color .5s ease;
+      }
+    }
+
+    &.right {
+      animation-name: swipeToRight;
+      animation-duration: .3s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+
+      & ~ .buttons .yearly {
+        color: $bg-color;
+        transition: color .5s ease;
+      }
+    }
+  }
+
+  .buttons {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+ 
+    button {
+      background: transparent;
+      border: none;
+      color: $primary;
+      font-weight: 700;
+      width: 80px;
+      outline: none;
+      transition: color .5s ease;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@keyframes swipeToRight {
+  from {
+    transform: translateX(-75px);
+  } to {
+    transform: translateX(75px);
+  }
+}
+
+@keyframes swipeToLeft {
+  from {
+    transform: translateX(75px);
+  } to {
+    transform: translateX(-75px);
   }
 }
 

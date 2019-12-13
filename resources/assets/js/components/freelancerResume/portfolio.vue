@@ -33,6 +33,7 @@
             </div>
         </nav>
 
+
         <div class="js-side-nav-container side-nav-container">
             <div class="js-side-nav side-nav">
                 <a href="javascript:void(0)" class="js-menu-close menu-close" id="close-menu"></a>
@@ -56,24 +57,27 @@
             </div>
         </div>
 
-        <div class="marginMobile-0">
+        <div class="marginMobile-0" style="padding-top: 23px;">
             <div class="freelancerCard" style="margin-bottom: -16px; height: auto;">
+                <div class="" style="display: flex;justify-content: center; width:inherit">
+                    <div class="notificationBar" id="notificationBar" style="display:none; position:fixed; z-index:9999; width:inherit">
+                        <div>
+                            {{notificationMessage}}
+                        </div>
+                        <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                            x
+                        </a>
+                    </div>
+                </div>
                 <div class="row actionRow d-flex justify-content-between align-items-center"  :style="getBackgroundColor()">
                     <div class="ml-3">
                         <div class="editButton NoDecor">
-                            <a :href="'/' + freelancer.username" target="_blank" class="d-flex align-items-center">
-                                Open resume
+                            <a href="javascript:void(0)" @click="copyProfileLink(freelancer.username)" class="d-flex align-items-center">
+                                Copy resume link
                             </a>
                         </div>
                     </div>
-                    <div class="d-flex  mr-3">
-                        <div class="progressBtn">
-                            <a href="javascript:void(0)">
-                           <span>
-                                70% Complete
-                           </span>
-                            </a>
-                        </div>
+                    <div class="d-flex  mr-3" v-if="page === 'portfolio'">
                         <div class="editButton NoDecor">
                             <a :href="'/agent/resume/editor?user_id=' + freelancer.id">
                                 <img src="/images/edit_profile.png" alt="edit profile">
@@ -104,17 +108,17 @@
                                     <div class="nameCard">
                                         {{freelancer.user_data.first_name}}
                                     </div>
-                                    <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;"
+                                    <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 3px;"
                                          :id="'animatedText'+freelancer.id">
                                         {{freelancer.user_data.job_title}}
                                     </div>
 
-                                    <form action="/chat-room/start_conversation" method="post">
-                                        <input type="hidden" name="freelancer_id" :value="freelancer.id">
-                                        <input type="submit" value="TAP TO CHAT"
-                                               class="tap-to-chat cursorPointerOnHover"
-                                               style="background: none; border:none; outline: none;">
-                                    </form>
+                                    <div class="NoDecor" style="margin-top:12px;">
+                                        <a href="javascript:void(0)" class="tap-to-chat ">
+                                            TAP TO CHAT
+                                        </a>
+                                    </div>
+
 
 
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
@@ -259,7 +263,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div v-else class="row navRow d-flex justify-content-center">
+                            <div v-else class="row navRow justify-content-center">
                                 <div class="col-md-2 col-4 text-center" style="border-right:1px solid #EBEDEF;"
                                      @click="setTab(tab)" v-for="(tab,index) in freelancer.agent.resume_tabs"
                                      v-if="tab.is_active">
@@ -848,7 +852,7 @@
     import VueLoadImage from 'vue-load-image'
 
     export default {
-        props: ['freelancer', 'hire', 'search'],
+        props: ['freelancer', 'hire', 'search','page'],
         components: {
             'vue-load-image': VueLoadImage,
             Slick
@@ -894,9 +898,34 @@
                 colors:{
                     hex: this.freelancer.agent.custom_resume ? this.freelancer.agent.custom_resume.background_color : '#4E75E8',
                 },
+                notificationMessage:'Link copied!',
             }
         },
         methods: {
+            showSuccessMessage(message){
+                this.notificationMessage = message;
+                $('.notificationBar').css('background','#FFBA69') ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
+            },
+            copyProfileLink(username) {
+                let getUrl = window.location;
+                let baseUrl = getUrl.protocol + "//" + getUrl.host;
+
+                let $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(baseUrl + '/' + username).select();
+                document.execCommand("copy");
+                $temp.remove();
+
+                // notification copied :
+                this.showSuccessMessage('Resume link copied!');
+            },
             getResizedImage(src) {
                 let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
                 if (this.search == false) {
@@ -1433,5 +1462,11 @@
         margin-top:0;
     }
 
+    @media only screen and (max-width: 760px) {
+        .actionRow {
+            height: 69px;
+            padding-bottom: 0px;
+        }
+    }
 
 </style>

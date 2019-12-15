@@ -60,19 +60,23 @@
         <div class="marginMobile-0" style="padding-top: 23px;">
             <div class="freelancerCard" style="margin-bottom: -16px; height: auto;">
                 <div class="" style="display: flex;justify-content: center; width:inherit">
-                    <div class="notificationBar" id="notificationBar" style="display:none; position:fixed; z-index:9999; width:inherit">
+                    <div class="notificationBar" id="notificationBar"
+                         style="display:none; position:fixed; z-index:9999; width:inherit">
                         <div>
                             {{notificationMessage}}
                         </div>
-                        <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                        <a href="javascript:void(0)" @click="hideNotification" class="no-decoration"
+                           style="color: white;">
                             x
                         </a>
                     </div>
                 </div>
-                <div class="row actionRow d-flex justify-content-between align-items-center"  :style="getBackgroundColor()">
+                <div class="row actionRow d-flex justify-content-between align-items-center"
+                     :style="getBackgroundColor()">
                     <div class="ml-3">
                         <div class="editButton NoDecor">
-                            <a href="javascript:void(0)" @click="copyProfileLink(freelancer.username)" class="d-flex align-items-center">
+                            <a href="javascript:void(0)" @click="copyProfileLink(freelancer.username)"
+                               class="d-flex align-items-center">
                                 Copy resume link
                             </a>
                         </div>
@@ -120,7 +124,6 @@
                                     </div>
 
 
-
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
                                         Hi, I am
                                         {{freelancer.user_data.first_name}}
@@ -155,7 +158,8 @@
                                     <div class="col-md-4" style="padding: 0;">
 
                                         <div class="row text-center cardRow NoDecor">
-                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)" @click="goToExternalURL(freelancer.agent.custom_resume.hire_me_link)">
+                                            <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)"
+                                               @click="goToExternalURL(freelancer.agent.custom_resume.hire_me_link)">
                                                 Hire me
                                             </a>
                                         </div>
@@ -222,7 +226,8 @@
 
                             <div class="col-12" style="padding: 10px 20px 16px 20px;">
                                 <div class="text-center cardRow NoDecor">
-                                    <a class="hireCardBtn btn-block showHireSection"  href="javascript:void(0)" @click="goToExternalURL(freelancer.agent.custom_resume.hire_me_link)">
+                                    <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)"
+                                       @click="goToExternalURL(freelancer.agent.custom_resume.hire_me_link)">
                                         Hire me
                                     </a>
                                 </div>
@@ -325,7 +330,8 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
+                                                                <div class="skill-bar" :data-bar="skill.percentage"
+                                                                     v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -355,7 +361,8 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
+                                                                <div class="skill-bar" :data-bar="skill.percentage"
+                                                                     v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -385,7 +392,8 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
+                                                                <div class="skill-bar" :data-bar="skill.percentage"
+                                                                     v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -415,7 +423,8 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
+                                                                <div class="skill-bar" :data-bar="skill.percentage"
+                                                                     v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -723,54 +732,64 @@
 
 
                     <transition name="slide-fade-left">
-                        <div v-show="contact">
-                            <div class="form pb-2 pt-4">
-                                <div class="form-group d-flex flex-column align-items-start">
-                                    <label for="name" class="panelFormLabel">Full name *</label>
-                                    <input id="name" type="text" class="panelFormInput form-control" placeholder="John doe"
-                                           v-model="contactFormData.name" required autofocus>
-                                    <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                                        <strong>{{ errors.name }}</strong>
+                        <div>
+                            <div v-show="contact" :class="{loading : contactAreaLoading }" style="background: white;">
+                                <div class="form pb-2 pt-4">
+                                    <div class="form-group d-flex flex-column align-items-start">
+                                        <label for="name" class="panelFormLabel">Full name *</label>
+                                        <input id="name" type="text" class="panelFormInput form-control"
+                                               placeholder="John doe"
+                                               v-model="contactFormData.full_name" required autofocus>
+                                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.full_name[0] }}</strong>
                                     </span>
-                                </div>
-                                <div class="form-group d-flex flex-column align-items-start">
-                                    <label for="email" class="panelFormLabel">Email *</label>
-                                    <input id="email" type="email" class="panelFormInput form-control" placeholder="example@example.com"
-                                           v-model="contactFormData.email" required >
-                                    <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                                        <strong>{{ errors.email }}</strong>
+                                    </div>
+                                    <div class="form-group d-flex flex-column align-items-start">
+                                        <label for="email" class="panelFormLabel">Email *</label>
+                                        <input id="email" type="email" class="panelFormInput form-control"
+                                               placeholder="example@example.com"
+                                               v-model="contactFormData.email" required>
+                                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.email[0] }}</strong>
                                     </span>
-                                </div>
-                                <div class="form-group d-flex flex-column align-items-start">
-                                    <label for="title" class="panelFormLabel">Title *</label>
-                                    <input id="title" type="text" class="panelFormInput form-control" placeholder="Message title"
-                                           v-model="contactFormData.title" required >
-                                    <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                                        <strong>{{ errors.title }}</strong>
+                                    </div>
+                                    <div class="form-group d-flex flex-column align-items-start">
+                                        <label for="title" class="panelFormLabel">Title *</label>
+                                        <input id="title" type="text" class="panelFormInput form-control"
+                                               placeholder="Message title"
+                                               v-model="contactFormData.title" required>
+                                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.title[0] }}</strong>
                                     </span>
-                                </div>
-                                <div class="form-group d-flex flex-column align-items-start">
-                                    <label for="message" class="panelFormLabel">Message *</label>
-                                    <textarea id="message" type="text" rows="4" class="form-control"
-                                              v-model="contactFormData.message" required  style="resize: none;"></textarea>
-                                    <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
-                                        <strong>{{ errors.message }}</strong>
+                                    </div>
+                                    <div class="form-group d-flex flex-column align-items-start">
+                                        <label for="message" class="panelFormLabel">Message *</label>
+                                        <textarea id="message" type="text" rows="4" class="form-control"
+                                                  v-model="contactFormData.message" required
+                                                  style="resize: none;"></textarea>
+                                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.message[0] }}</strong>
                                     </span>
-                                </div>
+                                    </div>
 
-                            </div>
-                            <div style="border-top: 1px solid #EBEDEF; ">
-                                <div class="row" style="border-top: 1px solid #EBEDEF;">
-                                    <div class="col-md-4 offset-md-2 col-12 NoDecor" style="padding-top: 17px;">
-                                        <a href="javascript:void(0)"
-                                           class="justify-content-center d-flex btn-block cancelBtn"
-                                           @click="hideContactSection">Cancel</a>
-                                    </div>
-                                    <div class="col-md-4 col-12 NoDecor whiteOnHover"
-                                         style="padding-top: 17px; padding-bottom: 30px;">
-                                        <a class="btn d-flex btn-block summaryBtn justify-content-center" @click="submitContactForm" href="javascript:void(0)">Send</a>
+                                </div>
+                                <div style="border-top: 1px solid #EBEDEF; ">
+                                    <div class="row" style="border-top: 1px solid #EBEDEF;">
+                                        <div class="col-md-4 offset-md-2 col-12 NoDecor" style="padding-top: 17px;">
+                                            <a href="javascript:void(0)"
+                                               class="justify-content-center d-flex btn-block cancelBtn"
+                                               @click="hideContactSection">Cancel</a>
+                                        </div>
+                                        <div class="col-md-4 col-12 NoDecor whiteOnHover"
+                                             style="padding-top: 17px; padding-bottom: 30px;">
+                                            <a class="btn d-flex btn-block summaryBtn justify-content-center"
+                                               @click="submitContactForm" href="javascript:void(0)">Send</a>
+                                        </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div v-show="contact && contactAreaLoading" class="spinner">
+                                <div id="loading"></div>
                             </div>
                         </div>
                     </transition>
@@ -828,15 +847,26 @@
     import VueLoadImage from 'vue-load-image'
 
     export default {
-        props: ['freelancer', 'hire', 'search','page'],
+        props: ['freelancer', 'hire', 'search', 'page'],
         components: {
             'vue-load-image': VueLoadImage,
             Slick
         },
         data() {
             return {
-                contactFormData:{},
-                errors:{},
+                contactFormData: {
+                    full_name: '',
+                    email: '',
+                    title: '',
+                    message: '',
+                    agent_id: this.freelancer.agent.id
+                },
+                errors: {
+                    full_name: [],
+                    email: [],
+                    title: [],
+                    message: [],
+                },
                 slides: [],
                 slideNumber: 1,
                 contact: false,
@@ -874,34 +904,69 @@
                 weeks: 4,
                 hours: this.freelancer.agent.available_hours_per_week,
                 portfolio: !this.contact,
-                colors:{
+                colors: {
                     hex: this.freelancer.agent.custom_resume ? this.freelancer.agent.custom_resume.background_color : '#4E75E8',
                 },
-                notificationMessage:'Link copied!',
+                notificationMessage: 'Link copied!',
+                contactAreaLoading: false,
             }
         },
         methods: {
-            submitContactForm(){
+            submitContactForm() {
+                // clear error
+                this.errors = {
+                    full_name: [],
+                    email: [],
+                    title: [],
+                    message: [],
+                };
+                // add class loading to the contact area
+                this.contactAreaLoading = true;
+                axios.post('/freelancer/developer-card/message', this.contactFormData)
+                    .then((response) => {
+                        console.log(response.data);
+                        // hide the contact form and show success message
+                        this.hideContactSection();
+                        this.showSuccessMessage('Message has been successfully sent!');
+                        this.contactFormData = {
+                            full_name: '',
+                            email: '',
+                            title: '',
+                            message: '',
+                            agent_id: this.freelancer.agent.id
+                        },
+
+                            this.contactAreaLoading = false;
+                    })
+                    .catch((error) => {
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                        this.contactAreaLoading = false;
+
+                    })
 
             },
-            goToExternalURL(link){
-                if(link.includes('http')){
-                    window.location = link ;
-                }else{
-                    window.location = 'http://' + link ;
+            goToExternalURL(link) {
+                if (link.includes('http')) {
+                    window.location = link;
+                } else {
+                    window.location = 'http://' + link;
                 }
 
             },
-            showSuccessMessage(message){
+            showSuccessMessage(message) {
                 this.notificationMessage = message;
-                $('.notificationBar').css('background','#FFBA69') ;
+                $('.notificationBar').css('background', '#FFBA69');
                 $('#notificationBar').fadeIn(600);
-                setTimeout(()=>{
+                setTimeout(() => {
                     $('#notificationBar').fadeOut(1500);
-                },4000);
+                }, 4000);
             },
-            hideNotification(){
-                $('#notificationBar').css('display','none');
+            hideNotification() {
+                $('#notificationBar').css('display', 'none');
             },
             copyProfileLink(username) {
                 let getUrl = window.location;
@@ -1154,22 +1219,22 @@
                     return source;
                 }
             },
-            getBackgroundColor(){
-                if(!this.colors.rgba){
+            getBackgroundColor() {
+                if (!this.colors.rgba) {
                     let currentBG = this.colors.hex.replace('#', '');
                     let r = parseInt(currentBG.substring(0, 2), 16);
                     let g = parseInt(currentBG.substring(2, 4), 16);
                     let b = parseInt(currentBG.substring(4, 6), 16);
                     let a = 0.85;
-                    return 'background-color:rgba(' + r + ',' + g + ',' + b + ',' + a + ')' ;
+                    return 'background-color:rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
                 }
 
-                let currentBG = this.colors.rgba ;
+                let currentBG = this.colors.rgba;
                 let r = currentBG.r;
                 let b = currentBG.b;
                 let g = currentBG.g;
                 let a = 0.85;
-                return  `background-color:rgba(${r},${g},${b},${a})`;
+                return `background-color:rgba(${r},${g},${b},${a})`;
             },
         },
         mounted() {
@@ -1435,7 +1500,7 @@
             justify-content: center;
             font-weight: 500;
             height: 30px;
-            border: 1px solid #FFFFFF;
+            border: 1px solid white;
             border-radius: 5px;
             font-size: 13px;
             width: 118px;
@@ -1448,8 +1513,8 @@
 
     }
 
-    .progressBtn{
-        margin-top:0;
+    .progressBtn {
+        margin-top: 0;
     }
 
     @media only screen and (max-width: 760px) {
@@ -1457,6 +1522,35 @@
             height: 69px;
             padding-bottom: 0px;
         }
+    }
+
+    .spinner{
+        position: absolute;
+        left: 46%;
+        top: 46%;
+    }
+
+    .loading{
+        opacity: .5;
+        pointer-events: none;
+    }
+
+    #loading {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border: 5px solid #4E75E8;
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        -webkit-animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+        to { -webkit-transform: rotate(360deg); }
+    }
+    @-webkit-keyframes spin {
+        to { -webkit-transform: rotate(360deg); }
     }
 
 </style>

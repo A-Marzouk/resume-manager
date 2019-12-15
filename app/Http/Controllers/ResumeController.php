@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\agents\MessageOnResume;
 use App\ResumeCustom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Agent;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class ResumeController extends Controller
 {
@@ -82,5 +84,22 @@ class ResumeController extends Controller
         }])->where('username',$username)->first();
         return view('freelancerResume.resumeTest', compact('freelancer'));
         
+    }
+
+
+    public function messageOnResume(Request $request){
+        // validate request :
+        $request->validate([
+            'agent_id'=> 'required',
+            'full_name' => 'max:190|required',
+            'email' => 'email|max:190|required',
+            'title' => 'max:190|required',
+            'message' => 'max:2500|required',
+        ]);
+
+
+        $agent = Agent::where('id',$request->agent_id)->first();
+        $form_data = $request;
+        Mail::send(new MessageOnResume($form_data, $agent));
     }
 }

@@ -942,7 +942,7 @@
                         if (typeof error.response.data === 'object') {
                             this.errors = error.response.data.errors;
                         } else {
-                            this.errors = ['Something went wrong. Please try again.'];
+                           alert('Something went wrong. Please try again.');
                         }
                         this.contactAreaLoading = false;
 

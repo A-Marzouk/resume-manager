@@ -279,6 +279,7 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/media/edit','FreelancersController@viewMediaEditPage')->name('freelancer.professional.edit');
     Route::get('/developer-card/edit','FreelancersController@showEditForm')->name('freelancer.dashboard');
     Route::get('/developer-card','FreelancersController@portfolio')->name('freelancer.dashboard');
+    Route::post('/developer-card/message','ResumeController@messageOnResume');
 
     // frontend routes
     Route::get('/',function (){

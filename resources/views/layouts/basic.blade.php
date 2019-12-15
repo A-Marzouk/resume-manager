@@ -74,7 +74,6 @@ if (currentUser() !== null) {
 </div>
 
 {{--@include('layouts.includes.terms')--}}
-@include('layouts.footer')
 
 {{-- Chat box --}}
 <div>

@@ -55,15 +55,23 @@
             <button v-on:click="selectedPlan = 'yearly'" class="toggle-btn yearly">Yearly</button>
           </div>
         </div>
+        <transition name="fade">
+          <monthly-plan v-if="selectedPlan === 'monthly'"></monthly-plan>
+          <yearly-plan v-else></yearly-plan>
+        </transition>
       </div>
     </section>
+    <footer-resume></footer-resume>
   </div>
 </template>
 <script>
 import Slick from 'vue-slick'
+import monthlyPlan from './resumeBuilderIncludes/monthly_plan.vue'
+import yearlyPlan from './resumeBuilderIncludes/yearly_plan.vue'
+import footerResume from './resumeBuilderIncludes/footer.vue'
 
 export default {
-  components: { Slick },
+  components: { Slick, monthlyPlan, yearlyPlan, footerResume },
   data: () => ({
     professions: [
       'Virtual Assistant',
@@ -212,7 +220,7 @@ $placeholder-color: #9ba1ad;
     font-size: 70px;
     max-width: 512px;
   }
-
+30px
   &__subtitle {
     font-size: 30px;
     margin-top: 20px;
@@ -412,7 +420,11 @@ $placeholder-color: #9ba1ad;
 }
 
 .plans {
-  
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .toggle-panel {
@@ -422,7 +434,7 @@ $placeholder-color: #9ba1ad;
   overflow: hidden;
   padding: 5px 10px;
   height: 40px;
-  width: 160px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -475,7 +487,7 @@ $placeholder-color: #9ba1ad;
       border: none;
       color: $primary;
       font-weight: 700;
-      width: 80px;
+      width: 100px;
       outline: none;
       transition: color .5s ease;
 
@@ -488,17 +500,17 @@ $placeholder-color: #9ba1ad;
 
 @keyframes swipeToRight {
   from {
-    transform: translateX(-75px);
+    transform: translateX(-95px);
   } to {
-    transform: translateX(75px);
+    transform: translateX(95px);
   }
 }
 
 @keyframes swipeToLeft {
   from {
-    transform: translateX(75px);
+    transform: translateX(95px);
   } to {
-    transform: translateX(-75px);
+    transform: translateX(-95px);
   }
 }
 

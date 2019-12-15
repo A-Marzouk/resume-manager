@@ -942,6 +942,7 @@
                         console.log(error.response.data);
                         if (typeof error.response.data === 'object') {
                             this.errors = error.response.data.errors;
+                            this.contactAreaLoading = false;
                         } else {
                            alert('Something went wrong. Please try again.');
                         }

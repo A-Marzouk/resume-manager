@@ -12,6 +12,6 @@ if(!isset($value['id'])){
 
 @section('content')
     <div id="freelancerPortfolio" class="d-flex justify-content-center">
-        <freelancer-portfolio :freelancer="{{$freelancer}}"></freelancer-portfolio>
+        <freelancer-portfolio :freelancer="{{$freelancer}}" page="portfolio"></freelancer-portfolio>
     </div>
 @endsection

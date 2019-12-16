@@ -87,7 +87,7 @@ class FreelancersController extends Controller
         return view('freelancer.my_account.privacy_agreement');
     }
 
-    public function form(){
+    public function portfolio(){
         $freelancer = User::with(['userData','agent.resumeTabs','agent.customResume','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
         }])->where('username',Auth::user()->username)->first();

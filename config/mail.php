@@ -121,7 +121,6 @@ return [
     ],
 
     'recipients' => [
-        'Shey' => 'shey@123workforce.com',
         'Ahmed' => 'AhmedMarzouk266@gmail.com',
         'Conor' => 'conor@123workforce.com',
     ],

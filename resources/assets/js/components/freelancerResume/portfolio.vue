@@ -33,6 +33,7 @@
             </div>
         </nav>
 
+
         <div class="js-side-nav-container side-nav-container">
             <div class="js-side-nav side-nav">
                 <a href="javascript:void(0)" class="js-menu-close menu-close" id="close-menu"></a>
@@ -56,24 +57,31 @@
             </div>
         </div>
 
-        <div class="marginMobile-0">
+        <div class="marginMobile-0" style="padding-top: 23px;">
             <div class="freelancerCard" style="margin-bottom: -16px; height: auto;">
-                <div class="row actionRow d-flex justify-content-between align-items-center"  :style="getBackgroundColor()">
+                <div class="" style="display: flex;justify-content: center; width:inherit">
+                    <div class="notificationBar" id="notificationBar"
+                         style="display:none; position:fixed; z-index:9999; width:inherit">
+                        <div>
+                            {{notificationMessage}}
+                        </div>
+                        <a href="javascript:void(0)" @click="hideNotification" class="no-decoration"
+                           style="color: white;">
+                            x
+                        </a>
+                    </div>
+                </div>
+                <div class="row actionRow d-flex justify-content-between align-items-center"
+                     :style="getBackgroundColor()">
                     <div class="ml-3">
                         <div class="editButton NoDecor">
-                            <a :href="'/' + freelancer.username" target="_blank" class="d-flex align-items-center">
-                                Open resume
+                            <a href="javascript:void(0)" @click="copyProfileLink(freelancer.username)"
+                               class="d-flex align-items-center">
+                                Copy resume link
                             </a>
                         </div>
                     </div>
-                    <div class="d-flex  mr-3">
-                        <div class="progressBtn">
-                            <a href="javascript:void(0)">
-                           <span>
-                                70% Complete
-                           </span>
-                            </a>
-                        </div>
+                    <div class="d-flex  mr-3" v-if="page === 'portfolio'">
                         <div class="editButton NoDecor">
                             <a :href="'/agent/resume/editor?user_id=' + freelancer.id">
                                 <img src="/images/edit_profile.png" alt="edit profile">
@@ -104,17 +112,16 @@
                                     <div class="nameCard">
                                         {{freelancer.user_data.first_name}}
                                     </div>
-                                    <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 7px;"
+                                    <div class="jobTitle" style="color: white; font-size: 14px; padding-top: 3px;"
                                          :id="'animatedText'+freelancer.id">
                                         {{freelancer.user_data.job_title}}
                                     </div>
 
-                                    <form action="/chat-room/start_conversation" method="post">
-                                        <input type="hidden" name="freelancer_id" :value="freelancer.id">
-                                        <input type="submit" value="TAP TO CHAT"
-                                               class="tap-to-chat cursorPointerOnHover"
-                                               style="background: none; border:none; outline: none;">
-                                    </form>
+                                    <div class="NoDecor" style="margin-top:12px;">
+                                        <a href="javascript:void(0)" class="tap-to-chat" @click="showContactSection()">
+                                            TAP TO CHAT
+                                        </a>
+                                    </div>
 
 
                                     <div :id="'welcomeText'+freelancer.id" class="d-none">
@@ -152,7 +159,7 @@
 
                                         <div class="row text-center cardRow NoDecor">
                                             <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)"
-                                               @click="showHireSection()">
+                                               @click="goToExternalURL(freelancer.agent.custom_resume.hire_me_link)">
                                                 Hire me
                                             </a>
                                         </div>
@@ -220,7 +227,7 @@
                             <div class="col-12" style="padding: 10px 20px 16px 20px;">
                                 <div class="text-center cardRow NoDecor">
                                     <a class="hireCardBtn btn-block showHireSection" href="javascript:void(0)"
-                                       @click="showHireSection()">
+                                       @click="goToExternalURL(freelancer.agent.custom_resume.hire_me_link)">
                                         Hire me
                                     </a>
                                 </div>
@@ -259,7 +266,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div v-else class="row navRow d-flex justify-content-center">
+                            <div v-else class="row navRow justify-content-center">
                                 <div class="col-md-2 col-4 text-center" style="border-right:1px solid #EBEDEF;"
                                      @click="setTab(tab)" v-for="(tab,index) in freelancer.agent.resume_tabs"
                                      v-if="tab.is_active">
@@ -323,7 +330,8 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
+                                                                <div class="skill-bar" :data-bar="skill.percentage"
+                                                                     v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -353,7 +361,8 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
+                                                                <div class="skill-bar" :data-bar="skill.percentage"
+                                                                     v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -383,7 +392,8 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
+                                                                <div class="skill-bar" :data-bar="skill.percentage"
+                                                                     v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -413,7 +423,8 @@
                                                                     {{skill.skill_title}}
                                                                 </div>
                                                                 <!-- bar -->
-                                                                <div class="skill-bar" :data-bar="skill.percentage" v-if="skill.is_percentage_active">
+                                                                <div class="skill-bar" :data-bar="skill.percentage"
+                                                                     v-if="skill.is_percentage_active">
                                                                     <span></span></div>
                                                             </div>
                                                             <!-- #skill -->
@@ -721,76 +732,64 @@
 
 
                     <transition name="slide-fade-left">
-                        <div v-show="hire">
-                            <div style="border-top: 1px solid #EBEDEF; ">
-                                <div class="row">
-                                    <div class="offset-md-4 col-md-4 col-12">
-                                        <div class="hireText">
-                                            Select the number of Hours you need per week:
-                                        </div>
-                                        <div class="hoursBtn NoDecor">
-                                            <a href="javascript:void(0)">
-                                                <img src="/images/newResume/minus.png"
-                                                     style="width: 18px; padding-right: 8px;" alt="minus"
-                                                     @click="subtractHours">
-                                            </a>
-                                            <span>{{hours}}</span> hours
-                                            <a href="javascript:void(0)">
-                                                <img src="/images/newResume/plus.png"
-                                                     style="width: 18px; padding-left: 8px;" alt="plus"
-                                                     @click="addHours">
-                                            </a>
-                                        </div>
+                        <div>
+                            <div v-show="contact" :class="{loading : contactAreaLoading }" style="background: white;">
+                                <div class="form pb-2 pt-4">
+                                    <div class="form-group d-flex flex-column align-items-start">
+                                        <label for="name" class="panelFormLabel">Full name *</label>
+                                        <input id="name" type="text" class="panelFormInput form-control"
+                                               placeholder="John doe"
+                                               v-model="contactFormData.full_name" required autofocus>
+                                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.full_name[0] }}</strong>
+                                    </span>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="offset-md-4 col-md-4 col-12">
-                                        <div class="hireText">
-                                            How many weeks would you like to book for?
-                                        </div>
-                                        <div class="hoursBtn NoDecor">
-                                            <a href="javascript:void(0)">
-                                                <img src="/images/newResume/minus.png"
-                                                     style="width: 18px; padding-right: 8px;" alt="minus"
-                                                     @click="subtractWeeks">
-                                            </a>
-                                            <span>{{weeks}}</span> weeks
-                                            <a href="javascript:void(0)">
-                                                <img src="/images/newResume/plus.png"
-                                                     style="width: 18px; padding-left: 8px;" alt="plus"
-                                                     @click="addWeeks">
-                                            </a>
-                                        </div>
+                                    <div class="form-group d-flex flex-column align-items-start">
+                                        <label for="email" class="panelFormLabel">Email *</label>
+                                        <input id="email" type="email" class="panelFormInput form-control"
+                                               placeholder="example@example.com"
+                                               v-model="contactFormData.email" required>
+                                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.email[0] }}</strong>
+                                    </span>
                                     </div>
-                                </div>
+                                    <div class="form-group d-flex flex-column align-items-start">
+                                        <label for="title" class="panelFormLabel">Title *</label>
+                                        <input id="title" type="text" class="panelFormInput form-control"
+                                               placeholder="Message title"
+                                               v-model="contactFormData.title" required>
+                                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.title[0] }}</strong>
+                                    </span>
+                                    </div>
+                                    <div class="form-group d-flex flex-column align-items-start">
+                                        <label for="message" class="panelFormLabel">Message *</label>
+                                        <textarea id="message" type="text" rows="4" class="form-control"
+                                                  v-model="contactFormData.message" required
+                                                  style="resize: none;"></textarea>
+                                        <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545">
+                                        <strong>{{ errors.message[0] }}</strong>
+                                    </span>
+                                    </div>
 
-                                <div class="row" style="padding-top:50px; padding-bottom: 50px;">
-                                    <div class="offset-md-2 col-12 col-md-8" style="border-top: 1px solid #EBEDEF;">
-                                        <div class="row">
-                                            <div class="col-md-2 col-4 text-left jobTitle"
-                                                 style="font-size: 12px; color: #30323D;">
-                                                Monthly rate
-                                            </div>
-                                            <div class="col-md-2 col-3 offset-5 offset-md-8 text-right jobTitle"
-                                                 style="font-weight: bold;font-size: 12px; color: #30323D;">
-                                                {{freelancer.user_data.salary_month}} $
-                                            </div>
+                                </div>
+                                <div style="border-top: 1px solid #EBEDEF; ">
+                                    <div class="row" style="border-top: 1px solid #EBEDEF;">
+                                        <div class="col-md-4 offset-md-2 col-12 NoDecor" style="padding-top: 17px;">
+                                            <a href="javascript:void(0)"
+                                               class="justify-content-center d-flex btn-block cancelBtn"
+                                               @click="hideContactSection">Cancel</a>
+                                        </div>
+                                        <div class="col-md-4 col-12 NoDecor whiteOnHover"
+                                             style="padding-top: 17px; padding-bottom: 30px;">
+                                            <a class="btn d-flex btn-block summaryBtn justify-content-center"
+                                               @click="submitContactForm" href="javascript:void(0)">Send</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row" style="border-top: 1px solid #EBEDEF;">
-                                    <div class="col-md-4 offset-md-2 col-12 NoDecor" style="padding-top: 17px;">
-                                        <a href="javascript:void(0)"
-                                           class="justify-content-center d-flex btn-block cancelBtn"
-                                           @click="hideHireSection">Cancel Booking</a>
-                                    </div>
-                                    <div class="col-md-4 col-12 NoDecor whiteOnHover"
-                                         style="padding-top: 17px; padding-bottom: 30px;">
-                                        <a class="btn d-flex btn-block summaryBtn justify-content-center"
-                                           :href="'/stripe/hire?freelancerID=' + freelancer.id + '&hours=' + hours + '&weeks=' + weeks ">
-                                            Booking Summary</a>
-                                    </div>
-                                </div>
+                            </div>
+                            <div v-show="contact && contactAreaLoading" class="spinner">
+                                <div id="loading"></div>
                             </div>
                         </div>
                     </transition>
@@ -848,15 +847,29 @@
     import VueLoadImage from 'vue-load-image'
 
     export default {
-        props: ['freelancer', 'hire', 'search'],
+        props: ['freelancer', 'hire', 'search', 'page'],
         components: {
             'vue-load-image': VueLoadImage,
             Slick
         },
         data() {
             return {
+                contactFormData: {
+                    full_name: '',
+                    email: '',
+                    title: '',
+                    message: '',
+                    agent_id: this.freelancer.agent.id
+                },
+                errors: {
+                    full_name: [],
+                    email: [],
+                    title: [],
+                    message: [],
+                },
                 slides: [],
                 slideNumber: 1,
+                contact: false,
                 numberOfSlides: this.calculateNumberOfSlides(),
                 skills: this.freelancer.skills,
                 worksHistory: this.freelancer.works_history,
@@ -890,13 +903,86 @@
                 },
                 weeks: 4,
                 hours: this.freelancer.agent.available_hours_per_week,
-                portfolio: !this.hire,
-                colors:{
+                portfolio: !this.contact,
+                colors: {
                     hex: this.freelancer.agent.custom_resume ? this.freelancer.agent.custom_resume.background_color : '#4E75E8',
                 },
+                notificationMessage: 'Link copied!',
+                contactAreaLoading: false,
             }
         },
         methods: {
+            submitContactForm() {
+                // clear error
+                this.errors = {
+                    full_name: [],
+                    email: [],
+                    title: [],
+                    message: [],
+                };
+                // add class loading to the contact area
+                this.contactAreaLoading = true;
+                axios.post('/freelancer/developer-card/message', this.contactFormData)
+                    .then((response) => {
+                        console.log(response.data);
+                        // hide the contact form and show success message
+                        this.hideContactSection();
+                        this.showSuccessMessage('Message has been successfully sent!');
+                        this.contactFormData = {
+                            full_name: '',
+                            email: '',
+                            title: '',
+                            message: '',
+                            agent_id: this.freelancer.agent.id
+                        },
+
+                            this.contactAreaLoading = false;
+                    })
+                    .catch((error) => {
+                        console.log(error.response.data);
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                            this.contactAreaLoading = false;
+                        } else {
+                           alert('Something went wrong. Please try again.');
+                        }
+                        this.contactAreaLoading = false;
+
+                    })
+
+            },
+            goToExternalURL(link) {
+                if (link.includes('http')) {
+                    window.location = link;
+                } else {
+                    window.location = 'http://' + link;
+                }
+
+            },
+            showSuccessMessage(message) {
+                this.notificationMessage = message;
+                $('.notificationBar').css('background', '#FFBA69');
+                $('#notificationBar').fadeIn(600);
+                setTimeout(() => {
+                    $('#notificationBar').fadeOut(1500);
+                }, 4000);
+            },
+            hideNotification() {
+                $('#notificationBar').css('display', 'none');
+            },
+            copyProfileLink(username) {
+                let getUrl = window.location;
+                let baseUrl = getUrl.protocol + "//" + getUrl.host;
+
+                let $temp = $("<input>");
+                $("body").append($temp);
+                $temp.val(baseUrl + '/' + username).select();
+                document.execCommand("copy");
+                $temp.remove();
+
+                // notification copied :
+                this.showSuccessMessage('Resume link copied!');
+            },
             getResizedImage(src) {
                 let resizedImage = this.getImageSrc(src).replace('/resumeApp/uploads', '/resumeApp/uploads/resized-images');
                 if (this.search == false) {
@@ -1043,14 +1129,14 @@
                     }
                 });
             },
-            showHireSection() {
+            showContactSection() {
                 setTimeout(() => {
-                    this.hire = true;
+                    this.contact = true;
                 }, 800);
                 this.portfolio = false;
             },
-            hideHireSection() {
-                this.hire = false;
+            hideContactSection() {
+                this.contact = false;
                 setTimeout(() => {
                     this.portfolio = true;
                 }, 800);
@@ -1135,22 +1221,22 @@
                     return source;
                 }
             },
-            getBackgroundColor(){
-                if(!this.colors.rgba){
+            getBackgroundColor() {
+                if (!this.colors.rgba) {
                     let currentBG = this.colors.hex.replace('#', '');
                     let r = parseInt(currentBG.substring(0, 2), 16);
                     let g = parseInt(currentBG.substring(2, 4), 16);
                     let b = parseInt(currentBG.substring(4, 6), 16);
                     let a = 0.85;
-                    return 'background-color:rgba(' + r + ',' + g + ',' + b + ',' + a + ')' ;
+                    return 'background-color:rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
                 }
 
-                let currentBG = this.colors.rgba ;
+                let currentBG = this.colors.rgba;
                 let r = currentBG.r;
                 let b = currentBG.b;
                 let g = currentBG.g;
                 let a = 0.85;
-                return  `background-color:rgba(${r},${g},${b},${a})`;
+                return `background-color:rgba(${r},${g},${b},${a})`;
             },
         },
         mounted() {
@@ -1416,7 +1502,7 @@
             justify-content: center;
             font-weight: 500;
             height: 30px;
-            border: 1px solid #FFFFFF;
+            border: 1px solid white;
             border-radius: 5px;
             font-size: 13px;
             width: 118px;
@@ -1429,9 +1515,44 @@
 
     }
 
-    .progressBtn{
-        margin-top:0;
+    .progressBtn {
+        margin-top: 0;
     }
 
+    @media only screen and (max-width: 760px) {
+        .actionRow {
+            height: 69px;
+            padding-bottom: 0px;
+        }
+    }
+
+    .spinner{
+        position: absolute;
+        left: 46%;
+        top: 46%;
+    }
+
+    .loading{
+        opacity: .5;
+        pointer-events: none;
+    }
+
+    #loading {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        border: 5px solid #4E75E8;
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        -webkit-animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+        to { -webkit-transform: rotate(360deg); }
+    }
+    @-webkit-keyframes spin {
+        to { -webkit-transform: rotate(360deg); }
+    }
 
 </style>

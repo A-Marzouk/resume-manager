@@ -25,6 +25,12 @@
         <a href="#"><img src="/images/resume_builder/slack-icon.svg" alt="slack icon"></a>
       </div>
     </div>
+    <div class="logo-footer">
+      <img src="/images/resume_builder/123 logo.png" alt="123workforce logo">
+    </div>
+
+    <img src="/images/resume_builder/dotbox.png" alt="" class="dot-bg-1">
+    <img src="/images/resume_builder/dotbox.png" alt="" class="dot-bg-2">
   </footer>
 </template>
 
@@ -39,7 +45,22 @@ export default {
     justify-content: center;
     flex-direction: column;
     margin-top: 10rem;
-    padding: 10rem;
+    padding: 10rem 10rem 5rem;
+    position: relative;
+    overflow: hidden;
+
+    .dot-bg-1 {
+      position: absolute;
+      right: -8rem;
+      bottom: 0;
+
+    }
+
+    .dot-bg-2 {
+      position: absolute;
+      bottom: -8rem;
+      left: -10rem;
+    }
   }
 
   .social-panel {
@@ -93,5 +114,12 @@ export default {
         margin: 0 20px;
       }
     }
+  }
+
+  .logo-footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 4rem;
   }
 </style>

@@ -21,6 +21,9 @@
 
     <section class="resume-samples">
       <div class="professions-slider-container">
+        <button @click="prevPosition" class="slick-control prev-arrow">
+          <img src="/images/resume_builder/prev-arrow.svg" />
+        </button>
         <slick class="professions-slider-tabs"
           ref="slick"
           :options="slickOptions"
@@ -29,6 +32,9 @@
             :key="profession"
           ><a @click="handleSetPosition(index)">{{ profession }}</a></li>
         </slick>
+        <button @click="nextPosition" class="slick-control next-arrow">
+          <img src="/images/resume_builder/next-arrow.svg" />
+        </button>
       </div>
 
       <div class="resume-preview">
@@ -59,6 +65,7 @@
           <monthly-plan v-if="selectedPlan === 'monthly'"></monthly-plan>
           <yearly-plan v-else></yearly-plan>
         </transition>
+        <img class="dot-bg" src="/images/resume_builder/dotbox.png" alt="">
       </div>
     </section>
     <footer-resume></footer-resume>
@@ -96,7 +103,9 @@ export default {
       slidesToScroll: 5,
       speed: 300,
       adaptiveHeight: true,
-      initialSlide: 4
+      initialSlide: 4,
+      nextArrow: '',
+      prevArrow: ''
     },
     actualProfession: null,
     selectedPlan: 'monthly'
@@ -111,6 +120,22 @@ export default {
         this.$refs.slick.reSlick();
       });
     },
+
+    nextPosition () {
+      let  index = this.$refs.slick.currentSlide()
+      if (index < this.professions.length) {
+        this.$refs.slick.goTo(index + 1)
+        this.actualProfession = this.professions[index + 1]
+      }
+    },
+
+    prevPosition () {
+      let  index = this.$refs.slick.currentSlide()
+      if (index > 0) {
+        this.$refs.slick.goTo(index - 1)
+        this.actualProfession = this.professions[index - 1]
+      }
+    }
   },
   computed: {
     actualProfessionSlug: function () {
@@ -220,7 +245,7 @@ $placeholder-color: #9ba1ad;
     font-size: 70px;
     max-width: 512px;
   }
-30px
+
   &__subtitle {
     font-size: 30px;
     margin-top: 20px;
@@ -316,12 +341,36 @@ $placeholder-color: #9ba1ad;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    .slick-control {
+      position: absolute;
+      z-index: 1;
+      background: $input-bg;
+      border: none;
+      outline: none;
+      padding: 0;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .next-arrow {
+      right: 2rem;
+    }
+
+    .prev-arrow {
+      left: 2rem;
+    }
   }
 
   .professions-slider-tabs {
     width: 100%;
     list-style: none;
     padding: 0 2rem;
+    display: flex;
+    justify-content: center;
 
     .slick-current {
       a {
@@ -425,6 +474,15 @@ $placeholder-color: #9ba1ad;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  & > .dot-bg  {
+    position: absolute;
+    bottom: -6rem;
+    left: -18rem;
+    z-index: 1;
+    height: 160px;
+  }
 }
 
 .toggle-panel {

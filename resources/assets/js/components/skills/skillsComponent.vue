@@ -29,21 +29,14 @@
                     <div class="row" style="padding-top: 17px;background: #fdfdfd;">
                         <div class="col-md-12">
                             <form action="/freelancer/addskill/" method="post" @submit.prevent="addSkill">
-                                <div class="form-group newSkill-input">
+                                <div class="form-group">
                                     <input type="text" placeholder="Add new skill" class="form-control" id="skill_title"
                                            name="skill_title"
                                            v-model="currSkill.skill_title"
                                            required
                                            style=" background:white url('/images/add_skill.png')  no-repeat right .75rem center;
                                         background-size: 15px 15px;"
-                                            @focus="showSkillsList = true"
-                                            v-on:keydown="changeFilter"
                                     >
-                                    <skills-filter v-if="showSkillsList"
-                                        :skillsFiltered="skillsFiltered"
-                                        :selectOption="selectOption"
-                                        :showSkillsList="showSkillsList"
-                                    ></skills-filter>
 
                                     <input type="number" min="50" max="100" step="10" placeholder="Percentage %"
                                            class="form-control" v-model="currSkill.percentage" required>
@@ -119,13 +112,8 @@
 </template>
 
 <script>
-    import skillsList from './skillsList';
-
     export default {
-        props:['user_id'],
-        components: {
-            "skills-filter": skillsList
-        },
+        props: ['user_id'],
         data() {
             return {
                 skills: [],
@@ -135,9 +123,6 @@
                     percentage: '',
                 },
                 currType: '',
-                skillsList: [],
-                skillsFiltered: [],
-                showSkillsList: false,
                 editedSkill: {
                     skill_title: '',
                     percentage: '',
@@ -145,14 +130,6 @@
             }
         },
         methods: {
-            changeFilter ({target}) {
-                let regex = new RegExp(target.value, ['gi'])
-                this.skillsFiltered = target.value ? this.skillsList.filter(skill => skill.match(regex)) : this.skillsList
-            },
-            selectOption (skill) {
-                this.currSkill.skill_title = skill
-                this.showSkillsList = false
-            },
             getSkills() {
                 axios.get('/freelancer/skills?user_id=' + this.user_id).then(
                     (response) => {
@@ -163,18 +140,6 @@
 
                     }
                 );
-            },
-
-            getSkillsList () {
-                axios
-                    .get(`/freelancer/skillsList`)
-                    .then(response => {
-                        this.skillsList = response.data.map(skill => skill.skill_title).sort();
-                        this.skillsFiltered = [...this.skillsList]
-                    })
-                    .catch(error => {
-                        console.log(error);
-                    })
             },
             deleteSkill(skill) {
                 axios.post('/freelancer/deleteskill', {skillID: skill.id}).then((response) => {
@@ -363,7 +328,6 @@
         },
         created() {
             this.getSkills();
-            this.getSkillsList();
             this.currType = 'programming';
         },
         mounted() {
@@ -400,9 +364,6 @@
         }
     }
 
-    .newSkill-input {
-        position: relative;
-    }
 
     .skills,
     .skills .skill,

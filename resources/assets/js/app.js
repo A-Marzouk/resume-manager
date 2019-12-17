@@ -54,7 +54,6 @@ Vue.component('freelancer-resume-long-v2', require('./components/freelancerResum
 Vue.component('freelancer-resume-short-v2', require('./components/freelancerResume/resumeComponentShortV2.vue'));
 Vue.component('freelancer-resume-download', require('./components/freelancerResume/resumeDownloadComponent.vue'));
 Vue.component('freelancer-resume-editor', require('./components/freelancerResume/ResumeEditor.vue'));
-Vue.component('resume-homepage', require('./components/freelancerResume/resume_homepage.vue'));
 
 
 // register developer
@@ -105,12 +104,6 @@ if ($("#registerDeveloper").length !== 0){
 if ($("#freelancerResumeShortV2").length !== 0){
     let freelancerResumeShortV2 = new Vue({
         el:'#freelancerResumeShortV2'
-    });
-}
-
-if ($("#resumeHomepage").length !== 0){
-    let resumeHomepage = new Vue({
-        el:'#resumeHomepage'
     });
 }
 

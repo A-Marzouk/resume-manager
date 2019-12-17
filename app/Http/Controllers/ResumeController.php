@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Mail;
 
 class ResumeController extends Controller
 {
-    public function resumeBuilder () {
-        return view('resume_builder.index');
-    }
-
     public function downloadPDFResume($username) {
         $freelancer = User::where('username',$username)->with(['userData','skills','agent','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
@@ -28,9 +24,7 @@ class ResumeController extends Controller
             $pdf = \App::make('dompdf.wrapper');
             $pdf->loadHTML($view);
             ob_end_clean();
-            // dd($freelancer);
             return $pdf->stream($freelancer->userData['first_name'].' '.$freelancer->userData['last_name'].'.pdf');
-            // return view('freelancer.resume_pdf', compact('freelancer'));
         }
     }
 
@@ -88,9 +82,6 @@ class ResumeController extends Controller
         $freelancer = User::where('username',$username)->with(['userData','skills','agent','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
         }])->where('username',$username)->first();
-
-
-        // dd($freelancer->toJson());
         return view('freelancerResume.resumeTest', compact('freelancer'));
         
     }

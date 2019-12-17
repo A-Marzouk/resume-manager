@@ -322,12 +322,17 @@ Route::prefix('freelancer')->group(function (){
     Route::get('/has_agreed','FreelancersController@hasAgreed');
     Route::post('/set_terms','FreelancersController@setTerms');
 
+    Route::get('/skillsList', 'FreelancersController@getSkillsList');
+
 });
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
     return redirect()->back();
 });
+
+// Resume landing page
+Route::get('/resume-builder', 'ResumeController@resumeBuilder')->name('resume-builder');
 
 // admin area :
 Route::get('/admin','AdminsController@welcomePage')->name('admin.dashboard');

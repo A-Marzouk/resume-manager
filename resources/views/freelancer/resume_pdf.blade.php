@@ -163,7 +163,9 @@
       left: 0;
     }
 
-    .resume__content__details__companyName {
+    .resume__content__details__companyName,
+    .resume__content__details__schoolName,
+    .resume__content__details__projectName {
       color: #515151;
       font-weight: bold;
     }
@@ -174,10 +176,22 @@
     }
 
     .resume__content__details__workDetails,
-    .resume__content__details__educationDetails {
+    .resume__content__details__educationDetails,
+    .resume__content__details__projectDetails, {
       margin-top: 10px;
       margin-bottom: 20px;
-    }    
+    }
+
+    .resume__content__details__projectImage {
+      width: 100%;
+      display: block;
+    }
+
+    .resume__content__details__projectImage img {
+      height: 300px;
+      margin: 0 auto;
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -353,7 +367,7 @@
           <div class="resume__content__details">
             @foreach ($freelancer->educationsHistory as $education)
               <section>
-                <div class="resume__content__details__companyName">
+                <div class="resume__content__details__schoolName">
                     {{ $education['school_title'] }}
                 </div>
                 <div class="resume__content__details__educationDate">
@@ -368,6 +382,32 @@
                 <div class="resume__content__details__educationDetails">
                   {{ $education['description'] }}
                 </div>
+              </section>
+            @endforeach
+          </div>
+        </section>
+      @endif
+
+      @if ($freelancer->projects->count() > 0)
+        <section>
+          <div class="resume__content__titleWrapper">
+            <div class="title">Projects</div>
+            <div class="decorator"></div>
+          </div>
+
+          <div class="resume__content__details">
+            @foreach ($freelancer->projects as $project)
+              <section>
+                <div class="resume__content__details__projectName">
+                    {{ $project->projectName }}
+                </div>
+                <div class="resume__content__details__projectImage">
+                  <img src="{{ public_path().'/'.$project->mainImage }}" alt="" />
+                </div>
+                <div class="resume__content__details__projectDetails">
+                  {{ $project->projectDesc }}
+                </div>
+                <div class="resume__content__details__projectLink">See the project here: <a href="{{ $project->link }}">{{ $project->link }}</a></div>
               </section>
             @endforeach
           </div>

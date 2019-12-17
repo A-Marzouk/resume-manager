@@ -16,8 +16,8 @@
                                   <input type="text" class="form-control p-2" id="job_title" name="job_title" v-model="toBeEditedWork.job_title" required>
                               </div>
                               <div class="form-group d-flex flex-column align-items-start col-md-6">
-                                  <label for="company" class="panelFormLabel">Company:</label>
-                                  <input type="text" class="form-control p-2" id="company" name="company" v-model="toBeEditedWork.company" required>
+                                  <label for="" class="panelFormLabel">Company:</label>
+                                  <input type="text" class="form-control p-2" name="company" v-model="toBeEditedWork.company" required>
                               </div>
                               <div class="form-group d-flex flex-column align-items-start col-md-12">
                                     <label for="job_description" class="panelFormLabel">Job description :</label>
@@ -25,12 +25,12 @@
                                     </textarea>
                                 </div>
                               <div class="form-group d-flex flex-column align-items-start col-md-6">
-                                    <label for="date_from" class="panelFormLabel">Start :</label>
-                                    <input type="date" class="form-control p-2" id="date_from" name="date_from" v-model="toBeEditedWork.date_from" required>
+                                    <label for="" class="panelFormLabel">Start :</label>
+                                    <input type="date" class="form-control p-2" name="date_from" v-model="toBeEditedWork.date_from" required>
                                 </div>
                               <div class="form-group d-flex flex-column align-items-start col-md-6" v-show="!toBeEditedWork.is_currently_working">
-                                    <label for="date_from" class="panelFormLabel">End :</label>
-                                    <input type="date" class="form-control p-2" id="date_to" name="date_to" v-model="toBeEditedWork.date_to">
+                                    <label for="" class="panelFormLabel">End :</label>
+                                    <input type="date" class="form-control p-2"  name="date_to" v-model="toBeEditedWork.date_to">
                                 </div>
 
                               <div class="form-group d-flex flex-column align-items-start col-md-12">

@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group d-flex flex-column align-items-start  col-md-12">
                       <label for="link" class="panelFormLabel">Link:</label>
-                      <input type="text" class="form-control p-2" id="link" name="link" v-model="toBeEditedProject.link">
+                      <input type="text" class="form-control p-2" name="link" v-model="toBeEditedProject.link">
                     </div>
                     <div class="form-group d-flex flex-column align-items-start  col-md-12">
                       <label for="projectDesc" class="panelFormLabel">Description :</label>

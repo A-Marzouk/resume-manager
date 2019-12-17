@@ -250,6 +250,11 @@ Route::prefix('agent')->group(function (){
     Route::get('/resume/create-default-custom-resume/{user_id}','ResumeCustomsController@createDefaultCustomResume');
     Route::post('/resume/custom/update','ResumeCustomsController@updateResume');
 
+    // agent socials
+    Route::get('/resume/socials/{agent_id}','AgentSocialsController@getAgentSocialsByAgentID');
+    Route::post('/resume/socials/create','AgentSocialsController@createSocialRecord');
+    Route::post('/resume/socials/delete','AgentSocialsController@deleteSocialIcon');
+
 
 });
 

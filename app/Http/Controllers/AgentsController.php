@@ -459,7 +459,7 @@ class AgentsController extends Controller
             $user_id = currentUser()->id;
         }
 
-        $freelancer = User::with(['userData', 'skills', 'agent.resumeTabs','agent.customResume', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
+        $freelancer = User::with(['userData', 'skills', 'agent.resumeTabs', 'agent.socials','agent.customResume', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
             return $query->limit(10);
         }])->where('id',$user_id)->first();
 

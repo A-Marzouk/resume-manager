@@ -37,6 +37,11 @@ class Agent extends Model
         return $this->hasMany(ResumeTab::class)->orderBy('view_order','asc');
     }
 
+    public function socials()
+    {
+        return $this->hasMany(AgentSocial::class);
+    }
+
     public function customResume()
     {
         return $this->hasOne(ResumeCustom::class);

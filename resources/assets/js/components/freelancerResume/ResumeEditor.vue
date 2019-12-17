@@ -3,6 +3,18 @@
         <div class="d-flex flex-column align-items-center">
             <div class="marginMobile-0">
                 <div class="freelancerCard ml-0 mr-0 freelancerCard_updated" style="margin-bottom:-3px">
+                    <div class="" style="display: flex;justify-content: center; width:inherit">
+                        <div class="notificationBar" id="notificationBar"
+                             style="display:none; position:fixed; z-index:9999; width:inherit">
+                            <div>
+                                {{notificationMessage}}
+                            </div>
+                            <a href="javascript:void(0)" @click="hideNotification" class="no-decoration"
+                               style="color: white;">
+                                x
+                            </a>
+                        </div>
+                    </div>
                     <div class="row actionRow d-flex justify-content-between align-items-center"
                          :style="getBackgroundColor()">
                         <div class="d-flex">
@@ -67,6 +79,18 @@
                                                 <input type="text" class="form-control cardSelect"
                                                        placeholder="Job title" v-model="freelancer.user_data.job_title"
                                                        @blur="updateFreelancerCardData">
+                                            </div>
+                                            <div class="mt-2 d-flex align-items-center flex-wrap" style="padding-left: 10px;">
+                                                <img :src="agentSocial.icon_src" class="mr-2 mt-1" alt="add social icon"
+                                                     v-for="(agentSocial,index) in user.agent.socials" :key="index"
+                                                     style="width:24px; border:solid white 2px; border-radius:50%;"
+                                                     data-toggle="modal" data-target="#addSocial"
+                                                     @click="setCurrentSocial(agentSocial)">
+
+                                                <img src="/images/social_icons/plus-icon.svg" class="mr-2 mt-1"
+                                                     alt="add social icon"
+                                                     style="width:24px;" data-toggle="modal" data-target="#addSocial"
+                                                     @click="setCurrentSocial('default')">
                                             </div>
                                         </div>
                                     </div>
@@ -540,6 +564,66 @@
             </div>
             <chrome-picker v-model="colors" v-show="showColorPicker"/>
         </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="addSocial" tabindex="-1" role="dialog" aria-labelledby="addSocial"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                id="addSocialModalClose">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="flex-column d-flex">
+                            <div class="flex-column d-flex form-group align-items-start">
+                                <label for="name" class="panelFormLabel">Social site *</label>
+                                <select v-model="social.name" id="name" class="panelFormInput form-control"
+                                        @change="setSocialIcon">
+                                    <option value="" selected disabled>-- Select --</option>
+                                    <option value="facebook">Facebook</option>
+                                    <option value="behance">Behance</option>
+                                    <option value="github">GitHub</option>
+                                    <option value="gitlab">GitLab</option>
+                                    <option value="google-plus">Google +</option>
+                                    <option value="instagram">Instagram</option>
+                                    <option value="linkedin">Linkedin</option>
+                                    <option value="pinterest">Pinterest</option>
+                                    <option value="skype">Skype</option>
+                                    <option value="soundcloud">Soundcloud</option>
+                                    <option value="tumblr">Tumblr</option>
+                                    <option value="twitter">Twitter</option>
+                                    <option value="vk">VK</option>
+                                    <option value="youtube">Youtube</option>
+                                </select>
+                                <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545"  v-if="errors.name">
+                                        <strong>{{ errors.name[0] }}</strong>
+                                </span>
+                                <div class="mt-2" v-if="social.icon_src.length > 0">
+                                    <img :src="social.icon_src" alt="icon" style="width:24px;">
+                                </div>
+                            </div>
+                            <div class="form-group d-flex flex-column align-items-start">
+                                <label for="link" class="panelFormLabel">Link *</label>
+                                <input id="link" type="text" class="panelFormInput form-control"
+                                       placeholder="example.com/john-doe" v-model="social.link" required autofocus>
+                                    <span style="width:100%;margin-top:.25rem;font-size:80%;color:#dc3545" v-if="errors.link">
+                                        <strong>{{ errors.link[0] }}</strong>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" @click="deleteSocialIcon" v-show="this.social.id > 0">Remove</button>
+                        <button type="button" class="btn btn-success" @click="addSocialIcon">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -567,6 +651,13 @@
         props: ['user'],
         data() {
             return {
+                social: {
+                    agent_id: this.user.agent.id,
+                    link: '',
+                    name: '',
+                    icon_src: '',
+                },
+                socials: this.user.agent.socials,
                 showColorPicker: false,
                 colors: {
                     hex: this.user.agent.custom_resume ? this.user.agent.custom_resume.background_color : '#4E75E8',
@@ -578,7 +669,6 @@
                     user_data: {},
                     agent: {},
                 },
-                errors: [],
                 profile_picture: '',
                 currentMainTab: {},
                 mainTabs: [],
@@ -597,10 +687,96 @@
                 openedIconsTabID: 0,
                 customize: false,
                 showSaveBtnForHireLinkInput: false,
-                errors:{}
+                errors: {
+                    link: [],
+                    name: [],
+                    hireMeLink: ''
+                },
+                notificationMessage:'',
             }
         },
         methods: {
+            showSuccessMessage(message) {
+                this.notificationMessage = message;
+                $('.notificationBar').css('background', '#FFBA69');
+                $('#notificationBar').fadeIn(600);
+                setTimeout(() => {
+                    $('#notificationBar').fadeOut(1500);
+                }, 4000);
+            },
+            hideNotification() {
+                $('#notificationBar').css('display', 'none');
+            },
+            setSocialIcon() {
+                this.social.icon_src = '/images/social_icons/' + this.social.name + '.svg'
+            },
+            setCurrentSocial(social) {
+                if(social === 'default'){
+                    this.social = {
+                        agent_id: this.user.agent.id,
+                        link: '',
+                        name: '',
+                        icon_src: '',
+                    }
+                }else{
+                    this.social = social;
+                }
+            },
+            addSocialIcon() {
+                // clear errors :
+                this.errors = {
+                    link: [],
+                    name: [],
+                    hireMeLink: ''
+                };
+
+                if(!this.validURL(this.social.link)){
+                    this.errors = {
+                        link: ['Not valid link.'],
+                        name: [],
+                        hireMeLink: ''
+                    };
+                    return;
+                }
+
+                axios.post('/agent/resume/socials/create', this.social)
+                    .then((response) => {
+                        console.log(response.data);
+                        if(!this.social.id > 0){
+                            this.socials.push(response.data);
+                            this.showSuccessMessage('Social icon has been successfully added!');
+                        }else{
+                            this.showSuccessMessage('Social icon has been successfully updated!');
+                        }
+                        $('#addSocialModalClose').click();
+                    })
+                    .catch((error) => {
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                            console.log(this.errors);
+                        } else {
+                            alert('Something went wrong. Please try again.');
+                        }
+                    })
+            },
+            deleteSocialIcon() {
+                if (!confirm('Are you sure you want to delete this social icon ?')) {
+                    return;
+                }
+                axios.post('/agent/resume/socials/delete',this.social)
+                    .then( (response) => {
+                        let socials = this.socials;
+                        $.each(socials, (i) => {
+                            if (socials[i].id === this.social.id) {
+                                socials.splice(i, 1);
+                                $('#addSocialModalClose').click();
+                                this.showSuccessMessage('Social icon has been removed updated!');
+                                return false;
+                            }
+                        });
+                    })
+                    .catch()
+            },
             validURL(str) {
                 var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
                     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
@@ -612,9 +788,9 @@
             },
             updateHireMeLink() {
                 this.errors = {};
-                if(!this.validURL(this.user.agent.custom_resume.hire_me_link)){
+                if (!this.validURL(this.user.agent.custom_resume.hire_me_link)) {
                     this.errors = {
-                      hireMeLink : 'Not a valid URL.'
+                        hireMeLink: 'Not a valid URL.'
                     };
                     return;
                 }
@@ -941,7 +1117,7 @@
         font-weight: 600;
     }
 
-    .error{
+    .error {
         color: red;
         font-weight: 600;
         margin-top: 10px;

@@ -9,7 +9,6 @@ use App\Job;
 use App\Project;
 use App\ResumeCustom;
 use App\User;
-use App\Skill;
 use App\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,12 +43,6 @@ class FreelancersController extends Controller
     {
         $campaign = Campaign::where('id', $campaign_id)->with('agents.user', 'agents.user.userData', 'agents.logs', 'faqs', 'links','files')->first();
         return view('freelancer.campaign_main',compact('campaign','currentAgent'));
-    }
-
-    public function getSkillsList () {
-        $skills = Skill::all()->map->only('skill_title');
-
-        return $skills;
     }
 
     public function viewAccountEditPage()

@@ -35,15 +35,20 @@ class AgentSocialsController extends Controller
 
     public function createSocialRecord(Request $request){
 
-        $request->validate([
-            'name' => ['unique:socials,name,NULL,id,agent_id,200','required']
-        ]);
-
         if(isset($request->id)){
+            $request->validate([
+                'name' => 'required'
+            ]);
+
             $social = AgentSocial::where('id',$request->id)->first();
             $social->update($request->toArray());
             return $social ;
         }
+
+        $request->validate([
+            'name' => ['unique:socials,name,NULL,id,agent_id,200','required']
+        ]);
+
         return AgentSocial::create($request->toArray());
     }
 

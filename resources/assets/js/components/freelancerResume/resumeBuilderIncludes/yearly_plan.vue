@@ -131,6 +131,20 @@ $placeholder-color: #9ba1ad;
         }
       }
 
+
+
+      @media (max-width: 576px) {
+        font-size: 36px;
+
+        small, sup {
+          font-size: 16px;
+        }
+
+        sup {
+          left: 75px;
+        }
+      }
+
     }
 
     .btn {
@@ -141,6 +155,10 @@ $placeholder-color: #9ba1ad;
         display: block;
         font-size: 10px;
       }
+    }
+
+    @media (max-width: 960px) {
+      padding: 50px;
     }
   }
   
@@ -159,6 +177,10 @@ $placeholder-color: #9ba1ad;
     img {
       height: 14px;
       margin-right: 5px;
+    }
+
+    @media (max-width: 576px) {
+      padding: 2rem;
     }
   }
 </style>

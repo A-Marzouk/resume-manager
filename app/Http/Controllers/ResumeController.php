@@ -88,6 +88,9 @@ class ResumeController extends Controller
         $freelancer = User::where('username',$username)->with(['userData','skills','agent','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
             return $query->limit(10);
         }])->where('username',$username)->first();
+
+
+        // dd($freelancer->toJson());
         return view('freelancerResume.resumeTest', compact('freelancer'));
         
     }

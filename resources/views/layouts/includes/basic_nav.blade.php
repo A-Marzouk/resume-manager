@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light navbar-laravel resume-builder-nav">
   <a class="navbar-brand col-md-2 col-9" href="{{ url('/') }}">
-      <img src="/images/resume_builder/123 logo.png" alt="logo">
+      <img class="hideOnMobile" src="/images/resume_builder/123 logo.png" alt="123workforce logo">
+      <img src="/images/resume_builder/123 icon.png" alt="123workforce icon" class="showOnMobile">
   </a>
   <button class="navbar-toggler" id="navBarToggle" type="button" data-toggle="collapse" style="border: none;"
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

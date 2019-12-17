@@ -1,6 +1,7 @@
 <template>
   <div>
     <section class="resume-main">
+      <img class="main-asset" src="/images/resume_builder/asset1.svg" alt="resume builder asset 123workforce">
       <div class="container">
         <h1 class="resume-main__title">Make Your Online Resume</h1>
         <h2 class="resume-main__subtitle">Choose Your Username</h2>
@@ -13,10 +14,6 @@
         </div>
         <button class="btn filled">Build My Resume</button>
       </div>
-
-      <picture class="main-asset">
-        <img src="/images/resume_builder/asset1.svg" alt="resume builder asset 123workforce">
-      </picture>
     </section>
 
     <section class="resume-samples">
@@ -105,7 +102,24 @@ export default {
       adaptiveHeight: true,
       initialSlide: 4,
       nextArrow: '',
-      prevArrow: ''
+      prevArrow: '',
+      variableWidth: true,
+      responsive: [
+        {
+          breakpoint: 1180,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4
+          }
+        },
+        {
+          breakpoint: 1100,
+          settings: {
+            slidesToShow: 5,
+            slidesToScroll: 5
+          }
+        }
+      ]
     },
     actualProfession: null,
     selectedPlan: 'monthly'
@@ -168,6 +182,7 @@ $placeholder-color: #9ba1ad;
   padding: 0 2rem !important;
   border-radius: 10px;
   margin: 0 1.5rem;
+  height: 60px;
 }
 
 .resume-builder-nav {
@@ -186,6 +201,17 @@ $placeholder-color: #9ba1ad;
 
     .navbar-brand img {
       width: 180px;
+    }
+  }
+
+  @media (max-width: 576px) {
+
+    .navbar-brand {
+      padding: 0;
+
+      img {
+        width: 50px;
+      }
     }
   }
 }
@@ -241,6 +267,11 @@ $placeholder-color: #9ba1ad;
   color: $text-color;
   position: relative;
 
+  .container {
+    z-index: 20;
+    position: relative;
+  }
+
   &__title {
     font-size: 70px;
     max-width: 512px;
@@ -254,6 +285,7 @@ $placeholder-color: #9ba1ad;
   .username {
     display: flex;
     margin-top: 60px;
+    flex-wrap: wrap;
   }
 
   .main-asset {
@@ -303,6 +335,7 @@ $placeholder-color: #9ba1ad;
   }
 
   @media (max-width: 1480px) {
+
     &__title {
       font-size: 52px;
       max-width: 360px;
@@ -314,9 +347,7 @@ $placeholder-color: #9ba1ad;
     }
 
     .main-asset {
-      img {
-        height: 75vh;
-      }
+      height: 75vh;
     }
 
     .styled-input {
@@ -331,6 +362,76 @@ $placeholder-color: #9ba1ad;
     }
   }
 
+  @media (max-width: 960px) {
+    padding: 3rem 3rem 5rem;
+
+    .main-asset {
+      top: 2rem;
+      height: 60vh;
+    }
+
+    .username {
+      margin-top: 130px;
+
+      .btn.filled {
+        margin: 0;
+      }
+    }
+
+    .styled-input {
+      width: 400px;
+      min-width: 380px;
+      margin-bottom: 1rem;
+
+      .url {
+        width: 50%;
+      }
+
+      input {
+        width: 50%;
+      }
+
+      img {
+        left: 100px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1rem 4rem;
+
+    &__title {
+      font-size: 36px;
+      max-width: 250px;
+      z-index: 50;
+    }
+
+    &__subtitle {
+      font-size: 22px;
+    }
+
+    .main-asset {
+      right: -1rem;
+      height: 200px;
+    }
+
+    .styled-input {
+      width: 100%;
+      min-width: 100%;
+    }
+
+    .container {
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .username {
+      .btn.filled {
+        width: 100%;
+      }
+    }
+  }
 }
 
 .resume-samples {
@@ -408,6 +509,10 @@ $placeholder-color: #9ba1ad;
         height: 90%;
         border-right: 1px solid $placeholder-color;
       }
+
+      @media (max-width: 1100px) {
+        padding: 0 10px;
+      }
     }
   }
 }
@@ -421,10 +526,18 @@ $placeholder-color: #9ba1ad;
   min-height: 750px;
   position: relative;
 
+  @media (max-width: 768px) {
+    min-height: 400px;
+  }
+
   img {
-    height: 700px;
-    position: absolute;
-    top: 0;
+    width: auto;
+    max-height: 350px;
+
+    @media (max-width: 768px) {
+      height: auto;
+      width: 90%;
+    }
   }
 }
 
@@ -444,6 +557,7 @@ $placeholder-color: #9ba1ad;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 1rem;
 
   .input-container {
     display: flex;
@@ -452,6 +566,20 @@ $placeholder-color: #9ba1ad;
     width: 100%;
     justify-content: center;
 
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+      padding: 0 1rem;
+
+      .btn.filled {
+        margin: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .btn.filled {
+        width: 100%;
+      }
+    }
   }
 
   .input-wrapper {
@@ -459,11 +587,21 @@ $placeholder-color: #9ba1ad;
     background: $input-bg;
     border-radius: 9.5px;
     padding: 0 2rem;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+
+    span, input {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     input {
       height: 100%;
       border: none;
       background: transparent;
+      outline: none;
     }
   }
 }
@@ -475,6 +613,10 @@ $placeholder-color: #9ba1ad;
   justify-content: center;
   align-items: center;
   position: relative;
+
+  @media (max-width: 768px) {
+    margin-top: 10rem;
+  }
 
   & > .dot-bg  {
     position: absolute;

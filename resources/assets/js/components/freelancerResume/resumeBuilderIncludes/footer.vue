@@ -26,7 +26,8 @@
       </div>
     </div>
     <div class="logo-footer">
-      <img src="/images/resume_builder/123 logo.png" alt="123workforce logo">
+      <img class="hideOnMobile" src="/images/resume_builder/123 logo.png" alt="123workforce logo">
+      <img src="/images/resume_builder/123 icon.png" alt="123workforce icon" class="showOnMobile">
     </div>
 
     <img src="/images/resume_builder/dotbox.png" alt="" class="dot-bg-1">
@@ -49,11 +50,19 @@ export default {
     position: relative;
     overflow: hidden;
 
+    @media (max-width: 768px) {
+      padding: 5rem 2rem;
+    }
+
     .dot-bg-1 {
       position: absolute;
       right: -8rem;
       bottom: 0;
 
+      @media (max-width: 768px) {
+        right: -9rem;
+        bottom: -10rem;
+      }
     }
 
     .dot-bg-2 {
@@ -77,12 +86,14 @@ export default {
       display: flex;
       justify-content: space-around;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .account-wrapper {
       display: flex;
       margin: 0 20px;
       align-items: center;
+      margin-bottom: 10px;
 
       img {
         margin: 0 5px;
@@ -112,6 +123,14 @@ export default {
 
       a {
         margin: 0 20px;
+
+      }
+      @media (max-width: 480px) {
+        width: 100%;
+
+        a {
+          margin: 0;
+        }
       }
     }
   }
@@ -120,6 +139,10 @@ export default {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 4rem;
+    margin-top: 6rem;
+
+    .showOnMobile {
+      width: 100px;
+    }
   }
 </style>

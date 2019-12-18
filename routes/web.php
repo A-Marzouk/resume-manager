@@ -629,6 +629,7 @@ Route::get('/workforce/privacy_policy','HomeController@privacyView')->name('priv
 Route::get('/resume_sample/{username}','HomeController@ResumeSample');
 //Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/{username}','ResumeController@agentsResume');
+Route::get('/theme-2/{username}','ResumeController@agentsResumeTheme2');
 
 Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-desginers');
 

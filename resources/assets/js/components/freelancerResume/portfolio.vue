@@ -2,60 +2,60 @@
     <div>
         <nav class="navbar navbar-light fixed-top dashboard_navbar" id="sideNav">
 
-            <a href="javascript:void(0)" class="js-menu-open menu-open" id="menu-open-icon">
-                <img src="/images/client/Group.png" alt="menu">
-            </a>
+            <!--<a href="javascript:void(0)" class="js-menu-open menu-open" id="menu-open-icon">-->
+                <!--<img src="/images/client/Group.png" alt="menu">-->
+            <!--</a>-->
 
-            <a href="javascript:void(0)" class="js-menu-close d-none">
-                <img src="/images/client/close.png" alt="menu">
-            </a>
+            <!--<a href="javascript:void(0)" class="js-menu-close d-none">-->
+                <!--<img src="/images/client/close.png" alt="menu">-->
+            <!--</a>-->
 
             <a class="navbar-brand" href="/freelancer/dashboard">
                 <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
             </a>
-            <div class="form-inline my-2 my-lg-0">
+            <!--<div class="form-inline my-2 my-lg-0">-->
 
-            </div>
-            <div class="form-inline my-2 my-lg-0 name">
-                <div class="logoutButton">
-                    <a href="/logout">
-                        <img src="/images/client/log_out.png" alt="logout">
-                    </a>
-                </div>
-                <div class="NoDecor">
-                    <a href="/freelancer/dashboard">
-                        {{freelancer.user_data.first_name}} {{freelancer.user_data.last_name}}
-                    </a>
-                </div>
-                <div class="avatar">
-                    <img :src="getImageSrc(freelancer.user_data.profile_picture)" alt="logout">
-                </div>
-            </div>
+            <!--</div>-->
+            <!--<div class="form-inline my-2 my-lg-0 name">-->
+                <!--<div class="logoutButton">-->
+                    <!--<a href="/logout">-->
+                        <!--<img src="/images/client/log_out.png" alt="logout">-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="NoDecor">-->
+                    <!--<a href="/freelancer/dashboard">-->
+                        <!--{{freelancer.user_data.first_name}} {{freelancer.user_data.last_name}}-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="avatar">-->
+                    <!--<img :src="getImageSrc(freelancer.user_data.profile_picture)" alt="logout">-->
+                <!--</div>-->
+            <!--</div>-->
         </nav>
 
 
-        <div class="js-side-nav-container side-nav-container">
-            <div class="js-side-nav side-nav">
-                <a href="javascript:void(0)" class="js-menu-close menu-close" id="close-menu"></a>
-                <div class="welcome-box border-0 d-flex justify-content-start align-items-center">
-                    <img src="/images/client/dummy.png" alt="profile">
-                    <div class="d-flex flex-column">
-                        <div>
-                            Welcome,
-                        </div>
-                        <div style="font-weight: 500">
-                            {{freelancer.user_data.first_name}} {{freelancer.user_data.last_name}}
-                        </div>
-                    </div>
-                </div>
+        <!--<div class="js-side-nav-container side-nav-container">-->
+            <!--<div class="js-side-nav side-nav">-->
+                <!--<a href="javascript:void(0)" class="js-menu-close menu-close" id="close-menu"></a>-->
+                <!--<div class="welcome-box border-0 d-flex justify-content-start align-items-center">-->
+                    <!--<img src="/images/client/dummy.png" alt="profile">-->
+                    <!--<div class="d-flex flex-column">-->
+                        <!--<div>-->
+                            <!--Welcome,-->
+                        <!--</div>-->
+                        <!--<div style="font-weight: 500">-->
+                            <!--{{freelancer.user_data.first_name}} {{freelancer.user_data.last_name}}-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
 
-                <div class="logoutBtn border-0">
-                    <a href="/logout">
-                        LOG OUT
-                    </a>
-                </div>
-            </div>
-        </div>
+                <!--<div class="logoutBtn border-0">-->
+                    <!--<a href="/logout">-->
+                        <!--LOG OUT-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
         <div class="marginMobile-0" style="padding-top: 23px;">
             <div class="freelancerCard" style="margin-bottom: -16px; height: auto;">

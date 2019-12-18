@@ -123,13 +123,10 @@
                                         </a>
                                     </div>
 
-
-                                    <div :id="'welcomeText'+freelancer.id" class="d-none">
-                                        Hi, I am
-                                        {{freelancer.user_data.first_name}}
-                                        , I am a {{freelancer.user_data.jobTitle}}, How
-                                        can I help
-                                        you ?
+                                    <div class="mt-2 d-flex align-items-center flex-wrap" style="padding-left: 10px;">
+                                        <a href="javascript:void(0)" @click="goToExternalURL(agentSocial.link)" v-for="(agentSocial,index) in freelancer.agent.socials" :key="index">
+                                            <img :src="agentSocial.icon_src" class="mr-2 mt-1" alt="add social icon" style="width:24px; border:solid white 2px; border-radius:50%;">
+                                        </a>
                                     </div>
                                 </div>
                             </div>

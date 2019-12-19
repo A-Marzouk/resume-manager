@@ -210,6 +210,10 @@
         margin-top:1%;
         border-radius:15px;
 
+        @media only screen and (max-width: 600px) {
+            width:95vw;
+        }
+
         .mainThemeBar{
             padding-top:40px;
             padding-left:5%;
@@ -491,7 +495,9 @@
                 margin-top:90px;
                 max-height: 468px;
                 overflow-y: scroll;
-
+                @media only screen and (max-width: 600px) {
+                    margin-top:35px;
+                }
                 .portfolio{
                     display: flex;
                     justify-content: center;

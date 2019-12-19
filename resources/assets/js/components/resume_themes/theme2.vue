@@ -137,7 +137,7 @@
                             Software
                         </div>
                     </div>
-                    <div class="skills-icons-bar">
+                    <div class="skills-icons-bar" id="style-1">
                         <img class="icon" src="/images/resume_themes/theme2/illustrator.svg" alt="skill-icon">
                         <img class="icon" src="/images/resume_themes/theme2/illustrator.svg" alt="skill-icon">
                         <img class="icon" src="/images/resume_themes/theme2/photoshop.svg" alt="skill-icon">
@@ -494,6 +494,7 @@
 
             .skills-icons-bar{
                 margin-top: 32px;
+                padding-bottom:10px;
                 display:flex;
                 justify-content: center;
                 overflow-x:auto;
@@ -514,8 +515,8 @@
             }
 
             .main-tab-content{
-                margin-top:90px;
-                max-height: 468px;
+                margin-top:80px;
+                max-height: 450px;
                 overflow-y: scroll;
                 @media only screen and (max-width: 600px) {
                     margin-top:35px;
@@ -578,4 +579,22 @@
         background-color: white;
     }
 
+    #style-1::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 0;
+    }
+
+    #style-1::-webkit-scrollbar
+    {
+        height: 4px;
+        background-color: rgba(255, 255, 255, 0.35);
+    }
+
+    #style-1::-webkit-scrollbar-thumb
+    {
+        border-radius: 1px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.1);
+        background-color: white;
+    }
 </style>

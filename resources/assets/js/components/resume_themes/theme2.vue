@@ -11,7 +11,7 @@
                 <div class="left hideOnPhone">
                     <div class="d-flex flex-column icons">
                         <img src="/images/resume_themes/theme2/sound.svg" alt="sound">
-                        <img src="/images/resume_themes/theme2/video.svg" alt="video">
+                        <img src="/images/resume_themes/theme2/video.svg" alt="icon">
                         <img src="/images/resume_themes/theme2/chat.svg" alt="chat">
                     </div>
                     <div class="avatar">
@@ -25,11 +25,11 @@
                             Ui/Ux designer
                         </div>
                         <div class="social-icons">
-                            <img src="/images/resume_themes/theme2/behance.svg" alt="video">
-                            <img src="/images/resume_themes/theme2/dribbble.svg" alt="video">
-                            <img src="/images/resume_themes/theme2/instagram.svg" alt="video">
-                            <img src="/images/resume_themes/theme2/linkedin.svg" alt="video">
-                            <img src="/images/resume_themes/theme2/google.svg" alt="video">
+                            <img src="/images/resume_themes/theme2/behance.svg" alt="icon">
+                            <img src="/images/resume_themes/theme2/dribbble.svg" alt="icon">
+                            <img src="/images/resume_themes/theme2/instagram.svg" alt="icon">
+                            <img src="/images/resume_themes/theme2/linkedin.svg" alt="icon">
+                            <img src="/images/resume_themes/theme2/google.svg" alt="icon">
                         </div>
                     </div>
                 </div>
@@ -54,17 +54,25 @@
                         </div>
                         <div class="d-flex flex-column icons">
                             <img src="/images/resume_themes/theme2/sound.svg" alt="sound">
-                            <img src="/images/resume_themes/theme2/video.svg" alt="video">
+                            <img src="/images/resume_themes/theme2/video.svg" alt="icon">
                         </div>
                     </div>
                     <div class="left">
                         <div class="info w-100">
                             <div class="social-icons">
-                                <img src="/images/resume_themes/theme2/behance.svg" alt="video">
-                                <img src="/images/resume_themes/theme2/dribbble.svg" alt="video">
-                                <img src="/images/resume_themes/theme2/instagram.svg" alt="video">
-                                <img src="/images/resume_themes/theme2/linkedin.svg" alt="video">
-                                <img src="/images/resume_themes/theme2/google.svg" alt="video">
+                                <img src="/images/resume_themes/theme2/behance.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/behance.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/dribbble.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/dribbble.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/dribbble.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/dribbble.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/instagram.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/instagram.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/instagram.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/linkedin.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/linkedin.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/google.svg" alt="icon">
+                                <img src="/images/resume_themes/theme2/google.svg" alt="icon">
                             </div>
                         </div>
                     </div>
@@ -131,9 +139,19 @@
                     </div>
                     <div class="skills-icons-bar">
                         <img class="icon" src="/images/resume_themes/theme2/illustrator.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme2/illustrator.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme2/photoshop.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme2/photoshop.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme2/photoshop.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme2/photoshop.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme2/photoshop.svg" alt="skill-icon">
                         <img class="icon" src="/images/resume_themes/theme2/photoshop.svg" alt="skill-icon">
                         <img class="icon" src="/images/resume_themes/theme2/sketch.svg" alt="skill-icon">
                         <img class="icon" src="/images/resume_themes/theme2/UX.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme2/UX.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme2/UX.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme2/UI.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme2/UI.svg" alt="skill-icon">
                         <img class="icon" src="/images/resume_themes/theme2/UI.svg" alt="skill-icon">
                     </div>
 
@@ -290,12 +308,17 @@
                         width:20vw;
                         display:flex;
                         justify-content:space-between;
+                        overflow-x: auto;
+
                         @media only screen and (max-width: 600px) {
                             width:100%;
                         }
                         img{
                             width:24px;
                             height:24px;
+                            @media only screen and (max-width: 600px) {
+                                margin-right:25px;
+                            }
                         }
                         img:last-child{
                             margin-right:0;
@@ -422,10 +445,9 @@
                 display:flex;
                 justify-content: center;
                 position:relative;
-                overflow-x: scroll;
+                overflow-x: auto;
                 @media only screen and (max-width: 600px) {
                     justify-content: space-between;
-                    overflow-x: scroll;
                 }
                 .skills-tab-text{
                     font-size: 16px;
@@ -474,7 +496,7 @@
                 margin-top: 32px;
                 display:flex;
                 justify-content: center;
-                overflow-x:scroll;
+                overflow-x:auto;
                 img{
                     width:40px;
                     height:40px;

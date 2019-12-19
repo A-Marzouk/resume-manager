@@ -61,6 +61,9 @@ Vue.component('resume-homepage', require('./components/freelancerResume/resume_h
 Vue.component('register-developer', require('./components/RegisterDeveloper.vue'));
 
 
+Vue.component('resume-theme-2', require('./components/resume_themes/theme2.vue'));
+
+
 
 import AdminAgentRegisterPage1 from './components/admin/registerAgent/page1.vue'
 import AdminAgentRegisterPage2 from './components/admin/registerAgent/page2.vue'
@@ -75,6 +78,12 @@ import AdminCampaigns from './components/admin/dashboard/Campaigns.vue';
 
 
 
+
+if ($("#resumeTheme2").length !== 0){
+    let resumeTheme2 = new Vue({
+        el:'#resumeTheme2'
+    });
+}
 
 if ($("#freelancerResumeLongV2").length !== 0){
     let freelancerResumeLongV2 = new Vue({

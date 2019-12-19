@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex justify-content-center">
-        <nav class="navbar navbar-light fixed-top dashboard_navbar" id="sideNav">
+        <nav class="navbar navbar-light fixed-top dashboard_navbar">
             <a class="navbar-brand" href="/freelancer/dashboard">
                 <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
             </a>
@@ -8,7 +8,7 @@
 
         <div class="themeWrapper">
             <div class="mainThemeBar d-flex justify-content-between align-items-center">
-                <div class="left d-flex">
+                <div class="left hideOnPhone">
                     <div class="d-flex flex-column icons">
                         <img src="/images/resume_themes/theme2/sound.svg" alt="sound">
                         <img src="/images/resume_themes/theme2/video.svg" alt="video">
@@ -33,6 +33,43 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="hideOnNotPhone w-100">
+                    <div class="left">
+                        <div class="d-flex">
+                            <div class="avatar">
+                                <img src="/images/resume_themes/theme2/man-photo.svg" alt="profile pic">
+                            </div>
+                            <div class="info d-flex flex-column align-items-between">
+                                <div class="user-name">
+                                    Conor
+                                </div>
+                                <div class="job-title">
+                                    Ui/Ux designer
+                                </div>
+                                <div class="icons">
+                                    <img src="/images/resume_themes/theme2/chat.svg" alt="chat" style="margin-left: -5px; margin-top: 8px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column icons">
+                            <img src="/images/resume_themes/theme2/sound.svg" alt="sound">
+                            <img src="/images/resume_themes/theme2/video.svg" alt="video">
+                        </div>
+                    </div>
+                    <div class="left">
+                        <div class="info w-100">
+                            <div class="social-icons">
+                                <img src="/images/resume_themes/theme2/behance.svg" alt="video">
+                                <img src="/images/resume_themes/theme2/dribbble.svg" alt="video">
+                                <img src="/images/resume_themes/theme2/instagram.svg" alt="video">
+                                <img src="/images/resume_themes/theme2/linkedin.svg" alt="video">
+                                <img src="/images/resume_themes/theme2/google.svg" alt="video">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="right d-flex">
                     <div class="hourly-rate">
                         <div class="hourly-rate-text">
@@ -59,7 +96,7 @@
             </div>
 
             <div class="tabs-bar d-flex justify-content-center align-items-center">
-                <div class="arrow">
+                <div class="arrow hideOnPhone">
                     <img src="/images/resume_themes/theme2/left-arrow.svg" alt="left" style="opacity: .3">
                 </div>
                 <div class="tab-text" @click="setActiveTab('portfolio')" :class="{active : activeTab === 'portfolio'}">
@@ -71,7 +108,7 @@
                 <div class="tab-text" @click="setActiveTab('education')" :class="{active : activeTab === 'education'}">
                     Education
                 </div>
-                <div class="arrow">
+                <div class="arrow hideOnPhone">
                     <img src="/images/resume_themes/theme2/right-arrow.svg" alt="right">
                 </div>
             </div>
@@ -149,6 +186,20 @@
 </script>
 
 <style lang="scss">
+
+
+    .hideOnPhone{
+        @media only screen and (max-width: 600px) {
+           display:none !important;
+        }
+    }
+
+    .hideOnNotPhone{
+        @media only screen and (min-width: 600px) {
+            display:none !important;
+        }
+    }
+
     .themeWrapper{
 
         width:100vw;
@@ -163,8 +214,20 @@
             padding-top:40px;
             padding-left:5%;
             padding-right:5%;
+            flex-wrap: wrap;
+
             .left{
+                display:flex;
+
+                @media only screen and (max-width: 600px) {
+                    width:100%;
+                   justify-content: space-between;
+                }
+
                 .icons{
+                    @media only screen and (max-width: 600px) {
+                        margin-right: 0;
+                    }
                     margin-right: 27px;
                     img{
                         width: 48px;
@@ -175,21 +238,36 @@
                         margin-bottom: 0;
                     }
                 }
-
                 .avatar{
                     margin-right: 37px;
+                    border-radius: 24px;
+                    img{
+                       width:160px;
+                       height:160px;
+                   }
 
-                    width:160px;
-                    height:160px;
+                    @media only screen and (max-width: 600px) {
+                        margin-right: 15px;
+                        img {
+                            width:104px;
+                            height:104px;
+                        }
+                    }
                 }
-
                 .info{
                     margin-top:15px;
+                    @media only screen and (max-width: 600px) {
+                        margin-top: 0;
+                    }
                     .user-name{
+                        margin-left: -2px;
                         font-weight: normal;
                         color: #707070;
                         font-size: 31px;
                         line-height: 30px;
+                        @media only screen and (max-width: 600px) {
+                            font-size: 24px;
+                        }
                     }
 
                     .job-title{
@@ -197,6 +275,10 @@
                         font-weight: 300;
                         font-size: 20px;
                         line-height: 19px;
+                        @media only screen and (max-width: 600px) {
+                            margin-top:8px;
+                            font-size: 16px;
+                        }
                     }
 
                     .social-icons{
@@ -204,6 +286,9 @@
                         width:20vw;
                         display:flex;
                         justify-content:space-between;
+                        @media only screen and (max-width: 600px) {
+                            width:100%;
+                        }
                         img{
                             width:24px;
                             height:24px;
@@ -216,24 +301,37 @@
             }
 
             .right{
-                .hourly-rate{
-                    margin-right:56px;
+                @media only screen and (max-width: 600px) {
+                    margin-top:57px;
+                    width: 100%;
+                    justify-content: center;
                 }
 
+                .hourly-rate{
+                    margin-right:56px;
+                    @media only screen and (max-width: 600px) {
+                        margin-right:27px;
+                    }
+                }
                 .weekly-availability{
                     margin-right:32px;
+                    @media only screen and (max-width: 600px) {
+                        margin-right:19px;
+                    }
                 }
                 .hourly-rate-text{
                     font-style: normal;
-                    font-weight: normal;
+                    font-weight: 600;
                     font-size: 19px;
                     line-height: 18px;
                     color: #4D75E8;
+                    @media only screen and (max-width: 600px) {
+                        font-size: 12px;
+                    }
                 }
                 .hourly-rate-text.light{
                     font-weight: 300;
                 }
-
                 .hire-me-btn{
                     background:#4D75E8;
                     height:55px;
@@ -246,6 +344,12 @@
                     line-height: 15px;
                     color: #FFFFFF;
                     border-radius:15px;
+                    @media only screen and (max-width: 600px) {
+                        font-size: 12px;
+                        height:34px;
+                        width:105px;
+                        border-radius:8px;
+                    }
                 }
             }
         }
@@ -262,6 +366,12 @@
                 padding-bottom: 9px;
                 opacity:0.43;
                 position:relative;
+
+                @media only screen and (max-width: 600px) {
+                    font-size: 20px;
+                    margin-right:10px;
+                    margin-left:10px;
+                }
             }
             .tab-text.active{
                 opacity:1;
@@ -297,6 +407,10 @@
             .tab-content-inside-wrapper{
                 margin-left: 100px;
                 margin-right: 100px;
+                @media only screen and (max-width: 600px) {
+                    margin-left: 0px;
+                    margin-right: 0px;
+                }
             }
 
             .skills-tabs{
@@ -304,6 +418,11 @@
                 display:flex;
                 justify-content: center;
                 position:relative;
+                overflow-x: scroll;
+                @media only screen and (max-width: 600px) {
+                    justify-content: space-between;
+                    overflow-x: scroll;
+                }
                 .skills-tab-text{
                     font-size: 16px;
                     font-weight: 600;
@@ -312,6 +431,12 @@
                     margin-right:64px;
                     padding-bottom:25px;
                     position: relative;
+                    @media only screen and (max-width: 600px) {
+                        font-size: 12px;
+                        margin-right:0;
+                        padding-right:20px;
+                        padding-left:20px;
+                    }
                 }
                 .skills-tab-text:hover{
                     cursor: pointer;
@@ -345,14 +470,21 @@
                 margin-top: 32px;
                 display:flex;
                 justify-content: center;
+                overflow-x:scroll;
                 img{
                     width:40px;
                     height:40px;
                     margin-right:64px;
+                    @media only screen and (max-width: 600px) {
+                        width:30px;
+                        height:30px;
+                        margin-right:30px;
+                    }
                 }
                 img:last-child{
                     margin-right:0;
                 }
+
             }
 
             .main-tab-content{
@@ -370,6 +502,13 @@
                         margin-right: 23px;
                         width: 740px;
                         height: 360px;
+                        @media only screen and (max-width: 600px) {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                    img:last-child{
+                        margin-bottom:25px;
                     }
                 }
 

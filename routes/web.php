@@ -631,6 +631,7 @@ Route::get('/resume_sample/{username}','HomeController@ResumeSample');
 Route::get('/{username}','ResumeController@agentsResume');
 Route::get('/theme-2/{username}','ResumeController@agentsResumeTheme2');
 Route::get('/theme-3/{username}','ResumeController@agentsResumeTheme3');
+Route::get('/theme-4/{username}','ResumeController@agentsResumeTheme4');
 
 Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-desginers');
 

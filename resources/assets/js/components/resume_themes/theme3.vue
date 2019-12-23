@@ -208,10 +208,10 @@
                             }
                         },
                         {
-                            breakpoint: 991,
+                            breakpoint: 1600,
                             settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1,
+                                slidesToShow: 2,
+                                slidesToScroll: 2,
                             }
                         }
                     ]
@@ -274,8 +274,8 @@
                 border-radius: 24px;
 
                 img {
-                    width: 280px;
-                    height: 280px;
+                    width: 180px;
+                    height: 180px;
                     border-radius: 50%;
                 }
 
@@ -286,6 +286,15 @@
                         height: 50px;
                     }
                 }
+
+                @media only screen and (min-width: 1600px) {
+                    img {
+                        width: 280px;
+                        height: 280px;
+                        border-radius: 50%;
+                    }
+                }
+
             }
 
             .info {
@@ -300,20 +309,24 @@
                     margin-left: -2px;
                     font-style: normal;
                     font-weight: bold;
-                    font-size: 60px;
-                    line-height: 90px;
+                    font-size: 40px;
+                    line-height: 70px;
                     color: #333333;
                     @media only screen and (max-width: 600px) {
                         font-size: 16px;
                         line-height: 24px;
+                    }
+                    @media only screen and (min-width: 1600px) {
+                        font-size: 60px;
+                        line-height: 90px;
                     }
                 }
 
                 .job-title {
                     font-style: normal;
                     font-weight: normal;
-                    font-size: 40px;
-                    line-height: 60px;
+                    font-size: 25px;
+                    line-height: 40px;
                     color: #000000;
 
                     img {
@@ -325,6 +338,11 @@
                     @media only screen and (max-width: 600px) {
                         font-size: 12px;
                         line-height: 15px;
+                    }
+
+                    @media only screen and (min-width: 1600px) {
+                        font-size: 40px;
+                        line-height: 60px;
                     }
                 }
 
@@ -398,8 +416,8 @@
                     border-radius: 24px;
 
                     img {
-                        width: 280px;
-                        height: 280px;
+                        width: 180px;
+                        height: 180px;
                         border-radius: 50%;
                     }
 
@@ -410,6 +428,15 @@
                             height: 50px;
                         }
                     }
+
+                    @media only screen and (min-width: 1600px) {
+                        img {
+                            width: 280px;
+                            height: 280px;
+                            border-radius: 50%;
+                        }
+                    }
+
                 }
 
                 .info {
@@ -424,20 +451,24 @@
                         margin-left: -2px;
                         font-style: normal;
                         font-weight: bold;
-                        font-size: 60px;
-                        line-height: 90px;
+                        font-size: 40px;
+                        line-height: 70px;
                         color: #333333;
                         @media only screen and (max-width: 600px) {
                             font-size: 16px;
                             line-height: 24px;
+                        }
+                        @media only screen and (min-width: 1600px) {
+                            font-size: 60px;
+                            line-height: 90px;
                         }
                     }
 
                     .job-title {
                         font-style: normal;
                         font-weight: normal;
-                        font-size: 40px;
-                        line-height: 60px;
+                        font-size: 25px;
+                        line-height: 40px;
                         color: #000000;
 
                         img {
@@ -450,9 +481,38 @@
                             font-size: 12px;
                             line-height: 15px;
                         }
+
+                        @media only screen and (min-width: 1600px) {
+                            font-size: 40px;
+                            line-height: 60px;
+                        }
                     }
 
+                    .social-icons {
+                        margin-top: 42px;
+                        width: 20vw;
+                        display: flex;
+                        justify-content: space-between;
+                        overflow-x: auto;
+
+                        @media only screen and (max-width: 600px) {
+                            width: 100%;
+                        }
+
+                        img {
+                            width: 24px;
+                            height: 24px;
+                            @media only screen and (max-width: 600px) {
+                                margin-right: 25px;
+                            }
+                        }
+
+                        img:last-child {
+                            margin-right: 0;
+                        }
+                    }
                 }
+
             }
 
             .right {
@@ -479,28 +539,36 @@
                 .hourly-rate-text {
                     font-style: normal;
                     font-weight: normal;
-                    font-size: 60px;
-                    line-height: 90px;
+                    font-size: 40px;
+                    line-height: 60px;
                     @media only screen and (max-width: 600px) {
                         font-size: 12px;
+                    }
+                    @media only screen and (min-width: 1600px) {
+                        font-size: 60px;
+                        line-height: 90px;
                     }
                 }
 
                 .hourly-rate-text.light {
                     font-style: normal;
                     font-weight: normal;
-                    font-size: 20px;
-                    line-height: 30px;
+                    font-size: 16px;
+                    line-height: 20px;
+                    @media only screen and (min-width: 1600px) {
+                        font-size: 20px;
+                        line-height: 30px;
+                    }
                 }
 
                 .hire-me-btn {
                     a {
-                        font-size: 30px;
+                        font-size: 24px;
                         color: #FFFFFF;
                         background: #5289E7;
                         border-radius: 35px;
                         background: #4D75E8;
-                        height: 70px;
+                        height: 60px;
                         width: 250px;
                         display: flex;
                         justify-content: center;
@@ -511,6 +579,11 @@
                             height: 34px;
                             width: 105px;
                             border-radius: 8px;
+                        }
+
+                        @media only screen and (min-width: 1600px) {
+                            font-size: 30px;
+                            height: 70px;
                         }
                     }
                 }
@@ -646,12 +719,17 @@
             }
 
             .portfolioSlides {
-                padding-left: 135px;
-                padding-right: 135px;
+                padding-left: 40px;
+                padding-right: 40px;
 
                 @media only screen and (max-width: 600px) {
                     padding-left: 0px;
                     padding-right: 0px;
+                }
+
+                @media only screen and (min-width: 1600px) {
+                    padding-left: 135px;
+                    padding-right: 135px;
                 }
 
                 display: flex;

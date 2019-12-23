@@ -62,6 +62,7 @@ Vue.component('register-developer', require('./components/RegisterDeveloper.vue'
 
 
 Vue.component('resume-theme-2', require('./components/resume_themes/theme2.vue'));
+Vue.component('resume-theme-3', require('./components/resume_themes/theme3.vue'));
 
 
 
@@ -82,6 +83,11 @@ import AdminCampaigns from './components/admin/dashboard/Campaigns.vue';
 if ($("#resumeTheme2").length !== 0){
     let resumeTheme2 = new Vue({
         el:'#resumeTheme2'
+    });
+}
+if ($("#resumeTheme3").length !== 0){
+    let resumeTheme3 = new Vue({
+        el:'#resumeTheme3'
     });
 }
 

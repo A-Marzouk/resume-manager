@@ -117,7 +117,7 @@ class ResumeController extends Controller
             ]);
         }
 
-        return view('resume_themes.theme2', compact('freelancer'));
+        return view('resume_themes.theme4', compact('freelancer'));
 
     }
 

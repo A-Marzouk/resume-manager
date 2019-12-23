@@ -9,62 +9,37 @@
 
         <div class="themeWrapper">
 
-            <div class="hideOnNotPhone w-100">
-                <div class="mobileThemeBar d-flex align-items-center">
-                    <div class="d-flex">
-                        <div class="avatar">
-                            <img src="/images/resume_themes/theme3/person.png" alt="profile pic">
-                        </div>
-                        <div class="info">
-                            <div class="user-name">
-                                Micheal Fields
-                            </div>
-                            <div class="job-title d-flex">
-                                <div>
-                                    Web Developer
-                                </div>
-                                <img src="/images/resume_themes/theme3/chat.svg" alt="chat" class="hideOnPhone">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hire-me-btn-mobile NoDecor">
-                        <a href="javascript:void(0)">Hire me</a>
-                    </div>
-                    <div class="menu-icon">
-                        <img src="/images/resume_themes/theme3/menu.svg" alt="menue">
-                    </div>
-                </div>
-            </div>
-
             <div class="mainThemeBar d-flex justify-content-between align-items-center">
                 <div class="left hideOnPhone">
                     <div class="avatar">
-                        <img src="/images/resume_themes/theme3/person.png" alt="profile pic">
+                        <img src="/images/resume_themes/theme4/person.png" alt="profile pic">
                     </div>
                     <div class="info">
                         <div class="user-name">
-                            Micheal Fields
+                            Zoyee Allena
                         </div>
-                        <div class="job-title d-flex">
-                            <div>
-                                Web Developer
-                            </div>
-                            <img src="/images/resume_themes/theme3/chat.svg" alt="chat" class="hideOnPhone">
+                        <div class="job-title">
+                            Visual deisgner
+                        </div>
+                        <div class="social-icons">
+                            <img src="/images/resume_themes/theme4/Behance.svg" alt="">
+                            <img src="/images/resume_themes/theme4/Dribbble.svg" alt="">
+                            <img src="/images/resume_themes/theme4/Instagram.svg" alt="">
                         </div>
                     </div>
                 </div>
 
                 <div class="hideOnPhone">
                     <div class="right d-flex align-items-center">
-                        <div class="hourly-rate">
+                        <div class="hourly-rate d-flex">
                             <div class="hourly-rate-text">
-                                $10
+                                15$
                             </div>
                             <div class="hourly-rate-text light text-center">
                                 Hourly Rate
                             </div>
                         </div>
-                        <div class="weekly-availability">
+                        <div class="weekly-availability d-flex">
                             <div class="hourly-rate-text">
                                 35 hours
                             </div>
@@ -72,38 +47,11 @@
                                 Weekly Availability
                             </div>
                         </div>
-                        <div class="hire-me-btn">
+                        <div class="hire-me-btn NoDecor">
                             <a href="javascript:void(0)">
                                 Hire me
                             </a>
                         </div>
-                    </div>
-                </div>
-
-                <div class="w-100 d-flex flex-column align-items-center justify-content-center">
-                    <div class="skills-tabs d-flex justify-content between">
-                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'programming-languages'}"
-                             @click="setActiveSkillTab('programming-languages')">
-                            Programming Languages
-                        </div>
-                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'framewroks-databases'}"
-                             @click="setActiveSkillTab('framewroks-databases')">
-                            Frameworks
-                        </div>
-                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'design-skills'}"
-                             @click="setActiveSkillTab('design-skills')">
-                            Design Skills
-                        </div>
-                        <div class="skills-tab-text mr-0" :class="{active : activeSkillTab === 'software'}"
-                             @click="setActiveSkillTab('software')">
-                            Software
-                        </div>
-                    </div>
-
-                    <div class="skills-icons-bar" id="style-1">
-                        <img class="icon" src="/images/resume_themes/theme3/html.svg" alt="skill-icon">
-                        <img class="icon" src="/images/resume_themes/theme3/python.svg" alt="skill-icon">
-                        <img class="icon" src="/images/resume_themes/theme3/skill.svg" alt="skill-icon">
                     </div>
                 </div>
             </div>
@@ -125,54 +73,41 @@
             </div>
 
             <div class="main-tab-content">
+                <div>
+                    <div class="skills-tabs d-flex justify-content between">
+                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'programming-languages'}"
+                             @click="setActiveSkillTab('programming-languages')">
+                            Programming Languages
+                        </div>
+                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'framewroks-databases'}"
+                             @click="setActiveSkillTab('framewroks-databases')">
+                            Frameworks
+                        </div>
+                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'design-skills'}"
+                             @click="setActiveSkillTab('design-skills')">
+                            Design Skills
+                        </div>
+                        <div class="skills-tab-text mr-0" :class="{active : activeSkillTab === 'software'}"
+                             @click="setActiveSkillTab('software')">
+                            Software
+                        </div>
+                    </div>
+                    <div class="skills-icons-bar" id="style-1">
+                        <img class="icon" src="/images/resume_themes/theme4/PS.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme4/Ai.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme4/Lr.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme4/Xd.svg" alt="skill-icon">
+                        <img class="icon" src="/images/resume_themes/theme4/Id.svg" alt="skill-icon">
+
+                    </div>
+                </div>
+
                 <slick class="portfolioSlides" ref="slick" :options="slickOptions">
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio1.png" alt="portfolio image">
-                        <div class="slide-text">
-                            🛒 Lorem ipsum dolor sit amet, consectetur elit.
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
-                        <div class="slide-text">
-                            📊 Lorem ipsum dolor sit amet, consectetur elit.
-                        </div>
-                    </div>
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio3.png" alt="portfolio image">
-                        <div class="slide-text">
-                            🛒 Lorem ipsum dolor sit amet, consectetur elit.
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio1.png" alt="portfolio image">
-                        <div class="slide-text">
-                            📊 Lorem ipsum dolor sit amet, consectetur elit.
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
-                        <div class="slide-text">
-                            🛒 Lorem ipsum dolor sit amet, consectetur elit.
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
-                        <div class="slide-text">
-                            🛒 Lorem ipsum dolor sit amet, consectetur elit.
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
-                        <div class="slide-text">
-                            🛒 Lorem ipsum dolor sit amet, consectetur elit.
-                        </div>
-                    </div>
+                    <img src="/images/resume_themes/theme4/portfolio1.png" alt="portfolio image">
+                    <img src="/images/resume_themes/theme4/portfolio2.png" alt="portfolio image">
+                    <img src="/images/resume_themes/theme4/portfolio3.png" alt="portfolio image">
+                    <img src="/images/resume_themes/theme4/portfolio2.png" alt="portfolio image">
+                    <img src="/images/resume_themes/theme4/portfolio1.png" alt="portfolio image">
                 </slick>
             </div>
 
@@ -193,7 +128,7 @@
                 activeTab: 'portfolio',
                 activeSkillTab: 'programming-languages',
                 slickOptions: {
-                    infinite: false,
+                    infinite: true,
                     dots: true,
                     arrows: false,
                     slidesToShow: 3,
@@ -204,7 +139,6 @@
                             settings: {
                                 slidesToShow: 2,
                                 slidesToScroll: 2,
-                                rows: 3,
                             }
                         },
                         {
@@ -261,127 +195,11 @@
             width: 95vw;
         }
 
-        .mobileThemeBar {
-            background: #FFFFFF;
-            box-shadow: 1px 6px 6px rgba(0, 0, 0, 0.1);
-            height:80px;
-            padding-left:10px;
-            padding-right:10px;
-            justify-content: space-between;
-
-            .avatar {
-                margin-right: 37px;
-                border-radius: 24px;
-
-                img {
-                    width: 280px;
-                    height: 280px;
-                    border-radius: 50%;
-                }
-
-                @media only screen and (max-width: 600px) {
-                    margin-right: 15px;
-                    img {
-                        width: 50px;
-                        height: 50px;
-                    }
-                }
-            }
-
-            .info {
-                margin-top: 10px;
-                display: flex;
-                flex-direction: column;
-                @media only screen and (max-width: 600px) {
-                    margin-top: 0;
-                }
-
-                .user-name {
-                    margin-left: -2px;
-                    font-style: normal;
-                    font-weight: bold;
-                    font-size: 60px;
-                    line-height: 90px;
-                    color: #333333;
-                    @media only screen and (max-width: 600px) {
-                        font-size: 16px;
-                        line-height: 24px;
-                    }
-                }
-
-                .job-title {
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 40px;
-                    line-height: 60px;
-                    color: #000000;
-
-                    img {
-                        width: 60px;
-                        height: 60px;
-                        margin-left: 20px;
-                    }
-
-                    @media only screen and (max-width: 600px) {
-                        font-size: 12px;
-                        line-height: 15px;
-                    }
-                }
-
-                .social-icons {
-                    margin-top: 42px;
-                    width: 20vw;
-                    display: flex;
-                    justify-content: space-between;
-                    overflow-x: auto;
-
-                    @media only screen and (max-width: 600px) {
-                        width: 100%;
-                    }
-
-                    img {
-                        width: 24px;
-                        height: 24px;
-                        @media only screen and (max-width: 600px) {
-                            margin-right: 25px;
-                        }
-                    }
-
-                    img:last-child {
-                        margin-right: 0;
-                    }
-                }
-            }
-
-            .hire-me-btn-mobile{
-                a{
-                    display:flex;
-                    justify-content:center;
-                    align-items:center;
-                    height:30px;
-                    width:90px;
-                    background: #5289E7;
-                    color: white;
-                    font-size: 13px;
-                    color: #FFFFFF;
-                    border-radius: 35px;
-                }
-            }
-
-            .menu-icon{
-                img{
-                    width:18px;
-                    height:12px;
-                    margin-left:5px;
-                }
-            }
-
-        }
 
         .mainThemeBar {
             padding-top: 40px;
-            padding-left: 5%;
-            padding-right: 5%;
+            padding-left: 70px;
+            padding-right: 70px;
             flex-wrap: wrap;
             @media only screen and (max-width: 600px) {
                 padding-top: 0;
@@ -394,12 +212,11 @@
                 }
 
                 .avatar {
-                    margin-right: 37px;
-                    border-radius: 24px;
+                    margin-right: 56px;
 
                     img {
-                        width: 280px;
-                        height: 280px;
+                        width: 226px;
+                        height: 226px;
                         border-radius: 50%;
                     }
 
@@ -413,7 +230,7 @@
                 }
 
                 .info {
-                    margin-top: 10px;
+                    margin-top: 35px;
                     display: flex;
                     flex-direction: column;
                     @media only screen and (max-width: 600px) {
@@ -422,11 +239,9 @@
 
                     .user-name {
                         margin-left: -2px;
-                        font-style: normal;
-                        font-weight: bold;
-                        font-size: 60px;
-                        line-height: 90px;
-                        color: #333333;
+                        font-size: 36px;
+                        line-height: 39px;
+                        color: #222B4C;
                         @media only screen and (max-width: 600px) {
                             font-size: 16px;
                             line-height: 24px;
@@ -434,24 +249,30 @@
                     }
 
                     .job-title {
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 40px;
-                        line-height: 60px;
-                        color: #000000;
-
-                        img {
-                            width: 60px;
-                            height: 60px;
-                            margin-left: 20px;
-                        }
-
+                        margin-top:15px;
+                        font-weight: 500;
+                        font-size: 20px;
+                        line-height: 22px;
+                        color: #9CA4C1;
                         @media only screen and (max-width: 600px) {
                             font-size: 12px;
                             line-height: 15px;
                         }
                     }
 
+                    .social-icons{
+                        display:flex;
+                        margin-left: -25px;
+                        margin-top: 6px;
+
+                        img{
+                            width: 100px;
+                            height: 100px;
+                        }
+                        img:last-child{
+                            margin-right: 0;
+                        }
+                    }
                 }
             }
 
@@ -463,45 +284,52 @@
                 }
 
                 .hourly-rate {
-                    margin-right: 66px;
+                    margin-right: 30px;
+                    align-items: baseline;
                     @media only screen and (max-width: 600px) {
                         margin-right: 27px;
                     }
                 }
 
                 .weekly-availability {
-                    margin-right: 40px;
+                    margin-right: 30px;
+                    align-items: baseline;
                     @media only screen and (max-width: 600px) {
                         margin-right: 19px;
                     }
                 }
 
                 .hourly-rate-text {
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 60px;
-                    line-height: 90px;
+                    font-weight: 500;
+                    font-size: 42px;
+                    line-height: 46px;
+                    color: #222B4C;
+                    margin-right: 10px;
                     @media only screen and (max-width: 600px) {
                         font-size: 12px;
                     }
                 }
 
                 .hourly-rate-text.light {
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 20px;
-                    line-height: 30px;
+                    font-weight: 500;
+                    font-size: 18px;
+                    line-height: 20px;
+                    color: #9CA4C1;
                 }
 
                 .hire-me-btn {
                     a {
-                        font-size: 30px;
+                        font-weight: 600;
+                        font-size: 14px;
+                        line-height: 15px;
+                        display: flex;
+                        align-items: center;
+                        text-align: center;
                         color: #FFFFFF;
-                        background: #5289E7;
-                        border-radius: 35px;
-                        background: #4D75E8;
-                        height: 70px;
-                        width: 250px;
+                        background: #00A3FF;
+                        border-radius: 6px;
+                        height: 60px;
+                        width: 170px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
@@ -530,12 +358,13 @@
             }
 
             .skills-tab-text {
-                font-style: normal;
-                font-weight: normal;
-                font-size: 25px;
-                line-height: 37px;
-                padding: 16px 33px;
-                color: #000000;
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 22px;
+                color: #9CA4C1;
+                padding-bottom:20px;
+                padding-left:20px;
+                padding-right:20px;
                 white-space: nowrap;
                 @media only screen and (max-width: 600px) {
                     font-size: 10px;
@@ -549,26 +378,26 @@
             }
 
             .skills-tab-text.active {
-                font-style: normal;
-                font-weight: normal;
-                background: #5289E7;
-                border-radius: 35px;
-                color: #FFFFFF;
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 22px;
+                color: #01A2FF;
+                border-bottom:3px solid #01A2FF;
             }
 
         }
 
         .skills-icons-bar {
-            margin-top: 35.67px;
+            margin-top: 45px;
             padding-bottom: 10px;
             display: flex;
             justify-content: center;
             overflow-x: auto;
 
             img {
-                width: 30px;
-                height: 30px;
-                margin-right: 45px;
+                width: 70px;
+                height: 70px;
+                margin-right: 40px;
                 @media only screen and (max-width: 600px) {
                     width: 30px;
                     height: 30px;
@@ -585,16 +414,25 @@
 
         .tabs-bar {
             margin-top: 30px;
+            width:100%;
+            background: #00A3FF;
+            height:80px;
+            align-items:center;
+            justify-content:center;
             @media only screen and (max-width: 600px) {
                 margin-top: 10px;
             }
             .tab-text {
+                font-family: inherit;
                 font-style: normal;
-                font-weight: normal;
-                font-size: 25px;
-                line-height: 37px;
-                color: #000000;
-                padding-bottom: 9px;
+                font-weight: 500;
+                font-size: 32px;
+                line-height: 35px;
+                color: #FFFFFF;
+                padding-top: 25px;
+                padding-bottom: 25px;
+                padding-right:45px;
+                padding-left:45px;
                 position: relative;
                 @media only screen and (max-width: 600px) {
                     font-size: 12px;
@@ -605,25 +443,12 @@
             }
 
             .tab-text:not(:last-child) {
-                margin-right: 70px;
+
             }
 
             .tab-text.active {
-                opacity: 1;
-            }
-
-            .tab-text.active:before {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                height: 1px;
-                width: 125%;
-                margin-left: -12.5%;
-                border: 3px solid #5289E7;
-                border-radius: 5px;
-                @media only screen and (max-width: 600px) {
-                    border: 2px solid #5289E7;
-                }
+                color: #00A3FF;
+                background-color:white;
             }
 
             .tab-text:hover {
@@ -639,15 +464,17 @@
         }
 
         .main-tab-content {
-            margin-top: 28px;
+            margin-top: 60px;
             padding-bottom: 45px;
             @media only screen and (max-width: 600px) {
                 margin-top: 35px;
             }
 
             .portfolioSlides {
-                padding-left: 135px;
-                padding-right: 135px;
+                padding-left: 0px;
+                padding-right: 0px;
+
+                margin-top:100px;
 
                 @media only screen and (max-width: 600px) {
                     padding-left: 0px;
@@ -658,10 +485,11 @@
                 justify-content: center;
 
                 img {
-                    margin-right: 25px;
-                    margin-left: 25px;
-                    width: 510px !important;
-                    height: 400px;
+
+                    padding:30px;
+
+                    width: 723px !important;
+                    height:700px;
 
                     @media only screen and (max-width: 600px) {
                         width: 177px !important;

@@ -30,27 +30,42 @@
                 </div>
 
                 <div class="hideOnPhone">
-                    <div class="right d-flex align-items-center">
-                        <div class="hourly-rate d-flex">
-                            <div class="hourly-rate-text">
-                                15$
+                    <div class="right d-flex flex-column">
+                        <div class="d-flex align-items-center justify-content-end" style="margin-bottom:40px;">
+                            <div class="interview-text" style="margin-right:20px;">
+                                Your interviews:
                             </div>
-                            <div class="hourly-rate-text light text-center">
-                                Hourly Rate
+                            <div class="upload-btn-box" style="margin-right:10px;">
+                                <img src="/images/resume_themes/theme4/Icon.svg" alt="">
+                                <div>UPLOAD AUDIO</div>
                             </div>
-                        </div>
-                        <div class="weekly-availability d-flex">
-                            <div class="hourly-rate-text">
-                                35 hours
-                            </div>
-                            <div class="hourly-rate-text light text-center">
-                                Weekly Availability
+                            <div class="upload-btn-box">
+                                <img src="/images/resume_themes/theme4/Icon-1.svg" alt="">
+                                <div>UPLOAD VIDEO</div>
                             </div>
                         </div>
-                        <div class="hire-me-btn NoDecor">
-                            <a href="javascript:void(0)">
-                                Hire me
-                            </a>
+                        <div class="d-flex align-items-center">
+                            <div class="hourly-rate d-flex">
+                                <div class="hourly-rate-text">
+                                    15$
+                                </div>
+                                <div class="hourly-rate-text light text-center">
+                                    Hourly Rate
+                                </div>
+                            </div>
+                            <div class="weekly-availability d-flex">
+                                <div class="hourly-rate-text">
+                                    35 hours
+                                </div>
+                                <div class="hourly-rate-text light text-center">
+                                    Weekly Availability
+                                </div>
+                            </div>
+                            <div class="hire-me-btn NoDecor">
+                                <a href="javascript:void(0)">
+                                    Hire me
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -240,6 +255,7 @@
                     .user-name {
                         margin-left: -2px;
                         font-size: 36px;
+                        font-weight: bold;
                         line-height: 39px;
                         color: #222B4C;
                         @media only screen and (max-width: 600px) {
@@ -522,6 +538,37 @@
 
 
             }
+        }
+    }
+
+    .interview-text{
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 26px;
+        color: #222B4C;
+    }
+
+    .upload-btn-box{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background: #E7F6FF;
+        border-radius: 6px;
+        width:170px;
+        height:60px;
+
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 15px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #00A3FF;
+
+        img{
+            width:20px;
+            height:16px;
+            margin-right:10px;
         }
     }
 

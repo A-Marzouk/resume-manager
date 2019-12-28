@@ -458,6 +458,7 @@ $placeholder-color: #9ba1ad;
       right: -2rem;
       top: 1rem;
       height: 150px;
+      // making a comment
     }
 
     .styled-input {

@@ -1,7 +1,11 @@
 <template>
   <div>
     <section class="resume-main">
-      <img class="main-asset" src="/images/resume_builder/asset1.svg" alt="resume builder asset 123workforce">
+      <img
+        class="main-asset"
+        src="/images/resume_builder/asset1.svg"
+        alt="resume builder asset 123workforce"
+      />
       <div class="container">
         <h1 class="resume-main__title">Make Your Online Resume</h1>
         <h2 class="resume-main__subtitle">Choose Your Username</h2>
@@ -10,7 +14,7 @@
         <div class="styled-input">
           <img src="/images/resume_builder/arrow-username.svg" alt="snippet arrow" />
           <span class="url">123workforce.com/</span>
-          <input type="text" id="username" placeholder="Your username"/>
+          <input type="text" id="username" placeholder="Your username" />
         </div>
         <button class="btn filled">Build My Resume</button>
       </div>
@@ -21,13 +25,10 @@
         <button @click="prevPosition" class="slick-control prev-arrow">
           <img src="/images/resume_builder/prev-arrow.svg" />
         </button>
-        <slick class="professions-slider-tabs"
-          ref="slick"
-          :options="slickOptions"
-        >
-          <li v-for="(profession, index) in professions" 
-            :key="profession"
-          ><a @click="handleSetPosition(index)">{{ profession }}</a></li>
+        <slick class="professions-slider-tabs" ref="slick" :options="slickOptions">
+          <li v-for="(profession, index) in professions" :key="profession">
+            <a @click="handleSetPosition(index)">{{ profession }}</a>
+          </li>
         </slick>
         <button @click="nextPosition" class="slick-control next-arrow">
           <img src="/images/resume_builder/next-arrow.svg" />
@@ -36,23 +37,36 @@
 
       <div class="resume-preview">
         <transition name="fade">
-          <img :key="actualProfessionSlug" :src="`/images/resume_builder/resume-${actualProfessionSlug}.png`" alt="resume preview">
+          <img
+            :key="actualProfessionSlug"
+            :src="`/images/resume_builder/resume-${actualProfessionSlug}.png`"
+            alt="resume preview"
+          />
         </transition>
       </div>
     </section>
     <section class="subscriptions-plans">
-      <h2 class="section-title">The Ultimate Tool <br /> for Professional's Resumes</h2>
+      <h2 class="section-title">
+        The Ultimate Tool
+        <br />for Professional's Resumes
+      </h2>
       <div class="input-container">
         <div class="input-wrapper">
           <span>123workforce.com/</span>
-          <input placeholder="Your Name" type="text">
+          <input placeholder="Your Name" type="text" />
         </div>
         <button class="btn filled">Build My Resume</button>
       </div>
 
       <div class="plans">
         <div class="toggle-panel">
-          <div class="aux-fill" :class="{left: selectedPlan === 'monthly', right: selectedPlan === 'yearly'}"></div>
+          <div
+            class="aux-fill"
+            :class="{
+              left: selectedPlan === 'monthly',
+              right: selectedPlan === 'yearly'
+            }"
+          ></div>
           <div class="buttons">
             <button v-on:click="selectedPlan = 'monthly'" class="toggle-btn monthly">Monthly</button>
             <button v-on:click="selectedPlan = 'yearly'" class="toggle-btn yearly">Yearly</button>
@@ -62,36 +76,36 @@
           <monthly-plan v-if="selectedPlan === 'monthly'"></monthly-plan>
           <yearly-plan v-else></yearly-plan>
         </transition>
-        <img class="dot-bg" src="/images/resume_builder/dotbox.png" alt="">
+        <img class="dot-bg" src="/images/resume_builder/dotbox.png" alt />
       </div>
     </section>
     <footer-resume></footer-resume>
   </div>
 </template>
 <script>
-import Slick from 'vue-slick'
-import monthlyPlan from './resumeBuilderIncludes/monthly_plan.vue'
-import yearlyPlan from './resumeBuilderIncludes/yearly_plan.vue'
-import footerResume from './resumeBuilderIncludes/footer.vue'
+import Slick from "vue-slick";
+import monthlyPlan from "./resumeBuilderIncludes/monthly_plan.vue";
+import yearlyPlan from "./resumeBuilderIncludes/yearly_plan.vue";
+import footerResume from "./resumeBuilderIncludes/footer.vue";
 
 export default {
   components: { Slick, monthlyPlan, yearlyPlan, footerResume },
   data: () => ({
     professions: [
-      'Virtual Assistant',
-      'UI/UX Designer',
-      'Graphic Designer',
-      '3D designer',
-      'Copywriter',
-      'Web Developer',
-      'Bookkeper',
-      'Fullstack Developer',
-      'Frontend Developer',
-      'Backend Developer',
-      'DBA Specialist',
-      'Mobile Developer',
-      'Animator',
-      'Multimedia productor'
+      "Virtual Assistant",
+      "UI/UX Designer",
+      "Graphic Designer",
+      "3D designer",
+      "Copywriter",
+      "Web Developer",
+      "Bookkeper",
+      "Fullstack Developer",
+      "Frontend Developer",
+      "Backend Developer",
+      "DBA Specialist",
+      "Mobile Developer",
+      "Animator",
+      "Multimedia productor"
     ],
     slickOptions: {
       infinite: false,
@@ -101,8 +115,8 @@ export default {
       speed: 300,
       adaptiveHeight: true,
       initialSlide: 4,
-      nextArrow: '',
-      prevArrow: '',
+      nextArrow: "",
+      prevArrow: "",
       variableWidth: true,
       responsive: [
         {
@@ -122,55 +136,65 @@ export default {
       ]
     },
     actualProfession: null,
-    selectedPlan: 'monthly'
+    selectedPlan: "monthly"
   }),
   methods: {
     handleSetPosition(index) {
-      this.$refs.slick.goTo(index)
-      this.actualProfession = this.professions[index]
+      this.$refs.slick.goTo(index);
+      this.actualProfession = this.professions[index];
     },
-    reInit () {
+    reInit() {
       this.$nextTick(() => {
         this.$refs.slick.reSlick();
       });
     },
 
-    nextPosition () {
-      let  index = this.$refs.slick.currentSlide()
+    nextPosition() {
+      let index = this.$refs.slick.currentSlide();
       if (index < this.professions.length) {
-        this.$refs.slick.goTo(index + 1)
-        this.actualProfession = this.professions[index + 1]
+        this.$refs.slick.goTo(index + 1);
+        this.actualProfession = this.professions[index + 1];
       }
     },
 
-    prevPosition () {
-      let  index = this.$refs.slick.currentSlide()
+    prevPosition() {
+      let index = this.$refs.slick.currentSlide();
       if (index > 0) {
-        this.$refs.slick.goTo(index - 1)
-        this.actualProfession = this.professions[index - 1]
+        this.$refs.slick.goTo(index - 1);
+        this.actualProfession = this.professions[index - 1];
       }
     }
   },
   computed: {
-    actualProfessionSlug: function () {
-      return this.actualProfession ? this.actualProfession.replace(' ', '_').toLowerCase() : 'default'
+    actualProfessionSlug: function() {
+      return this.actualProfession
+        ? this.actualProfession.replace(" ", "_").toLowerCase()
+        : "default";
     }
   },
-  mounted () {
-    this.actualProfession = this.professions[this.$refs.slick.currentSlide()]
+  mounted() {
+    this.actualProfession = this.professions[this.$refs.slick.currentSlide()];
   }
-}
+};
 </script>
 <style lang="scss">
-  // Styles for the resume builder view
+// Styles for the resume builder view
 $text-color: #1f3445;
 $primary: #0290d8;
 $bg-color: white;
-$input-bg: #F2F9FD;
+$input-bg: #f2f9fd;
 $placeholder-color: #9ba1ad;
 
 .no-bg {
   background: $bg-color;
+}
+
+.showOnMobile {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 }
 
 .filled {
@@ -198,14 +222,12 @@ $placeholder-color: #9ba1ad;
   }
 
   @media (max-width: 1480px) {
-
     .navbar-brand img {
       width: 180px;
     }
   }
 
-  @media (max-width: 576px) {
-
+  @media (max-width: 768px) {
     .navbar-brand {
       padding: 0;
 
@@ -217,7 +239,6 @@ $placeholder-color: #9ba1ad;
 }
 
 .loginBtn {
-
   &.no-outline {
     border: 0;
     margin-right: 0;
@@ -253,12 +274,12 @@ $placeholder-color: #9ba1ad;
   @media (max-width: 1480px) {
     &.filled,
     &.no-outline {
-    a {
-      width: 120px;
-      height: 35px;
-      font-size: 16px;
+      a {
+        width: 120px;
+        height: 35px;
+        font-size: 16px;
+      }
     }
-  }
   }
 }
 
@@ -298,7 +319,7 @@ $placeholder-color: #9ba1ad;
     background: $input-bg;
     border-radius: 9.5px;
     width: 679px;
-    height: 99px;    
+    height: 99px;
     display: flex;
     position: relative;
 
@@ -322,7 +343,7 @@ $placeholder-color: #9ba1ad;
       height: 100%;
       width: 40%;
       border: none;
-      border-left: 1px solid rgba(0, 0, 0, .15);
+      border-left: 1px solid rgba(0, 0, 0, 0.15);
       background: transparent;
       font-size: 30px;
       padding: 1rem 1.5rem;
@@ -335,7 +356,6 @@ $placeholder-color: #9ba1ad;
   }
 
   @media (max-width: 1480px) {
-
     &__title {
       font-size: 52px;
       max-width: 360px;
@@ -417,7 +437,7 @@ $placeholder-color: #9ba1ad;
 
     .styled-input {
       width: 100%;
-      min-width: 100%;
+      min-width: 20px;
     }
 
     .container {
@@ -426,9 +446,23 @@ $placeholder-color: #9ba1ad;
   }
 
   @media (max-width: 480px) {
+    padding-top: 2rem;
+
     .username {
       .btn.filled {
         width: 100%;
+      }
+    }
+
+    .main-asset {
+      right: -2rem;
+      top: 1rem;
+      height: 150px;
+    }
+
+    .styled-input {
+      .url {
+        min-width: 150px;
       }
     }
   }
@@ -475,10 +509,10 @@ $placeholder-color: #9ba1ad;
 
     .slick-current {
       a {
-          background: $primary;
-          color: $bg-color;
-          border-radius: 10px;
-        }
+        background: $primary;
+        color: $bg-color;
+        border-radius: 10px;
+      }
     }
 
     li {
@@ -486,7 +520,7 @@ $placeholder-color: #9ba1ad;
       padding: 0 20px;
       margin: 0;
       position: relative;
-      
+
       a {
         padding: 5px 10px;
         margin: 0 auto;
@@ -584,6 +618,7 @@ $placeholder-color: #9ba1ad;
 
   .input-wrapper {
     height: 100%;
+    width: 100%;
     background: $input-bg;
     border-radius: 9.5px;
     padding: 0 2rem;
@@ -591,14 +626,21 @@ $placeholder-color: #9ba1ad;
     display: flex;
     justify-content: center;
 
-    span, input {
+    @media (max-width: 478px) {
+      justify-content: space-between;
+      padding: 0 0.5rem;
+      overflow-x: auto;
+    }
+
+    span,
+    input {
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     input {
-      height: 100%;
+      min-width: 80px;
       border: none;
       background: transparent;
       outline: none;
@@ -618,7 +660,7 @@ $placeholder-color: #9ba1ad;
     margin-top: 10rem;
   }
 
-  & > .dot-bg  {
+  & > .dot-bg {
     position: absolute;
     bottom: -6rem;
     left: -18rem;
@@ -649,25 +691,25 @@ $placeholder-color: #9ba1ad;
 
     &.left {
       animation-name: swipeToLeft;
-      animation-duration: .3s;
+      animation-duration: 0.3s;
       animation-timing-function: ease;
       animation-fill-mode: forwards;
 
       & ~ .buttons .monthly {
         color: $bg-color;
-        transition: color .5s ease;
+        transition: color 0.5s ease;
       }
     }
 
     &.right {
       animation-name: swipeToRight;
-      animation-duration: .3s;
+      animation-duration: 0.3s;
       animation-timing-function: ease;
       animation-fill-mode: forwards;
 
       & ~ .buttons .yearly {
         color: $bg-color;
-        transition: color .5s ease;
+        transition: color 0.5s ease;
       }
     }
   }
@@ -681,7 +723,7 @@ $placeholder-color: #9ba1ad;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
- 
+
     button {
       background: transparent;
       border: none;
@@ -689,7 +731,7 @@ $placeholder-color: #9ba1ad;
       font-weight: 700;
       width: 100px;
       outline: none;
-      transition: color .5s ease;
+      transition: color 0.5s ease;
 
       &:hover {
         cursor: pointer;
@@ -701,7 +743,8 @@ $placeholder-color: #9ba1ad;
 @keyframes swipeToRight {
   from {
     transform: translateX(-95px);
-  } to {
+  }
+  to {
     transform: translateX(95px);
   }
 }
@@ -709,14 +752,16 @@ $placeholder-color: #9ba1ad;
 @keyframes swipeToLeft {
   from {
     transform: translateX(95px);
-  } to {
+  }
+  to {
     transform: translateX(-95px);
   }
 }
 
 // Transitions effects
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s ease;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;

@@ -74,8 +74,8 @@
             >Programming Languages</div>
             <div
               class="skills-tab-text"
-              :class="{active : activeSkillTab === 'framewroks-databases'}"
-              @click="setActiveSkillTab('framewroks-databases')"
+              :class="{active : activeSkillTab === 'frameworks-databases'}"
+              @click="setActiveSkillTab('frameworks-databases')"
             >Frameworks/Databases</div>
             <div
               class="skills-tab-text"
@@ -119,7 +119,7 @@
             </div>
           </div>
 
-          <div class="main-tab-content" id="style-2">
+          <div v-if="activeTab === 'portfolio'" class="main-tab-content" id="style-2">
             <slick class="portfolioSlides" ref="slick" :options="slickOptions">
               <div class="d-flex flex-column align-items-center">
                 <img src="/images/resume_themes/theme3/portfolio1.png" alt="portfolio image" />
@@ -150,7 +150,7 @@
             </slick>
 
             <div class="slick-controls">
-              <a href="javascript:;" @click.prevent="prevProject" class="slick-arrow">
+              <a href="javascript:;" @click.prevent="prevPosition" class="slick-arrow">
                 <img src="/images/resume_themes/theme10/arrow-prev.svg" alt="slick arrow" />
               </a>
               <div class="slick-dots-container">
@@ -164,11 +164,14 @@
                   @click.prevent="handleSetPosition(index)"
                 ></a>
               </div>
-              <a href="javascript:;" @click.prevent="nextProject" class="slick-arrow">
+              <a href="javascript:;" @click.prevent="nextPosition" class="slick-arrow">
                 <img src="/images/resume_themes/theme10/arrow-next.svg" alt="slick arrow" />
               </a>
             </div>
           </div>
+
+          <div v-else-if="activeTab === 'work'" class="main-tab-content" id="style-2">Works here</div>
+          <div v-else class="main-tab-content" id="style-2">Education here</div>
         </div>
       </div>
     </div>
@@ -249,7 +252,7 @@ export default {
       });
     },
     nextPosition() {
-      let index = this.$refs.slick.currentSlide();
+      let index = this.activeProjectIndex;
       if (index < this.projects.length) {
         this.$refs.slick.goTo(index + 1);
         this.activeProjectIndex = index + 1;
@@ -257,7 +260,7 @@ export default {
     },
 
     prevPosition() {
-      let index = this.$refs.slick.currentSlide();
+      let index = this.activeProjectIndex;
       if (index > 0) {
         this.$refs.slick.goTo(index - 1);
         this.activeProjectIndex = index - 1;

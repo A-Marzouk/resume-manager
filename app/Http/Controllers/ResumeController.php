@@ -13,14 +13,16 @@ use Illuminate\Support\Facades\Mail;
 
 class ResumeController extends Controller
 {
-    public function resumeBuilder () {
+    public function resumeBuilder()
+    {
         return view('resume_builder.index');
     }
 
-    public function downloadPDFResume($username) {
-        $freelancer = User::where('username',$username)->with(['userData','skills','agent','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+    public function downloadPDFResume($username)
+    {
+        $freelancer = User::where('username', $username)->with(['userData', 'skills', 'agent', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
             return $query->limit(10);
-        }])->where('username',$username)->first();
+        }])->where('username', $username)->first();
 
         if ($freelancer) {
 
@@ -29,12 +31,13 @@ class ResumeController extends Controller
             $pdf->loadHTML($view);
             ob_end_clean();
             // dd($freelancer);
-            return $pdf->stream($freelancer->userData['first_name'].' '.$freelancer->userData['last_name'].'.pdf');
+            return $pdf->stream($freelancer->userData['first_name'] . ' ' . $freelancer->userData['last_name'] . '.pdf');
             // return view('freelancer.resume_pdf', compact('freelancer'));
         }
     }
 
-    public function getAgentData ($username) {
+    public function getAgentData($username)
+    {
 
         $user = User::where('username', $username)->get();
         $agent = Agent::where('user_id', $user[0]->id)->get();
@@ -64,11 +67,12 @@ class ResumeController extends Controller
         return false;
     }
 
-    public function agentsResume($username) {
+    public function agentsResume($username)
+    {
 
-        $freelancer = User::with(['userData','agent.customResume', 'agent.socials','agent.resumeTabs','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
             return $query->limit(10);
-        }])->where('username',$username)->first();
+        }])->where('username', $username)->first();
 
         if (!$freelancer->agent->customResume) {
             ResumeCustom::insert([
@@ -80,14 +84,14 @@ class ResumeController extends Controller
         }
 
         return view('freelancerResume.resumeLongV2', compact('freelancer'));
-        
     }
 
-    public function agentsResumeTheme2($username) {
+    public function agentsResumeTheme2($username)
+    {
 
-        $freelancer = User::with(['userData','agent.customResume', 'agent.socials','agent.resumeTabs','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
             return $query->limit(10);
-        }])->where('username',$username)->first();
+        }])->where('username', $username)->first();
 
         if (!$freelancer->agent->customResume) {
             ResumeCustom::insert([
@@ -99,14 +103,14 @@ class ResumeController extends Controller
         }
 
         return view('resume_themes.theme2', compact('freelancer'));
-
     }
 
-    public function agentsResumeTheme4($username) {
+    public function agentsResumeTheme4($username)
+    {
 
-        $freelancer = User::with(['userData','agent.customResume', 'agent.socials','agent.resumeTabs','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
             return $query->limit(10);
-        }])->where('username',$username)->first();
+        }])->where('username', $username)->first();
 
         if (!$freelancer->agent->customResume) {
             ResumeCustom::insert([
@@ -118,14 +122,33 @@ class ResumeController extends Controller
         }
 
         return view('resume_themes.theme4', compact('freelancer'));
-
     }
 
-    public function agentsResumeTheme3($username) {
+    public function agentsResumeTheme10($username)
+    {
 
-        $freelancer = User::with(['userData','agent.customResume', 'agent.socials','agent.resumeTabs','skills','recordings','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
             return $query->limit(10);
-        }])->where('username',$username)->first();
+        }])->where('username', $username)->first();
+
+        if (!$freelancer->agent->customResume) {
+            ResumeCustom::insert([
+                [
+                    'agent_id' => $freelancer->agent->id,
+                    'background_color' => '#4E75E8',
+                ],
+            ]);
+        }
+
+        return view('resume_themes.theme10', compact('freelancer'));
+    }
+
+    public function agentsResumeTheme3($username)
+    {
+
+        $freelancer = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
+            return $query->limit(10);
+        }])->where('username', $username)->first();
 
         if (!$freelancer->agent->customResume) {
             ResumeCustom::insert([
@@ -137,26 +160,26 @@ class ResumeController extends Controller
         }
 
         return view('resume_themes.theme3', compact('freelancer'));
-
     }
 
-    public function agentsTestResume($username) {
+    public function agentsTestResume($username)
+    {
 
-        $freelancer = User::where('username',$username)->with(['userData','skills','agent','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::where('username', $username)->with(['userData', 'skills', 'agent', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
             return $query->limit(10);
-        }])->where('username',$username)->first();
+        }])->where('username', $username)->first();
 
 
         // dd($freelancer->toJson());
         return view('freelancerResume.resumeTest', compact('freelancer'));
-        
     }
 
 
-    public function messageOnResume(Request $request){
+    public function messageOnResume(Request $request)
+    {
         // validate request :
         $request->validate([
-            'agent_id'=> 'required',
+            'agent_id' => 'required',
             'full_name' => 'max:190|required',
             'email' => 'email|max:190|required',
             'title' => 'max:190|required',
@@ -164,7 +187,7 @@ class ResumeController extends Controller
         ]);
 
 
-        $agent = Agent::where('id',$request->agent_id)->first();
+        $agent = Agent::where('id', $request->agent_id)->first();
         $form_data = $request;
         Mail::send(new MessageOnResume($form_data, $agent));
     }

@@ -207,6 +207,18 @@ export default {
         {
           name: "project 4",
           img: "imagen4"
+        },
+        {
+          name: "project 5",
+          img: "imagen5"
+        },
+        {
+          name: "project 6",
+          img: "imagen6"
+        },
+        {
+          name: "project 7",
+          img: "imagen7"
         }
       ],
       activeProjectIndex: 0,
@@ -220,7 +232,7 @@ export default {
             breakpoint: 1600,
             settings: {
               slidesToShow: 2,
-              slidesToScroll: 2
+              slidesToScroll: 1
             }
           },
           {
@@ -294,6 +306,7 @@ $primaryColor: #104efb;
   margin-right: 3%;
   margin-top: 1%;
   border-radius: 15px;
+  overflow-x: hidden;
 
   .mainThemeBar {
     padding-top: 40px;
@@ -694,7 +707,7 @@ $primaryColor: #104efb;
 
     .main-tab-content {
       margin-top: 80px;
-      max-height: 450px;
+      // max-height: 450px;
       // overflow-y: scroll;
       @media only screen and (max-width: 600px) {
         margin-top: 35px;
@@ -720,6 +733,7 @@ $primaryColor: #104efb;
           margin: 0 10px;
 
           img {
+            width: 100%;
             position: relative;
             z-index: 50;
             box-shadow: 0 10px 10px rgba($color: #000000, $alpha: 0.1);

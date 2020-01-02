@@ -16,7 +16,7 @@
           <span class="url">123workforce.com/</span>
           <input type="text" id="username" placeholder="Your username" />
         </div>
-        <button class="btn filled">Build My Resume</button>
+        <button class="btn filled btn-resume-build">Build My Resume</button>
       </div>
     </section>
 
@@ -55,7 +55,7 @@
           <span>123workforce.com/</span>
           <input placeholder="Your Name" type="text" />
         </div>
-        <button class="btn filled">Build My Resume</button>
+        <button class="btn filled btn-resume-build">Build My Resume</button>
       </div>
 
       <div class="plans">
@@ -108,7 +108,7 @@ export default {
       "Multimedia productor"
     ],
     slickOptions: {
-      infinite: false,
+      infinite: true,
       centerMode: true,
       slidesToShow: 5,
       slidesToScroll: 5,
@@ -174,6 +174,24 @@ export default {
   },
   mounted() {
     this.actualProfession = this.professions[this.$refs.slick.currentSlide()];
+    let slickClones = document.getElementsByClassName("slick-cloned");
+    let _this = this;
+
+    for (let slickIdx in slickClones) {
+      let indexRef = slickClones[slickIdx].attributes["data-slick-index"].value;
+      slickClones[slickIdx].addEventListener("click", () => {
+        let currIdx = _this.$refs.slick.currentSlide();
+
+        if (currIdx < indexRef) {
+          _this.$refs.slick.goTo(Math.abs(indexRef - currIdx) + currIdx);
+        } else {
+          _this.$refs.slick.goTo(Math.abs(indexRef - currIdx) - currIdx);
+        }
+
+        _this.actualProfession =
+          _this.professions[Math.abs(indexRef - _this.professions.length)];
+      });
+    }
   }
 };
 </script>
@@ -207,6 +225,13 @@ $placeholder-color: #9ba1ad;
   border-radius: 10px;
   margin: 0 1.5rem;
   height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-resume-build {
+  width: 180px;
 }
 
 .resume-builder-nav {
@@ -455,9 +480,10 @@ $placeholder-color: #9ba1ad;
     }
 
     .main-asset {
-      right: -2rem;
-      top: 1rem;
-      height: 150px;
+      display: none;
+      // right: -2rem;
+      // top: 1rem;
+      // height: 150px;
       // making a comment
     }
 
@@ -599,6 +625,7 @@ $placeholder-color: #9ba1ad;
     margin: 0 auto;
     height: 60px;
     width: 100%;
+    max-width: 480px;
     justify-content: center;
 
     @media (max-width: 768px) {
@@ -619,7 +646,7 @@ $placeholder-color: #9ba1ad;
 
   .input-wrapper {
     height: 100%;
-    width: 100%;
+    width: calc(100% - 200px);
     background: $input-bg;
     border-radius: 9.5px;
     padding: 0 2rem;
@@ -631,6 +658,7 @@ $placeholder-color: #9ba1ad;
       justify-content: space-between;
       padding: 0 0.5rem;
       overflow-x: auto;
+      width: auto;
     }
 
     span,

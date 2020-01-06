@@ -13,6 +13,7 @@ window.moment = require('moment');
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -64,6 +65,8 @@ Vue.component('register-developer', require('./components/RegisterDeveloper.vue'
 Vue.component('resume-theme-2', require('./components/resume_themes/theme2.vue'));
 Vue.component('resume-theme-3', require('./components/resume_themes/theme3.vue'));
 Vue.component('resume-theme-4', require('./components/resume_themes/theme4.vue'));
+Vue.component('resume-theme-5', require('./components/resume_themes/theme5.vue'));
+Vue.component('resume-theme-10', require('./components/resume_themes/theme10.vue'));
 
 
 
@@ -94,6 +97,16 @@ if ($("#resumeTheme3").length !== 0){
 if ($("#resumeTheme4").length !== 0){
     let resumeTheme4 = new Vue({
         el:'#resumeTheme4'
+    })
+}
+if ($("#resumeTheme5").length !== 0){
+    let resumeTheme5 = new Vue({
+        el:'#resumeTheme5'
+    })
+}
+if ($("#resumeTheme10").length !== 0) {
+    let resumeTheme4 = new Vue({
+        el: '#resumeTheme10'
     })
 }
 

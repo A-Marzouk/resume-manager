@@ -166,7 +166,48 @@
                     </div>
                 </div>
                 <div class="education" v-show="activeTab === 'edu'" :class="{active : activeTab === 'edu'}">
-                    education
+                    <div class="education-item">
+                        <div class="education-type">
+                            University
+                        </div>
+                        <div class="education-name">
+                            California Institute of Technology
+                        </div>
+                        <div class="education-date">
+                            M.Sc in HCI, Dec 19 - present
+                        </div>
+                        <div class="education-info">
+                            CGPA - 3.70 out of 4.0
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-type">
+                            College
+                        </div>
+                        <div class="education-name">
+                            Lethbride College
+                        </div>
+                        <div class="education-date">
+                            M.Sc in HCI, Dec 19 - present
+                        </div>
+                        <div class="education-info">
+                            CGPA - 3.70 out of 4.0
+                        </div>
+                    </div>
+                    <div class="education-item">
+                        <div class="education-type">
+                            University
+                        </div>
+                        <div class="education-name">
+                            University of Toronto
+                        </div>
+                        <div class="education-date">
+                            M.Sc in HCI, Dec 19 - present
+                        </div>
+                        <div class="education-info">
+                            CGPA - 3.70 out of 4.0
+                        </div>
+                    </div>
                 </div>
                 <div class="skills" v-show="activeTab === 'skills'" :class="{active : activeTab === 'skills'}">
                     skills
@@ -186,7 +227,7 @@
 
         data() {
             return {
-                activeTab: 'workEx',
+                activeTab: 'edu',
             }
         },
 
@@ -556,7 +597,54 @@
                 }
 
                 .education {
+                    display:flex;
+                    flex-wrap:wrap;
+                    justify-content: start;
+                    .education-item{
+                        margin-right:30px;
+                        margin-bottom:29px;
+                        width:806px;
+                        height:258px;
+                        background:#F8F8F8;
+                        padding:39px 60px 39px 60px;
+                        border-radius:8px;
 
+                        .education-type{
+                            width:115px;
+                            height:41px;
+                            background:#E7ECF7;
+                            border-radius:7px;
+
+                            font-size: 18px;
+                            color:#1F5DE4;
+                            display:flex;
+                            justify-content: center;
+                            align-items:center;
+
+                            margin-bottom:18px;
+                        }
+
+                        .education-name{
+                            line-height:43px;
+                            color:#3C3748;
+                            font-weight: bold;
+                            font-size: 32px;
+                            margin-bottom:14px;
+                        }
+
+                        .education-date{
+                            line-height:30px;
+                            color:#1F5DE4;
+                            font-size: 22px;
+                            margin-bottom:7px;
+                        }
+
+                        .education-info{
+                            line-height:28px;
+                            color:#707070;
+                            font-size: 20px;
+                        }
+                    }
                 }
 
                 .skills {

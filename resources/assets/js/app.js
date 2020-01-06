@@ -64,6 +64,7 @@ Vue.component('register-developer', require('./components/RegisterDeveloper.vue'
 Vue.component('resume-theme-2', require('./components/resume_themes/theme2.vue'));
 Vue.component('resume-theme-3', require('./components/resume_themes/theme3.vue'));
 Vue.component('resume-theme-4', require('./components/resume_themes/theme4.vue'));
+Vue.component('resume-theme-5', require('./components/resume_themes/theme5.vue'));
 
 
 
@@ -94,6 +95,11 @@ if ($("#resumeTheme3").length !== 0){
 if ($("#resumeTheme4").length !== 0){
     let resumeTheme4 = new Vue({
         el:'#resumeTheme4'
+    })
+}
+if ($("#resumeTheme5").length !== 0){
+    let resumeTheme5 = new Vue({
+        el:'#resumeTheme5'
     })
 }
 

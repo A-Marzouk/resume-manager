@@ -13,8 +13,6 @@ window.moment = require('moment');
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-import responsive from 'vue-responsive'
-Vue.use(responsive)
 
 $.ajaxSetup({
     headers: {

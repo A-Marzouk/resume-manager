@@ -633,6 +633,7 @@ Route::get('/theme-2/{username}','ResumeController@agentsResumeTheme2');
 Route::get('/theme-3/{username}','ResumeController@agentsResumeTheme3');
 Route::get('/theme-4/{username}','ResumeController@agentsResumeTheme4');
 Route::get('/theme-5/{username}','ResumeController@agentsResumeTheme5');
+Route::get('/theme-10/{username}', 'ResumeController@agentsResumeTheme10');
 
 Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-desginers');
 

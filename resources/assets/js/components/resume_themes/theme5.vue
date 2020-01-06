@@ -77,24 +77,34 @@
         <div class="tabs-wrapper">
             <div class="tabs-bar">
                 <div class="tab-text" :class="{active : activeTab === 'portfolio'}" @click="setActiveTab('portfolio')">
+                    <span v-if="activeTab === 'portfolio'">[ </span>
                     Portfolio
+                    <span v-if="activeTab === 'portfolio'"> ]</span>
                 </div>
                 <div class="tab-text" :class="{active : activeTab === 'workEx'}" @click="setActiveTab('workEx')">
+                    <span v-if="activeTab === 'workEx'">[ </span>
                     Work Experience
+                    <span v-if="activeTab === 'workEx'"> ]</span>
                 </div>
                 <div class="tab-text" :class="{active : activeTab === 'edu'}" @click="setActiveTab('edu')">
+                    <span v-if="activeTab === 'edu'">[ </span>
                     Education
+                    <span v-if="activeTab === 'edu'"> ]</span>
                 </div>
                 <div class="tab-text" :class="{active : activeTab === 'skills'}" @click="setActiveTab('skills')">
+                    <span v-if="activeTab === 'skills'">[ </span>
                     Skills
+                    <span v-if="activeTab === 'skills'"> ]</span>
                 </div>
                 <div class="tab-text mr-0":class="{active : activeTab === 'about'}" @click="setActiveTab('about')">
+                    <span v-if="activeTab === 'about'">[ </span>
                     About
+                    <span v-if="activeTab === 'about'"> ]</span>
                 </div>
             </div>
 
             <div class="tab-content-wrapper">
-                <div class="portfolio">
+                <div class="portfolio" v-show="activeTab === 'portfolio'" :class="{active : activeTab === 'portfolio'}">
                     <div class="images">
                         <img src="/images/resume_themes/theme5/portfolio-1.png" alt="portfolio img">
                         <img src="/images/resume_themes/theme5/portfolio-2.png" alt="portfolio img">
@@ -112,6 +122,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="work-experience" v-show="activeTab === 'workEx'" :class="{active : activeTab === 'workEx'}">
+                    work expeirnce
+                </div>
+                <div class="education" v-show="activeTab === 'edu'" :class="{active : activeTab === 'edu'}">
+                    education
+                </div>
+                <div class="skills"  v-show="activeTab === 'skills'":class="{active : activeTab === 'skills'}">
+                    skills
+                </div>
+                <div class="about" v-show="activeTab === 'about'" :class="{active : activeTab === 'about'}">
+                    avout
+                </div>
             </div>
 
         </div>
@@ -124,7 +146,7 @@
 
         data(){
           return {
-              activeTab : 'portfolio',
+              activeTab : 'skills',
           }
         },
 
@@ -327,7 +349,6 @@
             background: #FFFFFF;
             border-radius: 25px;
             width:1840px;
-            height:1185px;
             display:flex;
             flex-direction: column;
             align-items: center;
@@ -368,6 +389,13 @@
             .tab-content-wrapper{
                 margin-top:50px;
 
+                .portfolio.active, .skills.active, .about.active, .work-experience.active, .education.active{
+                    opacity: 1;
+                }
+                .portfolio, .skills, .about, .work-experience, .education{
+                    opacity: 0;
+                    transition:all 0.6s ease;
+                }
                 .portfolio{
                     .images{
                         display:flex;

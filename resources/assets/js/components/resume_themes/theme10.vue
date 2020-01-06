@@ -170,8 +170,12 @@
             </div>
           </div>
 
-          <div v-else-if="activeTab === 'work'" class="main-tab-content" id="style-2">Works here</div>
-          <div v-else class="main-tab-content" id="style-2">Education here</div>
+          <div v-else-if="activeTab === 'work'" class="main-tab-content" id="style-2">
+            <works-container :works="user.works_history"></works-container>
+          </div>
+          <div v-else class="main-tab-content" id="style-2">
+            <educations-container :educations="user.educations_history"></educations-container>
+          </div>
         </div>
       </div>
     </div>
@@ -180,10 +184,14 @@
 
 <script>
 import Slick from "vue-slick";
+import worksContainer from "./theme10/works-container.vue";
+import educationsContainer from "./theme10/educations-container.vue";
 
 export default {
   props: ["user"],
   components: {
+    worksContainer,
+    educationsContainer,
     Slick
   },
   data() {

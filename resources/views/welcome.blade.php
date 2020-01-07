@@ -11,7 +11,6 @@
     <div id="content" style="margin:auto;">
 
         @include('homepage_sections.main')
-        test
         @include('homepage_sections.freelancers')
 
         <div class="line"></div>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Agent;
 use App\User;
 use Illuminate\Support\Facades\Mail;
+use Spatie\PdfToText\Pdf;
 
 class ResumeController extends Controller
 {
@@ -31,6 +32,29 @@ class ResumeController extends Controller
             return $pdf->stream($freelancer->userData['first_name'].' '.$freelancer->userData['last_name'].'.pdf');
             // return view('freelancer.resume_pdf', compact('freelancer'));
         }
+    }
+
+    public function showExtractPage(){
+        return view('resume_builder.extract_from_pdf');
+    }
+    public function extractTextFromCV(Request $request){
+
+        $request->validate([
+            'pdf_cv' => 'required|file|mimes:pdf|max:30000'
+        ]);
+
+        $parser = new \Smalot\PdfParser\Parser();
+        $pdf    = $parser->parseFile($request->pdf_cv);
+
+        $text = $pdf->getText();
+
+        $parser = new \Smalot\PdfParser\Parser();
+        $pdf    = $parser->parseFile($request->pdf_cv);
+
+        $text = $pdf->getText();
+        echo $text;
+
+        return $text;
     }
 
     public function getAgentData ($username) {

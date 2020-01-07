@@ -69,6 +69,9 @@ Vue.component('resume-theme-5', require('./components/resume_themes/theme5.vue')
 Vue.component('resume-theme-10', require('./components/resume_themes/theme10.vue'));
 
 
+Vue.component('extract-text-from-pdf', require('./components/resume_themes/ExtractTextFromPDF.vue'));
+
+
 
 import AdminAgentRegisterPage1 from './components/admin/registerAgent/page1.vue'
 import AdminAgentRegisterPage2 from './components/admin/registerAgent/page2.vue'
@@ -83,6 +86,12 @@ import AdminCampaigns from './components/admin/dashboard/Campaigns.vue';
 
 
 
+
+if ($("#extractFromPDF").length !== 0){
+    let extractFromPDF = new Vue({
+        el:'#extractFromPDF'
+    });
+}
 
 if ($("#resumeTheme2").length !== 0){
     let resumeTheme2 = new Vue({

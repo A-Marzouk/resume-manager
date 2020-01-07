@@ -287,7 +287,22 @@
                     </div>
                 </div>
                 <div class="about" v-show="activeTab === 'about'" :class="{active : activeTab === 'about'}">
-                    avout
+                    <div class="about-me">
+                        <div class="about-title">
+                            About me
+                        </div>
+                        <div class="about-text">
+                            I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you. This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors.
+                        </div>
+                    </div>
+                    <div class="contact">
+                        <div class="contact-title">
+                            Contact
+                        </div>
+                        <div class="email">
+                            Email: contact@developer.com
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -301,7 +316,7 @@
 
         data() {
             return {
-                activeTab: 'skills',
+                activeTab: 'portfolio',
             }
         },
 
@@ -740,7 +755,41 @@
                     }
                 }
                 .about {
+                    width:1052px;
+                    margin-top:0;
+                    padding:38px 105px 68px 105px;
+                    background:#F8F8F8;
 
+                    .about-me{
+                        .about-title{
+                            line-height: 33px;
+                            font-size: 24px;
+                            color:#3C3748;
+                            font-weight: 500;
+                        }
+                        .about-text{
+                            margin-top:30px;
+                            font-size: 18px;
+                            color:#8B8B8B;
+                        }
+                    }
+
+                    .contact{
+                        margin-top:68px;
+                        .contact-title{
+                            line-height: 33px;
+                            font-size: 24px;
+                            color:#3C3748;
+                            font-weight: 500;
+                            margin-bottom:33px;
+                        }
+                        .email{
+                            line-height: 33px;
+                            font-size: 20px;
+                            color:#3C3748;
+                            font-weight: 500;
+                        }
+                    }
                 }
             }
 

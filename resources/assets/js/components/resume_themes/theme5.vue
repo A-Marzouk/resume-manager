@@ -209,8 +209,82 @@
                         </div>
                     </div>
                 </div>
-                <div class="skills" v-show="activeTab === 'skills'" :class="{active : activeTab === 'skills'}">
-                    skills
+                <div class="skills-tab" v-show="activeTab === 'skills'" :class="{active : activeTab === 'skills'}">
+                    <div class="skill-item skills d-flex align-items-end">
+                        <div class="skill">
+                            <div class="skill-title">
+                                Adobe Photoshop
+                            </div>
+                            <!-- bar -->
+                            <div class="skill-bar" :data-bar="90">
+                                <span></span>
+                            </div>
+                        </div>
+
+                        <div style="font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;">
+                            90%
+                        </div>
+                    </div>
+                    <div class="skill-item skills d-flex align-items-end">
+                        <div class="skill">
+                            <div class="skill-title">
+                                Adobe After Effect
+                            </div>
+                            <!-- bar -->
+                            <div class="skill-bar red" :data-bar="65">
+                                <span class="red"></span>
+                            </div>
+                        </div>
+
+                        <div style="color:#FF26BE; font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;">
+                            65%
+                        </div>
+                    </div>
+                    <div class="skill-item skills d-flex align-items-end">
+                        <div class="skill">
+                            <div class="skill-title">
+                                Adobe Premiere pro
+                            </div>
+                            <!-- bar -->
+                            <div class="skill-bar orange"  :data-bar="70">
+                                <span class="orange"></span>
+                            </div>
+                        </div>
+
+                        <div style="color:#FF7C00; font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;">
+                            70%
+                        </div>
+                    </div>
+                    <div class="skill-item skills d-flex align-items-end">
+                        <div class="skill">
+                            <div class="skill-title">
+                                Adobe Illustrator
+                            </div>
+                            <!-- bar -->
+                            <div class="skill-bar" :data-bar="50">
+                                <span></span>
+                            </div>
+                        </div>
+
+                        <div style="font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;">
+                            50%
+                        </div>
+                    </div>
+                    <div class="skill-item skills d-flex align-items-end">
+                        <div class="skill">
+                            <div class="skill-title">
+                                Adobe XD
+                            </div>
+                            <!-- bar -->
+                            <div class="skill-bar" :data-bar="85">
+                                <span></span>
+                            </div>
+                        </div>
+
+                        <div style="font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;">
+                            85%
+                        </div>
+                    </div>
                 </div>
                 <div class="about" v-show="activeTab === 'about'" :class="{active : activeTab === 'about'}">
                     avout
@@ -227,18 +301,25 @@
 
         data() {
             return {
-                activeTab: 'edu',
+                activeTab: 'skills',
             }
         },
 
         methods: {
             setActiveTab(tabName) {
                 this.activeTab = tabName;
-            }
+            },
+            skillsBar() {
+                $(".skills .skill .skill-bar span").each(function () {
+                    $(this).animate({
+                        "width": $(this).parent().attr("data-bar") + "%"
+                    }, 1000);
+                });
+            },
         },
 
-        mouted() {
-
+        mounted() {
+            this.skillsBar();
         }
     }
 </script>
@@ -500,7 +581,7 @@
                     opacity: 1;
                 }
 
-                .portfolio, .skills, .about, .work-experience, .education {
+                .portfolio, .about, .work-experience, .education {
                     opacity: 0;
                     transition: all 0.6s ease;
                 }
@@ -647,11 +728,17 @@
                     }
                 }
 
-                .skills {
-
-
+                .skills-tab {
+                    .skill-item{
+                        width:806px;
+                        height:176px;
+                        background:#F8F8F8;
+                        border-radius: 8px;
+                        padding:38px 58px 0px 58px;
+                        margin-bottom: 25px;
+                        margin-right:30px;
+                    }
                 }
-
                 .about {
 
                 }
@@ -660,5 +747,86 @@
 
         }
 
+    }
+
+    // skills bar css :
+
+    .skills,
+    .skills .skill,
+    .skills .skill .skill-title,
+    .skills .skill .skill-bar {
+        width: 100%;
+        float: left;
+    }
+
+    .skills {
+        padding: 0px 15px 10px 15px;
+    }
+
+    .skills .skill {
+        margin-bottom: 30px;
+    }
+
+    .skills .skill .skill-title {
+        color: #3C3748;
+        line-height: 43px;
+        font-weight: bold;
+        font-size: 32px;
+        margin-bottom:26px;
+    }
+
+    .skills .skill .skill-bar {
+        width: 100%;
+        height: 20px;
+        border-radius: 23px;
+        background: #C4C1D7;
+        transition: 1s cubic-bezier(1, 0, .5, 1);
+        -webkit-transition: 1s cubic-bezier(1, 0, .5, 1);
+        -ms-transition: 1s cubic-bezier(1, 0, .5, 1);
+    }
+
+    .skills .skill .skill-bar.orange {
+        background: #FFD7B2;
+    }
+
+    .skills .skill .skill-bar span.orange {
+        background: #FF7C00;
+    }
+
+
+    .skills .skill .skill-bar.red {
+        background: #FFC1EC;
+    }
+
+    .skills .skill .skill-bar span.red {
+        background: #FF26BE;
+    }
+
+    .skills.active .skill .skill-bar {
+        width: 100%;
+    }
+
+    .skills .skill .skill-bar span {
+        float: left;
+        width: 0;
+        background: #3C327B;
+        height: 20px;
+        border-radius: 23px;
+        position: relative;
+        transition: 1s cubic-bezier(1, 0, .5, 1);
+        -webkit-transition: 1s cubic-bezier(1, 0, .5, 1);
+        -ms-transition: 1s cubic-bezier(1, 0, .5, 1);
+    }
+
+    .skills .skill .skill-bar span b {
+        float: left;
+        width: 100%;
+        position: relative;
+        text-align: right;
+        opacity: 1;
+        font-size: 14px;
+        color: #3C327B;
+        font-weight: 400;
+        top: -13px;
     }
 </style>

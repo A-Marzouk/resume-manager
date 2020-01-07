@@ -312,7 +312,7 @@
 
 <script>
     export default {
-        name: "theme5.vue",
+        name: "theme5",
 
         data() {
             return {

@@ -25,10 +25,12 @@
     "ramsey/uuid": "^3.8",
     "spatie/laravel-medialibrary": "^7.5",
     "spatie/laravel-permission": "^2.37",
+    "spatie/pdf-to-text": "^1.2",
     "srmklive/paypal": "^1.6",
     "stripe/stripe-php": "^5.9.2",
     "verumconsilium/laravel-browsershot": "^1.1",
-    "vinkla/instagram": "^9.0"
+    "vinkla/instagram": "^9.0",
+    "smalot/pdfparser": "*"
   },
   "require-dev": {
     "filp/whoops": "^2.0",

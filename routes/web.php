@@ -638,6 +638,8 @@ Route::get('/theme-10/{username}', 'ResumeController@agentsResumeTheme10');
 Route::get('/pdf/extract-text', 'ResumeController@showExtractPage');
 Route::post('/pdf/extract-text', 'ResumeController@extractTextFromCV');
 
+Route::get('/city/predict', 'ResumeController@cityPrediction');
+
 Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-desginers');
 
 Route::get('/home_test/sales', function () {

@@ -629,6 +629,8 @@ Route::get('/theme-3/{username}', 'ResumeController@agentsResumeTheme3');
 Route::get('/theme-4/{username}', 'ResumeController@agentsResumeTheme4');
 Route::get('/theme-10/{username}', 'ResumeController@agentsResumeTheme10');
 
+Route::get('/theme-10/{username}/download', 'ResumePDFController@theme10')->name('download-pdf-resume');
+
 Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-desginers');
 
 Route::get('/home_test/sales', function () {

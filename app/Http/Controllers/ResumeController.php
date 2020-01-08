@@ -57,6 +57,10 @@ class ResumeController extends Controller
         return $text;
     }
 
+    public function cityPrediction(){
+        return view('resume_builder.city');
+    }
+
     public function getAgentData ($username) {
 
         $user = User::where('username', $username)->get();

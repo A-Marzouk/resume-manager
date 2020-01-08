@@ -2,28 +2,96 @@
   <div class="d-flex justify-content-center">
     <nav class="navbar navbar-light fixed-top dashboard_navbar">
       <a class="navbar-brand" href="/freelancer/dashboard">
-        <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;" />
+        <img
+          src="/images/client/logo_123.png"
+          alt="logout"
+          style="width: 177px;"
+        />
       </a>
     </nav>
 
     <div class="themeWrapper">
-      <div class="mainThemeBar d-flex justify-content-between align-items-center">
+      <div
+        class="mainThemeBar d-flex justify-content-between align-items-center"
+      >
         <div class="left">
           <div class="avatar">
-            <img src="/images/resume_themes/theme10/man-photo.png" alt="profile pic" />
+            <img
+              :src="'/' + user.user_data.profile_picture"
+              alt="profile pic"
+            />
           </div>
           <div class="info d-flex flex-column align-items-between">
             <div class="user-name">
-              Conor
-              <img class="chat-icon" src="/images/resume_themes/theme10/chat.svg" alt="chat" />
+              {{ user.user_data.first_name }}
+              <img
+                class="chat-icon"
+                src="/images/resume_themes/theme10/chat.svg"
+                alt="chat"
+              />
             </div>
-            <div class="job-title">Ui/Ux designer</div>
+            <div class="job-title">{{ user.user_data.job_title }}</div>
             <div class="social-icons">
-              <img src="/images/resume_themes/theme10/behance.svg" alt="icon" />
-              <img src="/images/resume_themes/theme10/dribbble.svg" alt="icon" />
-              <img src="/images/resume_themes/theme10/instagram.svg" alt="icon" />
-              <img src="/images/resume_themes/theme10/linkedin.svg" alt="icon" />
-              <img src="/images/resume_themes/theme10/pinterest.svg" alt="icon" />
+              <a
+                v-if="user.user_data.whatsapp"
+                :href="
+                  `https://wa.me/58${user.user_data.phone.replace(
+                    '-',
+                    ''
+                  )}?text=Hello!%20I%20saw%20your%20profile%20on%20123workforce.com`
+                "
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/images/resume_themes/theme10/whatsapp.svg"
+                  alt="whatsapp icon"
+                />
+              </a>
+              <a
+                v-if="user.user_data.instagram"
+                :href="`http://instagram.com/${user.user_data.instagram}`"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/images/resume_themes/theme10/instagram.svg"
+                  alt="instagram icon"
+                />
+              </a>
+              <a
+                v-if="user.user_data.linkedin"
+                :href="`http://linkedin.com/in/${user.user_data.linkedin}`"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/images/resume_themes/theme10/linkedin.svg"
+                  alt="linkedin icon"
+                />
+              </a>
+              <a
+                v-if="user.user_data.behance"
+                :href="`http://behance.net/${user.user_data.behance}`"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/images/resume_themes/theme10/behance.svg"
+                  alt="behance icon"
+                />
+              </a>
+              <a
+                v-if="user.user_data.github"
+                :href="`http://github.com/${user.user_data.github}`"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="/images/resume_themes/theme10/github.svg"
+                  alt="github icon"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -35,11 +103,15 @@
             <img src="/images/resume_themes/theme10/video.svg" alt="icon" />
           </div>
           <div class="hourly-rate">
-            <div class="hourly-rate-text">$10</div>
+            <div class="hourly-rate-text">
+              ${{ parseInt(user.agent.hourly_rate) }}
+            </div>
             <div class="hourly-rate-text light">Hourly Rate</div>
           </div>
           <div class="weekly-availability">
-            <div class="hourly-rate-text">35 hours</div>
+            <div class="hourly-rate-text">
+              {{ parseInt(user.agent.available_hours_per_week) }} hours
+            </div>
             <div class="hourly-rate-text light">Weekly Availability</div>
           </div>
           <a href="javascript:void(0)" class="hire-me-btn">HIRE ME</a>
@@ -50,18 +122,24 @@
         <div
           class="tab-text"
           @click="setActiveTab('portfolio')"
-          :class="{active : activeTab === 'portfolio'}"
-        >Portfolio</div>
+          :class="{ active: activeTab === 'portfolio' }"
+        >
+          Portfolio
+        </div>
         <div
           class="tab-text"
           @click="setActiveTab('work')"
-          :class="{active : activeTab === 'work'}"
-        >Work</div>
+          :class="{ active: activeTab === 'work' }"
+        >
+          Work
+        </div>
         <div
           class="tab-text"
           @click="setActiveTab('education')"
-          :class="{active : activeTab === 'education'}"
-        >Education</div>
+          :class="{ active: activeTab === 'education' }"
+        >
+          Education
+        </div>
       </div>
 
       <div class="tab-content-wrapper">
@@ -69,89 +147,113 @@
           <div class="skills-tabs">
             <div
               class="skills-tab-text"
-              :class="{active : activeSkillTab === 'programming-languages'}"
+              :class="{ active: activeSkillTab === 'programming-languages' }"
               @click="setActiveSkillTab('programming-languages')"
-            >Programming Languages</div>
+            >
+              Programming Languages
+            </div>
             <div
               class="skills-tab-text"
-              :class="{active : activeSkillTab === 'frameworks-databases'}"
+              :class="{ active: activeSkillTab === 'frameworks-databases' }"
               @click="setActiveSkillTab('frameworks-databases')"
-            >Frameworks/Databases</div>
+            >
+              Frameworks/Databases
+            </div>
             <div
               class="skills-tab-text"
-              :class="{active : activeSkillTab === 'design-skills'}"
+              :class="{ active: activeSkillTab === 'design-skills' }"
               @click="setActiveSkillTab('design-skills')"
-            >Design Skills</div>
+            >
+              Design Skills
+            </div>
             <div
               class="skills-tab-text mr-0"
-              :class="{active : activeSkillTab === 'software'}"
+              :class="{ active: activeSkillTab === 'software' }"
               @click="setActiveSkillTab('software')"
-            >Software</div>
+            >
+              Software
+            </div>
           </div>
-          <div class="skills-icons-bar" id="style-1">
-            <div class="skill">
-              <span class="skill-name">Javascript</span>
-              <span class="skill-percentage">100%</span>
+          <div class="skills-icons-bar-container">
+            <div
+              v-if="activeSkillTab === 'programming-languages'"
+              class="skills-icons-bar"
+              id="style-1"
+            >
+              <div
+                v-for="skill in skills.programming"
+                :key="skill.skill_title + skill.id"
+                class="skill"
+              >
+                <span class="skill-name">{{ skill.skill_title }} - </span>
+                <span class="skill-percentage">{{ skill.percentage }}%</span>
+              </div>
             </div>
-            <div class="skill">
-              <span class="skill-name">Python</span>
-              <span class="skill-percentage">90%</span>
+            <div
+              v-else-if="activeSkillTab === 'frameworks-databases'"
+              class="skills-icons-bar"
+              id="style-1"
+            >
+              <div
+                v-for="skill in skills.frameworks"
+                :key="skill.skill_title + skill.id"
+                class="skill"
+              >
+                <span class="skill-name">{{ skill.skill_title }} - </span>
+                <span class="skill-percentage">{{ skill.percentage }}%</span>
+              </div>
             </div>
-            <div class="skill">
-              <span class="skill-name">C++</span>
-              <span class="skill-percentage">70%</span>
+            <div
+              v-else-if="activeSkillTab === 'design-skills'"
+              class="skills-icons-bar"
+              id="style-1"
+            >
+              <div
+                v-for="skill in skills.design"
+                :key="skill.skill_title + skill.id"
+                class="skill"
+              >
+                <span class="skill-name">{{ skill.skill_title }} - </span>
+                <span class="skill-percentage">{{ skill.percentage }}%</span>
+              </div>
             </div>
-            <div class="skill">
-              <span class="skill-name">Php</span>
-              <span class="skill-percentage">80%</span>
-            </div>
-            <div class="skill">
-              <span class="skill-name">Matlab</span>
-              <span class="skill-percentage">50%</span>
-            </div>
-            <div class="skill">
-              <span class="skill-name">Visual Basic</span>
-              <span class="skill-percentage">60%</span>
-            </div>
-            <div class="skill">
-              <span class="skill-name"></span>
-              <span class="skill-percentage"></span>
+            <div v-else class="skills-icons-bar" id="style-1">
+              <div
+                v-for="skill in skills.software"
+                :key="skill.skill_title + skill.id"
+                class="skill"
+              >
+                <span class="skill-name">{{ skill.skill_title }} - </span>
+                <span class="skill-percentage">{{ skill.percentage }}%</span>
+              </div>
             </div>
           </div>
 
-          <div v-if="activeTab === 'portfolio'" class="main-tab-content" id="style-2">
+          <div
+            v-if="activeTab === 'portfolio'"
+            class="main-tab-content"
+            id="style-2"
+          >
             <slick class="portfolioSlides" ref="slick" :options="slickOptions">
-              <div class="d-flex flex-column align-items-center">
-                <img src="/images/resume_themes/theme3/portfolio1.png" alt="portfolio image" />
-              </div>
-
-              <div class="d-flex flex-column align-items-center">
-                <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image" />
-              </div>
-              <div class="d-flex flex-column align-items-center">
-                <img src="/images/resume_themes/theme3/portfolio1.png" alt="portfolio image" />
-              </div>
-
-              <div class="d-flex flex-column align-items-center">
-                <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image" />
-              </div>
-
-              <div class="d-flex flex-column align-items-center">
-                <img src="/images/resume_themes/theme3/portfolio1.png" alt="portfolio image" />
-              </div>
-
-              <div class="d-flex flex-column align-items-center">
-                <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image" />
-              </div>
-
-              <div class="d-flex flex-column align-items-center">
-                <img src="/images/resume_themes/theme3/portfolio1.png" alt="portfolio image" />
+              <div
+                v-for="project in projects"
+                :key="project.id + projectName"
+                class="d-flex flex-column align-items-center"
+              >
+                <img :src="project.mainImage" alt="portfolio image" />
               </div>
             </slick>
 
             <div class="slick-controls">
-              <a href="javascript:;" @click.prevent="prevPosition" class="slick-arrow">
-                <img src="/images/resume_themes/theme10/arrow-prev.svg" alt="slick arrow" />
+              <a
+                href="javascript:;"
+                @click.prevent="prevPosition"
+                class="slick-arrow"
+              >
+                <img
+                  src="/images/resume_themes/theme10/arrow-prev.svg"
+                  alt="slick arrow"
+                />
               </a>
               <div class="slick-dots-container">
                 <!-- Change it for the user projects -->
@@ -160,21 +262,34 @@
                   :key="project.name + index"
                   href="javascript:;"
                   class="slick-control"
-                  :class="{active: index === activeProjectIndex}"
+                  :class="{ active: index === activeProjectIndex }"
                   @click.prevent="handleSetPosition(index)"
                 ></a>
               </div>
-              <a href="javascript:;" @click.prevent="nextPosition" class="slick-arrow">
-                <img src="/images/resume_themes/theme10/arrow-next.svg" alt="slick arrow" />
+              <a
+                href="javascript:;"
+                @click.prevent="nextPosition"
+                class="slick-arrow"
+              >
+                <img
+                  src="/images/resume_themes/theme10/arrow-next.svg"
+                  alt="slick arrow"
+                />
               </a>
             </div>
           </div>
 
-          <div v-else-if="activeTab === 'work'" class="main-tab-content" id="style-2">
+          <div
+            v-else-if="activeTab === 'work'"
+            class="main-tab-content"
+            id="style-2"
+          >
             <works-container :works="user.works_history"></works-container>
           </div>
           <div v-else class="main-tab-content" id="style-2">
-            <educations-container :educations="user.educations_history"></educations-container>
+            <educations-container
+              :educations="user.educations_history"
+            ></educations-container>
           </div>
         </div>
       </div>
@@ -199,37 +314,14 @@ export default {
       activeTab: "portfolio",
       activeSkillTab: "programming-languages",
       adaptativeHeight: true,
-      projects: [
-        {
-          name: "project 1",
-          img: "imagen1"
-        },
-        {
-          name: "project 2",
-          img: "imagen2"
-        },
-        {
-          name: "project 3",
-          img: "imagen3"
-        },
-        {
-          name: "project 4",
-          img: "imagen4"
-        },
-        {
-          name: "project 5",
-          img: "imagen5"
-        },
-        {
-          name: "project 6",
-          img: "imagen6"
-        },
-        {
-          name: "project 7",
-          img: "imagen7"
-        }
-      ],
       activeProjectIndex: 0,
+      projects: [],
+      skills: {
+        programming: [],
+        frameworks: [],
+        design: [],
+        software: []
+      },
       slickOptions: {
         infinite: false,
         arrows: false,
@@ -287,7 +379,23 @@ export default {
       }
     }
   },
-  mounted() {}
+  mounted() {
+    console.log(this.user);
+    this.skills.programming = this.user.skills.filter(
+      skill => skill.type === "programming"
+    );
+    this.skills.frameworks = this.user.skills.filter(
+      skill => skill.type === "frameworks"
+    );
+    this.skills.design = this.user.skills.filter(
+      skill => skill.type === "design"
+    );
+    this.skills.software = this.user.skills.filter(
+      skill => skill.type === "software"
+    );
+
+    this.projects = this.user.projects;
+  }
 };
 </script>
 
@@ -346,12 +454,13 @@ $primaryColor: #104efb;
       }
       .avatar {
         margin-right: 37px;
-        border-radius: 50%;
-        border: 10px solid $primaryColor;
+        // border-radius: 50%;
 
         img {
+          border: 10px solid $primaryColor;
           width: 160px;
           height: 160px;
+          border-radius: 50%;
         }
 
         @media only screen and (max-width: 600px) {
@@ -437,8 +546,8 @@ $primaryColor: #104efb;
           }
 
           img {
-            width: 24px;
-            height: 24px;
+            width: 30px;
+            height: 30px;
 
             @media only screen and (max-width: 600px) {
               margin-right: 10px;
@@ -679,17 +788,17 @@ $primaryColor: #104efb;
       }
     }
 
-    .skills-icons-bar {
-      margin-top: 32px;
-      padding: 0 10px;
-      padding-bottom: 10px;
-      display: flex;
-      justify-content: space-around;
+    .skills-icons-bar-container {
       overflow-x: auto;
+      width: 100%;
+      padding: 10px;
+      margin-top: 32px;
+      justify-content: center;
+    }
 
-      @media (max-width: 972px) {
-        justify-content: space-between;
-      }
+    .skills-icons-bar {
+      display: flex;
+      margin: 0 auto;
 
       .skill {
         display: flex;
@@ -746,6 +855,7 @@ $primaryColor: #104efb;
             z-index: 50;
             box-shadow: 0 10px 10px rgba($color: #000000, $alpha: 0.1);
             border-radius: 20px;
+            border: 1px solid black;
           }
         }
       }

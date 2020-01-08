@@ -297,6 +297,16 @@
               <img src="{{public_path().'/images/resume_themes/theme10/dribbble.png'}}" alt="Dribbble Icon">
             </a>
           @endif
+          @if ($freelancer->userData['linkedin'])
+            <a class="social-link-icon" target="_blank" href="{{'https://linkedin.com/in/'.$freelancer->userData['linkedin']}}">
+              <img src="{{public_path().'/images/resume_themes/theme10/linkedin.png'}}" alt="Dribbble Icon">
+            </a>
+          @endif
+          @if ($freelancer->userData['github'])
+            <a class="social-link-icon" target="_blank" href="{{'https://github.com/'.$freelancer->userData['github']}}">
+              <img src="{{public_path().'/images/resume_themes/theme10/github.png'}}" alt="Dribbble Icon">
+            </a>
+          @endif
         </div>
       </div>
 

@@ -51,6 +51,30 @@
                             Country : No country.
                         </div>
                     </div>
+                    <hr>
+                    <div>
+                        <div v-if="freelancerData.skills.length > 0">
+                            Skills:
+                            <div v-for="(skill,index) in freelancerData.skills" :key="index">
+                                <b>{{skill}}</b>
+                            </div>
+                        </div>
+                        <div v-else>
+                            Skills : No skills found.
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                        <div v-if="freelancerData.languages.length > 0">
+                            Languages:
+                            <div v-for="(language,index) in freelancerData.languages" :key="index">
+                                <b>{{language}}</b>
+                            </div>
+                        </div>
+                        <div v-else>
+                            Languages : No languages found.
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -82,7 +106,7 @@
                     'skills': [],
                     'languages': [],
                 },
-                countryList : [
+                countryList: [
                     "Afghanistan",
                     "Albania",
                     "Algeria",
@@ -333,6 +357,279 @@
                     "Zimbabwe",
                     "Åland Islands"
                 ],
+                skillsList: [
+                    'JavaScript',
+                    'HTML',
+                    'CSS.',
+                    'SASS',
+                    'SQL',
+                    'Python',
+                    'Java',
+                    'Bash/Shell/PowerShell',
+                    'C#',
+                    'PHP',
+                    'TypeScript',
+                    // 'C++',
+                    'C Language',
+                    'Ruby',
+                    'Go',
+                    'Swift',
+                    'Kotlin',
+                    'R Language',
+                    'VBA',
+                    'Objective-C',
+                    'Assembly',
+                    'Scala',
+                    'Rust',
+
+                    'jQuery',
+                    'Angular/Angular.js',
+                    'React.js',
+                    'Meteor.js',
+                    'Socket.io',
+                    'Cordova',
+                    'Android',
+                    'Bootstrap',
+                    'Keystone.js',
+                    'Vue.js',
+                    'AWS',
+                    'Redux',
+                    'Hapi.js',
+                    'React Native',
+                    'Microservices',
+                    'ASP.NET',
+                    'Express',
+                    'Spring',
+                    'Vue.js',
+                    'Django',
+                    'Flask',
+                    'Laravel',
+                    'Ruby,on,Rails',
+                    'Drupal',
+                    'Node.js',
+                    '.NET',
+                    '.NET,Core',
+                    'Pandas',
+                    'React,Native',
+                    'Ansible',
+                    'TensorFlow',
+                    'Unity,3D',
+                    'Cordova',
+                    'Xamarin',
+                    'Apache,Spark',
+                    'Hadoop',
+                    'Flutter',
+                    'Wordpress',
+
+                    'MySQL',
+                    'PostgreSQL',
+                    'Microsoft,SQL,Server',
+                    'SQLite',
+                    'MongoDB',
+                    'Redis',
+                    'MariaDB',
+                    'Oracle',
+                    'Elasticsearch',
+                    'Firebase',
+                    'DynamoDB',
+                    'Cassandra',
+                    'Couchbase',
+
+                    'Adobe After Effects',
+                    'Sketch',
+                    'Adobe Illustrator',
+                    'Adobe XD',
+                    'Photoshop',
+                    'Autocad',
+                    'Solidworks',
+                    'Adobe Flash',
+                    'Digital Drawing Tablet',
+                    'Adobe Indesign',
+                    'CorelDraw',
+                    '3d Max'
+                ],
+                languages : [
+                    "Abkhaz",
+                    "Afar",
+                    "Afrikaans",
+                    "Akan",
+                    "Albanian",
+                    "Amharic",
+                    "Arabic",
+                    "Aragonese",
+                    "Armenian",
+                    "Assamese",
+                    "Avaric",
+                    "Avestan",
+                    "Aymara",
+                    "Azerbaijani",
+                    "Bambara",
+                    "Bashkir",
+                    "Basque",
+                    "Belarusian",
+                    "Bengali",
+                    "Bihari",
+                    "Bislama",
+                    "Bosnian",
+                    "Breton",
+                    "Bulgarian",
+                    "Burmese",
+                    "Catalan; Valencian",
+                    "Chamorro",
+                    "Chechen",
+                    "Chichewa; Chewa; Nyanja",
+                    "Chinese",
+                    "Chuvash",
+                    "Cornish",
+                    "Corsican",
+                    "Croatian",
+                    "Czech",
+                    "Danish",
+                    "Divehi; Dhivehi; Maldivian;",
+                    "Dutch",
+                    "English",
+                    "Esperanto",
+                    "Estonian",
+                    "Ewe",
+                    "Faroese",
+                    "Fijian",
+                    "Finnish",
+                    "French",
+                    "Fula; Fulah; Pulaar; Pular",
+                    "Galician",
+                    "Georgian",
+                    "German",
+                    "Greek, Modern",
+                    "Guaraní",
+                    "Gujarati",
+                    "Haitian; Haitian Creole",
+                    "Hausa",
+                    "Hebrew (modern)",
+                    "Herero",
+                    "Hindi",
+                    "Hiri Motu",
+                    "Hungarian",
+                    "Interlingua",
+                    "Indonesian",
+                    "Interlingue",
+                    "Irish",
+                    "Igbo",
+                    "Inupiaq",
+                    "Ido",
+                    "Icelandic",
+                    "Italian",
+                    "Inuktitut",
+                    "Japanese",
+                    "Javanese",
+                    "Kalaallisut, Greenlandic",
+                    "Kannada",
+                    "Kanuri",
+                    "Kashmiri",
+                    "Kazakh",
+                    "Khmer",
+                    "Kikuyu, Gikuyu",
+                    "Kinyarwanda",
+                    "Kirghiz, Kyrgyz",
+                    "Komi",
+                    "Kongo",
+                    "Korean",
+                    "Kurdish",
+                    "Kwanyama, Kuanyama",
+                    "Latin",
+                    "Luxembourgish, Letzeburgesch",
+                    "Luganda",
+                    "Limburgish, Limburgan, Limburger",
+                    "Lingala",
+                    "Lao",
+                    "Lithuanian",
+                    "Luba-Katanga",
+                    "Latvian",
+                    "Manx",
+                    "Macedonian",
+                    "Malagasy",
+                    "Malay",
+                    "Malayalam",
+                    "Maltese",
+                    "Māori",
+                    "Marathi (Marāṭhī)",
+                    "Marshallese",
+                    "Mongolian",
+                    "Nauru",
+                    "Navajo, Navaho",
+                    "Norwegian Bokmål",
+                    "North Ndebele",
+                    "Nepali",
+                    "Ndonga",
+                    "Norwegian Nynorsk",
+                    "Norwegian",
+                    "Nuosu",
+                    "South Ndebele",
+                    "Occitan",
+                    "Ojibwe, Ojibwa",
+                    "Old Church Slavonic, Church Slavic, Church Slavonic, Old Bulgarian, Old Slavonic",
+                    "Oromo",
+                    "Oriya",
+                    "Ossetian, Ossetic",
+                    "Panjabi, Punjabi",
+                    "Pāli",
+                    "Persian",
+                    "Polish",
+                    "Pashto, Pushto",
+                    "Portuguese",
+                    "Quechua",
+                    "Romansh",
+                    "Kirundi",
+                    "Romanian, Moldavian, Moldovan",
+                    "Russian",
+                    "Sanskrit (Saṁskṛta)",
+                    "Sardinian",
+                    "Sindhi",
+                    "Northern Sami",
+                    "Samoan",
+                    "Sango",
+                    "Serbian",
+                    "Scottish Gaelic; Gaelic",
+                    "Shona",
+                    "Sinhala, Sinhalese",
+                    "Slovak",
+                    "Slovene",
+                    "Somali",
+                    "Southern Sotho",
+                    "Spanish; Castilian",
+                    "Sundanese",
+                    "Swahili",
+                    "Swati",
+                    "Swedish",
+                    "Tamil",
+                    "Telugu",
+                    "Tajik",
+                    "Thai",
+                    "Tigrinya",
+                    "Tibetan Standard, Tibetan, Central",
+                    "Turkmen",
+                    "Tagalog",
+                    "Tswana",
+                    "Tonga (Tonga Islands)",
+                    "Turkish",
+                    "Tsonga",
+                    "Tatar",
+                    "Tahitian",
+                    "Uighur, Uyghur",
+                    "Ukrainian",
+                    "Urdu",
+                    "Uzbek",
+                    "Venda",
+                    "Vietnamese",
+                    "Volapük",
+                    "Walloon",
+                    "Welsh",
+                    "Wolof",
+                    "Western Frisian",
+                    "Xhosa",
+                    "Yiddish",
+                    "Yoruba",
+                    "Zhuang, Chuang"
+                ],
             }
         },
         methods: {
@@ -384,7 +681,7 @@
                 arrayOfData.forEach((textLine) => {
                     // check if this text line is email :
                     if (!this.freelancerData.email) {
-                          this.checkForEmail(textLine);
+                        this.checkForEmail(textLine);
                     }
 
                     if (!this.freelancerData.phone) {
@@ -392,12 +689,15 @@
                     }
 
                     if (!this.freelancerData.job_title) {
-                         this.checkForJobTitle(textLine);
+                        this.checkForJobTitle(textLine);
                     }
 
                     if (!this.freelancerData.country) {
-                       this.checkForCountry(textLine);
+                        this.checkForCountry(textLine);
                     }
+
+                    this.checkForSkills(textLine);
+                    this.checkForLanguages(textLine);
 
                 });
 
@@ -405,29 +705,29 @@
             checkForEmail(textLine) {
                 let cleanTextLine = textLine.replace(/\s/g, "");
                 let emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
-                if(cleanTextLine.match(emailRegex)){
-                    this.freelancerData.email = textLine;
+                if (cleanTextLine.match(emailRegex)) {
+                    this.freelancerData.email = cleanTextLine;
                 }
             },
             checkForPhone(textLine) {
                 let cleanTextLine = textLine.replace(/\s/g, "");
                 cleanTextLine = cleanTextLine.replace(/-/g, "");
                 let phoneRegex = /(?:(?:\+?([1-9]|[0-9][0-9]|[0-9][0-9][0-9])\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([0-9][1-9]|[0-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?/;
-                let arrayOfNumbers =  cleanTextLine.match(phoneRegex);
-                if(arrayOfNumbers){
-                    this.freelancerData.phone = textLine;
+                let arrayOfNumbers = cleanTextLine.match(phoneRegex);
+                if (arrayOfNumbers) {
+                    this.freelancerData.phone = cleanTextLine;
                 }
             },
             checkForLinks(textLine) {
 
             },
-            checkForCountry(textLine){
+            checkForCountry(textLine) {
                 // check if any word of the text line is a country name
                 let cleanTextLine = textLine.replace(/\s/g, "");
                 cleanTextLine = cleanTextLine.replace(/-/g, "");
                 for (let i = 0; i < this.countryList.length; i++) {
-                    let countryRegex = new RegExp(this.countryList[i],'ig');
-                    if (countryRegex.test(cleanTextLine)){
+                    let countryRegex = new RegExp(this.countryList[i], 'ig');
+                    if (countryRegex.test(cleanTextLine)) {
                         console.log('Country: ' + textLine);
                         this.freelancerData.country = textLine;
                         break;
@@ -437,10 +737,28 @@
             },
             checkForJobTitle(textLine) {
                 let cleanTextLine = textLine.replace(/\s/g, "");
-                let jobTitleRegex = /engineer|developer|designer|programmer|senior|junior|middle/ig ;
-                if(jobTitleRegex.test(cleanTextLine)){
+                let jobTitleRegex = /engineer|developer|designer|programmer|senior|junior|middle/ig;
+                if (jobTitleRegex.test(cleanTextLine)) {
                     this.freelancerData.job_title = textLine
                 }
+            },
+            checkForSkills(textLine){
+                let skillRegex = new RegExp(this.skillsList.join('|'),'ig');
+                let skills = textLine.match(skillRegex) ;
+                if(skills !== null){
+                    this.freelancerData.skills.push(...skills);
+                }
+                // filter repeated elements in skills :
+                this.freelancerData.skills = Array.from(new Set(this.freelancerData.skills))
+            },
+            checkForLanguages(textLine){
+                let languageRegex = new RegExp(this.languages.join('|'),'ig');
+                let languages = textLine.match(languageRegex) ;
+                if(languages !== null){
+                    this.freelancerData.languages.push(...languages);
+                }
+                // filter repeated elements in skills :
+                this.freelancerData.languages = Array.from(new Set(this.freelancerData.languages))
             }
         },
         mounted() {

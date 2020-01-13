@@ -1,22 +1,20 @@
 <template>
   <div>
     <section class="resume-main">
-      <img
-        class="main-asset"
-        src="/images/resume_builder/asset1.svg"
-        alt="resume builder asset 123workforce"
-      />
       <div class="container">
         <h1 class="resume-main__title">Make Your Online Resume</h1>
-        <h2 class="resume-main__subtitle">Choose Your Username</h2>
+        <img
+          class="arrow-asset"
+          src="/images/resume_builder/arrow-username.svg"
+          alt="snippet arrow"
+        />
       </div>
-      <div class="container username">
+      <div class="username">
         <div class="styled-input">
-          <img src="/images/resume_builder/arrow-username.svg" alt="snippet arrow" />
-          <span class="url">123workforce.com/</span>
-          <input type="text" id="username" placeholder="Your username" />
+          <input type="text" id="email" placeholder="Email" />
+          <input type="text" id="password" placeholder="Create Password" />
         </div>
-        <button class="btn filled">Build My Resume</button>
+        <button class="btn filled">Sign-up</button>
       </div>
     </section>
 
@@ -52,10 +50,10 @@
       </h2>
       <div class="input-container">
         <div class="input-wrapper">
-          <span>123workforce.com/</span>
+          <span>123workforce.com /</span>
           <input placeholder="Your Name" type="text" />
         </div>
-        <button class="btn filled">Build My Resume</button>
+        <button class="btn filled btn-resume-build">Build My Resume</button>
       </div>
 
       <div class="plans">
@@ -108,7 +106,7 @@ export default {
       "Multimedia productor"
     ],
     slickOptions: {
-      infinite: false,
+      infinite: true,
       centerMode: true,
       slidesToShow: 5,
       slidesToScroll: 5,
@@ -174,15 +172,33 @@ export default {
   },
   mounted() {
     this.actualProfession = this.professions[this.$refs.slick.currentSlide()];
+    let slickClones = document.getElementsByClassName("slick-cloned");
+    let _this = this;
+
+    for (let slickIdx in slickClones) {
+      let indexRef = slickClones[slickIdx].attributes["data-slick-index"].value;
+      slickClones[slickIdx].addEventListener("click", () => {
+        let currIdx = _this.$refs.slick.currentSlide();
+
+        if (currIdx < indexRef) {
+          _this.$refs.slick.goTo(Math.abs(indexRef - currIdx) + currIdx);
+        } else {
+          _this.$refs.slick.goTo(Math.abs(indexRef - currIdx) - currIdx);
+        }
+
+        _this.actualProfession =
+          _this.professions[Math.abs(indexRef - _this.professions.length)];
+      });
+    }
   }
 };
 </script>
 <style lang="scss">
 // Styles for the resume builder view
-$text-color: #1f3445;
-$primary: #0290d8;
+$text-color: #4374de;
+$primary: #1f5de4;
 $bg-color: white;
-$input-bg: #f2f9fd;
+$input-bg: #f1f8fc;
 $placeholder-color: #9ba1ad;
 
 .no-bg {
@@ -207,6 +223,15 @@ $placeholder-color: #9ba1ad;
   border-radius: 10px;
   margin: 0 1.5rem;
   height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
+.btn-resume-build {
+  width: 240px;
+  font-size: 18px !important;
 }
 
 .resume-builder-nav {
@@ -284,13 +309,32 @@ $placeholder-color: #9ba1ad;
 }
 
 .resume-main {
-  padding: 8rem 2rem 13rem;
+  padding: 20vh 2rem 50vh;
   color: $text-color;
   position: relative;
 
   .container {
     z-index: 20;
     position: relative;
+    display: flex;
+    align-items: center;
+
+    .arrow-asset {
+      position: absolute;
+      top: -245px;
+      left: 320px;
+      width: 500px;
+
+      @media (max-width: 1220px) {
+        width: 400px;
+        top: -200px;
+      }
+
+      @media (max-width: 1150px) {
+        width: 300px;
+        top: -150px;
+      }
+    }
   }
 
   &__title {
@@ -307,6 +351,10 @@ $placeholder-color: #9ba1ad;
     display: flex;
     margin-top: 60px;
     flex-wrap: wrap;
+    position: absolute;
+    right: 0;
+    top: 100px;
+    z-index: 30;
   }
 
   .main-asset {
@@ -321,13 +369,16 @@ $placeholder-color: #9ba1ad;
     width: 679px;
     height: 99px;
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
 
-    img {
+    &::before {
+      content: "";
+      height: 45%;
+      border-right: 1px solid $placeholder-color;
       position: absolute;
-      top: -120px;
-      left: 400px;
-      width: 200px;
+      z-index: 30;
     }
 
     .url {
@@ -341,15 +392,17 @@ $placeholder-color: #9ba1ad;
 
     input {
       height: 100%;
-      width: 40%;
+      width: 50%;
       border: none;
-      border-left: 1px solid rgba(0, 0, 0, 0.15);
+      display: flex;
+      align-items: center;
       background: transparent;
       font-size: 30px;
       padding: 1rem 1.5rem;
+      position: relative;
 
       &::placeholder {
-        color: $placeholder-color;
+        color: $text-color;
         text-align: center;
       }
     }
@@ -372,8 +425,12 @@ $placeholder-color: #9ba1ad;
 
     .styled-input {
       border-radius: 9.5px;
-      width: 450px;
+      width: 380px;
       height: 60px;
+
+      & ~ .btn {
+        font-size: 18px;
+      }
 
       .url,
       input {
@@ -383,19 +440,22 @@ $placeholder-color: #9ba1ad;
   }
 
   @media (max-width: 960px) {
-    padding: 3rem 3rem 5rem;
+    padding: 3rem 3rem 15rem;
 
     .main-asset {
       top: 2rem;
       height: 60vh;
     }
 
-    .username {
-      margin-top: 130px;
+    .arrow-asset {
+      display: none;
+    }
 
-      .btn.filled {
-        margin: 0;
-      }
+    .username {
+      right: auto;
+      bottom: 80px;
+      top: auto;
+      margin: 0 auto;
     }
 
     .styled-input {
@@ -418,7 +478,7 @@ $placeholder-color: #9ba1ad;
   }
 
   @media (max-width: 768px) {
-    padding: 0 1rem 4rem;
+    padding: 0 2rem 15rem;
 
     &__title {
       font-size: 36px;
@@ -440,6 +500,15 @@ $placeholder-color: #9ba1ad;
       min-width: 20px;
     }
 
+    .username {
+      width: 100%;
+      padding-right: 4rem;
+
+      .btn {
+        margin: 0;
+      }
+    }
+
     .container {
       padding: 0;
     }
@@ -450,14 +519,15 @@ $placeholder-color: #9ba1ad;
 
     .username {
       .btn.filled {
-        width: 100%;
+        width: 46%;
       }
     }
 
     .main-asset {
-      right: -2rem;
-      top: 1rem;
-      height: 150px;
+      display: none;
+      // right: -2rem;
+      // top: 1rem;
+      // height: 150px;
       // making a comment
     }
 
@@ -509,10 +579,13 @@ $placeholder-color: #9ba1ad;
     justify-content: center;
 
     .slick-current {
+      overflow-y: visible;
       a {
         background: $primary;
         color: $bg-color;
         border-radius: 10px;
+        font-size: 1.3rem;
+        margin-top: -5px;
       }
     }
 
@@ -549,6 +622,12 @@ $placeholder-color: #9ba1ad;
         padding: 0 10px;
       }
     }
+  }
+
+  .slick-track,
+  .slick-list,
+  .slick-slider {
+    overflow-y: visible !important;
   }
 }
 
@@ -593,13 +672,19 @@ $placeholder-color: #9ba1ad;
   align-items: center;
   flex-direction: column;
   padding: 1rem;
+  color: $text-color;
 
   .input-container {
     display: flex;
     margin: 0 auto;
     height: 60px;
     width: 100%;
+    max-width: 580px;
     justify-content: center;
+
+    .btn {
+      margin-right: 0;
+    }
 
     @media (max-width: 768px) {
       flex-wrap: wrap;
@@ -619,7 +704,7 @@ $placeholder-color: #9ba1ad;
 
   .input-wrapper {
     height: 100%;
-    width: 100%;
+    width: calc(100% - 250px);
     background: $input-bg;
     border-radius: 9.5px;
     padding: 0 2rem;
@@ -631,6 +716,7 @@ $placeholder-color: #9ba1ad;
       justify-content: space-between;
       padding: 0 0.5rem;
       overflow-x: auto;
+      width: auto;
     }
 
     span,
@@ -638,6 +724,7 @@ $placeholder-color: #9ba1ad;
       display: flex;
       justify-content: center;
       align-items: center;
+      color: $primary;
     }
 
     input {
@@ -645,6 +732,11 @@ $placeholder-color: #9ba1ad;
       border: none;
       background: transparent;
       outline: none;
+      padding-left: 10px;
+
+      &::placeholder {
+        color: $text-color;
+      }
     }
   }
 }
@@ -687,8 +779,9 @@ $placeholder-color: #9ba1ad;
     position: absolute;
     background: $primary;
     border-radius: 20px;
-    height: 100%;
+    height: 40px;
     top: 0;
+    z-index: 1;
 
     &.left {
       animation-name: swipeToLeft;
@@ -718,12 +811,13 @@ $placeholder-color: #9ba1ad;
   .buttons {
     position: absolute;
     right: 0;
-    height: 100%;
+    height: 40px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
+    z-index: 2;
 
     button {
       background: transparent;

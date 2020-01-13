@@ -75,6 +75,38 @@
                             Languages : No languages found.
                         </div>
                     </div>
+                    <hr>
+                    <div>
+                        <div v-if="freelancerData.links.length > 0">
+                            Links:
+                            <div v-for="(link,index) in freelancerData.links" :key="index">
+                                <b><a href="javascript:void(0)" @click="goToExternalURL(link)" target="_blank">{{link}}</a></b>
+                            </div>
+                        </div>
+                        <div v-else>
+                            Links : No links found.
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                        <div v-if="freelancerData.education" >
+                            education:
+                            <b class="pre-formatted">{{nl2br(freelancerData.education)}}</b>
+                        </div>
+                        <div v-else>
+                            education : No education found.
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                        <div v-if="freelancerData.work_experience" >
+                            Work experience:
+                            <b class="pre-formatted">{{nl2br(freelancerData.work_experience)}}</b>
+                        </div>
+                        <div v-else>
+                            Work experience : No Work experience found.
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -105,6 +137,7 @@
                     'references': '',
                     'skills': [],
                     'languages': [],
+                    'links': [],
                 },
                 countryList: [
                     "Afghanistan",
@@ -490,7 +523,6 @@
                     "English",
                     "Esperanto",
                     "Estonian",
-                    "Ewe",
                     "Faroese",
                     "Fijian",
                     "Finnish",
@@ -633,6 +665,15 @@
             }
         },
         methods: {
+            goToExternalURL(link) {
+                if (link.includes('http')) {
+                    window.open(link, '_blank');
+
+                } else {
+                    window.open('http://' + link, '_blank');
+                }
+
+            },
             uploadPDFFile() {
                 this.errors = [];
                 let formData = new FormData();
@@ -651,7 +692,6 @@
                     .catch((error) => {
                         if (typeof error.response.data === 'object') {
                             this.errors = error.response.data.errors;
-                            console.log(this.errors);
                         } else {
                             this.errors = ['Something went wrong. Please try again.'];
                         }
@@ -660,16 +700,17 @@
             clearFreelancerData() {
                 this.freelancerData = {
                     'name': '',
-                    'phone': '',
-                    'email': '',
-                    'job_title': '',
-                    'country': '',
+                    'phone': '', // done
+                    'email': '', // done
+                    'job_title': '', // done
+                    'country': '', // done
                     'about': '',
-                    'work_experience': '',
-                    'education': '',
-                    'references': '',
-                    'skills': [],
-                    'languages': [],
+                    'work_experience': [],
+                    'education': [],
+                    'references': [],
+                    'skills': [], //done
+                    'languages': [], // done
+                    'links': [], // done (might need more work for special social links)
                 };
             },
             handleFileUpload() {
@@ -679,37 +720,52 @@
                 let arrayOfData = this.arrayOfExtractedText;
 
                 arrayOfData.forEach((textLine) => {
-                    // check if this text line is email :
+                    // check for single fields:
+
                     if (!this.freelancerData.email) {
-                        this.checkForEmail(textLine);
+                        this.searchForEmail(textLine);
                     }
-
                     if (!this.freelancerData.phone) {
-                        this.checkForPhone(textLine);
+                        this.searchForPhone(textLine);
                     }
-
                     if (!this.freelancerData.job_title) {
-                        this.checkForJobTitle(textLine);
+                        this.searchForJobTitle(textLine);
                     }
-
                     if (!this.freelancerData.country) {
-                        this.checkForCountry(textLine);
+                        this.searchForCountry(textLine);
                     }
 
-                    this.checkForSkills(textLine);
-                    this.checkForLanguages(textLine);
+                    // check for array fields :
+                    this.searchForSkills(textLine);
+                    this.searchForLanguages(textLine);
+                    this.searchForLinks(textLine);
 
                 });
 
+                // check for long text fields like education, work experience and references :
+
+                this.searchForEducationText();
+                this.searchForExperienceText();
+
             },
-            checkForEmail(textLine) {
+            searchForEducationText(){
+                 this.freelancerData.education = this.extractedText.match(/(?<=Education)[\S\s]*?(?=Languages)/);
+            },
+            searchForExperienceText(){
+                this.freelancerData.work_experience = this.extractedText.match(/(((?<=Experience)[\S\s]*?(?=Education))|((?<=Experience)[\S\s]*?(?=Languages)))/);
+            },
+            nl2br(str) {
+                let breakTag = ' ';
+                return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+            },
+            searchForEmail(textLine) {
                 let cleanTextLine = textLine.replace(/\s/g, "");
                 let emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
                 if (cleanTextLine.match(emailRegex)) {
                     this.freelancerData.email = cleanTextLine;
                 }
             },
-            checkForPhone(textLine) {
+            searchForPhone(textLine) {
                 let cleanTextLine = textLine.replace(/\s/g, "");
                 cleanTextLine = cleanTextLine.replace(/-/g, "");
                 let phoneRegex = /(?:(?:\+?([1-9]|[0-9][0-9]|[0-9][0-9][0-9])\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([0-9][1-9]|[0-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?/;
@@ -718,46 +774,58 @@
                     this.freelancerData.phone = cleanTextLine;
                 }
             },
-            checkForLinks(textLine) {
+            searchForLinks(textLine) {
+                let cleanTextLine = textLine.replace(/\s/g, "");
+                let linkRegex     = /(https?:\/\/(?:www\.|(?!www))[^\s]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,}|[^\s]+\.com|[^\s]+\.net|[^\s]+\.org|[^\s]+\.gov)/gi;
+                let link          = cleanTextLine.match(linkRegex);
+                if (link !== null) {
+                    // check and remove if email  :
+                    let emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
+                    if(!emailRegex.test(cleanTextLine)){
+                        this.freelancerData.links.push(cleanTextLine);
+                    }
+                }
 
+                this.freelancerData.links = Array.from(new Set(this.freelancerData.links))
             },
-            checkForCountry(textLine) {
+            searchForCountry(textLine) {
                 // check if any word of the text line is a country name
                 let cleanTextLine = textLine.replace(/\s/g, "");
                 cleanTextLine = cleanTextLine.replace(/-/g, "");
                 for (let i = 0; i < this.countryList.length; i++) {
                     let countryRegex = new RegExp(this.countryList[i], 'ig');
                     if (countryRegex.test(cleanTextLine)) {
-                        console.log('Country: ' + textLine);
                         this.freelancerData.country = textLine;
                         break;
                     }
                 }
 
             },
-            checkForJobTitle(textLine) {
+            searchForJobTitle(textLine) {
                 let cleanTextLine = textLine.replace(/\s/g, "");
                 let jobTitleRegex = /engineer|developer|designer|programmer|senior|junior|middle/ig;
                 if (jobTitleRegex.test(cleanTextLine)) {
                     this.freelancerData.job_title = textLine
                 }
             },
-            checkForSkills(textLine){
+            searchForSkills(textLine){
+                let cleanTextLine = textLine.replace(/\s/g, "");
                 let skillRegex = new RegExp(this.skillsList.join('|'),'ig');
-                let skills = textLine.match(skillRegex) ;
+                let skills = cleanTextLine.match(skillRegex) ;
                 if(skills !== null){
                     this.freelancerData.skills.push(...skills);
                 }
                 // filter repeated elements in skills :
                 this.freelancerData.skills = Array.from(new Set(this.freelancerData.skills))
             },
-            checkForLanguages(textLine){
+            searchForLanguages(textLine){
+                let cleanTextLine = textLine.replace(/\s/g, "");
                 let languageRegex = new RegExp(this.languages.join('|'),'ig');
-                let languages = textLine.match(languageRegex) ;
+                let languages = cleanTextLine.match(languageRegex) ;
                 if(languages !== null){
                     this.freelancerData.languages.push(...languages);
                 }
-                // filter repeated elements in skills :
+                // filter repeated elements in languages :
                 this.freelancerData.languages = Array.from(new Set(this.freelancerData.languages))
             }
         },
@@ -768,5 +836,7 @@
 </script>
 
 <style scoped>
-
+    .pre-formatted{
+        white-space: pre;
+    }
 </style>

@@ -107,6 +107,16 @@
                             Work experience : No Work experience found.
                         </div>
                     </div>
+                    <hr>
+                    <div>
+                        <div v-if="freelancerData.references" >
+                            References:
+                            <b class="pre-formatted">{{nl2br(freelancerData.references)}}</b>
+                        </div>
+                        <div v-else>
+                            References : No References found.
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -746,13 +756,17 @@
 
                 this.searchForEducationText();
                 this.searchForExperienceText();
+                this.searchForReferencesText();
 
             },
             searchForEducationText(){
-                 this.freelancerData.education = this.extractedText.match(/(?<=Education)[\S\s]*?(?=Languages)/);
+                 this.freelancerData.education = this.extractedText.match(/((?<=Education)|(?<=EDUCATION))[\S\s]*?((?=Languages)|(?=LANGUAGES)|(?<=Experience)|(?<=EXPERIENCE)|(?=Skills)|(?=SKILLS)|(?=CAREER OBJECTIVE)|(?=Carrer Objective)|(?=REFEREES)|(?=References)|(?=Technologies)|(?=TECHNOLOGIES)|(?=Summary)|(?=SUMMURY)|(?=Projects)|(?=PROJECTS))/);
             },
             searchForExperienceText(){
-                this.freelancerData.work_experience = this.extractedText.match(/(((?<=Experience)[\S\s]*?(?=Education))|((?<=Experience)[\S\s]*?(?=Languages)))/);
+                this.freelancerData.work_experience = this.extractedText.match(/((?<=Experience)|(?<=EXPERIENCE)|(?<=Work)|(?<=WORK))[\S\s]*?((?=Education)|(?=Skills)|(?=SKILLS)|(?=CAREER OBJECTIVE)|(?=Carrer Objective)|(?=REFEREES)|(?=References)|(?=Languages)|(?=LANGUAGES)|(?=Technologies)|(?=TECHNOLOGIES)|(?=Summary)|(?=SUMMURY)|(?=Projects)|(?=PROJECTS))/);
+            },
+            searchForReferencesText(){
+                this.freelancerData.references = this.extractedText.match(/((?<=References)|(?<=REFEREES)|(?<=REFERENCES)|(?<=Referees))[\S\s]*?((?=Education)|(?=Skills)|(?=SKILLS)|(?=CAREER OBJECTIVE)|(?=Carrer Objective)|(?=Experience)|(?=EXPERIENCE)|(?=Languages)|(?=LANGUAGES)|(?=Technologies)|(?=TECHNOLOGIES)|(?=Summary)|(?=SUMMURY)|(?=Projects)|(?=PROJECTS))/);
             },
             nl2br(str) {
                 let breakTag = ' ';
@@ -837,6 +851,6 @@
 
 <style scoped>
     .pre-formatted{
-        white-space: pre;
+        white-space: pre-line;
     }
 </style>

@@ -20,6 +20,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "@google-cloud/translate": "^5.1.4",
         "firebase": "^7.2.3",
         "laravel": "0.0.1",
         "laravel-echo": "^1.4.0",

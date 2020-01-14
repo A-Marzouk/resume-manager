@@ -13,6 +13,7 @@
     "doctrine/dbal": "^2.9",
     "endyjasmi/cuid": "^2.0",
     "fideloper/proxy": "^4.0",
+    "google/cloud-translate": "^1.6",
     "guzzlehttp/guzzle": "~5.3|~6.0",
     "laravel/cashier": "~7.0",
     "laravel/framework": "5.6.*",
@@ -23,14 +24,14 @@
     "php-http/message": "^1.7",
     "pusher/pusher-php-server": "^3.0",
     "ramsey/uuid": "^3.8",
+    "smalot/pdfparser": "*",
     "spatie/laravel-medialibrary": "^7.5",
     "spatie/laravel-permission": "^2.37",
     "spatie/pdf-to-text": "^1.2",
     "srmklive/paypal": "^1.6",
     "stripe/stripe-php": "^5.9.2",
     "verumconsilium/laravel-browsershot": "^1.1",
-    "vinkla/instagram": "^9.0",
-    "smalot/pdfparser": "*"
+    "vinkla/instagram": "^9.0"
   },
   "require-dev": {
     "filp/whoops": "^2.0",

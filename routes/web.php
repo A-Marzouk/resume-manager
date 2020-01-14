@@ -634,6 +634,11 @@ Route::get('/theme-10/{username}/download', 'ResumePDFController@theme10')->name
 Route::get('/pdf/extract-text', 'ResumeController@showExtractPage');
 Route::post('/pdf/extract-text', 'ResumeController@extractTextFromCV');
 
+
+Route::post('/resume/translate', 'ResumeController@translate');
+
+
+
 Route::get('/city/predict', 'ResumeController@cityPrediction');
 
 Route::get('/home_test/designers', 'HomeController@homeDesigners')->name('home-desginers');

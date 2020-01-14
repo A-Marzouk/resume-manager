@@ -2,13 +2,34 @@
     <div>
         <div class="pl-5 pr-5 d-flex flex-column align-items-start ">
             <h2>Please upload your cv in pdf format </h2>
-            <hr>
-            <div class="form-group">
-                <input type="file" ref="file" @change="handleFileUpload">
+            <div class="d-flex">
+                <div class="ml-3">
+                    <input type="file" ref="file" @change="handleFileUpload">
+                    <div>
+                        <a href="javascript:void(0)" class="btn btn-dark mt-2" @click="uploadPDFFile">
+                            Extract text
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="form-group mt-3">
+                        <select name="langauge" id="language" class="custom-select" v-model="translationLanguage" required>
+                            <option value="select">Select a language</option>
+                            <option value="en">English</option>
+                            <option value="ru">Russian</option>
+                            <option value="es">Spanish</option>
+                            <option value="pt">Portuguese</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="zh">Chinese</option>
+                            <option value="ar">Arabic</option>
+                        </select>
+                    </div>
+                    <a href="javascript:void(0)" class="btn btn-dark" @click="translatExtractedText">
+                        Translate Text
+                    </a>
+                </div>
+
             </div>
-            <a href="javascript:void(0)" class="btn btn-dark" @click="uploadPDFFile">
-                Extract text
-            </a>
 
             <div class="row w-100">
                 <div class="col-7 border-dark m-3 p-2" style="white-space: pre-line; border: 1px dotted;"
@@ -132,8 +153,10 @@
         name: "ExtractTextFromPDF",
         data() {
             return {
+                translationLanguage:'select',
                 file: '',
                 extractedText: '',
+                originalText: '',
                 arrayOfExtractedText: '',
                 errors: [],
                 freelancerData: {
@@ -675,6 +698,24 @@
             }
         },
         methods: {
+            translatExtractedText(){
+                if (!this.extractedText){
+                    alert('No text detected!');
+                    return;
+                }
+                if(this.translationLanguage === 'en'){
+                    this.extractedText = this.originalText;
+                }
+                axios.post('/resume/translate',{
+                    extractedText : this.extractedText,
+                    translationLanguage  : this.translationLanguage
+                })
+                    .then( (response) => {
+                        console.log(response);
+                        this.extractedText = response.data;
+                    })
+                    .catch();
+            },
             goToExternalURL(link) {
                 if (link.includes('http')) {
                     window.open(link, '_blank');
@@ -692,6 +733,7 @@
                     .then((response) => {
                         if (response.data.length > 0) {
                             this.extractedText = response.data;
+                            this.originalText = response.data;
                             this.clearFreelancerData();
                         } else {
                             this.extractedText = 'This file does not contain any text to be extracted!';

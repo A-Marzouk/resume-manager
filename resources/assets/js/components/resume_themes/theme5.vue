@@ -52,7 +52,7 @@
                         <div class="call-btn">
                             <a href="javascript:void(0)">
                                 <img src="/images/resume_themes/theme5/call.svg" alt="">
-                                <span class="hideMeOnTablet">Voice call</span>
+                                <span class="hideMeOnTablet hideMeOnPhone">Voice call</span>
                             </a>
                         </div>
                         <div class="video-btn">
@@ -1349,6 +1349,522 @@
         }
 
         .hideMeOnTablet {
+            display: none !important;
+        }
+    }
+
+
+    @media only screen and (max-width: 765px) {
+        /* CSS that should be displayed if width is equal to or less than 1024px and larger
+         than 425px goes here */
+
+        .theme-container {
+            align-items: center;
+            width: 100%;
+
+            .main-info-bar {
+                display: flex;
+                flex-direction: column;
+                background: #FFFFFF;
+                border-radius: 18px;
+                width: 95%;
+                height: auto;
+                padding: 19px 10px 31px 10px;
+
+                .left {
+                    display: flex;
+                    flex-direction:column;
+                    align-items: center;
+                    margin-bottom: 22px;
+
+                    .profile-picture {
+                        img {
+                            width: 86px;
+                            height: 86px;
+                            border-radius: 50%;
+                        }
+                        margin-bottom:14px;
+                    }
+
+                    .main-info {
+                        margin-left: 0px;
+                        display: flex;
+                        flex-direction:column;
+                        align-items: center;
+
+                        .user-name {
+                            font-size: 32px;
+                            font-weight: bold;
+                            opacity: 1;
+                            color: #3C3748 !important;
+                            line-height: 43px;
+                            padding-bottom: 5px;
+                        }
+
+                        .job-title {
+                            font-size: 21px;
+                            color: #3C3748;
+                            line-height: 28px;
+                            padding-bottom: 14px;
+                        }
+
+                        .bio {
+                            font-size: 19px;
+                            color: #6B6B6B;
+                            width: 100%;
+                            max-width: 100%;
+                            min-width: 0;
+                            padding-right: 0;
+                        }
+                    }
+
+                }
+
+                .right {
+                    display: flex;
+                    flex-direction: column;
+                    max-width:100%;
+
+                    .prof-info {
+                        margin-bottom: 22px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-right: 0 !important;
+                        margin-left: 0px;
+
+                        .hours {
+                            padding-right: 17px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+
+                            img {
+                                width: 30px;
+                                height: 26px;
+                            }
+
+                            .text {
+                                line-height: 28px;
+                                font-size: 21px;
+                                color: #635E70;
+                                margin-top: 6px;
+                                margin-left: 4px;
+                            }
+                        }
+
+                        .horizontal-divider {
+                            height: 45px;
+                            width: 2px;
+                            background: #CBCBCB;
+                        }
+
+                        .rate {
+                            padding-left: 17px;
+                            margin-right: 11px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+
+                            img {
+                                width: 30px;
+                                height: 26px;
+                            }
+
+                            .text {
+                                line-height: 28px;
+                                font-size: 21px;
+                                color: #635E70;
+                                margin-top: 6px;
+                                margin-left: 4px;
+                            }
+                        }
+
+                        .hire-me-btn {
+                            margin-top: 16px;
+
+                            a {
+                                height: 60px;
+                                width: 180px;
+                                border-radius: 6px;
+                                background: #FC5185;
+                                box-shadow: #fc7ea4 0px 10px 30px -8px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                color: white;
+                                font-size: 18px;
+
+                                img {
+                                    width: 22.5px;
+                                    height: 18px;
+                                    margin-right: 7.5px;
+                                }
+
+                            }
+                        }
+                    }
+
+                    .media {
+                        display: flex;
+                        flex-direction: column !important;
+                        align-items: center;
+                        justify-content: center;
+                        margin-left: 0;
+
+                        .follow-text {
+                            font-size: 20px;
+                            line-height: 27px;
+                            color: #6F6B7A;
+                            margin-top: 0px;
+                            margin-bottom: 12.3px;
+                            margin-top: 30px;
+                        }
+
+                        .icons {
+                            img {
+                                width: 40px;
+                                height: 40px;
+                                margin-right: 15px;
+                            }
+
+                            img:last-child {
+                                margin-right: 0;
+                            }
+                        }
+
+                        .call-btn {
+                            a {
+                                height: 60px;
+                                width: 93px;
+                                border-radius: 6px;
+                                background: #5F45FF;
+                                box-shadow: #9180ff 0px 10px 30px -8px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                color: white;
+                                font-size: 18px;
+                                margin-left: 0px;
+
+                                img {
+                                    width: 18px;
+                                    height: 18px;
+                                    margin-right: 0;
+                                }
+
+                            }
+                        }
+
+                        .video-btn {
+                            margin-left: 16px;
+
+                            a {
+                                height: 60px;
+                                width: 93px;
+                                border-radius: 6px;
+                                background: #E7E5F6;
+
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                img {
+                                    width: 27px;
+                                    height: 18px;
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            .tabs-wrapper {
+                margin-top: 20px;
+                background: #FFFFFF;
+                border-radius: 18px;
+                width: 95%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0 65px 55px 65px;
+
+                .tabs-bar {
+                    margin-top: 24px;
+
+                    width: 100%;
+                    height: 71px;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 8px;
+                    background: #F8F8F8;
+
+                    .tab-text {
+                        line-height: 27px;
+                        font-size: 20px;
+                        color: #918F97;
+                        margin-right: 27px;
+
+                        span.left {
+                            display: none;
+                        }
+
+                        span.right {
+                            display: none;
+                        }
+                    }
+
+                    .tab-text:hover {
+                        cursor: pointer;
+                        color: #1F5DE4;
+
+                        span.left {
+                            padding-right: 0;
+                        }
+
+                        span.right {
+                            padding-left: 0;
+                        }
+                    }
+
+                    .tabs-bar {
+                        div:last-child {
+                            margin-right: 0;
+                        }
+                    }
+
+                    .tab-text.active {
+                        color: #1F5DE4;
+                        font-weight: bold;
+                    }
+                }
+
+                .tab-content-wrapper {
+                    margin-top: 50px;
+
+                    .portfolio.active, .skills.active, .about.active, .work-experience.active, .education.active {
+                        opacity: 1;
+                    }
+
+                    .portfolio, .about, .work-experience, .education {
+                        opacity: 0;
+                        transition: all 0.6s ease;
+                    }
+
+                    .portfolio {
+                        width: 100%;
+
+                        .images {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;
+
+                            img {
+                                width: 212px;
+                                height: 164px;
+                                margin-right: 4px;
+                                margin-left: 4px;
+                                margin-bottom: 12px;
+                            }
+
+                            img:last-child {
+                                margin-right: 0;
+                            }
+                        }
+
+                        .loading {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            margin-top: 50px;
+                            color: #3C3748CF;
+                            font-size: 16px;
+
+                            img {
+                                width: 40px;
+                                height: 40px;
+                                margin-bottom: 8px;
+                            }
+                        }
+
+                    }
+
+                    .work-experience {
+                        width: 100%;
+
+                        .work-item {
+
+                            .blue-circle {
+                                img {
+                                    width: 33px;
+                                    height: 33px;
+                                }
+                            }
+
+                            .work-info {
+                                padding-left: 88.5px;
+                                padding-bottom: 50px;
+                                margin-left: -17.5px;
+
+                                .work-title {
+                                    font-size: 24px;
+                                    line-height: 33px;
+                                    color: #3C3748;
+                                    font-weight: bold;
+                                }
+
+                                .work-position {
+                                    font-size: 18px;
+                                    line-height: 24px;
+                                    margin-top: 7px;
+                                    margin-bottom: 20px;
+                                    color: #3C3748;
+                                }
+
+                                .work-details {
+                                    font-size: 19px;
+                                    color: #787878;
+                                }
+                            }
+
+                            .work-info.dotted-gradient {
+                                background-image: linear-gradient(to bottom, #1F5DE4 40%, rgba(255, 255, 255, 0) 20%);
+                                background-position: left;
+                                background-size: 1.5px 18px;
+                                background-repeat: repeat-y;
+                            }
+
+                            .work-info.dotted-gradient-2 {
+                                background-image: linear-gradient(to bottom, #548AFF 40%, rgba(255, 255, 255, 0) 20%);
+                                background-position: left;
+                                background-size: 1.5px 18px;
+                                background-repeat: repeat-y;
+                            }
+
+                        }
+
+
+                    }
+
+                    .education {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: start;
+
+                        .education-item {
+                            margin-right: 30px;
+                            margin-bottom: 29px;
+                            width: 100%;
+                            height: 201px;
+                            background: #F8F8F8;
+                            padding: 21px 45px 21px 45px;
+                            border-radius: 8px;
+
+                            .education-type {
+                                width: 115px;
+                                height: 41px;
+                                background: #E7ECF7;
+                                border-radius: 7px;
+
+                                font-size: 18px;
+                                color: #1F5DE4;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                margin-bottom: 18px;
+                            }
+
+                            .education-name {
+                                line-height: 33px;
+                                color: #3C3748;
+                                font-weight: bold;
+                                font-size: 24px;
+                                margin-bottom: 14px;
+                            }
+
+                            .education-date {
+                                line-height: 28px;
+                                color: #1F5DE4;
+                                font-size: 21px;
+                                margin-bottom: 7px;
+                            }
+
+                            .education-info {
+                                line-height: 28px;
+                                color: #707070;
+                                font-size: 20px;
+                            }
+                        }
+                    }
+
+                    .skills-tab {
+                        .skill-item {
+                            width: 100%;
+                            height: 112px;
+                            background: #F8F8F8;
+                            border-radius: 8px;
+                            padding: 38px 58px 0px 58px;
+                            margin-bottom: 25px;
+                            margin-right: 30px;
+                        }
+                    }
+
+                    .about {
+                        width: 100%;
+
+                        margin-top: 0;
+                        padding: 20px 65px 68px 65px;
+                        background: #F8F8F8;
+
+                        .about-me {
+                            .about-title {
+                                line-height: 33px;
+                                font-size: 24px;
+                                color: #3C3748;
+                                font-weight: 500;
+                            }
+
+                            .about-text {
+                                margin-top: 12px;
+                                font-size: 18px;
+                                color: #8B8B8B;
+                            }
+                        }
+
+                        .contact {
+                            margin-top: 48px;
+
+                            .contact-title {
+                                line-height: 33px;
+                                font-size: 24px;
+                                color: #3C3748;
+                                font-weight: 500;
+                                margin-bottom: 12px;
+                            }
+
+                            .email {
+                                line-height: 33px;
+                                font-size: 20px;
+                                color: #3C3748;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+        }
+
+        .hideMeOnPhone {
             display: none !important;
         }
     }

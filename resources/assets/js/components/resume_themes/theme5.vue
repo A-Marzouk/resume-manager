@@ -1,5 +1,6 @@
 <template>
     <div class="theme-container">
+
         <div class="main-info-bar">
             <div class="left">
                 <div class="profile-picture">
@@ -51,7 +52,7 @@
                         <div class="call-btn">
                             <a href="javascript:void(0)">
                                 <img src="/images/resume_themes/theme5/call.svg" alt="">
-                                <span>Voice call</span>
+                                <span class="hideMeOnTablet">Voice call</span>
                             </a>
                         </div>
                         <div class="video-btn">
@@ -75,32 +76,33 @@
                 </div>
             </div>
         </div>
+
         <div class="tabs-wrapper">
             <div class="tabs-bar">
                 <div class="tab-text" :class="{active : activeTab === 'portfolio'}" @click="setActiveTab('portfolio')">
-                    <span v-if="activeTab === 'portfolio'">[ </span>
+                    <span v-if="activeTab === 'portfolio'" class="left ">[ </span>
                     Portfolio
-                    <span v-if="activeTab === 'portfolio'"> ]</span>
+                    <span v-if="activeTab === 'portfolio'" class="right "> ]</span>
                 </div>
                 <div class="tab-text" :class="{active : activeTab === 'workEx'}" @click="setActiveTab('workEx')">
-                    <span v-if="activeTab === 'workEx'">[ </span>
+                    <span v-if="activeTab === 'workEx'" class="left ">[ </span>
                     Work Experience
-                    <span v-if="activeTab === 'workEx'"> ]</span>
+                    <span v-if="activeTab === 'workEx'" class="right "> ]</span>
                 </div>
                 <div class="tab-text" :class="{active : activeTab === 'edu'}" @click="setActiveTab('edu')">
-                    <span v-if="activeTab === 'edu'">[ </span>
+                    <span v-if="activeTab === 'edu'" class="left ">[ </span>
                     Education
-                    <span v-if="activeTab === 'edu'"> ]</span>
+                    <span v-if="activeTab === 'edu'" class="right "> ]</span>
                 </div>
                 <div class="tab-text" :class="{active : activeTab === 'skills'}" @click="setActiveTab('skills')">
-                    <span v-if="activeTab === 'skills'">[ </span>
+                    <span v-if="activeTab === 'skills'" class="left ">[ </span>
                     Skills
-                    <span v-if="activeTab === 'skills'"> ]</span>
+                    <span v-if="activeTab === 'skills'" class="right "> ]</span>
                 </div>
                 <div class="tab-text mr-0" :class="{active : activeTab === 'about'}" @click="setActiveTab('about')">
-                    <span v-if="activeTab === 'about'">[ </span>
+                    <span v-if="activeTab === 'about'" class="left ">[ </span>
                     About
-                    <span v-if="activeTab === 'about'"> ]</span>
+                    <span v-if="activeTab === 'about'" class="right "> ]</span>
                 </div>
             </div>
 
@@ -116,7 +118,7 @@
                         <img src="/images/resume_themes/theme5/portfolio-6.png" alt="portfolio img">
                     </div>
 
-                    <div class="loading">
+                    <div class="loading d-none">
                         <img src="/images/resume_themes/theme5/loading.svg" alt="loading">
                         <div>
                             Loading more items
@@ -146,7 +148,8 @@
                             <div class="work-title">123Workforce</div>
                             <div class="work-position">User interface designer, Oct 2018 - Nov 2019</div>
                             <div class="work-details">I'm a paragraph. Click here to add your own text and edit me. It’s
-                                easy. Just click “Edit Text” or double click me to add your own content and make changes.
+                                easy. Just click “Edit Text” or double click me to add your own content and make
+                                changes.
                             </div>
                         </div>
 
@@ -156,13 +159,14 @@
                         <div class="blue-circle">
                             <img src="/images/resume_themes/theme5/blue-circle-3.svg" alt="blue circle">
                         </div>
-                       <div class="d-flex flex-column work-info">
-                           <div class="work-title">Wedevs</div>
-                           <div class="work-position">User interface designer, Oct 2018 - Nov 2019</div>
-                           <div class="work-details">I'm a paragraph. Click here to add your own text and edit me. It’s
-                               easy. Just click “Edit Text” or double click me to add your own content and make changes.
-                           </div>
-                       </div>
+                        <div class="d-flex flex-column work-info">
+                            <div class="work-title">Wedevs</div>
+                            <div class="work-position">User interface designer, Oct 2018 - Nov 2019</div>
+                            <div class="work-details">I'm a paragraph. Click here to add your own text and edit me. It’s
+                                easy. Just click “Edit Text” or double click me to add your own content and make
+                                changes.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="education" v-show="activeTab === 'edu'" :class="{active : activeTab === 'edu'}">
@@ -246,7 +250,7 @@
                                 Adobe Premiere pro
                             </div>
                             <!-- bar -->
-                            <div class="skill-bar orange"  :data-bar="70">
+                            <div class="skill-bar orange" :data-bar="70">
                                 <span class="orange"></span>
                             </div>
                         </div>
@@ -292,7 +296,14 @@
                             About me
                         </div>
                         <div class="about-text">
-                            I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. Feel free to drag and drop me anywhere you like on your page. I’m a great place for you to tell a story and let your users know a little more about you. This is a great space to write long text about your company and your services. You can use this space to go into a little more detail about your company. Talk about your team and what services you provide. Tell your visitors the story of how you came up with the idea for your business and what makes you different from your competitors.
+                            I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit
+                            Text” or double click me to add your own content and make changes to the font. Feel free to
+                            drag and drop me anywhere you like on your page. I’m a great place for you to tell a story
+                            and let your users know a little more about you. This is a great space to write long text
+                            about your company and your services. You can use this space to go into a little more detail
+                            about your company. Talk about your team and what services you provide. Tell your visitors
+                            the story of how you came up with the idea for your business and what makes you different
+                            from your competitors.
                         </div>
                     </div>
                     <div class="contact">
@@ -419,6 +430,7 @@
                             font-size: 26px;
                             color: #635E70;
                             margin-top: 16px;
+                            white-space: nowrap;
                         }
                     }
 
@@ -444,6 +456,7 @@
                             font-size: 26px;
                             color: #635E70;
                             margin-top: 16px;
+                            white-space: nowrap;
                         }
                     }
 
@@ -455,7 +468,7 @@
                             width: 202px;
                             border-radius: 6px;
                             background: #FC5185;
-
+                            box-shadow: #fc7ea4 0px 10px 30px -8px;
                             display: flex;
                             justify-content: center;
                             align-items: center;
@@ -503,7 +516,7 @@
                             width: 161px;
                             border-radius: 6px;
                             background: #5F45FF;
-
+                            box-shadow: #9180ff 0px 10px 30px -8px;
                             display: flex;
                             justify-content: center;
                             align-items: center;
@@ -571,10 +584,27 @@
                     font-size: 20px;
                     color: #918F97;
                     margin-right: 96px;
+
+                    span.left {
+                        transition: all 0.5s ease;
+                    }
+
+                    span.right {
+                        transition: all 0.5s ease;
+                    }
                 }
 
                 .tab-text:hover {
                     cursor: pointer;
+                    color: #1F5DE4;
+
+                    span.left {
+                        padding-right: 7px;
+                    }
+
+                    span.right {
+                        padding-left: 7px;
+                    }
                 }
 
                 .tabs-bar {
@@ -640,17 +670,18 @@
 
                     .work-item {
 
-                        .blue-circle{
-                            img{
+                        .blue-circle {
+                            img {
                                 width: 33px;
                                 height: 33px;
                             }
                         }
 
-                        .work-info{
+                        .work-info {
                             padding-left: 88.5px;
                             padding-bottom: 50px;
                             margin-left: -17.5px;
+
                             .work-title {
                                 font-size: 24px;
                                 line-height: 33px;
@@ -689,104 +720,108 @@
                     }
 
 
-
                 }
 
                 .education {
-                    display:flex;
-                    flex-wrap:wrap;
+                    display: flex;
+                    flex-wrap: wrap;
                     justify-content: start;
-                    .education-item{
-                        margin-right:30px;
-                        margin-bottom:29px;
-                        width:806px;
-                        height:258px;
-                        background:#F8F8F8;
-                        padding:39px 60px 39px 60px;
-                        border-radius:8px;
 
-                        .education-type{
-                            width:115px;
-                            height:41px;
-                            background:#E7ECF7;
-                            border-radius:7px;
+                    .education-item {
+                        margin-right: 30px;
+                        margin-bottom: 29px;
+                        width: 806px;
+                        height: 258px;
+                        background: #F8F8F8;
+                        padding: 39px 60px 39px 60px;
+                        border-radius: 8px;
+
+                        .education-type {
+                            width: 115px;
+                            height: 41px;
+                            background: #E7ECF7;
+                            border-radius: 7px;
 
                             font-size: 18px;
-                            color:#1F5DE4;
-                            display:flex;
+                            color: #1F5DE4;
+                            display: flex;
                             justify-content: center;
-                            align-items:center;
+                            align-items: center;
 
-                            margin-bottom:18px;
+                            margin-bottom: 18px;
                         }
 
-                        .education-name{
-                            line-height:43px;
-                            color:#3C3748;
+                        .education-name {
+                            line-height: 43px;
+                            color: #3C3748;
                             font-weight: bold;
                             font-size: 32px;
-                            margin-bottom:14px;
+                            margin-bottom: 14px;
                         }
 
-                        .education-date{
-                            line-height:30px;
-                            color:#1F5DE4;
+                        .education-date {
+                            line-height: 30px;
+                            color: #1F5DE4;
                             font-size: 22px;
-                            margin-bottom:7px;
+                            margin-bottom: 7px;
                         }
 
-                        .education-info{
-                            line-height:28px;
-                            color:#707070;
+                        .education-info {
+                            line-height: 28px;
+                            color: #707070;
                             font-size: 20px;
                         }
                     }
                 }
 
                 .skills-tab {
-                    .skill-item{
-                        width:806px;
-                        height:176px;
-                        background:#F8F8F8;
+                    .skill-item {
+                        width: 806px;
+                        height: 176px;
+                        background: #F8F8F8;
                         border-radius: 8px;
-                        padding:38px 58px 0px 58px;
+                        padding: 38px 58px 0px 58px;
                         margin-bottom: 25px;
-                        margin-right:30px;
+                        margin-right: 30px;
                     }
                 }
-                .about {
-                    width:1052px;
-                    margin-top:0;
-                    padding:38px 105px 68px 105px;
-                    background:#F8F8F8;
 
-                    .about-me{
-                        .about-title{
+                .about {
+                    width: 1052px;
+                    margin-top: 0;
+                    padding: 38px 105px 68px 105px;
+                    background: #F8F8F8;
+
+                    .about-me {
+                        .about-title {
                             line-height: 33px;
                             font-size: 24px;
-                            color:#3C3748;
+                            color: #3C3748;
                             font-weight: 500;
                         }
-                        .about-text{
-                            margin-top:30px;
+
+                        .about-text {
+                            margin-top: 30px;
                             font-size: 18px;
-                            color:#8B8B8B;
+                            color: #8B8B8B;
                         }
                     }
 
-                    .contact{
-                        margin-top:68px;
-                        .contact-title{
+                    .contact {
+                        margin-top: 68px;
+
+                        .contact-title {
                             line-height: 33px;
                             font-size: 24px;
-                            color:#3C3748;
+                            color: #3C3748;
                             font-weight: 500;
-                            margin-bottom:33px;
+                            margin-bottom: 33px;
                         }
-                        .email{
+
+                        .email {
                             line-height: 33px;
                             font-size: 20px;
-                            color:#3C3748;
+                            color: #3C3748;
                             font-weight: 500;
                         }
                     }
@@ -798,8 +833,512 @@
 
     }
 
-    // skills bar css :
+    @media only screen and (max-width: 1280px) and (min-width: 425px) {
+        /* CSS that should be displayed if width is equal to or less than 1024px and larger
+         than 425px goes here */
 
+        .theme-container {
+            align-items: center;
+
+            .main-info-bar {
+                display: flex;
+                flex-direction: column;
+                background: #FFFFFF;
+                border-radius: 18px;
+                width: 95%;
+                height: auto;
+                padding: 25px 65px 31px 65px;
+
+                .left {
+                    display: flex;
+                    align-items: start;
+                    margin-bottom: 22px;
+
+                    .profile-picture {
+                        img {
+                            width: 86px;
+                            height: 86px;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    .main-info {
+                        margin-left: 29px;
+
+                        .user-name {
+                            font-size: 32px;
+                            font-weight: bold;
+                            opacity: 1;
+                            color: #3C3748 !important;
+                            line-height: 43px;
+                            padding-bottom: 5px;
+                        }
+
+                        .job-title {
+                            font-size: 21px;
+                            color: #3C3748;
+                            line-height: 28px;
+                            padding-bottom: 19px;
+                        }
+
+                        .bio {
+                            font-size: 19px;
+                            color: #6B6B6B;
+                            width: 100%;
+                        }
+                    }
+
+                }
+
+                .right {
+                    display: flex;
+                    flex-direction: column;
+
+                    .prof-info {
+                        margin-bottom: 22px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        margin-right: 0 !important;
+                        margin-left: 116px;
+
+                        .hours {
+                            padding-right: 17px;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+
+                            img {
+                                width: 40px;
+                                height: 32px
+                            }
+
+                            .text {
+                                line-height: 36px;
+                                font-size: 26px;
+                                color: #635E70;
+                                margin-top: 0;
+                                margin-left: 4px;
+                            }
+                        }
+
+                        .horizontal-divider {
+                            height: 45px;
+                            width: 2px;
+                            background: #CBCBCB;
+                        }
+
+                        .rate {
+                            padding-left: 17px;
+                            margin-right: 11px;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+
+                            img {
+                                width: 40px;
+                                height: 32px
+                            }
+
+                            .text {
+                                line-height: 36px;
+                                font-size: 26px;
+                                color: #635E70;
+                                margin-top: 0;
+                                margin-left: 4px;
+                            }
+                        }
+
+                        .hire-me-btn {
+                            margin-top: 0;
+
+                            a {
+                                height: 60px;
+                                width: 180px;
+                                border-radius: 6px;
+                                background: #FC5185;
+                                box-shadow: #fc7ea4 0px 10px 30px -8px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                color: white;
+                                font-size: 18px;
+
+                                img {
+                                    width: 22.5px;
+                                    height: 18px;
+                                    margin-right: 7.5px;
+                                }
+
+                            }
+                        }
+                    }
+
+                    .media {
+                        display: flex;
+                        flex-direction: row-reverse !important;
+                        align-items: flex-end;
+                        justify-content: space-between;
+                        margin-left: 116px;
+
+                        .follow-text {
+                            font-size: 20px;
+                            line-height: 27px;
+                            color: #6F6B7A;
+                            margin-top: 0px;
+                            margin-bottom: 12.3px;
+                        }
+
+                        .icons {
+                            img {
+                                width: 40px;
+                                height: 40px;
+                                margin-right: 15px;
+                            }
+
+                            img:last-child {
+                                margin-right: 0;
+                            }
+                        }
+
+                        .call-btn {
+                            a {
+                                height: 60px;
+                                width: 93px;
+                                border-radius: 6px;
+                                background: #5F45FF;
+                                box-shadow: #9180ff 0px 10px 30px -8px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                color: white;
+                                font-size: 18px;
+                                margin-left: 26px;
+
+                                img {
+                                    width: 18px;
+                                    height: 18px;
+                                    margin-right: 0;
+                                }
+
+                            }
+                        }
+
+                        .video-btn {
+                            margin-left: 16px;
+
+                            a {
+                                height: 60px;
+                                width: 93px;
+                                border-radius: 6px;
+                                background: #E7E5F6;
+
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                img {
+                                    width: 27px;
+                                    height: 18px;
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            .tabs-wrapper {
+                margin-top: 20px;
+                background: #FFFFFF;
+                border-radius: 18px;
+                width: 95%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0 65px 55px 65px;
+
+                .tabs-bar {
+                    margin-top: 24px;
+
+                    width: 100%;
+                    height: 71px;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 8px;
+                    background: #F8F8F8;
+
+                    .tab-text {
+                        line-height: 27px;
+                        font-size: 20px;
+                        color: #918F97;
+                        margin-right: 27px;
+
+                        span.left {
+                            display: none;
+                        }
+
+                        span.right {
+                            display: none;
+                        }
+                    }
+
+                    .tab-text:hover {
+                        cursor: pointer;
+                        color: #1F5DE4;
+
+                        span.left {
+                            padding-right: 0;
+                        }
+
+                        span.right {
+                            padding-left: 0;
+                        }
+                    }
+
+                    .tabs-bar {
+                        div:last-child {
+                            margin-right: 0;
+                        }
+                    }
+
+                    .tab-text.active {
+                        color: #1F5DE4;
+                        font-weight: bold;
+                    }
+                }
+
+                .tab-content-wrapper {
+                    margin-top: 50px;
+
+                    .portfolio.active, .skills.active, .about.active, .work-experience.active, .education.active {
+                        opacity: 1;
+                    }
+
+                    .portfolio, .about, .work-experience, .education {
+                        opacity: 0;
+                        transition: all 0.6s ease;
+                    }
+
+                    .portfolio {
+                        width: 100%;
+
+                        .images {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: center;
+
+                            img {
+                                width: 212px;
+                                height: 164px;
+                                margin-right: 4px;
+                                margin-left: 4px;
+                                margin-bottom: 12px;
+                            }
+
+                            img:last-child {
+                                margin-right: 0;
+                            }
+                        }
+
+                        .loading {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            margin-top: 50px;
+                            color: #3C3748CF;
+                            font-size: 16px;
+
+                            img {
+                                width: 40px;
+                                height: 40px;
+                                margin-bottom: 8px;
+                            }
+                        }
+
+                    }
+
+                    .work-experience {
+                        width: 100%;
+
+                        .work-item {
+
+                            .blue-circle {
+                                img {
+                                    width: 33px;
+                                    height: 33px;
+                                }
+                            }
+
+                            .work-info {
+                                padding-left: 88.5px;
+                                padding-bottom: 50px;
+                                margin-left: -17.5px;
+
+                                .work-title {
+                                    font-size: 24px;
+                                    line-height: 33px;
+                                    color: #3C3748;
+                                    font-weight: bold;
+                                }
+
+                                .work-position {
+                                    font-size: 18px;
+                                    line-height: 24px;
+                                    margin-top: 7px;
+                                    margin-bottom: 20px;
+                                    color: #3C3748;
+                                }
+
+                                .work-details {
+                                    font-size: 19px;
+                                    color: #787878;
+                                }
+                            }
+
+                            .work-info.dotted-gradient {
+                                background-image: linear-gradient(to bottom, #1F5DE4 40%, rgba(255, 255, 255, 0) 20%);
+                                background-position: left;
+                                background-size: 1.5px 18px;
+                                background-repeat: repeat-y;
+                            }
+
+                            .work-info.dotted-gradient-2 {
+                                background-image: linear-gradient(to bottom, #548AFF 40%, rgba(255, 255, 255, 0) 20%);
+                                background-position: left;
+                                background-size: 1.5px 18px;
+                                background-repeat: repeat-y;
+                            }
+
+                        }
+
+
+                    }
+
+                    .education {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: start;
+
+                        .education-item {
+                            margin-right: 30px;
+                            margin-bottom: 29px;
+                            width: 100%;
+                            height: 201px;
+                            background: #F8F8F8;
+                            padding: 21px 45px 21px 45px;
+                            border-radius: 8px;
+
+                            .education-type {
+                                width: 115px;
+                                height: 41px;
+                                background: #E7ECF7;
+                                border-radius: 7px;
+
+                                font-size: 18px;
+                                color: #1F5DE4;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                margin-bottom: 18px;
+                            }
+
+                            .education-name {
+                                line-height: 33px;
+                                color: #3C3748;
+                                font-weight: bold;
+                                font-size: 24px;
+                                margin-bottom: 14px;
+                            }
+
+                            .education-date {
+                                line-height: 28px;
+                                color: #1F5DE4;
+                                font-size: 21px;
+                                margin-bottom: 7px;
+                            }
+
+                            .education-info {
+                                line-height: 28px;
+                                color: #707070;
+                                font-size: 20px;
+                            }
+                        }
+                    }
+
+                    .skills-tab {
+                        .skill-item {
+                            width: 100%;
+                            height: 112px;
+                            background: #F8F8F8;
+                            border-radius: 8px;
+                            padding: 38px 58px 0px 58px;
+                            margin-bottom: 25px;
+                            margin-right: 30px;
+                        }
+                    }
+
+                    .about {
+                        width: 100%;
+
+                        margin-top: 0;
+                        padding: 20px 65px 68px 65px;
+                        background: #F8F8F8;
+
+                        .about-me {
+                            .about-title {
+                                line-height: 33px;
+                                font-size: 24px;
+                                color: #3C3748;
+                                font-weight: 500;
+                            }
+
+                            .about-text {
+                                margin-top: 12px;
+                                font-size: 18px;
+                                color: #8B8B8B;
+                            }
+                        }
+
+                        .contact {
+                            margin-top: 48px;
+
+                            .contact-title {
+                                line-height: 33px;
+                                font-size: 24px;
+                                color: #3C3748;
+                                font-weight: 500;
+                                margin-bottom: 12px;
+                            }
+
+                            .email {
+                                line-height: 33px;
+                                font-size: 20px;
+                                color: #3C3748;
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+
+
+            }
+
+        }
+
+        .hideMeOnTablet {
+            display: none !important;
+        }
+    }
+
+
+    // skills bar css :
     .skills,
     .skills .skill,
     .skills .skill .skill-title,
@@ -821,8 +1360,16 @@
         line-height: 43px;
         font-weight: bold;
         font-size: 32px;
-        margin-bottom:26px;
+        margin-bottom: 26px;
+        @media only screen and (max-width: 1024px) and (min-width: 425px) {
+            color: #3C3748;
+            line-height: 33px;
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 18px;
+        }
     }
+
 
     .skills .skill .skill-bar {
         width: 100%;
@@ -832,6 +1379,10 @@
         transition: 1s cubic-bezier(1, 0, .5, 1);
         -webkit-transition: 1s cubic-bezier(1, 0, .5, 1);
         -ms-transition: 1s cubic-bezier(1, 0, .5, 1);
+
+        @media only screen and (max-width: 1024px) and (min-width: 425px) {
+            height: 16px;
+        }
     }
 
     .skills .skill .skill-bar.orange {
@@ -841,7 +1392,6 @@
     .skills .skill .skill-bar span.orange {
         background: #FF7C00;
     }
-
 
     .skills .skill .skill-bar.red {
         background: #FFC1EC;
@@ -865,6 +1415,10 @@
         transition: 1s cubic-bezier(1, 0, .5, 1);
         -webkit-transition: 1s cubic-bezier(1, 0, .5, 1);
         -ms-transition: 1s cubic-bezier(1, 0, .5, 1);
+
+        @media only screen and (max-width: 1024px) and (min-width: 425px) {
+            height: 16px;
+        }
     }
 
     .skills .skill .skill-bar span b {

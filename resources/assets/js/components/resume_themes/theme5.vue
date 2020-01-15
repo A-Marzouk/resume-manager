@@ -225,7 +225,7 @@
                             </div>
                         </div>
 
-                        <div style="font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;">
+                        <div style="font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;" class="percentage">
                             90%
                         </div>
                     </div>
@@ -240,7 +240,7 @@
                             </div>
                         </div>
 
-                        <div style="color:#FF26BE; font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;">
+                        <div style="color:#FF26BE; font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;" class="percentage">
                             65%
                         </div>
                     </div>
@@ -255,7 +255,7 @@
                             </div>
                         </div>
 
-                        <div style="color:#FF7C00; font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;">
+                        <div style="color:#FF7C00; font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;" class="percentage">
                             70%
                         </div>
                     </div>
@@ -270,7 +270,7 @@
                             </div>
                         </div>
 
-                        <div style="font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;">
+                        <div style="font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;" class="percentage">
                             50%
                         </div>
                     </div>
@@ -285,7 +285,7 @@
                             </div>
                         </div>
 
-                        <div style="font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;">
+                        <div style="font-size:32px; font-weight: bold; margin-left:75px; margin-bottom: 19px;" class="percentage">
                             85%
                         </div>
                     </div>
@@ -419,7 +419,7 @@
                 display: flex;
                 width: 100%;
                 justify-content: space-between;
-                max-width:700px;
+                max-width: 700px;
 
                 .prof-info {
                     display: flex;
@@ -681,6 +681,7 @@
 
                 .work-experience {
                     width: 100%;
+
                     .work-item {
                         .blue-circle {
                             img {
@@ -908,7 +909,7 @@
                 .right {
                     display: flex;
                     flex-direction: column;
-                    max-width:100%;
+                    max-width: 100%;
 
                     .prof-info {
                         margin-bottom: 22px;
@@ -1373,7 +1374,7 @@
 
                 .left {
                     display: flex;
-                    flex-direction:column;
+                    flex-direction: column;
                     align-items: center;
                     margin-bottom: 22px;
 
@@ -1383,13 +1384,14 @@
                             height: 86px;
                             border-radius: 50%;
                         }
-                        margin-bottom:14px;
+
+                        margin-bottom: 14px;
                     }
 
                     .main-info {
                         margin-left: 0px;
                         display: flex;
-                        flex-direction:column;
+                        flex-direction: column;
                         align-items: center;
 
                         .user-name {
@@ -1423,7 +1425,7 @@
                 .right {
                     display: flex;
                     flex-direction: column;
-                    max-width:100%;
+                    max-width: 100%;
 
                     .prof-info {
                         margin-bottom: 22px;
@@ -1591,7 +1593,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                padding: 0 65px 55px 65px;
+                padding: 0 10px 55px 10px;
 
                 .tabs-bar {
                     margin-top: 24px;
@@ -1601,15 +1603,20 @@
 
                     display: flex;
                     align-items: center;
-                    justify-content: center;
+                    justify-content: flex-start;
+                    padding-right: 12px;
+                    padding-left: 12px;
                     border-radius: 8px;
                     background: #F8F8F8;
 
+                    overflow: scroll;
+
                     .tab-text {
                         line-height: 27px;
-                        font-size: 20px;
+                        font-size: 17px;
                         color: #918F97;
-                        margin-right: 27px;
+                        margin-right: 16px;
+                        white-space: nowrap;
 
                         span.left {
                             display: none;
@@ -1635,7 +1642,7 @@
 
                     .tabs-bar {
                         div:last-child {
-                            margin-right: 0;
+                            padding-right: 15px;
                         }
                     }
 
@@ -1646,7 +1653,7 @@
                 }
 
                 .tab-content-wrapper {
-                    margin-top: 50px;
+                    margin-top: 16px;
 
                     .portfolio.active, .skills.active, .about.active, .work-experience.active, .education.active {
                         opacity: 1;
@@ -1666,8 +1673,9 @@
                             justify-content: center;
 
                             img {
-                                width: 212px;
-                                height: 164px;
+                                width: 100%;
+                                max-width: 325px;
+                                height: 100%;
                                 margin-right: 4px;
                                 margin-left: 4px;
                                 margin-bottom: 12px;
@@ -1702,33 +1710,33 @@
 
                             .blue-circle {
                                 img {
-                                    width: 33px;
-                                    height: 33px;
+                                    width: 24px;
+                                    height: 24px;
                                 }
                             }
 
                             .work-info {
-                                padding-left: 88.5px;
-                                padding-bottom: 50px;
-                                margin-left: -17.5px;
+                                padding-left: 26px;
+                                padding-bottom: 25px;
+                                margin-left: -12.5px;
 
                                 .work-title {
-                                    font-size: 24px;
-                                    line-height: 33px;
+                                    font-size: 22px;
+                                    line-height: 30px;
                                     color: #3C3748;
                                     font-weight: bold;
                                 }
 
                                 .work-position {
-                                    font-size: 18px;
-                                    line-height: 24px;
-                                    margin-top: 7px;
-                                    margin-bottom: 20px;
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                    margin-top: 8px;
+                                    margin-bottom: 8px;
                                     color: #3C3748;
                                 }
 
                                 .work-details {
-                                    font-size: 19px;
+                                    font-size: 14px;
                                     color: #787878;
                                 }
                             }
@@ -1758,48 +1766,48 @@
                         justify-content: start;
 
                         .education-item {
-                            margin-right: 30px;
+                            margin-right: 0;
                             margin-bottom: 29px;
                             width: 100%;
-                            height: 201px;
+                            height: 163px;
                             background: #F8F8F8;
-                            padding: 21px 45px 21px 45px;
+                            padding: 17px 12px 13px 12px;
                             border-radius: 8px;
 
                             .education-type {
-                                width: 115px;
-                                height: 41px;
+                                width: 91px;
+                                height: 35px;
                                 background: #E7ECF7;
                                 border-radius: 7px;
 
-                                font-size: 18px;
+                                font-size: 14px;
                                 color: #1F5DE4;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
 
-                                margin-bottom: 18px;
-                            }
-
-                            .education-name {
-                                line-height: 33px;
-                                color: #3C3748;
-                                font-weight: bold;
-                                font-size: 24px;
                                 margin-bottom: 14px;
                             }
 
+                            .education-name {
+                                line-height: 24px;
+                                color: #3C3748;
+                                font-weight: bold;
+                                font-size: 18px;
+                                margin-bottom: 8px;
+                            }
+
                             .education-date {
-                                line-height: 28px;
+                                line-height: 20px;
                                 color: #1F5DE4;
-                                font-size: 21px;
-                                margin-bottom: 7px;
+                                font-size: 15px;
+                                margin-bottom: 8px;
                             }
 
                             .education-info {
-                                line-height: 28px;
+                                line-height: 20px;
                                 color: #707070;
-                                font-size: 20px;
+                                font-size: 15px;
                             }
                         }
                     }
@@ -1810,7 +1818,7 @@
                             height: 112px;
                             background: #F8F8F8;
                             border-radius: 8px;
-                            padding: 38px 58px 0px 58px;
+                            padding: 10px 22px 0px 22px;
                             margin-bottom: 25px;
                             margin-right: 30px;
                         }
@@ -1820,38 +1828,38 @@
                         width: 100%;
 
                         margin-top: 0;
-                        padding: 20px 65px 68px 65px;
+                        padding: 12px 12px 25px 12px;
                         background: #F8F8F8;
 
                         .about-me {
                             .about-title {
                                 line-height: 33px;
-                                font-size: 24px;
+                                font-size: 22px;
                                 color: #3C3748;
                                 font-weight: 500;
                             }
 
                             .about-text {
                                 margin-top: 12px;
-                                font-size: 18px;
+                                font-size: 15px;
                                 color: #8B8B8B;
                             }
                         }
 
                         .contact {
-                            margin-top: 48px;
+                            margin-top: 15px;
 
                             .contact-title {
-                                line-height: 33px;
-                                font-size: 24px;
+                                line-height: 30px;
+                                font-size: 22px;
                                 color: #3C3748;
                                 font-weight: 500;
-                                margin-bottom: 12px;
+                                margin-bottom: 8px;
                             }
 
                             .email {
-                                line-height: 33px;
-                                font-size: 20px;
+                                line-height: 20px;
+                                font-size: 15px;
                                 color: #3C3748;
                                 font-weight: 500;
                             }
@@ -1866,6 +1874,11 @@
 
         .hideMeOnPhone {
             display: none !important;
+        }
+
+        .percentage{
+            font-size: 16px !important;
+            margin-bottom: 24px !important;
         }
     }
 
@@ -1900,6 +1913,10 @@
             font-size: 24px;
             margin-bottom: 18px;
         }
+        @media only screen and (max-width: 765px) {
+            line-height: 20px;
+            font-size: 14px;
+        }
     }
 
 
@@ -1914,6 +1931,9 @@
 
         @media only screen and (max-width: 1024px) and (min-width: 425px) {
             height: 16px;
+        }
+        @media only screen and (max-width: 765px) {
+            height: 10px;
         }
     }
 
@@ -1950,6 +1970,9 @@
 
         @media only screen and (max-width: 1024px) and (min-width: 425px) {
             height: 16px;
+        }
+        @media only screen and (max-width: 765px) {
+            height: 10px;
         }
     }
 

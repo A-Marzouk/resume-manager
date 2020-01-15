@@ -355,15 +355,22 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+        align-items: center;
+        width: 100%;
 
         .main-info-bar {
             display: flex;
             justify-content: space-between;
             background: #FFFFFF;
             border-radius: 25px;
-            width: 1840px;
+            width: 95%;
+            max-width: 1840px;
             height: 285px;
             padding: 46px 102px 55px 87px;
+
+            @media only screen and (max-width: 1600px) and (min-width: 1280px) {
+                padding: 46px 50px 55px 50px;
+            }
 
             .left {
                 display: flex;
@@ -399,7 +406,10 @@
                     .bio {
                         font-size: 19px;
                         color: #6B6B6B;
-                        width: 531px;
+                        width: 100%;
+                        max-width: 500px;
+                        min-width: 400px;
+                        padding-right: 25px;
                     }
                 }
 
@@ -407,12 +417,14 @@
 
             .right {
                 display: flex;
+                width: 100%;
+                justify-content: space-between;
+                max-width:700px;
 
                 .prof-info {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    margin-right: 182px;
 
                     .hours {
                         padding-right: 42.5px;
@@ -561,7 +573,8 @@
             margin-top: 20px;
             background: #FFFFFF;
             border-radius: 25px;
-            width: 1840px;
+            width: 95%;
+            max-width: 1840px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -632,20 +645,21 @@
                 }
 
                 .portfolio {
+                    width: 100%;
+
                     .images {
                         display: flex;
                         flex-wrap: wrap;
+                        justify-content: center;
 
                         img {
                             width: 536px;
                             height: 404px;
-                            margin-right: 21px;
+                            margin-right: 10px;
+                            margin-left: 10px;
                             margin-bottom: 27px;
                         }
 
-                        img:last-child {
-                            margin-right: 0;
-                        }
                     }
 
                     .loading {
@@ -666,10 +680,8 @@
                 }
 
                 .work-experience {
-                    width: 1052px;
-
+                    width: 100%;
                     .work-item {
-
                         .blue-circle {
                             img {
                                 width: 33px;
@@ -718,19 +730,19 @@
                         }
 
                     }
-
-
                 }
 
                 .education {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: start;
+                    width: 100%;
 
                     .education-item {
                         margin-right: 30px;
                         margin-bottom: 29px;
-                        width: 806px;
+                        width: 100%;
+                        max-width: 806px;
                         height: 258px;
                         background: #F8F8F8;
                         padding: 39px 60px 39px 60px;
@@ -776,7 +788,7 @@
 
                 .skills-tab {
                     .skill-item {
-                        width: 806px;
+                        width: 100%;
                         height: 176px;
                         background: #F8F8F8;
                         border-radius: 8px;
@@ -787,7 +799,7 @@
                 }
 
                 .about {
-                    width: 1052px;
+                    width: 100%;
                     margin-top: 0;
                     padding: 38px 105px 68px 105px;
                     background: #F8F8F8;
@@ -839,6 +851,7 @@
 
         .theme-container {
             align-items: center;
+            width: 100%;
 
             .main-info-bar {
                 display: flex;
@@ -885,6 +898,8 @@
                             font-size: 19px;
                             color: #6B6B6B;
                             width: 100%;
+                            max-width: 100%;
+                            padding-right: 0;
                         }
                     }
 
@@ -893,6 +908,7 @@
                 .right {
                     display: flex;
                     flex-direction: column;
+                    max-width:100%;
 
                     .prof-info {
                         margin-bottom: 22px;

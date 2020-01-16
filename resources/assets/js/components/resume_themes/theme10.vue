@@ -2,24 +2,15 @@
   <div class="d-flex justify-content-center">
     <nav class="navbar navbar-light fixed-top dashboard_navbar">
       <a class="navbar-brand" href="/freelancer/dashboard">
-        <img
-          src="/images/client/logo_123.png"
-          alt="logout"
-          style="width: 177px;"
-        />
+        <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;" />
       </a>
     </nav>
 
     <div class="themeWrapper">
-      <div
-        class="mainThemeBar d-flex justify-content-between align-items-center"
-      >
+      <div class="mainThemeBar d-flex justify-content-between align-items-center">
         <div class="left">
           <div class="avatar">
-            <img
-              :src="'/' + user.user_data.profile_picture"
-              alt="profile pic"
-            />
+            <img :src="'/' + user.user_data.profile_picture" alt="profile pic" />
           </div>
           <div class="info d-flex flex-column align-items-between">
             <div class="user-name">
@@ -43,10 +34,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  src="/images/resume_themes/theme10/whatsapp.svg"
-                  alt="whatsapp icon"
-                />
+                <img src="/images/resume_themes/theme10/whatsapp.svg" alt="whatsapp icon" />
               </a>
               <a
                 v-if="user.user_data.instagram"
@@ -54,10 +42,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  src="/images/resume_themes/theme10/instagram.svg"
-                  alt="instagram icon"
-                />
+                <img src="/images/resume_themes/theme10/instagram.svg" alt="instagram icon" />
               </a>
               <a
                 v-if="user.user_data.linkedin"
@@ -65,10 +50,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  src="/images/resume_themes/theme10/linkedin.svg"
-                  alt="linkedin icon"
-                />
+                <img src="/images/resume_themes/theme10/linkedin.svg" alt="linkedin icon" />
               </a>
               <a
                 v-if="user.user_data.behance"
@@ -76,10 +58,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  src="/images/resume_themes/theme10/behance.svg"
-                  alt="behance icon"
-                />
+                <img src="/images/resume_themes/theme10/behance.svg" alt="behance icon" />
               </a>
               <a
                 v-if="user.user_data.github"
@@ -87,10 +66,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
-                  src="/images/resume_themes/theme10/github.svg"
-                  alt="github icon"
-                />
+                <img src="/images/resume_themes/theme10/github.svg" alt="github icon" />
               </a>
             </div>
           </div>
@@ -103,157 +79,59 @@
             <img src="/images/resume_themes/theme10/video.svg" alt="icon" />
           </div>
           <div class="hourly-rate">
-            <div class="hourly-rate-text">
-              ${{ parseInt(user.agent.hourly_rate) }}
-            </div>
+            <div class="hourly-rate-text">${{ parseInt(user.agent.hourly_rate) }}</div>
             <div class="hourly-rate-text light">Hourly Rate</div>
           </div>
           <div class="weekly-availability">
-            <div class="hourly-rate-text">
-              {{ parseInt(user.agent.available_hours_per_week) }} hours
-            </div>
+            <div class="hourly-rate-text">{{ parseInt(user.agent.available_hours_per_week) }} hours</div>
             <div class="hourly-rate-text light">Weekly Availability</div>
           </div>
           <a href="javascript:void(0)" class="hire-me-btn">HIRE ME</a>
         </div>
       </div>
 
-      <div class="tabs-bar d-flex justify-content-center align-items-center">
-        <div
-          class="tab-text"
-          @click="setActiveTab('portfolio')"
-          :class="{ active: activeTab === 'portfolio' }"
-        >
-          Portfolio
-        </div>
-        <div
-          class="tab-text"
-          @click="setActiveTab('work')"
-          :class="{ active: activeTab === 'work' }"
-        >
-          Work
-        </div>
-        <div
-          class="tab-text"
-          @click="setActiveTab('education')"
-          :class="{ active: activeTab === 'education' }"
-        >
-          Education
+      <div class="tabs-bar">
+        <div class="tabs-container">
+          <div
+            class="tab-text"
+            @click="setActiveTab('portfolio')"
+            :class="{ active: activeTab === 'portfolio' }"
+          >Portfolio</div>
+          <div
+            class="tab-text"
+            @click="setActiveTab('work')"
+            :class="{ active: activeTab === 'work' }"
+          >Work</div>
+          <div
+            class="tab-text"
+            @click="setActiveTab('education')"
+            :class="{ active: activeTab === 'education' }"
+          >Education</div>
+          <div
+            class="tab-text"
+            @click="setActiveTab('skills')"
+            :class="{ active: activeTab === 'skills' }"
+          >Skills</div>
         </div>
       </div>
 
       <div class="tab-content-wrapper">
         <div class="tab-content-inside-wrapper">
-          <div class="skills-tabs">
-            <div
-              class="skills-tab-text"
-              :class="{ active: activeSkillTab === 'programming-languages' }"
-              @click="setActiveSkillTab('programming-languages')"
-            >
-              Programming Languages
-            </div>
-            <div
-              class="skills-tab-text"
-              :class="{ active: activeSkillTab === 'frameworks-databases' }"
-              @click="setActiveSkillTab('frameworks-databases')"
-            >
-              Frameworks/Databases
-            </div>
-            <div
-              class="skills-tab-text"
-              :class="{ active: activeSkillTab === 'design-skills' }"
-              @click="setActiveSkillTab('design-skills')"
-            >
-              Design Skills
-            </div>
-            <div
-              class="skills-tab-text mr-0"
-              :class="{ active: activeSkillTab === 'software' }"
-              @click="setActiveSkillTab('software')"
-            >
-              Software
-            </div>
-          </div>
-          <div class="skills-icons-bar-container">
-            <div
-              v-if="activeSkillTab === 'programming-languages'"
-              class="skills-icons-bar"
-              id="style-1"
-            >
-              <div
-                v-for="skill in skills.programming"
-                :key="skill.skill_title + skill.id"
-                class="skill"
-              >
-                <span class="skill-name">{{ skill.skill_title }} - </span>
-                <span class="skill-percentage">{{ skill.percentage }}%</span>
-              </div>
-            </div>
-            <div
-              v-else-if="activeSkillTab === 'frameworks-databases'"
-              class="skills-icons-bar"
-              id="style-1"
-            >
-              <div
-                v-for="skill in skills.frameworks"
-                :key="skill.skill_title + skill.id"
-                class="skill"
-              >
-                <span class="skill-name">{{ skill.skill_title }} - </span>
-                <span class="skill-percentage">{{ skill.percentage }}%</span>
-              </div>
-            </div>
-            <div
-              v-else-if="activeSkillTab === 'design-skills'"
-              class="skills-icons-bar"
-              id="style-1"
-            >
-              <div
-                v-for="skill in skills.design"
-                :key="skill.skill_title + skill.id"
-                class="skill"
-              >
-                <span class="skill-name">{{ skill.skill_title }} - </span>
-                <span class="skill-percentage">{{ skill.percentage }}%</span>
-              </div>
-            </div>
-            <div v-else class="skills-icons-bar" id="style-1">
-              <div
-                v-for="skill in skills.software"
-                :key="skill.skill_title + skill.id"
-                class="skill"
-              >
-                <span class="skill-name">{{ skill.skill_title }} - </span>
-                <span class="skill-percentage">{{ skill.percentage }}%</span>
-              </div>
-            </div>
-          </div>
-
-          <div
-            v-if="activeTab === 'portfolio'"
-            class="main-tab-content"
-            id="style-2"
-          >
-            <slick class="portfolioSlides" ref="slick" :options="slickOptions">
-              <div
+          <div v-if="activeTab === 'portfolio'" class="main-tab-content" id="style-2">
+            <slick v-if="projects.length > 0" class="portfolioSlides slider-theme10" ref="slick" :options="slickOptions">
+              <!-- <div v-for="project in projects" :key="project.id + project.projectName"> -->
+              <img
                 v-for="project in projects"
-                :key="project.id + projectName"
-                class="d-flex flex-column align-items-center"
-              >
-                <img :src="project.mainImage" alt="portfolio image" />
-              </div>
+                :key="project.projectName"
+                :src="project.mainImage"
+                alt="project image"
+              />
+              <!-- </div> -->
             </slick>
 
             <div class="slick-controls">
-              <a
-                href="javascript:;"
-                @click.prevent="prevPosition"
-                class="slick-arrow"
-              >
-                <img
-                  src="/images/resume_themes/theme10/arrow-prev.svg"
-                  alt="slick arrow"
-                />
+              <a href="javascript:;" @click.prevent="prevPosition" class="slick-arrow">
+                <img src="/images/resume_themes/theme10/arrow-prev.svg" alt="slick arrow" />
               </a>
               <div class="slick-dots-container">
                 <!-- Change it for the user projects -->
@@ -266,30 +144,96 @@
                   @click.prevent="handleSetPosition(index)"
                 ></a>
               </div>
-              <a
-                href="javascript:;"
-                @click.prevent="nextPosition"
-                class="slick-arrow"
-              >
-                <img
-                  src="/images/resume_themes/theme10/arrow-next.svg"
-                  alt="slick arrow"
-                />
+              <a href="javascript:;" @click.prevent="nextPosition" class="slick-arrow">
+                <img src="/images/resume_themes/theme10/arrow-next.svg" alt="slick arrow" />
               </a>
             </div>
           </div>
 
-          <div
-            v-else-if="activeTab === 'work'"
-            class="main-tab-content"
-            id="style-2"
-          >
+          <div v-else-if="activeTab === 'skills'" class="main-tab-content" id="style-2">
+            <div class="skills-tabs">
+              <div
+                class="skills-tab-text"
+                :class="{ active: activeSkillTab === 'programming-languages' }"
+                @click="setActiveSkillTab('programming-languages')"
+              >Programming Languages</div>
+              <div
+                class="skills-tab-text"
+                :class="{ active: activeSkillTab === 'frameworks-databases' }"
+                @click="setActiveSkillTab('frameworks-databases')"
+              >Frameworks/Databases</div>
+              <div
+                class="skills-tab-text"
+                :class="{ active: activeSkillTab === 'design-skills' }"
+                @click="setActiveSkillTab('design-skills')"
+              >Design Skills</div>
+              <div
+                class="skills-tab-text mr-0"
+                :class="{ active: activeSkillTab === 'software' }"
+                @click="setActiveSkillTab('software')"
+              >Software</div>
+            </div>
+            <div class="skills-icons-bar-container">
+              <div
+                v-if="activeSkillTab === 'programming-languages'"
+                class="skills-icons-bar"
+                id="style-1"
+              >
+                <div
+                  v-for="skill in skills.programming"
+                  :key="skill.skill_title + skill.id"
+                  class="skill"
+                >
+                  <span class="skill-name">{{ skill.skill_title }} -</span>
+                  <span class="skill-percentage">{{ skill.percentage }}%</span>
+                </div>
+              </div>
+              <div
+                v-else-if="activeSkillTab === 'frameworks-databases'"
+                class="skills-icons-bar"
+                id="style-1"
+              >
+                <div
+                  v-for="skill in skills.frameworks"
+                  :key="skill.skill_title + skill.id"
+                  class="skill"
+                >
+                  <span class="skill-name">{{ skill.skill_title }} -</span>
+                  <span class="skill-percentage">{{ skill.percentage }}%</span>
+                </div>
+              </div>
+              <div
+                v-else-if="activeSkillTab === 'design-skills'"
+                class="skills-icons-bar"
+                id="style-1"
+              >
+                <div
+                  v-for="skill in skills.design"
+                  :key="skill.skill_title + skill.id"
+                  class="skill"
+                >
+                  <span class="skill-name">{{ skill.skill_title }} -</span>
+                  <span class="skill-percentage">{{ skill.percentage }}%</span>
+                </div>
+              </div>
+              <div v-else class="skills-icons-bar" id="style-1">
+                <div
+                  v-for="skill in skills.software"
+                  :key="skill.skill_title + skill.id"
+                  class="skill"
+                >
+                  <span class="skill-name">{{ skill.skill_title }} -</span>
+                  <span class="skill-percentage">{{ skill.percentage }}%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div v-else-if="activeTab === 'work'" class="main-tab-content" id="style-2">
             <works-container :works="user.works_history"></works-container>
           </div>
           <div v-else class="main-tab-content" id="style-2">
-            <educations-container
-              :educations="user.educations_history"
-            ></educations-container>
+            <educations-container :educations="user.educations_history"></educations-container>
           </div>
         </div>
       </div>
@@ -380,7 +324,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.user);
     this.skills.programming = this.user.skills.filter(
       skill => skill.type === "programming"
     );
@@ -394,13 +337,16 @@ export default {
       skill => skill.type === "software"
     );
 
-    this.projects = this.user.projects;
+    this.projects = [...this.user.projects];
+    console.log(this.projects);
   }
 };
 </script>
 
 <style lang="scss">
 $primaryColor: #104efb;
+
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap");
 
 .hideOnPhone {
   @media only screen and (max-width: 600px) {
@@ -423,6 +369,15 @@ $primaryColor: #104efb;
   margin-top: 1%;
   border-radius: 15px;
   overflow-x: hidden;
+  font-family: "Raleway", sans-serif !important;
+
+  @media only screen and (max-width: 768px) {
+    margin: 0;
+  }
+
+  * {
+    font-family: "Raleway", sans-serif !important;
+  }
 
   .mainThemeBar {
     padding-top: 40px;
@@ -433,7 +388,7 @@ $primaryColor: #104efb;
     .left {
       display: flex;
 
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: 780px) {
         width: 100%;
         justify-content: space-between;
       }
@@ -441,6 +396,10 @@ $primaryColor: #104efb;
       .icons {
         @media only screen and (max-width: 600px) {
           margin-right: 0;
+          img {
+            width: 20px;
+            height: 20px;
+          }
         }
         margin-right: 27px;
         img {
@@ -466,20 +425,23 @@ $primaryColor: #104efb;
         @media only screen and (max-width: 600px) {
           margin-right: 15px;
           img {
-            width: 104px;
-            height: 104px;
+            width: 125px;
+            height: 125px;
           }
         }
       }
       .info {
         margin-top: 15px;
-        @media only screen and (max-width: 768px) {
+        max-width: 247px;
+
+        @media only screen and (max-width: 780px) {
           margin-top: 0;
           width: 100%;
         }
 
         @media only screen and (max-width: 400px) {
           width: auto;
+          max-height: 125px;
         }
 
         .user-name {
@@ -529,10 +491,11 @@ $primaryColor: #104efb;
         .social-icons {
           margin-top: 42px;
           width: 20vw;
+          max-width: 100%;
           display: flex;
           justify-content: space-between;
 
-          @media only screen and (max-width: 768px) {
+          @media only screen and (max-width: 780px) {
             width: 100%;
             max-width: 280px;
           }
@@ -543,6 +506,7 @@ $primaryColor: #104efb;
 
           @media only screen and (max-width: 478px) {
             overflow-x: auto;
+            margin-top: 18px;
           }
 
           img {
@@ -567,23 +531,27 @@ $primaryColor: #104efb;
       border-bottom: 1px solid $primaryColor;
       border-left: 1px solid $primaryColor;
       border-radius: 15px;
-      padding: 18px 180px 18px 50px;
+      padding: 18px 280px 18px 50px;
       position: relative;
       justify-content: center;
       align-items: center;
 
-      @media only screen and (max-width: 1130px) {
+      @media only screen and (max-width: 1400px) {
+        padding: 18px 180px 18px 50px;
+      }
+
+      @media only screen and (max-width: 1160px) {
         padding: 18px 180px 18px 30px;
       }
 
-      @media only screen and (max-width: 980px) {
+      @media only screen and (max-width: 1050px) {
         padding: 18px;
         padding-bottom: 110px;
         border-right: 1px solid $primaryColor;
       }
 
-      @media only screen and (max-width: 768px) {
-        margin-top: 57px;
+      @media only screen and (max-width: 780px) {
+        margin-top: 85px;
         width: 100%;
         justify-content: space-around;
       }
@@ -596,14 +564,13 @@ $primaryColor: #104efb;
         display: flex;
         justify-content: space-between;
 
-        @media only screen and (max-width: 980px) {
+        @media only screen and (max-width: 1050px) {
           top: -32px;
         }
 
-        @media only screen and (max-width: 768px) {
-          top: auto;
+        @media only screen and (max-width: 780px) {
           right: auto;
-          bottom: -40px;
+          top: -50px;
         }
       }
 
@@ -645,11 +612,12 @@ $primaryColor: #104efb;
         }
       }
       .hourly-rate-text.light {
+        margin-top: 5px;
         font-weight: 300;
       }
       .hire-me-btn {
         background: $primaryColor;
-        width: 163px;
+        width: 231px;
         height: 100%;
         display: flex;
         justify-content: center;
@@ -665,8 +633,24 @@ $primaryColor: #104efb;
         right: 0;
         top: 0;
 
-        @media only screen and (max-width: 980px) {
+        &:hover {
+          text-decoration: none;
+        }
+
+        @media only screen and (max-width: 1400px) {
+          width: 163px;
+        }
+
+        @media only screen and (max-width: 1050px) {
           height: 80px;
+          top: auto;
+          right: auto;
+          bottom: 18px;
+          width: calc(100% - 56px);
+        }
+
+        @media only screen and (max-width: 768px) {
+          height: 75px;
           top: auto;
           right: auto;
           bottom: 18px;
@@ -680,9 +664,23 @@ $primaryColor: #104efb;
     margin-top: 54px;
     background: $primaryColor;
     padding: 2.5rem 0;
+    display: flex;    
 
     @media only screen and (max-width: 1130px) {
       padding: 2rem 0;
+    }
+
+    @media only screen and (max-width: 768px) {
+      margin-top: 19px;
+    }
+
+    .tabs-container {
+      display: inline-flex;
+      margin: 0 auto;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 600px;
+      overflow-x: auto;
     }
 
     .tab-text {
@@ -692,7 +690,8 @@ $primaryColor: #104efb;
       color: white;
       margin-right: 35px;
       margin-left: 35px;
-      padding-bottom: 9px;
+      padding: 0 1rem;
+      padding-bottom: 1rem;
       opacity: 0.43;
       position: relative;
 
@@ -712,6 +711,7 @@ $primaryColor: #104efb;
     .tab-text.active:before {
       content: "";
       position: absolute;
+      z-index: 4;
       left: 0;
       bottom: -2.5rem;
       height: 8px;
@@ -744,6 +744,17 @@ $primaryColor: #104efb;
     .tab-content-inside-wrapper {
       margin-left: 100px;
       margin-right: 100px;
+
+      @media only screen and (max-width: 1150px) {
+        margin-left: 50px;
+        margin-right: 50px;
+      }
+
+      @media only screen and (max-width: 976px) {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
       @media only screen and (max-width: 600px) {
         margin-left: 0px;
         margin-right: 0px;
@@ -830,36 +841,6 @@ $primaryColor: #104efb;
         margin-top: 35px;
       }
 
-      .portfolioSlides {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow-y: visible;
-
-        .slick-list {
-          height: 100%;
-          width: 100%;
-          overflow-y: visible !important;
-        }
-
-        .slick-slide {
-          overflow-y: visible;
-          position: relative;
-          z-index: 50;
-          margin: 0 10px;
-
-          img {
-            width: 100%;
-            position: relative;
-            z-index: 50;
-            box-shadow: 0 10px 10px rgba($color: #000000, $alpha: 0.1);
-            border-radius: 20px;
-            border: 1px solid black;
-          }
-        }
-      }
-
       .slick-controls {
         margin-top: 2rem;
         display: flex;
@@ -892,10 +873,28 @@ $primaryColor: #104efb;
         }
       }
 
-      .work {
+      .works-container.container {
+        @media (max-width: 800px) {
+          padding: 0;
+        }
+
+        .container {
+          @media (max-width: 800px) {
+            padding: 0;
+          }
+        }
       }
 
-      .education {
+      .educations-container.container {
+        @media (max-width: 800px) {
+          padding: 0;
+        }
+
+        .container {
+          @media (max-width: 800px) {
+            padding: 0;
+          }
+        }
       }
     }
   }

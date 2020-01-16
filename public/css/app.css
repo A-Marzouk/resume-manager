@@ -8774,6 +8774,34 @@ body {
   }
 }
 
+.slider-theme10 {
+  width: calc(100% + 30px);
+  padding: 15px 0;
+  margin-top: -15px;
+}
+
+.slider-theme10 .slick-list {
+  height: 100%;
+  width: 100%;
+  overflow-y: visible !important;
+}
+
+.slider-theme10 .slick-slide {
+  overflow-y: visible;
+  position: relative;
+  z-index: 50;
+  margin: 0 10px;
+  -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.slider-theme10 .slick-slide img {
+  width: 100%;
+  position: relative;
+  z-index: 50;
+  border-radius: 20px;
+}
+
 .add-agent-form {
   margin-left: 15px !important;
 }

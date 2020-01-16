@@ -1292,7 +1292,7 @@
                     .skills-tab {
                         .skill-item {
                             width: 100%;
-                            height: 112px;
+                            height: 145px;
                             background: #F8F8F8;
                             border-radius: 8px;
                             padding: 38px 58px 0px 58px;

@@ -663,12 +663,7 @@ $primaryColor: #104efb;
   .tabs-bar {
     margin-top: 54px;
     background: $primaryColor;
-    padding: 2.5rem 0;
-    display: flex;    
-
-    @media only screen and (max-width: 1130px) {
-      padding: 2rem 0;
-    }
+    display: flex;
 
     @media only screen and (max-width: 768px) {
       margin-top: 19px;
@@ -679,8 +674,13 @@ $primaryColor: #104efb;
       margin: 0 auto;
       justify-content: space-between;
       width: 100%;
-      max-width: 600px;
+      max-width: 810px;
       overflow-x: auto;
+      padding: 2.5rem 0;
+
+      @media only screen and (max-width: 1130px) {
+        padding: 2rem 0;
+      }
     }
 
     .tab-text {
@@ -800,7 +800,7 @@ $primaryColor: #104efb;
     }
 
     .skills-icons-bar-container {
-      overflow-x: auto;
+      display: flex;
       width: 100%;
       padding: 10px;
       margin-top: 32px;
@@ -808,8 +808,8 @@ $primaryColor: #104efb;
     }
 
     .skills-icons-bar {
-      display: flex;
-      margin: 0 auto;
+      display: inline-flex;
+      overflow-x: auto;
 
       .skill {
         display: flex;

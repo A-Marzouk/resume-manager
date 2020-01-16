@@ -8783,7 +8783,7 @@ body {
 .slider-theme10 .slick-list {
   height: 100%;
   width: 100%;
-  overflow-y: visible !important;
+  overflow: visible !important;
 }
 
 .slider-theme10 .slick-slide {
@@ -8791,8 +8791,9 @@ body {
   position: relative;
   z-index: 50;
   margin: 0 10px;
-  -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  -webkit-box-shadow: 0 10px 10px rgba(16, 78, 251, 0.3);
+          box-shadow: 0 10px 10px rgba(16, 78, 251, 0.3);
 }
 
 .slider-theme10 .slick-slide img {

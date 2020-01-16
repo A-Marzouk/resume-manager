@@ -58,6 +58,10 @@ $primaryColor: #104efb;
       flex-wrap: wrap;
       justify-content: space-between;
     }
+
+    .date {
+      margin-right: 10px;
+    }
   }
 
   .company-name {

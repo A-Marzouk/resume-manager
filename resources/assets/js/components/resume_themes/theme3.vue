@@ -1,12 +1,5 @@
 <template>
-    <div class="d-flex justify-content-center">
-
-        <nav class="navbar navbar-light fixed-top dashboard_navbar">
-            <a class="navbar-brand" href="/freelancer/dashboard">
-                <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
-            </a>
-        </nav>
-
+    <div class="d-flex justify-content-center w-100">
         <div class="themeWrapper">
 
             <div class="hideOnNotPhone w-100">
@@ -80,32 +73,8 @@
                     </div>
                 </div>
 
-                <div class="w-100 d-flex flex-column align-items-center justify-content-center">
-                    <div class="skills-tabs d-flex justify-content between">
-                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'programming-languages'}"
-                             @click="setActiveSkillTab('programming-languages')">
-                            Programming Languages
-                        </div>
-                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'framewroks-databases'}"
-                             @click="setActiveSkillTab('framewroks-databases')">
-                            Frameworks
-                        </div>
-                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'design-skills'}"
-                             @click="setActiveSkillTab('design-skills')">
-                            Design Skills
-                        </div>
-                        <div class="skills-tab-text mr-0" :class="{active : activeSkillTab === 'software'}"
-                             @click="setActiveSkillTab('software')">
-                            Software
-                        </div>
-                    </div>
 
-                    <div class="skills-icons-bar" id="style-1">
-                        <img class="icon" src="/images/resume_themes/theme3/html.svg" alt="skill-icon">
-                        <img class="icon" src="/images/resume_themes/theme3/python.svg" alt="skill-icon">
-                        <img class="icon" src="/images/resume_themes/theme3/skill.svg" alt="skill-icon">
-                    </div>
-                </div>
+
             </div>
 
             <div class="w-100 d-flex flex-column align-items-center justify-content-center">
@@ -113,6 +82,10 @@
                     <div class="tab-text" @click="setActiveTab('portfolio')"
                          :class="{active : activeTab === 'portfolio'}">
                         Portfolio
+                    </div>
+                    <div class="tab-text" @click="setActiveTab('skills')"
+                         :class="{active : activeTab === 'skills'}">
+                        Skills
                     </div>
                     <div class="tab-text" @click="setActiveTab('work')" :class="{active : activeTab === 'work'}">
                         Work
@@ -125,55 +98,281 @@
             </div>
 
             <div class="main-tab-content">
-                <slick class="portfolioSlides" ref="slick" :options="slickOptions">
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio1.png" alt="portfolio image">
-                        <div class="slide-text">
-                            🛒 Lorem ipsum dolor sit amet, consectetur elit.
+                <div class="portfolio" v-show="activeTab === 'portfolio'">
+                    <slick class="portfolioSlides" ref="slick" :options="slickOptions">
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="/images/resume_themes/theme3/portfolio1.png" alt="portfolio image">
+                            <div class="slide-text">
+                                🛒 Lorem ipsum dolor sit amet, consectetur elit.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
-                        <div class="slide-text">
-                            📊 Lorem ipsum dolor sit amet, consectetur elit.
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
+                            <div class="slide-text">
+                                📊 Lorem ipsum dolor sit amet, consectetur elit.
+                            </div>
                         </div>
-                    </div>
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio3.png" alt="portfolio image">
-                        <div class="slide-text">
-                            🛒 Lorem ipsum dolor sit amet, consectetur elit.
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="/images/resume_themes/theme3/portfolio3.png" alt="portfolio image">
+                            <div class="slide-text">
+                                🛒 Lorem ipsum dolor sit amet, consectetur elit.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio1.png" alt="portfolio image">
-                        <div class="slide-text">
-                            📊 Lorem ipsum dolor sit amet, consectetur elit.
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="/images/resume_themes/theme3/portfolio1.png" alt="portfolio image">
+                            <div class="slide-text">
+                                📊 Lorem ipsum dolor sit amet, consectetur elit.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
-                        <div class="slide-text">
-                            🛒 Lorem ipsum dolor sit amet, consectetur elit.
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
+                            <div class="slide-text">
+                                🛒 Lorem ipsum dolor sit amet, consectetur elit.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
-                        <div class="slide-text">
-                            🛒 Lorem ipsum dolor sit amet, consectetur elit.
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
+                            <div class="slide-text">
+                                🛒 Lorem ipsum dolor sit amet, consectetur elit.
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
-                        <div class="slide-text">
-                            🛒 Lorem ipsum dolor sit amet, consectetur elit.
+                        <div class="d-flex flex-column align-items-center">
+                            <img src="/images/resume_themes/theme3/portfolio2.png" alt="portfolio image">
+                            <div class="slide-text">
+                                🛒 Lorem ipsum dolor sit amet, consectetur elit.
+                            </div>
+                        </div>
+                    </slick>
+                </div>
+                <div class="skills" v-show="activeTab === 'skills' ">
+                    <div class="w-100 d-flex flex-column align-items-center justify-content-center">
+                        <div class="skills-tabs d-flex justify-content between">
+                            <div class="skills-tab-text" :class="{active : activeSkillTab === 'programming-languages'}"
+                                 @click="setActiveSkillTab('programming-languages')">
+                                Programming Languages
+                            </div>
+                            <div class="skills-tab-text" :class="{active : activeSkillTab === 'framewroks-databases'}"
+                                 @click="setActiveSkillTab('framewroks-databases')">
+                                Frameworks
+                            </div>
+                            <div class="skills-tab-text" :class="{active : activeSkillTab === 'design-skills'}"
+                                 @click="setActiveSkillTab('design-skills')">
+                                Design Skills
+                            </div>
+                            <div class="skills-tab-text mr-0" :class="{active : activeSkillTab === 'software'}"
+                                 @click="setActiveSkillTab('software')">
+                                Software
+                            </div>
+                        </div>
+
+                        <div class="skills-icons-bar" id="style-1">
+                            <img class="icon" src="/images/resume_themes/theme3/html.svg" alt="skill-icon">
+                            <img class="icon" src="/images/resume_themes/theme3/python.svg" alt="skill-icon">
+                            <img class="icon" src="/images/resume_themes/theme3/skill.svg" alt="skill-icon">
                         </div>
                     </div>
-                </slick>
+                </div>
+                <div class="work" v-show="activeTab === 'work'">
+                    <div class="work-item">
+                        <div class="work-icon">
+                            <img src="/images/resume_themes/theme3/work-icon.svg" alt="work-icon">
+                        </div>
+                        <div class="work-info">
+                            <div class="date">
+                                2018 - 2019
+                            </div>
+                            <div class="work-title">
+                                Graphic & web designer
+                            </div>
+                            <div class="work-details">
+                                <div class="company-name">
+                                    Company "React"
+                                </div>
+                                <div class="job-roles">
+                                    - Company "React" - Turning creative concepts into finished websites.
+                                    - Drawing up detailed website s pecifications.
+                                    - Building websites that are easy to understand, navigate and use.
+                                    - Designing sample page layouts. - Ensuring that the website complies with the company’s brand guidelines.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-icon">
+                            <img src="/images/resume_themes/theme3/work-icon.svg" alt="work-icon">
+                        </div>
+                        <div class="work-info">
+                            <div class="date">
+                                2018 - 2019
+                            </div>
+                            <div class="work-title">
+                                Graphic & web designer
+                            </div>
+                            <div class="work-details">
+                                <div class="company-name">
+                                    Company "React"
+                                </div>
+                                <div class="job-roles">
+                                    - Company "React" - Turning creative concepts into finished websites.
+                                    - Drawing up detailed website s pecifications.
+                                    - Building websites that are easy to understand, navigate and use.
+                                    - Designing sample page layouts. - Ensuring that the website complies with the company’s brand guidelines.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-icon">
+                            <img src="/images/resume_themes/theme3/work-icon.svg" alt="work-icon">
+                        </div>
+                        <div class="work-info">
+                            <div class="date">
+                                2018 - 2019
+                            </div>
+                            <div class="work-title">
+                                Graphic & web designer
+                            </div>
+                            <div class="work-details">
+                                <div class="company-name">
+                                    Company "React"
+                                </div>
+                                <div class="job-roles">
+                                    - Company "React" - Turning creative concepts into finished websites.
+                                    - Drawing up detailed website s pecifications.
+                                    - Building websites that are easy to understand, navigate and use.
+                                    - Designing sample page layouts. - Ensuring that the website complies with the company’s brand guidelines.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-icon">
+                            <img src="/images/resume_themes/theme3/work-icon.svg" alt="work-icon">
+                        </div>
+                        <div class="work-info">
+                            <div class="date">
+                                2018 - 2019
+                            </div>
+                            <div class="work-title">
+                                Graphic & web designer
+                            </div>
+                            <div class="work-details">
+                                <div class="company-name">
+                                    Company "React"
+                                </div>
+                                <div class="job-roles">
+                                    - Company "React" - Turning creative concepts into finished websites.
+                                    - Drawing up detailed website s pecifications.
+                                    - Building websites that are easy to understand, navigate and use.
+                                    - Designing sample page layouts. - Ensuring that the website complies with the company’s brand guidelines.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="work" v-show="activeTab === 'education'">
+                    <div class="work-item">
+                        <div class="work-icon">
+                            <img src="/images/resume_themes/theme3/education-icon.svg" alt="work-icon">
+                        </div>
+                        <div class="work-info">
+                            <div class="date">
+                                2015 - 2016
+                            </div>
+                            <div class="work-title">
+                                Master in web development
+                            </div>
+                            <div class="work-details">
+                                <div class="company-name">
+                                    Envision Media, Inc., Santa Cruz
+                                </div>
+                                <div class="job-roles">
+                                    - Envision Media, Inc., Santa Cruz, CA
+                                    - Turning creative concepts into finished websites.
+                                    - Drawing up detailed website s pecifications. - Building websites that are easy to understand, navigate and use.
+                                    - Designing sample page layouts. - Ensuring that the website complies with the company’s brand guidelines.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                    <div class="work-icon">
+                        <img src="/images/resume_themes/theme3/education-icon.svg" alt="work-icon">
+                    </div>
+                    <div class="work-info">
+                        <div class="date">
+                            2015 - 2016
+                        </div>
+                        <div class="work-title">
+                            Master in web development
+                        </div>
+                        <div class="work-details">
+                            <div class="company-name">
+                                Envision Media, Inc., Santa Cruz
+                            </div>
+                            <div class="job-roles">
+                                - Envision Media, Inc., Santa Cruz, CA
+                                - Turning creative concepts into finished websites.
+                                - Drawing up detailed website s pecifications. - Building websites that are easy to understand, navigate and use.
+                                - Designing sample page layouts. - Ensuring that the website complies with the company’s brand guidelines.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    <div class="work-item">
+                        <div class="work-icon">
+                            <img src="/images/resume_themes/theme3/education-icon.svg" alt="work-icon">
+                        </div>
+                        <div class="work-info">
+                            <div class="date">
+                                2015 - 2016
+                            </div>
+                            <div class="work-title">
+                                Master in web development
+                            </div>
+                            <div class="work-details">
+                                <div class="company-name">
+                                    Envision Media, Inc., Santa Cruz
+                                </div>
+                                <div class="job-roles">
+                                    - Envision Media, Inc., Santa Cruz, CA
+                                    - Turning creative concepts into finished websites.
+                                    - Drawing up detailed website s pecifications. - Building websites that are easy to understand, navigate and use.
+                                    - Designing sample page layouts. - Ensuring that the website complies with the company’s brand guidelines.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-item">
+                        <div class="work-icon">
+                            <img src="/images/resume_themes/theme3/education-icon.svg" alt="work-icon">
+                        </div>
+                        <div class="work-info">
+                            <div class="date">
+                                2015 - 2016
+                            </div>
+                            <div class="work-title">
+                                Master in web development
+                            </div>
+                            <div class="work-details">
+                                <div class="company-name">
+                                    Envision Media, Inc., Santa Cruz
+                                </div>
+                                <div class="job-roles">
+                                    - Envision Media, Inc., Santa Cruz, CA
+                                    - Turning creative concepts into finished websites.
+                                    - Drawing up detailed website s pecifications. - Building websites that are easy to understand, navigate and use.
+                                    - Designing sample page layouts. - Ensuring that the website complies with the company’s brand guidelines.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -210,8 +409,8 @@
                         {
                             breakpoint: 1600,
                             settings: {
-                                slidesToShow: 2,
-                                slidesToScroll: 2,
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
                             }
                         }
                     ]
@@ -249,12 +448,9 @@
 
     .themeWrapper {
 
-        width: 100vw;
+        width: 95%;
         max-width: 1920px;
         background: white;
-        margin-left: 3%;
-        margin-right: 3%;
-        margin-top: 1%;
         border-radius: 15px;
 
         @media only screen and (max-width: 600px) {
@@ -591,69 +787,7 @@
         }
 
 
-        .skills-tabs {
-            display: flex;
-            justify-content: center;
-            overflow-x: auto;
-            width: 100%;
-            @media only screen and (max-width: 600px) {
-                justify-content: space-between;
-                margin-top: 30px;
 
-            }
-
-            .skills-tab-text {
-                font-style: normal;
-                font-weight: normal;
-                font-size: 25px;
-                line-height: 37px;
-                padding: 16px 33px;
-                color: #000000;
-                white-space: nowrap;
-                @media only screen and (max-width: 600px) {
-                    font-size: 10px;
-                    line-height: 15px;
-                    padding: 13px 29px;
-                }
-            }
-
-            .skills-tab-text:hover {
-                cursor: pointer;
-            }
-
-            .skills-tab-text.active {
-                font-style: normal;
-                font-weight: normal;
-                background: #5289E7;
-                border-radius: 35px;
-                color: #FFFFFF;
-            }
-
-        }
-
-        .skills-icons-bar {
-            margin-top: 35.67px;
-            padding-bottom: 10px;
-            display: flex;
-            justify-content: center;
-            overflow-x: auto;
-
-            img {
-                width: 30px;
-                height: 30px;
-                margin-right: 45px;
-                @media only screen and (max-width: 600px) {
-                    width: 30px;
-                    height: 30px;
-                    margin-right: 30px;
-                }
-            }
-
-            img:last-child {
-                margin-right: 0;
-            }
-
-        }
 
 
         .tabs-bar {
@@ -712,60 +846,175 @@
         }
 
         .main-tab-content {
-            margin-top: 28px;
+            margin-top: 86px;
+            min-height: 750px;
             padding-bottom: 45px;
             @media only screen and (max-width: 600px) {
                 margin-top: 35px;
             }
 
-            .portfolioSlides {
-                padding-left: 40px;
-                padding-right: 40px;
-
-                @media only screen and (max-width: 600px) {
-                    padding-left: 0px;
-                    padding-right: 0px;
-                }
-
-                @media only screen and (min-width: 1600px) {
-                    padding-left: 135px;
-                    padding-right: 135px;
-                }
-
-                display: flex;
-                justify-content: center;
-
-                img {
-                    margin-right: 25px;
-                    margin-left: 25px;
-                    width: 510px !important;
-                    height: 400px;
+            .portfolio{
+                .portfolioSlides {
+                    padding-left: 40px;
+                    padding-right: 40px;
 
                     @media only screen and (max-width: 600px) {
-                        width: 177px !important;
-                        height: 139px;
+                        padding-left: 0px;
+                        padding-right: 0px;
                     }
 
-                }
+                    @media only screen and (min-width: 1600px) {
+                        padding-left: 135px;
+                        padding-right: 135px;
+                    }
 
-                .slide-text {
-                    margin-top: 15px;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 20px;
-                    line-height: 23px;
-                    color: #333333;
+                    display: flex;
+                    justify-content: center;
 
-                    @media only screen and (max-width: 600px) {
-                        font-size: 10px;
-                        line-height: 12px;
-                        margin-bottom: 25px;
+                    img {
+                        margin-right: 25px;
+                        margin-left: 25px;
+                        width: 510px !important;
+                        height: 400px;
+
+                        @media only screen and (max-width: 600px) {
+                            width: 177px !important;
+                            height: 139px;
+                        }
+
+                    }
+
+                    .slide-text {
+                        margin-top: 15px;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 20px;
+                        line-height: 23px;
+                        color: #333333;
+
+                        @media only screen and (max-width: 600px) {
+                            font-size: 10px;
+                            line-height: 12px;
+                            margin-bottom: 25px;
+                        }
                     }
                 }
             }
 
-            .work {
 
+            .skills-tabs {
+                display: flex;
+                justify-content: center;
+                overflow-x: auto;
+                width: 100%;
+                @media only screen and (max-width: 600px) {
+                    justify-content: space-between;
+                    margin-top: 30px;
+
+                }
+
+                .skills-tab-text {
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 25px;
+                    line-height: 37px;
+                    padding: 16px 33px;
+                    color: #000000;
+                    white-space: nowrap;
+                    @media only screen and (max-width: 600px) {
+                        font-size: 10px;
+                        line-height: 15px;
+                        padding: 13px 29px;
+                    }
+                }
+
+                .skills-tab-text:hover {
+                    cursor: pointer;
+                }
+
+                .skills-tab-text.active {
+                    font-style: normal;
+                    font-weight: normal;
+                    background: #5289E7;
+                    border-radius: 35px;
+                    color: #FFFFFF;
+                }
+
+            }
+
+            .skills-icons-bar {
+                margin-top: 35.67px;
+                padding-bottom: 10px;
+                display: flex;
+                justify-content: center;
+                overflow-x: auto;
+
+                img {
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 45px;
+                    @media only screen and (max-width: 600px) {
+                        width: 30px;
+                        height: 30px;
+                        margin-right: 30px;
+                    }
+                }
+
+                img:last-child {
+                    margin-right: 0;
+                }
+
+            }
+
+            .work {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding-left: 40px;
+                padding-right: 40px;
+
+                .work-item{
+                    margin-bottom:100px;
+                    display: flex;
+                    flex-basis: 48%;
+                    .work-icon{
+                        margin-right:35px;
+                        img{
+                            width:59px;
+                            height:59px;
+                        }
+                    }
+                    .work-info{
+                        .date{
+                            font-weight: normal;
+                            font-size: 16px;
+                            line-height: 15px;
+                            color: #000000;
+                        }
+                        .work-title{
+                            margin-top:10px;
+                            font-weight: 300;
+                            font-size: 16px;
+                            line-height: 15px;
+                            color: #000000;
+                        }
+                        .work-details{
+                            margin-top:35px;
+                            .company-name{
+                                font-size: 20px;
+                                line-height: 14px;
+                                color: #000000;
+                            }
+                            .job-roles{
+                                font-size: 16px;
+                                color: #000000;
+                                white-space: pre-line;
+                                line-height: 24px;
+                                font-weight: 300;
+                            }
+                        }
+                    }
+                }
             }
 
             .education {

@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="tabs-bar" >
-            <div class="tab-text" :class="{borderRight : activeTab === 'portfolio'}">
+            <div class="tab-text w-100" :class="{borderRight : activeTab === 'portfolio'}">
                 <span style="opacity:0">text</span>
             </div>
             <div class="tab-text" @click="setActiveTab('portfolio')" style="margin-left: -1px;"
@@ -74,7 +74,7 @@
                  :class="{active : activeTab === 'education',borderLeft : activeTab === 'work'}">
                 Education
             </div>
-            <div class="tab-text"  :class="{borderLeft : activeTab === 'education'}" >
+            <div class="tab-text w-100"  :class="{borderLeft : activeTab === 'education'}" >
                 <span style="opacity:0">text</span>
             </div>
         </div>
@@ -258,6 +258,10 @@
             .right {
 
                 .interviews{
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    width: 100%;
                     .interview-text{
                         font-weight: 600;
                         font-size: 24px;
@@ -289,6 +293,10 @@
                 }
 
                 .prof-info{
+                    display: flex;
+                    align-items: center;
+                    margin-top:40px;
+
                     .hourly-rate {
                         margin-right: 30px;
                         align-items: baseline;

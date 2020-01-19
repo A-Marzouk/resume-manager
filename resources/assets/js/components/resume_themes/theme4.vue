@@ -1,122 +1,113 @@
 <template>
-    <div class="d-flex justify-content-center">
-
-        <nav class="navbar navbar-light fixed-top dashboard_navbar">
-            <a class="navbar-brand" href="/freelancer/dashboard">
-                <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
-            </a>
-        </nav>
-
-        <div class="themeWrapper">
-
-            <div class="mainThemeBar d-flex justify-content-between align-items-center">
-                <div class="left hideOnPhone">
-                    <div class="avatar">
-                        <img src="/images/resume_themes/theme4/person.png" alt="profile pic">
-                    </div>
-                    <div class="info">
-                        <div class="user-name">
-                            Zoyee Allena
-                        </div>
-                        <div class="job-title">
-                            Visual deisgner
-                        </div>
-                        <div class="social-icons">
-                            <img src="/images/resume_themes/theme4/Behance.svg" alt="">
-                            <img src="/images/resume_themes/theme4/Dribbble.svg" alt="">
-                            <img src="/images/resume_themes/theme4/Instagram.svg" alt="">
-                        </div>
-                    </div>
+    <div class="themeWrapper">
+        <div class="mainThemeBar">
+            <div class="left">
+                <div class="avatar">
+                    <img src="/images/resume_themes/theme4/person.png" alt="profile pic">
                 </div>
-
-                <div class="hideOnPhone">
-                    <div class="right d-flex flex-column">
-                        <div class="d-flex align-items-center justify-content-end" style="margin-bottom:40px;">
-                            <div class="interview-text" style="margin-right:20px;">
-                                Your interviews:
-                            </div>
-                            <div class="upload-btn-box" style="margin-right:10px;">
-                                <img src="/images/resume_themes/theme4/Icon.svg" alt="">
-                                <div>UPLOAD AUDIO</div>
-                            </div>
-                            <div class="upload-btn-box">
-                                <img src="/images/resume_themes/theme4/Icon-1.svg" alt="">
-                                <div>UPLOAD VIDEO</div>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="hourly-rate d-flex">
-                                <div class="hourly-rate-text">
-                                    15$
-                                </div>
-                                <div class="hourly-rate-text light text-center">
-                                    Hourly Rate
-                                </div>
-                            </div>
-                            <div class="weekly-availability d-flex">
-                                <div class="hourly-rate-text">
-                                    35 hours
-                                </div>
-                                <div class="hourly-rate-text light text-center">
-                                    Weekly Availability
-                                </div>
-                            </div>
-                            <div class="hire-me-btn NoDecor">
-                                <a href="javascript:void(0)">
-                                    Hire me
-                                </a>
-                            </div>
-                        </div>
+                <div class="info">
+                    <div class="user-name">
+                        Zoyee Allena
+                    </div>
+                    <div class="job-title">
+                        Visual deisgner
+                    </div>
+                    <div class="social-icons">
+                        <img src="/images/resume_themes/theme4/Behance-icon.png" alt="">
+                        <img src="/images/resume_themes/theme4/Dribbble-icon.png" alt="">
+                        <img src="/images/resume_themes/theme4/Instagram-icon.png" alt="">
                     </div>
                 </div>
             </div>
 
-            <div class="w-100 d-flex flex-column align-items-center justify-content-center">
-                <div class="tabs-bar d-flex">
-                    <div class="tab-text" @click="setActiveTab('portfolio')"
-                         :class="{active : activeTab === 'portfolio'}">
-                        Portfolio
+            <div class="right">
+                <div class="interviews">
+                    <div class="interview-text hideMeOnTablet" style="margin-right:20px;">
+                        Your interviews:
                     </div>
-                    <div class="tab-text" @click="setActiveTab('work')" :class="{active : activeTab === 'work'}">
-                        Work
+                    <div class="upload-btn-box" style="margin-right:10px;">
+                        <img src="/images/resume_themes/theme4/Icon-1.svg" alt="">
+                        <div> AUDIO</div>
                     </div>
-                    <div class="tab-text" @click="setActiveTab('education')"
-                         :class="{active : activeTab === 'education'}">
-                        Education
+                    <div class="upload-btn-box">
+                        <img src="/images/resume_themes/theme4/Icon.svg" alt="">
+                        <div> VIDEO</div>
+                    </div>
+                </div>
+                <div class="prof-info">
+                    <div class="hourly-rate d-flex">
+                        <div class="hourly-rate-text">
+                            15$
+                        </div>
+                        <div class="hourly-rate-text light text-center">
+                            Hourly Rate
+                        </div>
+                    </div>
+                    <div class="weekly-availability d-flex">
+                        <div class="hourly-rate-text">
+                            35hr
+                        </div>
+                        <div class="hourly-rate-text light text-center">
+                            Weekly Availability
+                        </div>
+                    </div>
+                    <div class="hire-me-btn NoDecor">
+                        <a href="javascript:void(0)">
+                            HIRE ME
+                        </a>
                     </div>
                 </div>
             </div>
-
-            <div class="main-tab-content">
-                <div>
-                    <div class="skills-tabs d-flex justify-content between">
-                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'programming-languages'}"
-                             @click="setActiveSkillTab('programming-languages')">
-                            Programming Languages
-                        </div>
-                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'framewroks-databases'}"
-                             @click="setActiveSkillTab('framewroks-databases')">
-                            Frameworks
-                        </div>
-                        <div class="skills-tab-text" :class="{active : activeSkillTab === 'design-skills'}"
-                             @click="setActiveSkillTab('design-skills')">
-                            Design Skills
-                        </div>
-                        <div class="skills-tab-text mr-0" :class="{active : activeSkillTab === 'software'}"
-                             @click="setActiveSkillTab('software')">
-                            Software
-                        </div>
+        </div>
+        <div class="tabs-bar" >
+            <div class="tab-text" :class="{borderRight : activeTab === 'portfolio'}">
+                <span style="opacity:0">text</span>
+            </div>
+            <div class="tab-text" @click="setActiveTab('portfolio')" style="margin-left: -1px;"
+                 :class="{active : activeTab === 'portfolio',borderRight : activeTab === 'work'}">
+                Portfolio
+            </div>
+            <div class="tab-text" @click="setActiveTab('work')" style="margin-right: -1px; margin-left: -1px;" :class="{active : activeTab === 'work', borderLeft : activeTab === 'portfolio',borderRight : activeTab === 'education'}">
+                Work
+            </div>
+            <div class="tab-text" @click="setActiveTab('education')" style="margin-right: -1px;"
+                 :class="{active : activeTab === 'education',borderLeft : activeTab === 'work'}">
+                Education
+            </div>
+            <div class="tab-text"  :class="{borderLeft : activeTab === 'education'}" >
+                <span style="opacity:0">text</span>
+            </div>
+        </div>
+        <div class="main-tab-content">
+            <div class="skills">
+                <div class="skills-tabs d-flex justify-content between">
+                    <div class="skills-tab-text" :class="{active : activeSkillTab === 'programming-languages'}"
+                         @click="setActiveSkillTab('programming-languages')">
+                        Programming Languages
                     </div>
-                    <div class="skills-icons-bar" id="style-1">
-                        <img class="icon" src="/images/resume_themes/theme4/PS.svg" alt="skill-icon">
-                        <img class="icon" src="/images/resume_themes/theme4/Ai.svg" alt="skill-icon">
-                        <img class="icon" src="/images/resume_themes/theme4/Lr.svg" alt="skill-icon">
-                        <img class="icon" src="/images/resume_themes/theme4/Xd.svg" alt="skill-icon">
-                        <img class="icon" src="/images/resume_themes/theme4/Id.svg" alt="skill-icon">
-
+                    <div class="skills-tab-text" :class="{active : activeSkillTab === 'framewroks-databases'}"
+                         @click="setActiveSkillTab('framewroks-databases')">
+                        Frameworks
+                    </div>
+                    <div class="skills-tab-text" :class="{active : activeSkillTab === 'design-skills'}"
+                         @click="setActiveSkillTab('design-skills')">
+                        Design Skills
+                    </div>
+                    <div class="skills-tab-text mr-0" :class="{active : activeSkillTab === 'software'}"
+                         @click="setActiveSkillTab('software')">
+                        Software
                     </div>
                 </div>
+                <div class="skills-icons-bar" id="style-1">
+                    <img class="icon" src="/images/resume_themes/theme4/PS.svg" alt="skill-icon">
+                    <img class="icon" src="/images/resume_themes/theme4/Ai.svg" alt="skill-icon">
+                    <img class="icon" src="/images/resume_themes/theme4/Lr.svg" alt="skill-icon">
+                    <img class="icon" src="/images/resume_themes/theme4/Xd.svg" alt="skill-icon">
+                    <img class="icon" src="/images/resume_themes/theme4/Id.svg" alt="skill-icon">
+                </div>
+            </div>
 
+            <div class="portfolio">
                 <slick class="portfolioSlides" ref="slick" :options="slickOptions">
                     <img src="/images/resume_themes/theme4/portfolio1.png" alt="portfolio image">
                     <img src="/images/resume_themes/theme4/portfolio2.png" alt="portfolio image">
@@ -125,7 +116,6 @@
                     <img src="/images/resume_themes/theme4/portfolio1.png" alt="portfolio image">
                 </slick>
             </div>
-
         </div>
     </div>
 </template>
@@ -183,48 +173,24 @@
 
 <style lang="scss">
 
-
-    .hideOnPhone {
-        @media only screen and (max-width: 600px) {
-            display: none !important;
-        }
-    }
-
-    .hideOnNotPhone {
-        @media only screen and (min-width: 600px) {
-            display: none !important;
-        }
-    }
-
     .themeWrapper {
 
-        width: 100vw;
+        width: 100%;
         max-width: 1920px;
         background: white;
-        margin-left: 3%;
-        margin-right: 3%;
-        margin-top: 1%;
         border-radius: 15px;
-
-        @media only screen and (max-width: 600px) {
-            width: 95vw;
-        }
-
 
         .mainThemeBar {
             padding-top: 40px;
             padding-left: 70px;
             padding-right: 70px;
             flex-wrap: wrap;
-            @media only screen and (max-width: 600px) {
-                padding-top: 0;
-            }
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
             .left {
                 display: flex;
-
-                @media only screen and (max-width: 600px) {
-                    align-items: center;
-                }
 
                 .avatar {
                     margin-right: 56px;
@@ -248,9 +214,6 @@
                     margin-top: 35px;
                     display: flex;
                     flex-direction: column;
-                    @media only screen and (max-width: 600px) {
-                        margin-top: 0;
-                    }
 
                     .user-name {
                         margin-left: -2px;
@@ -278,12 +241,12 @@
 
                     .social-icons{
                         display:flex;
-                        margin-left: -25px;
-                        margin-top: 6px;
-
+                        margin-top: 30px;
                         img{
-                            width: 100px;
-                            height: 100px;
+                            width: 50px;
+                            height: 50px;
+                            margin-right:20px;
+                            border-radius: 50%;
                         }
                         img:last-child{
                             margin-right: 0;
@@ -293,151 +256,99 @@
             }
 
             .right {
-                @media only screen and (max-width: 600px) {
-                    margin-top: 57px;
-                    width: 100%;
-                    justify-content: center;
-                }
 
-                .hourly-rate {
-                    margin-right: 30px;
-                    align-items: baseline;
-                    @media only screen and (max-width: 600px) {
-                        margin-right: 27px;
+                .interviews{
+                    .interview-text{
+                        font-weight: 600;
+                        font-size: 24px;
+                        line-height: 26px;
+                        color: #222B4C;
                     }
-                }
 
-                .weekly-availability {
-                    margin-right: 30px;
-                    align-items: baseline;
-                    @media only screen and (max-width: 600px) {
-                        margin-right: 19px;
-                    }
-                }
+                    .upload-btn-box{
+                        display:flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: #E7F6FF;
+                        border-radius: 6px;
+                        width:170px;
+                        height:60px;
 
-                .hourly-rate-text {
-                    font-weight: 500;
-                    font-size: 42px;
-                    line-height: 46px;
-                    color: #222B4C;
-                    margin-right: 10px;
-                    @media only screen and (max-width: 600px) {
-                        font-size: 12px;
-                    }
-                }
-
-                .hourly-rate-text.light {
-                    font-weight: 500;
-                    font-size: 18px;
-                    line-height: 20px;
-                    color: #9CA4C1;
-                }
-
-                .hire-me-btn {
-                    a {
                         font-weight: 600;
                         font-size: 14px;
                         line-height: 15px;
-                        display: flex;
-                        align-items: center;
                         text-align: center;
-                        color: #FFFFFF;
-                        background: #00A3FF;
-                        border-radius: 6px;
-                        height: 60px;
-                        width: 170px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
+                        color: #00A3FF;
 
-                        @media only screen and (max-width: 600px) {
-                            font-size: 12px;
-                            height: 34px;
-                            width: 105px;
-                            border-radius: 8px;
+                        img{
+                            width:20px;
+                            height:16px;
+                            margin-right:10px;
                         }
                     }
                 }
-            }
-        }
 
+                .prof-info{
+                    .hourly-rate {
+                        margin-right: 30px;
+                        align-items: baseline;
+                    }
 
-        .skills-tabs {
-            display: flex;
-            justify-content: center;
-            overflow-x: auto;
-            width: 100%;
-            @media only screen and (max-width: 600px) {
-                justify-content: space-between;
-                margin-top: 30px;
+                    .weekly-availability {
+                        margin-right: 30px;
+                        align-items: baseline;
+                    }
 
-            }
+                    .hourly-rate-text {
+                        font-weight: 500;
+                        font-size: 42px;
+                        line-height: 46px;
+                        color: #222B4C;
+                        margin-right: 10px;
+                    }
 
-            .skills-tab-text {
-                font-weight: 600;
-                font-size: 20px;
-                line-height: 22px;
-                color: #9CA4C1;
-                padding-bottom:20px;
-                padding-left:20px;
-                padding-right:20px;
-                white-space: nowrap;
-                @media only screen and (max-width: 600px) {
-                    font-size: 10px;
-                    line-height: 15px;
-                    padding: 13px 29px;
+                    .hourly-rate-text.light {
+                        font-weight: 500;
+                        font-size: 18px;
+                        line-height: 20px;
+                        color: #9CA4C1;
+                    }
+
+                    .hire-me-btn {
+                        a {
+                            font-weight: 600;
+                            font-size: 14px;
+                            line-height: 15px;
+                            text-align: center;
+                            color: #FFFFFF;
+                            background: #00A3FF;
+                            border-radius: 6px;
+                            height: 60px;
+                            width: 170px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
                 }
-            }
 
-            .skills-tab-text:hover {
-                cursor: pointer;
-            }
 
-            .skills-tab-text.active {
-                font-weight: 600;
-                font-size: 20px;
-                line-height: 22px;
-                color: #01A2FF;
-                border-bottom:3px solid #01A2FF;
-            }
 
+
+            }
         }
 
-        .skills-icons-bar {
-            margin-top: 45px;
-            padding-bottom: 10px;
-            display: flex;
-            justify-content: center;
-            overflow-x: auto;
-
-            img {
-                width: 70px;
-                height: 70px;
-                margin-right: 40px;
-                @media only screen and (max-width: 600px) {
-                    width: 30px;
-                    height: 30px;
-                    margin-right: 30px;
-                }
-            }
-
-            img:last-child {
-                margin-right: 0;
-            }
-
-        }
 
 
         .tabs-bar {
+            display: flex;
             margin-top: 30px;
             width:100%;
-            background: #00A3FF;
+            background: white;
             height:80px;
             align-items:center;
             justify-content:center;
-            @media only screen and (max-width: 600px) {
-                margin-top: 10px;
-            }
+            overflow:hidden;
             .tab-text {
                 font-family: inherit;
                 font-style: normal;
@@ -450,12 +361,7 @@
                 padding-right:45px;
                 padding-left:45px;
                 position: relative;
-                @media only screen and (max-width: 600px) {
-                    font-size: 12px;
-                    margin-right: 10px;
-                    margin-left: 10px;
-                    padding-bottom: 0;
-                }
+                background:#00A3FF;
             }
 
             .tab-text:not(:last-child) {
@@ -466,6 +372,15 @@
                 color: #00A3FF;
                 background-color:white;
             }
+
+            .tab-text.borderLeft{
+                border-radius: 100px 0px 0px 100px;
+            }
+
+            .tab-text.borderRight{
+                border-radius: 0px 100px 100px 0px;
+            }
+
 
             .tab-text:hover {
                 cursor: pointer;
@@ -482,53 +397,85 @@
         .main-tab-content {
             margin-top: 60px;
             padding-bottom: 45px;
-            @media only screen and (max-width: 600px) {
-                margin-top: 35px;
+
+            .skills{
+
+                .skills-tabs {
+                    display: flex;
+                    justify-content: center;
+                    overflow-x: auto;
+                    width: 100%;
+                    .skills-tab-text {
+                        font-weight: 600;
+                        font-size: 20px;
+                        line-height: 22px;
+                        color: #9CA4C1;
+                        padding-bottom:20px;
+                        padding-left:20px;
+                        padding-right:20px;
+                        white-space: nowrap;
+                    }
+
+                    .skills-tab-text:hover {
+                        cursor: pointer;
+                    }
+
+                    .skills-tab-text.active {
+                        font-weight: 600;
+                        font-size: 20px;
+                        line-height: 22px;
+                        color: #01A2FF;
+                        border-bottom:3px solid #01A2FF;
+                    }
+
+                }
+
+                .skills-icons-bar {
+                    margin-top: 45px;
+                    padding-bottom: 10px;
+                    display: flex;
+                    justify-content: center;
+                    overflow-x: auto;
+
+                    img {
+                        width: 70px;
+                        height: 70px;
+                        margin-right: 40px;
+                    }
+
+                    img:last-child {
+                        margin-right: 0;
+                    }
+
+                }
+
             }
 
-            .portfolioSlides {
-                padding-left: 0px;
-                padding-right: 0px;
-
-                margin-top:100px;
-
-                @media only screen and (max-width: 600px) {
+            .portfolio{
+                .portfolioSlides {
                     padding-left: 0px;
                     padding-right: 0px;
-                }
+                    margin-top:100px;
+                    display: flex;
+                    justify-content: center;
 
-                display: flex;
-                justify-content: center;
-
-                img {
-
-                    padding:30px;
-
-                    width: 723px !important;
-                    height:700px;
-
-                    @media only screen and (max-width: 600px) {
-                        width: 177px !important;
-                        height: 139px;
+                    img {
+                        padding:30px;
+                        width: 723px !important;
+                        height:700px;
                     }
 
-                }
-
-                .slide-text {
-                    margin-top: 15px;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 20px;
-                    line-height: 23px;
-                    color: #333333;
-
-                    @media only screen and (max-width: 600px) {
-                        font-size: 10px;
-                        line-height: 12px;
-                        margin-bottom: 25px;
+                    .slide-text {
+                        margin-top: 15px;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 20px;
+                        line-height: 23px;
+                        color: #333333;
                     }
                 }
             }
+
 
             .work {
 
@@ -541,37 +488,370 @@
         }
     }
 
-    .interview-text{
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 26px;
-        color: #222B4C;
-    }
+    @media only screen and (max-width: 1280px) and (min-width: 760px) {
+        /* CSS that should be displayed if width is equal to or less than 1280 px and larger
+         than 425px goes here */
 
-    .upload-btn-box{
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        background: #E7F6FF;
-        border-radius: 6px;
-        width:170px;
-        height:60px;
-
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 15px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: #00A3FF;
-
-        img{
-            width:20px;
-            height:16px;
-            margin-right:10px;
+        .hideMeOnTablet{
+            display:none !important;
         }
+
+        .themeWrapper {
+
+            width:98%;
+
+            .mainThemeBar {
+                padding:20px;
+                .left {
+                    .avatar {
+                        margin-right: 30px;
+                        img {
+                            width: 150px;
+                            height: 150px;
+                        }
+                    }
+
+                    .info {
+
+                        .user-name {
+                            font-size: 28px;
+                        }
+
+                        .job-title {
+                            font-size: 16px;
+                        }
+
+                        .social-icons{
+                            margin-top:20px;
+                            img{
+                                width:34px;
+                                height:34px;
+                            }
+                            img:last-child{
+
+                            }
+                        }
+                    }
+                }
+
+                .right {
+                    align-items: center;
+                    display: flex;
+                    flex-direction: column;
+                    .interviews{
+                        display: flex;
+                        justify-content: flex-end;
+                        width: 100%;
+                        margin-top: 30px;
+                        .interview-text{
+
+                        }
+
+                        .upload-btn-box{
+                            width: 150px;
+                            height: 40px;
+                            img{
+                                width:14px;
+                                height:11px;
+                            }
+                        }
+                    }
+                    .prof-info{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        width: 100%;
+                        margin-top: 30px;
+                        .hourly-rate {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                        }
+
+                        .weekly-availability {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                        }
+
+                        .hourly-rate-text {
+                            font-size: 24px;
+                            line-height: 30px;
+                        }
+
+                        .hourly-rate-text.light {
+                            font-size: 12px;
+                        }
+
+                        .hire-me-btn {
+                            a {
+                                width: 120px;
+                                height: 40px;
+                                font-size: 12px;
+                            }
+                        }
+
+                    }
+
+
+
+                }
+            }
+
+            .tabs-bar {
+                margin-top: 21px;
+                .tab-text {
+                    font-size: 24px;
+                }
+
+                .tab-text:not(:last-child) {
+
+                }
+
+                .tab-text.active {
+
+                }
+
+                .tab-text:hover {
+                }
+
+                .arrow {
+                    img {
+
+                    }
+                }
+            }
+
+            .main-tab-content {
+                margin-top: 40px;
+
+                .skills{
+
+                    .skills-tabs {
+
+                        .skills-tab-text {
+                            font-size: 16px;
+                        }
+
+                        .skills-tab-text:hover {
+
+                        }
+
+                        .skills-tab-text.active {
+                            font-size: 16px;
+                        }
+
+                    }
+                    .skills-icons-bar {
+                        margin-top: 30px;
+                        img {
+                            width: 50px;
+                            height: 50px;
+                        }
+
+                        img:last-child {
+
+                        }
+
+                    }
+
+                }
+
+                .portfolio{
+                    display: none;
+                    .portfolioSlides {
+
+                        img {
+
+                        }
+
+                        .slide-text {
+
+                        }
+                    }
+                }
+
+
+
+                .work {
+
+                }
+
+                .education {
+
+
+                }
+            }
+        }
+
     }
 
+    @media only screen and (max-width: 765px){
+        /* CSS that should be displayed if width is equal to or less than 765px */
+
+        .themeWrapper {
+
+            .mainThemeBar {
+                .left {
+                    .avatar {
+
+
+                        img {
+
+                        }
+
+                    }
+
+                    .info {
+
+                        .user-name {
+
+
+                        }
+
+                        .job-title {
+
+
+                        }
+
+                        .social-icons{
+
+
+                            img{
+
+                            }
+                            img:last-child{
+
+                            }
+                        }
+                    }
+                }
+
+                .right {
+                    .interviews{
+                        .interview-text{
+
+                        }
+
+                        .upload-btn-box{
+
+
+                            img{
+
+                            }
+                        }
+                    }
+                    .prof-info{
+                        .hourly-rate {
+
+                        }
+
+                        .weekly-availability {
+
+                        }
+
+                        .hourly-rate-text {
+
+                        }
+
+                        .hourly-rate-text.light {
+
+                        }
+
+                        .hire-me-btn {
+                            a {
+
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            .tabs-bar {
+
+                .tab-text {
+
+                }
+
+                .tab-text:not(:last-child) {
+
+                }
+
+                .tab-text.active {
+
+                }
+
+                .tab-text:hover {
+                }
+
+                .arrow {
+                    img {
+
+                    }
+                }
+            }
+
+            .main-tab-content {
+
+                .skills{
+
+                    .skills-tabs {
+
+                        .skills-tab-text {
+
+                        }
+
+                        .skills-tab-text:hover {
+
+                        }
+
+                        .skills-tab-text.active {
+
+                        }
+
+                    }
+                    .skills-icons-bar {
+
+                        img {
+
+                        }
+
+                        img:last-child {
+
+                        }
+
+                    }
+
+                }
+
+                .portfolio{
+                    .portfolioSlides {
+
+                        img {
+
+                        }
+
+                        .slide-text {
+
+                        }
+                    }
+                }
+
+
+
+                .work {
+
+                }
+
+                .education {
+
+
+                }
+            }
+        }
+
+    }
 
     //slick slides :
 

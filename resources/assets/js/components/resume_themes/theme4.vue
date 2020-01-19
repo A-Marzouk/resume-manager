@@ -2,36 +2,51 @@
     <div class="themeWrapper">
         <div class="mainThemeBar">
             <div class="left">
-                <div class="avatar">
-                    <img src="/images/resume_themes/theme4/person.png" alt="profile pic">
+                <div class="d-flex">
+                    <div class="avatar">
+                        <img src="/images/resume_themes/theme4/person.png" alt="profile pic">
+                    </div>
+                    <div class="info">
+                        <div class="user-name">
+                            Zoyee Allena
+                        </div>
+                        <div class="job-title">
+                            Visual deisgner
+                        </div>
+                        <div class="social-icons">
+                            <img src="/images/resume_themes/theme4/Behance-icon.png" alt="">
+                            <img src="/images/resume_themes/theme4/Dribbble-icon.png" alt="">
+                            <img src="/images/resume_themes/theme4/Instagram-icon.png" alt="">
+                        </div>
+                    </div>
                 </div>
-                <div class="info">
-                    <div class="user-name">
-                        Zoyee Allena
+                <div class="interviews">
+                    <div class="interview-text hideMeOnTablet hideMeOnPhone" style="margin-right:20px;">
+                        Your interviews:
                     </div>
-                    <div class="job-title">
-                        Visual deisgner
+                    <div class="upload-btn-box" style="margin-bottom:20px;">
+                        <img src="/images/resume_themes/theme4/Icon-1.svg" alt="">
+                        <div class="hideMeOnPhone"> AUDIO</div>
                     </div>
-                    <div class="social-icons">
-                        <img src="/images/resume_themes/theme4/Behance-icon.png" alt="">
-                        <img src="/images/resume_themes/theme4/Dribbble-icon.png" alt="">
-                        <img src="/images/resume_themes/theme4/Instagram-icon.png" alt="">
+                    <div class="upload-btn-box">
+                        <img src="/images/resume_themes/theme4/Icon.svg" alt="">
+                        <div class="hideMeOnPhone"> VIDEO</div>
                     </div>
                 </div>
             </div>
 
             <div class="right">
-                <div class="interviews">
-                    <div class="interview-text hideMeOnTablet" style="margin-right:20px;">
+                <div class="interviews hideMeOnPhone">
+                    <div class="interview-text hideMeOnTablet hideMeOnPhone" style="margin-right:20px;">
                         Your interviews:
                     </div>
                     <div class="upload-btn-box" style="margin-right:10px;">
                         <img src="/images/resume_themes/theme4/Icon-1.svg" alt="">
-                        <div> AUDIO</div>
+                        <div class="hideMeOnPhone"> AUDIO</div>
                     </div>
                     <div class="upload-btn-box">
                         <img src="/images/resume_themes/theme4/Icon.svg" alt="">
-                        <div> VIDEO</div>
+                        <div class="hideMeOnPhone"> VIDEO</div>
                     </div>
                 </div>
                 <div class="prof-info">
@@ -133,17 +148,18 @@
                 activeTab: 'portfolio',
                 activeSkillTab: 'programming-languages',
                 slickOptions: {
+                    centerMode:true,
                     infinite: true,
                     dots: true,
                     arrows: false,
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                     slidesToScroll: 1,
                     responsive: [
                         {
                             breakpoint: 786,
                             settings: {
-                                slidesToShow: 2,
-                                slidesToScroll: 2,
+                                slidesToShow: 1,
+                                slidesToScroll: 1,
                             }
                         },
                         {
@@ -666,11 +682,13 @@
                 }
 
                 .portfolio{
-                    display: none;
+
+                    margin-top: 30px;
                     .portfolioSlides {
-
+                        margin-top:0;
                         img {
-
+                            width: 450px!important;
+                            height: 400px;
                         }
 
                         .slide-text {
@@ -696,37 +714,44 @@
 
     @media only screen and (max-width: 765px){
         /* CSS that should be displayed if width is equal to or less than 765px */
-
+        .hideMeOnPhone{
+            display:none !important;
+        }
         .themeWrapper {
-
             .mainThemeBar {
+                padding:20px;
                 .left {
+                    display: flex;
+                    justify-content: space-between;
+                    width:100%;
+                    align-items: center;
                     .avatar {
-
-
                         img {
-
+                            width:120px;
+                            height:120px;
                         }
 
                     }
 
                     .info {
-
+                        margin-top: 16px;
                         .user-name {
-
-
+                            font-size: 24px;
+                            line-height: 26px;
                         }
 
                         .job-title {
-
-
+                            margin-top: 10px;
+                            font-size: 16px;
+                            line-height: 17px;
                         }
 
                         .social-icons{
-
-
+                            margin-top:14px;
                             img{
-
+                                width:30px;
+                                height:30px;
+                                margin-right:11px;
                             }
                             img:last-child{
 
@@ -736,39 +761,60 @@
                 }
 
                 .right {
+                    width:100%;
+
                     .interviews{
+                        display: flex;
+                        flex-direction: column;
+
                         .interview-text{
 
                         }
 
                         .upload-btn-box{
 
-
+                            width:20px;
+                            height:16px;
+                            background:none;
+                            margin-right: 0 !important;
+                            margin-bottom:20px;
                             img{
-
+                                margin-right: 0;
                             }
                         }
                     }
                     .prof-info{
-                        .hourly-rate {
+                        margin-top: 30px;
+                        justify-content: space-between;
+                        align-items:center;
+                        width:100%;
 
+                        .hourly-rate {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
                         }
 
                         .weekly-availability {
-
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
                         }
 
                         .hourly-rate-text {
-
+                            font-size: 24px;
+                            line-height: 26px;
                         }
 
                         .hourly-rate-text.light {
-
+                            font-size: 12px;
+                            line-height: 14px;
                         }
 
                         .hire-me-btn {
                             a {
-
+                                width: 112px;
+                                height:40px;
                             }
                         }
                     }
@@ -777,9 +823,11 @@
             }
 
             .tabs-bar {
-
+                margin-top: 25px;
                 .tab-text {
-
+                    font-size: 18px;
+                    padding-right: 25px;
+                    padding-left: 25px;
                 }
 
                 .tab-text:not(:last-child) {
@@ -805,9 +853,11 @@
                 .skills{
 
                     .skills-tabs {
+                        overflow:scroll;
+                        justify-content: flex-start !important;
 
                         .skills-tab-text {
-
+                            font-size: 20px;
                         }
 
                         .skills-tab-text:hover {
@@ -815,14 +865,15 @@
                         }
 
                         .skills-tab-text.active {
-
+                            font-size: 20px;
                         }
 
                     }
                     .skills-icons-bar {
 
                         img {
-
+                            width:45px;
+                            height:45px;
                         }
 
                         img:last-child {
@@ -835,9 +886,10 @@
 
                 .portfolio{
                     .portfolioSlides {
-
+                        margin-top: 20px;
                         img {
-
+                            width:300px !important;
+                            height:290px;
                         }
 
                         .slide-text {
@@ -864,7 +916,8 @@
     //slick slides :
 
     .slick-dots {
-        bottom: -31px !important;
+        bottom: -27px !important;
+
     }
 
     .slick-dots li button:before {
@@ -877,6 +930,11 @@
     .slick-dots li.slick-active button:before {
         opacity: 1;
         color: #5289E7;
+    }
+
+    .slick-slide.slick-current.slick-active{
+        display: flex;
+        justify-content: center;
     }
 
     /* scroll bar styles */

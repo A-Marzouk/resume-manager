@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="interviews">
+                <div class="interviews hideOnNotPhone">
                     <div class="interview-text hideMeOnTablet hideMeOnPhone" style="margin-right:20px;">
                         Your interviews:
                     </div>
@@ -188,6 +188,12 @@
 </script>
 
 <style lang="scss">
+
+    .hideOnNotPhone{
+        @media only screen and (min-width: 765px) {
+            display:none !important;
+        }
+    }
 
     .themeWrapper {
 

@@ -78,7 +78,7 @@
         </div>
 
         <div class="tabs-wrapper">
-            <div class="tabs-bar">
+            <slick class="tabs-bar" ref="slick" :options="slickOptions">
                 <div class="tab-text" :class="{active : activeTab === 'portfolio'}" @click="setActiveTab('portfolio')">
                     <span v-if="activeTab === 'portfolio'" class="left ">[ </span>
                     Portfolio
@@ -86,7 +86,7 @@
                 </div>
                 <div class="tab-text" :class="{active : activeTab === 'workEx'}" @click="setActiveTab('workEx')">
                     <span v-if="activeTab === 'workEx'" class="left ">[ </span>
-                    Work Experience
+                    Work Ex.
                     <span v-if="activeTab === 'workEx'" class="right "> ]</span>
                 </div>
                 <div class="tab-text" :class="{active : activeTab === 'edu'}" @click="setActiveTab('edu')">
@@ -104,7 +104,8 @@
                     About
                     <span v-if="activeTab === 'about'" class="right "> ]</span>
                 </div>
-            </div>
+            </slick>
+
 
             <div class="tab-content-wrapper">
                 <div class="portfolio" v-show="activeTab === 'portfolio'" :class="{active : activeTab === 'portfolio'}">
@@ -322,12 +323,33 @@
 </template>
 
 <script>
+    import Slick from 'vue-slick';
+
     export default {
         name: "theme5",
-
+        components: {
+            Slick
+        },
         data() {
             return {
                 activeTab: 'portfolio',
+                slickOptions:{
+                    dots: false,
+                    arrows: false,
+                    slidesToShow: 5,
+                    responsive: [
+                        {
+                            breakpoint: 991,
+                            settings: {
+                                dots: false,
+                                arrows: false,
+
+                                centerMode: true,
+                                slidesToShow: 1,
+                            }
+                        },
+                    ]
+                },
             }
         },
 
@@ -597,6 +619,7 @@
                     font-size: 20px;
                     color: #918F97;
                     margin-right: 96px;
+                    white-space: nowrap;
 
                     span.left {
                         transition: all 0.5s ease;
@@ -1095,6 +1118,10 @@
                         font-size: 20px;
                         color: #918F97;
                         margin-right: 27px;
+                        white-space: nowrap;
+
+                        display: flex !important;
+                        justify-content: center !important;
 
                         span.left {
                             display: none;
@@ -1609,9 +1636,12 @@
                     border-radius: 8px;
                     background: #F8F8F8;
 
-                    overflow: scroll;
+
 
                     .tab-text {
+                        display: flex !important;
+                        justify-content: center !important;
+
                         line-height: 27px;
                         font-size: 17px;
                         color: #918F97;
@@ -1882,6 +1912,11 @@
         }
     }
 
+
+    //slick css
+
+
+    // end of slick
 
     // skills bar css :
     .skills,

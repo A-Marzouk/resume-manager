@@ -66,6 +66,7 @@ Vue.component('resume-theme-2', require('./components/resume_themes/theme2.vue')
 Vue.component('resume-theme-3', require('./components/resume_themes/theme3.vue'));
 Vue.component('resume-theme-4', require('./components/resume_themes/theme4.vue'));
 Vue.component('resume-theme-5', require('./components/resume_themes/theme5.vue'));
+Vue.component('resume-theme-6', require('./components/resume_themes/theme6.vue'));
 Vue.component('resume-theme-10', require('./components/resume_themes/theme10.vue'));
 
 
@@ -111,6 +112,11 @@ if ($("#resumeTheme4").length !== 0){
 if ($("#resumeTheme5").length !== 0){
     let resumeTheme5 = new Vue({
         el:'#resumeTheme5'
+    })
+}
+if ($("#resumeTheme6").length !== 0){
+    let resumeTheme6 = new Vue({
+        el:'#resumeTheme6'
     })
 }
 if ($("#resumeTheme10").length !== 0) {

@@ -216,6 +216,26 @@ class ResumeController extends Controller
 
     }
 
+    public function agentsResumeTheme6($username)
+    {
+
+        $freelancer = User::with(['userData','skills','agent','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+            return $query->limit(10);
+        }])->where('username',$username)->first();
+
+        if (!$freelancer->agent->customResume) {
+            ResumeCustom::insert([
+                [
+                    'agent_id' => $freelancer->agent->id,
+                    'background_color' => '#4E75E8',
+                ],
+            ]);
+        }
+
+        return view('resume_themes.theme6', compact('freelancer'));
+
+    }
+
     public function agentsResumeTheme10($username)
     {
 

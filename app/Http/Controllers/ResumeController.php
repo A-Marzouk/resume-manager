@@ -47,8 +47,8 @@ class ResumeController extends Controller
         $translate = new TranslateClient();
         $result = $translate->translate($text, [
             'target' => $targetLanguage,
-            'model'  => $model,
-            'key'  => Config::get('services.google.key')
+            'model' => $model,
+            'key' => Config::get('services.google.key')
         ]);
 
         return ("Translation:\n\n $result[text]\n");
@@ -219,9 +219,9 @@ class ResumeController extends Controller
     public function agentsResumeTheme6($username)
     {
 
-        $freelancer = User::with(['userData','skills','agent','worksHistory.projects','references','educationsHistory','projects'=>function($query) {
+        $freelancer = User::with(['userData', 'skills', 'agent', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
             return $query->limit(10);
-        }])->where('username',$username)->first();
+        }])->where('username', $username)->first();
 
         if (!$freelancer->agent->customResume) {
             ResumeCustom::insert([
@@ -233,6 +233,26 @@ class ResumeController extends Controller
         }
 
         return view('resume_themes.theme6', compact('freelancer'));
+
+    }
+
+    public function agentsResumeTheme7($username)
+    {
+
+        $freelancer = User::with(['userData', 'skills', 'agent', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
+            return $query->limit(10);
+        }])->where('username', $username)->first();
+
+        if (!$freelancer->agent->customResume) {
+            ResumeCustom::insert([
+                [
+                    'agent_id' => $freelancer->agent->id,
+                    'background_color' => '#4E75E8',
+                ],
+            ]);
+        }
+
+        return view('resume_themes.theme7', compact('freelancer'));
 
     }
 

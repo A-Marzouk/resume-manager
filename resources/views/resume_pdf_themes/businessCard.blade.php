@@ -60,7 +60,7 @@
         .whatsappIcon{
             width: 12px;
             height: 12px;
-            margin-right: 10px;
+            padding-right: 10px;
         }
 
         .phoneNumber{
@@ -75,7 +75,7 @@
         .social-icon{
             width: 16px;
             height: 16px;
-            margin-right: 25px ;
+            padding-right: 25px ;
         }
 
         .images{
@@ -104,23 +104,19 @@
 
     <div class="phone">
         <div class="flexrow">
-            <div>
                 <img src="{{public_path().'/images/resume_themes/theme8/whatsapp.png'}}" alt="" class="whatsappIcon">
-            </div>
-            <div class="phoneNumber">
+            <span class="phoneNumber">
                 000 0000 000
-            </div>
+            </span>
         </div>
     </div>
 
     <div class="phone">
         <div class="flexrow">
-            <div>
-                <img src="{{public_path().'/images/resume_themes/theme8/email.png'}}" alt="" class="whatsappIcon">
-            </div>
-            <div class="phoneNumber">
+            <img src="{{public_path().'/images/resume_themes/theme8/email.png'}}" alt="" class="whatsappIcon">
+            <span class="phoneNumber">
                 BeverlyA@gmail.com
-            </div>
+            </span>
         </div>
     </div>
 

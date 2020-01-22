@@ -630,6 +630,7 @@ Route::get('/theme-4/{username}', 'ResumeController@agentsResumeTheme4');
 Route::get('/theme-5/{username}', 'ResumeController@agentsResumeTheme5');
 Route::get('/theme-6/{username}', 'ResumeController@agentsResumeTheme6');
 Route::get('/theme-7/{username}', 'ResumeController@agentsResumeTheme7');
+Route::get('/theme-8/{username}', 'ResumeController@agentsResumeTheme8');
 Route::get('/theme-10/{username}', 'ResumeController@agentsResumeTheme10');
 
 Route::get('/theme-10/{username}/download', 'ResumePDFController@theme10')->name('download-pdf-resume');

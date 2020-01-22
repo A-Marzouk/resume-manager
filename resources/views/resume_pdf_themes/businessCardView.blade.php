@@ -105,7 +105,7 @@
     <div class="phone">
         <div class="flexrow">
             <div>
-                <img src="/images/resume_themes/theme8/whatsapp.svg" alt="" class="whatsappIcon">
+                <img src="/images/resume_themes/theme8/whatsapp.png" alt="" class="whatsappIcon">
             </div>
             <div class="phoneNumber">
                 000 0000 000

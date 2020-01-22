@@ -116,7 +116,7 @@
     <div class="phone">
         <div class="flexrow">
             <div>
-                <img src="/images/resume_themes/theme8/email.svg" alt="" class="whatsappIcon">
+                <img src="/images/resume_themes/theme8/email.png" alt="" class="whatsappIcon">
             </div>
             <div class="phoneNumber">
                 BeverlyA@gmail.com
@@ -126,12 +126,12 @@
 
 
     <div class="flexrow images">
-        <img src="/images/resume_themes/theme8/workforce.svg" alt="" class="social-icon">
-        <img src="/images/resume_themes/theme8/behance (1).svg" alt="" class="social-icon">
-        <img src="/images/resume_themes/theme8/dribbble.svg" alt="" class="social-icon">
-        <img src="/images/resume_themes/theme8/instagram.svg" alt="" class="social-icon">
-        <img src="/images/resume_themes/theme8/XMLID_801_.svg" alt="" class="social-icon">
-        <img src="/images/resume_themes/theme8/icon.svg" alt="" class="social-icon">
+        <img src="/images/resume_themes/theme8/workforce.png" alt="" class="social-icon">
+        <img src="/images/resume_themes/theme8/behance (1).png" alt="" class="social-icon">
+        <img src="/images/resume_themes/theme8/dribbble.png" alt="" class="social-icon">
+        <img src="/images/resume_themes/theme8/instagram.png" alt="" class="social-icon">
+        <img src="/images/resume_themes/theme8/XMLID_801_.png" alt="" class="social-icon">
+        <img src="/images/resume_themes/theme8/icon.png" alt="" class="social-icon">
     </div>
 
 </div>

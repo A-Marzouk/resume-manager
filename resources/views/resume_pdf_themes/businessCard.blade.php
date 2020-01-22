@@ -90,7 +90,7 @@
 <div class="businessCardWrapper">
     <div class="flexrow">
         <div>
-            <img class="avatar" alt="" src="/images/resume_themes/theme5/profile.png" >
+            <img class="avatar" alt="" src="{{public_path().'/images/resume_themes/theme5/profile.png'}}" >
         </div>
         <div class="info">
             <div class="name">

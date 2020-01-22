@@ -105,7 +105,7 @@
     <div class="phone">
         <div class="flexrow">
             <div>
-                <img src="/images/resume_themes/theme8/whatsapp.svg" alt="" class="whatsappIcon">
+                <img src="{{public_path().'/images/resume_themes/theme8/whatsapp.svg'}}" alt="" class="whatsappIcon">
             </div>
             <div class="phoneNumber">
                 000 0000 000
@@ -116,7 +116,7 @@
     <div class="phone">
         <div class="flexrow">
             <div>
-                <img src="/images/resume_themes/theme8/email.svg" alt="" class="whatsappIcon">
+                <img src="{{public_path().'/images/resume_themes/theme8/email.svg'}}" alt="" class="whatsappIcon">
             </div>
             <div class="phoneNumber">
                 BeverlyA@gmail.com
@@ -126,12 +126,12 @@
 
 
     <div class="flexrow images">
-        <img src="/images/resume_themes/theme8/workforce.svg" alt="" class="social-icon">
-        <img src="/images/resume_themes/theme8/behance (1).svg" alt="" class="social-icon">
-        <img src="/images/resume_themes/theme8/dribbble.svg" alt="" class="social-icon">
-        <img src="/images/resume_themes/theme8/instagram.svg" alt="" class="social-icon">
-        <img src="/images/resume_themes/theme8/XMLID_801_.svg" alt="" class="social-icon">
-        <img src="/images/resume_themes/theme8/icon.svg" alt="" class="social-icon">
+        <img src="{{public_path().'/images/resume_themes/theme8/workforce.svg'}}" alt="" class="social-icon">
+        <img src="{{public_path().'/images/resume_themes/theme8/behance (1).svg'}}" alt="" class="social-icon">
+        <img src="{{public_path().'/images/resume_themes/theme8/dribbble.svg'}}" alt="" class="social-icon">
+        <img src="{{public_path().'/images/resume_themes/theme8/instagram.svg'}}" alt="" class="social-icon">
+        <img src="{{public_path().'/images/resume_themes/theme8/XMLID_801_.svg'}}" alt="" class="social-icon">
+        <img src="{{public_path().'/images/resume_themes/theme8/icon.svg'}}" alt="" class="social-icon">
     </div>
 
 </div>

@@ -633,8 +633,9 @@ Route::get('/theme-7/{username}', 'ResumeController@agentsResumeTheme7');
 Route::get('/theme-8/{username}', 'ResumeController@agentsResumeTheme8');
 Route::get('/theme-10/{username}', 'ResumeController@agentsResumeTheme10');
 
+
 Route::get('/business-card/download', 'ResumePDFController@BusinessCardDownload')->name('download-pdf-card');
-Route::get('/business-card/view', 'ResumePDFController@BusinessCardShow')->name('show-card');
+Route::get('/business/view', 'ResumePDFController@BusinessCardShow')->name('show-card');
 
 Route::get('/theme-10/{username}/download', 'ResumePDFController@theme10')->name('download-pdf-resume');
 

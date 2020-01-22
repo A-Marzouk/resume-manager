@@ -1315,7 +1315,7 @@
                         .images {
                             display: flex;
                             flex-wrap: wrap;
-                            justify-content: space-between;
+                            justify-content: center;
 
                             img {
                                 width: 638px;
@@ -1346,7 +1346,7 @@
                     .work-experience {
                         display: flex;
                         flex-wrap: wrap;
-                        justify-content: space-between;
+                        justify-content: center;
                         width: 100%;
 
                         .work-item {
@@ -1394,7 +1394,7 @@
                     .education {
                         display: flex;
                         flex-wrap: wrap;
-                        justify-content: space-between;
+                        justify-content: center;
                         width: 100%;
 
                         .education-item {
@@ -1441,7 +1441,7 @@
 
                     .skills-tab {
                         display: flex;
-                        justify-content: space-between;
+                        justify-content: center;
                         flex-wrap: wrap;
 
                         .skill-item {

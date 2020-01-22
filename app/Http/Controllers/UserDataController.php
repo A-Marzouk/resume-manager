@@ -13,6 +13,7 @@ use Behance\Client;
 use http\Exception;
 use Illuminate\Http\Request;
 use App\classes\Telegram;
+use App\Skill;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
@@ -382,37 +383,50 @@ class UserDataController extends Controller
         $projects = [];
         $languages = [];
 
-
         foreach ($reposData as $repo) {
             $project = new Project();
             $project->projectName = $repo->name;
-            $project->projectDesc = $repo->description;
-            $project->link = $repo->homepage;
+            $project->projectDesc = ($repo->description == null) ? 'No description' : $repo->description;
+            $project->link = ($repo->homepage == null) ? '' : $repo->homepage;
             $project->order = 1;
 
-            // Get repo languages
-            // dd($repo->languages_url);
-            $res = $client->get($repo->languages_url);
-            $repoLangs = json_decode($res->getBody());
-
-            var_dump((array) $repoLangs);
-
-            if (is_array($repoLangs) && count($repoLangs) > 0) {
-                dd($repoLangs);
-
-                foreach ($repoLangs as $lang) {
-                    if (!in_array($lang, $languages)) {
-                        $languages[] = $lang;
-                    }
-                }
+            if ($repo->language != null && !in_array($repo->language, $languages)) {
+                $languages[] = $repo->language;
             }
 
             array_push($projects, $project);
         }
 
-        // Save userProjects
-        // $user->projects()->saveMany($projects);
-        dd($projects);
+        // Check the user skills before save the incoming
+        $skills = Skill::where([
+            'user_id' => $user->id,
+        ])->orderBy('skill_title', 'asc')->get();
+
+        sort($languages);
+
+        $i = 0;
+
+        /**
+         * @todo fix the filter 
+         */
+
+        foreach ($skills as $skill) {
+
+            if ($i >= count($languages)) break;
+            $lang = $languages[$i];
+
+            if (!strcmp(strtolower($lang), strtolower($skill->skill_title)) > 0) {
+                if ($lang ==  $skill->skill_title) {
+                    // Remove from array because this exists on user skills
+                    array_splice($languages, $i, 1);
+                } else {
+                    // The skill is not in user skills
+                    $i++;
+                }
+            }
+        }
+
+        dd($languages);
 
         return response(json_encode($data), 200);
     }

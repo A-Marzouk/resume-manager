@@ -20,13 +20,13 @@
                                     <span>Message</span>
                                 </a>
                             </div>
-                            <div class="video-btn hideOnNotTablet">
+                            <div class="video-btn hideOnNotTablet hideMeOnPhone">
                                 <a href="javascript:void(0)">
                                     <img src="/images/resume_themes/theme8/video-player.svg" alt="video icon">
                                     <span>Video</span>
                                 </a>
                             </div>
-                            <div class="audio-btn hideOnNotTablet">
+                            <div class="audio-btn hideOnNotTablet hideMeOnPhone">
                                 <a href="javascript:void(0)">
                                     <img src="/images/resume_themes/theme8/headphones.svg" alt="audio icon">
                                     <span>Audio</span>
@@ -46,7 +46,7 @@
             </div>
             <div class="right">
                 <div class="interviews hideMeOnTablet">
-                    <div class="text">
+                    <div class="text hideMeOnPhone">
                         Interview:
                     </div>
                     <div class="video-btn">
@@ -407,8 +407,8 @@
             display: flex;
             justify-content: space-between;
             
-            border-top-left-radius: 25px;
-            border-top-right-radius: 25px;
+           
+           
             width: 100%;
             padding: 78px;
 
@@ -696,8 +696,8 @@
         }
 
         .tabs-wrapper {
-            border-bottom-left-radius: 25px;
-            border-bottom-right-radius: 25px;
+            
+            
 
             width: 100%;
             display: flex;
@@ -943,8 +943,8 @@
                 flex-wrap: wrap;
                 justify-content: center;
 
-                border-top-left-radius: 25px;
-                border-top-right-radius: 25px;
+               
+               
                 width: 100%;
                 padding: 37px 51px 63px 51px;
 
@@ -1286,8 +1286,8 @@
             }
 
             .tabs-wrapper {
-                border-bottom-left-radius: 25px;
-                border-bottom-right-radius: 25px;
+                
+                
 
                 width: 100%;
                 display: flex;
@@ -1535,69 +1535,66 @@
 
             .main-info-bar {
                 display: flex;
-                justify-content: space-between;
-
-                border-top-left-radius: 25px;
-                border-top-right-radius: 25px;
+                flex-wrap: wrap;
+                justify-content: center;
                 width: 100%;
-                padding: 78px;
-
+                padding: 22px 14px 30px 13px;
 
                 .left {
                     display: flex;
 
                     .profile-picture {
                         img {
-                            width: 200px;
-                            height: 200px;
+                            width: 95.5px;
+                            height: 95.5px;
                             border-radius: 50%;
                         }
                     }
 
                     .main-info {
-                        margin-left: 33px;
-                        margin-top: 5px;
+                        margin-left: 9px;
+                        margin-top: 0px;
 
                         .user-name {
-                            font-size: 40px;
-                            line-height: 53px;
+                            font-size: 24px;
+                            line-height: 32px;
                             color: #005BD1 !important;
                             font-weight: bold;
                             opacity: 1;
-                            padding-bottom: 13px;
+                            padding-bottom: 5px;
                         }
 
                         .job-title {
                             font-weight: 500;
-                            font-size: 21px;
-                            line-height: 27px;
+                            font-size: 14px;
+                            line-height: 18px;
                             color: #FFFFFF;
                         }
 
                         .social{
                             display: flex;
-                            margin-top: 54px;
+                            margin-top: 18px;
                             .message-btn{
-                                margin-right: 56px;
+                                margin-right: 22px;
 
                                 a{
                                     background: #005BD1;
                                     box-shadow: 0px 0px 16px rgba(0, 91, 209, 0.5);
                                     border-radius: 30px;
-                                    width: 139px;
-                                    height:41px;
+                                    width: 79px;
+                                    height:24px;
                                     font-weight: bold;
-                                    font-size: 18px;
-                                    line-height: 24px;
+                                    font-size: 10px;
+                                    line-height: 13px;
                                     color: #FFFFFF;
                                     display: flex;
                                     justify-content: center;
                                     align-items: center;
 
                                     img{
-                                        width:22px;
-                                        height: 17px;
-                                        margin-right: 10px;
+                                        width:10px;
+                                        height: 8px;
+                                        margin-right: 8px;
                                     }
                                 }
                             }
@@ -1606,9 +1603,9 @@
                                 display: flex;
                                 align-items: center;
                                 img{
-                                    width:42px;
-                                    height:26px;
-                                    margin-right:30px ;
+                                    width:20px;
+                                    height:12px;
+                                    margin-right:10px ;
                                 }
                                 img:last-child{
                                     margin-right:0 ;
@@ -1624,12 +1621,15 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
+                    width: 100%;
+
+                    margin-top: 33px;
 
                     .interviews{
                         display: flex;
-                        justify-content: flex-end;
+                        justify-content: center;
                         align-items: center;
-                        margin-right: 42px;
+                        margin-right: 0;
                         .text{
                             font-style: normal;
                             font-weight: 500;
@@ -1640,25 +1640,25 @@
                         }
 
                         .video-btn{
-                            margin-right:9px;
+                            margin-right:12px;
                             a{
                                 background: #005BD1;
                                 box-shadow: 0px 0px 16px rgba(0, 91, 209, 0.5);
                                 border-radius: 30px;
-                                width:139px;
-                                height:41px;
+                                width:87px;
+                                height:26px;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
                                 font-weight: bold;
-                                font-size: 18px;
-                                line-height: 24px;
+                                font-size: 10px;
+                                line-height: 13px;
 
                                 color: #FFFFFF;
                                 img{
-                                    width:22px;
-                                    height:17px;
-                                    margin-right:11px;
+                                    width:14px;
+                                    height:11px;
+                                    margin-right:7px;
                                 }
                             }
                         }
@@ -1669,21 +1669,20 @@
                                 background: #005BD1;
                                 box-shadow: 0px 0px 16px rgba(0, 91, 209, 0.5);
                                 border-radius: 30px;
-                                width:139px;
-                                height:41px;
+                                width:87px;
+                                height:26px;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
                                 font-weight: bold;
-                                font-size: 18px;
-                                line-height: 24px;
-
+                                font-size: 10px;
+                                line-height: 13px;
 
                                 color: #FFFFFF;
                                 img{
-                                    width:18px;
-                                    height:16px;
-                                    margin-right:12px;
+                                    width:14px;
+                                    height:11px;
+                                    margin-right:7px;
                                 }
                             }
 
@@ -1692,10 +1691,12 @@
 
                     .prof-info {
                         display: flex;
+                        flex-direction: column;
+                        margin-top:25px;
                         align-items: center;
-                        justify-content: space-evenly;
-                        width: 725px;
-                        height: 135px;
+                        justify-content: center;
+                        width: 100%;
+                        height: 196px;
                         background: #333232;
                         box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
                         border-radius: 30px;
@@ -1706,19 +1707,19 @@
                             .hours {
                                 display: flex;
                                 flex-direction: column;
-                                margin-right: 36px;
+                                margin-right: 21px;
                                 align-items: center;
                                 .text{
                                     font-weight: 500;
-                                    font-size: 20px;
-                                    line-height: 26px;
+                                    font-size: 14px;
+                                    line-height: 18px;
                                     color: #FFFFFF;
-                                    margin-bottom: 10px;
+                                    margin-bottom: 8px;
                                 }
                                 .number{
                                     font-weight: bold;
-                                    font-size: 26px;
-                                    line-height: 34px;
+                                    font-size: 24px;
+                                    line-height: 32px;
                                     color: #005BD1;
                                 }
                             }
@@ -1732,20 +1733,20 @@
                             .rate {
                                 display: flex;
                                 flex-direction: column;
-                                margin-left: 36px;
+                                margin-left: 21px;
                                 align-items: center;
 
                                 .text{
                                     font-weight: 500;
-                                    font-size: 20px;
-                                    line-height: 26px;
+                                    font-size: 14px;
+                                    line-height: 18px;
                                     color: #FFFFFF;
-                                    margin-bottom: 10px;
+                                    margin-bottom: 8px;
                                 }
                                 .number{
                                     font-weight: bold;
-                                    font-size: 26px;
-                                    line-height: 34px;
+                                    font-size: 24px;
+                                    line-height: 32px;
                                     color: #005BD1;
                                 }
                             }
@@ -1753,21 +1754,22 @@
 
                         .prof-right{
                             .hire-me-btn {
+                                margin-top:23px;
                                 a {
                                     background: #005BD1;
                                     box-shadow: 0px 0px 16px rgba(0, 91, 209, 0.5);
                                     border-radius: 50px;
 
                                     font-weight: bold;
-                                    font-size: 24px;
-                                    line-height: 32px;
+                                    font-size: 18px;
+                                    line-height: 24px;
                                     color: #FFFFFF;
 
                                     display: flex;
                                     justify-content: center;
                                     align-items: center;
-                                    width: 214px;
-                                    height: 63px;
+                                    width: 171px;
+                                    height: 50px;
                                 }
                             }
                         }
@@ -1781,18 +1783,21 @@
                 background: #333232;
                 box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
                 width:100%;
-                height:119px;
+                height:59px;
                 display: flex;
                 align-items: center;
-                justify-content: space-around;
+                justify-content: flex-start;
+                overflow: auto;
 
                 .tab-text {
                     font-style: italic;
                     font-weight: bold;
-                    font-size: 36px;
-                    line-height: 48px;
+                    font-size: 18px;
+                    line-height: 24px;
                     color: rgba(0, 91, 209, 0.3);
                     position: relative;
+                    margin-right: 10px;
+                    margin-left: 10px;
                 }
 
                 .tab-text:hover {
@@ -1827,19 +1832,14 @@
             }
 
             .tabs-wrapper {
-                border-bottom-left-radius: 25px;
-                border-bottom-right-radius: 25px;
-
                 width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                padding: 0 150px 67px 150px;
-
-
+                padding: 0 12px 30px 12px;
 
                 .tab-content-wrapper {
-                    margin-top: 115px;
+                    margin-top: 54px;
 
                     .portfolio.active, .skills.active, .about.active, .work-experience.active, .education.active {
                         opacity: 1;
@@ -1852,17 +1852,17 @@
 
                     .portfolio {
                         width: 100%;
-
                         .images {
                             display: flex;
                             flex-wrap: wrap;
-                            justify-content: space-between;
+                            justify-content: center;
 
                             img {
-                                width: 488px;
-                                height: 381px;
+                                width: 100%;
+                                max-width: 352px;
+                                height: 275px;
                                 border-radius: 10px;
-                                margin-bottom: 27px;
+                                margin-bottom: 29px;
                             }
 
                         }
@@ -1887,46 +1887,47 @@
                     .work-experience {
                         display: flex;
                         flex-wrap: wrap;
-                        justify-content: space-between;
+                        justify-content: center;
                         width: 100%;
 
                         .work-item {
                             margin-bottom: 29px;
-                            width: 790px;
+                            width: 100%;
+                            max-width: 355px;
                             background: #333232;
                             box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
                             border-radius: 30px;
-                            padding: 38px 75px;
+                            padding: 25px;
 
                             .company {
                                 font-style: normal;
                                 font-weight: bold;
-                                font-size: 36px;
-                                line-height: 48px;
+                                font-size: 24px;
+                                line-height: 32px;
                                 color: #FFFFFF;
                                 margin-bottom: 14px;
                             }
 
                             .title {
                                 font-weight: bold;
-                                font-size: 32px;
-                                line-height: 42px;
+                                font-size: 12px;
+                                line-height: 16px;
                                 color: #FFFFFF;
                                 margin-bottom: 18px;
                             }
 
                             .duration {
                                 font-weight: bold;
-                                font-size: 22px;
-                                line-height: 29px;
+                                font-size: 12px;
+                                line-height: 16px;
                                 color: #1F5DE4;
-                                margin-bottom: 30px;
+                                margin-bottom: 13px;
                             }
 
                             .work-info {
                                 font-weight: 500;
-                                font-size: 20px;
-                                line-height: 26px;
+                                font-size: 10px;
+                                line-height: 13px;
                                 color: #FFFFFF;
                             }
                         }
@@ -1935,24 +1936,25 @@
                     .education {
                         display: flex;
                         flex-wrap: wrap;
-                        justify-content: space-between;
+                        justify-content: center;
                         width: 100%;
 
                         .education-item {
                             margin-bottom: 29px;
-                            width: 790px;
+                            width: 100%;
+                            max-width:355px ;
                             background: #333232;
                             box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
                             border-radius: 30px;
-                            padding: 38px 75px;
+                            padding: 25px;
 
                             .education-type {
                                 font-style: normal;
                                 font-weight: bold;
-                                font-size: 18px;
-                                line-height: 24px;
+                                font-size: 10px;
+                                line-height: 13px;
                                 color: #1F5DE4;
-                                margin-bottom: 31px;
+                                margin-bottom: 12px;
                             }
 
                             .education-name {
@@ -1965,16 +1967,16 @@
 
                             .education-date {
                                 font-weight: bold;
-                                font-size: 22px;
-                                line-height: 29px;
+                                font-size: 18px;
+                                line-height: 24px;
                                 color: #1F5DE4;
-                                margin-bottom: 45px;
+                                margin-bottom: 10px;
                             }
 
                             .education-info {
                                 font-weight: 500;
-                                font-size: 20px;
-                                line-height: 26px;
+                                font-size: 14px;
+                                line-height: 18px;
                                 color: #FFFFFF;
                             }
                         }
@@ -1982,16 +1984,17 @@
 
                     .skills-tab {
                         display: flex;
-                        justify-content: space-between;
+                        justify-content: center;
                         flex-wrap: wrap;
 
                         .skill-item {
-                            width: 790px;
-                            height: 287px;
-                            padding-left:58px;
-                            padding-right:58px;
-                            padding-bottom: 58px;
-                            margin-bottom: 25px;
+                            width: 100%;
+                            max-width: 355px;
+                            height: 129px;
+                            padding-left:28px;
+                            padding-right:28px;
+                            padding-bottom: 5px;
+                            margin-bottom: 35px;
                             background: #333232;
                             box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
                             border-radius: 30px;
@@ -1999,8 +2002,8 @@
 
                         .percentage{
                             font-weight: bold;
-                            font-size: 42px !important;
-                            line-height: 56px;
+                            font-size: 18px !important;
+                            line-height: 24px;
                             color: #FFFFFF !important;
                         }
                     }
@@ -2011,7 +2014,7 @@
                         background: #333232;
                         box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
                         border-radius: 30px;
-                        padding: 58px;
+                        padding: 25px;
 
                         .about-me {
                             .about-title {

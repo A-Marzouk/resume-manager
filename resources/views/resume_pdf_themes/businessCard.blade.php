@@ -18,7 +18,7 @@
             border: 1px black solid;
             padding: 17px 24px 20px 24px;
             background-image:url("/images/resume_themes/theme8/card-background.png") ;
-            background-size: cover;
+            background-size: 405px 243px;
             font-family: 'Thabit', monospace !important;
 
         }

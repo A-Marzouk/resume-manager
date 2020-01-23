@@ -384,9 +384,9 @@
             display: flex;
             justify-content: space-between;
             background: #FFFFFF;
-            border-radius: 25px;
+            border-radius: 0px 0px 25px 25px;
             width: 100%;
-            max-width: 1840px;
+           max-width: 1920px;
             height: 285px;
             padding: 46px 102px 55px 87px;
 
@@ -594,9 +594,10 @@
         .tabs-wrapper {
             margin-top: 20px;
             background: #FFFFFF;
-            border-radius: 25px;
+            border-radius:  25px 25px 0px 0px;
+
             width: 100%;
-            max-width: 1840px;
+           max-width: 1920px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -881,7 +882,7 @@
                 display: flex;
                 flex-direction: column;
                 background: #FFFFFF;
-                border-radius: 18px;
+                border-radius: 0px 0px 18px 18px;
                 width: 100%;
                 height: auto;
                 padding: 25px 65px 31px 65px;
@@ -1094,7 +1095,7 @@
             .tabs-wrapper {
                 margin-top: 20px;
                 background: #FFFFFF;
-                border-radius: 18px;
+                border-radius:  18px 18px 0px 0px;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
@@ -1394,7 +1395,7 @@
                 display: flex;
                 flex-direction: column;
                 background: #FFFFFF;
-                border-radius: 18px;
+                border-radius: 0px 0px 18px 18px;
                 width: 100%;
                 height: auto;
                 padding: 19px 10px 31px 10px;
@@ -1615,7 +1616,8 @@
             .tabs-wrapper {
                 margin-top: 20px;
                 background: #FFFFFF;
-                border-radius: 18px;
+                border-radius:  18px 18px 0px 0px;
+
                 width: 100%;
                 display: flex;
                 flex-direction: column;

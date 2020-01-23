@@ -72,6 +72,9 @@ Vue.component('resume-theme-8', require('./components/resume_themes/theme8.vue')
 Vue.component('resume-theme-10', require('./components/resume_themes/theme10.vue'));
 
 
+Vue.component('business-card-v2', require('./components/resume_themes/businessCardV2.vue'));
+
+
 Vue.component('extract-text-from-pdf', require('./components/resume_themes/ExtractTextFromPDF.vue'));
 
 
@@ -138,6 +141,14 @@ if ($("#resumeTheme10").length !== 0) {
         el: '#resumeTheme10'
     })
 }
+
+
+if ($("#businessCardV2").length !== 0) {
+    let businessCardV2 = new Vue({
+        el: '#businessCardV2'
+    })
+}
+
 
 if ($("#freelancerResumeLongV2").length !== 0){
     let freelancerResumeLongV2 = new Vue({

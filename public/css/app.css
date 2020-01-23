@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/earlyaccess/thabit.css);* {
+* {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -10620,101 +10620,6 @@ select:focus {
   padding-bottom: 20px;
   padding-top: 20px;
   padding-left: 17px;
-}
-
-.emailSignature {
-  width: 600px;
-  height: 150px;
-  background-image: url("/images/resume_themes/theme8/emailBackground.png");
-  font-family: 'Thabit', monospace !important;
-}
-
-.emailSignature .wrapper {
-  padding: 18px;
-}
-
-.emailSignature .signature_avatar img {
-  width: 117px;
-  height: 117px;
-  margin-right: 15px;
-}
-
-.emailSignature .info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.emailSignature .info .name_title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emailSignature .info .name_title .name {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 32px;
-  color: #005BD1;
-  margin-right: 19px;
-}
-
-.emailSignature .info .name_title .title {
-  margin-left: 19px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  color: #FFFFFF;
-}
-
-.emailSignature .info .name_title .horizontal-divider {
-  height: 41px;
-  width: 1px;
-  background: rgba(255, 255, 255, 0.38);
-}
-
-.emailSignature .info .contact {
-  margin-top: 26px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emailSignature .info .contact .phone {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 16px;
-  color: #FFFFFF;
-}
-
-.emailSignature .info .contact .phone img {
-  width: 12px;
-  height: 12px;
-  margin-right: 10px;
-}
-
-.emailSignature .info .icons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.emailSignature .info .icons img {
-  width: 21px;
-  height: 21px;
-  margin-right: 24px;
 }
 
 .pb-large {

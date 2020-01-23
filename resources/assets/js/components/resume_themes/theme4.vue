@@ -200,7 +200,6 @@
         width: 100%;
         max-width: 1920px;
         background: white;
-        border-radius: 15px;
 
         .mainThemeBar {
             padding-top: 40px;
@@ -528,7 +527,7 @@
 
         .themeWrapper {
 
-            width:98%;
+            width:100%;
 
             .mainThemeBar {
                 padding:20px;

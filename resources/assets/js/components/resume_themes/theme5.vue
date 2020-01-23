@@ -385,7 +385,7 @@
             justify-content: space-between;
             background: #FFFFFF;
             border-radius: 25px;
-            width: 95%;
+            width: 100%;
             max-width: 1840px;
             height: 285px;
             padding: 46px 102px 55px 87px;
@@ -595,7 +595,7 @@
             margin-top: 20px;
             background: #FFFFFF;
             border-radius: 25px;
-            width: 95%;
+            width: 100%;
             max-width: 1840px;
             display: flex;
             flex-direction: column;
@@ -882,7 +882,7 @@
                 flex-direction: column;
                 background: #FFFFFF;
                 border-radius: 18px;
-                width: 95%;
+                width: 100%;
                 height: auto;
                 padding: 25px 65px 31px 65px;
 
@@ -1095,7 +1095,7 @@
                 margin-top: 20px;
                 background: #FFFFFF;
                 border-radius: 18px;
-                width: 95%;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -1395,7 +1395,7 @@
                 flex-direction: column;
                 background: #FFFFFF;
                 border-radius: 18px;
-                width: 95%;
+                width: 100%;
                 height: auto;
                 padding: 19px 10px 31px 10px;
 
@@ -1616,7 +1616,7 @@
                 margin-top: 20px;
                 background: #FFFFFF;
                 border-radius: 18px;
-                width: 95%;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;

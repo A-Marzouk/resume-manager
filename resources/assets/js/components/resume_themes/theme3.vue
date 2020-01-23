@@ -492,14 +492,9 @@
 
     .themeWrapper {
 
-        width: 95%;
+        width: 100%;
         max-width: 1920px;
         background: white;
-        border-radius: 15px;
-
-        @media only screen and (max-width: 765px) {
-            width: 95vw;
-        }
 
         .mobileThemeBar {
             background: #FFFFFF;
@@ -1073,14 +1068,11 @@
         // all phone styles
         .themeWrapper {
 
-            width: 95%;
+            width: 100%;
             max-width: 1920px;
             background: white;
             border-radius: 15px;
 
-            @media only screen and (max-width: 765px) {
-                width: 95vw;
-            }
 
             .mobileThemeBar {
                 background: #FFFFFF;

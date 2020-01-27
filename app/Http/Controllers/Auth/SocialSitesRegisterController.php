@@ -36,7 +36,6 @@ class SocialSitesRegisterController extends Controller
         }
         return view('auth.freelancerSimpleRegister', compact('referral_code'));
     }
-
     public function simpleRegister(Request $request)
     {
         $this->validator($request->all())->validate();
@@ -52,7 +51,6 @@ class SocialSitesRegisterController extends Controller
             'status' => 'success'
         ];
     }
-
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -62,7 +60,6 @@ class SocialSitesRegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
-
     protected function create(array $data)
     {
         return app(User::class)->createAgent([
@@ -79,14 +76,11 @@ class SocialSitesRegisterController extends Controller
         ]);
     }
 
-
-    //    github
-
+    //    github provider
     public function redirectToGitHubProvider()
     {
         return Socialite::driver('github')->redirect();
     }
-
     public function handleGitHubProviderCallback()
     {
         try {
@@ -102,7 +96,6 @@ class SocialSitesRegisterController extends Controller
 
         return Redirect::to('/dashboard');
     }
-
     private function findOrCreateUser($githubUser)
     {
         if ($authUser = User::where('github_id', $githubUser->id)->first()) {
@@ -124,13 +117,25 @@ class SocialSitesRegisterController extends Controller
 
     }
 
-//    facebook
+
+    //    google provider
+
+    public function redirectToGoogleProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+    public function handleGoogleProviderCallback()
+    {
+        $user = Socialite::with('google')->user();
+        dd($user);
+    }
+
+    //    facebook provider
 
     public function redirectToFaceBookProvider()
     {
         return Socialite::driver('facebook')->redirect();
     }
-
     public function handleFaceBookProviderCallback()
     {
         $user = Socialite::driver('facebook')->user();
@@ -150,18 +155,7 @@ class SocialSitesRegisterController extends Controller
         dd($user);
     }
 
-//    google
 
-    public function redirectToGoogleProvider()
-    {
-        return Socialite::driver('google')->redirect();
-    }
-
-    public function handleGoogleProviderCallback()
-    {
-        $user = Socialite::driver('google')->user();
-        dd($user);
-    }
 
 //    linkedin
 

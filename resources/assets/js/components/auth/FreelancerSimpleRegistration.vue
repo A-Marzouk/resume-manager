@@ -28,8 +28,8 @@
                             <a href="/freelancer/register/instagram" class="d-none">
                                 instagram
                             </a>
-                            <a href="/freelancer/register/google" class="d-none">
-                                google
+                            <a href="/freelancer/register/google" class="d-flex align-items-center p-3 border-dark">
+                                <span>Continue with Google</span> <img src="/images/resume_themes/theme2/google.svg" style="width: 20px; height: 20px;" class="ml-2" alt="">
                             </a>
                             <a href="/freelancer/register/linkedin" class="d-none">
                                 linkedin

@@ -53,7 +53,7 @@ return [
     'google' => [
         'client_id'     => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect'      => 'http://local.123workforce.me/freelancer/register/google/callback'
+        'redirect'      => env('GOOGLE_CALLBACK_URL'),
     ],
 //
 //    'github' => [

@@ -8,6 +8,24 @@
                         <span>LOG IN</span>
                     </div>
                 </div>
+                <div class="d-flex NoDecor">
+                    <a href="/freelancer/register/github" class="d-flex align-items-center p-3 mr-3 border-dark">
+                        <span>Continue with Github</span> <img src="/images/resume_themes/theme10/github.png" style="width: 20px; height: 20px;" class="ml-2" alt="">
+                    </a>
+                    <a href="/freelancer/register/facebook" class="d-none">
+                        facebook
+                    </a>
+                    <a href="/freelancer/register/instagram" class="d-none">
+                        instagram
+                    </a>
+                    <a href="/freelancer/register/google" class="d-flex align-items-center p-3 border-dark">
+                        <span>Continue with Google</span> <img src="/images/resume_themes/theme2/google.svg" style="width: 20px; height: 20px;" class="ml-2" alt="">
+                    </a>
+                    <a href="/freelancer/register/linkedin" class="d-none">
+                        linkedin
+                    </a>
+                </div>
+
                 <div class="account-edit-section"
                      style="padding-bottom: 0; margin: 0 24px;">
                     <div class="account-edit-section-inputs">

@@ -13,6 +13,7 @@ use Behance\Client;
 use http\Exception;
 use Illuminate\Http\Request;
 use App\classes\Telegram;
+use App\Skill;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
@@ -25,27 +26,25 @@ class UserDataController extends Controller
 
     public function store(Request $request)
     {
-        if(isset($request->user_id)){
+        if (isset($request->user_id)) {
             $user_id = $request->user_id;
-        }else{
-            $user_id =  currentUser()->id ;
+        } else {
+            $user_id =  currentUser()->id;
         }
-        $userData = UserData::where('user_id',$user_id)->first();
+        $userData = UserData::where('user_id', $user_id)->first();
         if ($userData) {
             $data = $request->all();
             foreach ($data as $key => $value) {
-                if     ($key == '_token') {
+                if ($key == '_token') {
                     continue;
-                }
-                elseif ($key == 'photo') {
+                } elseif ($key == 'photo') {
                     if (is_numeric($value)) {
                         $userData->profile_picture = "";
                     } else {
                         $pathToPhoto = Upload::photo($value, 'photo', '');
-                        $userData->profile_picture= $pathToPhoto;
+                        $userData->profile_picture = $pathToPhoto;
                     }
-                }
-                elseif ($key == 'audioFile') {
+                } elseif ($key == 'audioFile') {
                     if (is_numeric($value)) {
                         $userData->{$key} = " ";
                     } else {
@@ -54,8 +53,7 @@ class UserDataController extends Controller
                             $userData->{$key} = $pathToAudio;
                         }
                     }
-                }
-                elseif ($key == 'video_file') {
+                } elseif ($key == 'video_file') {
                     if (is_numeric($value)) {
                         $userData->{$key} = " ";
                     } else {
@@ -64,8 +62,7 @@ class UserDataController extends Controller
                             $userData->{$key} = $pathToVideo;
                         }
                     }
-                }
-                elseif ($key == 'audio') {
+                } elseif ($key == 'audio') {
                     // get Id :
                     $data = $value;
                     $explodedData = explode("/", $data);
@@ -77,26 +74,24 @@ class UserDataController extends Controller
                             $userData->{$key} = "NOT-VALID-LINK";
                         }
                     }
-                }
-                else {
+                } else {
                     $userData->job_title = $request->jobTitle;
-                    $userData->first_name = explode(' ',$request->name)[0];
-                    $userData->last_name = explode(' ',$request->name)[1] ?? '' ;
-                    if($request->availableHours != null){
+                    $userData->first_name = explode(' ', $request->name)[0];
+                    $userData->last_name = explode(' ', $request->name)[1] ?? '';
+                    if ($request->availableHours != null) {
                         $userData->available_hours_per_week = $request->availableHours;
                     }
 
-                    $agent = Agent::where('user_id',$user_id)->first() ;
-                    if($request->salary != null){
-                        $agent->hourly_rate = $request->salary ;
+                    $agent = Agent::where('user_id', $user_id)->first();
+                    if ($request->salary != null) {
+                        $agent->hourly_rate = $request->salary;
                         $agent->save();
                     }
-
                 }
             }
 
             $userData->save();
-            return $request ;
+            return $request;
         } else {
             return redirect('/freelancer/home');
         }
@@ -211,7 +206,6 @@ class UserDataController extends Controller
             $localProject->images = implode(',', $moreMedia);
             $localProject->save();
         }
-
     }
 
 
@@ -227,25 +221,26 @@ class UserDataController extends Controller
 
             $userData->save();
             return redirect('/freelancer')->with('successMessage', 'Data is successfully imported from Linked In.');
-
         } catch (Exception $e) {
             return redirect('/freelancer')->with('errorMessage', 'Something went wrong, please try again.');
         }
-
     }
 
     public function dataFromInstagram()
     {
         $client = new \GuzzleHttp\Client();
 
-        $res = $client->request('POST', 'https://api.instagram.com/oauth/access_token',
-            ['form_params' => [
-                'client_id' => 'f877808c985d4f43ad73ae517db95151',
-                'client_secret' => '2f113fcf0bbc4a24ab30e1b5f90b5220',
-                'grant_type' => 'authorization_code',
-                'redirect_uri' => 'https://123workforce.com/freelancer/instagram',
-                'code' => $_GET['code'] ?? ''
-            ]
+        $res = $client->request(
+            'POST',
+            'https://api.instagram.com/oauth/access_token',
+            [
+                'form_params' => [
+                    'client_id' => 'f877808c985d4f43ad73ae517db95151',
+                    'client_secret' => '2f113fcf0bbc4a24ab30e1b5f90b5220',
+                    'grant_type' => 'authorization_code',
+                    'redirect_uri' => 'https://123workforce.com/freelancer/instagram',
+                    'code' => $_GET['code'] ?? ''
+                ]
             ]
         );
 
@@ -266,7 +261,6 @@ class UserDataController extends Controller
         }
 
         return redirect('/freelancer#portfolio')->with('successMessage', 'Instagram data successfully imported');
-
     }
 
     public function showAudioPage()
@@ -315,4 +309,136 @@ class UserDataController extends Controller
         return $target_file;
     }
 
+    /**
+     * Redirect the user to the GitHub authentication page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function githubOAuth()
+    {
+        return redirect('https://github.com/login/oauth/authorize?client_id=' . config('services.github.client_id') . '&redirect_uri=' . config('services.github.redirect') . '&login=' . auth()->user()->data->github);
+    }
+
+    public function importDataFromGithub(Request $request)
+    {
+        $client = new \GuzzleHttp\Client();
+        $user = auth()->user();
+
+        $res = $client->request(
+            'POST',
+            'https://github.com/login/oauth/access_token?client_id=' . config('services.github.client_id') . '&client_secret=' . config('services.github.client_secret') . '&code=' . $request->query('code'),
+            [
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json'
+                ]
+            ]
+        );
+
+        $token = json_decode($res->getBody()->getContents())->access_token;
+
+        /**
+         * @var $data is an object
+         * Example:
+         * 
+         * avatar_url: https://avatars0.githubusercontent.com/u/23144809?v=4
+         * login: josedan10
+         * location:  Caracas, Venezuela (done)
+         * blog: https://josedan.github.io (done)
+         * repos: https://api.github.com/users/josedan10/repos
+         */
+
+        $res = $client->request(
+            'GET',
+            'https://api.github.com/users/' . auth()->user()->data->github,
+            [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $token
+                ]
+            ]
+        );
+        $data = json_decode($res->getBody());
+
+        // Update user data
+        $user->data()->update([
+            'city' => explode(", ", $data->location)[0],
+            'country' => explode(", ", $data->location)[1],
+            'website' => $data->blog,
+            'avatar' => $data->avatar_url
+        ]);
+
+        $res = $client->request(
+            'GET',
+            $data->repos_url
+        );
+
+
+        /**
+         * @var $reposData is an array 
+         * 
+         */
+
+        $reposData = json_decode($res->getBody());
+
+        $projects = [];
+        $languages = [];
+
+        foreach ($reposData as $repo) {
+            $project = new Project();
+            $project->projectName = $repo->name;
+            $project->projectDesc = ($repo->description == null) ? 'No description' : $repo->description;
+            $project->link = ($repo->homepage == null) ? '' : $repo->homepage;
+            $project->order = 1;
+
+            if ($repo->language != null && !in_array($repo->language, $languages)) {
+                $languages[] = $repo->language;
+            }
+
+            array_push($projects, $project);
+        }
+
+        // Check the user skills before save the incoming
+        $skills = Skill::where([
+            'user_id' => $user->id,
+        ])->orderBy('skill_title', 'asc')->get();
+
+        sort($languages);
+        $i = 0;
+
+        /**
+         * @todo fix the filter 
+         */
+
+        foreach ($skills as $skill) {
+
+            if ($i >= count($languages)) break;
+            $lang = $languages[$i];
+
+            if (
+                !(strcmp(strtolower($lang), strtolower($skill->skill_title)) > 0)
+            ) {
+                if (strcmp(strtolower($lang), strtolower($skill->skill_title)) == 0) {
+                    // Remove from array because this exists on user skills
+                    array_splice($languages, $i, 1);
+                } else {
+                    // The skill is not in user skills
+                    $i++;
+                }
+            }
+        }
+
+        $newSkills = [];
+
+        if (count($languages) > 0) {
+            // Add new skills
+            foreach ($languages as $skill) {
+
+                $newSkills[] = new Skill(["skill_title" => $skill, "percentage" => 50, "type" => "programming"]);
+            }
+        }
+
+        $user->skills()->saveMany($newSkills);
+
+        return response("Imported data", 200);
+    }
 }

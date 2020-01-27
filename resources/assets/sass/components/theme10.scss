@@ -1,0 +1,31 @@
+.slider-theme10 {
+  // position: relative;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  width: calc(100% + 30px);
+  padding: 15px 0;
+  margin-top: -15px;
+
+  .slick-list {
+    height: 100%;
+    width: 100%;
+    overflow: visible !important;
+  }
+
+  .slick-slide {
+    overflow-y: visible;
+    position: relative;
+    z-index: 50;
+    margin: 0 10px;
+    border-radius: 30px;
+    box-shadow: 0 10px 10px rgba(16, 78, 251, 0.3);
+
+    img {
+      width: 100%;
+      position: relative;
+      z-index: 50;
+      border-radius: 20px;
+    }
+  }
+}

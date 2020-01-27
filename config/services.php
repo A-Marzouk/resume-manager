@@ -34,17 +34,16 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
     'linkedin' => [
-        'client_id' => env('LINKEDIN_CLIENT_ID'),
-        'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
-        'redirect' => 'http://local.123workforce.me/freelancer/register/linkedin/callback'
+        'client_id' => '865ff2s2qvpkzb',
+        'client_secret' => '9ql6QUkQLNZzS2J9',
+        'redirect' => 'https://123workforce.com/freelancer/linkedin'
     ],
 
     'instagram'=>[
         'client_id' => env('INSTAGRAM_APP_ID'),
         'client_secret' => env('INSTAGRAM_APP_SECRET'),
-        'redirect' => 'http://local.123workforce.me/freelancer/register/instagram/callback'
+        'redirect' => env('INSTAGRAM_CALLBACK_URL')
     ],
 
     'google_translate'=>[
@@ -56,6 +55,12 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect'      => 'http://local.123workforce.me/freelancer/register/google/callback'
     ],
+//
+//    'github' => [
+//        'client_id' => env('GITHUB_CLIENT'),
+//        'client_secret' => env('GITHUB_SECRET'),
+//        'redirect' => env('GITHUB_URI')
+//    ],
 
     'github'=>[
         'client_id' => env('GITHUB_CLIENT_ID_FOR_LOGIN'),

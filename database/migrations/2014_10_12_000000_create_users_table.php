@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('google_id')->nullable();
             $table->string('linkedin_id')->nullable();
             $table->string('facebook_id')->nullable();
+            $table->string('instagram_id')->nullable();
 
 
             $table->string('timezone')->nullable();

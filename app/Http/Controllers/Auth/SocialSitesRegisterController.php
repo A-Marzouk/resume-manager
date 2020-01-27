@@ -172,9 +172,8 @@ class SocialSitesRegisterController extends Controller
     }
     public function handleFaceBookProviderCallback()
     {
-        $user = Socialite::driver('facebook')->user();
         try {
-            $user = Socialite::driver('facebook')->user();
+            $user = Socialite::driver('facebook')->stateless()->user();
         } catch (Exception $e) {
             return Redirect::to('/freelancer/register/facebook');
         }
@@ -194,8 +193,17 @@ class SocialSitesRegisterController extends Controller
     }
     public function handleInstagramProviderCallback()
     {
-        $user = Socialite::driver('instagram')->user();
-        dd($user);
+        try {
+            $user = Socialite::driver('instagram')->user();
+        } catch (Exception $e) {
+            return Redirect::to('/freelancer/register/instagram');
+        }
+
+        $authUser = $this->findOrCreateUser($user,'instagram');
+
+        auth()->login($authUser);
+
+        return Redirect::to('/dashboard');
     }
 
 

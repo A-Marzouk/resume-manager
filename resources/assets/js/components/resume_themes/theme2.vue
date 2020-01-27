@@ -1,11 +1,5 @@
 <template>
     <div class="d-flex justify-content-center">
-        <nav class="navbar navbar-light fixed-top dashboard_navbar">
-            <a class="navbar-brand" href="/freelancer/dashboard">
-                <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
-            </a>
-        </nav>
-
         <div class="themeWrapper">
             <div class="mainThemeBar d-flex justify-content-between align-items-center">
                 <div class="left hideOnPhone">
@@ -220,16 +214,12 @@
 
     .themeWrapper{
 
-        width:100vw;
+        width:100%;
         max-width:1920px;
         background: white;
-        margin-left:3%;
-        margin-right:3%;
-        margin-top:1%;
-        border-radius:15px;
 
         @media only screen and (max-width: 600px) {
-            width:95vw;
+            width:100vw;
         }
 
         .mainThemeBar{

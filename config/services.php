@@ -48,6 +48,9 @@ return [
         'client_id' => env('GITHUB_CLIENT'),
         'client_secret' => env('GITHUB_SECRET'),
         'redirect' => env('GITHUB_URI')
+    ],
+    'google' => [
+        'key' => env('GOOGLE_APPLICATION_API_KEY'),
     ]
 
 ];

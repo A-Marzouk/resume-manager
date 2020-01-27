@@ -2,13 +2,34 @@
     <div>
         <div class="pl-5 pr-5 d-flex flex-column align-items-start ">
             <h2>Please upload your cv in pdf format </h2>
-            <hr>
-            <div class="form-group">
-                <input type="file" ref="file" @change="handleFileUpload">
+            <div class="d-flex">
+                <div class="ml-3">
+                    <input type="file" ref="file" @change="handleFileUpload">
+                    <div>
+                        <a href="javascript:void(0)" class="btn btn-dark mt-2" @click="uploadPDFFile">
+                            Extract text
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="form-group mt-3">
+                        <select name="langauge" id="language" class="custom-select" v-model="translationLanguage" required>
+                            <option value="select">Select a language</option>
+                            <option value="en">English</option>
+                            <option value="ru">Russian</option>
+                            <option value="es">Spanish</option>
+                            <option value="pt">Portuguese</option>
+                            <option value="fr">French</option>
+                            <option value="de">German</option>
+                            <option value="zh">Chinese</option>
+                            <option value="ar">Arabic</option>
+                        </select>
+                    </div>
+                    <a href="javascript:void(0)" class="btn btn-dark" @click="translatExtractedText">
+                        Translate Text
+                    </a>
+                </div>
+
             </div>
-            <a href="javascript:void(0)" class="btn btn-dark" @click="uploadPDFFile">
-                Extract text
-            </a>
 
             <div class="row w-100">
                 <div class="col-7 border-dark m-3 p-2" style="white-space: pre-line; border: 1px dotted;"
@@ -75,6 +96,48 @@
                             Languages : No languages found.
                         </div>
                     </div>
+                    <hr>
+                    <div>
+                        <div v-if="freelancerData.links.length > 0">
+                            Links:
+                            <div v-for="(link,index) in freelancerData.links" :key="index">
+                                <b><a href="javascript:void(0)" @click="goToExternalURL(link)" target="_blank">{{link}}</a></b>
+                            </div>
+                        </div>
+                        <div v-else>
+                            Links : No links found.
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                        <div v-if="freelancerData.education" >
+                            education:
+                            <b class="pre-formatted">{{nl2br(freelancerData.education)}}</b>
+                        </div>
+                        <div v-else>
+                            education : No education found.
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                        <div v-if="freelancerData.work_experience" >
+                            Work experience:
+                            <b class="pre-formatted">{{nl2br(freelancerData.work_experience)}}</b>
+                        </div>
+                        <div v-else>
+                            Work experience : No Work experience found.
+                        </div>
+                    </div>
+                    <hr>
+                    <div>
+                        <div v-if="freelancerData.references" >
+                            References:
+                            <b class="pre-formatted">{{nl2br(freelancerData.references)}}</b>
+                        </div>
+                        <div v-else>
+                            References : No References found.
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -90,8 +153,10 @@
         name: "ExtractTextFromPDF",
         data() {
             return {
+                translationLanguage:'select',
                 file: '',
                 extractedText: '',
+                originalText: '',
                 arrayOfExtractedText: '',
                 errors: [],
                 freelancerData: {
@@ -105,6 +170,7 @@
                     'references': '',
                     'skills': [],
                     'languages': [],
+                    'links': [],
                 },
                 countryList: [
                     "Afghanistan",
@@ -490,7 +556,6 @@
                     "English",
                     "Esperanto",
                     "Estonian",
-                    "Ewe",
                     "Faroese",
                     "Fijian",
                     "Finnish",
@@ -633,6 +698,33 @@
             }
         },
         methods: {
+            translatExtractedText(){
+                if (!this.extractedText){
+                    alert('No text detected!');
+                    return;
+                }
+                if(this.translationLanguage === 'en'){
+                    this.extractedText = this.originalText;
+                }
+                axios.post('/resume/translate',{
+                    extractedText : this.extractedText,
+                    translationLanguage  : this.translationLanguage
+                })
+                    .then( (response) => {
+                        console.log(response);
+                        this.extractedText = response.data;
+                    })
+                    .catch();
+            },
+            goToExternalURL(link) {
+                if (link.includes('http')) {
+                    window.open(link, '_blank');
+
+                } else {
+                    window.open('http://' + link, '_blank');
+                }
+
+            },
             uploadPDFFile() {
                 this.errors = [];
                 let formData = new FormData();
@@ -641,6 +733,7 @@
                     .then((response) => {
                         if (response.data.length > 0) {
                             this.extractedText = response.data;
+                            this.originalText = response.data;
                             this.clearFreelancerData();
                         } else {
                             this.extractedText = 'This file does not contain any text to be extracted!';
@@ -651,7 +744,6 @@
                     .catch((error) => {
                         if (typeof error.response.data === 'object') {
                             this.errors = error.response.data.errors;
-                            console.log(this.errors);
                         } else {
                             this.errors = ['Something went wrong. Please try again.'];
                         }
@@ -660,16 +752,17 @@
             clearFreelancerData() {
                 this.freelancerData = {
                     'name': '',
-                    'phone': '',
-                    'email': '',
-                    'job_title': '',
-                    'country': '',
+                    'phone': '', // done
+                    'email': '', // done
+                    'job_title': '', // done
+                    'country': '', // done
                     'about': '',
-                    'work_experience': '',
-                    'education': '',
-                    'references': '',
-                    'skills': [],
-                    'languages': [],
+                    'work_experience': [],
+                    'education': [],
+                    'references': [],
+                    'skills': [], //done
+                    'languages': [], // done
+                    'links': [], // done (might need more work for special social links)
                 };
             },
             handleFileUpload() {
@@ -679,37 +772,56 @@
                 let arrayOfData = this.arrayOfExtractedText;
 
                 arrayOfData.forEach((textLine) => {
-                    // check if this text line is email :
+                    // check for single fields:
+
                     if (!this.freelancerData.email) {
-                        this.checkForEmail(textLine);
+                        this.searchForEmail(textLine);
                     }
-
                     if (!this.freelancerData.phone) {
-                        this.checkForPhone(textLine);
+                        this.searchForPhone(textLine);
                     }
-
                     if (!this.freelancerData.job_title) {
-                        this.checkForJobTitle(textLine);
+                        this.searchForJobTitle(textLine);
                     }
-
                     if (!this.freelancerData.country) {
-                        this.checkForCountry(textLine);
+                        this.searchForCountry(textLine);
                     }
 
-                    this.checkForSkills(textLine);
-                    this.checkForLanguages(textLine);
+                    // check for array fields :
+                    this.searchForSkills(textLine);
+                    this.searchForLanguages(textLine);
+                    this.searchForLinks(textLine);
 
                 });
 
+                // check for long text fields like education, work experience and references :
+
+                this.searchForEducationText();
+                this.searchForExperienceText();
+                this.searchForReferencesText();
+
             },
-            checkForEmail(textLine) {
+            searchForEducationText(){
+                 this.freelancerData.education = this.extractedText.match(/((?<=Education)|(?<=EDUCATION))[\S\s]*?((?=Languages)|(?=LANGUAGES)|(?<=Experience)|(?<=EXPERIENCE)|(?=Skills)|(?=SKILLS)|(?=CAREER OBJECTIVE)|(?=Carrer Objective)|(?=REFEREES)|(?=References)|(?=Technologies)|(?=TECHNOLOGIES)|(?=Summary)|(?=SUMMURY)|(?=Projects)|(?=PROJECTS))/);
+            },
+            searchForExperienceText(){
+                this.freelancerData.work_experience = this.extractedText.match(/((?<=Experience)|(?<=EXPERIENCE)|(?<=Work)|(?<=WORK))[\S\s]*?((?=Education)|(?=Skills)|(?=SKILLS)|(?=CAREER OBJECTIVE)|(?=Carrer Objective)|(?=REFEREES)|(?=References)|(?=Languages)|(?=LANGUAGES)|(?=Technologies)|(?=TECHNOLOGIES)|(?=Summary)|(?=SUMMURY)|(?=Projects)|(?=PROJECTS))/);
+            },
+            searchForReferencesText(){
+                this.freelancerData.references = this.extractedText.match(/((?<=References)|(?<=REFEREES)|(?<=REFERENCES)|(?<=Referees))[\S\s]*?((?=Education)|(?=Skills)|(?=SKILLS)|(?=CAREER OBJECTIVE)|(?=Carrer Objective)|(?=Experience)|(?=EXPERIENCE)|(?=Languages)|(?=LANGUAGES)|(?=Technologies)|(?=TECHNOLOGIES)|(?=Summary)|(?=SUMMURY)|(?=Projects)|(?=PROJECTS))/);
+            },
+            nl2br(str) {
+                let breakTag = ' ';
+                return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+            },
+            searchForEmail(textLine) {
                 let cleanTextLine = textLine.replace(/\s/g, "");
                 let emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
                 if (cleanTextLine.match(emailRegex)) {
                     this.freelancerData.email = cleanTextLine;
                 }
             },
-            checkForPhone(textLine) {
+            searchForPhone(textLine) {
                 let cleanTextLine = textLine.replace(/\s/g, "");
                 cleanTextLine = cleanTextLine.replace(/-/g, "");
                 let phoneRegex = /(?:(?:\+?([1-9]|[0-9][0-9]|[0-9][0-9][0-9])\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([0-9][1-9]|[0-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?/;
@@ -718,46 +830,58 @@
                     this.freelancerData.phone = cleanTextLine;
                 }
             },
-            checkForLinks(textLine) {
+            searchForLinks(textLine) {
+                let cleanTextLine = textLine.replace(/\s/g, "");
+                let linkRegex     = /(https?:\/\/(?:www\.|(?!www))[^\s]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,}|[^\s]+\.com|[^\s]+\.net|[^\s]+\.org|[^\s]+\.gov)/gi;
+                let link          = cleanTextLine.match(linkRegex);
+                if (link !== null) {
+                    // check and remove if email  :
+                    let emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
+                    if(!emailRegex.test(cleanTextLine)){
+                        this.freelancerData.links.push(cleanTextLine);
+                    }
+                }
 
+                this.freelancerData.links = Array.from(new Set(this.freelancerData.links))
             },
-            checkForCountry(textLine) {
+            searchForCountry(textLine) {
                 // check if any word of the text line is a country name
                 let cleanTextLine = textLine.replace(/\s/g, "");
                 cleanTextLine = cleanTextLine.replace(/-/g, "");
                 for (let i = 0; i < this.countryList.length; i++) {
                     let countryRegex = new RegExp(this.countryList[i], 'ig');
                     if (countryRegex.test(cleanTextLine)) {
-                        console.log('Country: ' + textLine);
                         this.freelancerData.country = textLine;
                         break;
                     }
                 }
 
             },
-            checkForJobTitle(textLine) {
+            searchForJobTitle(textLine) {
                 let cleanTextLine = textLine.replace(/\s/g, "");
                 let jobTitleRegex = /engineer|developer|designer|programmer|senior|junior|middle/ig;
                 if (jobTitleRegex.test(cleanTextLine)) {
                     this.freelancerData.job_title = textLine
                 }
             },
-            checkForSkills(textLine){
+            searchForSkills(textLine){
+                let cleanTextLine = textLine.replace(/\s/g, "");
                 let skillRegex = new RegExp(this.skillsList.join('|'),'ig');
-                let skills = textLine.match(skillRegex) ;
+                let skills = cleanTextLine.match(skillRegex) ;
                 if(skills !== null){
                     this.freelancerData.skills.push(...skills);
                 }
                 // filter repeated elements in skills :
                 this.freelancerData.skills = Array.from(new Set(this.freelancerData.skills))
             },
-            checkForLanguages(textLine){
+            searchForLanguages(textLine){
+                let cleanTextLine = textLine.replace(/\s/g, "");
                 let languageRegex = new RegExp(this.languages.join('|'),'ig');
-                let languages = textLine.match(languageRegex) ;
+                let languages = cleanTextLine.match(languageRegex) ;
                 if(languages !== null){
                     this.freelancerData.languages.push(...languages);
                 }
-                // filter repeated elements in skills :
+                // filter repeated elements in languages :
                 this.freelancerData.languages = Array.from(new Set(this.freelancerData.languages))
             }
         },
@@ -768,5 +892,7 @@
 </script>
 
 <style scoped>
-
+    .pre-formatted{
+        white-space: pre-line;
+    }
 </style>

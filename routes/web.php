@@ -628,11 +628,24 @@ Route::get('/theme-2/{username}', 'ResumeController@agentsResumeTheme2');
 Route::get('/theme-3/{username}', 'ResumeController@agentsResumeTheme3');
 Route::get('/theme-4/{username}', 'ResumeController@agentsResumeTheme4');
 Route::get('/theme-5/{username}', 'ResumeController@agentsResumeTheme5');
+Route::get('/theme-6/{username}', 'ResumeController@agentsResumeTheme6');
+Route::get('/theme-7/{username}', 'ResumeController@agentsResumeTheme7');
+Route::get('/theme-8/{username}', 'ResumeController@agentsResumeTheme8');
 Route::get('/theme-10/{username}', 'ResumeController@agentsResumeTheme10');
 
+
+Route::get('/business-card/download', 'ResumePDFController@BusinessCardDownload')->name('download-pdf-card');
+Route::get('/business/view', 'ResumePDFController@BusinessCardShow')->name('show-card');
+
 Route::get('/theme-10/{username}/download', 'ResumePDFController@theme10')->name('download-pdf-resume');
+
 Route::get('/pdf/extract-text', 'ResumeController@showExtractPage');
 Route::post('/pdf/extract-text', 'ResumeController@extractTextFromCV');
+
+
+Route::post('/resume/translate', 'ResumeController@translate');
+
+
 
 Route::get('/city/predict', 'ResumeController@cityPrediction');
 

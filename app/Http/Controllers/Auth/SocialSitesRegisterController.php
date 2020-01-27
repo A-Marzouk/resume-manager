@@ -89,31 +89,34 @@ class SocialSitesRegisterController extends Controller
             return Redirect::to('/freelancer/register/github');
         }
 
-        $authUser = $this->findOrCreateUser($user);
+        $authUser = $this->findOrCreateUser($user,'github');
 
         auth()->login($authUser);
 
 
         return Redirect::to('/dashboard');
     }
-    private function findOrCreateUser($githubUser)
+    private function findOrCreateUser($user,$provider)
     {
-        if ($authUser = User::where('github_id', $githubUser->id)->first()) {
+
+        if ($authUser = User::where($provider.'_id', $user->id)->first()) {
             return $authUser;
         }
 
 
-        return app(User::class)->createAgent([
+        $agent = app(User::class)->createAgent([
             'user' => [
-                'email' => $githubUser->email,
-                'username' => $githubUser->email,
-                'github_id' => $githubUser->id
+                'email' => $user->email,
+                'username' => $user->email,
+                $provider.'_id' => $user->id
             ],
             'agent' => [],
             'user_data' => [
-                'first_name' => $githubUser->name,
+                'first_name' => $user->name,
             ],
         ]);
+
+        return $agent->user;
 
     }
 
@@ -126,8 +129,18 @@ class SocialSitesRegisterController extends Controller
     }
     public function handleGoogleProviderCallback()
     {
-        $user = Socialite::with('google')->user();
-        dd($user);
+        try {
+            $user = Socialite::driver('google')->user();
+        } catch (Exception $e) {
+            return Redirect::to('/freelancer/register/google');
+        }
+
+        $authUser = $this->findOrCreateUser($user,'google');
+
+        auth()->login($authUser);
+
+        return Redirect::to('/dashboard');
+
     }
 
     //    facebook provider

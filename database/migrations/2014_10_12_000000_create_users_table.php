@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->integer('affiliate_percentage')->nullable();
             $table->string('referred_by_code')->nullable();
             $table->string('github_id')->nullable();
+            $table->string('google_id')->nullable();
 
 
             $table->string('timezone')->nullable();

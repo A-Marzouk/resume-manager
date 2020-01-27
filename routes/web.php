@@ -65,7 +65,6 @@ Route::prefix('admin')->group(function () {
     Route::post('/agent/update', 'AdminsController@editAgent')->name('agent.update');
 
 
-
     // create client :
     Route::get('/register-client', 'AdminsController@showRegisterClientPage')->name('admin.register.client');
     Route::post('/client/create', 'AdminsController@createClient')->name('create.client.from.admin');
@@ -103,6 +102,21 @@ Route::prefix('client')->group(function () {
     Route::get('/has_agreed', 'ClientsController@hasAgreed');
     Route::post('/set_terms', 'ClientsController@setTerms');
     Route::get('/register', 'Auth\ClientRegisterController@showRegistrationForm')->name('client.register');
+
+    Route::get('/register/github', 'Auth\ClientRegisterController@redirectToGitHubProvider')->name('client.github.register');
+    Route::get('/register/github/callback', 'Auth\ClientRegisterController@handleGitHubProviderCallback')->name('client.github.callback');
+
+    Route::get('/register/facebook', 'Auth\ClientRegisterController@redirectToFaceBookProvider')->name('client.facebook.register');
+    Route::get('/register/facebook/callback', 'Auth\ClientRegisterController@handleFaceBookProviderCallback')->name('client.facebook.callback');
+
+    Route::get('/register/instagram', 'Auth\ClientRegisterController@redirectToInstagramProvider')->name('client.instagram.register');
+    Route::get('/register/instagram/callback', 'Auth\ClientRegisterController@handleInstagramProviderCallback')->name('client.instagram.callback');
+
+    Route::get('/register/google', 'Auth\ClientRegisterController@redirectToGoogleProvider')->name('client.google.register');
+    Route::get('/register/google/callback', 'Auth\ClientRegisterController@handleGoogleProviderCallback')->name('client.google.callback');
+
+  Route::get('/register/linkedin', 'Auth\ClientRegisterController@redirectToLinkedinProvider')->name('client.linkedin.register');
+    Route::get('/register/linkedin/callback', 'Auth\ClientRegisterController@handleLinkedinProviderCallback')->name('client.linkedin.callback');
 
     Route::post('/register', 'Auth\ClientRegisterController@register')
         ->name('client.register.submit');
@@ -297,7 +311,11 @@ Route::prefix('freelancer')->group(function () {
         return redirect()->back();
     });
 
-    Route::get('/register/{any?}', 'Auth\FreelancerRegisterController@showRegistrationForm')->name('freelancer.register');
+//    Route::get('/register/{any?}', 'Auth\FreelancerRegisterController@showRegistrationForm')->name('freelancer.register'); temporally changed to simple register
+
+    Route::get('/register', 'Auth\SocialSitesRegisterController@simpleRegisterView')->name('freelancer.register');
+    Route::post('/register', 'Auth\SocialSitesRegisterController@simpleRegister')->name('freelancer.register');
+
     //////////////
     // new register for business support  :
     Route::get('/workforce/register', 'BusinessSupportController@showRegistrationForm')->name('freelancer.register');
@@ -462,7 +480,6 @@ Route::post('/admin/workforce/delete_cbrief_service', 'CampaignBriefsController@
 Route::get('/admin/workforce/get_cbrief_services/{cBriefID}', 'CampaignBriefsController@getCBriefServices')->name('get.cBrief_services');
 
 
-
 // recordings
 Route::get('/freelancer/records', 'RecordingsController@getRecords')->name('get.records');
 Route::post('/freelancer/addrecord/', 'RecordingsController@addRecord')->name('add.record');
@@ -484,7 +501,6 @@ Route::post('/workforce/add_agent', 'AgentsController@addAgent')->name('add.agen
 Route::post('/workforce/delete_agent', 'AgentsController@deleteAgent')->name('delete.agent');
 Route::post('/workforce/agent/add_record', 'AgentsController@addRecordToAgent')->name('add.agent.record');
 Route::post('/workforce/agent/delete_record', 'AgentsController@deleteAgentRecord')->name('delete.agent.record');
-
 
 
 // skills
@@ -644,7 +660,6 @@ Route::post('/pdf/extract-text', 'ResumeController@extractTextFromCV');
 
 
 Route::post('/resume/translate', 'ResumeController@translate');
-
 
 
 Route::get('/city/predict', 'ResumeController@cityPrediction');

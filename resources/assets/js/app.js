@@ -71,6 +71,14 @@ Vue.component('resume-theme-7', require('./components/resume_themes/theme7.vue')
 Vue.component('resume-theme-8', require('./components/resume_themes/theme8.vue'));
 Vue.component('resume-theme-10', require('./components/resume_themes/theme10.vue'));
 
+// simple registration:
+Vue.component('freelancer-simple-register', require('./components/auth/FreelancerSimpleRegistration.vue'));
+if ($("#freelancerSimpleRegisterComponent").length !== 0){
+    let freelancerSimpleRegisterComponent = new Vue({
+        el:'#freelancerSimpleRegisterComponent'
+    });
+}
+
 
 Vue.component('business-card-v2', require('./components/resume_themes/businessCardV2.vue'));
 

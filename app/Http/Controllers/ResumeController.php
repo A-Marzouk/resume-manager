@@ -48,7 +48,7 @@ class ResumeController extends Controller
         $result = $translate->translate($text, [
             'target' => $targetLanguage,
             'model' => $model,
-            'key' => Config::get('services.google.key')
+            'key' => Config::get('services.google_translate.key')
         ]);
 
         return ("Translation:\n\n $result[text]\n");

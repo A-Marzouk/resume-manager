@@ -26,7 +26,7 @@ class ClientRegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $referral_code = '' ;
+        $referral_code = 'NOT_DEFINED' ;
         if (Input::get('referral_code')) {
             // it means this client is refered by someone.
             $referral_code = Input::get('referral_code') ;

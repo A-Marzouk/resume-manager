@@ -103,20 +103,6 @@ Route::prefix('client')->group(function () {
     Route::post('/set_terms', 'ClientsController@setTerms');
     Route::get('/register', 'Auth\ClientRegisterController@showRegistrationForm')->name('client.register');
 
-    Route::get('/register/github', 'Auth\ClientRegisterController@redirectToGitHubProvider')->name('client.github.register');
-    Route::get('/register/github/callback', 'Auth\ClientRegisterController@handleGitHubProviderCallback')->name('client.github.callback');
-
-    Route::get('/register/facebook', 'Auth\ClientRegisterController@redirectToFaceBookProvider')->name('client.facebook.register');
-    Route::get('/register/facebook/callback', 'Auth\ClientRegisterController@handleFaceBookProviderCallback')->name('client.facebook.callback');
-
-    Route::get('/register/instagram', 'Auth\ClientRegisterController@redirectToInstagramProvider')->name('client.instagram.register');
-    Route::get('/register/instagram/callback', 'Auth\ClientRegisterController@handleInstagramProviderCallback')->name('client.instagram.callback');
-
-    Route::get('/register/google', 'Auth\ClientRegisterController@redirectToGoogleProvider')->name('client.google.register');
-    Route::get('/register/google/callback', 'Auth\ClientRegisterController@handleGoogleProviderCallback')->name('client.google.callback');
-
-  Route::get('/register/linkedin', 'Auth\ClientRegisterController@redirectToLinkedinProvider')->name('client.linkedin.register');
-    Route::get('/register/linkedin/callback', 'Auth\ClientRegisterController@handleLinkedinProviderCallback')->name('client.linkedin.callback');
 
     Route::post('/register', 'Auth\ClientRegisterController@register')
         ->name('client.register.submit');
@@ -295,6 +281,21 @@ Route::prefix('freelancer')->group(function () {
     Route::get('/developer-card/edit', 'FreelancersController@showEditForm')->name('freelancer.dashboard');
     Route::get('/developer-card', 'FreelancersController@portfolio')->name('freelancer.dashboard');
     Route::post('/developer-card/message', 'ResumeController@messageOnResume');
+
+    Route::get('/register/github', 'Auth\SocialSitesRegisterController@redirectToGitHubProvider')->name('client.github.register');
+    Route::get('/register/github/callback', 'Auth\SocialSitesRegisterController@handleGitHubProviderCallback')->name('client.github.callback');
+
+    Route::get('/register/facebook', 'Auth\SocialSitesRegisterController@redirectToFaceBookProvider')->name('client.facebook.register');
+    Route::get('/register/facebook/callback', 'Auth\SocialSitesRegisterController@handleFaceBookProviderCallback')->name('client.facebook.callback');
+
+    Route::get('/register/instagram', 'Auth\SocialSitesRegisterController@redirectToInstagramProvider')->name('client.instagram.register');
+    Route::get('/register/instagram/callback', 'Auth\SocialSitesRegisterController@handleInstagramProviderCallback')->name('client.instagram.callback');
+
+    Route::get('/register/google', 'Auth\SocialSitesRegisterController@redirectToGoogleProvider')->name('client.google.register');
+    Route::get('/register/google/callback', 'Auth\SocialSitesRegisterController@handleGoogleProviderCallback')->name('client.google.callback');
+
+    Route::get('/register/linkedin', 'Auth\SocialSitesRegisterController@redirectToLinkedinProvider')->name('client.linkedin.register');
+    Route::get('/register/linkedin/callback', 'Auth\SocialSitesRegisterController@handleLinkedinProviderCallback')->name('client.linkedin.callback');
 
     // frontend routes
     Route::get('/', function () {

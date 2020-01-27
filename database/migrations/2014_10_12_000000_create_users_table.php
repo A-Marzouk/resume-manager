@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
 
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->boolean('is_active')->default(false);
             $table->string('username')->unique();
             $table->string('referral_code')->unique();
@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('stage')->unsigned()->index();
             $table->integer('affiliate_percentage')->nullable();
             $table->string('referred_by_code')->nullable();
+            $table->string('github_id')->nullable();
 
 
             $table->string('timezone')->nullable();

@@ -18,20 +18,20 @@
                                 FILL IN THE INFORMATION
                             </span>
                         </div>
-                        <div class="d-flex justify-content-between mt-5">
-                            <a href="/client/register/github">
-                                github
+                        <div class="d-flex justify-content-between mt-5 NoDecor">
+                            <a href="/freelancer/register/github" class="d-flex align-items-center p-3 border-dark">
+                                <span>Continue with Github</span> <img src="/images/resume_themes/theme10/github.png" style="width: 20px; height: 20px;" class="ml-2" alt="">
                             </a>
-                            <a href="/client/register/facebook">
+                            <a href="/freelancer/register/facebook" class="d-none">
                                 facebook
                             </a>
-                            <a href="/client/register/instagram">
+                            <a href="/freelancer/register/instagram" class="d-none">
                                 instagram
                             </a>
-                            <a href="/client/register/google">
+                            <a href="/freelancer/register/google" class="d-none">
                                 google
                             </a>
-                            <a href="/client/register/linkedin">
+                            <a href="/freelancer/register/linkedin" class="d-none">
                                 linkedin
                             </a>
                         </div>

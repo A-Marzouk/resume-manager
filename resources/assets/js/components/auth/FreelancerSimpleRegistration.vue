@@ -18,24 +18,25 @@
                                 FILL IN THE INFORMATION
                             </span>
                         </div>
-                        <div class="d-flex justify-content-between mt-5 NoDecor">
-                            <a href="/freelancer/register/github" class="d-flex align-items-center p-3 border-dark">
-                                <span>Continue with Github</span> <img src="/images/resume_themes/theme10/github.png" style="width: 20px; height: 20px;" class="ml-2" alt="">
-                            </a>
-                            <a href="/freelancer/register/facebook" class="d-none">
-                                facebook
-                            </a>
-                            <a href="/freelancer/register/instagram" class="d-none">
-                                instagram
-                            </a>
-                            <a href="/freelancer/register/google" class="d-flex align-items-center p-3 border-dark">
-                                <span>Continue with Google</span> <img src="/images/resume_themes/theme2/google.svg" style="width: 20px; height: 20px;" class="ml-2" alt="">
-                            </a>
-                            <a href="/freelancer/register/linkedin" class="d-none">
-                                linkedin
-                            </a>
-                        </div>
                     </div>
+                    <div class="d-flex justify-content-between flex-wrap NoDecor">
+                        <a href="/freelancer/register/github" class="d-flex align-items-center p-3 border-dark">
+                            <span>Continue with Github</span> <img src="/images/resume_themes/theme10/github.png" style="width: 20px; height: 20px;" class="ml-2" alt="">
+                        </a>
+                        <a href="/freelancer/register/facebook"class="d-flex align-items-center p-3 border-dark">
+                            <span>Continue with Facebook</span> <img src="/images/social_icons/facebook.svg" style="width: 20px; height: 20px;" class="ml-2" alt="">
+                        </a>
+                        <a href="/freelancer/register/instagram" class="d-none">
+                            instagram
+                        </a>
+                        <a href="/freelancer/register/google" class="d-flex align-items-center p-3 border-dark">
+                            <span>Continue with Google</span> <img src="/images/resume_themes/theme2/google.svg" style="width: 20px; height: 20px;" class="ml-2" alt="">
+                        </a>
+                        <a href="/freelancer/register/linkedin" class="d-flex align-items-center p-3 border-dark">
+                            <span>Continue with Linkedin</span> <img src="/images/resume_themes/theme10/linkedin.png" style="width: 20px; height: 20px;" class="ml-2" alt="">
+                        </a>
+                    </div>
+
                     <div class="account-edit-section">
                         <div class="account-edit-section-heading">
                             BASIC INFORMATION

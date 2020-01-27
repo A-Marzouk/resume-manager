@@ -123,9 +123,7 @@ class SocialSitesRegisterController extends Controller
 
     }
 
-
     //    google provider
-
     public function redirectToGoogleProvider()
     {
         return Socialite::driver('google')->redirect();
@@ -146,8 +144,28 @@ class SocialSitesRegisterController extends Controller
 
     }
 
-    //    facebook provider
+    //    linkedin
+    public function redirectToLinkedinProvider()
+    {
+        return Socialite::driver('linkedin')->redirect();
+    }
+    public function handleLinkedinProviderCallback()
+    {
+        try {
+            $user = Socialite::driver('linkedin')->user();
+        } catch (Exception $e) {
+            return Redirect::to('/freelancer/register/linkedin');
+        }
 
+        $authUser = $this->findOrCreateUser($user,'linkedin');
+
+        auth()->login($authUser);
+
+        return Redirect::to('/dashboard');
+    }
+
+
+    //    facebook provider
     public function redirectToFaceBookProvider()
     {
         return Socialite::driver('facebook')->redirect();
@@ -155,16 +173,25 @@ class SocialSitesRegisterController extends Controller
     public function handleFaceBookProviderCallback()
     {
         $user = Socialite::driver('facebook')->user();
-        dd($user);
+        try {
+            $user = Socialite::driver('facebook')->user();
+        } catch (Exception $e) {
+            return Redirect::to('/freelancer/register/facebook');
+        }
+
+        $authUser = $this->findOrCreateUser($user,'facebook');
+
+        auth()->login($authUser);
+
+        return Redirect::to('/dashboard');
     }
 
-//    instagram
 
+//    instagram
     public function redirectToInstagramProvider()
     {
         return Socialite::driver('instagram')->redirect();
     }
-
     public function handleInstagramProviderCallback()
     {
         $user = Socialite::driver('instagram')->user();
@@ -173,16 +200,5 @@ class SocialSitesRegisterController extends Controller
 
 
 
-//    linkedin
 
-    public function redirectToLinkedinProvider()
-    {
-        return Socialite::driver('linkedin')->redirect();
-    }
-
-    public function handleLinkedinProviderCallback()
-    {
-        $user = Socialite::driver('linkedin')->stateless()->user();
-        dd($user);
-    }
 }

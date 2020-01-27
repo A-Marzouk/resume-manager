@@ -30,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->string('referred_by_code')->nullable();
             $table->string('github_id')->nullable();
             $table->string('google_id')->nullable();
+            $table->string('linkedin_id')->nullable();
+            $table->string('facebook_id')->nullable();
 
 
             $table->string('timezone')->nullable();

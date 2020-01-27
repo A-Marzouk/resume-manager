@@ -42,6 +42,8 @@ class User extends Authenticatable implements HasMedia
         'timezone',
         'github_id',
         'google_id',
+        'linkedin_id',
+        'facebook_id',
         'agreed_with_service_agreement_at',
         'agreed_with_privacy_agreement_at',
     ];

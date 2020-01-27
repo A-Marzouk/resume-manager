@@ -34,10 +34,11 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+
     'linkedin' => [
-        'client_id' => '865ff2s2qvpkzb',
-        'client_secret' => '9ql6QUkQLNZzS2J9',
-        'redirect' => 'https://123workforce.com/freelancer/linkedin'
+        'client_id' => env('LINKEDIN_CLIENT_ID'),
+        'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
+        'redirect' => env('LINKEDIN_CALLBACK_URL'),
     ],
 
     'instagram'=>[
@@ -71,7 +72,7 @@ return [
     'facebook' => [
         'client_id' => env('FACEBOOK_APP_ID'),
         'client_secret' => env('FACEBOOK_APP_SECRET'),
-        'redirect' => 'http://local.123workforce.me/freelancer/register/facebook/callback'
+        'redirect' => env('FACEBOOK_CALLBACK_URL')
     ],
 
 ];

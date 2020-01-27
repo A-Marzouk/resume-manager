@@ -39,12 +39,17 @@ return [
         'client_secret' => '9ql6QUkQLNZzS2J9',
         'redirect' => 'https://123workforce.com/freelancer/linkedin'
     ],
-    'instagram'=>[
+    'instagram' => [
         'client_id' => 'f877808c985d4f43ad73ae517db95151',
         'client_secret' => '066768fb9e6b4186b3a3c6eb40da33a8 ',
         'redirect' => 'https://123workforce.com/freelancer/instagram'
     ],
-    'google'=>[
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT'),
+        'client_secret' => env('GITHUB_SECRET'),
+        'redirect' => env('GITHUB_URI')
+    ],
+    'google' => [
         'key' => env('GOOGLE_APPLICATION_API_KEY'),
     ]
 

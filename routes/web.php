@@ -665,3 +665,6 @@ Route::get('/v1/{username}', 'HomeController@ResumePage');
 Route::get('/resume/test/{username}/download', 'ResumeController@downloadPDFResume')->name('download-pdf-resume');
 
 Route::get('/create/new_agents', 'TestController@createAgents');
+
+Route::get('/test/github/', 'UserDataController@githubOAuth');
+Route::get('/freelancer/github/', 'UserDataController@importDataFromGithub');

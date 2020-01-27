@@ -103,6 +103,9 @@ class SocialSitesRegisterController extends Controller
             return $authUser;
         }
 
+        if ($authUser = User::where('email', $user->email)->first()) {
+            return $authUser;
+        }
 
         $agent = app(User::class)->createAgent([
             'user' => [

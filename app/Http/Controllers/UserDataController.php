@@ -359,13 +359,13 @@ class UserDataController extends Controller
         );
         $data = json_decode($res->getBody());
 
-        $userData = $user->data;
-        $userData->city = explode(", ", $data->location)[0];
-        $userData->country = explode(", ", $data->location)[1];
-        $userData->website = $data->blog;
-        $userData->avatar = $data->avatar_url;
-
-        // Save userData
+        // Update user data
+        $user->data()->update([
+            'city' => explode(", ", $data->location)[0],
+            'country' => explode(", ", $data->location)[1],
+            'website' => $data->blog,
+            'avatar' => $data->avatar_url
+        ]);
 
         $res = $client->request(
             'GET',
@@ -403,7 +403,6 @@ class UserDataController extends Controller
         ])->orderBy('skill_title', 'asc')->get();
 
         sort($languages);
-
         $i = 0;
 
         /**
@@ -415,8 +414,10 @@ class UserDataController extends Controller
             if ($i >= count($languages)) break;
             $lang = $languages[$i];
 
-            if (!strcmp(strtolower($lang), strtolower($skill->skill_title)) > 0) {
-                if ($lang ==  $skill->skill_title) {
+            if (
+                !(strcmp(strtolower($lang), strtolower($skill->skill_title)) > 0)
+            ) {
+                if (strcmp(strtolower($lang), strtolower($skill->skill_title)) == 0) {
                     // Remove from array because this exists on user skills
                     array_splice($languages, $i, 1);
                 } else {
@@ -426,8 +427,18 @@ class UserDataController extends Controller
             }
         }
 
-        dd($languages);
+        $newSkills = [];
 
-        return response(json_encode($data), 200);
+        if (count($languages) > 0) {
+            // Add new skills
+            foreach ($languages as $skill) {
+
+                $newSkills[] = new Skill(["skill_title" => $skill, "percentage" => 50, "type" => "programming"]);
+            }
+        }
+
+        $user->skills()->saveMany($newSkills);
+
+        return response("Imported data", 200);
     }
 }

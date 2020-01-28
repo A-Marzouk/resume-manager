@@ -25,6 +25,7 @@
     "pusher/pusher-php-server": "^3.0",
     "ramsey/uuid": "^3.8",
     "smalot/pdfparser": "*",
+    "socialiteproviders/instagram": "^3.0",
     "spatie/laravel-medialibrary": "^7.5",
     "spatie/laravel-permission": "^2.37",
     "spatie/pdf-to-text": "^1.2",

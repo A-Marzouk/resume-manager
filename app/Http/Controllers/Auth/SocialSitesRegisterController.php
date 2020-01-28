@@ -107,10 +107,14 @@ class SocialSitesRegisterController extends Controller
             return $authUser;
         }
 
+        if ($authUser = User::where('username',$user->user['username'] ?? '' )->first()) {
+            return $authUser;
+        }
+
         $agent = app(User::class)->createAgent([
             'user' => [
-                'email' => $user->email,
-                'username' => $user->email,
+                'email' => $user->email ?? $user->user['username'],
+                'username' => $user->email ?? $user->user['username'],
                 $provider.'_id' => $user->id
             ],
             'agent' => [],
@@ -194,7 +198,7 @@ class SocialSitesRegisterController extends Controller
     public function handleInstagramProviderCallback()
     {
         try {
-            $user = Socialite::driver('instagram')->user();
+            $user = Socialite::driver('instagram')->stateless()->user();
         } catch (Exception $e) {
             return Redirect::to('/freelancer/register/instagram');
         }

@@ -58,6 +58,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/rize/uri-template" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sabberworm/php-css-parser" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/smalot/pdfparser" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/socialiteproviders/instagram" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/socialiteproviders/manager" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/browsershot" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/pdf-to-text" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/srmklive/paypal" />

@@ -377,6 +377,7 @@ class AgentsController extends Controller
         $request->validate([
             'first_name' => 'max:191|required',
             'last_name' => 'max:191|required',
+            'email'     => 'max:191|email|unique:users',
             'password' => 'nullable|min:6|max:191|confirmed',
 
             'phone' => 'min:7|max:191|required',
@@ -403,6 +404,12 @@ class AgentsController extends Controller
         if (isset($request->password)) {
             $user->update([
                 'password' => $request->password
+            ]);
+        }
+
+        if (isset($request->email) && $request->email !== null ) {
+            $user->update([
+                'email' => $request->email
             ]);
         }
 

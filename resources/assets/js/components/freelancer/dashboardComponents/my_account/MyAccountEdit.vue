@@ -76,7 +76,7 @@
                                 primary Email <small style="color:red;"> *</small>
                             </label>
                             <div class="faq-input" :class="{ 'error-input' : errors.email}">
-                                <input type="email"  v-model="agentData.email" disabled>
+                                <input type="email"  v-model="agentData.email" :disabled="canEditEmail()">
                             </div>
                             <div class="error" v-if="errors.email">
                                 {{errors.email}}
@@ -447,6 +447,9 @@
             hideNotification(){
                 $('#notificationBar').css('display','none');
             },
+            canEditEmail(){
+                return !(this.$attrs.current_user.instagram_id !== null && !this.$attrs.current_user.email);
+            }
         },
 
         mounted() {

@@ -11,30 +11,31 @@
                     </div>
                 </nav>
                 <div class="account-info-edit dashboard-box">
-                    <div class="account-info-edit-heading dashboard-box-heading">
+                    <div class="account-info-edit-heading dashboard-box-heading d-flex flex-column">
                         <div class="left">
                             <img src="/images/client/my_account/info_40px.png" alt="info icon">
                             <span>
-                                FILL IN THE INFORMATION
+                                FILL IN THE INFORMATION OR CONTINUE WITH SOCIAL SITES
                             </span>
                         </div>
-                    </div>
-                    <div class="d-flex justify-content-between flex-wrap NoDecor">
-                        <a href="/freelancer/register/github" class="d-flex align-items-center p-3 border-dark">
-                            <span>Continue with Github</span> <img src="/images/resume_themes/theme10/github.png" style="width: 20px; height: 20px;" class="ml-2" alt="">
-                        </a>
-                        <a href="/freelancer/register/facebook"class="d-flex align-items-center p-3 border-dark">
-                            <span>Continue with Facebook</span> <img src="/images/social_icons/facebook.svg" style="width: 20px; height: 20px;" class="ml-2" alt="">
-                        </a>
-                        <a href="/freelancer/register/instagram" class="d-none">
-                            instagram
-                        </a>
-                        <a href="/freelancer/register/google" class="d-flex align-items-center p-3 border-dark">
-                            <span>Continue with Google</span> <img src="/images/resume_themes/theme2/google.svg" style="width: 20px; height: 20px;" class="ml-2" alt="">
-                        </a>
-                        <a href="/freelancer/register/linkedin" class="d-flex align-items-center p-3 border-dark">
-                            <span>Continue with Linkedin</span> <img src="/images/resume_themes/theme10/linkedin.png" style="width: 20px; height: 20px;" class="ml-2" alt="">
-                        </a>
+
+                        <div class="d-flex justify-content-between mt-4 flex-wrap NoDecor">
+                            <a href="/freelancer/register/github" class="d-flex align-items-center p-3 border-dark">
+                                <span></span> <img src="/images/resume_themes/theme10/github.png" style="width: 20px; height: 20px;" class="ml-2" alt="">
+                            </a>
+                            <a href="/freelancer/register/facebook"class="d-flex align-items-center p-3 border-dark">
+                                <img src="/images/social_icons/facebook.svg" style="width: 20px; height: 20px;" class="ml-2" alt="">
+                            </a>
+                            <a href="/freelancer/register/instagram" class="d-flex align-items-center p-3 border-dark">
+                                <img src="/images/resume_themes/theme10/instagram.svg" style="width: 20px; height: 20px;" class="ml-2" alt="">
+                            </a>
+                            <a href="/freelancer/register/google" class="d-flex align-items-center p-3 border-dark">
+                                <img src="/images/resume_themes/theme2/google.svg" style="width: 20px; height: 20px;" class="ml-2" alt="">
+                            </a>
+                            <a href="/freelancer/register/linkedin" class="d-flex align-items-center p-3 border-dark">
+                                <img src="/images/resume_themes/theme10/linkedin.png" style="width: 20px; height: 20px;" class="ml-2" alt="">
+                            </a>
+                        </div>
                     </div>
 
                     <div class="account-edit-section">

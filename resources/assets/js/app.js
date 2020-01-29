@@ -1059,3 +1059,7 @@ window.Echo.channel('conversations')
 
 require('./record.js');
 require('./side_nav.js');
+
+$("body").children().each(function() {
+    document.body.innerHTML = document.body.innerHTML.replace(/\u2028/g, ' ');
+});

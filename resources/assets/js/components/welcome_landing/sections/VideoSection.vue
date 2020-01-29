@@ -1,22 +1,22 @@
 <template>
-  <v-row class="video-wrap">
-    <v-col lg="7" sm="12" cols="12" class="video-section">
-      <span class="title-two">Build a resume that you can be proud of</span>
+  <div class="row video-wrap">
+    <div class="video-section col-sm-12 col-lg-7 col-12">
+      <div class="title-two">Build a resume that you  can be proud of</div>
       <p>100+ Integrations. Ensure your clients can easily contact, hire and pay you.</p>
-    </v-col>
-    <v-col lg="5" sm="12" cols="12" class="pa-0 vicon-set">
+    </div>
+    <div class="pa-0 vicon-set col-sm-12 col-lg-5 col-12">
       <img src="/images/welcome_landing_page/icons/iconset-float-video.png" alt="">
-    </v-col>
-    <v-col lg="12" sm="12" cols="12" class="pa-0 player-wrap">
+    </div>
+    <div class="pa-0 player-wrap col-sm-12 col-lg-12 col-12 NoDecor">
       <div class="hold-video">
         <div class="video__poster" ref="videoPoster">
           <a href="#" @click.prevent="playVideo()"><v-icon>mdi-play</v-icon></a>
         </div>
         <video ref="videoElem" src="/images/welcome_landing_page/video/sample.mp4" controls ></video>
       </div>
-      <a href="#" class="btn-inset light__red"><i>Get started</i></a>
-    </v-col>
-  </v-row>
+      <a href="javascript:void(0)" class="btn-inset light__red"><i>Get started</i></a>
+    </div>
+  </div>
 </template>
 
 <script>

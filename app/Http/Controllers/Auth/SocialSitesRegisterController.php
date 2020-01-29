@@ -38,6 +38,7 @@ class SocialSitesRegisterController extends Controller
     }
     public function simpleRegister(Request $request)
     {
+
         $this->validator($request->all())->validate();
         $agent = $this->create($request->all());
         if (isset($request->referral_code)) {
@@ -56,7 +57,6 @@ class SocialSitesRegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'required|min:7|numeric',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -71,7 +71,6 @@ class SocialSitesRegisterController extends Controller
             'agent' => [],
             'user_data' => [
                 'first_name' => $data['name'],
-                'phone' => $data['phone'],
             ],
         ]);
     }

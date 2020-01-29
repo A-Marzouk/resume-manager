@@ -74,6 +74,16 @@ Vue.component('resume-theme-7', require('./components/resume_themes/theme7.vue')
 Vue.component('resume-theme-8', require('./components/resume_themes/theme8.vue'));
 Vue.component('resume-theme-10', require('./components/resume_themes/theme10.vue'));
 
+
+Vue.component('welcome-landing', require('./components/welcome_landing/Main.vue'));
+
+Vue.component('welcome-landing', require('./components/welcome_landing/Main.vue'));
+if ($("#welcomeLanding").length !== 0){
+    let welcomeLanding = new Vue({
+        el:'#welcomeLanding'
+    });
+}
+
 // simple registration:
 Vue.component('freelancer-simple-register', require('./components/auth/FreelancerSimpleRegistration.vue'));
 if ($("#freelancerSimpleRegisterComponent").length !== 0){
@@ -81,6 +91,7 @@ if ($("#freelancerSimpleRegisterComponent").length !== 0){
         el:'#freelancerSimpleRegisterComponent'
     });
 }
+
 
 
 Vue.component('business-card-v2', require('./components/resume_themes/businessCardV2.vue'));

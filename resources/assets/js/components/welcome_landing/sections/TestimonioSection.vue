@@ -9,9 +9,7 @@
                 <div class="top-info">
                     <span class="profile_name">Nikolas Gibson</span>
                     <span class="profile_job">Ui Designer</span>
-                    <a href="#" class="link_see">View resume
-                        <i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--dark"></i>
-                    </a>
+                    <a href="#" class="link_see" v-show="windowWidth > 769">View resume <v-icon>mdi-eye</v-icon></a>
                 </div>
             </div>
             <div class="item-top">
@@ -19,9 +17,7 @@
                 <div class="top-info">
                     <span class="profile_name">Nikolas Gibson</span>
                     <span class="profile_job">Ui Designer</span>
-                    <a href="#" class="link_see">View resume
-                        <i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--dark"></i>
-                    </a>
+                    <a href="#" class="link_see" v-show="windowWidth > 769">View resume <v-icon>mdi-eye</v-icon></a>
                 </div>
             </div>
             <div class="item-top">
@@ -29,9 +25,7 @@
                 <div class="top-info">
                     <span class="profile_name">Nikolas Gibson</span>
                     <span class="profile_job">Ui Designer</span>
-                    <a href="#" class="link_see">View resume
-                        <i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--dark"></i>
-                    </a>
+                    <a href="#" class="link_see" v-show="windowWidth > 769">View resume <v-icon>mdi-eye</v-icon></a>
                 </div>
             </div>
 
@@ -40,82 +34,39 @@
         </div>
         <div class="col-lg-7 col-sm-12 pa-0 author-comment">
             <div class="item-top">
-                <div v-model="carouselState" :show-arrows="false" :hide-delimiters="true" style="height: auto;" class="v-window v-item-group theme--dark v-carousel">
-                    <div class="v-window__container" style="height: auto;">
-                        <div class="v-window-item">
-                            <div class="v-responsive v-image v-carousel__item" style="height: auto;">
-                                <div class="v-responsive__content">
-                                    <span class="profile_picture"></span>
-                                    <div class="top-info">
-                                        <span class="profile_name">Nikolas Gibson</span>
-                                        <span class="profile_job">Ui Designer</span>
-                                        <a href="#" class="link_see" v-show="windowWidth > 769">View resume
-                                            <i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--dark"></i>
-                                        </a>
+                <v-carousel v-model="carouselState" :show-arrows="false" :hide-delimiters="true" height="auto">
+                    <v-carousel-item>
+                        <span class="profile_picture"></span>
+                        <div class="top-info">
+                            <span class="profile_name">Nikolas Gibson</span>
+                            <span class="profile_job">Ui Designer</span>
+                            <a href="#" class="link_see" v-show="windowWidth > 769">View resume <v-icon>mdi-eye</v-icon></a>
 
-                                        <p>Design and build your own higt-quality wabsites. Whether you’re
-                                            promoting your bussines, showcasing your work,opening
-                                            your store or starting a blog you can do it all with
-                                            the 123 resume builder.</p>
-                                        <a href="#" class="link_see" v-show="windowWidth <= 769">View resume
-                                            <i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--dark"></i>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                            </div>
+                            <p>Design and build your own higt-quality wabsites. Whether you’re promoting your bussines,showcasing your work,opening your store or starting a blog you can do it all with the 123 resume builder.</p>
+                            <a href="#" class="link_see" v-show="windowWidth <= 769">View resume <v-icon>mdi-eye</v-icon></a>
                         </div>
-                        <div class="v-window-item">
-                            <div class="v-responsive v-image v-carousel__item" style="height: auto;">
-                                <div class="v-responsive__content">
-                                    <span class="profile_picture"></span>
-                                    <div class="top-info">
-                                        <span class="profile_name">Nikolas Gibson</span>
-                                        <span class="profile_job">Ui Designer</span>
-                                        <a href="#" class="link_see" v-show="windowWidth > 769">View resume
-                                            <i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--dark"></i>
-                                        </a>
-
-                                        <p>Design and build your own higt-quality wabsites. Whether you’re
-                                            promoting your bussines, showcasing your work,opening
-                                            your store or starting a blog you can do it all with
-                                            the 123 resume builder.</p>
-                                        <a href="#" class="link_see" v-show="windowWidth <= 769">View resume
-                                            <i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--dark"></i>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                            </div>
+                    </v-carousel-item>
+                    <v-carousel-item>
+                        <span class="profile_picture photo3"></span>
+                        <div class="top-info">
+                            <span class="profile_name">Nikolas Gibson</span>
+                            <span class="profile_job">Ui Designer</span>
+                            <a href="#" class="link_see" v-show="windowWidth > 769">View resume <v-icon>mdi-eye</v-icon></a>
+                            <p>Design and build your own higt-quality wabsites. Whether you’re promoting your bussines,showcasing your work,opening your store or starting a blog you can do it all with the 123 resume builder.</p>
+                            <a href="#" class="link_see" v-show="windowWidth <= 769">View resume <v-icon>mdi-eye</v-icon></a>
                         </div>
-                        <div class="v-window-item">
-                            <div class="v-responsive v-image v-carousel__item" style="height: auto;">
-                                <div class="v-responsive__content">
-                                    <span class="profile_picture"></span>
-                                    <div class="top-info">
-                                        <span class="profile_name">Nikolas Gibson</span>
-                                        <span class="profile_job">Ui Designer</span>
-                                        <a href="#" class="link_see" v-show="windowWidth > 769">View resume
-                                            <i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--dark"></i>
-                                        </a>
-
-                                        <p>Design and build your own higt-quality wabsites. Whether you’re
-                                            promoting your bussines, showcasing your work,opening
-                                            your store or starting a blog you can do it all with
-                                            the 123 resume builder.</p>
-                                        <a href="#" class="link_see" v-show="windowWidth <= 769">View resume
-                                            <i aria-hidden="true" class="v-icon notranslate mdi mdi-eye theme--dark"></i>
-                                        </a>
-
-
-                                    </div>
-                                </div>
-                            </div>
+                    </v-carousel-item>
+                    <v-carousel-item>
+                        <span class="profile_picture"></span>
+                        <div class="top-info">
+                            <span class="profile_name">Nikolas Gibson</span>
+                            <span class="profile_job">Ui Designer</span>
+                            <a href="#" class="link_see" v-show="windowWidth > 769">View resume <v-icon>mdi-eye</v-icon></a>
+                            <p>Design and build your own higt-quality wabsites. Whether you’re promoting your bussines,showcasing your work,opening your store or starting a blog you can do it all with the 123 resume builder.</p>
+                            <a href="#" class="link_see" v-show="windowWidth <= 769">View resume <v-icon>mdi-eye</v-icon></a>
                         </div>
-                    </div>
-                </div>
+                    </v-carousel-item>
+                </v-carousel>
                 <div class="paginator NoDecor" v-if="windowWidth <= 769">
                     <div class="nav-carousel">
                         <a href="#" @click.prevent="carouselState--"><img
@@ -125,7 +76,7 @@
                     </div>
                     <a href="#" class="btn-inset light__red"><i>Get started</i></a>
                 </div>
-                <div class="nav-carousel" v-else>
+                <div class="nav-carousel NoDecor" v-else>
                     <a href="#" class="link_next" @click.prevent="carouselState++">Next comment <span><img
                             src="/images/welcome_landing_page/icons/arrow-next.png" alt=""/></span></a>
                 </div>
@@ -155,7 +106,15 @@
     };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
+    .v-carousel{
+        box-shadow: none!important;
+    }
+
+    .v-btn__content{
+        display: none !important;
+    }
 
     .comments-wrap {
         margin-bottom: 140px;
@@ -174,6 +133,7 @@
                 margin-top: 50px;
 
                 .item-top {
+
                     padding: 0px;
 
                     .profile_picture {
@@ -301,13 +261,6 @@
                         max-width: 22em !important;
                     }
 
-                    // .v-carousel{
-
-                    //   .v-carousel__item{
-                    //     min-height: 100% !important;
-                    //   }
-                    //   min-height: 380px !important;
-                    // }
                 }
             }
         }

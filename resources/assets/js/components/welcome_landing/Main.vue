@@ -44,7 +44,7 @@
 <style lang="scss">
 
     @import '/images/welcome_landing_page/styles/slick.css';
-
+    @import '~vuetify/dist/vuetify.min.css';
 
 
     @import url('//fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap');

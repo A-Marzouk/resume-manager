@@ -1,18 +1,22 @@
 <template>
-    <v-app>
-        <v-content>
-            <v-container>
-                <HeroSection />
-                <VideoSection />
-                <SliderSection />
-                <TestimonioSection />
-                <ContactSection />
-            </v-container>
-            <div class="footer-section">
-                <img src="/images/welcome_landing_page/icons/logo-white.png" alt="">
+    <div class="v-application v-application--is-ltr theme--light">
+        <div class="v-application--wrap">
+            <div class="v-content">
+                <div class="v-content__wrap">
+                    <div class="my-container">
+                        <HeroSection />
+                        <VideoSection />
+                        <SliderSection />
+                        <TestimonioSection />
+                        <ContactSection />
+                    </div>
+                    <div class="footer-section">
+                        <img src="/images/welcome_landing_page/icons/logo-white.png" alt="">
+                    </div>
+                </div>
             </div>
-        </v-content>
-    </v-app>
+        </div>
+    </div>
 </template>
 <script>
     import HeroSection from './sections/HeroSection';
@@ -40,8 +44,12 @@
 <style lang="scss">
 
     @import '/images/welcome_landing_page/styles/slick.css';
+
+
+
     @import url('//fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap');
     @import url('//fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
+    @import '~vuetify/dist/vuetify.min.css';
 
     /** General carousel duration scroll transition */
     .v-window-x-transition-enter-active,
@@ -52,6 +60,13 @@
     body{
 
         .v-content{
+
+            .v-content__wrap{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
             background-image: url('/images/welcome_landing_page/icons/new-background.png');
             background-position: 0 53px;
             background-repeat: no-repeat;
@@ -73,7 +88,7 @@
         }
     }
 
-    .container{
+    .my-container{
         padding: 70px 12px 125px 12px;
 
         @media (min-width: 960px){

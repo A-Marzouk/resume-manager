@@ -31,6 +31,7 @@
         "vue-load-image": "^0.1.8",
         "vue-moment": "^4.0.0",
         "vue-router": "^3.0.6",
-        "vue-slick": "^1.1.15"
+        "vue-slick": "^1.1.15",
+        "vuetify": "^2.2.8"
     }
 }

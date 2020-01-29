@@ -1,27 +1,27 @@
 <template>
-  <v-row class="contact-wrap">
-    <v-col lg="12" class="pa-0 contact-section">
+  <div class="row contact-wrap">
+    <div class=" col-lg-12 pa-0 contact-section">
       <span class="title-three">Follow Us</span>
       <div class="follow-section">
         <span class="item-follow">
-          <a href="" class="facebook-icon"></a>          
+          <a href="javascript:void(0)" class="facebook-icon"></a>          
           14,044 Followers
         </span>
         <span class="item-follow">
-          <a href="" class="instagram-icon"></a>
+          <a href="javascript:void(0)" class="instagram-icon"></a>
           733 Followers
         </span>
       </div>
       <span class="title-three">Contact Us</span>
       <div class="social-section">
-        <a href="" class="email-icon"></a>
-        <a href="" class="messenger-icon"></a>
-        <a href="" class="skype-icon"></a>
-        <a href="" class="whatsapp-icon"></a>
-        <a href="" class="slack-icon"></a>
+        <a href="javascript:void(0)" class="email-icon"></a>
+        <a href="javascript:void(0)" class="messenger-icon"></a>
+        <a href="javascript:void(0)" class="skype-icon"></a>
+        <a href="javascript:void(0)" class="whatsapp-icon"></a>
+        <a href="javascript:void(0)" class="slack-icon"></a>
       </div>
-    </v-col>
-  </v-row>
+    </div>
+  </div>
 </template>
 
 <script>

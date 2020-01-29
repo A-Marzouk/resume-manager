@@ -10,7 +10,7 @@
                         <TestimonioSection />
                         <ContactSection />
                     </div>
-                    <div class="footer-section">
+                    <div class="footer-section w-100">
                         <img src="/images/welcome_landing_page/icons/logo-white.png" alt="">
                     </div>
                 </div>

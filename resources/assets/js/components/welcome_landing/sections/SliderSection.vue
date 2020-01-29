@@ -1,13 +1,13 @@
 <template>
-  <v-row class="slider-wrap">
-    <v-col lg="9" sm="12" cols="12" class="text-section">
+  <div class="row slider-wrap">
+    <div class="text-section col-sm-12 col-lg-9 col-12">
       <span class="title-two">20+ Beautiful Themes to choose from</span>
       <p>Make your resume visually amazing. Ensure that you stand out<br/>and make a great first impression with any hiring manager.</p>
-    </v-col>
-    <v-col lg="3" sm="12" cols="12" class="pa-0 iconset-slider">
+    </div>
+    <div class="pa-0 iconset-slider col-sm-12 col-lg-3 col-12">
       <img src="/images/welcome_landing_page/icons/iconset-slider.png" alt="">
-    </v-col>
-    <v-col lg="12" sm="12" cols="12" class="pa-0 slider-section">
+    </div>
+    <div class="pa-0 slider-section col-sm-12 col-lg-12 col-12">
       <div class="hold-slider">
         <slick ref="slick" :options="slickOptions">
           <div class="slide-resume">
@@ -27,8 +27,8 @@
         </div>
         
       </div>
-    </v-col>
-  </v-row>
+    </div>
+  </div>
 </template>
 
 <script>

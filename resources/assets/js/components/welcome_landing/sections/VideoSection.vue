@@ -12,7 +12,9 @@
     <div class="pa-0 player-wrap col-sm-12 col-lg-12 col-12 NoDecor">
       <div class="hold-video">
         <div class="video__poster" ref="videoPoster">
-          <a href="#" @click.prevent="playVideo()"><i aria-hidden="true" class="v-icon notranslate mdi mdi-play theme--light"></i></a>
+          <a href="#" @click.prevent="playVideo()">
+            <img src="/images/welcome_landing_page/imgs/play.png" alt="" style="width: 40%; height:40%;">
+          </a>
         </div>
         <video ref="videoElem" src="/images/welcome_landing_page/video/sample.mp4" controls ></video>
       </div>

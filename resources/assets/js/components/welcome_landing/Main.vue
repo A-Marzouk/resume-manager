@@ -105,6 +105,7 @@
             padding: 40px 12px 148px 12px;
             width: auto;
             margin: 0px 20px !important;
+            max-width: 100%;
         }
         @media only screen
         and (min-device-width: 320px)

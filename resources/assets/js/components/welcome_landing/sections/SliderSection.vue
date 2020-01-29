@@ -9,7 +9,7 @@
     </div>
     <div class="pa-0 slider-section col-sm-12 col-lg-12 col-12">
       <div class="hold-slider">
-        <slick ref="slick" :options="slickOptions">
+        <slick ref="slick" :options="slickOptions" class="mw-100">
           <div class="slide-resume">
             <img src="/images/welcome_landing_page/imgs/slide2.png" alt=""/>
           </div>
@@ -75,7 +75,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 .slider-wrap{
 
@@ -221,9 +221,15 @@ export default {
   and (-webkit-min-device-pixel-ratio: 2) {
     overflow: visible;
 
+  }
 
-    
-
+  .slick-dots{
+    bottom: 40% !important;
+    left: 0 !important;
+    @media screen and (max-width: 769px) {
+      bottom: 0% !important;
+      left: 3% !important;
+    }
   }
 }
 

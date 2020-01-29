@@ -56,12 +56,12 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect'      => env('GOOGLE_CALLBACK_URL'),
     ],
-//
-//    'github' => [
-//        'client_id' => env('GITHUB_CLIENT'),
-//        'client_secret' => env('GITHUB_SECRET'),
-//        'redirect' => env('GITHUB_URI')
-//    ],
+
+   'github_data' => [
+       'client_id' => env('GITHUB_CLIENT'),
+       'client_secret' => env('GITHUB_SECRET'),
+       'redirect' => env('GITHUB_URI')
+   ],
 
     'github'=>[
         'client_id' => env('GITHUB_CLIENT_ID_FOR_LOGIN'),

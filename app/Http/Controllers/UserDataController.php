@@ -316,7 +316,7 @@ class UserDataController extends Controller
      */
     public function githubOAuth()
     {
-        return redirect('https://github.com/login/oauth/authorize?client_id=' . config('services.github.client_id') . '&redirect_uri=' . config('services.github.redirect') . '&login=' . auth()->user()->data->github);
+        return redirect('https://github.com/login/oauth/authorize?client_id=' . config('services.github_data.client_id') . '&redirect_uri=' . config('services.github_data.redirect') . '&login=' . auth()->user()->data->github);
     }
 
     public function importDataFromGithub(Request $request)
@@ -326,7 +326,7 @@ class UserDataController extends Controller
 
         $res = $client->request(
             'POST',
-            'https://github.com/login/oauth/access_token?client_id=' . config('services.github.client_id') . '&client_secret=' . config('services.github.client_secret') . '&code=' . $request->query('code'),
+            'https://github.com/login/oauth/access_token?client_id=' . config('services.github_data.client_id') . '&client_secret=' . config('services.github_data.client_secret') . '&code=' . $request->query('code'),
             [
                 'headers' => [
                     'Content-Type' => 'application/json',
@@ -404,10 +404,6 @@ class UserDataController extends Controller
 
         sort($languages);
         $i = 0;
-
-        /**
-         * @todo fix the filter 
-         */
 
         foreach ($skills as $skill) {
 

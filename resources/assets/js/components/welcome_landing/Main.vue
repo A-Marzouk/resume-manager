@@ -3,10 +3,10 @@
         <v-content>
             <v-container>
                 <HeroSection />
-                <!--<VideoSection />-->
-                <!--<SliderSection />-->
-                <!--<TestimonioSection />-->
-                <!--<ContactSection />-->
+                <VideoSection />
+                <SliderSection />
+                <TestimonioSection />
+                <ContactSection />
             </v-container>
             <div class="footer-section">
                 <img src="/images/welcome_landing_page/icons/logo-white.png" alt="">
@@ -16,20 +16,20 @@
 </template>
 <script>
     import HeroSection from './sections/HeroSection';
-    // import VideoSection from './sections/VideoSection';
-    // import SliderSection from './sections/SliderSection';
-    // import TestimonioSection from './sections/TestimonioSection';
-    // import ContactSection from './sections/ContactSection';
+    import VideoSection from './sections/VideoSection';
+    import SliderSection from './sections/SliderSection';
+    import TestimonioSection from './sections/TestimonioSection';
+    import ContactSection from './sections/ContactSection';
 
     export default {
         name: 'App',
 
         components: {
             HeroSection,
-            // VideoSection,
-            // SliderSection,
-            // TestimonioSection,
-            // ContactSection
+            VideoSection,
+            SliderSection,
+            TestimonioSection,
+            ContactSection
         },
 
         data: () => ({

@@ -71,6 +71,9 @@ Vue.component('resume-theme-7', require('./components/resume_themes/theme7.vue')
 Vue.component('resume-theme-8', require('./components/resume_themes/theme8.vue'));
 Vue.component('resume-theme-10', require('./components/resume_themes/theme10.vue'));
 
+
+Vue.component('welcome-landing', require('./components/welcome_landing/Main.vue'));
+
 Vue.component('welcome-landing', require('./components/welcome_landing/Main.vue'));
 if ($("#welcomeLanding").length !== 0){
     let welcomeLanding = new Vue({

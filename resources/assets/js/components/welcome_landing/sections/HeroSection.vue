@@ -17,16 +17,16 @@
           Create new account
         </span>
                 <div class="social-wrap">
-                    <a href=""><img src="/images/welcome_landing_page/icons/instagram.png" alt=""></a>
-                    <a href=""><img src="/images/welcome_landing_page/icons/linkedin.png" alt=""></a>
-                    <a href=""><img src="/images/welcome_landing_page/icons/google.png" alt=""></a>
-                    <a href=""><img src="/images/welcome_landing_page/icons/facebook.png" alt=""></a>
-                    <a href=""><img src="/images/welcome_landing_page/icons/github.png" alt=""></a>
+                    <a href="/freelancer/register/instagram"><img src="/images/welcome_landing_page/icons/instagram.png" alt=""></a>
+                    <a href="/freelancer/register/linkedin"><img src="/images/welcome_landing_page/icons/linkedin.png" alt=""></a>
+                    <a href="/freelancer/register/google"><img src="/images/welcome_landing_page/icons/google.png" alt=""></a>
+                    <a href="/freelancer/register/facebook"><img src="/images/welcome_landing_page/icons/facebook.png" alt=""></a>
+                    <a href="/freelancer/register/github"><img src="/images/welcome_landing_page/icons/github.png" alt=""></a>
                 </div>
                 <span class="title-inline">
           or Sign Up with Email
         </span>
-                <div class="v-form" ref="formSignup" v-model="isValid">
+                <div class="v-form" ref="formSignup">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12 col-lg-12 col-12">
@@ -34,12 +34,12 @@
                                     <div class="v-input__control">
                                         <div class="v-input__slot">
                                             <div class="v-text-field__slot">
-                                                <input name="email" required="required" id="input-9" placeholder="Email" type="text" style="padding-left: 20px;" v-model="formSignup.email"  :rules="formSignup.emailRules"></div>
+                                                <input name="email" required="required" id="input-9" class="w-100" placeholder="Email" type="text" style="padding-left: 20px;" v-model="formData.email"></div>
                                         </div>
-                                        <div class="v-text-field__details d-none">
+                                        <div class="v-text-field__details" v-if="errors.email">
                                             <div class="v-messages theme--light error--text" role="alert">
                                                 <div class="v-messages__wrapper">
-                                                    <div class="v-messages__message">E-mail is required</div>
+                                                    <div class="v-messages__message">{{errors.email[0]}}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -51,21 +51,20 @@
                                     <div class="v-input__control">
                                         <div class="v-input__slot">
                                             <div class="v-text-field__slot">
-                                                <input name="password" required="required" id="input-10" placeholder="Password" type="password"  v-model="formSignup.password" style="padding-left: 20px;" :rules="formSignup.passwordRules"></div>
+                                                <input name="password" required="required" id="input-10" placeholder="Password" type="password"  v-model="formData.password" class="w-100" style="padding-left: 20px;"></div>
                                         </div>
-                                        <div class="v-text-field__details d-none">
+                                        <div class="v-text-field__details" v-if="errors.password">
                                             <div class="v-messages theme--light error--text" role="alert">
                                                 <div class="v-messages__wrapper">
-                                                    <div class="v-messages__message">Password is required</div>
+                                                    <div class="v-messages__message">{{errors.password[0]}}</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-lg-12 col-12">
-                                <a href="#" class="btn-inset light__blue full" @click.prevent="submitForm"><i>Sign
-                                    up</i></a>
+                            <div class="col-sm-12 col-lg-12 col-12 NoDecor">
+                                <a href="javascript:void(0)" class="btn-inset light__blue full" @click="submitForm"><i>Sign up</i></a>
                             </div>
                         </div>
                     </div>
@@ -78,31 +77,71 @@
 
 <script>
     export default {
-        name: 'HeroSection',
-        data: () => ({
-            formSignup: {
-                email: null,
-                emailRules: [
-                    v => !!v || 'E-mail is required',
-                    v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-                ],
-                password: null,
-                passwordRules: [
-                    v => !!v || 'Password is required'
-                ]
-            },
-            isValid: false
-        }),
-        methods: {
-            submitForm() {
-                this.$refs.formSignup.validate();
-                /** Logic signup */
+        data() {
+            return {
+                formData: {
+                    name: 'Workforce agent',
+                    email: '',
+                    password: '',
+                    password_confirmation: '',
+                },
+                canSubmit: true,
+                errors: []
             }
-        }
+        },
+        methods: {
+            getUserName(){
+                return this.formData.email.substring(0,this.formData.email.lastIndexOf("@"));
+            },
+            submitForm() {
+                this.canSubmit = false;
+                if(this.referral_code){
+                    this.formData.referral_code = this.referral_code ;
+                }
+                this.formData.name = this.getUserName();
+                this.formData.password_confirmation = this.formData.password;
+                axios.post('/freelancer/register', this.formData)
+                    .then(response => {
+                        window.location.href = '/dashboard';
+                    })
+                    .catch(error => {
+                        this.canSubmit = true;
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                    });
+            },
+            clearInput(inputName) {
+                this.formData[inputName] = '';
+            },
+        },
+        watch: {
+            formData: {
+                handler() {
+                    // check if all formData values are filled
+                    let values = Object.values(this.formData);
+                    let isAll_filled = true;
+                    for (const value of values) {
+                        if (value.length < 1) {
+                            isAll_filled = false;
+                        }
+                    }
+                    this.canSubmit = isAll_filled;
+                },
+                deep: true
+            }
+        },
     };
 </script>
 
 <style lang="scss" scoped>
+    .disabled-btn{
+        background: lightgrey;
+        border:none;
+        cursor: not-allowed !important;
+    }
     .hero-wrap {
         margin-bottom: 128px;
 

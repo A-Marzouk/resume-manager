@@ -49,7 +49,6 @@
 
     @import url('//fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap');
     @import url('//fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
-    @import '~vuetify/dist/vuetify.min.css';
 
     /** General carousel duration scroll transition */
     .v-window-x-transition-enter-active,

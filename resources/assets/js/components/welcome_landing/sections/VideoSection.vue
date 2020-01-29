@@ -1,7 +1,9 @@
 <template>
   <div class="row video-wrap">
     <div class="video-section col-sm-12 col-lg-7 col-12">
-      <div class="title-two">Build a resume that you  can be proud of</div>
+      <div class="title-two">
+        Build a resume That you can be Proud of
+      </div>
       <p>100+ Integrations. Ensure your clients can easily contact, hire and pay you.</p>
     </div>
     <div class="pa-0 vicon-set col-sm-12 col-lg-5 col-12">

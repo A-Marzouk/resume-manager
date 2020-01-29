@@ -78,12 +78,12 @@ class HomeController extends Controller
     public function welcomePage()
     {
         // homepage freelancers
-        $promotedUsers = PromotedUser::with('user')->get();
-        $homeFreelancers = $promotedUsers->transform(function ($promotedUser) {
-            return $promotedUser->user;
-        });
+//        $promotedUsers = PromotedUser::with('user')->get();
+//        $homeFreelancers = $promotedUsers->transform(function ($promotedUser) {
+//            return $promotedUser->user;
+//        });
 
-        return view('welcome', compact('homeFreelancers'));
+        return view('welcome_landing');
     }
 
     public function termsView()

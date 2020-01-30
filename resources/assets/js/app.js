@@ -16,6 +16,9 @@ Vue.use(VueRouter);
 import VueParticles from 'vue-particles'
 Vue.use(VueParticles)
 
+import Vuetify from 'vuetify';
+Vue.use(Vuetify);
+
 
 $.ajaxSetup({
     headers: {

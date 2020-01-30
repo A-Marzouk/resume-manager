@@ -13,8 +13,8 @@ window.moment = require('moment');
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-import VueParticles from 'vue-particles'
-Vue.use(VueParticles)
+import VueParticles from 'vue-particles';
+Vue.use(VueParticles);
 
 import Vuetify from 'vuetify';
 Vue.use(Vuetify);
@@ -40,6 +40,38 @@ require('./select.js');
  */
 
 Vue.config.devtools = true;
+
+
+// resume builder components & routes
+
+Vue.component('resume-builder', require('./components/resume_builder/Main'));
+
+import ResumeBuilderMyAccount from './components/resume_builder/tabs/MyAccount'
+import ResumeBuilderEditCV from './components/resume_builder/tabs/EditCV'
+import ResumeBuilderViewCV from './components/resume_builder/tabs/ViewCV'
+
+if ($("#resumeBuilder").length !== 0){
+
+    const routes = [
+        { path: '/freelancer/resume-builder', component: ResumeBuilderMyAccount },
+        { path: '/freelancer/resume-builder/edit', component: ResumeBuilderEditCV },
+        { path: '/freelancer/resume-builder/view', component: ResumeBuilderViewCV }
+    ];
+
+    const router = new VueRouter({
+        mode:'history',
+        routes,
+    });
+
+
+    let resumeBuilder = new Vue({
+        router,
+        el:'#resumeBuilder'
+    });
+}
+
+
+
 
 // admin front-end components :
 Vue.component('admin-dashboard', require('./components/admin/dashboard/Main.vue'));
@@ -78,9 +110,9 @@ Vue.component('resume-theme-8', require('./components/resume_themes/theme8.vue')
 Vue.component('resume-theme-10', require('./components/resume_themes/theme10.vue'));
 
 
-Vue.component('welcome-landing', require('./components/welcome_landing/Main.vue'));
 
 Vue.component('welcome-landing', require('./components/welcome_landing/Main.vue'));
+
 if ($("#welcomeLanding").length !== 0){
     let welcomeLanding = new Vue({
         el:'#welcomeLanding'

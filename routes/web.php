@@ -338,6 +338,14 @@ Route::prefix('freelancer')->group(function () {
     Route::post('/set_terms', 'FreelancersController@setTerms');
 
     Route::get('/skillsList', 'FreelancersController@getSkillsList');
+
+//    resume editor routes
+
+
+    Route::get('/resume-builder/{any?}', 'ResumeBuilderController@index')->name('resume.builder.main');
+
+
+
 });
 
 Route::get('/clear-cache', function () {

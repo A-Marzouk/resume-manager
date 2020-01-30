@@ -1,21 +1,23 @@
 <template>
-    <div>
+    <div class="container">
 
-        <router-link to="/">
-            My account
-        </router-link>
-        <router-link to="/freelancer/resume-builder/edit">
-           Edit CV
-        </router-link>
-        <router-link to="/freelancer/resume-builder/view">
-           View CV
-        </router-link>
+        <h1 class="mb-5">
+            resume builder main structure
+        </h1>
 
-        <br>
-        resume builder
-        <br/>
+        <div class="w-100 d-flex justify-content-around mb-4">
+            <router-link to="/resume-builder">
+                My account
+            </router-link>
+            <router-link to="/resume-builder/edit">
+                Edit CV
+            </router-link>
+            <router-link to="/resume-builder/view">
+                View CV
+            </router-link>
+        </div>
 
-        <keep-alive>
+        <keep-alive class="mt-5">
             <router-view></router-view>
         </keep-alive>
     </div>

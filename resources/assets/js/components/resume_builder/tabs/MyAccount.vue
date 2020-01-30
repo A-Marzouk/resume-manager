@@ -1,6 +1,8 @@
 <template>
     <div>
-        my account tab
+       <h2>
+           My account tab
+       </h2>
     </div>
 </template>
 

@@ -1,14 +1,14 @@
 <template>
     <div>
-        <h2>
-            view cv
-        </h2>
+        <h3>
+            WorkExperience
+        </h3>
     </div>
 </template>
 
 <script>
     export default {
-        name: "ViewCV"
+        name: "WorkExperience"
     }
 </script>
 

@@ -261,6 +261,11 @@ Route::post('/audio/save_for_register', 'DevelopersController@saveAudioForRegist
 Route::post('/audio/save_for_media', 'AgentsController@saveAudioForMedia');
 
 
+// resume builder main routes.
+Route::get('/resume-builder/{any?}', 'ResumeBuilderController@index')->name('resume.builder.main');
+Route::get('/resume-builder/edit/{any?}', 'ResumeBuilderController@index')->name('resume.builder.edit');
+
+
 Route::prefix('freelancer')->group(function () {
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('freelancer.login');
     Route::get('/logout', 'Auth\LoginController@logout')->name('freelancer.logout');
@@ -338,6 +343,9 @@ Route::prefix('freelancer')->group(function () {
     Route::post('/set_terms', 'FreelancersController@setTerms');
 
     Route::get('/skillsList', 'FreelancersController@getSkillsList');
+
+//    resume editor routes
+
 });
 
 Route::get('/clear-cache', function () {
@@ -346,7 +354,7 @@ Route::get('/clear-cache', function () {
 });
 
 // Resume landing page
-Route::get('/resume-builder', 'ResumeController@resumeBuilder')->name('resume-builder');
+//Route::get('/resume-builder', 'ResumeController@resumeBuilder')->name('resume-builder');
 
 // admin area :
 Route::get('/admin', 'AdminsController@welcomePage')->name('admin.dashboard');

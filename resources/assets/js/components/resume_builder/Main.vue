@@ -1,31 +1,21 @@
 <template>
-    <div class="container">
+    <div class="resume-container">
+        <resume-builder-nav></resume-builder-nav>
 
-        <h1 class="mb-5">
-            resume builder main structure
-        </h1>
-
-        <div class="w-100 d-flex justify-content-around mb-4">
-            <router-link to="/resume-builder">
-                My account
-            </router-link>
-            <router-link to="/resume-builder/edit">
-                Edit CV
-            </router-link>
-            <router-link to="/resume-builder/view">
-                View CV
-            </router-link>
-        </div>
-
-        <keep-alive class="mt-5">
+        <keep-alive class="mt-5 content">
             <router-view></router-view>
         </keep-alive>
     </div>
 </template>
 
 <script>
+    import ResumeBuilderNav from './includes/nav.vue'
+    
     export default {
         name: "Main",
+        components: {
+            ResumeBuilderNav
+        },
         data(){
             return{
 
@@ -40,6 +30,8 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+    .resume-container {
+        padding: 160px 100px 30px;
+    }
 </style>

@@ -74,7 +74,8 @@ $disabledColor: #B2BBFF;
 .aside-link {
     font-size: 22px;
     margin-bottom: 21px;
-    padding: 10px 32px;
+    padding: 5px 0;
+    padding-right: 32px;
 
     a {
         color: $disabledColor;

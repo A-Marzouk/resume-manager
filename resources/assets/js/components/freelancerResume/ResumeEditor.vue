@@ -22,7 +22,8 @@
                                 <span>Import : </span>&nbsp;
                                 <a href="javascript:void(0)" id="importBehanceData" data-toggle="modal"
                                    data-target="#behanceDataModal">Behance </a> &nbsp; | &nbsp;
-                                <a href="javascript:void(0)"> linkedIn</a>
+                                <a href="javascript:void(0)"> linkedIn </a> &nbsp; | &nbsp;
+                                <a :href="user.user_data.github && `/test/github/`"> GitHub</a>
                             </div>
                             <div class="editButton NoDecor">
                                 <a href="javascript:void(0)" @click="toggleCustomize">

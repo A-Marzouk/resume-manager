@@ -1,5 +1,6 @@
 <template>
     <div class="theme-container">
+        <vue-particles></vue-particles>
         <div class="main-info-bar">
             <div class="left">
                 <div class="profile-picture">
@@ -395,6 +396,7 @@
 
     .theme-container {
         display: flex;
+        position: relative;
         justify-content: center;
         flex-direction: column;
         align-items: center;
@@ -406,6 +408,8 @@
         .main-info-bar {
             display: flex;
             justify-content: space-between;
+            position: relative;
+            z-index: 1;
             
            
            
@@ -647,6 +651,8 @@
         }
 
         .tabs-bar {
+            position: relative;
+            z-index: 1;
             background: #333232;
             box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
             width:100%;
@@ -679,11 +685,13 @@
                 border: 1px solid #005BD1;
                 -webkit-box-shadow: 0px 0px 16px #005BD1;
                 box-shadow: 0px 0px 16px #005BD1;
-                background: #005BD1;;
-                border-radius: 2px;
+                background: #005BD1;
             }
 
             .tabs-bar {
+                position: relative;
+                z-index: 1;
+
                 div:last-child {
                     margin-right: 0;
                 }
@@ -696,9 +704,8 @@
         }
 
         .tabs-wrapper {
-            
-            
-
+            position: relative;
+            z-index: 1;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -934,7 +941,7 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            background-image: url("/images/resume_themes/theme8/background.svg");
+            background: #201f1f;
             font-family: 'Thabit', monospace !important;
             max-width: 1920px;
 
@@ -1214,7 +1221,7 @@
                                 a {
                                     background: #005BD1;
                                     box-shadow: 0px 0px 16px rgba(0, 91, 209, 0.5);
-                                    border-radius: 50px;
+                                    border-radius: 10px;
 
                                     font-weight: bold;
                                     font-size: 24px;
@@ -1269,8 +1276,7 @@
                     border: 1px solid #005BD1;
                     -webkit-box-shadow: 0px 0px 16px #005BD1;
                     box-shadow: 0px 0px 16px #005BD1;
-                    background: #005BD1;;
-                    border-radius: 2px;
+                    background: #005BD1;
                 }
 
                 .tabs-bar {
@@ -2173,5 +2179,13 @@
         color: #3C327B;
         font-weight: 400;
         top: -13px;
+    }
+
+
+    // particles styles
+    #particles-js {
+        position: absolute;
+        height: 100%;
+        width: 100%;
     }
 </style>

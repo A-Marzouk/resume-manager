@@ -683,4 +683,4 @@ Route::get('/resume/test/{username}/download', 'ResumeController@downloadPDFResu
 Route::get('/create/new_agents', 'TestController@createAgents');
 
 Route::get('/test/github/', 'UserDataController@githubOAuth');
-Route::get('/freelancer/github/', 'UserDataController@importDataFromGithub');
+Route::get('/data/github/', 'UserDataController@importDataFromGithub');

@@ -101,7 +101,7 @@ class FreelancersController extends Controller
             ]);
         }
 
-        return view('freelancerResume.portfolio', compact('freelancer','affiliates'));
+        return view('freelancerResume.portfolio', compact('freelancer'));
     }
 
     public function showEditForm()

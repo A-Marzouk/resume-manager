@@ -11,12 +11,14 @@
     },
     "devDependencies": {
         "axios": "^0.18",
+        "babel-preset-stage-2": "^6.24.1",
         "bootstrap": "^4.0.0",
+        "popper.js": "^1.12",
         "cross-env": "^5.1",
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
-        "popper.js": "^1.12"
+        "vue": "^2.5.7"
     },
     "dependencies": {
         "@google-cloud/translate": "^5.1.4",
@@ -25,12 +27,14 @@
         "laravel": "0.0.1",
         "laravel-echo": "^1.4.0",
         "moment": "^2.24.0",
+        "node-sass": "^4.13.1",
         "puppeteer": "^2.0.0",
         "pusher-js": "^4.2.2",
         "vue": "^2.5.16",
         "vue-color": "^2.7.0",
         "vue-load-image": "^0.1.8",
         "vue-moment": "^4.0.0",
+        "vue-particles": "^1.0.9",
         "vue-router": "^3.0.6",
         "vue-slick": "^1.1.15",
         "vue-template-compiler": "^2.5.16",

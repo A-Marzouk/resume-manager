@@ -116,185 +116,52 @@ class ResumeController extends Controller
         return false;
     }
 
+    /**
+     * This is the central controller to render all themes in the project
+     * 
+     * @param username
+     * @param themeCode
+     * @return themeView
+     * @author Jose Quintero
+     * 
+     */
+
+    public function agentsResumeTheme ($themeCode, $username) {
+        $user = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
+            return $query->limit(10);
+        }])->where('username', $username)->first();
+
+        if (!$user->agent->customResume) {
+            ResumeCustom::insert([
+                [
+                    'agent_id' => $user->agent->id,
+                    'background_color' => '#4E75E8',
+                ],
+            ]);
+        }
+
+        return view('resume_themes.' . $themeCode, ["agent" => $user]);
+    }
+
     public function agentsResume($username)
     {
 
-        $freelancer = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
+        $agent = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
             return $query->limit(10);
         }])->where('username', $username)->first();
 
-        if (!$freelancer->agent->customResume) {
+        if (!$agent->agent->customResume) {
             ResumeCustom::insert([
                 [
-                    'agent_id' => $freelancer->agent->id,
+                    'agent_id' => $agent->agent->id,
                     'background_color' => '#4E75E8',
                 ],
             ]);
         }
 
-        return view('freelancerResume.resumeLongV2', compact('freelancer'));
+        return view('freelancerResume.resumeLongV2', compact('agent'));
 
     }
-
-    public function agentsResumeTheme2($username)
-    {
-
-        $freelancer = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
-            return $query->limit(10);
-        }])->where('username', $username)->first();
-
-        if (!$freelancer->agent->customResume) {
-            ResumeCustom::insert([
-                [
-                    'agent_id' => $freelancer->agent->id,
-                    'background_color' => '#4E75E8',
-                ],
-            ]);
-        }
-
-        return view('resume_themes.theme2', compact('freelancer'));
-
-    }
-
-    public function agentsResumeTheme4($username)
-    {
-
-        $freelancer = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
-            return $query->limit(10);
-        }])->where('username', $username)->first();
-
-        if (!$freelancer->agent->customResume) {
-            ResumeCustom::insert([
-                [
-                    'agent_id' => $freelancer->agent->id,
-                    'background_color' => '#4E75E8',
-                ],
-            ]);
-        }
-
-        return view('resume_themes.theme4', compact('freelancer'));
-
-    }
-
-    public function agentsResumeTheme3($username)
-    {
-
-        $freelancer = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
-            return $query->limit(10);
-        }])->where('username', $username)->first();
-
-        if (!$freelancer->agent->customResume) {
-            ResumeCustom::insert([
-                [
-                    'agent_id' => $freelancer->agent->id,
-                    'background_color' => '#4E75E8',
-                ],
-            ]);
-        }
-
-        return view('resume_themes.theme3', compact('freelancer'));
-
-    }
-
-    public function agentsResumeTheme5($username)
-    {
-
-        $freelancer = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
-            return $query->limit(10);
-        }])->where('username', $username)->first();
-
-        if (!$freelancer->agent->customResume) {
-            ResumeCustom::insert([
-                [
-                    'agent_id' => $freelancer->agent->id,
-                    'background_color' => '#4E75E8',
-                ],
-            ]);
-        }
-
-        return view('resume_themes.theme5', compact('freelancer'));
-
-    }
-
-    public function agentsResumeTheme6($username)
-    {
-
-        $freelancer = User::with(['userData', 'skills', 'agent', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
-            return $query->limit(10);
-        }])->where('username', $username)->first();
-
-        if (!$freelancer->agent->customResume) {
-            ResumeCustom::insert([
-                [
-                    'agent_id' => $freelancer->agent->id,
-                    'background_color' => '#4E75E8',
-                ],
-            ]);
-        }
-
-        return view('resume_themes.theme6', compact('freelancer'));
-
-    }
-
-    public function agentsResumeTheme7($username)
-    {
-
-        $freelancer = User::with(['userData', 'skills', 'agent', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
-            return $query->limit(10);
-        }])->where('username', $username)->first();
-
-        if (!$freelancer->agent->customResume) {
-            ResumeCustom::insert([
-                [
-                    'agent_id' => $freelancer->agent->id,
-                    'background_color' => '#4E75E8',
-                ],
-            ]);
-        }
-
-        return view('resume_themes.theme7', compact('freelancer'));
-
-    }
-
-    public function agentsResumeTheme8($username)
-    {
-
-        $freelancer = User::with(['userData', 'skills', 'agent', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
-            return $query->limit(10);
-        }])->where('username', $username)->first();
-
-        if (!$freelancer->agent->customResume) {
-            ResumeCustom::insert([
-                [
-                    'agent_id' => $freelancer->agent->id,
-                    'background_color' => '#4E75E8',
-                ],
-            ]);
-        }
-
-        return view('resume_themes.theme8', compact('freelancer'));
-
-    }
-
-    public function agentsResumeTheme10($username)
-    {
-
-        $freelancer = User::with(['userData', 'agent.customResume', 'agent.socials', 'agent.resumeTabs', 'skills', 'recordings', 'worksHistory.projects', 'references', 'educationsHistory', 'projects' => function ($query) {
-            return $query->limit(10);
-        }])->where('username', $username)->first();
-
-        if (!$freelancer->agent->customResume) {
-            ResumeCustom::insert([
-                [
-                    'agent_id' => $freelancer->agent->id,
-                    'background_color' => '#4E75E8',
-                ],
-            ]);
-        }
-
-        return view('resume_themes.theme10', compact('freelancer'));
-    }
-
 
     public function agentsTestResume($username)
     {

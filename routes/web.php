@@ -649,14 +649,7 @@ Route::get('/workforce/privacy_policy', 'HomeController@privacyView')->name('pri
 Route::get('/resume_sample/{username}', 'HomeController@ResumeSample');
 //Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
 Route::get('/{username}', 'ResumeController@agentsResume');
-Route::get('/theme-2/{username}', 'ResumeController@agentsResumeTheme2');
-Route::get('/theme-3/{username}', 'ResumeController@agentsResumeTheme3');
-Route::get('/theme-4/{username}', 'ResumeController@agentsResumeTheme4');
-Route::get('/theme-5/{username}', 'ResumeController@agentsResumeTheme5');
-Route::get('/theme-6/{username}', 'ResumeController@agentsResumeTheme6');
-Route::get('/theme-7/{username}', 'ResumeController@agentsResumeTheme7');
-Route::get('/theme-8/{username}', 'ResumeController@agentsResumeTheme8');
-Route::get('/theme-10/{username}', 'ResumeController@agentsResumeTheme10');
+Route::get('/resume/{themeCode}/{username}', 'ResumeController@agentsResumeTheme');
 
 
 Route::get('/business-card/download', 'ResumePDFController@BusinessCardDownload')->name('download-pdf-card');

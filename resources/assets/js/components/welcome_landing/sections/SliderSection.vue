@@ -225,10 +225,11 @@ export default {
 
   .slick-dots{
     bottom: 40% !important;
-    left: 0 !important;
+    left: 25% !important;
+    width: 50%;
     @media screen and (max-width: 769px) {
-      bottom: 0% !important;
-      left: 3% !important;
+      bottom: 0 !important;
+      left: 25% !important;
     }
   }
 }

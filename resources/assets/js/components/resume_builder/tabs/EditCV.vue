@@ -2,13 +2,14 @@
    <div>
        <div class="d-flex mt-5">
            <div class="aside-bar d-flex flex-column mr-5">
-               <div v-for="(section, ind) in asideSections" :key="section" class="aside-link d-flex" :class="{'active': !ind}">
+               <div @click="setActive" v-for="(section, ind) in asideSections" :key="section" class="aside-link d-flex" :class="{'active': !ind}">
 
                 <img class="aside-icon" :src="`/images/resume_builder/${section}-icon.svg`" :alt="`${section} icon`">
                 <router-link :to="`/resume-builder/edit/${section.replace('/', '-')}`">
                     {{formatSectionString(section)}}
                 </router-link>
                </div>
+               <div id="scrollItem"></div>
            </div>
            <keep-alive class="mt-5">
                <router-view></router-view>
@@ -48,7 +49,23 @@
                 });
 
                 return formatedString;
+            },
+            setActive (e) {
+                let activeNow = document.querySelector('.aside-link.active')
+                activeNow && activeNow.classList.toggle('active')
+                e.target.parentNode.classList.toggle('active')
+
+                this.scrollHandler(e.target.parentNode)
+            },
+            scrollHandler (target) {
+                let scrollItem = document.getElementById('scrollItem');
+
+                scrollItem.style.top = target.offsetTop + "px";
+                scrollItem.style.height = target.offsetHeight + "px";
             }
+        },
+        mounted () {
+            this.scrollHandler(document.querySelector('.aside-link.active'))
         }
     }
 </script>
@@ -70,38 +87,38 @@ $disabledColor: #B2BBFF;
         width: 6px;
         background-color: #E2E5FC;
     }
+
+    #scrollItem {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 6px;
+        height: 20px;
+        z-index: 5;
+        background-color: $activeColor;
+    }
 }
 .aside-link {
     font-size: 22px;
-    margin-bottom: 21px;
-    padding: 10px 32px;
+    padding: 13px 0;
+    padding-right: 32px;
+
+    &.active a {
+        color: $activeColor;
+        transition: all .5s ease;
+    }
 
     a {
         color: $disabledColor;
+        transition: all .5s ease;
+        display: block;
+        width: 100%;
+
 
         &:active,
         &:hover {
             text-decoration: none;
             cursor: pointer;
-        }
-    }
-
-    &.active {
-        position: relative;
-        
-        a {
-            color: $activeColor;
-        }
-
-        &::after {
-            content: "";
-            position: absolute;
-            z-index: 5;
-            height: 100%;
-            width: 6px;
-            right: 0;
-            top: 0;
-            background-color: $activeColor;
         }
     }
 }

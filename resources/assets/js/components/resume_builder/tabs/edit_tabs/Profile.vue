@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex profile-hold">
+    <div class="profile-hold">
         <h2 class="title-blue">Edit<br><b>profile</b></h2>
         <v-tabs
             v-model="currentTab"
@@ -19,7 +19,7 @@
         <v-tabs-items v-model="currentTab">
             <v-tab-item value="tab-personal" reverse-transition="fade-transition" transition="fade-transition">
                 <div class="hold-edit">
-                    <img class="user-cover" src="/images/resume_builder/profile/" alt="">
+                    <img class="user-cover" src="/images/resume_builder/default-user.jpg" alt="">
                     <div class="upload-section">
                         <h5>Change profile photo</h5>
                         <p>Only use images that are greater than 500 pixels in both height and width.</p>
@@ -174,7 +174,7 @@
         padding: 40px 20px;
 
         .user-cover{
-            min-width: 144px;
+            max-width: 144px;
             min-height: 144px;
             border-radius: 100%;
             border: 5px solid #fff;

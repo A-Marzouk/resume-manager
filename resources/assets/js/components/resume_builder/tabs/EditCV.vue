@@ -2,11 +2,11 @@
    <div>
        <div class="d-flex mt-5">
            <div @click="() => false" class="aside-bar d-flex flex-column mr-5">
-               <div @click="setActive" v-for="(section, ind) in asideSections" :key="section" class="aside-link d-flex" :class="{'active': !ind}">
+               <div @click="setActive" v-for="(section, ind) in asideSections" :key="section.name" class="aside-link d-flex align-items-center" :class="{'active': !ind}">
 
-                <img class="aside-icon" :src="`/images/resume_builder/${section}-icon.svg`" :alt="`${section} icon`">
-                <router-link :to="`/resume-builder/edit/${section.replace('/', '-')}`">
-                    {{formatSectionString(section)}}
+                <svg-vue class="aside-icon" :icon="`${section.name}-icon`"></svg-vue>
+                <router-link :to="`/resume-builder/edit/${section.name.replace('/', '-')}`">
+                    {{formatSectionString(section.name)}}
                 </router-link>
                </div>
                <div id="scrollItem"></div>
@@ -19,22 +19,59 @@
 </template>
 
 <script>
+
     export default {
         name: "EditCV",
         data: () => ({
             asideSections: [
-                'profile',
-                'summary',
-                'work-experience',
-                'education',
-                'skills',
-                'projects',
-                'achievement',
-                'hobbies',
-                'audio/video',
-                'pay-availability',
-                'imports',
-                'references'
+                {
+                    name: 'profile',
+                    icon: null
+                },
+                {
+                    name: 'summary',
+                    icon: null
+                },
+                {
+                    name: 'work-experience',
+                    icon: null
+                },
+                {
+                    name: 'education',
+                    icon: null
+                },
+                {
+                    name: 'skills',
+                    icon: null
+                },
+                {
+                    name: 'projects',
+                    icon: null
+                },
+                {
+                    name: 'achievement',
+                    icon: null
+                },
+                {
+                    name: 'hobbies',
+                    icon: null
+                },
+                {
+                    name: 'audio/video',
+                    icon: null
+                },
+                {
+                    name: 'pay-availability',
+                    icon: null
+                },
+                {
+                    name: 'imports',
+                    icon: null
+                },
+                {
+                    name: 'references',
+                    icon: null
+                }
             ]
         }),
         methods: {
@@ -74,8 +111,6 @@
                 // diff between actual pos and target pos
                 let posDiff = target.offsetTop - scrollItemPos;
 
-                console.log(target)
-
                 // To position and height gradually during 0.5 secs
                 let moveInterval = posDiff / 15;
                 let growInterval = heightDiff / 15;
@@ -89,7 +124,6 @@
 
                     scrollItem.style.top = scrollItemPos + "px";
                     scrollItem.style.height = scrollItemHeight + "px";
-                    console.log(count++)
                 }, 20);
 
                 setTimeout(() => {
@@ -112,7 +146,7 @@
 
 <style lang="scss">
 $activeColor: #001CE2;
-$disabledColor: #B2BBFF;
+$disabledColor: #9F9E9E;
 
 .aside-bar {
     max-width: 260px;
@@ -164,6 +198,6 @@ $disabledColor: #B2BBFF;
 }
 .aside-icon {
     margin-right: 22px;
-    width: 40px;
+    height: 40px;
 }
 </style>

@@ -21,6 +21,10 @@ import Vuetify from 'vuetify';
 
 Vue.use(Vuetify);
 
+import SvgVue from 'svg-vue';
+
+Vue.use(SvgVue);
+
 
 $.ajaxSetup({
     headers: {

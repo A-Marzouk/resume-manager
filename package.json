@@ -26,6 +26,7 @@
         "firebase": "^7.2.3",
         "laravel": "0.0.1",
         "laravel-echo": "^1.4.0",
+        "laravel-mix-svg-vue": "^0.2.6",
         "moment": "^2.24.0",
         "node-sass": "^4.13.1",
         "puppeteer": "^2.0.0",

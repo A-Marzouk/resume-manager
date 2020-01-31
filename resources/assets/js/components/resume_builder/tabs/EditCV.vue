@@ -1,7 +1,7 @@
 <template>
    <div>
        <div class="d-flex mt-5">
-           <div class="aside-bar d-flex flex-column mr-5">
+           <div @click="() => false" class="aside-bar d-flex flex-column mr-5">
                <div @click="setActive" v-for="(section, ind) in asideSections" :key="section" class="aside-link d-flex" :class="{'active': !ind}">
 
                 <img class="aside-icon" :src="`/images/resume_builder/${section}-icon.svg`" :alt="`${section} icon`">
@@ -39,6 +39,12 @@
         }),
         methods: {
             formatSectionString: (str) => {
+                /**
+                 * Convert the url in a friendly text
+                 * @param String str
+                 * @returns String formated
+                 */
+
                 let strArray = str.split('-');
 
                 let formatedString = "";
@@ -59,13 +65,47 @@
             },
             scrollHandler (target) {
                 let scrollItem = document.getElementById('scrollItem');
+                let scrollItemHeight = scrollItem.style.height !== "" ? parseFloat(scrollItem.style.height.replace('px', '')) : 0;
+                let scrollItemPos = scrollItem.style.top !== "" ? parseFloat(scrollItem.style.top.replace('px', '')) : 0;
 
-                scrollItem.style.top = target.offsetTop + "px";
-                scrollItem.style.height = target.offsetHeight + "px";
+                // diff between actual size and the target size
+                let heightDiff = target.offsetHeight - scrollItemHeight;
+
+                // diff between actual pos and target pos
+                let posDiff = target.offsetTop - scrollItemPos;
+
+                console.log(target)
+
+                // To position and height gradually during 0.5 secs
+                let moveInterval = posDiff / 15;
+                let growInterval = heightDiff / 15;
+
+                let count = 1
+
+                let interval = setInterval(() => {
+
+                    scrollItemPos += moveInterval
+                    scrollItemHeight += growInterval
+
+                    scrollItem.style.top = scrollItemPos + "px";
+                    scrollItem.style.height = scrollItemHeight + "px";
+                    console.log(count++)
+                }, 20);
+
+                setTimeout(() => {
+                    if (scrollItem.style.top !== target.offsetTop) {
+                        scrollItem.style.top = target.offsetTop + "px"
+                    }
+                    clearInterval(interval)
+                }, 301);
+
             }
         },
         mounted () {
-            this.scrollHandler(document.querySelector('.aside-link.active'))
+            let _this = this
+            setTimeout(() => {
+                _this.scrollHandler(document.querySelector('.aside-link.active'))
+            }, 100)
         }
     }
 </script>
@@ -100,20 +140,20 @@ $disabledColor: #B2BBFF;
 }
 .aside-link {
     font-size: 22px;
-    padding: 13px 0;
     padding-right: 32px;
 
     &.active a {
         color: $activeColor;
-        transition: all .5s ease;
+        transition: all 1s ease;
     }
 
     a {
+        padding: 13px 0;
         color: $disabledColor;
-        transition: all .5s ease;
+        transition: all 1s ease;
         display: block;
         width: 100%;
-
+        height: 100%;
 
         &:active,
         &:hover {

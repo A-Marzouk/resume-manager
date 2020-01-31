@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44.391 40.84">
-  <g id="comment" transform="translate(0 1.332)">
-    <path id="Path_1382" data-name="Path 1382" d="M38.288-1.332H6.1A6.11,6.11,0,0,0,0,4.771v19.7a6.11,6.11,0,0,0,6.081,6.1v8.938L18.926,30.57H38.288a6.11,6.11,0,0,0,6.1-6.1V4.771A6.11,6.11,0,0,0,38.288-1.332Zm3.5,25.8a3.506,3.506,0,0,1-3.5,3.5H18.11L8.682,34.53V27.969H6.1a3.506,3.506,0,0,1-3.5-3.5V4.771a3.506,3.506,0,0,1,3.5-3.5H38.288a3.506,3.506,0,0,1,3.5,3.5Zm0,0" fill="#c9cff8"/>
-    <path id="Path_1383" data-name="Path 1383" d="M171.293,131.172h20.629v2.6H171.293Zm0,0" transform="translate(-159.412 -123.313)" fill="#c9cff8"/>
-    <path id="Path_1384" data-name="Path 1384" d="M171.293,211.172h20.629v2.6H171.293Zm0,0" transform="translate(-159.412 -197.765)" fill="#c9cff8"/>
-    <path id="Path_1385" data-name="Path 1385" d="M171.293,291.172h20.629v2.6H171.293Zm0,0" transform="translate(-159.412 -272.216)" fill="#c9cff8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45.391 42.297">
+  <g id="comment" transform="translate(0.5 1.832)">
+    <path id="Path_1382" data-name="Path 1382" d="M38.288-1.332H6.1A6.11,6.11,0,0,0,0,4.771v19.7a6.11,6.11,0,0,0,6.081,6.1v8.938L18.926,30.57H38.288a6.11,6.11,0,0,0,6.1-6.1V4.771A6.11,6.11,0,0,0,38.288-1.332Zm3.5,25.8a3.506,3.506,0,0,1-3.5,3.5H18.11L8.682,34.53V27.969H6.1a3.506,3.506,0,0,1-3.5-3.5V4.771a3.506,3.506,0,0,1,3.5-3.5H38.288a3.506,3.506,0,0,1,3.5,3.5Zm0,0" fill="none" stroke="#707070" stroke-width="1"/>
+    <path id="Path_1383" data-name="Path 1383" d="M171.293,131.172h20.629v2.6H171.293Zm0,0" transform="translate(-159.412 -123.313)" fill="#9f9e9e"/>
+    <path id="Path_1384" data-name="Path 1384" d="M171.293,211.172h20.629v2.6H171.293Zm0,0" transform="translate(-159.412 -197.765)" fill="#9f9e9e"/>
+    <path id="Path_1385" data-name="Path 1385" d="M171.293,291.172h20.629v2.6H171.293Zm0,0" transform="translate(-159.412 -272.216)" fill="#9f9e9e"/>
   </g>
 </svg>

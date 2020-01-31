@@ -146,7 +146,7 @@
 
 <style lang="scss">
 $activeColor: #001CE2;
-$disabledColor: #9F9E9E;
+$disabledColor: #9f9e9e;
 
 .aside-bar {
     max-width: 260px;
@@ -176,9 +176,39 @@ $disabledColor: #9F9E9E;
     font-size: 22px;
     padding-right: 32px;
 
-    &.active a {
-        color: $activeColor;
-        transition: all 1s ease;
+    .aside-icon {
+            path {
+                fill: none;
+                stroke: $disabledColor;
+                transition: all .5s ease;
+            }
+
+            circle {
+                fill: none;
+                stroke: $disabledColor;
+                transition: all .5s ease;
+            }
+        }
+
+    &.active {
+        a {
+            color: $activeColor;
+            transition: all 1s ease;
+        }
+
+        .aside-icon {
+            path {
+                fill: $activeColor;
+                stroke: #fff;
+                transition: all .5s ease;
+            }
+
+            circle {
+                fill: $activeColor;
+                stroke: #fff;
+                transition: all .5s ease;
+            }
+        }
     }
 
     a {

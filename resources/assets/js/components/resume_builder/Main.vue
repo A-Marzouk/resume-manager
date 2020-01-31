@@ -21,7 +21,7 @@
 
             <div class="actions-group d-flex align-items-center justify-content-between">
                 <button class="action-btn">
-                    <img src="/images/resume_builder/notification-icon.svg" alt="notification icon">
+                    <img src="/images/resume_builder/notification.png" alt="notification icon">
                 </button>
                 <button class="action-btn">
                     <img src="/images/resume_builder/settings-icon.svg" alt="settings icon">
@@ -125,8 +125,13 @@ $mainColor: #001CE2;
             .action-btn {
                 background: transparent;
                 border: 0;
-                width: 30px;
+                width: 40px;
                 margin-right: 58px;
+                position: relative;
+
+                img { 
+                    width: 100%;
+                }
 
                 &.user-profile {
                     width: 46px;

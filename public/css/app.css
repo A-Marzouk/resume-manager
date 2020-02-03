@@ -12979,57 +12979,27 @@ html {
   max-height: 158px !important;
 }
 
+@font-face {
+  font-family: NexaLight;
+  src: url("/fonts/nexa/Nexa Light.otf");
+}
+
+@font-face {
+  font-family: NexaBold;
+  src: url("/fonts/nexa/Nexa Bold.otf");
+}
+
 .resume-container {
   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
 }
 
-.input-field {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column;
-          flex-flow: column;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-width: 490px;
-  margin-bottom: 31.5px;
+.section-title {
+  font-size: 59px;
+  color: #001CE2;
+  font-family: NexaLight, Arial, Helvetica, sans-serif;
 }
 
-.input-field label {
-  font-size: 22px;
-  line-height: 30px;
-  color: #505050;
-  font-family: "Noto Sans";
-  font-weight: 300;
-}
-
-.input-field label .hint-message {
-  font-size: 18px;
-  color: #1f5de4;
-  float: right;
-  font-style: normal;
-}
-
-.input-field input {
-  min-height: 54.6px;
-  border: 1.5px solid #505050;
-  border-radius: 8px;
-  padding: 0px 0px 0px 16.8px;
-  color: #a5a5a5;
-  font-size: 15px;
-  font-family: "Noto Sans";
-  font-weight: 500;
-  outline: none;
-}
-
-.input-field textarea {
-  min-height: 181px;
-  padding: 23px 25px;
-  font-size: 22px;
-  font-family: "Noto Sans";
-  font-weight: 500;
-  outline: none;
-  color: #a5a5a5;
-  border: 1.5px solid #505050;
-  border-radius: 8px;
+.section-title h2 {
+  font-size: 59px;
+  font-family: NexaBold, Arial, Helvetica, sans-serif;
 }

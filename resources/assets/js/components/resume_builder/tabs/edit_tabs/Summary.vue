@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h3>
-            Summary
-        </h3>
+        <div class="section-title">
+            <h2>Summary</h2>
+        </div>
     </div>
 </template>
 

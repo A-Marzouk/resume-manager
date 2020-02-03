@@ -1,8 +1,9 @@
 <template>
     <div>
-        <h3>
-            References
-        </h3>
+        <div class="section-title">
+            <div class="title-light">Add</div>
+            <h2>References</h2>
+        </div>
     </div>
 </template>
 

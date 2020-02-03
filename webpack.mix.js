@@ -12,9 +12,10 @@ require('laravel-mix-svg-vue');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
-   .svgVue({
+mix
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .js('resources/assets/js/app.js', 'public/js')
+    .svgVue({
       svgPath: 'resources/assets/icons',
       extract: false,
       svgoSettings: [

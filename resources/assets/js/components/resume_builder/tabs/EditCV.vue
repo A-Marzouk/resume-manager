@@ -228,6 +228,6 @@ $disabledColor: #9f9e9e;
 }
 .aside-icon {
     margin-right: 22px;
-    height: 40px;
+    width: 40px;
 }
 </style>

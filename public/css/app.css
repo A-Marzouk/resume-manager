@@ -1,4 +1,4 @@
-* {
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap);* {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -12977,4 +12977,29 @@ html {
 
 .newHomePage .freelancerCard .nameRow {
   max-height: 158px !important;
+}
+
+@font-face {
+  font-family: NexaLight;
+  src: url("/fonts/nexa/Nexa Light.otf");
+}
+
+@font-face {
+  font-family: NexaBold;
+  src: url("/fonts/nexa/Nexa Bold.otf");
+}
+
+.resume-container {
+  font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+}
+
+.section-title {
+  font-size: 59px;
+  color: #001CE2;
+  font-family: NexaLight, Arial, Helvetica, sans-serif;
+}
+
+.section-title h2 {
+  font-size: 59px;
+  font-family: NexaBold, Arial, Helvetica, sans-serif;
 }

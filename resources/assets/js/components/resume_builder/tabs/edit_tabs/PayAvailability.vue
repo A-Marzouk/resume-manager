@@ -1,8 +1,9 @@
 <template>
     <div>
-        <h3>
-            PayAvailability
-        </h3>
+        <div class="section-title">
+            <div class="title-light">Add</div>
+            <h2>Pay Availability</h2>
+        </div>
     </div>
 </template>
 

@@ -1,0 +1,32 @@
+.btn {
+    border: 1.5px solid $mainBlue;
+    border-radius: 8px;
+    background: transparent;
+    color: $mainBlue !important;
+    text-decoration: none;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+    padding: 18px 10px !important;
+
+    .icon {
+        margin-right: 10px;
+
+        path, circle {
+            fill: $mainBlue;
+        }
+    }
+    
+    &.filled {
+        background: $mainBlue;
+        color: white !important;
+        box-shadow: 0px 5px 5px rgba($color: black, $alpha: 0.16);
+        
+        .icon {
+            path, circle {
+                fill: white;
+            }
+        }
+    }
+}

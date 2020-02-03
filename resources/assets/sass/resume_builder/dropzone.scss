@@ -1,0 +1,16 @@
+.dropzone.vue-dropzone {
+    border: solid $mainBlue 1px;
+    border-radius: 8px;
+    background: transparent;
+    font-family: Noto Sans, Arial, Helvetica, sans-serif;
+    color: $black;
+
+    .empty-text {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    &:hover {
+        background: transparent;
+    }
+}

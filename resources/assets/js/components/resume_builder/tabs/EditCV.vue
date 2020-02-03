@@ -71,6 +71,8 @@
 </script>
 
 <style lang="scss">
+
+
 $activeColor: #001CE2;
 $disabledColor: #B2BBFF;
 

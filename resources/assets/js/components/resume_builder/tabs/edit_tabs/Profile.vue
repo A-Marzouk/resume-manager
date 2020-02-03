@@ -2,22 +2,14 @@
     <div class="profile-hold">
         <h2 class="title-blue">Edit<br><b>profile</b></h2>
         <v-tabs
-            v-model="currentTab"
+            v-model="cTabProfile"
             :slider-color="tabColor"
             height="85"
-            
         >
-            <v-tab
-                v-for="tabName in tabsProfile"
-                :key="tabName"
-                :href="`#tab-${tabName}`"
-                :ripple="false" 
-            >
-                {{ tabName }}
-            </v-tab>
+            <vTabNames v-for="(nametab,i) in tabsProfile" :key="i" :index="i" :item="nametab" @clicked="clicked_tab(nametab)" />
         </v-tabs>
-        <v-tabs-items v-model="currentTab">
-            <v-tab-item value="tab-personal" reverse-transition="fade-transition" transition="fade-transition">
+        <v-tabs-items v-model="cTabProfile">
+            <v-tab-item value="tab-0" reverse-transition="fade-transition" transition="fade-transition">
                 <div class="hold-edit">
                     <img class="user-cover" src="/images/resume_builder/default-user.jpg" alt="">
                     <div class="upload-section">
@@ -52,21 +44,45 @@
                     </form>
                 </div>
             </v-tab-item>
-            <v-tab-item value="tab-links" reverse-transition="fade-transition" transition="fade-transition">
-                <v-card flat>
-                    <v-card-text>
-                        tab 2
-                    </v-card-text>
-                </v-card>
+            <v-tab-item value="tab-1" reverse-transition="fade-transition" transition="fade-transition">
+                <v-tabs
+                    v-model="cTabLinks"
+                    :slider-color="tabColor"
+                    height="85"
+                >
+                    <vTabNames v-for="(nametab,i) in tabsLinks" :key="i" :index="i" :item="nametab" />
+                </v-tabs>
+                <v-tabs-items v-model="cTabLinks">
+                    <v-tab-item value="tab-0" reverse-transition="fade-transition" transition="fade-transition">
+                        <v-card>
+                            uno
+                        </v-card>
+                    </v-tab-item>
+                    <v-tab-item value="tab-1" reverse-transition="fade-transition" transition="fade-transition">
+                        <v-card>
+                            dos
+                        </v-card>
+                    </v-tab-item>
+                    <v-tab-item value="tab-2" reverse-transition="fade-transition" transition="fade-transition">
+                        <v-card>
+                            tres
+                        </v-card>
+                    </v-tab-item>
+                    <v-tab-item value="tab-3" reverse-transition="fade-transition" transition="fade-transition">
+                        <v-card>
+                            cuatro
+                        </v-card>
+                    </v-tab-item>
+                </v-tabs-items>
             </v-tab-item>
-            <v-tab-item value="tab-languages" reverse-transition="fade-transition" transition="fade-transition">
+            <v-tab-item value="tab-2" reverse-transition="fade-transition" transition="fade-transition">
                 <v-card flat>
                     <v-card-text>
                         tab 3
                     </v-card-text>
                 </v-card>
             </v-tab-item>
-            <v-tab-item value="tab-location" reverse-transition="fade-transition" transition="fade-transition">
+            <v-tab-item value="tab-3" reverse-transition="fade-transition" transition="fade-transition">
                 <v-card flat>
                     <v-card-text>
                         tab 4
@@ -76,25 +92,42 @@
         </v-tabs-items>
     </div>
 </template>
-
 <script>
+    import vTabNames from '../../includes/vtabs.vue';
+
     export default {
         name: "Profile",
+        components: {
+            vTabNames
+        },
         data() {
             return {
-                currentTab: 'tab-personal',
+                cTabProfile: 'tab-0',
+                cTabLinks: null,
                 tabColor: '#001CE2',
                 tabsProfile: [
                     'personal',
                     'links',
                     'languages',
                     'location'
+                ],
+                tabsLinks: [
+                    'my profile link',
+                    'social link',
+                    'portfolio link',
+                    'payment link'
                 ]
+            }
+        },
+        methods: {
+            clicked_tab(name) {
+                
             }
         }
     }
 </script>
-<style lang="scss">
+
+<style lang="scss" scope>
 
     .title-blue{
         font-family: 'Nexa';
@@ -102,61 +135,6 @@
         line-height: 67px;
         color: #001CE2;
     }
-
-    /** Styles general tabs */
-    .v-tabs{
-        max-height: 85px;
-        font-family: 'Noto Sans';
-
-        .v-tabs__div{
-            margin-right: 12%;
-            
-            &:last-child{
-                margin: 0;
-            }
-        }
-
-        .v-tabs__wrapper{
-            position: relative;
-
-            &::after{
-                content: "";
-                height: 4px;
-                background: #C9CFF8;
-                position: absolute;
-                width: 100%;
-                left: 0px;
-                bottom: -1px;
-                z-index: -1;
-            }
-        }
-        
-        .v-tabs__item{
-            text-transform: capitalize;
-            padding: 0;
-            text-align: left;
-            font-weight: bold;
-            font-size: 30px;
-            color: #505050;
-            text-decoration: none;
-
-            &.v-tabs__item--active{
-                
-                color: #001CE2;
-            }
-        }
-
-        .v-tabs__slider{
-            height: 3px;
-        }
-    }
-
-</style>
-<style lang="scss" scope>
-
-   
-
-    @import '~vuetify/dist/vuetify.min.css';
 
     $colorPrimary: #001CE2;
     $colorGray: #505050;

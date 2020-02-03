@@ -31,6 +31,7 @@
 </script>
 
 <style lang="scss">
+    @import '~vuetify/dist/vuetify.min.css';
     .resume-container {
         padding: 160px 100px 30px;
     }

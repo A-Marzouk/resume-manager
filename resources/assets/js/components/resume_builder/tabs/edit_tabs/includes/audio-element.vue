@@ -14,13 +14,18 @@
                 </button>
             </div>
             
-            <div class="select-audio-options">
-                <select class="audio-options" name="options" id="">
-                    <option value="">Option</option>
-                    <option value="edit">Edit</option>
-                    <option value="delete">Delete</option>
-                </select>
-                <svg-vue class="caret-icon" icon="caret-icon"></svg-vue>
+            <div class="input-select select-audio-options dropdown">
+                <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Option
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">
+                        <svg-vue class="option-icon" icon="edit-icon"></svg-vue>Edit
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <svg-vue class="option-icon" icon="trash-delete-icon"></svg-vue>Delete
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -78,24 +83,11 @@ $mainBlue: #001CE2;
             bottom: 7px;
             right: 19px;
             height: 22px;
-            font-size: 10px;
             border-radius: 5px;
             border: 1px solid $mainBlue;
             width: 67px;
             display: flex;
             align-items: center;
-            
-            .audio-options {
-                padding: 0 8px;
-                background: none;
-                height: 100%;
-                width: 100%;
-                border: none;
-
-                -webkit-appearance:none;
-                -moz-appearance:none;
-                appearance:none;
-            }
 
             .caret-icon {
                 position: absolute;

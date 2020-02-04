@@ -13082,6 +13082,64 @@ html {
   border-radius: 8px;
 }
 
+.input-select {
+  border-radius: 5px;
+  border: 1px solid #001CE2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+}
+
+.input-select .dropdown-toggle {
+  padding: 0 8px;
+  background: none;
+  font-size: 10px;
+  height: 100%;
+  width: 100%;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.input-select .dropdown-menu {
+  border: 1px solid #001CE2;
+  border-radius: 5px;
+  background: #f4f4f4 !important;
+  -webkit-box-shadow: -2px 8px 8px rgba(0, 0, 0, 0.16);
+          box-shadow: -2px 8px 8px rgba(0, 0, 0, 0.16);
+  min-width: 100%;
+  padding: 0;
+}
+
+.input-select .dropdown-menu .dropdown-item {
+  font-size: 10px;
+  padding: 5px 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.input-select .dropdown-menu .dropdown-item .option-icon {
+  height: 12px;
+  margin-right: 5px;
+}
+
+.input-select .caret-icon {
+  position: absolute;
+  z-index: 3;
+  height: 5px;
+  width: 10px;
+  right: 6px;
+}
+
 .dropzone.vue-dropzone {
   border: solid #001CE2 1px;
   border-radius: 8px;

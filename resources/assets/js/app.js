@@ -10,21 +10,24 @@ window.Vue = require('vue');
 window.moment = require('moment');
 
 import VueRouter from 'vue-router';
-
 Vue.use(VueRouter);
 
 import VueParticles from 'vue-particles';
-
 Vue.use(VueParticles);
 
 import Vuetify from 'vuetify';
-
 Vue.use(Vuetify);
 
 import SvgVue from 'svg-vue';
-
 Vue.use(SvgVue);
 
+import {store} from './store/store';
+
+import vue2Dropzone from 'vue2-dropzone'
+
+Vue.component("vue2Dropzone", vue2Dropzone);
+
+import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 
 $.ajaxSetup({
     headers: {
@@ -37,7 +40,6 @@ require('./freelancer_card.js');
 require('./affiliates.js');
 require('./freelancer.js');
 require('./main.js');
-require('./select.js');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -145,6 +147,7 @@ if ($("#resumeBuilder").length !== 0) {
 
 
     let resumeBuilder = new Vue({
+        store,
         router,
         el: '#resumeBuilder'
     });

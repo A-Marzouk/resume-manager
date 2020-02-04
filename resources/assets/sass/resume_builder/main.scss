@@ -10,6 +10,11 @@
 }
 
 @import "variables";
+@import "modifiers";
+@import "buttons";
+@import "inputs";
+@import "select";
+@import "dropzone";
 
 .resume-container {
     font-family: 'Noto Sans', Arial, Helvetica, sans-serif;

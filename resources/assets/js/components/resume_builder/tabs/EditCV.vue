@@ -145,6 +145,8 @@
 </script>
 
 <style lang="scss">
+
+
 $activeColor: #001CE2;
 $disabledColor: #9f9e9e;
 

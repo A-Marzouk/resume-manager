@@ -29,12 +29,6 @@ Vue.component("vue2Dropzone", vue2Dropzone);
 
 import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 
-import vSelect from 'vue-select'
-
-Vue.component('v-select', vSelect)
-
-import 'vue-select/dist/vue-select.css';
-
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -46,7 +40,6 @@ require('./freelancer_card.js');
 require('./affiliates.js');
 require('./freelancer.js');
 require('./main.js');
-require('./select.js');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

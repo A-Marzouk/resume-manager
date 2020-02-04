@@ -28,12 +28,17 @@ export default {
 </script>
 <style lang="scss">
 /** Styles general tabs */
+
+.theme--light.v-tabs__bar{
+    background-color: transparent;
+}
+
 .v-tabs{
     max-height: 85px;
     font-family: 'Noto Sans';
 
     .v-tabs__div{
-        margin-right: 12%;
+        margin-right: 8%;
         
         &:last-child{
             margin: 0;
@@ -42,6 +47,10 @@ export default {
 
     .v-tabs__wrapper{
         position: relative;
+
+        .v-tabs__container{
+            justify-content: flex-start;
+        }
 
         &::after{
             content: "";
@@ -53,6 +62,7 @@ export default {
             bottom: -1px;
             z-index: -1;
         }
+
     }
     .v-tabs__slider{
         height: 3px;
@@ -73,5 +83,36 @@ export default {
         min-width: 152px;
     }
     
+
+    &.tabs_inside{
+
+        margin: 40px auto 0px auto;
+        max-width: 98%;
+
+        .v-tabs__div{
+            margin: 0;
+            min-width: 150px;
+        }
+
+        .v-tabs__wrapper{
+
+            .v-tabs__container{
+                justify-content: space-between;
+            }
+        }
+        .v-tabs__item{
+            font-size: 21px;
+            font-family: 'Noto Sans';
+            line-height: 28px;
+            color: #3C3748;
+            min-width: auto;
+            text-transform: none;
+ 
+        }
+
+        .v-tabs__slider-wrapper{
+            min-width: 158px;
+        }
+    }
 }
 </style>

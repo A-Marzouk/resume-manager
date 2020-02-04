@@ -23,25 +23,25 @@
                         <label for="name">
                             Name
                         </label>
-                        <input type="text" value="Jone Doe" id="name">
+                        <input type="text" v-model="agentData.first_name" id="name">
                     </div>
                     <div class="mar-input">
                         <label for="email">
                             Email
                         </label>
-                        <input type="email" value="Jone@Doe.com" id="email">
+                        <input type="email" v-model="agentData.email" id="email">
                     </div>
                     <div class="mar-input">
                         <label for="password">
                             Password
                         </label>
-                        <input type="password" value="Jone Doe" id="password">
+                        <input type="password" v-model="agentData.password" id="password">
                     </div>
                     <div class="mar-input">
                         <label for="password_confirmation">
                             Re-type password
                         </label>
-                        <input type="password" value="Jone Doe" id="password_confirmation">
+                        <input type="password" v-model="agentData.password_confirmation" id="password_confirmation">
                     </div>
                     <div class="my-subscription">
                         <div class="form-title sub">
@@ -70,11 +70,11 @@
                     <img src="/images/resume_builder/my_account/share-square-solid.svg" alt="edit">
                 </div>
 
-                <div class="action-btns">
-                    <div class="save-btn">
+                <div class="action-btns NoDecor">
+                    <a class="save-btn" href="javascript:void(0)" @click="submitForm">
                         <img src="/images/resume_builder/my_account/check-solid.svg" alt="edit">
                         Save changes
-                    </div>
+                    </a>
                     <div class="purchase-btn">
                         Purchase subscription
                     </div>
@@ -86,7 +86,69 @@
 
 <script>
     export default {
-        name: "MyAccount"
+        name: "MyAccount",
+        data(){
+            return{
+                errors: [],
+                agentData: {
+                    'first_name': 'John doe',
+                    'email': 'Jone@Doe.com',
+                    'password': '123456',
+                    'password_confirmation': '123456',
+                },
+                isLoading: false,
+                notificationMessage:'',
+            }
+        },
+        methods:{
+            submitForm() {
+
+                this.clearErrors();
+                this.isLoading = true;
+
+                axios.post('/resume-builder/account/submit', this.agentData)
+                    .then((response) => {
+                        console.log(response.data);
+                        // this.showSuccessMessage();
+                    })
+                    .catch((error) => {
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                            this.updateErrors(error.response.data.errors);
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                    })
+            },
+            clearErrors() {
+                $.each(this.errors, (error) => {
+                    this.errors[error] = '';
+                });
+
+            },
+            updateErrors(responseErrors) {
+                $.each(this.errors, (error) => {
+                    if (responseErrors[error]) {
+                        this.errors[error] = responseErrors[error][0];
+                    }
+                });
+            },
+            showSuccessMessage(){
+                $('.notificationBar').css('background','#FFBA69') ;
+                this.notificationMessage = 'Personal information has been successfully updated!' ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
+            },
+        },
+        mounted(){
+
+        }
+
     }
 </script>
 

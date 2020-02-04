@@ -16,4 +16,8 @@ class ResumeBuilderController extends Controller
         return view('freelancer.resume_builder.index');
     }
 
+    public function editAccountData(Request $request){
+        return $request;
+    }
+
 }

@@ -29,47 +29,20 @@
 
             <!-- Audio previews -->
             <div class="audios-preview-container">
-                <div class="audio-element">
-                    <div class="audio-name">Audio 1</div>
-                    <div class="audio-player d-flex align-items-center">
-                        <svg-vue class="play-icon" icon="play-icon"></svg-vue>
-                        <svg-vue class="sound-frecuency" icon="sound-frecuency"></svg-vue>
-
-                        <div class="order-controls d-flex flex-column">
-                            <button class="icon">
-                                <svg-vue icon="arrow-up"></svg-vue>
-                            </button>
-                            <button class="icon">
-                                <svg-vue icon="arrow-down"></svg-vue>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="audio-element">
-                    <div class="audio-name">Audio 2</div>
-                    <div class="audio-player d-flex align-items-center">
-                        <svg-vue class="play-icon" icon="play-icon"></svg-vue>
-                        <svg-vue class="sound-frecuency" icon="sound-frecuency"></svg-vue>
-
-                        <div class="order-controls d-flex flex-column">
-                            <button class="icon">
-                                <svg-vue icon="arrow-up"></svg-vue>
-                            </button>
-                            <button class="icon">
-                                <svg-vue icon="arrow-down"></svg-vue>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <audio-element v-for="i in 3" :key="i" :name="'Audio ' + i"></audio-element>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import audioElement from "./includes/audio-element";
+
     export default {
         name: "AudioVideo",
+        components: {
+            audioElement
+        },
         data: () => ({
             dropzoneOptions: {
                 url: 'https://httpbin.org/post',
@@ -143,58 +116,6 @@ $mainBlue: #001CE2;
 
 .audios-preview-container {
     margin-top: 10px;
-    .audio-element {
-        position: relative;
-        margin-bottom: 50px;
-        
-        .audio-name {
-            font-family: "Noto Sans", Arial, Helvetica, sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 18px;
-        }
-
-        .order-controls {
-            right: -27px;
-            position: absolute;
-            z-index: 2;
-
-            .icon {
-                padding: 0 !important;
-                background: none;
-                border: none;
-                position: relative;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                svg {
-                    width: 12px;
-                    height: 6px;
-                }
-                
-                &:first-child {
-                    margin-bottom: 15px;
-                }
-            }
-        }
-    }
-
-    .audio-player {
-        border: 1px solid $mainBlue;
-        border-radius: 25px;
-        height: 91px;
-        width: 429px;
-        padding-left: 36px;
-
-        .play-icon {
-            width: 30px;
-        }
-
-        .sound-frecuency {
-            width: 254px;
-            margin-left: 25px;
-        }
-    }
+    
 }
     </style>

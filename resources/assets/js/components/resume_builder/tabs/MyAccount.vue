@@ -19,7 +19,7 @@
                     My account
                 </div>
                 <div class="mar-form">
-                    <div class="mar-input" :class="{'active': fields.first_name , 'error': errors.first_name}">
+                    <div class="mar-input" :class="{active:fields.first_name, 'error':errors.first_name}">
                         <div class="d-flex align-items-center" style="position: relative;">
                             <input type="text" v-model="accountData.first_name" id="first_name" @focus="focusFiledStyles('first_name')"  @blur="validateFiled('first_name')">
                             <img src="/images/resume_builder/my_account/check-circle-regular.svg" alt="correct" v-show="fields.first_name">
@@ -36,13 +36,22 @@
                         </label>
                     </div>
                     <div class="mar-input" :class="{'active': fields.password , 'error': errors.password}"  >
-                        <input type="password" v-model="accountData.password" placeholder="*********" id="password" @focus="focusFiledStyles('password')"   @blur="validateFiled('password')">
+                        <div class="d-flex align-items-center" style="position: relative;">
+                            <input type="password" v-model="accountData.password" placeholder="*********" id="password" @focus="focusFiledStyles('password')"   @blur="validateFiled('password')">
+                            <img src="/images/resume_builder/my_account/check-circle-regular.svg" alt="correct" v-show="fields.password">
+                            <img src="/images/resume_builder/my_account/times-circle-regular.svg" alt="correct"  v-show="errors.password">
+                        </div>
                         <label for="password">
                             Password
                         </label>
                     </div>
                     <div class="mar-input" :class="{'active': fields.password , 'error': errors.password}">
-                        <input type="password" v-model="accountData.password_confirmation"  placeholder="*********" @focus="focusFiledStyles('password_confirmation')" id="password_confirmation"  @blur="validateFiled('password')">
+                        <div class="d-flex align-items-center" style="position: relative;">
+                            <input type="password" v-model="accountData.password_confirmation"  placeholder="*********" @focus="focusFiledStyles('password_confirmation')" id="password_confirmation"  @blur="validateFiled('password')">
+                            <img src="/images/resume_builder/my_account/check-circle-regular.svg" alt="correct" v-show="fields.password">
+                            <img src="/images/resume_builder/my_account/times-circle-regular.svg" alt="correct"  v-show="errors.password">
+                        </div>
+
                         <label for="password_confirmation">
                             Re-type password
                         </label>
@@ -63,7 +72,12 @@
                         </div>
                     </div>
                     <div class="mar-input" :class="{'active': fields.username , 'error': errors.username}">
-                        <input type="text" v-model="accountData.username" id="username" @focus="focusFiledStyles('username')"  @blur="validateFiled('username')">
+                        <div class="d-flex align-items-center" style="position: relative;">
+                            <input type="text" v-model="accountData.username" id="username" @focus="focusFiledStyles('username')"  @blur="validateFiled('username')">
+                            <img src="/images/resume_builder/my_account/check-circle-regular.svg" alt="correct" v-show="fields.username">
+                            <img src="/images/resume_builder/my_account/times-circle-regular.svg" alt="correct"  v-show="errors.username">
+                        </div>
+
                         <label for="username">{{baseUrl()}}</label>
                     </div>
                 </div>
@@ -124,10 +138,6 @@
         },
         methods: {
             validateFiled(field_name){
-                this.clearErrors();
-                this.clearSuccesses();
-                this.focusFiledStyles(field_name);
-
                 let data =  {
                     [field_name] : this.accountData[field_name]
                 };
@@ -142,17 +152,23 @@
                     data['password_confirmation'] = this.accountData.password_confirmation;
                 }
 
+                if(field_name === 'password' && this.accountData.password_confirmation !== this.accountData.password){
+                    this.errors['password'] = 'error';
+                    this.fields['password'] = null;
+                    return;
+                }
 
                 axios.post('/resume-builder/account/validate',data )
                     .then((response) => {
                         if(response.data === 'success'){
                             this.fields[field_name] = 'success';
+                            this.errors[field_name] = null;
                         }
                     })
                     .catch((error) => {
                         if (typeof error.response.data === 'object') {
-                            this.errors = error.response.data.errors;
-                            this.updateErrors(error.response.data.errors);
+                            this.errors[field_name] = 'error';
+                            this.fields[field_name] = null;
                         } else {
                             this.errors = ['Something went wrong. Please try again.'];
                         }

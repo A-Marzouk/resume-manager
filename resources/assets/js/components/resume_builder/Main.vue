@@ -73,7 +73,8 @@ $mainColor: #001CE2;
         top: 0;
         box-shadow: 0 6px 12px #6565653b;
         padding: 50px 100px;
-        
+        height: 129px;
+
         .brand-image {
             width: 40px;
             margin-right: 262px;

@@ -10,20 +10,18 @@ window.Vue = require('vue');
 window.moment = require('moment');
 
 import VueRouter from 'vue-router';
-
 Vue.use(VueRouter);
 
 import VueParticles from 'vue-particles';
-
 Vue.use(VueParticles);
 
 import Vuetify from 'vuetify';
-
 Vue.use(Vuetify);
 
 import SvgVue from 'svg-vue';
-
 Vue.use(SvgVue);
+
+import {store} from './store/store';
 
 
 $.ajaxSetup({
@@ -145,6 +143,7 @@ if ($("#resumeBuilder").length !== 0) {
 
 
     let resumeBuilder = new Vue({
+        store,
         router,
         el: '#resumeBuilder'
     });

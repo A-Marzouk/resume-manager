@@ -23,25 +23,25 @@
                         <label for="name">
                             Name
                         </label>
-                        <input type="text" v-model="agentData.first_name" id="name">
+                        <input type="text" v-model="accountData.name" id="name">
                     </div>
                     <div class="mar-input">
                         <label for="email">
                             Email
                         </label>
-                        <input type="email" v-model="agentData.email" id="email">
+                        <input type="email" v-model="accountData.email" id="email">
                     </div>
                     <div class="mar-input">
                         <label for="password">
                             Password
                         </label>
-                        <input type="password" v-model="agentData.password" id="password">
+                        <input type="password" v-model="accountData.password" id="password">
                     </div>
                     <div class="mar-input">
                         <label for="password_confirmation">
                             Re-type password
                         </label>
-                        <input type="password" v-model="agentData.password_confirmation" id="password_confirmation">
+                        <input type="password" v-model="accountData.password_confirmation" id="password_confirmation">
                     </div>
                     <div class="my-subscription">
                         <div class="form-title sub">
@@ -59,8 +59,8 @@
                         </div>
                     </div>
                     <div class="mar-input">
-                        <label for="subscription"></label>
-                        <input type="text" value="123workforce.com/Aymane" id="subscription">
+                        <label for="subscription">{{baseUrl()}}</label>
+                        <input type="text" v-model="accountData.username" id="subscription">
                     </div>
                 </div>
 
@@ -87,20 +87,26 @@
 <script>
     export default {
         name: "MyAccount",
-        data(){
-            return{
+        data() {
+            return {
                 errors: [],
-                agentData: {
-                    'first_name': 'John doe',
-                    'email': 'Jone@Doe.com',
-                    'password': '123456',
-                    'password_confirmation': '123456',
-                },
                 isLoading: false,
-                notificationMessage:'',
+                notificationMessage: '',
             }
         },
-        methods:{
+        computed: {
+            accountData() {
+                let user = this.$store.state.user;
+                return {
+                    name: user.user_data ? user.user_data.first_name : '',
+                    email: user.email,
+                    username: user.username,
+                    password: user.password,
+                    password_confirmation: ''
+                }
+            }
+        },
+        methods: {
             submitForm() {
 
                 this.clearErrors();
@@ -133,20 +139,24 @@
                     }
                 });
             },
-            showSuccessMessage(){
-                $('.notificationBar').css('background','#FFBA69') ;
-                this.notificationMessage = 'Personal information has been successfully updated!' ;
+            showSuccessMessage() {
+                $('.notificationBar').css('background', '#FFBA69');
+                this.notificationMessage = 'Personal information has been successfully updated!';
                 $('#notificationBar').fadeIn(600);
-                setTimeout(()=>{
+                setTimeout(() => {
                     $('#notificationBar').fadeOut(1500);
-                },4000);
+                }, 4000);
             },
-            hideNotification(){
-                $('#notificationBar').css('display','none');
+            hideNotification() {
+                $('#notificationBar').css('display', 'none');
+            },
+            baseUrl() {
+                let getUrl = window.location;
+                return getUrl.protocol + "//" + getUrl.host + '/';
             },
         },
-        mounted(){
-
+        mounted() {
+            this.$store.dispatch('getCurrentUser');
         }
 
     }
@@ -253,7 +263,7 @@
                             display: block;
                             width: 135px;
                             height: 55px;
-                            margin-bottom: 0!important;
+                            margin-bottom: 0 !important;
                             border-radius: 41px;
 
                             input[type="checkbox"] {
@@ -341,20 +351,21 @@
                     }
                 }
 
-                .actions-row{
+                .actions-row {
                     margin-bottom: 25px;
-                    img{
+
+                    img {
                         width: 35px;
                         height: 35px;
                         margin-right: 32px;
                     }
                 }
 
-                .action-btns{
+                .action-btns {
                     display: flex;
                     justify-content: space-between;
 
-                    .save-btn{
+                    .save-btn {
                         width: 240px;
                         height: 66px;
                         display: flex;
@@ -370,14 +381,14 @@
                         color: #FFFFFF;
                         opacity: 1;
 
-                        img{
-                            width:27px;
+                        img {
+                            width: 27px;
                             height: 21px;
                             margin-right: 20px;
                         }
                     }
 
-                    .purchase-btn{
+                    .purchase-btn {
                         width: 230px;
                         height: 66px;
                         display: flex;

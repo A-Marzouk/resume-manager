@@ -19,29 +19,29 @@
                     My account
                 </div>
                 <div class="mar-form">
-                    <div class="mar-input active">
-                        <label for="name">
+                    <div class="mar-input" :class="{'active': successes.first_name , 'error': errors.first_name}">
+                        <input type="text" v-model="accountData.first_name" id="first_name">
+                        <label for="first_name">
                             Name
                         </label>
-                        <input type="text" v-model="accountData.name" id="name">
                     </div>
-                    <div class="mar-input">
+                    <div class="mar-input" :class="{'active': successes.email , 'error': errors.email}">
+                        <input type="email" v-model="accountData.email" id="email" :disabled="canEditEmail()">
                         <label for="email">
                             Email
                         </label>
-                        <input type="email" v-model="accountData.email" id="email">
                     </div>
-                    <div class="mar-input">
+                    <div class="mar-input" :class="{'active': successes.password , 'error': errors.password}">
+                        <input type="password" v-model="accountData.password" id="password">
                         <label for="password">
                             Password
                         </label>
-                        <input type="password" v-model="accountData.password" id="password">
                     </div>
-                    <div class="mar-input">
+                    <div class="mar-input" :class="{'active': successes.password , 'error': errors.password}">
+                        <input type="password" v-model="accountData.password_confirmation" id="password_confirmation">
                         <label for="password_confirmation">
                             Re-type password
                         </label>
-                        <input type="password" v-model="accountData.password_confirmation" id="password_confirmation">
                     </div>
                     <div class="my-subscription">
                         <div class="form-title sub">
@@ -58,9 +58,9 @@
                             </label>
                         </div>
                     </div>
-                    <div class="mar-input">
-                        <label for="subscription">{{baseUrl()}}</label>
+                    <div class="mar-input" :class="{'active': successes.username , 'error': errors.username}">
                         <input type="text" v-model="accountData.username" id="subscription">
+                        <label for="subscription">{{baseUrl()}}</label>
                     </div>
                 </div>
 
@@ -90,18 +90,24 @@
         data() {
             return {
                 errors: [],
+                successes: [],
+                currentUser:{},
                 isLoading: false,
                 notificationMessage: '',
+                usernameOldValue: ''
             }
         },
         computed: {
             accountData() {
-                let user = this.$store.state.user;
+                let user = this.currentUser = this.$store.state.user;
+                this.usernameOldValue = this.currentUser.username;
+
                 return {
-                    name: user.user_data ? user.user_data.first_name : '',
+                    first_name: user.user_data ? user.user_data.first_name : '',
                     email: user.email,
                     username: user.username,
-                    password: user.password,
+                    userNameChanged: false,
+                    password: '',
                     password_confirmation: ''
                 }
             }
@@ -112,10 +118,13 @@
                 this.clearErrors();
                 this.isLoading = true;
 
-                axios.post('/resume-builder/account/submit', this.agentData)
+                if(this.isUsernameChanged()){
+                    this.accountData.userNameChanged = true ;
+                }
+
+                axios.post('/resume-builder/account/submit', this.accountData)
                     .then((response) => {
                         console.log(response.data);
-                        // this.showSuccessMessage();
                     })
                     .catch((error) => {
                         if (typeof error.response.data === 'object') {
@@ -126,6 +135,7 @@
                         }
                     })
             },
+
             clearErrors() {
                 $.each(this.errors, (error) => {
                     this.errors[error] = '';
@@ -139,20 +149,19 @@
                     }
                 });
             },
-            showSuccessMessage() {
-                $('.notificationBar').css('background', '#FFBA69');
-                this.notificationMessage = 'Personal information has been successfully updated!';
-                $('#notificationBar').fadeIn(600);
-                setTimeout(() => {
-                    $('#notificationBar').fadeOut(1500);
-                }, 4000);
-            },
-            hideNotification() {
-                $('#notificationBar').css('display', 'none');
-            },
             baseUrl() {
                 let getUrl = window.location;
                 return getUrl.protocol + "//" + getUrl.host + '/';
+            },
+            canEditEmail(){
+                return !(this.currentUser.instagram_id !== null && !this.currentUser.email);
+            },
+            isUsernameChanged() {
+                if (!this.currentUser.username) {
+                    return;
+                } else {
+                    return this.usernameOldValue.trim() !== this.accountData.username.trim(); // return true if  changed
+                }
             },
         },
         mounted() {
@@ -219,7 +228,7 @@
                 .mar-form {
                     .mar-input {
                         display: flex;
-                        flex-direction: column;
+                        flex-direction: column-reverse;
                         margin-bottom: 25px;
 
                         label {
@@ -240,6 +249,16 @@
                             padding-left: 17px;
                             opacity: 1;
                         }
+
+                        input:focus + label {
+                            color: #001CE2;
+                        }
+
+                        input:focus {
+                            border: 2px solid #001CE2;
+                            color: #001CE2;
+                            outline: none;
+                        }
                     }
 
                     .mar-input.active {
@@ -251,6 +270,18 @@
                         input {
                             border: 2px solid #1EC300;
                             color: #1EC300;
+                        }
+                    }
+
+                    .mar-input.error {
+                        label {
+                            color: #E20000;
+                            font: 600 17px/23px Noto Sans;
+                        }
+
+                        input {
+                            border: 2px solid #E20000;
+                            color: #E20000;
                         }
                     }
 

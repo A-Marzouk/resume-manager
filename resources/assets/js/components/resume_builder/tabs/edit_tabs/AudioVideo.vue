@@ -29,20 +29,20 @@
 
             <!-- Audio previews -->
             <div class="audios-preview-container">
-                <div class="audio-element">
-                    <div class="audio-name">Audio 1</div>
-                    <div class="audio-player">
-
-                    </div>
-                </div>
+                <audio-element v-for="i in 3" :key="i" :name="'Audio ' + i"></audio-element>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import audioElement from "./includes/audio-element";
+
     export default {
         name: "AudioVideo",
+        components: {
+            audioElement
+        },
         data: () => ({
             dropzoneOptions: {
                 url: 'https://httpbin.org/post',
@@ -115,11 +115,7 @@ $mainBlue: #001CE2;
 }
 
 .audios-preview-container {
-    .audio-element {
-        border: 1px solid $mainBlue;
-        border-radius: 25px;
-        height: 91px;
-        width: 429px;
-    }
+    margin-top: 10px;
+    
 }
-</style>
+    </style>

@@ -151,6 +151,9 @@ $disabledColor: #9f9e9e;
 .aside-bar {
     max-width: 260px;
     position: relative;
+    max-height: calc(100vh - 160px - 3rem - 40px);
+    // Check it
+    overflow-y: auto;
 
     &::after {
         content: "";

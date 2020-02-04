@@ -12989,6 +12989,116 @@ html {
   src: url("/fonts/nexa/Nexa Bold.otf");
 }
 
+.blue {
+  color: #001CE2;
+}
+
+.btn {
+  border: 1.5px solid #001CE2;
+  border-radius: 12px !important;
+  background: transparent;
+  color: #001CE2 !important;
+  text-decoration: none;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: "Noto Sans", Arial, Helvetica, sans-serif;
+  padding: 18px 10px !important;
+}
+
+.btn .icon {
+  margin-right: 10px;
+}
+
+.btn .icon path, .btn .icon circle {
+  fill: #001CE2;
+}
+
+.btn.filled {
+  background: #001CE2;
+  color: white !important;
+  -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.16);
+}
+
+.btn.filled .icon path, .btn.filled .icon circle {
+  fill: white;
+}
+
+.input-field {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 490px;
+  margin-bottom: 31.5px;
+}
+
+.input-field label {
+  font-size: 22px;
+  line-height: 30px;
+  color: #505050;
+  font-family: "Noto Sans";
+  font-weight: 300;
+}
+
+.input-field label .hint-message {
+  font-size: 18px;
+  color: #1f5de4;
+  float: right;
+  font-style: normal;
+}
+
+.input-field input {
+  min-height: 54.6px;
+  border: 1.5px solid #505050;
+  border-radius: 8px;
+  padding: 0px 0px 0px 16.8px;
+  color: #a5a5a5;
+  font-size: 15px;
+  font-family: "Noto Sans";
+  font-weight: 500;
+  outline: none;
+}
+
+.input-field textarea {
+  min-height: 181px;
+  padding: 23px 25px;
+  font-size: 22px;
+  font-family: "Noto Sans";
+  font-weight: 500;
+  outline: none;
+  color: #a5a5a5;
+  border: 1.5px solid #505050;
+  border-radius: 8px;
+}
+
+.dropzone.vue-dropzone {
+  border: solid #001CE2 1px;
+  border-radius: 8px;
+  background: transparent;
+  font-family: Noto Sans, Arial, Helvetica, sans-serif;
+  color: #3C3748;
+}
+
+.dropzone.vue-dropzone .empty-text {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.dropzone.vue-dropzone:hover {
+  background: transparent;
+}
+
 .resume-container {
   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
 }

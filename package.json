@@ -39,6 +39,7 @@
         "vue-router": "^3.0.6",
         "vue-slick": "^1.1.15",
         "vue-template-compiler": "^2.5.16",
+        "vue2-dropzone": "^3.6.0",
         "vuetify": "^1.5.22"
     }
 }

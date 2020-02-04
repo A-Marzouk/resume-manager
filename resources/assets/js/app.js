@@ -25,6 +25,11 @@ import SvgVue from 'svg-vue';
 
 Vue.use(SvgVue);
 
+import vue2Dropzone from 'vue2-dropzone'
+
+Vue.component("vue2Dropzone", vue2Dropzone);
+
+import 'vue2-dropzone/dist/vue2Dropzone.min.css';
 
 $.ajaxSetup({
     headers: {

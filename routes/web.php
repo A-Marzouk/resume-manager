@@ -266,6 +266,7 @@ Route::get('/resume-builder/{any?}', 'ResumeBuilderController@index')->name('res
 Route::get('/resume-builder/edit/{any?}', 'ResumeBuilderController@index')->name('resume.builder.edit');
 
 Route::post('/resume-builder/account/submit', 'ResumeBuilderController@editAccountData')->name('account.edit');
+Route::post('/resume-builder/account/validate', 'ResumeBuilderController@validateSingleField')->name('account.validate');
 
 
 Route::prefix('freelancer')->group(function () {

@@ -55,4 +55,15 @@ class ResumeBuilderController extends Controller
         return $user->userData;
     }
 
+    public function validateSingleField(Request $request){
+        $request->validate([
+            'first_name' => 'min:3|max:191',
+            'email'     => 'max:191|email',
+            'password' => 'nullable|min:6|max:191|confirmed',
+            'username' => 'min:3|max:191|unique:users',
+        ]);
+
+        return 'success';
+    }
+
 }

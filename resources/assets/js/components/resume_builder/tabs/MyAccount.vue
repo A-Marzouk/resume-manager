@@ -19,26 +19,30 @@
                     My account
                 </div>
                 <div class="mar-form">
-                    <div class="mar-input" :class="{'active': successes.first_name , 'error': errors.first_name}">
-                        <input type="text" v-model="accountData.first_name" id="first_name">
+                    <div class="mar-input" :class="{'active': fields.first_name , 'error': errors.first_name}">
+                        <div class="d-flex align-items-center" style="position: relative;">
+                            <input type="text" v-model="accountData.first_name" id="first_name" @focus="focusFiledStyles('first_name')"  @blur="validateFiled('first_name')">
+                            <img src="/images/resume_builder/my_account/check-circle-regular.svg" alt="correct" v-show="fields.first_name">
+                            <img src="/images/resume_builder/my_account/times-circle-regular.svg" alt="correct"  v-show="errors.first_name">
+                        </div>
                         <label for="first_name">
                             Name
                         </label>
                     </div>
-                    <div class="mar-input" :class="{'active': successes.email , 'error': errors.email}">
-                        <input type="email" v-model="accountData.email" id="email" :disabled="canEditEmail()">
+                    <div class="mar-input" :class="{'active': fields.email , 'error': errors.email}">
+                        <input type="email" v-model="accountData.email" id="email" :disabled="canEditEmail()" >
                         <label for="email">
                             Email
                         </label>
                     </div>
-                    <div class="mar-input" :class="{'active': successes.password , 'error': errors.password}">
-                        <input type="password" v-model="accountData.password" id="password">
+                    <div class="mar-input" :class="{'active': fields.password , 'error': errors.password}"  >
+                        <input type="password" v-model="accountData.password" placeholder="*********" id="password" @focus="focusFiledStyles('password')"   @blur="validateFiled('password')">
                         <label for="password">
                             Password
                         </label>
                     </div>
-                    <div class="mar-input" :class="{'active': successes.password , 'error': errors.password}">
-                        <input type="password" v-model="accountData.password_confirmation" id="password_confirmation">
+                    <div class="mar-input" :class="{'active': fields.password , 'error': errors.password}">
+                        <input type="password" v-model="accountData.password_confirmation"  placeholder="*********" @focus="focusFiledStyles('password_confirmation')" id="password_confirmation"  @blur="validateFiled('password')">
                         <label for="password_confirmation">
                             Re-type password
                         </label>
@@ -58,9 +62,9 @@
                             </label>
                         </div>
                     </div>
-                    <div class="mar-input" :class="{'active': successes.username , 'error': errors.username}">
-                        <input type="text" v-model="accountData.username" id="subscription">
-                        <label for="subscription">{{baseUrl()}}</label>
+                    <div class="mar-input" :class="{'active': fields.username , 'error': errors.username}">
+                        <input type="text" v-model="accountData.username" id="username" @focus="focusFiledStyles('username')"  @blur="validateFiled('username')">
+                        <label for="username">{{baseUrl()}}</label>
                     </div>
                 </div>
 
@@ -89,12 +93,18 @@
         name: "MyAccount",
         data() {
             return {
-                errors: [],
-                successes: [],
+                errors: {},
+                successes:{},
                 currentUser:{},
                 isLoading: false,
                 notificationMessage: '',
-                usernameOldValue: ''
+                usernameOldValue: '',
+                fields:{
+                    first_name:'',
+                    email:'',
+                    username:'',
+                    password:'',
+                }
             }
         },
         computed: {
@@ -113,6 +123,51 @@
             }
         },
         methods: {
+            validateFiled(field_name){
+                this.clearErrors();
+                this.clearSuccesses();
+                this.focusFiledStyles(field_name);
+
+                let data =  {
+                    [field_name] : this.accountData[field_name]
+                };
+
+                if(field_name === 'username'){
+                    if(!this.isUsernameChanged()){
+                       return;
+                    }
+                }
+
+                if(field_name === 'password'){
+                    data['password_confirmation'] = this.accountData.password_confirmation;
+                }
+
+
+                axios.post('/resume-builder/account/validate',data )
+                    .then((response) => {
+                        if(response.data === 'success'){
+                            this.fields[field_name] = 'success';
+                        }
+                    })
+                    .catch((error) => {
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                            this.updateErrors(error.response.data.errors);
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                    })
+            },
+
+            focusFiledStyles(field_name){
+                let label = $("[for="+field_name+"]");
+                if(label.hasClass('labelFocused')){
+                    label.removeClass('labelFocused');
+                }else{
+                    label.addClass('labelFocused');
+                }
+            },
+
             submitForm() {
 
                 this.clearErrors();
@@ -140,7 +195,11 @@
                 $.each(this.errors, (error) => {
                     this.errors[error] = '';
                 });
-
+            },
+            clearSuccesses() {
+                $.each(this.fields, (field) => {
+                    this.fields[field] = '';
+                });
             },
             updateErrors(responseErrors) {
                 $.each(this.errors, (error) => {
@@ -239,6 +298,10 @@
                             opacity: 1;
                         }
 
+                        label.labelFocused{
+                            color: #001CE2;
+                        }
+
                         input {
                             width: 616px;
                             height: 73px;
@@ -250,14 +313,17 @@
                             opacity: 1;
                         }
 
-                        input:focus + label {
-                            color: #001CE2;
-                        }
-
                         input:focus {
                             border: 2px solid #001CE2;
                             color: #001CE2;
                             outline: none;
+                        }
+
+                        img{
+                            width: 36px;
+                            height: 36px;
+                            right: 20px;
+                            position: absolute;
                         }
                     }
 

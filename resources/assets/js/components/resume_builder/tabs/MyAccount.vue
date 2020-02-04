@@ -19,29 +19,42 @@
                     My account
                 </div>
                 <div class="mar-form">
-                    <div class="mar-input active">
-                        <label for="name">
+                    <div class="mar-input" :class="{active:fields.first_name, 'error':errors.first_name}">
+                        <div class="d-flex align-items-center" style="position: relative;">
+                            <input type="text" v-model="accountData.first_name" id="first_name" @focus="focusFiledStyles('first_name')"  @blur="validateFiled('first_name')">
+                            <img src="/images/resume_builder/my_account/check-circle-regular.svg" alt="correct" v-show="fields.first_name">
+                            <img src="/images/resume_builder/my_account/times-circle-regular.svg" alt="correct"  v-show="errors.first_name">
+                        </div>
+                        <label for="first_name">
                             Name
                         </label>
-                        <input type="text" value="Jone Doe" id="name">
                     </div>
-                    <div class="mar-input">
+                    <div class="mar-input" :class="{'active': fields.email , 'error': errors.email}">
+                        <input type="email" v-model="accountData.email" id="email" :disabled="canEditEmail()" >
                         <label for="email">
                             Email
                         </label>
-                        <input type="email" value="Jone@Doe.com" id="email">
                     </div>
-                    <div class="mar-input">
+                    <div class="mar-input" :class="{'active': fields.password , 'error': errors.password}"  >
+                        <div class="d-flex align-items-center" style="position: relative;">
+                            <input type="password" v-model="accountData.password" placeholder="*********" id="password" @focus="focusFiledStyles('password')"   @blur="validateFiled('password')">
+                            <img src="/images/resume_builder/my_account/check-circle-regular.svg" alt="correct" v-show="fields.password">
+                            <img src="/images/resume_builder/my_account/times-circle-regular.svg" alt="correct"  v-show="errors.password">
+                        </div>
                         <label for="password">
                             Password
                         </label>
-                        <input type="password" value="Jone Doe" id="password">
                     </div>
-                    <div class="mar-input">
+                    <div class="mar-input" :class="{'active': fields.password , 'error': errors.password}">
+                        <div class="d-flex align-items-center" style="position: relative;">
+                            <input type="password" v-model="accountData.password_confirmation"  placeholder="*********" @focus="focusFiledStyles('password_confirmation')" id="password_confirmation"  @blur="validateFiled('password')">
+                            <img src="/images/resume_builder/my_account/check-circle-regular.svg" alt="correct" v-show="fields.password">
+                            <img src="/images/resume_builder/my_account/times-circle-regular.svg" alt="correct"  v-show="errors.password">
+                        </div>
+
                         <label for="password_confirmation">
                             Re-type password
                         </label>
-                        <input type="password" value="Jone Doe" id="password_confirmation">
                     </div>
                     <div class="my-subscription">
                         <div class="form-title sub">
@@ -58,9 +71,14 @@
                             </label>
                         </div>
                     </div>
-                    <div class="mar-input">
-                        <label for="subscription"></label>
-                        <input type="text" value="123workforce.com/Aymane" id="subscription">
+                    <div class="mar-input" :class="{'active': fields.username , 'error': errors.username}">
+                        <div class="d-flex align-items-center" style="position: relative;">
+                            <input type="text" v-model="accountData.username" id="username" @focus="focusFiledStyles('username')"  @blur="validateFiled('username')">
+                            <img src="/images/resume_builder/my_account/check-circle-regular.svg" alt="correct" v-show="fields.username">
+                            <img src="/images/resume_builder/my_account/times-circle-regular.svg" alt="correct"  v-show="errors.username">
+                        </div>
+
+                        <label for="username">{{baseUrl()}}</label>
                     </div>
                 </div>
 
@@ -70,11 +88,11 @@
                     <img src="/images/resume_builder/my_account/share-square-solid.svg" alt="edit">
                 </div>
 
-                <div class="action-btns">
-                    <div class="save-btn">
+                <div class="action-btns NoDecor">
+                    <a class="save-btn" href="javascript:void(0)" @click="submitForm">
                         <img src="/images/resume_builder/my_account/check-solid.svg" alt="edit">
                         Save changes
-                    </div>
+                    </a>
                     <div class="purchase-btn">
                         Purchase subscription
                     </div>
@@ -86,7 +104,145 @@
 
 <script>
     export default {
-        name: "MyAccount"
+        name: "MyAccount",
+        data() {
+            return {
+                errors: {},
+                successes:{},
+                currentUser:{},
+                isLoading: false,
+                notificationMessage: '',
+                usernameOldValue: '',
+                fields:{
+                    first_name:'',
+                    email:'',
+                    username:'',
+                    password:'',
+                }
+            }
+        },
+        computed: {
+            accountData() {
+                let user = this.currentUser = this.$store.state.user;
+                this.usernameOldValue = this.currentUser.username;
+
+                return {
+                    first_name: user.user_data ? user.user_data.first_name : '',
+                    email: user.email,
+                    username: user.username,
+                    userNameChanged: false,
+                    password: '',
+                    password_confirmation: ''
+                }
+            }
+        },
+        methods: {
+            validateFiled(field_name){
+                let data =  {
+                    [field_name] : this.accountData[field_name]
+                };
+
+                if(field_name === 'username'){
+                    if(!this.isUsernameChanged()){
+                       return;
+                    }
+                }
+
+                if(field_name === 'password'){
+                    data['password_confirmation'] = this.accountData.password_confirmation;
+                }
+
+                if(field_name === 'password' && this.accountData.password_confirmation !== this.accountData.password){
+                    this.errors['password'] = 'error';
+                    this.fields['password'] = null;
+                    return;
+                }
+
+                axios.post('/resume-builder/account/validate',data )
+                    .then((response) => {
+                        if(response.data === 'success'){
+                            this.fields[field_name] = 'success';
+                            this.errors[field_name] = null;
+                        }
+                    })
+                    .catch((error) => {
+                        if (typeof error.response.data === 'object') {
+                            this.errors[field_name] = 'error';
+                            this.fields[field_name] = null;
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                    })
+            },
+
+            focusFiledStyles(field_name){
+                let label = $("[for="+field_name+"]");
+                if(label.hasClass('labelFocused')){
+                    label.removeClass('labelFocused');
+                }else{
+                    label.addClass('labelFocused');
+                }
+            },
+
+            submitForm() {
+
+                this.clearErrors();
+                this.isLoading = true;
+
+                if(this.isUsernameChanged()){
+                    this.accountData.userNameChanged = true ;
+                }
+
+                axios.post('/resume-builder/account/submit', this.accountData)
+                    .then((response) => {
+                        console.log(response.data);
+                    })
+                    .catch((error) => {
+                        if (typeof error.response.data === 'object') {
+                            this.errors = error.response.data.errors;
+                            this.updateErrors(error.response.data.errors);
+                        } else {
+                            this.errors = ['Something went wrong. Please try again.'];
+                        }
+                    })
+            },
+
+            clearErrors() {
+                $.each(this.errors, (error) => {
+                    this.errors[error] = '';
+                });
+            },
+            clearSuccesses() {
+                $.each(this.fields, (field) => {
+                    this.fields[field] = '';
+                });
+            },
+            updateErrors(responseErrors) {
+                $.each(this.errors, (error) => {
+                    if (responseErrors[error]) {
+                        this.errors[error] = responseErrors[error][0];
+                    }
+                });
+            },
+            baseUrl() {
+                let getUrl = window.location;
+                return getUrl.protocol + "//" + getUrl.host + '/';
+            },
+            canEditEmail(){
+                return !(this.currentUser.instagram_id !== null && !this.currentUser.email);
+            },
+            isUsernameChanged() {
+                if (!this.currentUser.username) {
+                    return;
+                } else {
+                    return this.usernameOldValue.trim() !== this.accountData.username.trim(); // return true if  changed
+                }
+            },
+        },
+        mounted() {
+            this.$store.dispatch('getCurrentUser');
+        }
+
     }
 </script>
 
@@ -147,7 +303,7 @@
                 .mar-form {
                     .mar-input {
                         display: flex;
-                        flex-direction: column;
+                        flex-direction: column-reverse;
                         margin-bottom: 25px;
 
                         label {
@@ -156,6 +312,10 @@
                             letter-spacing: 0;
                             color: #505050;
                             opacity: 1;
+                        }
+
+                        label.labelFocused{
+                            color: #001CE2;
                         }
 
                         input {
@@ -167,6 +327,19 @@
                             border-radius: 8px;
                             padding-left: 17px;
                             opacity: 1;
+                        }
+
+                        input:focus {
+                            border: 2px solid #001CE2;
+                            color: #001CE2;
+                            outline: none;
+                        }
+
+                        img{
+                            width: 36px;
+                            height: 36px;
+                            right: 20px;
+                            position: absolute;
                         }
                     }
 
@@ -182,6 +355,18 @@
                         }
                     }
 
+                    .mar-input.error {
+                        label {
+                            color: #E20000;
+                            font: 600 17px/23px Noto Sans;
+                        }
+
+                        input {
+                            border: 2px solid #E20000;
+                            color: #E20000;
+                        }
+                    }
+
                     .my-subscription {
                         display: flex;
                         justify-content: space-between;
@@ -191,7 +376,7 @@
                             display: block;
                             width: 135px;
                             height: 55px;
-                            margin-bottom: 0!important;
+                            margin-bottom: 0 !important;
                             border-radius: 41px;
 
                             input[type="checkbox"] {
@@ -279,20 +464,21 @@
                     }
                 }
 
-                .actions-row{
+                .actions-row {
                     margin-bottom: 25px;
-                    img{
+
+                    img {
                         width: 35px;
                         height: 35px;
                         margin-right: 32px;
                     }
                 }
 
-                .action-btns{
+                .action-btns {
                     display: flex;
                     justify-content: space-between;
 
-                    .save-btn{
+                    .save-btn {
                         width: 240px;
                         height: 66px;
                         display: flex;
@@ -308,14 +494,14 @@
                         color: #FFFFFF;
                         opacity: 1;
 
-                        img{
-                            width:27px;
+                        img {
+                            width: 27px;
                             height: 21px;
                             margin-right: 20px;
                         }
                     }
 
-                    .purchase-btn{
+                    .purchase-btn {
                         width: 230px;
                         height: 66px;
                         display: flex;

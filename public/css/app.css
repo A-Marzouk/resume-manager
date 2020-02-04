@@ -12995,7 +12995,7 @@ html {
 
 .btn {
   border: 1.5px solid #001CE2;
-  border-radius: 8px;
+  border-radius: 12px !important;
   background: transparent;
   color: #001CE2 !important;
   text-decoration: none;
@@ -13023,8 +13023,8 @@ html {
 .btn.filled {
   background: #001CE2;
   color: white !important;
-  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.16);
-          box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.16);
+  -webkit-box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.16);
+          box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.16);
 }
 
 .btn.filled .icon path, .btn.filled .icon circle {

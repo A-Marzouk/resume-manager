@@ -13,6 +13,7 @@
         <small class="not-bold">(Save 30%)</small>
       </h4>
       <div class="help-text">Per Month $19</div>
+      <!-- Comment here -->
 
       <div class="plan-info">
         <div class="benefit" v-for="(benefit, index) in benefits" :key="index">

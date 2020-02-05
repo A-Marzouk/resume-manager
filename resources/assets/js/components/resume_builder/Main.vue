@@ -61,6 +61,7 @@
 </script>
 
 <style lang="scss">
+    @import '~vuetify/dist/vuetify.min.css';
 $mainColor: #001CE2;
     .resume-container {
         padding: 160px 100px 30px;

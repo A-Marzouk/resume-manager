@@ -11,6 +11,7 @@
                </div>
                <div id="scrollItem"></div>
            </div>
+           <!-- Comment to compile app.js -->
            <keep-alive class="mt-5">
                <router-view></router-view>
            </keep-alive>

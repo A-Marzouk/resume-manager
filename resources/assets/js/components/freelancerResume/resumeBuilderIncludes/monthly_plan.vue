@@ -9,10 +9,10 @@
       </h3>
       <h4 class="plan-offer">
         <small>Now Only</small>
-        <sup>$</sup>19
-        <small class="not-bold">(Save 30%)</small>
+        <sup>$</sup>15
+        <small class="not-bold">(Save 40%)</small>
       </h4>
-      <div class="help-text">Per Month $19</div>
+      <div class="help-text">Per Month $15</div>
       <!-- Comment here -->
 
       <div class="plan-info">
@@ -22,10 +22,14 @@
         </div>
       </div>
 
-      <button class="btn filled">
-        Start Free Trial
-        <small>7 days free trial</small>
-      </button>
+      <div class="btn filled">
+        <div class="d-flex flex-column">
+          <span>
+              Start Free Trial
+          </span>
+          <small>7 days free trial</small>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -35,7 +39,7 @@ export default {
   data: () => ({
     benefits: [
       "Online Resume",
-      " 2 Themes",
+      "100+ Themes",
       "Export PDF",
       "Visual Builder",
       "Free Domain URL"

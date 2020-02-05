@@ -4,15 +4,15 @@
     <img class="circle-bg" src="/images/resume_builder/circle-blue.svg" alt />
     <div class="plan-details">
       <h3 class="plan-original-price section-title">
-        Was $18
+        Was $250
         <img src="/images/resume_builder/delete.svg" alt="delete icon" />
       </h3>
       <h4 class="plan-offer">
         <small>Now Only</small>
-        <sup>$</sup>9
-        <small class="not-bold">(Save 50%)</small>
+        <sup>$</sup>99
+        <small class="not-bold">(Save 60%)</small>
       </h4>
-      <div class="help-text">Per Month $9</div>
+      <div class="help-text">Per year $99</div>
 
       <div class="plan-info">
         <div class="benefit" v-for="(benefit, index) in benefits" :key="index">
@@ -21,10 +21,15 @@
         </div>
       </div>
 
-      <button class="btn filled">
-        Start Free Trial
-        <small>7 days free trial</small>
-      </button>
+
+      <div class="btn filled">
+        <div class="d-flex flex-column">
+          <span>
+              Start Free Trial
+          </span>
+          <small>7 days free trial</small>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -34,7 +39,7 @@ export default {
   data: () => ({
     benefits: [
       "Online Resume",
-      " 2 Themes",
+      "100+ Themes",
       "Export PDF",
       "Visual Builder",
       "Free Domain URL"

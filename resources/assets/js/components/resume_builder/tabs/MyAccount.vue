@@ -73,14 +73,25 @@
                                 My subscription
                             </div>
                             <div>
-                                <label class='toggle-label'>
-                                    <input type='checkbox'/>
-                                    <span class='back'>
-                                    <span class='toggle'></span>
-                                    <span class='label on'>On</span>
-                                    <span class='label off'>Off</span>
-                                </span>
-                                </label>
+                                <!--<label class='toggle-label'>-->
+                                    <!--<input type='checkbox'/>-->
+                                    <!--<span class='back'>-->
+                                    <!--<span class='toggle'></span>-->
+                                    <!--<span class='label on'>On</span>-->
+                                    <!--<span class='label off'>Off</span>-->
+                                    <!--</span>-->
+                                <!--</label>-->
+
+                                <div class="toggle-panel smaller">
+                                    <div class="aux-fill" :class="{left: subscription === 'on',right: subscription === 'off'}"></div>
+                                    <div class="buttons">
+                                        <button class="toggle-btn monthly" @click="subscription = 'on' ">On
+                                        </button>
+                                        <button class="toggle-btn yearly"  @click="subscription = 'off' ">Off
+                                        </button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="mar-input" :class="{'active': fields.username , 'error': errors.username}">
@@ -108,7 +119,7 @@
                             <img src="/images/resume_builder/my_account/check-solid.svg" alt="edit">
                             Save changes
                         </a>
-                        <a href="javascript:void(0)" class="purchase-btn" data-toggle="modal" data-target="#prices">
+                        <a href="javascript:void(0)" class="purchase-btn" data-toggle="modal" data-target="#prices" v-show="subscription==='on'">
                             Purchase subscription
                         </a>
                     </div>
@@ -158,6 +169,7 @@
             return {
                 selectedPlan: "monthly",
                 selectedBtn: "monthly",
+                subscription: "off",
                 errors: {},
                 successes: {},
                 currentUser: {},
@@ -605,6 +617,19 @@
         }
     }
 
+    .toggle-panel.smaller{
+        width:110px;
+        .aux-fill{
+            width: 183%;
+            position: absolute;
+            background: #1f5de4;
+            border-radius: 20px;
+            height: 38px;
+            top: 0;
+            z-index: 1;
+        }
+    }
+
     .toggle-panel {
         border: solid 1.3px $primary;
         border-radius: 50px;
@@ -650,7 +675,6 @@
                 }
             }
         }
-
         .buttons {
             position: absolute;
             right: 0;

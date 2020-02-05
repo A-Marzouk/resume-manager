@@ -145,4 +145,9 @@ class HomeController extends Controller
         return view('home_designers', ['agents' => $agents]);
     }
 
+    public function oldHomepageBluePrint()
+    {
+        return view('homepage_blueprint');
+    }
+
 }

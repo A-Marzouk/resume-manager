@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <section class="section-view">
         <div class="section-title">
             <div class="title-light">Add</div>
             <h2>Audio / Video</h2>
@@ -9,7 +9,7 @@
 
         <div class="content d-flex">
             <div class="upload-container d-flex flex-column">
-                <h3 class="blue">Upload my audio</h3>
+                <h3 class="text-blue">Upload my audio</h3>
                 <vue2Dropzone
                     id="audio_and_video"
                     :options="dropzoneOptions"
@@ -32,7 +32,7 @@
                 <audio-element v-for="i in 3" :key="i" :name="'Audio ' + i"></audio-element>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -61,10 +61,6 @@ import audioElement from "./includes/audio-element";
 
 <style scoped lang="scss">
 $mainBlue: #001CE2; 
-
-.content {
-    margin-top: 50px;
-}
 
 .upload-container {
     position: relative;

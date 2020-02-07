@@ -28,6 +28,7 @@ export default {
 </script>
 <style lang="scss">
 /** Styles general tabs */
+@import '~vuetify/dist/vuetify.min.css';
 
 .theme--light.v-tabs__bar{
     background-color: transparent;
@@ -84,6 +85,36 @@ export default {
     }
     
 
+    &.tabs_middle{
+
+        margin: 0px auto 0px auto;
+
+        .v-tabs__div{
+            margin: 0;
+            min-width: 150px;
+            max-width: 100%;
+        }
+
+        .v-tabs__wrapper{
+
+            .v-tabs__container{
+                justify-content: space-between;
+            }
+        }
+        .v-tabs__item{
+            font-size: 24px;
+            font-family: 'Noto Sans';
+            line-height: 24px;
+            color: #3C3748;
+            min-width: auto;
+            text-transform: none;
+ 
+        }
+
+        .v-tabs__slider-wrapper{
+            min-width: 158px;
+        }
+    }
     &.tabs_inside{
 
         margin: 40px auto 0px auto;

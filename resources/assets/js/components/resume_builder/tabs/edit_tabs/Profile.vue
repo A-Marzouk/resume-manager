@@ -53,7 +53,6 @@
                     :slider-color="tabColor"
                     height="85"
                     class="tabs_inside"
-                    centered="true"
                 >
                     <vTabNames v-for="(nametab,i) in tabsLinks" :key="i" :index="i" :item="nametab" />
                 </v-tabs>
@@ -77,43 +76,83 @@
                     </v-tab-item>
                     <v-tab-item value="tab-1">
                         <div class="hold-tab social">
-                            <div class="options-wrap">
-                                <a href="" class="btn-outline">Add new link</a>
+                            <div class="options-wrap" v-show="wrapNewItem">
+                                <a href="" class="btn-outline" @click.prevent="showAddItem">Add new link</a>
                                 <a href="" class="btn-outline">Auto import</a>
                             </div>
-                            <div class="list-links">
+                            <div class="addItem-wrap animated fadeIn" v-show="addItem">
+                                <div class="input-field">
+                                    <label for="sociallink">Add social link</label>
+                                    <input type="text" placeholder="" name="sociallink" v-model="social_link">
+                                </div>
+                                <a href="#" class="btn-blue" @click.prevent="addLink"><img src="/images/resume_builder/profile/icon-save2.png">Save new this link</a>
+                                <a href="" class="btn-close ml-5" @click.prevent="closeAdd">x</a>
+                            </div>
+                            
+                            <div class="list-links" v-show="wrapNewItem">
                                 <ul>
-                                    <li>
-                                        <span class="move">
-                                            <a href="" class="up-item"></a>
-                                            <a href="" class="down-item"></a>
+                                    <li v-for="(item, index) in socialLinks" :key="index" class="animated fadeIn" :class="{'fadeIn': activeListItem === index, 'movingDown': movingDown === index, 'movingUp': movingUp === index }">
+                                        <span class="move-item">
+                                            <a href="" class="go_up" @click.prevent="reorder('social','mup',index,index-1)" :class="index==0?'disable':''"></a>
+                                            <a href="" class="go_down" @click.prevent="reorder('social','mdown',index,index+1)" :class="index==(socialLinks.length-1)?'disable':''"></a>
                                         </span>
-                                        <span>
-                                            https://www.Behance.com/hachib_rahman_/
+                                        <span class="info-link">
+                                            <img :src="getIconImage(item.name)" alt="">
+                                            {{item.link}}
                                         </span>
-                                        <select class="mdb-select md-form">
-                                            <option value="" disabled selected>Choose your option</option>
-                                            <option value="" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-1.jpg" class="rounded-circle">
-                                                example
-                                                1</option>
-                                            <option value="" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle">
-                                                example
-                                                2</option>
-                                            <option value="" data-icon="https://mdbootstrap.com/img/Photos/Avatars/avatar-3.jpg" class="rounded-circle">
-                                                example
-                                            1</option>
-                                        </select>                                    
+                                        <span class="input-select dropdown __md">
+                                            <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Option
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">
+                                                    <svg-vue class="option-icon" icon="edit-icon"></svg-vue>Edit
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <svg-vue class="option-icon" icon="trash-delete-icon"></svg-vue>Delete
+                                                </a>
+                                            </div>
+                                        </span>                                  
                                     </li>
-                                    <li></li>
                                 </ul>
                             </div>
                            
                         </div>
                     </v-tab-item>
                     <v-tab-item value="tab-2">
-                        <v-card>
-                            tres
-                        </v-card>
+                        <div class="hold-tab social">
+                            <div class="options-wrap">
+                                <a href="" class="btn-outline">Add new link</a>
+                                <a href="" class="btn-outline">Auto import</a>
+                            </div>
+                            <div class="list-links">
+                                <ul>
+                                    <li v-for="(item, index) in porfolioLinks" :key="index" class="animated fadeIn" :class="{'fadeIn': activeListItem === index , 'movingDown': movingDown === index, 'movingUp': movingUp === index }">
+                                        <span class="move-item">
+                                            <a href="" class="go_up" @click.prevent="reorder('portfolio','mup',index,index-1)" :class="index==0?'disable':''"></a>
+                                            <a href="" class="go_down" @click.prevent="reorder('portfolio','mdown',index,index+1)" :class="index==(socialLinks.length-1)?'disable':''"></a>
+                                        </span>
+                                        <span class="info-link">
+                                            <img :src="getIconImage(item.name)" alt="">
+                                            {{item.link}}
+                                        </span>
+                                        <span class="input-select dropdown __md">
+                                            <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Option
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item" href="#">
+                                                    <svg-vue class="option-icon" icon="edit-icon"></svg-vue>Edit
+                                                </a>
+                                                <a class="dropdown-item" href="#">
+                                                    <svg-vue class="option-icon" icon="trash-delete-icon"></svg-vue>Delete
+                                                </a>
+                                            </div>
+                                        </span>                                  
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </v-tab-item>
                     <v-tab-item value="tab-3">
                         <v-card>
@@ -123,18 +162,62 @@
                 </v-tabs-items>
             </v-tab-item>
             <v-tab-item value="tab-2">
-                <v-card flat>
-                    <v-card-text>
-                        tab 3
-                    </v-card-text>
-                </v-card>
+                <div class="hold-tab wrapp">
+                    <div class="input-field">
+                        <label for="profilelink">New language</label>
+                        <input type="text" placeholder="" name="profilelink">
+                    </div>
+                    <a href="#" class="btn-blue"><img src="/images/resume_builder/profile/icon-check.png">Add language now</a>
+                    <a href="" class="btn-outline ml-5">Auto import</a>
+                    <ul class="lang-items">
+                        <li class="lang-item">
+                            <img class="flagLang" src="/images/resume_builder/profile/flag-france.png" alt="">
+                            <span class="nameLang">French</span>
+                            <span class="input-select dropdown __md">
+                                <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Option
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">
+                                        <svg-vue class="option-icon" icon="edit-icon"></svg-vue>Edit
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <svg-vue class="option-icon" icon="trash-delete-icon"></svg-vue>Delete
+                                    </a>
+                                </div>
+                            </span>  
+                        </li>
+                    </ul>
+                </div>
             </v-tab-item>
             <v-tab-item value="tab-3">
-                <v-card flat>
-                    <v-card-text>
-                        tab 4
-                    </v-card-text>
-                </v-card>
+                <div class="hold-tab wrapp">
+                    <div class="input-field">
+                        <label for="profilelink">New location</label>
+                        <input type="text" placeholder="" name="profilelink">
+                    </div>
+                    <a href="#" class="btn-blue"><img src="/images/resume_builder/profile/icon-check.png">Add location now</a>
+                    <a href="" class="btn-outline ml-5">Auto import</a>
+                    <ul class="lang-items">
+                        <li class="lang-item">
+                            <img class="flagLang" src="/images/resume_builder/profile/flag-france.png" alt="">
+                            <span class="nameLang">French</span>
+                            <span class="input-select dropdown __md">
+                                <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Option
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">
+                                        <svg-vue class="option-icon" icon="edit-icon"></svg-vue>Edit
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <svg-vue class="option-icon" icon="trash-delete-icon"></svg-vue>Delete
+                                    </a>
+                                </div>
+                            </span>  
+                        </li>
+                    </ul>
+                </div>
             </v-tab-item>
         </v-tabs-items>
     </div>
@@ -163,18 +246,123 @@
                     'Social link',
                     'Portfolio link',
                     'Payment link'
-                ]
+                ],
+                /** Add item list flow */
+                activeListItem: undefined,
+                movingUp: undefined,
+                movingDown: undefined,
+                socialLinks: [
+                    {
+                        'name':'Facebook',
+                        'link': 'https://facebook.com/linksample'
+                    },
+                    {
+                        'name':'Instagram',
+                        'link': 'https://instagram.com/linksample'
+                    },
+                    {
+                        'name':'Dribbble',
+                        'link': 'https://www.Dribbble.com/in/hachibur-rahman-5913a5139/'
+                    }
+                ],
+                porfolioLinks: [
+                    {
+                        'name':'Behance',
+                        'link': 'https://www.Behance.com/hachib_rahman_/'
+                    },
+                    {
+                        'name':'Dribbble',
+                        'link': 'https://www.Dribbble.com/in/hachibur-rahman-5913a5139/'
+                    }
+                ],
+                addItem: false,
+                wrapNewItem: true,
+                /** Fields add social link */
+                social_link: '',
+                namesocial: ''
             }
         },
         methods: {
             clicked_tab(name) {
+               /** Logic click on tab espcific */ 
+            },
+            showAddItem(){
                 
+                /** State show */
+                this.addItem = true;
+                this.wrapNewItem = false;
+            },
+            addLink(){
+                this.socialLinks.push(
+                    {'name': this.social_link.indexOf('http|https')>-1?this.social_link.split('//')[1].split('.com')[0].toLowerCase():this.social_link.split('.com')[0].toLowerCase(),
+                     'link': this.social_link.indexOf('http|https')>-1?this.social_link: 'http://'+this.social_link}
+                )
+                this.activeListItem = this.socialLinks.length-1
+                setTimeout(()=>{
+                    this.activeListItem = undefined;
+                },500)
+            },
+            closeAdd(){
+                /** Reset fields */
+                this.social_link = '';
+                this.namesocial = '';
+
+                /**---*/
+                this.addItem = false;
+                this.wrapNewItem = true;
+            },
+            reorder(type,dir,from,to){            
+                this.activeListItem = from;     
+                
+                if(dir == 'mup'){
+                    this.movingUp = from;
+                    this.movingDown = undefined
+                }
+                if(dir == 'mdown'){
+                    this.movingDown = from;
+                    this.movingUp = undefined
+                }
+                setTimeout(()=>{
+                    switch (type) {
+                        case 'social':
+                            this.socialLinks.moveItem(from,to);
+                        break;
+                        case 'portfolio':
+                            this.porfolioLinks.moveItem(from,to);
+                        break;
+                    }                   
+                
+                    this.activeListItem = undefined;
+                    this.movingDown = undefined
+                    this.movingUp = undefined
+                },500)
+            
+            },
+            getIconImage(name){
+
+                let arrayIcons = {
+                    'behance' : '/images/resume_builder/profile/behance.png',
+                    'dribbble' : '/images/resume_builder/profile/dribbble.png',
+                }
+
+                if (arrayIcons.hasOwnProperty(name.toLowerCase())) {
+                    return arrayIcons[name.toLowerCase()];
+                }else{
+                    return '/images/resume_builder/profile/icon-plus.png';
+                }
+
             }
         }
     }
-</script>
 
-<style lang="scss" scope>
+    Array.prototype.moveItem = function(from, to) {
+        this.splice(to, 0, this.splice(from, 1)[0]);
+        return this;
+    };
+</script>
+<style lang="scss">
+
+
 
     .title-blue{
         font-family: 'Nexa';
@@ -368,15 +556,18 @@
         .btn-blue{
             min-width: 294px;
             min-height: 75px;
-            margin-left: 62px;
+            margin-left: 5%;
             font-size: 23px;
             font-weight: 500;
             border: 1.5px solid #1F5DE4;
         }
-
         &.social{
             flex-flow: column;
             align-items: flex-start;
+        }
+        &.wrapp{
+            flex-wrap: wrap;
+            align-items: center;
         }
     }
 
@@ -453,5 +644,220 @@
             margin-left: 46px;
         }
     }
+
+    .btn-close{
+        min-width: 62px;
+        min-height: 62px;
+        font-family: 'Noto Sans';
+        font-size: 21px;
+        font-weight: 500;
+        color: #001CE2;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #1F5DE4;
+        border-radius: 8px;
+        text-decoration: none;
+        outline: none;
+        background: #fff;
+        text-transform: uppercase;
+
+        &:hover{
+            text-decoration: none;
+        }
+    }
+
+    /** Add new links flow */
+    .addItem-wrap{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        min-width: 60%;
+
+        .input-field{
+            min-width: 100%;
+        }
+    }
+
+    .list-links{
+
+        margin-top: 56.2px;
+
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            li{
+                
+                display: flex;
+                margin-bottom: 57.9px;
+                min-height: 45px;
+                opacity: 1;
+                transition: all .5s ease-out;
+                transform: translateY(0px);
+
+                
+
+                span{
+                    font-size: 25px;
+                    font-weight: 500;
+                    font-family: 'Noto Sans';
+                    color: #505050;
+
+                    &.info-link{
+                        img{
+                            margin-right: 20px;
+                            min-width: 45px;
+                        }
+                    }
+
+                    a{
+                        &.disable{
+                            opacity: .5;
+                            pointer-events: none
+                        }
+                    }
+                }
+            }
+        }
+
+        
+    }
+
+    .input-select{
+
+        &.__md{
+            margin-left: 27.6px;
+            min-height: 39px;
+
+            .dropdown-toggle{
+                font-size: 19px;
+                padding: 0 15px;
+            }
+            .dropdown-menu{
+                .dropdown-item{
+                    font-size: 19px;
+                    padding: 5px 19px;
+
+                    .option-icon{
+                        height: 14px;
+                    }
+                }
+                &.show{
+                    transform: translate3d(0px, 40px, 0px) !important;
+                }
+
+            }
+        }
+        
+    }
+
+    /** Reorder items */
+    .move-item{
+        display: inline-flex;
+        margin-right: 19.3px;
+        flex-flow: column;
+        justify-content: space-between;
+
+
+        a{
+            width: 18px;
+            height: 12px;
+        }
+
+        .go_up{
+            vertical-align: top;
+            background: url('/images/resume_builder/profile/arrow-up.png');
+            background-repeat: no-repeat;
+        }
+        .go_down{
+            vertical-align: bottom;
+            background: url('/images/resume_builder/profile/arrow-down.png');
+            background-repeat: no-repeat;
+        }
+    }
+
+    .lang-items{
+        margin: 0;
+        padding: 0;
+
+        .lang-item{
+
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .flagLang{
+                margin: 0px 25px;
+            }
+            .nameLang{
+                font-size: 39px;
+                font-weight: 700;
+                color: #001CE2;
+            }
+        }
+    }
+
+
+    /** Moving animate */
+    .animated {
+        -webkit-animation-duration: .5s;
+        animation-duration: .5s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        
+    }
+        
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .fadeIn {
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+
+        &.movingUp{
+            animation: transUp 1s ease-in;
+        }
+        &.movingDown{
+            animation: transDown 1s ease-in;
+        }
+    }
+
+    @keyframes transUp {
+        50% {
+            transform: translateY(-100px);
+        }
+    }
+    @keyframes transDown {
+        50% {
+            transform: translateY(100px);
+        }
+    }
+
+
+
+    /** General fixes by collision class bootstrap-vuetify */
+    #resumeBuilder{
+        .d-flex>*, .d-inline-flex>*{
+            flex: none !important;
+        }
+        .blue{
+            background: transparent !important;
+            border: none !important;
+        }
+    }
+
+    
 
 </style>

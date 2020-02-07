@@ -1,7 +1,7 @@
 <template>
     <div class="resume-container">
 
-        <nav class="resume-builder-nav d-flex align-items-center">
+        <nav class="resume-builder-nav d-flex align-items-start">
             <a href="/freelancer/dashboard" class="brand-link">
                 <img class="brand-image" src="/images/resume_builder/123 icon.png" alt="123workforce icon" />
             </a>
@@ -61,8 +61,8 @@
 </script>
 
 <style lang="scss">
-    @import '~vuetify/dist/vuetify.min.css';
-$mainColor: #001CE2;
+
+    $mainColor: #001CE2;
     .resume-container {
         padding: 160px 100px 30px;
     }
@@ -147,5 +147,6 @@ $mainColor: #001CE2;
             }
 
         }
+
     }
 </style>

@@ -93,7 +93,7 @@ class SocialSitesRegisterController extends Controller
         auth()->login($authUser);
 
 
-        return Redirect::to('/dashboard');
+        return Redirect::to('/resume-builder');
     }
     private function findOrCreateUser($user,$provider)
     {
@@ -143,7 +143,7 @@ class SocialSitesRegisterController extends Controller
 
         auth()->login($authUser);
 
-        return Redirect::to('/dashboard');
+        return Redirect::to('/resume-builder');
 
     }
 
@@ -164,7 +164,7 @@ class SocialSitesRegisterController extends Controller
 
         auth()->login($authUser);
 
-        return Redirect::to('/dashboard');
+        return Redirect::to('/resume-builder');
     }
 
 
@@ -185,7 +185,7 @@ class SocialSitesRegisterController extends Controller
 
         auth()->login($authUser);
 
-        return Redirect::to('/dashboard');
+        return Redirect::to('/resume-builder');
     }
 
 
@@ -206,7 +206,7 @@ class SocialSitesRegisterController extends Controller
 
         auth()->login($authUser);
 
-        return Redirect::to('/dashboard');
+        return Redirect::to('/resume-builder');
     }
 
 

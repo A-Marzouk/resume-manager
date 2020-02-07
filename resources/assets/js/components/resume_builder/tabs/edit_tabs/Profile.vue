@@ -222,9 +222,8 @@
         </v-tabs-items>
     </div>
 </template>
-<script>
-    import vTabNames from '../../includes/vtabs.vue';
 
+<script>
     export default {
         name: "Profile",
         components: {

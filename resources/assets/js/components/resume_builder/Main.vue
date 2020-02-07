@@ -61,8 +61,7 @@
 </script>
 
 <style lang="scss">
-
-    $mainColor: #001CE2;
+$mainColor: #001CE2;
     .resume-container {
         padding: 160px 100px 30px;
     }

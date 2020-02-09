@@ -55,7 +55,7 @@
 
 <script>
     export default {
-        name: "Achievement",
+        name: "Hobbies",
         data() {
             return {
                 selectedTab: 'Awards'

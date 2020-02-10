@@ -13,6 +13,7 @@
 @import "modifiers";
 @import "buttons";
 @import "inputs";
+@import "forms";
 @import "select";
 @import "dropzone";
 
@@ -29,4 +30,13 @@
         font-size: 59px;
         font-family: NexaBold, Arial, Helvetica, sans-serif;
     }
+}
+
+.section-view {
+    width: calc(100% - 260px - 3rem);
+}
+
+.content {
+    margin-top: 50px;
+    width: 100%;
 }

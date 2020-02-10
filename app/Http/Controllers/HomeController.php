@@ -18,7 +18,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except('privacyView', 'getSearch', 'termsView', 'welcomePage', 'ResumePage', 'ResumeSample',
-        'homeDesigners','ResumePageV2','ResumePageShortV2');
+        'homeDesigners','ResumePageV2','ResumePageShortV2', 'homepage_blueprint');
     }
 
     /**

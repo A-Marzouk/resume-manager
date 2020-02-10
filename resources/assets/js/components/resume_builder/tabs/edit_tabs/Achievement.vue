@@ -9,8 +9,8 @@
                 <div class="bar-item" :class="{ active : selectedTab === 'Awards'}" @click="selectedTab = 'Awards'">
                     Awards
                 </div>
-                <div class="bar-item" :class="{ active : selectedTab === 'Certificates'}"
-                     @click="selectedTab = 'Certificates'">Certificates
+                <div class="bar-item" :class="{ active : selectedTab === 'Certificates'}" @click="selectedTab = 'Certificates'">
+                    Certificates
                 </div>
                 <div class="bar-item" :class="{ active : selectedTab === 'Public'}" @click="selectedTab = 'Public'">
                     Public Speaking
@@ -19,7 +19,8 @@
                     Events
                 </div>
             </div>
-            <div class="add-award-section">
+
+            <div class="add-award-section" v-show="selectedTab === 'Awards'">
                 <div class="award-input">
                     <label for="awardTitle">New Awards</label>
                     <input type="text" id="awardTitle">
@@ -37,6 +38,10 @@
                     </a>
                 </div>
             </div>
+
+            <div class="certificates-section" v-show="selectedTab === 'Certificates'">
+
+            </div>
         </div>
     </div>
 </template>
@@ -46,7 +51,7 @@
         name: "Achievement",
         data() {
             return {
-                selectedTab: 'Awards'
+                selectedTab: 'Certificates'
             }
         }
     }
@@ -165,6 +170,10 @@
                     }
                 }
             }
+
+        }
+
+        .certificates-section{
 
         }
     }

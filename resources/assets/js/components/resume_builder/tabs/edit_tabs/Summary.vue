@@ -103,6 +103,7 @@
                     border-radius: 10px;
                     opacity: 1;
                     padding-left: 18px;
+                    padding-top: 18px;
                 }
 
                 textarea:focus {

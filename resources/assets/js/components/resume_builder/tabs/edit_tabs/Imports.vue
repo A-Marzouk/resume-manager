@@ -5,18 +5,17 @@
         </div>
         <div class="section-body-wrapper">
             <div class="achievements-bar">
-                <div class="bar-item" :class="{ active : selectedTab === 'Downloads'}"
-                     @click="selectedTab = 'Downloads'">
+                <div class="bar-item" :class="{ active : selectedTab === 'downloads'}" @click="selectedTab = 'downloads'">
                     Downloads
                 </div>
-                <div class="bar-item" :class="{ active : selectedTab === 'Manage'}" @click="selectedTab = 'Manage'">
+                <div class="bar-item" :class="{ active : selectedTab === 'manage'}" @click="selectedTab = 'manage'">
                     Manage imports
                 </div>
                 <div class="bar-item" :class="{ active : selectedTab === 'links'}" @click="selectedTab = 'links'">
                     URL links
                 </div>
             </div>
-            <div class="achievements-bar sub-bar">
+            <div class="achievements-bar sub-bar" v-show="selectedTab === 'manage'">
                 <div class="bar-item" :class="{ active : selectedSubTab === 'PDF'}" @click="selectedSubTab = 'PDF'">
                     PDF
                 </div>
@@ -36,59 +35,113 @@
                     Word/docs
                 </div>
             </div>
-            <div class="imports-list">
-                <div class="import-item">
-                    <div class="import-name">
-                        PDF import 1
+            <transition name="component-fade" mode="out-in">
+                <div class="imports-list" v-if="selectedTab === 'downloads'">
+                    <div class="import-item">
+                        <div class="import-name">
+                           File 2
+                        </div>
+                        <div class="import-date">
+                            01/17/2022
+                        </div>
+                        <div class="import-icon-view">
+                            <img src="/images/resume_builder/imports/eye.png" alt="eye-icon">
+                        </div>
+                        <div class="import-delete-iceon">
+                            <img src="/images/resume_builder/imports/trash.png" alt="eye-icon">
+                        </div>
                     </div>
-                    <div class="import-date">
-                        01/17/2022
-                    </div>
-                    <div class="import-icon-view">
-                        <img src="/images/resume_builder/imports/eye.png" alt="eye-icon">
-                    </div>
-                    <div class="import-edit-icon">
-                        <img src="/images/resume_builder/imports/edit.svg" alt="eye-icon">
-                    </div>
-                    <div class="import-delete-iceon">
-                        <img src="/images/resume_builder/imports/trash.png" alt="eye-icon">
-                    </div>
-                </div>
-                <div class="import-item">
-                    <div class="import-name">
-                        PDF import 2
-                    </div>
-                    <div class="import-date">
-                        01/17/2022
-                    </div>
-                    <div class="import-icon-view">
-                        <img src="/images/resume_builder/imports/eye.png" alt="eye-icon">
-                    </div>
-                    <div class="import-edit-icon">
-                        <img src="/images/resume_builder/imports/edit.svg" alt="eye-icon">
-                    </div>
-                    <div class="import-delete-iceon">
-                        <img src="/images/resume_builder/imports/trash.png" alt="eye-icon">
+                    <div class="import-item">
+                        <div class="import-name">
+                            File 2
+                        </div>
+                        <div class="import-date">
+                            01/17/2022
+                        </div>
+                        <div class="import-icon-view">
+                            <img src="/images/resume_builder/imports/eye.png" alt="eye-icon">
+                        </div>
+                        <div class="import-delete-iceon">
+                            <img src="/images/resume_builder/imports/trash.png" alt="eye-icon">
+                        </div>
                     </div>
                 </div>
-                <div class="import-item">
-                    <div class="import-name">
-                        PDF import 3
+                <div class="imports-list" v-if="selectedTab === 'manage'">
+                    <div class="import-item">
+                        <div class="import-name">
+                            PDF import 1
+                        </div>
+                        <div class="import-date">
+                            01/17/2022
+                        </div>
+                        <div class="import-icon-view">
+                            <img src="/images/resume_builder/imports/eye.png" alt="eye-icon">
+                        </div>
+                        <div class="import-edit-icon">
+                            <img src="/images/resume_builder/imports/edit.svg" alt="eye-icon">
+                        </div>
+                        <div class="import-delete-iceon">
+                            <img src="/images/resume_builder/imports/trash.png" alt="eye-icon">
+                        </div>
                     </div>
-                    <div class="import-date">
-                        01/23/2022
+                    <div class="import-item">
+                        <div class="import-name">
+                            PDF import 2
+                        </div>
+                        <div class="import-date">
+                            01/17/2022
+                        </div>
+                        <div class="import-icon-view">
+                            <img src="/images/resume_builder/imports/eye.png" alt="eye-icon">
+                        </div>
+                        <div class="import-edit-icon">
+                            <img src="/images/resume_builder/imports/edit.svg" alt="eye-icon">
+                        </div>
+                        <div class="import-delete-iceon">
+                            <img src="/images/resume_builder/imports/trash.png" alt="eye-icon">
+                        </div>
                     </div>
-                    <div class="import-icon-view">
-                        <img src="/images/resume_builder/imports/eye.png" alt="eye-icon">
-                    </div>
-                    <div class="import-edit-icon">
-                        <img src="/images/resume_builder/imports/edit.svg" alt="eye-icon">
-                    </div>
-                    <div class="import-delete-iceon">
-                        <img src="/images/resume_builder/imports/trash.png" alt="eye-icon">
+                    <div class="import-item">
+                        <div class="import-name">
+                            PDF import 3
+                        </div>
+                        <div class="import-date">
+                            01/23/2022
+                        </div>
+                        <div class="import-icon-view">
+                            <img src="/images/resume_builder/imports/eye.png" alt="eye-icon">
+                        </div>
+                        <div class="import-edit-icon">
+                            <img src="/images/resume_builder/imports/edit.svg" alt="eye-icon">
+                        </div>
+                        <div class="import-delete-iceon">
+                            <img src="/images/resume_builder/imports/trash.png" alt="eye-icon">
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="imports-list" v-if="selectedTab === 'links'">
+                    <div class="import-item">
+                        <div class="import-name">
+                            www.123workforce.com/Aymane
+                        </div>
+                        <div class="import-date">
+                            01/17/2022
+                        </div>
+                        <div class="import-icon-view">
+                            <img src="/images/resume_builder/imports/eye.png" alt="eye-icon">
+                        </div>
+                        <div class="import-edit-icon">
+                            <img src="/images/resume_builder/imports/edit.svg" alt="eye-icon">
+                        </div>
+                        <div class="import-copy-icon">
+                            <img src="/images/resume_builder/imports/copy.png" alt="copy-icon">
+                        </div>
+                        <div class="import-delete-iceon">
+                            <img src="/images/resume_builder/imports/trash.png" alt="eye-icon">
+                        </div>
+                    </div>
+                </div>
+            </transition >
         </div>
     </div>
 </template>
@@ -98,8 +151,8 @@
         name: "imports",
         data() {
             return {
-                selectedTab: 'Manage',
-                selectedSubTab: 'PDF'
+                selectedTab: 'downloads',
+                selectedSubTab: 'PDF',
             }
         }
     }
@@ -180,6 +233,13 @@
 
                 }
 
+                .import-copy-icon {
+                   img{
+                       width: 29.5px;
+                       height: 34px;
+                   }
+                }
+
                 .import-delete-icon {
                    img{
                        width: 29px;
@@ -188,7 +248,6 @@
                 }
             }
         }
-
 
     }
 </style>

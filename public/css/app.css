@@ -13010,11 +13010,9 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   font-family: "Noto Sans", Arial, Helvetica, sans-serif;
-  padding: 18px 10px !important;
+  padding: 18px 20px !important;
+  font-size: 20px !important;
 }
 
 .btn .icon {

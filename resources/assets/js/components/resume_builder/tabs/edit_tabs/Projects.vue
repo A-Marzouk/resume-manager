@@ -8,6 +8,7 @@
         <div class="content d-flex">
             <form-view1 v-if="formStep === 1"></form-view1>
             <form-view2 v-else-if="formStep === 2"></form-view2>
+            <form-view3 v-else></form-view3>
             <div class="step-indicator">
                 <a href="javascript:void;" @click="prevStep"><svg-vue class="step-arrow-icon" icon="left-arrow-icon"></svg-vue></a>
                 <span @click="setStep(step)" class="step-dot" :class="{active: step === formStep}" v-for="step in 3" :key="step + 'step'"></span>
@@ -20,12 +21,14 @@
 <script>
 import FormView1 from './add_projects_views/view_num1'
 import FormView2 from './add_projects_views/view_num2'
+import FormView3 from './add_projects_views/view_num3'
 
 export default {
     name: "Projects",
     components: {
         FormView1,
         FormView2,
+        FormView3
     },
     data: () => ({
         formStep: 1

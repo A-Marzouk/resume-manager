@@ -6,7 +6,7 @@
     {{--</div>--}}
 
     <div id="freelancerPortfolio" class="d-flex justify-content-center">
-        <freelancer-portfolio :freelancer="{{$freelancer}}" page="resume"></freelancer-portfolio>
+        <freelancer-portfolio :freelancer="{{$agent}}" page="resume"></freelancer-portfolio>
     </div>
 
 @endsection

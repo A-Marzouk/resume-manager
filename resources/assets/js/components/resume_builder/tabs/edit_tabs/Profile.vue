@@ -4,103 +4,126 @@
             <div class="title-light">Edit</div>
             <h2>Profile</h2>
         </div>
-        <v-tabs
-            v-model="cTabProfile"
-            :slider-color="tabColor"
-            height="85"
-        >
-            <vTabNames v-for="(nametab,i) in tabsProfile" :key="i" :index="i" :item="nametab" @clicked="clicked_tab(nametab)" />
-        </v-tabs>
-        <v-tabs-items v-model="cTabProfile">
-            <v-tab-item value="tab-0">
-                <div class="hold-edit">
-                    <img class="user-cover" src="/images/resume_builder/default-user.jpg" alt="">
-                    <div class="upload-section">
-                        <h5>Change profile photo</h5>
-                        <p>Only use images that are greater than 500 pixels in both height and width.</p>
-                        <input type="file" class="input_photoFile"> 
-                    </div>
-                    <form class="form-edit_profile">
-                        <div class="input-field">
-                            <label for="fullname">My full-name</label>
-                            <input type="text" placeholder="" name="fullname">
-                        </div>
-                        <div class="input-field">
-                            <label for="email">Email adress</label>
-                            <input type="email" placeholder="" name="email">
-                        </div>
-                        <div class="input-field">
-                            <label for="designation">Designation</label>
-                            <input type="text" placeholder="" name="designation">
-                        </div>
-                        <div class="input-field">
-                            <label for="phone">Phone</label>
-                            <input type="tel" placeholder="" name="phone">
-                        </div>
-                        <div class="input-field">
-                            <label for="aboutmyself">About myself <i class="hint-message">Maximum 80 words</i></label>
-                            <textarea name="aboutmyself"></textarea>
-                        </div>
-                        <div class="actions">
-                            <a href="#" class="btn-blue"><img src="/images/resume_builder/profile/icon-save.png">Save all information</a>
-                        </div>
-                    </form>
-                </div>
-            </v-tab-item>
-            <v-tab-item value="tab-1">
-                <v-tabs
-                    v-model="cTabLinks"
-                    :slider-color="tabColor"
-                    height="85"
-                    class="tabs_inside"
-                >
-                    <vTabNames v-for="(nametab,i) in tabsLinks" :key="i" :index="i" :item="nametab" />
-                </v-tabs>
-                <v-tabs-items v-model="cTabLinks">
-                    <v-tab-item value="tab-0">
-                        
-                        <div class="hold-tab">
-                            <div class="input-field">
-                                <label for="profilelink">My profile link</label>
-                                <input type="text" placeholder="" name="profilelink">
-                            </div>
-                            <div class="quick-opts">
-                                <a href=""><span class="edit"></span></a>
-                                <a href=""><span class="copy"></span></a>
-                                <a href=""><span class="share"></span></a>
-                            </div>
-                            <a href="#" class="btn-blue"><img src="/images/resume_builder/profile/icon-save2.png">Save this new link</a>
 
+        <div class="achievements-bar">
+            <div class="bar-item" v-for="(tabName,i) in tabsProfile" :key="i" :index="i" :item="tabName" @click="selectedTab = tabName" :class="{ active : selectedTab === tabName}" >
+                {{tabName}}
+            </div>
+        </div>
+        
+        <div class="achievements-bar sub-bar" v-show="selectedTab === 'manage'">
+            <div class="bar-item" :class="{ active : selectedSubTab === 'PDF'}" @click="selectedSubTab = 'PDF'">
+                PDF
+            </div>
+            <div class="bar-item" :class="{ active : selectedSubTab === 'Linkedin'}"
+                 @click="selectedSubTab = 'Linkedin'">
+                Linkedin
+            </div>
+            <div class="bar-item" :class="{ active : selectedSubTab === 'Github'}"
+                 @click="selectedSubTab = 'Github'">
+                Github
+            </div>
+            <div class="bar-item" :class="{ active : selectedSubTab === 'Behance'}"
+                 @click="selectedSubTab = 'Behance'">
+                Behance
+            </div>
+            <div class="bar-item" :class="{ active : selectedSubTab === 'Word'}" @click="selectedSubTab = 'Word'">
+                Word/docs
+            </div>
+        </div>
+
+        <div v-show="selectedTab === 'personal' ">
+            <div class="hold-edit">
+                <img class="user-cover" src="/images/resume_builder/default-user.jpg" alt="">
+                <div class="upload-section">
+                    <h5>Change profile photo</h5>
+                    <p>Only use images that are greater than 500 pixels in both height and width.</p>
+                    <div class="choose-photo-btn">
+                        <a href="javascript:void(0)">
+                            <img src="/images/resume_builder/profile/icon-file.png" alt="">
+                            Choose photo now
+                        </a>
+                    </div>
+                </div>
+                <form class="form-edit_profile">
+                    <div class="input-field">
+                        <label for="fullname">My full-name</label>
+                        <input type="text" placeholder="" id="fullname" name="fullname">
+                    </div>
+                    <div class="input-field">
+                        <label for="email">Email adress</label>
+                        <input type="email" id="email" placeholder="" name="email">
+                    </div>
+                    <div class="input-field">
+                        <label for="designation">Designation</label>
+                        <input type="text" id="designation" placeholder="" name="designation">
+                    </div>
+                    <div class="input-field">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" placeholder="" name="phone">
+                    </div>
+                    <div class="input-field">
+                        <label for="aboutmyself">About myself <i class="hint-message">Maximum 80 words</i></label>
+                        <textarea name="aboutmyself"  id="aboutmyself"></textarea>
+                    </div>
+                    <div class="actions">
+                        <a href="#" class="btn-blue"><img src="/images/resume_builder/profile/icon-save.png">Save all information</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div  v-show="selectedTab === 'links' ">
+            <div class="achievements-bar sub-bar">
+                <div class="bar-item" v-for="(tabName,i) in tabsLinks" :key="i" :index="i" :item="tabName" @click="selectedSubTab = tabName" :class="{ active : selectedSubTab === tabName}" >
+                    {{tabName}}
+                </div>
+            </div>
+
+
+            <div v-show="selectedSubTab === 'My profile link'">
+
+                <div class="hold-tab">
+                    <div class="input-field">
+                        <label for="profilelink">My profile link</label>
+                        <input type="text" placeholder="" name="profilelink">
+                    </div>
+                    <div class="quick-opts">
+                        <a href=""><span class="edit"></span></a>
+                        <a href=""><span class="copy"></span></a>
+                        <a href=""><span class="share"></span></a>
+                    </div>
+                    <a href="#" class="btn-blue"><img src="/images/resume_builder/profile/icon-save2.png">Save this new link</a>
+
+                </div>
+
+            </div>
+            <div v-show="selectedSubTab === 'Social link'">
+                <div class="hold-tab social">
+                    <div class="options-wrap" v-show="wrapNewItem">
+                        <a href="" class="btn-outline" @click.prevent="showAddItem">Add new link</a>
+                        <a href="" class="btn-outline">Auto import</a>
+                    </div>
+                    <div class="addItem-wrap animated fadeIn" v-show="addItem">
+                        <div class="input-field">
+                            <label for="sociallink">Add social link</label>
+                            <input  id="sociallink" type="text" placeholder="" name="sociallink" v-model="social_link">
                         </div>
-                        
-                    </v-tab-item>
-                    <v-tab-item value="tab-1">
-                        <div class="hold-tab social">
-                            <div class="options-wrap" v-show="wrapNewItem">
-                                <a href="" class="btn-outline" @click.prevent="showAddItem">Add new link</a>
-                                <a href="" class="btn-outline">Auto import</a>
-                            </div>
-                            <div class="addItem-wrap animated fadeIn" v-show="addItem">
-                                <div class="input-field">
-                                    <label for="sociallink">Add social link</label>
-                                    <input type="text" placeholder="" name="sociallink" v-model="social_link">
-                                </div>
-                                <a href="#" class="btn-blue" @click.prevent="addLink"><img src="/images/resume_builder/profile/icon-save2.png">Save new this link</a>
-                                <a href="" class="btn-close ml-5" @click.prevent="closeAdd">x</a>
-                            </div>
-                            
-                            <div class="list-links" v-show="wrapNewItem">
-                                <ul>
-                                    <li v-for="(item, index) in socialLinks" :key="index" class="animated fadeIn" :class="{'fadeIn': activeListItem === index, 'movingDown': movingDown === index, 'movingUp': movingUp === index }">
+                        <a href="#" class="btn-blue" @click.prevent="addLink"><img src="/images/resume_builder/profile/icon-save2.png">Save new this link</a>
+                        <a href="" class="btn-close ml-5" @click.prevent="closeAdd">x</a>
+                    </div>
+
+                    <div class="list-links" v-show="wrapNewItem">
+                        <ul>
+                            <li v-for="(item, index) in socialLinks" :key="index" class="animated fadeIn" :class="{'fadeIn': activeListItem === index, 'movingDown': movingDown === index, 'movingUp': movingUp === index }">
                                         <span class="move-item">
                                             <a href="" class="go_up" @click.prevent="reorder('social','mup',index,index-1)" :class="index==0?'disable':''"></a>
                                             <a href="" class="go_down" @click.prevent="reorder('social','mdown',index,index+1)" :class="index==(socialLinks.length-1)?'disable':''"></a>
                                         </span>
-                                        <span class="info-link">
+                                <span class="info-link">
                                             <img :src="getIconImage(item.name)" alt="">
                                             {{item.link}}
                                         </span>
-                                        <span class="input-select dropdown __md">
+                                <span class="input-select dropdown __md">
                                             <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Option
                                             </button>
@@ -112,32 +135,32 @@
                                                     <svg-vue class="option-icon" icon="trash-delete-icon"></svg-vue>Delete
                                                 </a>
                                             </div>
-                                        </span>                                  
-                                    </li>
-                                </ul>
-                            </div>
-                           
-                        </div>
-                    </v-tab-item>
-                    <v-tab-item value="tab-2">
-                        <div class="hold-tab social">
-                            <div class="options-wrap">
-                                <a href="" class="btn-outline">Add new link</a>
-                                <a href="" class="btn-outline">Auto import</a>
-                            </div>
-                            <div class="list-links">
-                                <ul>
-                                    <li v-for="(item, index) in porfolioLinks" :key="index" class="animated fadeIn" :class="{'fadeIn': activeListItem === index , 'movingDown': movingDown === index, 'movingUp': movingUp === index }">
+                                        </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div v-show="selectedSubTab === 'Portfolio link'">
+                <div class="hold-tab social">
+                    <div class="options-wrap">
+                        <a href="" class="btn-outline">Add new link</a>
+                        <a href="" class="btn-outline">Auto import</a>
+                    </div>
+                    <div class="list-links">
+                        <ul>
+                            <li v-for="(item, index) in porfolioLinks" :key="index" class="animated fadeIn" :class="{'fadeIn': activeListItem === index , 'movingDown': movingDown === index, 'movingUp': movingUp === index }">
                                         <span class="move-item">
                                             <a href="" class="go_up" @click.prevent="reorder('portfolio','mup',index,index-1)" :class="index==0?'disable':''"></a>
                                             <a href="" class="go_down" @click.prevent="reorder('portfolio','mdown',index,index+1)" :class="index==(socialLinks.length-1)?'disable':''"></a>
                                         </span>
-                                        <span class="info-link">
+                                <span class="info-link">
                                             <img :src="getIconImage(item.name)" alt="">
                                             {{item.link}}
                                         </span>
-                                        <span class="input-select dropdown __md">
-                                            <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="input-select dropdown __md">
+                                            <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Option
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -148,33 +171,33 @@
                                                     <svg-vue class="option-icon" icon="trash-delete-icon"></svg-vue>Delete
                                                 </a>
                                             </div>
-                                        </span>                                  
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </v-tab-item>
-                    <v-tab-item value="tab-3">
-                        <v-card>
-                            cuatro
-                        </v-card>
-                    </v-tab-item>
-                </v-tabs-items>
-            </v-tab-item>
-            <v-tab-item value="tab-2">
-                <div class="hold-tab wrapp">
-                    <div class="input-field">
-                        <label for="profilelink">New language</label>
-                        <input type="text" placeholder="" name="profilelink">
+                                        </span>
+                            </li>
+                        </ul>
                     </div>
-                    <a href="#" class="btn-blue"><img src="/images/resume_builder/profile/icon-check.png">Add language now</a>
-                    <a href="" class="btn-outline ml-5">Auto import</a>
-                    <ul class="lang-items">
-                        <li class="lang-item">
-                            <img class="flagLang" src="/images/resume_builder/profile/flag-france.png" alt="">
-                            <span class="nameLang">French</span>
-                            <span class="input-select dropdown __md">
-                                <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </div>
+            </div>
+            <div v-show="selectedSubTab === 'Payment link'">
+                <v-card>
+                    cuatro
+                </v-card>
+            </div>
+
+        </div>
+        <div v-show="selectedTab === 'languages' ">
+            <div class="hold-tab wrapp">
+                <div class="input-field">
+                    <label for="profilelink">New language</label>
+                    <input type="text" placeholder=""  id="profilelink" name="profilelink">
+                </div>
+                <a href="#" class="btn-blue"><img src="/images/resume_builder/profile/icon-check.png">Add language now</a>
+                <a href="" class="btn-outline ml-5">Auto import</a>
+                <ul class="lang-items">
+                    <li class="lang-item">
+                        <img class="flagLang" src="/images/resume_builder/profile/flag-france.png" alt="">
+                        <span class="nameLang">French</span>
+                        <span class="input-select dropdown __md">
+                                <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Option
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -185,25 +208,25 @@
                                         <svg-vue class="option-icon" icon="trash-delete-icon"></svg-vue>Delete
                                     </a>
                                 </div>
-                            </span>  
-                        </li>
-                    </ul>
+                            </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div v-show="selectedTab === 'location' ">
+            <div class="hold-tab wrapp">
+                <div class="input-field">
+                    <label for="profilelink">New location</label>
+                    <input type="text" placeholder="" name="profilelink">
                 </div>
-            </v-tab-item>
-            <v-tab-item value="tab-3">
-                <div class="hold-tab wrapp">
-                    <div class="input-field">
-                        <label for="profilelink">New location</label>
-                        <input type="text" placeholder="" name="profilelink">
-                    </div>
-                    <a href="#" class="btn-blue"><img src="/images/resume_builder/profile/icon-check.png">Add location now</a>
-                    <a href="" class="btn-outline ml-5">Auto import</a>
-                    <ul class="lang-items">
-                        <li class="lang-item">
-                            <img class="flagLang" src="/images/resume_builder/profile/flag-france.png" alt="">
-                            <span class="nameLang">French</span>
-                            <span class="input-select dropdown __md">
-                                <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a href="#" class="btn-blue"><img src="/images/resume_builder/profile/icon-check.png">Add location now</a>
+                <a href="" class="btn-outline ml-5">Auto import</a>
+                <ul class="lang-items">
+                    <li class="lang-item">
+                        <img class="flagLang" src="/images/resume_builder/profile/flag-france.png" alt="">
+                        <span class="nameLang">French</span>
+                        <span class="input-select dropdown __md">
+                                <button class="audio-options dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Option
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -214,16 +237,16 @@
                                         <svg-vue class="option-icon" icon="trash-delete-icon"></svg-vue>Delete
                                     </a>
                                 </div>
-                            </span>  
-                        </li>
-                    </ul>
-                </div>
-            </v-tab-item>
-        </v-tabs-items>
+                            </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+    import vTabNames from './includes/vtab_onincludes'
     export default {
         name: "Profile",
         components: {
@@ -231,6 +254,8 @@
         },
         data() {
             return {
+                selectedTab:'personal',
+                selectedSubTab:'My profile link',
                 cTabProfile: 'tab-0',
                 cTabLinks: null,
                 tabColor: '#001CE2',
@@ -359,9 +384,41 @@
         return this;
     };
 </script>
-<style lang="scss">
+
+<style lang="scss" scoped>
 
 
+    .achievements-bar {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 55px;
+        border-bottom: 3px solid #C9CFF8;
+        padding-right: 50px;
+
+        .bar-item {
+            font: 700 35px Noto Sans;
+            letter-spacing: 0;
+            color: #505050;
+            opacity: 1;
+            padding-bottom: 23px;
+            margin-bottom: -3px;
+            border-bottom: 3px solid #C9CFF8;
+            transition: all 300ms ease-in;
+        }
+
+        .bar-item:hover {
+            cursor: pointer;
+        }
+
+        .bar-item.active {
+            color: #001CE2;
+            border-bottom-color: #001CE2;
+        }
+    }
+    .achievements-bar.sub-bar {
+        margin-top: 50px;
+    }
 
     .title-blue{
         font-family: 'Nexa';
@@ -845,18 +902,27 @@
     }
 
 
+    .choose-photo-btn{
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 203px;
+            height: 48px;
 
-    /** General fixes by collision class bootstrap-vuetify */
-    #resumeBuilder{
-        .d-flex>*, .d-inline-flex>*{
-            flex: none !important;
-        }
-        .blue{
-            background: transparent !important;
-            border: none !important;
+            background: #001CE2 0% 0% no-repeat padding-box;
+            border-radius: 8px;
+
+            font: 500 15px Noto Sans;
+            letter-spacing: 0;
+            color: #FFFFFF;
+            opacity: 1;
+
+            img {
+                width: 13px;
+                height: 16px;
+                margin-right: 7px;
+            }
         }
     }
-
-    
-
 </style>

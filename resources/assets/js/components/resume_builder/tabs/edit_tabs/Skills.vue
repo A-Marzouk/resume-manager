@@ -43,7 +43,7 @@
 </template>
 
 <script>
-    import vTabNames from '../../includes/vtabs.vue';
+    import vTabNames from './includes/vtab_onincludes';
 
     export default {
         name: "Skills",

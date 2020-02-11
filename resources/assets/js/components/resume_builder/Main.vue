@@ -1,7 +1,7 @@
 <template>
     <div class="resume-container">
 
-        <nav class="resume-builder-nav d-flex align-items-center">
+        <nav class="resume-builder-nav d-flex align-items-start">
             <a href="/freelancer/dashboard" class="brand-link">
                 <img class="brand-image" src="/images/resume_builder/123 icon.png" alt="123workforce icon" />
             </a>
@@ -146,5 +146,6 @@ $mainColor: #001CE2;
             }
 
         }
+
     }
 </style>

@@ -12999,7 +12999,7 @@ html {
 }
 
 .btn {
-  border: 1.5px solid #001CE2;
+  border: 1.5px solid #001CE2 !important;
   border-radius: 12px !important;
   background: transparent;
   color: #001CE2 !important;
@@ -13033,6 +13033,22 @@ html {
 
 .btn.filled .icon path, .btn.filled .icon circle {
   fill: white;
+}
+
+.icon-container {
+  display: block;
+  border-radius: 5px;
+  width: 27px;
+  height: 27px;
+  margin-right: 21px;
+}
+
+.icon-container.white {
+  background: white;
+}
+
+.icon-container.blue {
+  background: #001CE2;
 }
 
 .input-field {
@@ -13455,4 +13471,9 @@ html {
 .content {
   margin-top: 50px;
   width: 100%;
+}
+
+.text-hint {
+  color: #8C8D8F;
+  font-size: 16px;
 }

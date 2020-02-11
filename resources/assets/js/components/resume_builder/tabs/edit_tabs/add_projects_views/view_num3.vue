@@ -25,7 +25,7 @@
         </div>
 
         <button class="btn filled" type="submit">
-            <span class="checkmark-container d-flex justify-content-center align-items-center"><svg-vue class="checkmark-icon" icon="checkmark-icon"></svg-vue></span> Add Project
+            <span class="icon-container white d-flex justify-content-center align-items-center"><svg-vue class="checkmark-icon" icon="checkmark-icon"></svg-vue></span> Add Project
         </button>
     </form>
 </template>
@@ -46,7 +46,7 @@ $mainBlue: #001CE2;
     width: 100%;
 }
 
-.checkmark-container {
+.icon-container {
     display: block;
     border-radius: 5px;
     background: white;

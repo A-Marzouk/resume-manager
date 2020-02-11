@@ -1,7 +1,6 @@
 .input-field {
     flex-flow: column;
     display: flex;
-    max-width: 490px;
     margin-bottom: 31.5px;
     
     label {
@@ -9,16 +8,23 @@
         line-height: 30px;
         color: #505050;
         font-family: "Noto Sans";
-        font-weight: 300;
+        font-weight: 700;
+
         .hint-message {
             font-size: 18px;
-            color: #1f5de4;
             float: right;
             font-style: normal;
+
+            &.left {
+                float: none;
+                margin-top: 7px;
+                margin-bottom: 16px;
+            }
         }
     }
     input {
         min-height: 54.6px;
+        max-width: 718px;
         border: 1.5px solid #505050;
         border-radius: 8px;
         padding: 0px 0px 0px 16.8px;
@@ -27,9 +33,15 @@
         font-family: "Noto Sans";
         font-weight: 500;
         outline: none;
+
+        &.--blue {
+            border-color: $mainBlue;
+        }
     }
     textarea {
         min-height: 181px;
+        max-width: 1048;
+        width: 100%;
         padding: 23px 25px;
         font-size: 22px;
         font-family: "Noto Sans";
@@ -38,5 +50,10 @@
         color: #a5a5a5;
         border: 1.5px solid #505050;
         border-radius: 8px;
+        resize: none;
+
+        &.--blue {
+            border-color: $mainBlue;
+        }
     }
 }

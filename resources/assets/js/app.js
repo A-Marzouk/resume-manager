@@ -74,7 +74,6 @@ import ResumeBuilderEditCVImports from './components/resume_builder/tabs/edit_ta
 import ResumeBuilderEditCVReferences from './components/resume_builder/tabs/edit_tabs/References'
 
 
-
 if ($("#resumeBuilder").length !== 0) {
 
     const routes = [
@@ -109,7 +108,30 @@ if ($("#resumeBuilder").length !== 0) {
                 },
                 {
                     path: '/resume-builder/edit/projects',
-                    component: ResumeBuilderEditCVProjects
+                    component: ResumeBuilderEditCVProjects,
+                    props: true,
+                    children: [
+                        {
+                            path:'',
+                            component: require('./components/resume_builder/tabs/edit_tabs/projects_views/projects.vue'),
+                            props: true
+                        },
+                        {
+                            path:'step-1',
+                            component: require('./components/resume_builder/tabs/edit_tabs/projects_views/form_view_num1.vue'),
+                            props: true
+                        },
+                        {
+                            path:'step-2',
+                            component: require('./components/resume_builder/tabs/edit_tabs/projects_views/form_view_num2.vue'),
+                            props: true
+                        },
+                        {
+                            path:'step-3',
+                            component: require('./components/resume_builder/tabs/edit_tabs/projects_views/form_view_num3.vue'),
+                            props: true
+                        }
+                    ]
                 },
                 {
                     path: '/resume-builder/edit/achievement',

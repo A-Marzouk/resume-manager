@@ -33,7 +33,9 @@
         </nav>
         
         <keep-alive class="mt-5 content">
-            <router-view></router-view>
+            <transition name="fade">
+                <router-view></router-view>
+            </transition>
         </keep-alive>
     </div>
 </template>

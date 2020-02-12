@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="my-account-tab-wrapper">
+        <div id="myAccountTab" class="my-account-tab-wrapper">
             <div class="info-wrapper">
                 <div class="avatar">
                     <img src="/images/resume_themes/theme5/profile.png" alt="profile-pic">

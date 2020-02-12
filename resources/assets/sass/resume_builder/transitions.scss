@@ -1,0 +1,32 @@
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+
+// Main component transitions
+@for $j from 1 through 5 {
+    @keyframes moveInput#{$j} {
+        from {
+            transform: translate(0);
+        } to {
+            transform: translate(-20px, 100px);
+        }
+    }
+}
+
+.fade-leave-active {
+    #myAccountTab {
+        @for $i from 1 through 5 {
+            .mar-input {
+                &:nth-child(#{ $i }) {
+                    animation-name: moveInput#{$i};
+                    animation-duration: .5s;
+                    animation-fill-mode: forwards;
+                    animation-timing-function: ease;
+                }
+            }
+        }
+    }
+}

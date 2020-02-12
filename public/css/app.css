@@ -13449,6 +13449,180 @@ html {
   background: transparent;
 }
 
+.fade-enter-active, .fade-leave-active {
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+@-webkit-keyframes moveInput1 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(-20px, 100px);
+            transform: translate(-20px, 100px);
+  }
+}
+
+@keyframes moveInput1 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(-20px, 100px);
+            transform: translate(-20px, 100px);
+  }
+}
+
+@-webkit-keyframes moveInput2 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(-20px, 100px);
+            transform: translate(-20px, 100px);
+  }
+}
+
+@keyframes moveInput2 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(-20px, 100px);
+            transform: translate(-20px, 100px);
+  }
+}
+
+@-webkit-keyframes moveInput3 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(-20px, 100px);
+            transform: translate(-20px, 100px);
+  }
+}
+
+@keyframes moveInput3 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(-20px, 100px);
+            transform: translate(-20px, 100px);
+  }
+}
+
+@-webkit-keyframes moveInput4 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(-20px, 100px);
+            transform: translate(-20px, 100px);
+  }
+}
+
+@keyframes moveInput4 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(-20px, 100px);
+            transform: translate(-20px, 100px);
+  }
+}
+
+@-webkit-keyframes moveInput5 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(-20px, 100px);
+            transform: translate(-20px, 100px);
+  }
+}
+
+@keyframes moveInput5 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(-20px, 100px);
+            transform: translate(-20px, 100px);
+  }
+}
+
+.fade-leave-active #myAccountTab .mar-input:nth-child(1) {
+  -webkit-animation-name: moveInput1;
+          animation-name: moveInput1;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}
+
+.fade-leave-active #myAccountTab .mar-input:nth-child(2) {
+  -webkit-animation-name: moveInput2;
+          animation-name: moveInput2;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}
+
+.fade-leave-active #myAccountTab .mar-input:nth-child(3) {
+  -webkit-animation-name: moveInput3;
+          animation-name: moveInput3;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}
+
+.fade-leave-active #myAccountTab .mar-input:nth-child(4) {
+  -webkit-animation-name: moveInput4;
+          animation-name: moveInput4;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}
+
+.fade-leave-active #myAccountTab .mar-input:nth-child(5) {
+  -webkit-animation-name: moveInput5;
+          animation-name: moveInput5;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}
+
 .resume-container {
   font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
 }

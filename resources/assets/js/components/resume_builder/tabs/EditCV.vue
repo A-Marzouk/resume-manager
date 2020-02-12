@@ -11,9 +11,9 @@
                </div>
                <div id="scrollItem"></div>
            </div>
-           <keep-alive class="mt-5">
+           <transition class="mt-5"  name="fade" mode="out-in">
                <router-view></router-view>
-           </keep-alive>
+           </transition>
        </div>
    </div>
 </template>
@@ -232,5 +232,20 @@ $disabledColor: #9f9e9e;
 .aside-icon {
     margin-right: 22px;
     width: 40px;
+}
+
+
+.fade-enter-active {
+    transition: all .6s ease;
+}
+
+.fade-leave-active {
+    transition: all .6s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.fade-enter, .fade-leave-to
+    /* .fade-leave-active below version 2.1.8 */
+{
+    opacity: 0;
 }
 </style>

@@ -1,19 +1,6 @@
 <template>
     <div>
-        <div id="myAccountTab" class="my-account-tab-wrapper">
-            <div class="info-wrapper">
-                <div class="avatar">
-                    <img src="/images/resume_themes/theme5/profile.png" alt="profile-pic">
-                </div>
-                <div class="name-title-wrapper">
-                    <div class="user-name">
-                        Carolyn Meyer
-                    </div>
-                    <div class="job-title">
-                        User interface designer
-                    </div>
-                </div>
-            </div>
+        <div class="my-account-tab-wrapper">
             <div class="form-wrapper">
                 <div class="content-wrapper">
                     <div class="form-title">

@@ -3,18 +3,18 @@
 
         <nav class="resume-builder-nav d-flex align-items-start">
             <a href="/freelancer/dashboard" class="brand-link">
-                <img class="brand-image" src="/images/resume_builder/123 icon.png" alt="123workforce icon" />
+                <img class="brand-image" src="/images/resume_builder/123 icon.png" alt="123workforce icon"/>
             </a>
 
             <!-- Replace this with vue-tabs -->
             <div class="links-group d-flex alig-items-center justify-content-between">
-                <router-link v-on:click="setActiveMainTab('my-account')" :class="{ active: activeMainTab === 'my-account' }" to="/resume-builder">
+                <router-link to="/resume-builder" class="first">
                     My account
                 </router-link>
-                <router-link v-on:click="setActiveMainTab('edit-cv')" :class="{ active: activeMainTab === 'edit-cv' }" to="/resume-builder/edit">
+                <router-link to="/resume-builder/edit" class="second has-inside-routes">
                     Edit CV
                 </router-link>
-                <router-link v-on:click="setActiveMainTab('view-cv')" :class="{ active: activeMainTab === 'view-cv' }" to="/resume-builder/view">
+                <router-link to="/resume-builder/view" class="third has-inside-routes">
                     View CV
                 </router-link>
             </div>
@@ -31,28 +31,41 @@
                 </button>
             </div>
         </nav>
-        
-        <keep-alive class="mt-5 content">
-            <transition name="fade">
-                <router-view></router-view>
-            </transition>
-        </keep-alive>
+
+        <div class="info-wrapper">
+            <div class="avatar">
+                <img src="/images/resume_themes/theme5/profile.png" alt="profile-pic">
+            </div>
+            <div class="name-title-wrapper">
+                <div class="user-name">
+                    Carolyn Meyer
+                </div>
+                <div class="job-title">
+                    User interface designer
+                </div>
+            </div>
+        </div>
+
+
+        <transition class="mt-5 content" name="fade" mode="out-in">
+            <router-view></router-view>
+        </transition>
     </div>
 </template>
 
 <script>
-    
+
     export default {
         name: "Main",
-        components: {
-        },
-        data(){
-            return{
+        components: {},
+        data() {
+            return {
                 activeMainTab: 'my-account'
             }
         },
-        methods:{
-            setActiveMainTab (tab) {
+        methods: {
+            setActiveMainTab(tab) {
+                console.log(tab);
                 this.activeMainTab = tab
             }
         },
@@ -63,7 +76,40 @@
 </script>
 
 <style lang="scss">
-$mainColor: #001CE2;
+
+    .info-wrapper {
+        display: flex;
+        align-items: center;
+
+        .avatar {
+            margin-right: 32px;
+
+            img {
+                width: 167px;
+                height: 167px;
+            }
+        }
+
+        .name-title-wrapper {
+            .user-name {
+                margin-bottom: 4px;
+                font: Bold 34px/46px Noto Sans;
+                letter-spacing: 0;
+                color: #413A5D;
+                opacity: 1;
+            }
+
+            .job-title {
+                margin-left: 4px;
+                font: Medium 18px/24px Noto Sans;
+                letter-spacing: 0;
+                color: #413A5D;
+                opacity: 1;
+            }
+        }
+    }
+
+    $mainColor: #001CE2;
     .resume-container {
         padding: 160px 100px 30px;
     }
@@ -84,6 +130,7 @@ $mainColor: #001CE2;
 
         .links-group {
             height: 100%;
+
             a {
                 margin-right: 100px;
                 color: #747474;
@@ -92,13 +139,30 @@ $mainColor: #001CE2;
                 padding: 0 30px;
                 height: 100%;
                 font-size: 25px;
+                transition: color 1s;
+                border-bottom-color: transparent;
 
                 &:hover,
                 &:active {
                     text-decoration: none;
                 }
 
-                &.active {
+                &::after {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    bottom: -50px;
+                    left: 0;
+                    width: 100%;
+                    height: 5px;
+                    background-color: transparent;
+                    border-radius: 5px 5px 0 0;
+                    transition: .9s;
+                }
+
+                position: relative;
+
+                &.router-link-exact-active, &.router-link-active.has-inside-routes{
                     position: relative;
                     color: $mainColor;
 
@@ -106,14 +170,16 @@ $mainColor: #001CE2;
                         content: "";
                         position: absolute;
                         display: block;
-                        bottom: -53px;
+                        bottom: -50px;
                         left: 0;
                         width: 100%;
                         height: 5px;
                         background-color: $mainColor;
-                        border-radius: 5 5 0 0;
+                        border-radius: 5px 5px 0 0;
                     }
                 }
+
+
 
                 &:last-child {
                     margin: 0;
@@ -132,7 +198,7 @@ $mainColor: #001CE2;
                 margin-right: 58px;
                 position: relative;
 
-                img { 
+                img {
                     width: 100%;
                 }
 
@@ -149,5 +215,19 @@ $mainColor: #001CE2;
 
         }
 
+    }
+
+    .fade-enter-active {
+        transition: all .3s ease;
+    }
+
+    .fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+
+    .fade-enter, .fade-leave-to
+        /* .fade-leave-active below version 2.1.8 */
+    {
+        opacity: 0;
     }
 </style>

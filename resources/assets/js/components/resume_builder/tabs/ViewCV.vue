@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>
-            view cv
+
         </h2>
     </div>
 </template>

@@ -8,13 +8,13 @@
 
             <!-- Replace this with vue-tabs -->
             <div class="links-group d-flex alig-items-center justify-content-between">
-                <router-link to="/resume-builder">
+                <router-link to="/resume-builder" class="first">
                     My account
                 </router-link>
-                <router-link to="/resume-builder/edit" class="has-inside-routes">
+                <router-link to="/resume-builder/edit" class="second has-inside-routes">
                     Edit CV
                 </router-link>
-                <router-link to="/resume-builder/view" class="has-inside-routes">
+                <router-link to="/resume-builder/view" class="third has-inside-routes">
                     View CV
                 </router-link>
             </div>
@@ -139,7 +139,7 @@
                 padding: 0 30px;
                 height: 100%;
                 font-size: 25px;
-                transition: border-bottom-color 3s, color 3s;
+                transition: color 1s;
                 border-bottom-color: transparent;
 
                 &:hover,
@@ -147,25 +147,39 @@
                     text-decoration: none;
                 }
 
-                &.router-link-exact-active  {
-                    position: relative;
-                    color: $mainColor;
-                    border-bottom: 5px solid;
-                    border-bottom-color: $mainColor;
-                    padding-bottom: 75px;
-                    border-bottom-right-radius: 5px;
-                    border-bottom-left-radius: 5px;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    display: block;
+                    bottom: -50px;
+                    left: 0;
+                    width: 100%;
+                    height: 5px;
+                    background-color: transparent;
+                    border-radius: 5px 5px 0 0;
+                    transition: .9s;
                 }
 
-                &.router-link-active.has-inside-routes{
+                position: relative;
+
+                &.router-link-exact-active, &.router-link-active.has-inside-routes{
                     position: relative;
                     color: $mainColor;
-                    border-bottom: 5px solid;
-                    border-bottom-color: $mainColor;
-                    padding-bottom: 75px;
-                    border-bottom-right-radius: 5px;
-                    border-bottom-left-radius: 5px;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        display: block;
+                        bottom: -50px;
+                        left: 0;
+                        width: 100%;
+                        height: 5px;
+                        background-color: $mainColor;
+                        border-radius: 5px 5px 0 0;
+                    }
                 }
+
+
 
                 &:last-child {
                     margin: 0;

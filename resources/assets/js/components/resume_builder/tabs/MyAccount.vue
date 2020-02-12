@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="my-account-tab-wrapper">
+        <div id="myAccountTab" class="my-account-tab-wrapper">
             <div class="form-wrapper">
                 <div class="content-wrapper">
                     <div class="form-title">

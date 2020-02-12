@@ -13450,12 +13450,13 @@ html {
 }
 
 .fade-enter-active, .fade-leave-active {
-  -webkit-transition: opacity .5s;
-  transition: opacity .5s;
+  -webkit-transition: opacity .5s ease;
+  transition: opacity .5s ease;
+  opacity: 1 !important;
 }
 
 .fade-enter, .fade-leave-to {
-  opacity: 0;
+  opacity: .5 !important;
 }
 
 @-webkit-keyframes moveInput1 {
@@ -13464,8 +13465,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(-20px, 100px);
-            transform: translate(-20px, 100px);
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
   }
 }
 
@@ -13475,8 +13476,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(-20px, 100px);
-            transform: translate(-20px, 100px);
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
   }
 }
 
@@ -13486,8 +13487,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(-20px, 100px);
-            transform: translate(-20px, 100px);
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
   }
 }
 
@@ -13497,8 +13498,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(-20px, 100px);
-            transform: translate(-20px, 100px);
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
   }
 }
 
@@ -13508,8 +13509,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(-20px, 100px);
-            transform: translate(-20px, 100px);
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
   }
 }
 
@@ -13519,8 +13520,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(-20px, 100px);
-            transform: translate(-20px, 100px);
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
   }
 }
 
@@ -13530,8 +13531,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(-20px, 100px);
-            transform: translate(-20px, 100px);
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
   }
 }
 
@@ -13541,8 +13542,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(-20px, 100px);
-            transform: translate(-20px, 100px);
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
   }
 }
 
@@ -13552,8 +13553,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(-20px, 100px);
-            transform: translate(-20px, 100px);
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
   }
 }
 
@@ -13563,9 +13564,35 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(-20px, 100px);
-            transform: translate(-20px, 100px);
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
   }
+}
+
+@-webkit-keyframes moveInput6 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
+  }
+}
+
+@keyframes moveInput6 {
+  from {
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+  to {
+    -webkit-transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc(400% - 100vw), 20vh);
+  }
+}
+
+.fade-leave-active #myAccountTab {
+  overflow: visible;
 }
 
 .fade-leave-active #myAccountTab .mar-input:nth-child(1) {
@@ -13621,6 +13648,21 @@ html {
           animation-fill-mode: forwards;
   -webkit-animation-timing-function: ease;
           animation-timing-function: ease;
+}
+
+.fade-leave-active #myAccountTab .mar-input:nth-child(6) {
+  -webkit-animation-name: moveInput6;
+          animation-name: moveInput6;
+  -webkit-animation-duration: .5s;
+          animation-duration: .5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+}
+
+#resumeBuilder, body, html {
+  height: 100%;
 }
 
 .resume-container {

@@ -1,24 +1,27 @@
 .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
+    transition: opacity .5s ease;
+    opacity: 1 !important;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
+    opacity: .5 !important;
 }
 
 // Main component transitions
-@for $j from 1 through 5 {
+@for $j from 1 through 6 {
     @keyframes moveInput#{$j} {
         from {
             transform: translate(0);
         } to {
-            transform: translate(-20px, 100px);
+            transform: translate(calc(400% - 100vw), 20vh);
         }
     }
 }
 
 .fade-leave-active {
     #myAccountTab {
-        @for $i from 1 through 5 {
+        overflow: visible;
+
+        @for $i from 1 through 6 {
             .mar-input {
                 &:nth-child(#{ $i }) {
                     animation-name: moveInput#{$i};

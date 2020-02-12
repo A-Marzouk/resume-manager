@@ -122,6 +122,8 @@
         box-shadow: 0 6px 12px #6565653b;
         padding: 50px 100px;
         height: 129px;
+        background: #fff;
+        z-index: 500;
 
         .brand-image {
             width: 40px;
@@ -217,17 +219,17 @@
 
     }
 
-    .fade-enter-active {
-        transition: all .3s ease;
-    }
+    // .fade-enter-active {
+    //     transition: all .3s ease;
+    // }
 
-    .fade-leave-active {
-        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-    }
+    // .fade-leave-active {
+    //     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    // }
 
-    .fade-enter, .fade-leave-to
-        /* .fade-leave-active below version 2.1.8 */
-    {
-        opacity: 0;
-    }
+    // .fade-enter, .fade-leave-to
+    //     /* .fade-leave-active below version 2.1.8 */
+    // {
+    //     opacity: 1;
+    // }
 </style>

@@ -2,7 +2,7 @@
    <div>
        <div class="d-flex mt-5">
            <div @click="() => false" class="aside-bar d-flex flex-column mr-5">
-               <div @click="setActive" v-for="(section, ind) in asideSections" :key="section.name" class="aside-link d-flex align-items-center" :class="{'active': !ind}">
+               <div @click="setActive" v-for="(section) in asideSections" :key="section.name" class="aside-link d-flex align-items-center" :class="{ active: activeTab === section.name }">
 
                 <svg-vue class="aside-icon" :icon="`${section.name}-icon`"></svg-vue>
                 <router-link :to="`/resume-builder/edit/${section.name.replace('/', '-')}`">
@@ -74,6 +74,11 @@
                 }
             ]
         }),
+        computed: {
+            activeTab () {
+                return window.location.pathname.split('/')[3]
+            }
+        },
         methods: {
             formatSectionString: (str) => {
                 /**

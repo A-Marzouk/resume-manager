@@ -1,5 +1,5 @@
 <template>
-    <div class="profile-hold">
+    <div id="profileTab" class="profile-hold">
         <div class="section-title">
             <div class="title-light">Edit</div>
             <h2>Profile</h2>
@@ -511,53 +511,6 @@
             margin-top: 12.5px;
         }
     }
-
-     .input-field{
-        flex-flow: column;
-        display: flex;
-        max-width: 490px;
-        margin-bottom: 31.5px;
-
-        label{
-            font-size: 22px;
-            line-height: 30px;
-            color: #505050;
-            font-family: 'Noto Sans';
-            font-weight: 300;
-
-            .hint-message{
-                font-size: 18px;
-                color: #1F5DE4;
-                float: right;
-                font-style: normal;
-            }
-        }
-
-        input{
-            min-height: 54.6px;
-            border: 1.5px solid #505050;
-            border-radius: 8px;
-            padding: 0px 0px 0px 16.8px;
-            color: #A5A5A5;
-            font-size: 15px;
-            font-family: 'Noto Sans';
-            font-weight: 500;
-            outline: none;
-        }
-
-        textarea{
-            min-height: 181px;
-            padding: 23px 25px;
-            font-size: 22px;
-            font-family: 'Noto Sans';
-            font-weight: 500;
-            outline: none;
-            color: #A5A5A5;
-            border: 1.5px solid #505050;
-            border-radius: 8px;
-        }
-    
-    }
     
 
     .btn-blue{
@@ -922,6 +875,34 @@
                 width: 13px;
                 height: 16px;
                 margin-right: 7px;
+            }
+        }
+    }
+
+    // Main component transitions
+    @for $j from 1 through 6 {
+        @keyframes moveInputReverse#{$j} {
+            from {
+                transform: translate(0);
+            } to {
+                transform: translate(calc(50vw - 50% - 35px - 3rem), -370px);
+            }
+        }
+    }
+
+    .fade-leave-active {
+        #profileTab {
+            overflow: visible;
+
+            @for $i from 1 through 6 {
+                .input-field {
+                    &:nth-child(#{ $i }) {
+                        animation-name: moveInputReverse#{$i};
+                        animation-duration: .62s;
+                        animation-fill-mode: forwards;
+                        animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
+                    }
+                }
             }
         }
     }

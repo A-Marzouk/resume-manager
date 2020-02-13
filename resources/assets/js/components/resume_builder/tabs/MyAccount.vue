@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="my-account-tab-wrapper">
+        <div id="myAccountTab" class="my-account-tab-wrapper">
             <div class="form-wrapper">
                 <div class="content-wrapper">
                     <div class="form-title">
@@ -299,7 +299,6 @@
         mounted() {
             this.$store.dispatch('getCurrentUser');
         }
-
     }
 </script>
 
@@ -372,6 +371,7 @@
                         label {
                             text-align: left;
                             font: 500 17px/23px Noto Sans;
+                            line-height: 30px;
                             letter-spacing: 0;
                             color: #505050;
                             opacity: 1;
@@ -385,7 +385,7 @@
                             width: 616px;
                             height: 73px;
                             background: #FFFFFF 0% 0% no-repeat padding-box;
-                            border: 2px solid #505050;
+                            border: 1.5px solid #505050;
                             color: #505050;
                             border-radius: 8px;
                             padding-left: 17px;
@@ -876,6 +876,59 @@
 
         @media (max-width: 576px) {
             padding: 2rem;
+        }
+    }
+
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .8s ease;
+        opacity: 1 !important;
+
+        .form-title,
+        label,
+        .section-title,
+        .aside-bar {
+            opacity: 1 !important;
+            transition: all .8s ease;
+        }
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 1 !important;
+        transition: opacity .8s ease;
+
+        .form-title,
+        label,
+        .section-title,
+        .aside-bar {
+            opacity: 0 !important;
+            transition: all .8s ease;
+        }
+    }
+
+    // Main component transitions
+    @for $j from 1 through 6 {
+        @keyframes moveInput#{$j} {
+            from {
+                transform: translate(0);
+            } to {
+                transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            }
+        }
+    }
+
+    .fade-leave-active {
+        #myAccountTab {
+            overflow: visible;
+
+            @for $i from 1 through 6 {
+                .mar-input {
+                    &:nth-child(#{ $i }) {
+                        animation-name: moveInput#{$i};
+                        animation-duration: .6s;
+                        animation-fill-mode: forwards;
+                        animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
+                    }
+                }
+            }
         }
     }
 

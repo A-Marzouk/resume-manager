@@ -17,6 +17,10 @@
 @import "select";
 @import "dropzone";
 
+#resumeBuilder, body, html {
+    height: 100%;
+}
+
 .resume-container {
     font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
 }

@@ -13059,7 +13059,7 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 31.5px;
+  margin-bottom: 25px;
 }
 
 .input-field label {
@@ -13083,8 +13083,8 @@ html {
 }
 
 .input-field input {
-  min-height: 54.6px;
-  max-width: 718px;
+  min-height: 73px;
+  max-width: 616px;
   border: 1.5px solid #505050;
   border-radius: 8px;
   padding: 0px 0px 0px 16.8px;
@@ -13447,6 +13447,10 @@ html {
 
 .dropzone.vue-dropzone:hover {
   background: transparent;
+}
+
+#resumeBuilder, body, html {
+  height: 100%;
 }
 
 .resume-container {

@@ -7,14 +7,14 @@
             </a>
 
             <!-- Replace this with vue-tabs -->
-            <div class="links-group d-flex alig-items-center justify-content-between">
-                <router-link to="/resume-builder" class="first">
+            <div id="mainLinksWrapper" class="links-group d-flex alig-items-center justify-content-between">
+                <router-link id='myAccount' v-on:click.native="changeTab" to="/resume-builder" class="first main-tab-link">
                     My account
                 </router-link>
-                <router-link to="/resume-builder/edit" class="second has-inside-routes">
+                <router-link id='editCV' v-on:click.native="changeTab" to="/resume-builder/edit" class="second has-inside-routes main-tab-link">
                     Edit CV
                 </router-link>
-                <router-link to="/resume-builder/view" class="third has-inside-routes">
+                <router-link id='viewCV' v-on:click.native="changeTab" to="/resume-builder/view" class="third has-inside-routes main-tab-link">
                     View CV
                 </router-link>
             </div>
@@ -47,7 +47,7 @@
         </div>
 
 
-        <transition class="mt-5 content" name="fade" mode="out-in">
+        <transition :duration="590" class="mt-5 content" name="fade" mode="out-in">
             <router-view></router-view>
         </transition>
     </div>
@@ -65,12 +65,48 @@
         },
         methods: {
             setActiveMainTab(tab) {
-                console.log(tab);
                 this.activeMainTab = tab
+            },
+            changeTab (e) {
+                let _this = this
+
+                let inputs = document.querySelectorAll('#myAccountTab input');
+                inputs.forEach(input => {
+                    input.value = '';
+                    input.placeholder = ''
+                })
+
+                // Move decorator on tabs
+                let linksWrapper = document.getElementById('mainLinksWrapper')
+                let { target } = e
+                linksWrapper.classList.toggle(`moveFrom-${_this.activeMainTab}`)
+                _this.setActiveMainTab(target.id)
+                linksWrapper.classList.toggle(`moveFrom-${_this.activeMainTab}`)
             }
         },
         mounted() {
-            console.log();
+            let linksWrapper = document.getElementById('mainLinksWrapper')
+            let pathArray = window.location.pathname.split('/')
+
+            switch (pathArray.length) {
+                // my Account Tab
+                case 2:
+                    linksWrapper.classList.add('moveFrom-myAccount')
+                    this.setActiveMainTab('myAccount')
+                    break
+
+                // view CV Tab
+                case 3:
+                    linksWrapper.classList.add('moveFrom-viewCV')
+                    this.setActiveMainTab('viewCV')
+                    break
+
+                // edit Tab
+                default:
+                    linksWrapper.classList.add('moveFrom-editCV')
+                    this.setActiveMainTab('editCV')
+                    break
+            }
         }
     }
 </script>
@@ -122,6 +158,8 @@
         box-shadow: 0 6px 12px #6565653b;
         padding: 50px 100px;
         height: 129px;
+        background: #fff;
+        z-index: 500;
 
         .brand-image {
             width: 40px;
@@ -130,9 +168,38 @@
 
         .links-group {
             height: 100%;
+            position: relative;
+
+            &.moveFrom-editCV {
+                &::after {
+                    transform: translateX(305px);
+                }
+            }
+
+            &.moveFrom-viewCV {
+                &::after {
+                    transform: translateX(calc(305px *2));
+                }
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                display: block;
+                bottom: -50px;
+                left: 0;
+                width: 205px;
+                height: 5px;
+                background-color: $mainColor;
+                border-radius: 5px 5px 0 0;
+                transform: translateX(0);
+                transition: .6s;
+            }
 
             a {
                 margin-right: 100px;
+                width: 205px;
+                text-align: center;
                 color: #747474;
                 font-weight: bold;
                 display: block;
@@ -147,36 +214,9 @@
                     text-decoration: none;
                 }
 
-                &::after {
-                    content: "";
-                    position: absolute;
-                    display: block;
-                    bottom: -50px;
-                    left: 0;
-                    width: 100%;
-                    height: 5px;
-                    background-color: transparent;
-                    border-radius: 5px 5px 0 0;
-                    transition: .9s;
-                }
-
-                position: relative;
-
                 &.router-link-exact-active, &.router-link-active.has-inside-routes{
                     position: relative;
                     color: $mainColor;
-
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        display: block;
-                        bottom: -50px;
-                        left: 0;
-                        width: 100%;
-                        height: 5px;
-                        background-color: $mainColor;
-                        border-radius: 5px 5px 0 0;
-                    }
                 }
 
 
@@ -215,19 +255,5 @@
 
         }
 
-    }
-
-    .fade-enter-active {
-        transition: all .3s ease;
-    }
-
-    .fade-leave-active {
-        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-    }
-
-    .fade-enter, .fade-leave-to
-        /* .fade-leave-active below version 2.1.8 */
-    {
-        opacity: 0;
     }
 </style>

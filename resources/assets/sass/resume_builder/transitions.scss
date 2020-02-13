@@ -1,9 +1,26 @@
 .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s ease;
+    transition: opacity .8s ease;
     opacity: 1 !important;
+
+    .form-title,
+    label,
+    .section-title,
+    .aside-bar {
+        opacity: 1 !important;
+        transition: all .8s ease;
+    }
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: .5 !important;
+    opacity: 1 !important;
+    transition: opacity .8s ease;
+
+    .form-title,
+    label,
+    .section-title,
+    .aside-bar {
+        opacity: 0 !important;
+        transition: all .8s ease;
+    }
 }
 
 // Main component transitions
@@ -12,7 +29,7 @@
         from {
             transform: translate(0);
         } to {
-            transform: translate(calc(400% - 100vw), 20vh);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
         }
     }
 }
@@ -25,9 +42,9 @@
             .mar-input {
                 &:nth-child(#{ $i }) {
                     animation-name: moveInput#{$i};
-                    animation-duration: .5s;
+                    animation-duration: .6s;
                     animation-fill-mode: forwards;
-                    animation-timing-function: ease;
+                    animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
                 }
             }
         }

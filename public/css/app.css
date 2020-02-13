@@ -13059,7 +13059,7 @@ html {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 31.5px;
+  margin-bottom: 25px;
 }
 
 .input-field label {
@@ -13083,8 +13083,8 @@ html {
 }
 
 .input-field input {
-  min-height: 54.6px;
-  max-width: 718px;
+  min-height: 73px;
+  max-width: 616px;
   border: 1.5px solid #505050;
   border-radius: 8px;
   padding: 0px 0px 0px 16.8px;
@@ -13450,13 +13450,39 @@ html {
 }
 
 .fade-enter-active, .fade-leave-active {
-  -webkit-transition: opacity .5s ease;
-  transition: opacity .5s ease;
+  -webkit-transition: opacity .8s ease;
+  transition: opacity .8s ease;
   opacity: 1 !important;
 }
 
+.fade-enter-active .form-title,
+.fade-enter-active label,
+.fade-enter-active .section-title,
+.fade-enter-active .aside-bar, .fade-leave-active .form-title,
+.fade-leave-active label,
+.fade-leave-active .section-title,
+.fade-leave-active .aside-bar {
+  opacity: 1 !important;
+  -webkit-transition: all .8s ease;
+  transition: all .8s ease;
+}
+
 .fade-enter, .fade-leave-to {
-  opacity: .5 !important;
+  opacity: 1 !important;
+  -webkit-transition: opacity .8s ease;
+  transition: opacity .8s ease;
+}
+
+.fade-enter .form-title,
+.fade-enter label,
+.fade-enter .section-title,
+.fade-enter .aside-bar, .fade-leave-to .form-title,
+.fade-leave-to label,
+.fade-leave-to .section-title,
+.fade-leave-to .aside-bar {
+  opacity: 0 !important;
+  -webkit-transition: all .8s ease;
+  transition: all .8s ease;
 }
 
 @-webkit-keyframes moveInput1 {
@@ -13465,8 +13491,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13476,8 +13502,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13487,8 +13513,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13498,8 +13524,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13509,8 +13535,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13520,8 +13546,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13531,8 +13557,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13542,8 +13568,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13553,8 +13579,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13564,8 +13590,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13575,8 +13601,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13586,8 +13612,8 @@ html {
             transform: translate(0);
   }
   to {
-    -webkit-transform: translate(calc(400% - 100vw), 20vh);
-            transform: translate(calc(400% - 100vw), 20vh);
+    -webkit-transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
+            transform: translate(calc((-1) * (50vw - 50% - 380px - 3rem - 1.17%)), 375px);
   }
 }
 
@@ -13598,67 +13624,67 @@ html {
 .fade-leave-active #myAccountTab .mar-input:nth-child(1) {
   -webkit-animation-name: moveInput1;
           animation-name: moveInput1;
-  -webkit-animation-duration: .5s;
-          animation-duration: .5s;
+  -webkit-animation-duration: .6s;
+          animation-duration: .6s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
+  -webkit-animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
+          animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
 }
 
 .fade-leave-active #myAccountTab .mar-input:nth-child(2) {
   -webkit-animation-name: moveInput2;
           animation-name: moveInput2;
-  -webkit-animation-duration: .5s;
-          animation-duration: .5s;
+  -webkit-animation-duration: .6s;
+          animation-duration: .6s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
+  -webkit-animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
+          animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
 }
 
 .fade-leave-active #myAccountTab .mar-input:nth-child(3) {
   -webkit-animation-name: moveInput3;
           animation-name: moveInput3;
-  -webkit-animation-duration: .5s;
-          animation-duration: .5s;
+  -webkit-animation-duration: .6s;
+          animation-duration: .6s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
+  -webkit-animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
+          animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
 }
 
 .fade-leave-active #myAccountTab .mar-input:nth-child(4) {
   -webkit-animation-name: moveInput4;
           animation-name: moveInput4;
-  -webkit-animation-duration: .5s;
-          animation-duration: .5s;
+  -webkit-animation-duration: .6s;
+          animation-duration: .6s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
+  -webkit-animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
+          animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
 }
 
 .fade-leave-active #myAccountTab .mar-input:nth-child(5) {
   -webkit-animation-name: moveInput5;
           animation-name: moveInput5;
-  -webkit-animation-duration: .5s;
-          animation-duration: .5s;
+  -webkit-animation-duration: .6s;
+          animation-duration: .6s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
+  -webkit-animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
+          animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
 }
 
 .fade-leave-active #myAccountTab .mar-input:nth-child(6) {
   -webkit-animation-name: moveInput6;
           animation-name: moveInput6;
-  -webkit-animation-duration: .5s;
-          animation-duration: .5s;
+  -webkit-animation-duration: .6s;
+          animation-duration: .6s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
-  -webkit-animation-timing-function: ease;
-          animation-timing-function: ease;
+  -webkit-animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
+          animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
 }
 
 #resumeBuilder, body, html {

@@ -299,7 +299,6 @@
         mounted() {
             this.$store.dispatch('getCurrentUser');
         }
-
     }
 </script>
 
@@ -372,6 +371,7 @@
                         label {
                             text-align: left;
                             font: 500 17px/23px Noto Sans;
+                            line-height: 30px;
                             letter-spacing: 0;
                             color: #505050;
                             opacity: 1;
@@ -385,7 +385,7 @@
                             width: 616px;
                             height: 73px;
                             background: #FFFFFF 0% 0% no-repeat padding-box;
-                            border: 2px solid #505050;
+                            border: 1.5px solid #505050;
                             color: #505050;
                             border-radius: 8px;
                             padding-left: 17px;

@@ -154,9 +154,9 @@ $activeColor: #001CE2;
 $disabledColor: #9f9e9e;
 
 .aside-bar {
-    width: 260px;
+    min-width: 260px;
     position: relative;
-    max-height: calc(100vh - 160px - 3rem - 40px);
+    max-height: calc(59px * 12);
     // Check it
     overflow-y: auto;
 

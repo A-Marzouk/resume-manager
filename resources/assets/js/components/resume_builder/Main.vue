@@ -11,7 +11,7 @@
                 <router-link to="/resume-builder" class="first">
                     My account
                 </router-link>
-                <router-link to="/resume-builder/edit" class="second has-inside-routes">
+                <router-link v-on:click.native="cleanInputs" to="/resume-builder/edit" class="second has-inside-routes">
                     Edit CV
                 </router-link>
                 <router-link to="/resume-builder/view" class="third has-inside-routes">
@@ -47,7 +47,7 @@
         </div>
 
 
-        <transition class="mt-5 content" name="fade" mode="out-in">
+        <transition :duration="590" class="mt-5 content" name="fade" mode="out-in">
             <router-view></router-view>
         </transition>
     </div>
@@ -65,8 +65,14 @@
         },
         methods: {
             setActiveMainTab(tab) {
-                console.log(tab);
                 this.activeMainTab = tab
+            },
+            cleanInputs () {
+                let inputs = document.querySelectorAll('#myAccountTab input');
+                inputs.forEach(input => {
+                    input.value = '';
+                    input.placeholder = ''
+                })
             }
         },
         mounted() {
@@ -227,9 +233,12 @@
     //     transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
     // }
 
-    // .fade-enter, .fade-leave-to
-    //     /* .fade-leave-active below version 2.1.8 */
-    // {
-    //     opacity: 1;
-    // }
+    .fade-enter, .fade-leave-to
+        /* .fade-leave-active below version 2.1.8 */
+    {
+        .form-title {
+            opacity: 0;
+            transition: all .8s ease;
+        }
+    }
 </style>

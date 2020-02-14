@@ -878,32 +878,4 @@
             }
         }
     }
-
-    // Main component transitions
-    @for $j from 1 through 6 {
-        @keyframes moveInputReverse#{$j} {
-            from {
-                transform: translate(0);
-            } to {
-                transform: translate(calc(50vw - 50% - 35px - 3rem), -370px);
-            }
-        }
-    }
-
-    .fade-leave-active {
-        #profileTab {
-            overflow: visible;
-
-            @for $i from 1 through 6 {
-                .input-field {
-                    &:nth-child(#{ $i }) {
-                        animation-name: moveInputReverse#{$i};
-                        animation-duration: .62s;
-                        animation-fill-mode: forwards;
-                        animation-timing-function: cubic-bezier(0.8, 0.6, 0.45, 0.4);
-                    }
-                }
-            }
-        }
-    }
 </style>

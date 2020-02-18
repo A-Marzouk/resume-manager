@@ -8,13 +8,13 @@
 
             <!-- Replace this with vue-tabs -->
             <div id="mainLinksWrapper" class="links-group d-flex alig-items-center justify-content-between">
-                <router-link id='myAccount' v-on:click.native="changeTab" to="/resume-builder" class="first main-tab-link">
+                <router-link id='myAccount' data-target="myAccount" v-on:click.native="changeTab" to="/resume-builder" class="first main-tab-link">
                     My account
                 </router-link>
-                <router-link id='editCV' v-on:click.native="changeTab" to="/resume-builder/edit" class="second has-inside-routes main-tab-link">
+                <router-link id='editCV' data-target="editCV" v-on:click.native="changeTab" to="/resume-builder/edit" class="second has-inside-routes main-tab-link">
                     Edit CV
                 </router-link>
-                <router-link id='viewCV' v-on:click.native="changeTab" to="/resume-builder/view" class="third has-inside-routes main-tab-link">
+                <router-link id='viewCV' data-target="viewCV" v-on:click.native="changeTab" to="/resume-builder/view" class="third has-inside-routes main-tab-link">
                     View CV
                 </router-link>
             </div>
@@ -55,17 +55,19 @@
 
 <script>
 
+    import { moveTabsHelper } from './helpers/tab-animations'
+
     export default {
         name: "Main",
         components: {},
         data() {
             return {
-                activeMainTab: 'my-account'
+                activeTab: 'my-account'
             }
         },
         methods: {
             setActiveMainTab(tab) {
-                this.activeMainTab = tab
+                this.activeTab = tab
             },
             changeTab (e) {
                 let _this = this
@@ -77,11 +79,7 @@
                 })
 
                 // Move decorator on tabs
-                let linksWrapper = document.getElementById('mainLinksWrapper')
-                let { target } = e
-                linksWrapper.classList.toggle(`moveFrom-${_this.activeMainTab}`)
-                _this.setActiveMainTab(target.id)
-                linksWrapper.classList.toggle(`moveFrom-${_this.activeMainTab}`)
+                moveTabsHelper(e, 'mainLinksWrapper', _this)
             }
         },
         mounted() {

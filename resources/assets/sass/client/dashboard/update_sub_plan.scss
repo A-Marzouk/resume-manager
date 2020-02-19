@@ -60,6 +60,60 @@
   font-size: 18px;
   line-height: 24px;/* or 133% */
   color: #4A5464;
+
+  &.sub-heading {
+    font-size: 14px;
+  }
+}
+
+.custom-checkbox  {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 18px;
+    width: 18px;
+    margin-right: 5px;
+
+
+  }
+
+  .checkbox {
+    position: absolute;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: white;
+    border: 1.5px solid #4A5464;
+    border-radius: 4px;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      display: none;
+      width: 6px;
+      height: 12px;
+      top: 0;
+      left: 5px;
+      border: solid #4A5464;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    &.checked::after {
+      display: block;
+    }
+  }
 }
 
 .weeks-number-note{

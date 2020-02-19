@@ -3,7 +3,7 @@
         <div class="content-block-campaign">
             <div class="upper-bar">
                 <div class="welcomeText">
-                    Hello Mr. Marzouk!  You have 8 active campaigns.
+                    Hello {{agent.user.user_data.first_name}}! You have {{activeCampaigns.length}} active campaigns.
                 </div>
                 <a href="/freelancer/campaigns-archive" class="actionText">
                     GO TO ARCHIVE OF CAMPAIGNS
@@ -14,302 +14,607 @@
                     MY ACTIVE CAMPAIGNS
                 </div>
                 <div class="actionBtn">
-                    <a class="secondary little-padding hideOnSm" href="#">FINISH SHIFT</a>
-                    <a class="little-padding" href="#">
-                        I AM AWAY
-                    </a>
+
                 </div>
             </div>
         </div>
-        <div class="content-block-campaign-brief">
-            <div class="upper-bar">
-                <div class="campaignInfo">
-                    <div class="title">
-                        Name of the campaign
+
+        <div v-for="(campaign,index) in campaigns" :key="index">
+            <div class="content-block-campaign-brief">
+                <div class="upper-bar p-0">
+                    <div class="campaignInfo">
+                        <div class="title">
+                            {{campaign.title}}
+                        </div>
                     </div>
-                    <div class="info hideOnXS">
-                        2 agents on the campaign
+                    <div class="actionBtn">
+                        <a class="status"
+                           :class="{active: campaign.status == 1, paused: campaign.status == 2, canceled: campaign.status == 3}"
+                           href="#">
+                            {{campaignStatusCode[campaign.status]}}
+                        </a>
                     </div>
                 </div>
-                <div class="actionBtn">
-                    <a href="#">
-                        ACTIVE
+
+                <div class="agent-logs-block">
+                    <div class="agentInfo d-flex flex-wrap justify-content-between pb-1">
+                        <div>
+                            <img src="/images/client/dummy.png" alt="">
+                            <span class="userName">
+                            {{agent.user.user_data.first_name}}
+                            </span>
+
+                        </div>
+
+                        <div class="actionBtn">
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="startShift(campaign)"
+                               v-show="campaign.currentWorkingShift.status == 0">
+                                START NEW SHIFT | <span :class="'campaign_timer_' + campaign.id">
+                                {{campaign.currentWorkingShift.total_hours}}
+                            </span>
+                            </a>
+
+                            <a class="secondary little-padding" href="javascript:;" v-on:click="finishShift(campaign)"
+                               v-show="campaign.currentWorkingShift.status == 1 || campaign.currentWorkingShift.status == 3 ">
+                                FINISH SHIFT | <span :class="'campaign_timer_' + campaign.id">
+                                {{campaign.currentWorkingShift.total_hours}}
+                            </span>
+                            </a>
+
+                            <a class=" little-padding" href="javascript:;" v-on:click="startBreak(campaign)"
+                               v-show="campaign.currentWorkingShift.status == 1">
+                                I'M AWAY
+                            </a>
+
+                            <a class=" little-padding" href="javascript:;" v-on:click="finishBreak(campaign)"
+                               v-show="campaign.currentWorkingShift.status == 3">
+                                I'M BACK
+                            </a>
+
+                            <a href="javascript:void(0)" class="secondary little-padding"
+                               @click="viewShifts(campaign.id)">TIME TODAY | {{calculateTodayTotalHours(todayShifts,campaign.id)}}</a>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex flex-column mt-0 mb-2 pr-3 w-100 align-items-end" style="font-size: 14px;"
+                         v-if="campaignViewedShifts == campaign.id">
+                        <div v-for="(shift,index) in todayShifts" :key="index" v-if="shift.campaign_id == campaign.id"
+                             class="pt-1" style="color: #0D96DB">
+                            {{todaysDate()}} : {{shift.total_hours}}
+                        </div>
+                    </div>
+
+                    <div class="logsBox">
+                        <div v-for="(log,index) in agentLogs" :key="index + '_LOG'"
+                             v-show="log.campaign_id == campaign.id">
+                            <div class="log">
+                                <div class="log-time">
+                                    {{getDate(log.created_at)}}
+                                </div>
+                                <div class="log-text justify-content-between">
+                                    <div class="status-selector-component">
+                                        <a class="recording-status icon" style="color:white"
+                                           v-bind:class="logStatusCode[log.status]">{{ logStatusCodeInitials[log.status]
+                                            }}</a>
+                                    </div>
+                                    <span class="log-text-content NoDecor" style="flex:1;" :class="{ blueColor : log.history.length > 0}">
+                                            {{log.log_text}}
+                                            <a href=javascript:void(0) @click="toggleLogHistory(log)"
+                                               v-show='log.history.length > 0'>
+                                                <small> (Edited)</small>
+                                            </a>
+                                            <br/>
+
+                                        <div class="d-none" :id="'log_history_' + log.id">
+                                              <span v-for="(logHistory, index) in log.history" style="font-weight: 400 !important;"
+                                                    :key=" 'logHistory' + logHistory.id">
+                                                 {{logHistory.log_text}} <small> (Edited at {{logHistory.created_at}}) </small><br/>
+                                              </span>
+
+                                        </div>
+
+                                    </span>
+                                    <a href="javascript:void(0)" @click="editedLog = log">
+                                        <img class="icon-edit" src="/images/client/campaign_activity/edit.png"
+                                             alt="edit icon"
+                                             style="height: 20px;"/>
+                                    </a>
+
+                                </div>
+                            </div>
+
+                            <div>
+                                <updateEntry :clear="cancelEdit" v-if="editedLog.id == log.id" :log="log"
+                                             @activityLogUpdated="updateActivityLog"
+                                             @activityLogDeleted="deleteActivityLog"></updateEntry>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="campaign-brief-footer">
+                    <a :href=" '/freelancer/campaign/' + campaign.id ">
+                        GO TO CAMPAIGN
                     </a>
-                    <div class="menu-img">
-                        <img src="/images/client/more_vert_24px.png" alt="menu">
-                    </div>
+                    <a class="add-entry" :class="{disabled: addEntry}" href="javascript:;"
+                       v-on:click="addEntryBox(campaign.id)">
+                        <img :src="`/images/icons/${(!addEntry) ? 'plus_icon_blue' : 'plus_icon_gray'}.svg`"
+                             alt="plus sign"/> ADD ENTRY
+                    </a>
                 </div>
-            </div>
-            <div class="agent-logs-block">
-                <div class="agentInfo">
-                    <img src="/images/client/dummy.png" alt="">
-                    <span class="userName">
-                                Mohamed Salah
-                            </span>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9.15 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9.15 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9.15 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="showMoreBtn">
-                    <a href="#">SHOW MORE</a>
-                </div>
-            </div>
-            <div class="agent-logs-block">
-                <div class="agentInfo">
-                    <img src="/images/client/dummy.png" alt="">
-                    <span class="userName">
-                                Lionel Messi
-                            </span>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9.15 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9.15 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9.15 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="showMoreBtn">
-                    <a href="#">SHOW MORE</a>
-                </div>
+
             </div>
 
-            <div class="campaign-brief-footer">
-                <a href="/freelancer/campaign">
-                    GO TO CAMPAIGN
-                </a>
-                <a class="add-entry" href="#">
-                    <img src="/images/client/close_24px.png" alt="plus sign" /> ADD ENTRY
-                </a>
-            </div>
-        </div>
-        <div class="content-block-campaign-brief">
-            <div class="upper-bar">
-                <div class="campaignInfo">
-                    <div class="title">
-                        Name of the campaign
-                    </div>
-                    <div class="info">
-                        2 agents currently working on the campaign
-                    </div>
-                </div>
-                <div class="actionBtn live">
-                    <a href="#">
-                        LIVE
-                    </a>
-                    <div class="menu-img">
-                        <img src="/images/client/more_vert_24px.png" alt="menu">
-                    </div>
-                </div>
-            </div>
-            <div class="agent-logs-block">
-                <div class="agentInfo">
-                    <img src="/images/client/dummy.png" alt="">
-                    <span class="userName">
-                                Mohamed Salah
-                            </span>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9 am - 10 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        10 am - 11 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        11 am - 12 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        11 am - 12 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="showMoreBtn">
-                    <a href="#">SHOW LESS</a>
-                </div>
-            </div>
-            <div class="agent-logs-block">
-                <div class="agentInfo">
-                    <img src="/images/client/dummy.png" alt="">
-                    <span class="userName">
-                                Lionel Messi
-                            </span>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        9 am - 10 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        10 am - 11 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="log">
-                    <div class="log-time">
-                        11 am - 12 am
-                    </div>
-                    <div class="log-text">
-                        <status-selector status="call-back"></status-selector>
-                        <span class="log-text-content">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        </span>
-                    </div>
-                </div>
-                <div class="showMoreBtn">
-                    <a href="#">SHOW MORE</a>
-                </div>
+
+            <div :id=" 'entryBox_' + campaign.id">
+                <addEntry :clear="clear" v-if="addEntry" :agent_id="agent.id" :campaign_id="campaign.id"
+                          @activityLogAdded="addActivityLog" ref="addEntryComponent"></addEntry>
             </div>
 
-            <div class="campaign-brief-footer">
-                <a href="/freelancer/campaign">
-                    GO TO CAMPAIGN
-                </a>
-                <a class="add-entry" href="#">
-                    <img src="/images/client/close_24px.png" alt="plus sign" /> ADD ENTRY
-                </a>
-            </div>
         </div>
 
-        <addEntry></addEntry>
-        <addDocument></addDocument>
-        
+
     </div>
 </template>
 
 <script>
     import addEntry from './addEntry'
-    import addDocument from './addDocument'
-    import statusSelector from '../../status-selector.vue'
+    import updateEntry from './updateEntry'
+    import statusSelector from '../../status-selector'
+    import db from '../../../firestoreDB' ;
 
     export default {
         components: {
             addEntry,
-            addDocument,
+            updateEntry,
             'status-selector': statusSelector
         },
-        data(){
-          return{
-              rootLink: this.$route.path
-          }
+        props: ['agent'],
+        data() {
+            return {
+                rootLink: this.$route.path,
+                addEntry: false,
+                campaignViewedShifts: '',
+                imAway: true,
+                campaigns: this.agent.campaigns,
+                shifts: this.agent.shifts,
+                agentLogs: this.agent.logs.sort((b, a) => new Date(a.created_at) - new Date(b.created_at)),
+                campaignStatusCode: {
+                    1: 'Active',
+                    2: 'Paused',
+                    3: 'Cancelled',
+                },
+
+                logStatusCode: {
+                    1: 'email-request',
+                    2: 'call-back',
+                    3: 'not-interested',
+                    4: 'appointment-set',
+                    5: 'contacts-received',
+                    6: 'successful',
+                },
+                logStatusCodeInitials: {
+                    1: 'ER',
+                    2: 'CB',
+                    3: 'NI',
+                    4: 'AS',
+                    5: 'CR',
+                    6: 'S',
+                },
+                editedLog: {},
+                currentWorkingShift: {
+                    total_hours: 0
+                },
+            }
         },
-        methods:{
-            rootLinkTo (link) {
+        computed: {
+            activeCampaigns() {
+                return this.campaigns.filter((campaign) => {
+                    return campaign.status == 1
+                });
+            },
+            todayShifts() {
+                return this.agent.shifts.filter((shift) => {
+                    let shiftDate = moment(shift.started_at).format('YYYY-MM-DD');
+                    let today = moment().format('YYYY-MM-DD');
+                    return moment(shiftDate).isSame(moment(today));
+                });
+            },
+        },
+        methods: {
+            todaysDate() {
+                return moment().format('YYYY-MM-DD');
+            },
+            viewShifts(camp_id) {
+                this.campaigns.map((campaign) => {
+                    if (campaign.id == camp_id) {
+                        if (this.campaignViewedShifts == camp_id) {
+                            this.campaignViewedShifts = '';
+                        } else {
+                            this.campaignViewedShifts = camp_id;
+                        }
+                    }
+                })
+            },
+            startShift(campaign) {
+                this.addShift(campaign);
+            },
+            startTimer(campaign) {
+                campaign.timerVar = setInterval(() => {
+                    this.getShiftHours(campaign)
+                }, 1000);
+            },
+            stopTimer(campaign) {
+                clearInterval(campaign.timerVar);
+            },
+            finishShift(campaign) {
+                this.endShift(campaign.currentWorkingShift.id, campaign);
+            },
+            startBreak(campaign) {
+                campaign.currentWorkingShift.status = 3;
+                this.addBreakStartLog(campaign);
+            },
+            finishBreak(campaign) {
+                campaign.currentWorkingShift.status = 1;
+                this.addBreakEndLog(campaign);
+            },
+            addShiftStartLog(campaign) {
+                let logData = {
+                    log_text: 'Shift starts at: ' + new Date().toLocaleString(),
+                    status: 6,
+                    agent_id: this.agent.id,
+                    campaign_id: campaign.id
+                };
+
+                axios.post('/agent/logs/add', logData)
+                    .then((response) => {
+                        let log = response.data;
+                        this.addFireStoreLog(log);
+                        this.addActivityLog(log);
+                        this.startTimer(campaign);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            addShift(campaign) {
+                let shiftData = {
+                    start_time: moment().format('YYYY-MM-DD hh:mm:ss'),
+                    end_time: '',
+                    break_time: '',
+                    total_hours: 0,
+                    status: 1, // active
+                    agent_id: this.agent.id,
+                    campaign_id: campaign.id
+                };
+                axios.post('/agent/shifts/add', shiftData)
+                    .then((response) => {
+                        campaign.currentWorkingShift = response.data;
+                        this.addFireStoreShift(campaign.currentWorkingShift);
+                        this.addShiftStartLog(campaign);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            endShift(shift_id, campaign) {
+                // total hours :
+                let totalHours = this.getShiftHours(campaign);
+
+                let shiftData = {
+                    shift_id: shift_id,
+                    end_time: moment().format('YYYY-MM-DD hh:mm:ss'),
+                    total_hours: totalHours,
+                    status: 2
+                };
+                axios.post('/agent/shifts/end', shiftData)
+                    .then((response) => {
+                        campaign.currentWorkingShift = {
+                            status: 0,
+                            agent_id : response.data.agent_id
+                        };
+
+                        this.addFireStoreShift(campaign.currentWorkingShift);
+
+                        this.todayShifts.unshift(response.data);
+                        this.campaignViewedShifts = response.data.campaign_id;
+                        this.addShiftEndLog(campaign);
+
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            pauseShift(shift_id, campaign) {
+                // total hours :
+                let totalHours = this.getShiftHours(campaign);
+                let shiftData = {
+                    shift_id: shift_id,
+                    end_time: moment().format('YYYY-MM-DD hh:mm:ss'),
+                    total_hours: totalHours,
+                };
+                axios.post('/agent/shifts/pause', shiftData)
+                    .then((response) => {
+                        campaign.currentWorkingShift = response.data;
+                        campaign.currentWorkingShift.action = 'start_break';
+                        this.addFireStoreShift(campaign.currentWorkingShift);
+                        this.stopTimer(campaign);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            resumeShift(shift_id, campaign) {
+                // total hours :
+                const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.start_time);
+                const formatted = moment.utc(secs).format('HH:mm:ss');
+
+                let shiftData = {
+                    shift_id: shift_id,
+                    break_time: moment().format('YYYY-MM-DD hh:mm:ss'), // the time when I am back from break
+                };
+                axios.post('/agent/shifts/resume', shiftData)
+                    .then((response) => {
+                        campaign.currentWorkingShift = response.data;
+                        campaign.currentWorkingShift.action = 'finish_break';
+                        this.addFireStoreShift(campaign.currentWorkingShift);
+                        this.startTimer(campaign);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            getShiftHours(campaign) {
+                const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.start_time);
+                const formatted = moment.utc(secs).format('HH:mm:ss');
+
+                if (campaign.currentWorkingShift.total_hours == 0 || campaign.currentWorkingShift.total_hours == '00:00:00') { // there was no breaks
+                    $('.campaign_timer_' + campaign.id).text(formatted);
+                    return formatted;
+                } else if (campaign.currentWorkingShift.break_time !== null) {
+                    // there were breaks, so add the formatted time to the time that was there already
+                    var std_count = campaign.currentWorkingShift.total_hours;
+                    const secs = new Date(moment().format('YYYY-MM-DD hh:mm:ss')) - new Date(campaign.currentWorkingShift.break_time);
+                    const formatted = moment.utc(secs).format('HH:mm:ss');
+                    let all = moment.duration(std_count).asSeconds() + moment.duration(formatted).asSeconds();
+                    let total_hours = moment.utc(all * 1000).format('HH:mm:ss');
+                    $('.campaign_timer_' + campaign.id).text(total_hours);
+                    return total_hours;
+                } else {
+                    let total_hours = campaign.currentWorkingShift.total_hours;
+                    $('.campaign_timer_' + campaign.id).text(total_hours);
+                    return total_hours;
+                }
+
+            },
+            addShiftEndLog(campaign) {
+                let logData = {
+                    log_text: 'Shift ended at: ' + new Date().toLocaleString(),
+                    status: 6,
+                    agent_id: this.agent.id,
+                    campaign_id: campaign.id
+                };
+
+                axios.post('/agent/logs/add', logData)
+                    .then((response) => {
+                        let log = response.data;
+                        this.addActivityLog(log);
+                        this.addFireStoreLog(log);
+                        this.stopTimer(campaign);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            addBreakStartLog(campaign) {
+                let logData = {
+                    log_text: 'Break started at: ' + new Date().toLocaleString(),
+                    status: 6,
+                    agent_id: this.agent.id,
+                    campaign_id: campaign.id
+                };
+
+                axios.post('/agent/logs/add', logData)
+                    .then((response) => {
+                        let log = response.data;
+                        this.addFireStoreLog(log);
+                        this.addActivityLog(log);
+                        this.pauseShift(campaign.currentWorkingShift.id, campaign);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            addBreakEndLog(campaign) {
+                let logData = {
+                    log_text: 'Break ends at: ' + new Date().toLocaleString(),
+                    status: 6,
+                    agent_id: this.agent.id,
+                    campaign_id: campaign.id
+                };
+                axios.post('/agent/logs/add', logData)
+                    .then((response) => {
+                        let log = response.data;
+                        this.addFireStoreLog(log);
+                        this.addActivityLog(log);
+                        this.resumeShift(campaign.currentWorkingShift.id, campaign);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            },
+            toggleLogHistory(log) {
+                if ($('#log_history_' + log.id).hasClass('d-none')) {
+                    $('#log_history_' + log.id).removeClass('d-none');
+                } else {
+                    $('#log_history_' + log.id).addClass('d-none');
+                }
+            },
+
+            rootLinkTo(link) {
                 return this.$route.path + '/' + link
+            },
+            clear() {
+                this.addEntry = false
+            },
+            addEntryBox(campaign_id) {
+                this.addEntry = true;
+                //scroll to the box
+                $('html, body').animate({
+                    scrollTop: $("#entryBox_" + campaign_id).offset().top - 105
+                }, 1000);
+            },
+            getDate(date) {
+                let event = new Date(date);
+                let options = {hour: 'numeric', minute: 'numeric', month: 'short', day: 'numeric'};
+                return event.toLocaleDateString('en-EN', options);
+            },
+            addActivityLog(log) {
+                this.agentLogs.unshift(log);
+                this.$emit('showPositiveNotification', 'Activity log has been successfully Added!')
+            },
+            updateActivityLog(log) {
+                // replace the old log with this one passed here.
+                this.agentLogs.forEach((oldLog, index) => {
+                    if (oldLog.id == log.id) {
+                        this.agentLogs[index] = log;
+                    }
+                });
+                this.$emit('showPositiveNotification', 'Activity log has been successfully Updated !')
+
+            },
+            deleteActivityLog(logID) {
+                // splice the old log with this one passed here.
+                this.agentLogs.forEach((oldLog, index) => {
+                    if (oldLog.id == logID) {
+                        this.agentLogs.splice(index, 1);
+                    }
+                });
+                this.$emit('showPositiveNotification', 'Activity log has been successfully Deleted !')
+            },
+            cancelEdit() {
+                this.editedLog = {}
+            },
+            calculateTodayTotalHours(todayShifts,camp_id){
+                let totalHours = 0;
+                if(this.todayShifts.length < 1){
+                    return '00:00:00';
+                }
+                todayShifts.map( (shift) => {
+                    if(shift.campaign_id == camp_id){
+                        totalHours += moment.duration(shift.total_hours).asSeconds();
+                    }
+                });
+
+                return  moment.utc(totalHours * 1000).format('HH:mm:ss') ;
+            },
+
+
+            // firestore functions :
+
+            addFireStoreLog(log){
+                db.collection('activity_logs').add(log);
+            },
+
+            addFireStoreShift(shift){
+                db.collection('shifts').add(shift);
+            }
+
+        },
+        created() {
+            this.agent.campaigns.map((campaign) => {
+                campaign.currentWorkingShift = {
+                    status: 0,
+                    total_hours: '00:00:00',
+                };
+                this.agent.shifts.map((shift) => {
+                    if (shift.campaign_id == campaign.id) {
+                        if (shift.status == 1) {
+                            campaign.currentWorkingShift = shift;
+                            this.startTimer(campaign);
+                        } else if (shift.status == 3) {
+                            campaign.currentWorkingShift = shift;
+                            this.getShiftHours(campaign);
+                        }
+                    }
+                });
+            });
+        },
+        mounted() {
+
+        }
+    }
+
+</script>
+
+<style scoped lang="scss">
+
+    .logsBox {
+        height: 400px;
+        overflow-x: auto;
+    }
+
+    .actionBtn {
+        margin-right: 34px;
+        justify-content: space-between;
+        display: flex;
+
+        @media (max-width: 745px) {
+            margin-right: 6px;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        a {
+            @media (max-width: 745px) {
+                min-width: 120px;
+                height: 31px;
+                font-size: 11px;
+
+                &.hideOnSm {
+                    display: none;
+                }
+            }
+
+            padding: 4px 23px 3px 13px;
+            display: block;
+            min-width: 120px;
+            height: 31px;
+            text-align: center;
+            border-radius: 30px;
+            background: #05A4F4;
+
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 24px;
+            letter-spacing: -0.1px;
+            color: #FFFFFF;
+            margin: 0 5px;
+
+            &.little-padding {
+                padding: 4px 15px;
+            }
+
+            &.secondary {
+                background: transparent;
+                color: #05A4F4;
+            }
+
+            img {
+                padding-right: 8px;
+                padding-left: 7px;
+                padding-bottom: 3px;
             }
         }
     }
-</script>
 
-<style scoped>
+    .blueColor{
+        font-weight: 500!important;
+    }
 
 </style>

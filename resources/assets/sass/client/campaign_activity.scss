@@ -1,56 +1,78 @@
 #campaign_activity{
-  .client_navbar{
+  width: 100vw;
+  .dashboard_navbar{
     height:56px !important;
   }
 
-  .campaign-info-bar{
-    height: 56px;
-    width: 100%;
-    background: #05A4F4;
-    display: flex;
-    margin-top: -16px;
-    justify-content: left;
-    align-items: center;
-    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius:4px ;
-    a:hover{
-      text-decoration: none;
-    }
+}
+
+.campaign-info-bar{
+  height: 56px;
+  width: 100%;
+  background: #05A4F4;
+  display: flex;
+  margin-top: -16px;
+  justify-content: left;
+  align-items: center;
+  box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  a:hover{
+    text-decoration: none;
+  }
+  @media (max-width:1240px) {
+    overflow-x: auto;
+  }
+  .campaign-info-tab{
+    font-family: Roboto;
+    font-style: normal;
+    margin-right: 80px !important;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #FFFFFF;
+    border-bottom: 3px solid transparent;
+    padding: 12px 14px ;
+    margin-top: 6px;
+    cursor: pointer;
+    opacity: 0.8;
     @media (max-width:1240px) {
-      overflow-x: scroll;
+      margin-right: 0;
+      padding: 12px 14px;
+      white-space: nowrap;
     }
-    .campaign-info-tab{
-      font-family: Roboto;
-      font-style: normal;
-      margin-right: 80px !important;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 24px;
-      color: #FFFFFF;
-      border-bottom: 3px solid transparent;
-      padding: 12px 14px ;
-      margin-top: 6px;
-      cursor: pointer;
-      opacity: 0.8;
-      @media (max-width:1240px) {
-        margin-right: 0;
-        padding: 12px 14px;
-        white-space: nowrap;
-      }
+  }
+  .campaign-info-tab.active{
+    font-weight: bold;
+    border-bottom: 3px solid white;
+    opacity: 1;
+  }
+  .campaign-info-tab.firstTab{
+    margin-left: 25px !important;
+    @media (max-width:1240px) {
+      margin-left: 0;
     }
-    .campaign-info-tab.active{
-      font-weight: bold;
-      border-bottom: 3px solid white;
-      opacity: 1;
-    }
-    .campaign-info-tab.firstTab{
-      margin-left: 25px !important;
-      @media (max-width:1240px) {
-        margin-left: 0;
-      }
-    }
+  }
+}
+
+.campaign-info-bar.reversed{
+  background: white;
+  border-bottom: 1px solid #3fc5ff;
+  box-shadow: none;
+  .campaign-info-tab{
+    color:#05A4F4 ;
+    font-size: 14px;
+    padding-top: 18px;
+    margin-top: -2px;
+  }
+  .campaign-info-tab.active{
+    font-weight: bold;
+    border-bottom: 0;
+    opacity: 1;
+    background-image: url("/images/Triangle.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: -16px;
   }
 }
 
@@ -75,14 +97,16 @@
   }
 }
 
-.client_dashboard_content.campaign_activity{
+.dashboard_content.campaign_activity{
+  width: 100%;
   @media (max-width:1240px) {
     width: 100%;
+    padding: 0 20px;
   }
   .dashboard-side-menu{
     background: white;
     width: 339px;
-    height:600px;
+    height:506px;
     box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
     border-radius: 4px;
 
@@ -120,11 +144,41 @@
 
   }
 
+  .documents-bar{
+    height: 76px;
+    margin-top: 16px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+    border-radius: 4px;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+    img{
+      margin-left: 24px;
+      margin-right: 5px;
+      margin-bottom: 4px;
+      height: 24px;
+    }
+    .document-text{
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: -0.1px;
+      color: #4A5464;
+      span{
+        font-weight: normal;
+        margin-left: 5px;
+        color: #7A828D;
+      }
+    }
+  }
 
   .content-block{
     flex-direction: row;
     background: none;
-    width: auto;
+
     @media (max-width:1240px) {
       width: 96%;
     }
@@ -133,7 +187,8 @@
     }
     .content-block-campaign-activity{
       margin-bottom: 0;
-      width: 791px;
+      max-width: 1200px;
+      width: 100%;
       @media (max-width:1240px) {
         width: 100%;
       }
@@ -143,13 +198,63 @@
         box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
         border-radius: 4px;
         .date-picker-bar{
+
+          a {
+            font-weight: 500;
+
+            &:hover {
+              text-decoration: none;
+            }
+          }
+
           height: 78px;
+          padding: 0 20px;
           background:white;
           display:flex;
-          justify-content: flex-end;
+          justify-content: space-around;
           align-items: center;
           img{
             margin-right:18px;
+          }
+
+          .days-container {
+            width: 75%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+
+            .date-item {
+              padding: 15px 10px;
+              text-align: center;
+              width: 50px;
+              height: 100%;
+              color: #4A5464;;
+
+              &:hover {
+                text-decoration: none;
+              }
+            }
+
+            .day-of-week.active {
+              border-bottom: 1.5px solid $l-blue;
+            }
+
+            .day-number,
+            .day-of-week {
+              margin: 0 auto;
+              text-align: center;
+
+              &.active {
+                color: $l-blue
+              }
+            }
+
+          }
+          .date-control-right,
+          .date-control-left {
+            // Replace this controls with images
+            font-size: 2rem;
           }
         }
         .member-logs-empty{
@@ -172,37 +277,6 @@
                 width: 100%;
               }
             }
-          }
-        }
-      }
-
-      .documents-bar{
-        height: 76px;
-        margin-top: 16px;
-        background: #FFFFFF;
-        box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-        border-radius: 4px;
-        display:flex;
-        justify-content: flex-start;
-        align-items: center;
-        img{
-          margin-left: 24px;
-          margin-right: 5px;
-          margin-bottom: 4px;
-          height: 24px;
-        }
-        .document-text{
-          font-family: Roboto;
-          font-style: normal;
-          font-weight: 500;
-          font-size: 16px;
-          line-height: 24px;
-          letter-spacing: -0.1px;
-          color: #4A5464;
-          span{
-            font-weight: normal;
-            margin-left: 5px;
-            color: #7A828D;
           }
         }
       }
@@ -394,11 +468,11 @@
 
     .ui-datepicker .ui-datepicker-next span{
       background-position: 0px -3px !important;
-      background-image: url(http://local.123workforce.me/images/client/campaign_activity/right.png);
+      background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/right.png);
     }
     .ui-datepicker .ui-datepicker-prev span{
       background-position: 0px -3px !important;
-      background-image: url(http://local.123workforce.me/images/client/campaign_activity/left.png);
+      background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/left.png);
 
     }
     .ui-datepicker .ui-datepicker-next,.ui-datepicker .ui-datepicker-prev{
@@ -538,4 +612,48 @@
     }
   }
 
+}
+
+
+.hideOnLg{
+  @media (min-width:1240px) {
+    display: none !important;
+  }
+}
+
+.documents-bar{
+  height: 76px;
+  margin-top: 16px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-radius: 4px;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  img{
+    margin-left: 24px;
+    margin-right: 5px;
+    margin-bottom: 4px;
+    height: 24px;
+  }
+  .document-text{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.1px;
+    color: #4A5464;
+    span{
+      font-weight: normal;
+      margin-left: 5px;
+      color: #7A828D;
+    }
+  }
+}
+
+.hideDate {
+  @media (max-width: 900px) {
+    display: none;
+  }
 }

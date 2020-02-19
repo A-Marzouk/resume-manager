@@ -15,28 +15,39 @@
 
   .selected-country {
     position: absolute;
+    top: 0;
     left: 0;
-    width: 100px;
+    height: 100%;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .select-icon {
+      position: static !important;
+      right: auto;
+      margin: 0;
+      margin-right: 5px;
+    }
   }
 
   .flags-container {
     position: absolute;
-    top: 55px;
+    top: 50px;
     height: 0;
     width: 100%;
     transition: .5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     overflow: hidden;
     background: white;
+    z-index: 2;
 
     &.opened {
-      height: 120px;
+      height: 300px;
       overflow-y: scroll;
     }
+    
   }
+  
   .flag-item {
     width: 100%;
     display: flex;
@@ -49,10 +60,20 @@
 .account-edit-section .faq-question-input .faq-input .flags-dropdown {
   img {
     margin-left: 0;
-    margin-right: 10px;
+    margin-right: 0;
   }
 
   input {
-    padding-left: 100px;
+    padding: 0;
+    padding-left: 120px;
   }
+}
+
+.select-icon {
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 5px #495057 solid;
+  border-right: 5px transparent solid;
+  border-left: 5px transparent solid;
 }

@@ -2,6 +2,6 @@
 
 @section('content')
    <div id="freelancerDashboardComponent">
-      <freelancer-dashboard></freelancer-dashboard>
+      <freelancer-dashboard :agent="{{$agent}}"></freelancer-dashboard>
    </div>
 @endsection

@@ -19,6 +19,7 @@ class ChatController extends Controller
     protected $conversation;
 
     public function getMessages($conv_id = ''){
+        return ;
         $this->setCurrentUser();
         if($conv_id !== ''){
             $messages = Message::where('conversation_id',$conv_id)->get();

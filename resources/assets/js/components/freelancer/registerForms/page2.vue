@@ -4,7 +4,7 @@
         <div class="left">
             <img src="/images/client/my_account/info_40px.png" alt="info icon">
             <span>
-            FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)
+            FILL IN THE INFORMATION TO REGISTER AN AGENT (BUSSINESS SUPPORT)
         </span>
         </div>
     </div>
@@ -53,7 +53,8 @@
                 <div class="faq-input"  :class="{ 'error-input' : errors.voice}">
                     <select class="form-control" id="voice" name="voice" style="height: 50px;" v-model="professionalData.voice">
                         <option value="" selected="selected">Select your voice character</option>
-                        <option value="voice1">Voice character 1</option>
+                        <option value="warm">Warm voice</option>
+                        <option value="professional">Professional voice</option>
                     </select>
                 </div>
                 <div class="error" v-if="showErrors && errors.voice">
@@ -65,7 +66,7 @@
                     Specify available hours per week hoursPerWeek
                 </label>
                 <div class="faq-input" :class="{ 'error-input' : errors.hoursPerWeek}">
-                    <input type="text" name="hoursPerWeek" placeholder="25" v-model="professionalData.hoursPerWeek">
+                    <input  v-on:keydown="onlyNumeric" type="text" name="hoursPerWeek" placeholder="25" v-model="professionalData.hoursPerWeek">
                     <img src="/images/client/campaign_activity/close_black.png" @click="clearInput('hoursPerWeek')" alt="delete icon" v-show="professionalData.hoursPerWeek.length > 0">
                 </div>
                 <div class="error" v-if="showErrors && errors.hoursPerWeek">
@@ -100,11 +101,11 @@
                 <div class="img-container">
                     <div class="faq-input" :class="{ 'error-input' : errors.lang}">
                         <div v-on:click='professionalData.lang = "en"' class="lang">
-                            <img src="/images/client/add_agent/language/english_icon.png">
+                            <img :src="`/images/client/add_agent/language/${professionalData.lang === 'en' ? 'english_icon-selected': 'english_icon'}.png`">
                             <span>English</span>
                         </div>
                         <div v-on:click='professionalData.lang = "es"' class="lang">
-                            <img src="/images/client/add_agent/language/spanish_icon.png">
+                            <img :src="`/images/client/add_agent/language/${professionalData.lang === 'es' ? 'spanish_icon-selected': 'spanish_icon'}.png`">
                             <span>Spanish</span>
                         </div>
                     </div>
@@ -116,7 +117,7 @@
         </div>
     </div>
     <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
-        <a href="javascript:;" v-on:click="nextStep">
+        <a class="btn-primary" href="javascript:;" v-on:click="nextStep">
             CONTINUE
         </a>
     </div>
@@ -231,8 +232,14 @@ export default {
         }
 
       },
+      onlyNumeric (e) {
+          if (e.key !== 'Backspace' &&
+              e.key !== 'Delete' &&
+              isNaN(parseInt(e.key))
+          ) e.preventDefault()
+      },
       addToTechs (e) {
-          if (e.key == ',') {
+          if (e.key == ',' || e.key === ' ' || e.key === 'Enter')  {
             e.preventDefault()
             this.professionalData.techs.push(this.inputTechs)
             this.inputTechs = ''

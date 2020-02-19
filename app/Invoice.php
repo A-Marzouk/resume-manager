@@ -13,15 +13,37 @@ use Illuminate\Database\Eloquent\Model;
 
 class Invoice extends Model
 {
-    protected $table = 'invoices';
     protected $fillable = [
-        'total_amount','campaign_brief_id','timeZone','service','hours','rate','notes','time_of_service','status','unique_number',
-        'user_id','year','week','currency','start_time','end_time','days','weekDate'
+        'identifier',
+        'total',
+        'service_title',
+        'status',
+        'billing_date',
+        'discount',
+        'hours',
+        'rate',
+        'status',
+        'notes',
+
+        'currency_id',
+        'client_id',
+        'subscription_id',
     ];
+
+    protected $table = 'invoices';
 
 
     public function client(){
         return $this->belongsTo(Client::class);
+    }
+
+    public function agent(){
+        return $this->belongsTo(Agent::class);
+    }
+
+
+    public function subscription(){
+        return $this->belongsTo(Subscription::class);
     }
 
     public function user(){
@@ -31,7 +53,6 @@ class Invoice extends Model
     public function services(){
         return $this->hasMany(Service::class);
     }
-
 
 
     public function campaignBrief(){

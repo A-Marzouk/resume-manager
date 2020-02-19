@@ -1,0 +1,97 @@
+/* The container */
+.checkBoxContainer {
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.agreement-checkbox-text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+/* Hide the browser's default checkbox */
+.checkBoxContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer; }
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  margin-top: 3px;
+}
+
+.checkmark.make-circle{
+  height: 20px;
+  width: 20px;
+}
+
+/* On mouse-over, add a grey background color */
+.checkBoxContainer:hover input ~ .checkmark {
+  background-color: #ccc; }
+
+/* When the checkbox is checked, add a blue background */
+.checkBoxContainer input:checked ~ .checkmark {
+  background-color: #05A4F4;
+}
+
+.checkBoxContainer input:checked ~ .checkmark.make-circle {
+  border: 1px solid #FFA368;
+  background-color: white;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none; }
+
+/* Show the checkmark when checked */
+.checkBoxContainer input:checked ~ .checkmark:after {
+  display: block; }
+
+/* Style the checkmark/indicator */
+.checkBoxContainer .checkmark:after {
+  left: 5px;
+  top: 1px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.checkBoxContainer .checkmark.make-circle:after {
+  left: 3px;
+  top: 3px;
+  width: 6px;
+  height: 12px;
+  border: 6px solid #FFA368;
+  border-radius: 50%;
+}
+
+
+// circle checkbox
+
+.make-circle{
+  border-radius: 50% !important;
+}

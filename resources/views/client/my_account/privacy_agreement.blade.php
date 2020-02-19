@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="privacyAgreement">
-        <privacy-agreement></privacy-agreement>
+        <privacy-agreement :client="{{currentClient()}}" :user="{{currentClient()->user}}"></privacy-agreement>
     </div>
 
 @endsection

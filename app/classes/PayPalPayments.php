@@ -28,10 +28,6 @@ class PayPalPayments
         $this->provider = new ExpressCheckout();
     }
 
-    public function viewPaypalForm(){
-        return view('welcomePaypal');
-    }
-
     public function showForm(){
         return view('paypalForm');
     }
@@ -42,41 +38,29 @@ class PayPalPayments
         if(isset($request->weeks) && $request->weeks > 1){
             $recurring = true;
         }
-        // get new invoice id
-        $lastInvoiceRecord = PayPalInvoice::orderBy('created_at', 'desc')->first();
-        if($lastInvoiceRecord){
-            $invoice_id = $lastInvoiceRecord->id + 1;
-        }else{
-            $invoice_id = 1;
-        }
 
-        // Get the cart data
+        // invoice id
+        $invoice_id = $this->getInvoiceNewID();
+        // cart data
         $cart = $this->getCart($recurring, $invoice_id,$request);
 
         // create new invoice
-        $invoice = $this->createPayPalInvoice($request);
-        if(isset($request->paymentType) && $request->paymentType == 'hireFreelancer') {
-            $booking = $this->createBooking($request);
-        }
+        $this->createPayPalInvoice($request);
 
+        // to change status later - save invoice id in session
         if(isset($request->invoice_id)){
             session::put('invoice_id',$request->invoice_id);
         }
 
-        // send a request to paypal
-        // paypal should respond with an array of data
-        // the array should contain a link to paypal's payment system
+        // send a request to paypal -  respond with an array of data - the array should contain a link to paypal's payment system
         $response = $this->provider->setExpressCheckout($cart, $recurring);
 
         // if there is no link redirect back with error message
         if (!$response['paypal_link']) {
-            return redirect('/')->with(['code' => 'danger', 'errorMessage' => 'Something went wrong with PayPal']);
-            // For the actual error message dump out $response and see what's in there
+            return redirect('/')->with(['code' => 'danger', 'errorMessage' => 'Something went wrong with PayPal, please try again later.']);
         }
 
         // redirect to paypal
-        // after payment is done paypal
-        // will redirect us back to $this->expressCheckoutSuccess
         return redirect($response['paypal_link']);
     }
 
@@ -94,6 +78,7 @@ class PayPalPayments
         }else{
             $amount = $request['AMT'];
         }
+
         if ($recurring) {
             return [
                 // if payment is recurring cart needs only one item
@@ -213,22 +198,22 @@ class PayPalPayments
         // save the invoice
         $invoice->save();
 
-        $booking_id =  Booking::orderBy('created_at', 'desc')->first()->id; // last booking id.
-        $booking = Booking::find($booking_id);
-        $booking->is_paid = true;
-        $booking->save();
+
         // App\Invoice has a paid attribute that returns true or false based on payment status
         // so if paid is false return with error, else return with success message
+
         if ($invoice->paid) {
             $this->sendTelegramNotificationOfPayment($invoice);
-            $this->sendMailNotification($booking);
+
             if(session::has('invoice_id')){
                 $this->updateInvoiceStatus();
             }
+
             return redirect('/')->with(['code' => 'success', 'successMessage' => 'Payment (' . $invoice->title . ') has been paid successfully!']);
         }
 
         return redirect('/')->with(['code' => 'danger', 'errorMessage' => 'Error processing PayPal payment for Order ' . $invoice->title . '!']);
+
     }
 
 
@@ -294,18 +279,6 @@ class PayPalPayments
         $telegram->sendMessage($msg);
     }
 
-    protected function sendMailNotification($booking){
-        // send email successfull
-        $data['email'] = $booking->booking_email;
-        $data['clientName'] = '123 Workforce visitor';
-        if(isset($booking->client_id)){
-            $data['clientName'] = Client::where('id',$booking->client_id)->first()->name;
-        }
-        $data['freelancerName'] = User::where('id',$booking->user_id)->first()->firstName;
-        $notification = new NotificationsController;
-        $notification->clientPaidEmail($data);
-    }
-
     public function createPayPalInvoice(Request $request){
         $invoice = new PayPalInvoice();
         $invoice->title = $request->description;
@@ -317,39 +290,20 @@ class PayPalPayments
         return $invoice;
     }
 
-    public function createBooking(Request $request){
-        $booking = new Booking;
-        $booking->amount_paid     = $request->amountToPay;
-        $booking->hours           = $request->hours;
-        $booking->weeks           = $request->weeks;
-        $booking->weeks_original  = $request->weeks;
-        $booking->user_id         = $request->freelancerID;
-        $client_id = null ;
-        if(isset($request->client_id)){
-            $client_id = $request->client_id;
-            $booking->booking_email   = Client::where('id',$request->client_id)->first()->email;
-        }
-        $booking->client_id       = $client_id;
-
-        $booking->subscription_id = null ;
-        $booking->payment_method  = 'PayPal' ;
-        $booking->is_paid         = false ;
-        $booking->save();
-
-        return $booking;
-    }
-
     public function updateInvoiceStatus(){
         $invoice = Invoice::where('id',session::get('invoice_id'))->first();
-        $invoice->status = 'Paid';
+        $invoice->status = 1 ;
         $invoice->save();
         Session::forget('invoice_id');
-        // change invoice booking status
-        if($invoice->status === 'Paid' && isset($invoice->booking_id)){
-            // change booking to status to be paid.
-            $booking = Booking::where('id',$invoice->booking_id)->first();
-            $booking->is_paid = true;
-            $booking->save();
-        }
+
     }
+
+    public function getInvoiceNewID(){
+        $lastInvoiceRecord = PayPalInvoice::orderBy('created_at', 'desc')->first();
+        if($lastInvoiceRecord){
+            return $invoice_id = $lastInvoiceRecord->id + 1;
+        }
+        return $invoice_id = 1;
+    }
+
 }

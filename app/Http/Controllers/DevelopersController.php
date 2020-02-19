@@ -1,0 +1,311 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Ahmed-pc
+ * Date: 11/17/2019
+ * Time: 2:30 AM
+ */
+
+namespace App\Http\Controllers;
+
+
+use App\Agent;
+use App\classes\Upload;
+use App\Recording;
+use App\Skill;
+use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
+
+class DevelopersController extends Controller
+{
+
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    public function developerForm()
+    {
+        return view('auth.developer-register');
+    }
+
+
+    public function validateDeveloperForm(Request $request)
+    {
+        $validator = $this->developerRegisterValidator($request->all());
+        if ($validator->fails()) {
+            return ['errors' => $validator->errors()];
+        } else {
+            return 'success';
+        }
+    }
+
+
+    protected function developerRegisterValidatorALLFIELDS(array $data)
+    {
+        return Validator::make($data, [
+            'firstName' => 'required|string|max:191|min:3',
+            'lastName' => 'required|string|max:191|min:3',
+            'email' => 'required|string|email|max:191|unique:users',
+            'phone' => 'required|max:191|min:7',
+            'whatsapp' => 'max:191',
+            'skype' => 'nullable|max:191',
+            'password' => 'required|max:191|min:6|confirmed',
+
+            'programming_language' => 'max:191|required',
+            'framework' => 'max:191|required',
+            'database' => 'max:191|required',
+
+            'instagram' => 'max:191',
+            'linkedin' => 'max:191',
+            'github' => 'max:191',
+            'website' => 'max:191',
+            'facebook' => 'max:191',
+            'second_email' => 'nullable|max:191|email',
+
+
+            'hourly_rate' => 'max:191|required',
+            'available_hours' => 'max:191|required',
+            'monthly_rate' => 'max:191|required',
+
+        ]);
+    }
+
+
+    protected function developerRegisterValidator(array $data)
+    {
+        return Validator::make($data, [
+            'firstName' => 'required|string|max:191|min:3',
+            'lastName' => 'required|string|max:191|min:3',
+            'email' => 'required|string|email|max:191|unique:users',
+            'phone' => 'required|max:191|min:7',
+            'city' => 'required|max:191',
+            'timezone' => 'required|max:191',
+            'whatsapp' => 'max:191',
+            'skype' => 'nullable|max:191',
+            'password' => 'required|max:191|min:6|confirmed',
+
+            'instagram' => 'max:191',
+            'linkedin' => 'max:191',
+            'github' => 'max:191',
+            'website' => 'max:191',
+            'facebook' => 'max:191',
+        ]);
+    }
+
+    public function saveAudioForRegister(Request $request){
+
+         $id = $this->registerDeveloper($request);
+
+        if(isset($_FILES['file']) and !$_FILES['file']['error']){
+            $fname = "Record_".date(time()).'.ogg';
+            $target_file = "uploads/register_audios/" . $fname ;
+
+            if (file_exists($target_file)) {
+                unlink($target_file);
+            }
+
+            move_uploaded_file($_FILES['file']['tmp_name'], $target_file);
+
+            // save record :
+            $record = new Recording;
+            $record->user_id = $id;
+            $record->src = '/'.$target_file;
+            $record->title = 'Recorded application (record)';
+            $record->transcription = '';
+
+            $record->save();
+
+            // check if cv is uploaded
+            if($request->cv_included == 'true' && isset($request->included_cv)){
+                // upload the cv file :
+                $result = Upload::CV('','included_cv',$id.'_'.date(time()));
+                if($result !== false){
+                    $agent = Agent::where('user_id', $id)->first();
+                    $agent->cv = $result['path'];
+                    $agent->save();
+                }
+            }
+
+            $data = $request->all();
+            $data['id']      = $id;
+
+            // login user
+            Auth::loginUsingId($id);
+
+            return ['status' => 'Success'];
+        }
+
+    }
+
+
+    public function registerDeveloperOLD(Request $request)
+    {
+        // validate data
+        if ($request->audioType == 'uploaded' && isset($request->audioFile)) {
+            // validate audio upload.
+            $canUpload = Upload::checkAudio($request->audioFile, 'audioFile', '');
+            if (!$canUpload) {
+                return ['errors' => [
+                    'audioError' => 'Error while uploading audio'
+                ]];
+            }
+        }
+        $validator = $this->developerRegisterValidator($request->all());
+        if ($validator->fails()) {
+            return ['errors' => $validator->errors()];
+        }
+
+        // register a developer
+
+        $developer = $this->createDeveloper($request->all());
+
+
+        if ($developer->id && $request->audioType !== 'record') {
+            // save the record
+            $recordSaver = new RecordingsController;
+            $recordSaver->addRecord($request, $developer->id);
+
+            // check if cv is uploaded
+            if ($request->cv_included && isset($request->included_cv)) {
+                // upload the cv file :
+                $result = Upload::CV('', 'included_cv', $developer->id . '_' . date(time()));
+                if ($result !== false) {
+                    $agent = Agent::where('user_id', $developer->id)->first();
+                    $agent->cv = $result['path'];
+                    $agent->save();
+                }
+            }
+
+
+            $data = $request->all();
+            $data['id'] = $developer->id;
+
+            // login user
+            Auth::loginUsingId($developer->user_id);
+
+            return 'success';
+        } else {
+            return $developer->id;
+        }
+
+    }
+
+    public function registerDeveloper(Request $request){
+        $validator = $this->developerRegisterValidator($request->all());
+        if ($validator->fails()) {
+            return ['errors' => $validator->errors()];
+        }
+
+
+        $developer = $this->createDeveloperInitially($request->all());
+
+        // login user
+        Auth::loginUsingId($developer->id);
+
+        return 'success';
+
+    }
+    protected function createDeveloper(array $data)
+    {
+        $developer = app(User::class)->createAgent([
+            'user' => [
+                'email' => $data['email'],
+                'password' => $data['password'],
+                'username' => $data['email'],
+            ],
+            'agent' => [
+                'available_hours_per_week' => $data['available_hours'],
+                'hourly_rate' => $data['hourly_rate'],
+            ],
+            'user_data' => [
+                'profession_id' => 2, // business-support(1), developer (2), designer (3)
+                'currency_id' => 1, // usd
+                'timezone' => 1,
+                // personal data
+                'first_name' => $data['firstName'],
+                'last_name' => $data['lastName'],
+                'city' => '',
+                'phone' => $data['phone'],
+                'skype' => $data['skype'],
+                'telegram' => $data['phone'],
+                'linkedin' => $data['linkedin'],
+                'github' => $data['github'],
+                'website' => $data['website'],
+                'facebook' => $data['facebook'],
+                'second_email' => $data['second_email'],
+                'monthly_salary' => $data['monthly_rate'],
+                'instagram' => $data['instagram'],
+//                // professional data
+                'job_title' => $data['programming_language'] . ' Developer',
+            ]
+        ]);
+
+        $developer = User::where('email', $data['email'])->first();
+
+
+        // make 3 for the developer as main skills :
+
+        $skill = new Skill;
+        $skill->user_id = $developer->id;
+        $skill->skill_title = $data['programming_language'];
+        $skill->type = 'programming';
+        $skill->percentage = 95;
+        $skill->save();
+
+        $skill = new Skill;
+        $skill->user_id = $developer->id;
+        $skill->skill_title = $data['framework'];
+        $skill->type = 'frameworks';
+        $skill->percentage = 95;
+        $skill->save();
+
+        $skill = new Skill;
+        $skill->user_id = $developer->id;
+        $skill->skill_title = $data['database'];
+        $skill->type = 'frameworks';
+        $skill->percentage = 95;
+        $skill->save();
+
+        return $developer;
+    }
+
+    protected function createDeveloperInitially(array $data)
+    {
+        $developer = app(User::class)->createAgent([
+            'user' => [
+                'email' => $data['email'],
+                'password' => $data['password'],
+                'username' => $data['email'],
+            ],
+            'agent' => [],
+            'user_data' => [
+                'profession_id' => 2, // business-support(1), developer (2), designer (3)
+                'currency_id' => 1, // usd
+                'timezone' => $data['timezone'],
+                // personal data
+                'first_name' => $data['firstName'],
+                'last_name' => $data['lastName'],
+                'city' => $data['city'],
+                'phone' => $data['phone'],
+                'skype' => $data['skype'],
+                'telegram' => $data['telegram'] ? $data['phone'] : '' ,
+                'whatsapp' => $data['whatsapp'] ? $data['phone'] : '' ,
+                'linkedin' => $data['linkedin'],
+                'github' => $data['github'],
+                'website' => $data['website'],
+                'facebook' => $data['facebook'],
+                'instagram' => $data['instagram'],
+
+            ]
+        ]);
+
+        $developer = User::where('email', $data['email'])->first();
+
+        return $developer;
+    }
+
+}

@@ -10,62 +10,88 @@ namespace App\Http\Controllers;
 
 
 use App\ActivityLog;
+use App\ActivityLogHistory;
 use App\Campaign;
 use Illuminate\Http\Request;
 
 class ActivityLogsController extends Controller
 {
-    public function getLogsByCampaignID($camp_id){
-        $campaign = Campaign::where('id',$camp_id)->first();
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function getLogsByCampaignID($camp_id)
+    {
+        $campaign = Campaign::where('id', $camp_id)->first();
         return $campaign->logs;
     }
 
-    public function getShiftsByCampaignID($camp_id){
-        $campaign = Campaign::where('id',$camp_id)->first();
-        $shifts   = $campaign->shifts;
-        foreach ($shifts as &$shift){
-            $days = $shift->daysAsRecords ;
-            foreach ($days as &$day){
-                $day['users'] = $day->users ;
+    public function getShiftsByCampaignID($camp_id)
+    {
+        $campaign = Campaign::where('id', $camp_id)->first();
+        $shifts = $campaign->shifts;
+        foreach ($shifts as &$shift) {
+            $days = $shift->daysAsRecords;
+            foreach ($days as &$day) {
+                $day['users'] = $day->users;
             }
             $shift['daysArray'] = $days;
         }
         return $shifts;
     }
 
-    public function getMembersByCampaignID($camp_id){
-        $campaign = Campaign::where('id',$camp_id)->first();
-        $members = $campaign->members ;
-        foreach ($members as &$member){
-            $member['image'] = $member->userData->photo ;
+    public function getMembersByCampaignID($camp_id)
+    {
+        $campaign = Campaign::where('id', $camp_id)->first();
+        $members = $campaign->members;
+        foreach ($members as &$member) {
+            $member['image'] = $member->userData->photo;
         }
         return $members;
     }
 
 
-    public function addLog(Request $request){
-        $currentUser = auth()->user();
-        $request->validate([
-            'log_text' => 'max:1500|required',
-        ]);
-
-        // add
-        $activityLog = new ActivityLog;
-        $activityLog->user_id = $currentUser->id;
-        $activityLog->log_text = $request->log_text;
-        $activityLog->campaign_id = $request->campaign_id;
-
-        $activityLog->save();
-
-        return $activityLog;
-
+    public function addLog(Request $request)
+    {
+        $requestArray = $request->toArray();
+        $requestArray['agent_id'] = currentAgent()->id;
+        $log = ActivityLog::create($requestArray);
+        $log['history'] = $log->history;
+        return $log ;
     }
 
-    public function deleteActivityLog(Request $request){
-        // delete job post
-        $activityLog = ActivityLog::where('id',$request->logID);
+    public function editLog(Request $request)
+    {
+        $log = ActivityLog::where('id', $request->id);
+        $this->saveLogHistory($log->first());
+        $log->update($request->toArray());
+        $log = $log->first();
+        $log['history'] = $log->history;
+        return $log;
+    }
+
+    protected function saveLogHistory($log){
+        ActivityLogHistory::create([
+            'log_text' => $log->log_text,
+            'activity_log_id' => $log->id,
+            'status' => $log->status,
+        ]);
+    }
+
+    public function getLogById($log_id){
+        return ActivityLog::where('id',$log_id)->with('history')->first();
+    }
+
+    public function deleteLog(Request $request)
+    {
+        $activityLog = ActivityLog::find($request->log_id);
+        $activityLog->history()->delete();
         $activityLog->delete();
-        return 'ActivityLog has been deleted';
+
+        return [
+            'status' => 'success',
+        ];
     }
 
 }

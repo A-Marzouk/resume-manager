@@ -11,18 +11,31 @@ namespace App\Http\Controllers;
 
 use App\classes\Upload;
 use App\Project;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ProjectsController extends Controller
 {
     public function getProjects(){
        // get current authenticated freelancer :
-        $currentUser = auth()->user();
+        if(Input::get('user_id') && currentUser()->is_admin){
+            $currentUser = User::where('id',Input::get('user_id'))->first();
+        }else{
+            $currentUser = currentUser();
+        }
+
         return $currentUser->projects;
     }
 
     public function addProject(Request $request){
-        $currentUser = auth()->user();
+
+        if(Input::get('user_id') && currentUser()->is_admin){
+            $currentUser = User::where('id',$request->user_id)->first();
+        }else{
+            $currentUser = currentUser();
+        }
+
         $request->validate([
             'projectName' => 'max:190',
             'projectDesc' => 'max:1500',
@@ -46,6 +59,7 @@ class ProjectsController extends Controller
         $project->link = $request->link;
         $project->isActive = $request->isActive;
         $project->order = $request->order;
+        $project->work_history_id = $request->relatedWorkID;
         if(isset($request->mainImage)){
             $path  = Upload::projectPhoto('','mainImage','');
             $project->mainImage = '/'. $path ;
@@ -69,7 +83,6 @@ class ProjectsController extends Controller
             $project->images = implode(',',$moreImages);
 
         }
-
 
         $project->save();
 

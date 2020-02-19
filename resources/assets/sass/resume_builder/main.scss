@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap');
+@font-face {
+    font-family: NexaLight;
+    src: url("/fonts/nexa/Nexa Light.otf");
+}
+
+@font-face {
+    font-family: NexaBold;
+    src: url("/fonts/nexa/Nexa Bold.otf");
+}
+
+@import "variables";
+@import "modifiers";
+@import "buttons";
+@import "inputs";
+@import "forms";
+@import "select";
+@import "dropzone";
+
+#resumeBuilder, body, html {
+    height: 100%;
+}
+
+.resume-container {
+    font-family: 'Noto Sans', Arial, Helvetica, sans-serif;
+}
+
+.section-title {
+    font-size: 59px;
+    color: $mainBlue;
+    font-family: NexaLight, Arial, Helvetica, sans-serif;
+
+    h2 {
+        font-size: 59px;
+        font-family: NexaBold, Arial, Helvetica, sans-serif;
+    }
+}
+
+.section-view {
+    width: calc(100% - 260px - 3rem);
+}
+
+.content {
+    margin-top: 50px;
+    width: 100%;
+    position: relative;
+}
+
+.text-hint {
+    color: #8C8D8F;
+    font-size: 16px;
+}

@@ -11,22 +11,22 @@
             </a>
 
             <a class="navbar-brand" href="/client">
-                <img src="/images/client/logo_123.png" alt="logout" style="width: 177px;">
+                <img src="/images/client/logo_123.png" alt="logo" style="width: 177px;">
             </a>
             <div class="form-inline my-2 my-lg-0">
 
             </div>
             <div class="form-inline my-2 my-lg-0 name">
                 <div class="logoutButton">
-                    <a href="javascript:void(0)" @click="logoutClient">
+                    <a href="/logout">
                         <img src="/images/client/log_out.png" alt="logout">
                     </a>
                 </div>
                 <div>
-                    Ahmed R. Marzouk
+                    {{client.contact}}
                 </div>
                 <div class="avatar">
-                    <img src="/images/client/dummy.png" alt="logout">
+                    <img src="/images/client/dummy.png" alt="photo">
                 </div>
             </div>
         </nav>
@@ -34,13 +34,15 @@
         <div class="js-side-nav-container side-nav-container">
             <div class="js-side-nav side-nav">
                 <a href="javascript:void(0)" class="js-menu-close menu-close" id="close-menu"></a>
-                <div class="info-bar">
-                    <div class="avatar">
-                        <img src="/images/client/dummy.png" alt="logout">
-                    </div>
-                    <div class="name">
-                        Welcome,<br/>
-                        Ahmed R. Marzouk
+                <div class="welcome-box d-flex justify-content-start align-items-center">
+                    <img src="/images/client/dummy.png" alt="profile">
+                    <div class="d-flex flex-column">
+                        <div>
+                            Welcome,
+                        </div>
+                        <div style="font-weight: 500">
+                            {{client.contact}}
+                        </div>
                     </div>
                 </div>
                 <div class="dashboard_content">
@@ -53,7 +55,7 @@
                                 Campaign manager
                             </div>
                         </router-link>
-                        <div class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
+                        <div v-show="false" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('chats')" alt="icon">
                             </div>
@@ -69,14 +71,14 @@
                                 Payments
                             </div>
                         </router-link>
-                        <div class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
+                        <router-link to="/client/dashboard/agents-database"  class="menu-block row" :class="{'active' : activeTab === 'agents-database'}" @click.native="selectTab('agents-database')">
                             <div class="imageContainer">
-                                <img :src="getMenuBlockIcon('agents_database')"  alt="icon">
+                                <img :src="getMenuBlockIcon('agents-database')"  alt="icon">
                             </div>
                             <div class="menu-block-name">
                                 Agents database
                             </div>
-                        </div>
+                        </router-link>
                         <router-link to="/client/dashboard/my-account" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                             <div class="imageContainer">
                                 <img :src="getMenuBlockIcon('my-account')" alt="icon">
@@ -89,7 +91,7 @@
                 </div>
 
                 <div class="logoutBtn">
-                    <a href="#">
+                    <a href="/logout">
                         LOG OUT
                     </a>
                 </div>
@@ -106,7 +108,7 @@
                         Campaign manager
                     </div>
                 </router-link>
-                <div class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
+                <div v-show="false" class="menu-block row" :class="{'active' : activeTab === 'chats'}" @click="selectTab('chats')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('chats')" alt="icon">
                     </div>
@@ -122,14 +124,14 @@
                         Payments
                     </div>
                 </router-link>
-                <div class="menu-block row" :class="{'active' : activeTab === 'agents_database'}" @click="selectTab('agents_database')">
+                <router-link   to="/client/dashboard/agents-database" class="menu-block row" :class="{'active' : activeTab === 'agents-database'}" @click.native="selectTab('agents-database')">
                     <div class="imageContainer">
-                        <img :src="getMenuBlockIcon('agents_database')"  alt="icon">
+                        <img :src="getMenuBlockIcon('agents-database')"  alt="icon">
                     </div>
                     <div class="menu-block-name">
                         Agents database
                     </div>
-                </div>
+                </router-link>
                 <router-link to="/client/dashboard/my-account" class="menu-block row" :class="{'active' : activeTab === 'my-account'}" @click.native="selectTab('my-account')">
                     <div class="imageContainer">
                         <img :src="getMenuBlockIcon('my-account')" alt="icon">
@@ -140,8 +142,17 @@
                 </router-link>
             </div>
             <div class="content-block">
+                <div class="notificationBar" id="notificationBar" style="display:none; position: fixed;width: inherit;">
+                    <div>
+                        {{notificationMessage}}
+                    </div>
+                    <a href="javascript:void(0)" @click="hideNotification" class="no-decoration" style="color: white;">
+                        x
+                    </a>
+                </div>
+
                 <keep-alive>
-                    <router-view></router-view>
+                    <router-view  @showPositiveNotification="showNotification" @openInvoice="setSelectedInvoice"  @openFreelancerPortfolio="openPortfolioModal"></router-view>
                 </keep-alive>
             </div>
         </div>
@@ -159,100 +170,66 @@
                         </button>
                     </div>
                     <div class="invoice-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="invoice-style"> INVOICE </div>
-                            <div class="modal-logo"></div>
-                            <!-- <img src="/images/client/logo_123.png" class="modal-logo"/> -->
-                        </div>
-                        <div class="invioce-top-text">
-                            123 Workforce
-                            <br/>
-                            5th floor Portview House Thorn Castle st Dublin Ireland
-                            <br/>
-                            00442037000685
-                            <br/>
-                            info@123workforce.com
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center invioce-title">
-                            <div>№ 059-004-038</div>
-                            <div> other services</div>
-                            <div class="d-flex justify-content-between align-items-center"> $400  <span class="invoice-outstand"> outstand</span> </div>
-                            <div class="invoice-download"> <img src="/images/client/payments/export_invoice.png"/>   copy invioce link </div>
-                        </div>
-
-                        <div class="invoice-date">
-                            Invoice issue date:
-                            <br/> 26.03.2019
-                        </div>
-
-                        <div class="client-info">
-                            <div style=" font-weight: 500;">Client info:</div>
-                            <div>Name: Kim Coe</div>
-                            <div>Company: Urban HQ LTD</div>
-                            <div class="d-flex">
-                                <div >
-                                    Contact:
-                                </div>
-                                <div style="width:200px; margin-left: 3px;" >  +447711228204
-                                    kim@urbanhqgroup.com </div></div>
-                        </div>
-
-                        <div class="client-info invoice-info-client">
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/people_24px.png" class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span> Analiza Belleza, Cheska Ramos
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/assignment_turned_in_24px.png" class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span>
-                                Analiza Belleza, Cheska Ramos
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/account_balance_wallet_24px.png" class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span>
-                                Analiza Belleza, Cheska Ramos
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/watch_later_24px.png" class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span>
-                                Analiza Belleza, Cheska Ramos
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/Subtract.png" class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span>
-                                Analiza Belleza, Cheska Ramos
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <img src="/images/client/payments/account_balance_wallet_24px.png" class="invoice-info-icon"/>
-                                <span class="invoice-info-title"> Name of agents: </span>
-                                Analiza Belleza, Cheska Ramos
-                            </div>
-                        </div>
-
-
+                        <invoice-component :invoice="selectedInvoice" :modal="true"></invoice-component>
                     </div>
-
 
                 </div>
 
             </div>
         </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="freelancer_portfolio" tabindex="-1" role="dialog" aria-hidden="true" >
+            <div class="modal-dialog" role="document" style="width: 100%; height: 100%;padding: 0;">
+                <div class="modal-content border-0" style="height: auto; background: none;min-height: 100%;">
+                    <div class="modal-body">
+                        <div v-if="selectedUserPortfolio" id="freelancerResumeLongV2" class="d-flex justify-content-center">
+                            <freelancer-resume-long-v2 :freelancer="selectedUserPortfolio"></freelancer-resume-long-v2>
+                        </div>
+                        <div v-else>
+                            Loading data..
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </template>
 <script>
+    import invoiceComponent from './dashboardComponents/payments/InvoiceComponent'
+
     export default {
+        props:['client'],
+        components: {
+            'invoice-component': invoiceComponent
+        },
         data(){
             return{
                 activeTab: 'campaign-manager',
+                notificationMessage: 'Successfully updated campaign ',
+                selectedInvoice:{
+                    client:{
+                        user:{}
+                    },
+                    subscription:{
+                        campaign:{},
+                        start_date:''
+                    }
+                },
+                selectedUserPortfolio:'',
             }
         },
         methods:{
+
+            openPortfolioModal(user){
+                this.selectedUserPortfolio = user ;
+                let modalBtn = $('#openCardBtn');
+                modalBtn.click();
+            },
+
             selectTab(tabName){
                 this.activeTab = tabName ;
             },
@@ -263,20 +240,25 @@
                 return '/images/client/menu_icons/inactive/'+ tabName + '.png';
             },
             setActiveTab(){
-                let tabs = ['campaign-manager', 'payments', 'my-account'];
+                let tabs = ['campaign-manager', 'payments', 'my-account','agents-database'];
                 
                 this.activeTab = this.$route.path.replace('/client/dashboard/','');
                 if(!tabs.includes(this.activeTab)){
                     this.activeTab = 'campaign-manager';
                 }
             },
-            logoutClient(){
-                axios.post('client/logout').then( (response)=>{
-                    if(response.data.status === 'success'){
-                        // redirect to dashboard
-                        window.location.href = '/' ;
-                    }
-                });
+            showNotification(notificationMessage){
+                this.notificationMessage = notificationMessage ;
+                $('#notificationBar').fadeIn(600);
+                setTimeout(()=>{
+                    $('#notificationBar').fadeOut(1500);
+                },4000);
+            },
+            setSelectedInvoice(invoice){
+                this.selectedInvoice = invoice ;
+            },
+            hideNotification(){
+                $('#notificationBar').css('display','none');
             }
         },
         mounted(){

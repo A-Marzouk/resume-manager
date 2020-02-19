@@ -1,4 +1,3 @@
-
 // Variables
 @import "variables";
 @import "main";
@@ -9,6 +8,8 @@
 @import "admin";
 @import "chat";
 @import "affiliates_styles";
+@import "freelancerCard";
+//@import "vuetify";
 
 @import "components/dashboard";
 @import "components/side_nave";
@@ -18,6 +19,9 @@
 @import "components/campaign_archives";
 @import "components/my_account";
 @import "components/flags_dropdown";
+@import "components/subscription-plans";
+@import "components/login";
+@import "components/theme10";
 
 @import "client/addAgent";
 
@@ -30,3 +34,18 @@
 @import "client/dashboard/sub_set_up";
 @import "client/campaign_agents";
 @import "client/login";
+
+
+// admin styles
+
+@import "admin/main";
+@import "admin/applicant_profile";
+@import "admin/clients";
+@import "components/select";
+@import "components/checkboxes";
+
+// test home
+@import "new_home";
+
+// Resume builder
+@import "resume_builder/main";

@@ -39,4 +39,34 @@
   padding: 3px 0 0 0;
   width: 30px;
   background-color: #30323D;
-  margin-top: 8px; }
+  margin-top: 8px;
+}
+
+.white-on-hover{
+  a:hover{
+    color: white;
+  }
+}
+
+.notificationBar{
+
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  height:38px;
+  padding-left:50px;
+  padding-right:57px;
+  background:#FFBA69;
+  border-radius:4px;
+
+  margin-top: -32px;
+  margin-bottom: -6px;
+  z-index: inherit;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+}

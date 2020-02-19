@@ -4,7 +4,7 @@
         <div class="left">
             <img src="/images/dashboard/info.svg" alt="info icon">
             <span>
-            FILL IN THE INFORMATION TO BECOME AN AGENT (BUSSINESS SUPPORT)
+            FILL IN THE INFORMATION TO REGISTER AN AGENT (BUSSINESS SUPPORT)
         </span>
         </div>
     </div>
@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="account-edit-section-edit-btn no-decoration" :class="{'disabled-btn' : !canSubmit}" id="submitBtnWrapper">
-        <a href="javascript:;" v-on:click="nextStep">
+        <a class="btn-primary" href="javascript:;" v-on:click="nextStep">
             CONTINUE
         </a>
     </div>
@@ -93,10 +93,8 @@ export default {
       nextStep (e) {
         e.preventDefault()
         if (this.noErrors()) {
-            this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf})
-            // this.changeStep(5)
-            // window.location.href = '/freelancer/register/completed'
-            window.location.replace('/freelancer/register/completed')
+            this.getData({ password: this.passwords.password, password2: this.passwords.passwordConf});
+            this.$emit('formReady');
         } else {
             this.showErrors = true
         }

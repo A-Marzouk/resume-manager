@@ -4,54 +4,81 @@
     height:56px !important;
   }
 
-  .campaign-info-bar{
-    height: 56px;
-    width: 100%;
-    background: #05A4F4;
-    display: flex;
-    margin-top: -16px;
-    justify-content: left;
-    align-items: center;
-    box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius:4px ;
-    a:hover{
-      text-decoration: none;
-    }
+}
+
+.campaign-info-bar{
+  height: 56px;
+  width: 100%;
+  padding-left: 35px;
+  padding-right: 35px;
+  background: #05A4F4;
+  display: flex;
+  margin-top: -16px;
+  justify-content: left;
+  align-items: center;
+  box-shadow: 0px 2px 18px rgba(179, 183, 186, 0.57);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  a:hover{
+    text-decoration: none;
+  }
+  @media (max-width:1240px) {
+    overflow-x: auto;
+  }
+
+  @media (max-width:768px) {
+    padding-left: 15px;
+  }
+  .campaign-info-tab{
+    font-family: Roboto;
+    font-style: normal;
+    margin-right: 64px !important;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #FFFFFF;
+    border-bottom: 3px solid transparent;
+    padding: 12px 14px ;
+    margin-top: 6px;
+    cursor: pointer;
+    opacity: 0.8;
     @media (max-width:1240px) {
-      overflow-x: auto;
+      margin-right: 0;
+      padding: 12px 14px;
+      white-space: nowrap;
     }
-    .campaign-info-tab{
-      font-family: Roboto;
-      font-style: normal;
-      margin-right: 80px !important;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 24px;
-      color: #FFFFFF;
-      border-bottom: 3px solid transparent;
-      padding: 12px 14px ;
-      margin-top: 6px;
-      cursor: pointer;
-      opacity: 0.8;
-      @media (max-width:1240px) {
-        margin-right: 0;
-        padding: 12px 14px;
-        white-space: nowrap;
-      }
+  }
+  .campaign-info-tab.active{
+    font-weight: bold;
+    border-bottom: 3px solid white;
+    opacity: 1;
+  }
+  .campaign-info-tab.firstTab{
+    margin-left: 25px !important;
+    @media (max-width:1240px) {
+      margin-left: 0;
     }
-    .campaign-info-tab.active{
-      font-weight: bold;
-      border-bottom: 3px solid white;
-      opacity: 1;
-    }
-    .campaign-info-tab.firstTab{
-      margin-left: 25px !important;
-      @media (max-width:1240px) {
-        margin-left: 0;
-      }
-    }
+  }
+}
+
+.campaign-info-bar.reversed{
+  background: white;
+  border-bottom: 1px solid #3fc5ff;
+  box-shadow: none;
+  .campaign-info-tab{
+    color:#05A4F4 ;
+    font-size: 14px;
+    padding-top: 18px;
+    margin-top: -2px;
+  }
+  .campaign-info-tab.active{
+    font-weight: bold;
+    border-bottom: 0;
+    opacity: 1;
+    background-image: url("/images/Triangle.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-y: -16px;
   }
 }
 
@@ -65,7 +92,7 @@
   letter-spacing: -0.1px;
   color: #4A5464;
   a{
-    margin: 0px 30px 2px 25px;
+    margin: 0px 30px 2px 32px;
     @media (max-width:600px) {
       margin-left: 0;
     }
@@ -186,6 +213,18 @@
             }
           }
 
+          .date-picker-btn {
+            background: #F3F3F3;
+            height: 38px;
+            width: 122px;
+            display: block;
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 2px;
+          }
+
           height: 78px;
           padding: 0 20px;
           background:white;
@@ -193,7 +232,7 @@
           justify-content: space-around;
           align-items: center;
           img{
-            margin-right:18px;
+            margin-right: 11px;
           }
 
           .days-container {
@@ -213,19 +252,37 @@
               &:hover {
                 text-decoration: none;
               }
+
+              &.active {
+                padding: 10px;
+              }
             }
 
             .day-of-week.active {
-              border-bottom: 1.5px solid $l-blue;
+              display: flex;
+              justify-content: center;
+              position: relative;
+
+              &::after {
+                content: "";
+                height: 3px;
+                width: 100%;
+                border-radius: 6px;
+                background-color: #05A4F4;
+                position: absolute;
+                bottom: -10px;
+              }
             }
 
             .day-number,
             .day-of-week {
               margin: 0 auto;
               text-align: center;
+              font-size: 16px;
 
               &.active {
-                color: $l-blue
+                color: #05A4F4;
+                font-size: 18px;
               }
             }
 
@@ -344,6 +401,18 @@
   }
 }
 
+#pick-date-modal.show {
+  .modal-dialog {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+}
+
 
 .text-lay{
   font-family: Roboto;
@@ -373,8 +442,8 @@
   img{
     margin-left: 12px;
     margin-right: 19px;
-    height: 35px;
-    width: 35px;
+    height: 34px;
+    width: 34px;
     margin-top: 5px;
   }
   .team-member-info{
@@ -437,6 +506,7 @@
   margin: auto;
   .modal-body{
     .ui-datepicker .ui-datepicker-header{
+      text-transform: uppercase;
       background: white;
       border: none;
       width: 282px;
@@ -446,12 +516,14 @@
     }
 
     .ui-datepicker .ui-datepicker-next span{
-      background-position: 0px -3px !important;
-      background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/right.png);
+      background-position: center !important;
+      background-size: auto 100%;
+      background-image: url("/images/icons/arrow_forward.svg");
     }
     .ui-datepicker .ui-datepicker-prev span{
-      background-position: 0px -3px !important;
-      background-image: url(http://local.123workforce.me/images/freelancer/campaign_activity/left.png);
+      background-position: center !important;
+      background-size: auto 100%;
+      background-image: url("/images/icons/arrow_back.svg");
 
     }
     .ui-datepicker .ui-datepicker-next,.ui-datepicker .ui-datepicker-prev{
@@ -528,7 +600,8 @@
     line-height: 20px;
     text-align: center;
     color: #4A5464;
-    padding-bottom: 20px;
+    padding-bottom: 17px;
+    padding-top: 5px;
   }
   .ui-datepicker th{
     font-family: Roboto;
@@ -546,7 +619,7 @@
 
   .date-picker-modal-footer{
     display:flex;
-    justify-content:space-around;
+    justify-content: center;
     align-items:center;
     margin-top:0px;
     height:65px;
@@ -556,6 +629,7 @@
     .cancelBtn{
       width:86px;
       height:26px;
+      margin: 0 23px;
       background:white;
       font-family: Roboto;
       font-style: normal;
@@ -587,7 +661,7 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      margin: 0;
+      margin: 0 23px;
     }
   }
 
@@ -632,7 +706,18 @@
 }
 
 .hideDate {
+  color: #05A4F4;
   @media (max-width: 900px) {
     display: none;
+  }
+}
+
+#pick-date-modal.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-dialog {
+    transform: none;
   }
 }

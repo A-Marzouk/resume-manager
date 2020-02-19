@@ -89,12 +89,12 @@
                     <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Hourly rate</div>
                 </div>
                 <div class="col-md-4 text-center"  style="font-size: 15px; color: white;">
-                    <span id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->availableHours)}} hours</span>
+                    <span id="maxHours{{$freelancer->id}}{{$value['id']}}" style="font-weight: bold;">{{intval($freelancer->userData->available_hours_per_week)}} hours</span>
                     <div class="cardLabel" style="font-size: 13px; font-weight: normal;">Weekly Availability</div>
                 </div>
 
                 <div class="col-md-4" style="padding: 0;">
-                    @if($freelancer->userData->availableHours !=0)
+                    @if($freelancer->userData->available_hours_per_week !=0)
                         <div class="row text-center cardRow NoDecor">
                             @if(isset($portfolioModal) && !$isClient)
                                 <a class="hireCardBtn btn-block showHireSection" href="{{route('client.login')}}">

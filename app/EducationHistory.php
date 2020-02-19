@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class EducationHistory extends Model
 {
-    protected $table = 'education_history';
+    protected $table = 'education_histories';
     protected $fillable = [
         'school_title','description','date_to','date_from','currently_learning','type'
     ];

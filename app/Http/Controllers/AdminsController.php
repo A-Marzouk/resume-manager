@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Affiliate;
 use App\Booking;
+use App\Campaign;
 use App\Client;
-use App\ClientSearch;
+use App\Search;
 use App\Conversation;
 use App\Job;
+use App\Language;
+use App\Models\Enums\UserStage;
+use App\Models\Enums\UserStatus;
 use App\Owner;
 use App\PayPalInvoice;
 use App\StripeInvoice;
@@ -15,6 +19,8 @@ use App\User;
 use App\UserData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Lang;
 
 class AdminsController extends Controller
 {
@@ -23,18 +29,203 @@ class AdminsController extends Controller
         $this->middleware('admin');
     }
 
+    // main front end pages :
+
     public function welcomePage(){
-        // get list of freelancers :
-        session()->put('admin', 'AdminWasHere');
-        $data['users'] = User::all();
-        $data['clients'] = Client::all();
-        $data['searches'] = ClientSearch::all();
-        $data['bookings'] = Booking::all();
-        $data['owners']   = Affiliate::all();
-        $data['jobs']     = Job::all();
-        $data['permissions'] = explode(',',auth()->user()->permissions);
-        return view('admin.usersList', compact('data'));
+        return view('admin-new.dashboard.dashboard');
     }
+
+    public function showApplicantProfile($user_id){
+        return view('admin-new.dashboard.applicant_profile',compact('user_id'));
+    }
+
+    public function showApprovedAgentProfile($user_id){
+        return view('admin-new.dashboard.approved_agent_profile',compact('user_id'));
+    }
+
+    public function showAdvancedSearchPage(){
+        return view('admin-new.advanced_search_view');
+    }
+
+    public function showRegisterAgentPage(){
+        return view('admin-new.register_agent_view');
+    }
+
+    public function showRegisterClientPage(){
+        return view('admin-new.register_client_view');
+    }
+
+    public function addBehanceDesigner(){
+        return view('admin-new.add_behance_designer');
+    }
+
+    // edit agent views :
+
+    public function showEditPersonalInfo($user_id){
+        return view('admin-new.editAgent.editPersonalInfo',compact('user_id'));
+    }
+
+    public function showEditProfessionalInfo(){
+        return view('admin-new.editAgent.editProfessionalInfo');
+    }
+
+    public function showEditResumeInfo(){
+        return view('admin-new.editAgent.editRecordResumeInfo');
+    }
+
+
+
+    // api ( fetching data from the DB )
+
+    public function getAgentsByProfessionName(){
+        // user -> data -> profession -> name === $professionName
+        // 1 => business-support
+        // 2 => developer
+        // 3 => designer
+        $profession_id = Input::get('profession_id') ?? '';
+        $limit = Input::get('limit') ?? '';
+        $paginatedData = User::whereHas('data', function ($query) use ($profession_id) {
+            $query->where('profession_id', '=', $profession_id);
+        })->with(['data','agent','skills','projects'  => function ($query) {return $query->limit(10);},'languages','worksHistory.projects','references','educationsHistory'])->paginate($limit);
+
+
+        foreach ($paginatedData as $user){
+                $user->is_details_opened = false;
+                $user->is_edited = false;
+                $user->is_skill_edited = false;
+                $user->user_data = $user->data ;
+                $user->usernameOldValue = $user->username ;
+        }
+
+        return $paginatedData ;
+    }
+
+
+    public function getCampaigns(){
+        $limit = Input::get('limit') ?? '';
+        return Campaign::with('agents.user.userData','client.user','subscription')->paginate($limit);
+    }
+
+    public function getAgentByID($user_id){
+        $user = User::where('id',$user_id)->with('data','agent','languages')->first();
+        $results = $user->affiliatesWithTotalSpent($user->myAffiliates());
+        $user['affiliates'] = $results['users'];
+        $user['total_spent_all'] = $results['total_spent_all'];
+        return $user;
+    }
+
+    public function getClients(){
+
+        $limit = Input::get('limit') ?? '';
+        return User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'client');
+        })->with('data','client')->paginate($limit);
+
+    }
+
+    // create agent :
+
+    public function createAgent(Request $request){
+        $agent =  app(User::class)->createAgent([
+            'user' => [
+                'email' => $request->personalData['email'],
+                'password' => $request->password,
+                'username' => $request->personalData['email'],
+            ],
+            'agent' => [
+                'available_hours_per_week' => $request->professionalData['hoursPerWeek'],
+                'experience'               => $request->professionalData['sector'],
+                'technologies'             => implode(',',$request->professionalData['techs']),
+                'hourly_rate'              => 5,
+                'voice_character'          => $request->professionalData['voice'],
+            ],
+            'user_data' => [
+                'profession_id'         => $request->personalData['profession_id'], // business-support, developer, designer
+                'currency_id'           => 1, // usd
+                'timezone'              => 1,
+                // personal data
+                'first_name'            => $request->personalData['name'],
+                'last_name'             => $request->personalData['surname'],
+                'city'                  => $request->personalData['cityName'],
+                'phone'                 => $request->personalData['phone'],
+                'gender'                => $request->personalData['gender'],
+                'paypal_acc_number'     => $request->personalData['paypal'],
+//                // professional data
+                'job_title'             => $request->professionalData['primaryJob'],
+            ]
+        ]);
+
+
+        // add languages to agent
+
+        $languageSymbol = $request->professionalData['lang'];
+
+        $language = Language::where('name','english')->first();
+        if($languageSymbol == 'es'){
+            $language = Language::where('name','spanish')->first();
+        }
+
+        // attach user to language
+        $language->users()->attach($agent->user_id);
+
+
+        return $agent->user;
+
+    }
+
+    // update agent's hourly rate
+
+    public function updateAgentsHourlyRate(Request $request){
+        $user = User::find($request->user_id);
+        return $user->agent()->update([
+            'hourly_rate' => $request->hourly_rate
+        ]);
+    }
+
+    // update agent's technologies
+
+    public function updateAgentsTechnologies(Request $request){
+        $user = User::find($request->user_id);
+        return $user->agent()->update([
+            'technologies' => $request->technologies
+        ]);
+    }
+
+    public function editAgent(Request $request){
+
+    }
+
+    // create client :
+    public function createClient(Request $request){
+        $client = app(User::class)->createClient([
+            'user' => [
+                'email' => $request->email,
+                'password' => $request->password,
+                'username' => $request->email,
+                'is_active' => 1,
+            ],
+            'client' => [
+                'agency' => $request->agency,
+                'department_email' => $request->department_email,
+                'agency_phone' => $request->phone,
+                'contact' => $request->name,
+            ],
+        ]);
+
+        $clientData =  app(UserData::class)->createUserData([
+            'userData' => [
+                'user_id'               => $client->user_id,
+                'profession_id'         => 1, // business-support
+                'currency_id'           => 1, // usd
+                'timezone'              => 1,
+                // personal data
+                'first_name'            => $request->name,
+            ]
+        ]);
+
+        return $client;
+    }
+
 
     public function viewBusinessSupportUsers(){
         return view('admin.business_support_users');

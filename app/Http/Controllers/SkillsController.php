@@ -10,18 +10,29 @@ namespace App\Http\Controllers;
 
 
 use App\Skill;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class SkillsController extends Controller
 {
     public function getSkills(){
        // get current authenticated freelancer :
-        $currentUser = auth()->user();
+
+        if(Input::get('user_id') && currentUser()->is_admin){
+            $currentUser = User::where('id',Input::get('user_id'))->first();
+        }else{
+            $currentUser = currentUser();
+        }
         return $currentUser->skills;
     }
 
     public function addSkill(Request $request){
-        $currentUser = auth()->user();
+        if(Input::get('user_id') && currentUser()->is_admin){
+            $currentUser = User::where('id',$request->user_id)->first();
+        }else{
+            $currentUser = currentUser();
+        }
         $request->validate([
             'skill_title' => 'max:190',
             'type' => 'max:190',
@@ -33,9 +44,11 @@ class SkillsController extends Controller
         $skill->user_id = $currentUser->id;
         $skill->skill_title = $request->skill_title;
         $skill->type = $request->type;
+        $skill->percentage = $request->percentage;
         if(isset($request->icon)) {
             $skill->icon = $request->icon;
         }
+
         $skill->save();
 
         return ['id'=>$skill->id];
@@ -49,14 +62,9 @@ class SkillsController extends Controller
         return 'Skill deleted';
     }
 
-    public function editSkill(Request $request){
-        $skill = Skill::where('id',$request->id);
-
-        $skill->skill_title = $request->skill_title;
-        $skill->type = $request->type;
-        if(isset($request->icon)) {
-            $skill->icon = $request->icon;
-        }
-        $skill->save();
+    public function updateSkill(Request $request){
+        $skill = Skill::where('id',$request->id)->first();
+        $skill->update($request->toArray());
+        return $skill;
     }
 }

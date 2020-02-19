@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Affiliate;
+use App\Campaign;
 use App\Client;
 use App\Owner;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,78 +15,148 @@ class ClientsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:client');
+        $this->middleware('role:client');
     }
 
-    public function index(){
+    public function index()
+    {
         $client = auth()->guard('client')->user();
-        return view('client.dashboard',compact('client'));
+        return view('client.dashboard', compact('client'));
     }
 
-    public function campaignActivity(){
-        return view('client.campaign_main');
+    public function campaignActivity($campaign_id)
+    {
+        $campaign = Campaign::where('id', $campaign_id)->with('agents.user','agents.shifts', 'agents.user.userData', 'agents.logs.history', 'faqs', 'links','files')->first();
+        return view('client.campaign_main', compact('campaign'));
     }
 
-    public function viewAccountEditPage(){
+    public function viewAccountEditPage()
+    {
         return view('client.my_account.account_information_edition');
     }
 
-    public function viewClientServiceAgreement(){
-        return view('client.my_account.service_agreement') ;
+    public function viewClientServiceAgreement()
+    {
+        return view('client.my_account.service_agreement');
     }
 
-    public function viewUpdateSubPlan(){
-        return view('client.payments.update_sub_plan') ;
+
+    public function viewClientPrivacyAgreement()
+    {
+        return view('client.my_account.privacy_agreement');
     }
 
-    public function viewClientPrivacyAgreement(){
-        return view('client.my_account.privacy_agreement') ;
+    public function viewClientPaymentShowInvice()
+    {
+        return view('client.payments.payment_show_invoice');
     }
 
-     public function viewClientPaymentShowInvice(){
-         return view('client.payments.payment_show_invoice') ;
-     }
-
-      public function viewClientSubSetUp(){
-         return view('client.payments.sub_set_up') ;
-      }
-
-    public function viewClientPaymentPay(){
-        return view('client.payments.payment_pay') ;
+    public function viewClientSubSetUp()
+    {
+        return view('client.payments.sub_set_up');
     }
 
-    public function viewClientCampaignAgents(){
-    return view('client.campaign_agents');
+
+    public function viewClientCampaignAgents()
+    {
+        return view('client.campaign_agents');
     }
 
-    public function viewClientManagerCalculation(){
-        return view('client.payments.manager_calculation') ;
+    public function viewClientManagerCalculation()
+    {
+        return view('client.payments.manager_calculation');
     }
 
-    public function showAddAgentPage(){
+    public function showAddAgentPage()
+    {
         return view('client.add_agent_view');
-
     }
 
-    public function campaignArchives(){
+    public function campaignArchives()
+    {
         return view('client.campaign_archives');
     }
 
-    public function campaignAddAgent(){
-        return view('client.add_agent_view');
-
+    public function viewCampaignAddAgentPage()
+    {
+        $clientCampaigns = currentClient()->campaigns;
+        return view('client.add_agent_view', compact('clientCampaigns'));
     }
 
-    public function hasAgreed(){
-        $currClient = auth()->guard('client')->user();
-        if($currClient->agree_with_terms == true){
-            return ['terms' =>'AGREED'];
+    public function campaignAddAgent(Request $request)
+    {
+        // get the campaign
+        $campaign = Campaign::find($request->selectedCampaignID);
+        // attach agent :
+        if (!$campaign->agents->contains($request->agentID)) {
+            $campaign->agents()->attach($request->agentID);
+        } else {
+            return [
+                'status' => 'exists'
+            ];
         }
-        return [ 'terms' =>'NOT_AGREED'];
+        // update pivot status
+        $campaign->agents()->where('agent_id', $request->agentID)->first()->pivot->status = $request->status;
+
+        return [
+            'status' => 'success'
+        ];
     }
 
-    public function setTerms(Request $request){
-        if($request->terms == 'AGREED'){
+    public function signContract(Request $request)
+    {
+        // contract type :
+        $type = $request->type; // privacy or service
+        // timestamp
+        $current_date_time = Carbon::now()->toDateTimeString();
+
+        if ($request->type === 'privacy') {
+            currentClient()->user()->update([
+                'agreed_with_privacy_agreement_at' => $current_date_time
+            ]);
+        } else if ($request->type === 'service') {
+            currentClient()->user()->update([
+                'agreed_with_service_agreement_at' => $current_date_time
+            ]);
+        }
+
+        if (isset($request->signature)) {
+            currentClient()->update([
+                'signature' => $request->signature
+            ]);
+        }
+
+
+        return [
+            'status' => 'success'
+        ];
+    }
+
+
+    public function getCurrentClient()
+    {
+        $user = User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'client');
+        })->where('id', currentClient()->user_id)->with('client','client.searches')->first();
+        $results = $user->affiliatesWithTotalSpent( $user->myAffiliates());
+        $user['affiliates'] = $results['users'];
+        $user['total_spent_all'] = $results['total_spent_all'];
+
+        return $user;
+    }
+
+    public function hasAgreed()
+    {
+        $currClient = auth()->guard('client')->user();
+        if ($currClient->agree_with_terms == true) {
+            return ['terms' => 'AGREED'];
+        }
+        return ['terms' => 'NOT_AGREED'];
+    }
+
+    public function setTerms(Request $request)
+    {
+        if ($request->terms == 'AGREED') {
             $currClient = auth()->guard('client')->user();
             $currClient->agree_with_terms = true;
             $currClient->save();
@@ -91,40 +164,79 @@ class ClientsController extends Controller
         return 'agreed saved';
     }
 
-    public function viewClientAgreement(){
+    public function viewClientAgreement()
+    {
         $client = auth()->guard('client')->user();
-        if($client){
-            return view('client_agreement',compact('client'));
-        }else{
+        if ($client) {
+            return view('client_agreement', compact('client'));
+        } else {
             redirect('/client');
         }
     }
 
-    public function viewClientPrivacyPolicy(){
+    public function viewClientPrivacyPolicy()
+    {
         $client = auth()->guard('client')->user();
-        if($client){
-            return view('client_privacy_policy',compact('client'));
-        }else{
+        if ($client) {
+            return view('client_privacy_policy', compact('client'));
+        } else {
             redirect('/client');
         }
     }
 
-    public function viewJobsPage(){
+    public function viewJobsPage()
+    {
         $currClient = auth()->guard('client')->user();
-        return view('client.jobs',compact('currClient'));
+        return view('client.jobs', compact('currClient'));
     }
 
-    public function getJobs(){
+    public function getJobs()
+    {
         $currClient = auth()->guard('client')->user();
         return $currClient->jobs;
     }
 
-    public function viewProfilePage($client_id){
-        $client = Client::where('id',$client_id)->first();
-        return view('client.profile',compact('client'));
+    public function viewProfilePage($client_id)
+    {
+        $client = Client::where('id', $client_id)->first();
+        return view('client.profile', compact('client'));
     }
 
-    public function showClientSearchPage(){
+    public function showClientSearchPage()
+    {
         return view('client.search');
+    }
+
+    public function updateClient(Request $request)
+    {
+        $requestArray = $request->toArray();
+
+        $user = User::whereHas('roles', function ($query) {
+            $query->where('name', '=', 'client');
+        })->where('id', $request->id)->with('client')->first();
+
+        if (isset($request->password) && !empty($request->password)) {
+            $this->validate($request, [
+                'password' => 'confirmed|min:6',
+            ]);
+        } else {
+            // remove password from the request array
+            unset($requestArray['password']);
+            unset($requestArray['password_confirmation']);
+        }
+
+        $user->update(
+            $requestArray
+        );
+
+        $user->client->update(
+            $requestArray['client']
+        );
+
+        return [
+            'user' => $user,
+            'status' => 'success',
+        ];
+
     }
 }

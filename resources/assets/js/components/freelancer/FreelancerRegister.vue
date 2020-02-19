@@ -3,15 +3,15 @@
         <div class="account-info-edit-wrapper">
             <nav class="navbar navbar-light fixed-top dashboard_navbar">
                 <div class="backBtn">
-                    <a href="/freelancer/dashboard">
+                    <a href="/admin/agents">
                         <img src="/images/client/arrow_back.png" alt="back-icon">
                     </a>
-                    <span v-if="step !== 6">BECOME AN AGENT</span>
+                    <span v-if="step !== 6">AGENT REGISTER</span>
                     <span v-else>REGISTRATION COMPLETED</span>
                 </div>
             </nav>
             <keep-alive>
-                <router-view :changeStep="changeStep" :getData="getData" ></router-view>
+                <router-view :changeStep="changeStep" :getData="getData" @formReady="submitForm"></router-view>
             </keep-alive>
             <span v-if="step !== 6" class="step-footer">Step {{ step }} / 5</span>
         </div>
@@ -38,10 +38,23 @@
                     return ;
                 }
                 this.canSubmit = false;
-                axios.post('/freelancer/register/submit',this.formData).then( (response) => {
+                let form_data = new FormData();
+                form_data.append('recordingFile', this.formData.resumeData.recordingFile);
+                form_data.append('resumeFile', this.formData.resumeData.resumeFile);
+                form_data.append('profilePicture', this.formData.profileData.profilePicture);
+
+                form_data.append('resumeData', JSON.stringify(this.formData.resumeData));
+                form_data.append('personalData', JSON.stringify(this.formData.personalData));
+                form_data.append('professionalData', JSON.stringify(this.formData.professionalData));
+
+                form_data.append('password', this.formData.password);
+                form_data.append('password2', this.formData.password2);
+
+                axios.post('/agent/register/submit',
+                    form_data).then( (response) => {
                     if(response.data.status === 'success'){
-                        // redirect to client dashboard
-                        window.location.href = '/freelancer';
+                        // redirect to admin
+                        window.location.replace('/freelancer/register/completed')
                     }
                     this.errors = response.data.errors;
                 });

@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/js/app.js"></script>
+<script type="text/javascript" src="/js/dropzone.js"></script>
 <script
 src="https://code.jquery.com/jquery-3.3.1.min.js"
 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -7,9 +7,9 @@ crossorigin="anonymous"></script>
 src="https://code.jquery.com/jquery-migrate-3.0.1.min.js"
 integrity="sha256-F0O1TmEa4I8N24nY0bya59eP6svWcshqX1uzwaWC4F4="
 crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/app.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-<script type="text/javascript" src="/js/dropzone.js"></script>
 <script>
     $( function() {
         $( "#datepicker" ).datepicker({
@@ -25,6 +25,7 @@ crossorigin="anonymous"></script>
 {{-- slick scripts --}}
 <script type="text/javascript" src="/js/slick-master/slick/slick.min.js"></script>
 <script>
+    Dropzone.autoDiscover = false;
     $(document).ready(function(){
         $('.slickSlide').slick({
             lazyLoad: 'ondemand',
@@ -102,6 +103,31 @@ crossorigin="anonymous"></script>
             });
         }
 
+        if (document.getElementById("dropzone")) {
+            let dropzone = new Dropzone("#dropzone", {
+                maxFilesize: 45,
+                dictDefaultMessage: '',
+                dictRemoveFile: 'DELETE THE PHOTO',
+                url: '/myUrl',
+                paramName: 'photo',
+                addRemoveLinks: true,
+                init: function () {
+                    this.on('addedfile', (file) => {
+                        $('.dz-message').hide()
+                        $('.dz-input').hide()
+                        $('#dropbox').addClass('file-upload')
+                    })
+    
+                    this.on('error', (error) => console.log(error))
+    
+                    this.on('removedfile', (file) => {
+                        $('.dz-message').show()
+                        $('.dz-input').show()
+                        $('#dropbox').removeClass('file-upload')
+                    })
+                }
+            });
+        }
     });
 
     $('.single-item').slick({
@@ -133,31 +159,4 @@ crossorigin="anonymous"></script>
     $(".designerBtn a").one("click", handler1);
 
 
-</script>
-
-<script>
-    $("#dropzone").dropzone({
-        maxFilesize: 45,
-        dictDefaultMessage: '',
-        dictRemoveFile: 'DELETE THE PHOTO',
-        dictCancelUpload: '',
-        url: '/myUrl',
-        paramName: 'photo',
-        addRemoveLinks: true,
-        init: function () {
-            this.on('addedfile', (file) => {
-                $('.dz-message').hide()
-                $('.dz-input').hide()
-                $('#dropbox').addClass('file-upload')
-            })
-
-            this.on('error', (error) => console.log(error))
-
-            this.on('removedfile', (file) => {
-                $('.dz-message').show()
-                $('.dz-input').show()
-                $('#dropbox').removeClass('file-upload')
-            })
-        }
-    });
 </script>

@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="campaignMainComponent">
-        <campaign-main></campaign-main>
+        <campaign-main :campaign = "{{$campaign}}"></campaign-main>
     </div>
 
 @endsection

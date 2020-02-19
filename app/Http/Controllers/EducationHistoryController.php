@@ -10,18 +10,29 @@ namespace App\Http\Controllers;
 
 
 use App\EducationHistory;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class EducationHistoryController extends Controller
 {
     public function getEducations(){
        // get current authenticated freelancer :
-        $currentUser = auth()->user();
+        if(Input::get('user_id') && currentUser()->is_admin){
+            $currentUser = User::where('id',Input::get('user_id'))->first();
+        }else{
+            $currentUser = currentUser();
+        }
         return $currentUser->educationsHistory;
     }
 
     public function addEducation(Request $request){
-        $currentUser = auth()->user();
+        if(Input::get('user_id') && currentUser()->is_admin){
+            $currentUser = User::where('id',$request->user_id)->first();
+        }else{
+            $currentUser = currentUser();
+        }
+
         $request->validate([
             'school_title' => 'max:190|required',
             'description' => 'max:1500|required',
@@ -41,10 +52,10 @@ class EducationHistoryController extends Controller
         $educationH->school_title = $request->school_title;
         $educationH->description = $request->description;
         $educationH->date_from = $request->date_from;
-        if($request->currently_learning !== true){
+        if($request->is_currently_learning !== true){
             $educationH->date_to = $request->date_to;
         }
-        $educationH->currently_learning = $request->currently_learning;
+        $educationH->is_currently_learning = $request->is_currently_learning ? true : false;
 
         $educationH->save();
 
@@ -66,9 +77,9 @@ class EducationHistoryController extends Controller
         $educationH->school_title = $request->school_title;
         $educationH->description = $request->description;
         $educationH->date_from = $request->date_from;
-        if($request->currently_learning!== true){
+        if($request->is_currently_learning!== true){
             $educationH->date_to = $request->date_to;
-            $educationH->currently_learning = $request->currently_learning;
+            $educationH->is_currently_learning = $request->is_currently_learning;
         }
         $educationH->save();
     }

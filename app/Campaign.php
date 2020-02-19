@@ -15,27 +15,51 @@ class Campaign extends Model
 {
     protected $table = 'campaigns';
     protected $fillable = [
-        'client_id','title','description','start_date','end_date','status'
+        'client_id','title','description','status','process_flow'
     ];
 
     public function members(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Agent::class);
+    }
+
+
+
+
+    public function agents(){
+        return $this->belongsToMany(Agent::class)->withPivot('status');
+    }
+
+    public function workingShifts(){
+        return $this->hasMany(workingShift::class);
     }
 
     public function faqs(){
         return $this->hasMany(FAQ::class);
     }
 
+
+    public function files(){
+        return $this->hasMany(CampaignFile::class);
+    }
+
+    public function links(){
+        return $this->hasMany(Link::class);
+    }
+
     public function shifts(){
         return $this->hasMany(Shift::class);
     }
 
-    public function logs(){
+    public function activityLog(){
         return $this->hasMany(ActivityLog::class);
     }
 
     public function client(){
         return $this->belongsTo(Client::class);
+    }
+
+    public function subscription(){
+        return $this->hasOne(Subscription::class);
     }
 
 }

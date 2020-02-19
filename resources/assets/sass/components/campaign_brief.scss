@@ -26,6 +26,7 @@
     flex-direction: column;
     font-style: normal;
     padding-left: 60px;
+    padding-right: 60px;
     .title{
       max-width: 1041px;
       font-weight: bold;
@@ -82,7 +83,7 @@
       .campaign-info-tab{
         font-family: Roboto;
         font-style: normal;
-        margin-right: 80px !important;
+        margin-right: 64px !important;
         font-weight: normal;
         font-size: 18px;
         line-height: 24px;
@@ -254,67 +255,25 @@
         color: #4A5464;
       }
 
-      .files-tab-upload-area{
-        display: flex;justify-content: center;
-        margin-bottom: 56px;
-       .upload-box{
-         width: 384px;
-         height: 222px;
-         margin-left:10px;
-         margin-right:10px;
-         background: #F2FBFF;
-         border: 1px dashed #05A4F4;
-         box-sizing: border-box;
-         border-radius: 4px;
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         a{
-           text-decoration: none;
-         }
-         .upload-box-heading{
-           font-family: Roboto;
-           font-style: normal;
-           font-weight: normal;
-           font-size: 16px;
-           line-height: 24px;
-           text-align: center;
-           letter-spacing: -0.1px;
-           color: #4A5464;
-           margin-top: 29.15px;
-         }
-         .upload-btn{
-           width:178px;
-           height:48px;
-           margin-top: 22.43px;
-           font-family: Roboto;
-           font-style: normal;
-           font-weight: 500;
-           font-size: 14px;
-           line-height: 16px;
-           text-transform: uppercase;
-           color: #FFFFFF;
-           background: #FFA368;
-           border-radius: 2px;
-           display:flex;
-           align-items:center;
-           justify-content:center;
-         }
+      .faq-question-input {
+        max-width: 628px;
 
-         .upload-notes{
-           margin-top: 29.87px;
-           font-family: Roboto;
-           font-style: normal;
-           font-weight: normal;
-           font-size: 13px;
-           line-height: 24px;
-           text-align: center;
-           letter-spacing: -0.1px;
-           color: #7A828D;
-           opacity: 0.75;
-         }
+        .btn-link {
+          align-self: flex-end;
+          text-align: right;
+          margin-top: 23px !important;
+          margin-right: 50px;
+        }
 
-       }
+        // .edit-icon {
+        //   position: absolute;
+        // }
+
+        .dropdown-circle-icon {
+          margin-left: 0;
+          position: absolute;
+          right: -70px;
+        }
       }
     }
 
@@ -330,6 +289,32 @@
   display: flex;
   flex-direction: column;
   margin-top: 36px;
+
+  .icon.icon-point {
+    display: inline-block;
+    height: 11px;
+    width: 11px;
+    background: #FFA368;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+
+  .faq-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    img:first-child {
+      margin-right: 20px;
+      width: 36px;
+      height: 36px;
+    }
+
+    .faq-input {
+      width: 100%;
+    }
+  }
+
   .faq-input-label{
     font-family: Roboto;
     font-style: normal;
@@ -337,6 +322,7 @@
     font-size: 18px;
     line-height: 24px;
     color: #4A5464;
+    margin-bottom: 1rem;
   }
   .sub-label{
     font-size: 16px;
@@ -357,6 +343,10 @@
     width: 100%;
     position: relative;
     flex-wrap: nowrap;
+
+    .bg-gray-input {
+      background: #FBFBFB;
+    }
 
     input.fake-input {
       position: absolute;
@@ -443,9 +433,8 @@
     border-bottom: 1px solid rgba(188, 191, 198, 0.44);
   }
   .faq-question{
-    margin-top: 7px;
-    padding-bottom: 45px;
-    padding-top: 54px;
+    // margin-top: 7px;
+    padding: 18px 0;
     display: flex;
     .faq-numbering{
       margin-right: 36px;
@@ -469,7 +458,7 @@
         font-size: 16px;
         line-height: 24px;
         color: #4A5464;
-        margin-bottom: 20px;
+        // margin-bottom: 20px;
       }
       .faq-item-answer{
         font-family: Roboto;
@@ -546,4 +535,15 @@
       }
     }
   }
+}
+
+.little {
+  font-size: 13px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.1px;
+
+  color: #7A828D;
+
+  opacity: 0.75;
 }

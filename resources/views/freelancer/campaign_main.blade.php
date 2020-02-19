@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="freelancerCampaignMainComponent">
-        <freelancer-campaign-main></freelancer-campaign-main>
+        <freelancer-campaign-main :campaign = "{{$campaign}}"></freelancer-campaign-main>
     </div>
 
 @endsection

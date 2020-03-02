@@ -197,6 +197,13 @@ class NotificationsController extends Controller
     // message to sales :
 
     public function messageToSales(Request $request){
+
+        $spam = $request->spamTrap;
+
+        if($spam) {  // If the hidden field is not empty, it's a bot!
+            die("No spamming allowed!");
+        }
+
         $emails = ['AhmedMarzouk266@gmail.com','conor@123workforce.com','shey@123workforce.com'];
         $data = [
             'subject' => $request->subject,

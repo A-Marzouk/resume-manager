@@ -248,6 +248,9 @@
                         <div>
                             <form method="POST" class="clientForm" action="{{ route('message.to.sales') }}">
                                 {{csrf_field()}}
+                                <div class="d-none">
+                                    <input type="text" name="spamTrap" value="">
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -258,8 +261,8 @@
 
                                                 @if ($errors->has('email'))
                                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                                        <strong>{{ $errors->first('email') }}</strong>
+                                                    </span>
                                                 @endif
                                             </div>
                                         </div>

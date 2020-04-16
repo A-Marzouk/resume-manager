@@ -56,9 +56,9 @@ class StripePayments
 
 
     protected function makeStripeCustomPayment(Request $request){
-        $amountToPay = intval($request->amountToPay) * 100;
+        $amountToPay = ($request->amountToPay) * 100;
         if($request->paymentInfo == 'hireFreelancer'){
-            $amountToPay = intval($request->amountToPay);
+            $amountToPay = ($request->amountToPay);
         }
         $customerID = $this->getCustomerID($request);
         $subscription_id = '';

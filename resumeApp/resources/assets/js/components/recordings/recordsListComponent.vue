@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="list" class="row">
-            <record-component v-for="(record,index) in records" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
+            <record-component v-for="(record,index) in records" v-bind:key="Math.random()" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
 
                 <span class="deleteWorkBtn NoDecor" @click="deleteRecord(record)">
                     <a href="javascript:void(0)">

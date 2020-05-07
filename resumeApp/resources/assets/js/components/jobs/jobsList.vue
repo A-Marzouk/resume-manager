@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="list" class="row">
-            <job-post v-for="(job,index) in jobs" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
+            <job-post v-for="(job,index) in jobs" v-bind:key="Math.random()" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
 
                 <span class="deleteWorkBtn NoDecor" @click="deleteJob(job)">
                     <a href="javascript:void(0)">
@@ -28,7 +28,7 @@
                 <div  style="color: #30323D;font-family: Roboto;" v-show="job.job_attachment !== null">File : <a :href="'/'+ job.job_attachment" target="_blank"> Open file </a></div>
                 <button :id="'seeApplied'+job.id" class="btn btn-sm btn-outline-primary" @click="getAppliedFreelancers(job.id)">See who applied</button>
                 <br/>
-                <div v-for="(data,index) in appliedFreelancers" v-bind:key="index">
+                <div v-for="(data,index) in appliedFreelancers" v-bind:key="Math.random()">
                     <div v-if="data.jobID == job.id">
                         <a target="_blank" :href="'/'+data.freelancer.username">{{data.freelancer.firstName}}</a>
                     </div>

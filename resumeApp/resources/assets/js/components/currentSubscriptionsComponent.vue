@@ -12,7 +12,7 @@
             </tr>
             </thead>
             <tbody>
-                <tr v-for="(subscription,index) in paypal_subscriptions" v-bind:key="index">
+                <tr v-for="(subscription,index) in paypal_subscriptions" v-bind:key="Math.random()">
                     <td>
                         {{subscription.id}}
                     </td>

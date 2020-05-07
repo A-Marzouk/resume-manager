@@ -101,7 +101,7 @@
                                   <label for="status" class="panelFormLabel">Realted campaign brief :</label>
                                   <select  id="campBrief" class="form-control" v-model="toBeEditedInvoice.campaign_brief_id">
                                       <option disabled value="">Please select</option>
-                                      <option v-for="(campBrief,index) in campBriefs" v-bind:key="index" :value="campBrief.id">
+                                      <option v-for="(campBrief,index) in campBriefs" v-bind:key="Math.random()" :value="campBrief.id">
                                           {{campBrief.company_website}}
                                       </option>
                                   </select>

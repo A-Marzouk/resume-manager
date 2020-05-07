@@ -24,7 +24,7 @@
                         <div class="form-group col-md-6">
                             <label for="service" class="panelFormLabel">Service</label>
                             <select name="service" id="service" class="form-control" v-model="shift.service">
-                                <option v-for="(service,index) in services" v-bind:key="index" :value="service">
+                                <option v-for="(service,index) in services" v-bind:key="Math.random()" :value="service">
                                     {{service}}
                                 </option>
                             </select>
@@ -34,7 +34,7 @@
                             <div class="form-group">
                                 <label class="panelFormLabel">Choose days :</label>
                                 <div class="row" v-show="!shift.days.includes('all_days')">
-                                    <div class="col-md-2" v-for="(day,index) in daysOfWeek" v-bind:key="index">
+                                    <div class="col-md-2" v-for="(day,index) in daysOfWeek" v-bind:key="Math.random()">
                                         <input type="checkbox" :value="day" v-model="shift.days">
                                         {{day}}
                                     </div>

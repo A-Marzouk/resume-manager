@@ -4,7 +4,7 @@
             Error while saving, please fill in all required fields.
         </div>
         <transition-group name="list" class="row">
-            <service-component v-for="(service,index) in services" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
+            <service-component v-for="(service,index) in services" v-bind:key="Math.random()" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
                 <div class="row">
                     <div class="col-md-12">
                         <span class="deleteWorkBtn NoDecor" @click="deleteService(service)">
@@ -34,7 +34,7 @@
                         <div v-if="service.agents !== undefined">
                          Agents :
 
-                            <div v-for="(agent,index) in service.agents" v-bind:key="index" style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
+                            <div v-for="(agent,index) in service.agents" v-bind:key="Math.random()" style="font-size: 16px;color: #30323D;font-family: Roboto;line-height: 19px;font-weight: bold; ">
                                 {{agent.firstName}} {{agent.lastName}}
                             </div>
                         </div>

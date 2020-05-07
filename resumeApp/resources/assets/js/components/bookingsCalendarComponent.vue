@@ -7,7 +7,7 @@
             <br/>
         </div>
         <div class="row YearView" v-show="view === 'years'">
-            <div class="col-md-4" v-for="(year,index) in years" v-bind:key="index">
+            <div class="col-md-4" v-for="(year,index) in years" v-bind:key="Math.random()">
                 <div class="yearBox">
                     <a href="javascript:void(0)" class="btn btn-outline-primary btn-block" @click="filterBookingsByYear(year)">
                         {{year}}
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4" v-for="(month,index) in months" v-bind:key="index">
+                <div class="col-md-4" v-for="(month,index) in months" v-bind:key="Math.random()">
                     <div class="monthBox">
                         <button :disabled="getMonthBookings(index+1) == 0" class="btn btn-outline-primary btn-block" @click="filterBookingsByMonth(index+1)">
                             {{month}}<br/>
@@ -59,7 +59,7 @@
                 </div>
              </div>
             <div class="row">
-                <div class="col-md-3" v-for="index in 31" v-bind:key="index">
+                <div class="col-md-3" v-for="index in 31" v-bind:key="Math.random()">
                     <div class="dayBox">
                         <button class="btn btn-block btn-outline-dark" :disabled="getDayBookings(index).length == 0">
                             {{index}}/{{month}}/{{year}} <br/>

@@ -13,7 +13,7 @@
                             Current campaign members.
                         </div>
                         <transition-group name="list" class="row" v-show="this.toBeEditedCamp.members.length > 0">
-                            <div class="col-md-2 col-6 freelancerBox list-item" v-for="(user,index) in toBeEditedCamp.members" v-bind:key="index">
+                            <div class="col-md-2 col-6 freelancerBox list-item" v-for="(user,index) in toBeEditedCamp.members" v-bind:key="Math.random()">
                                 <div class="freelancerItem">
                                     <img :src="getImageSrc(user.image)"
                                          alt="freelancer" class="slickFreelancerImg" style="background:white">
@@ -42,7 +42,7 @@
                             Business support freelancers.
                         </div>
                         <transition-group name="list" class="row">
-                            <div class="list-item col-md-2 col-6 freelancerBox" v-for="(user,index) in businessUsers" v-bind:key="index">
+                            <div class="list-item col-md-2 col-6 freelancerBox" v-for="(user,index) in businessUsers" v-bind:key="Math.random()">
                                 <div class="freelancerItem">
                                     <img :src="getImageSrc(user.image)"
                                          alt="freelancer" class="slickFreelancerImg" style="background:white">

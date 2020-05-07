@@ -16,12 +16,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(agent,index) in agents" v-bind:key="index">
+                        <tr v-for="(agent,index) in agents" v-bind:key="Math.random()">
                                 <td scope="col">{{agent.number}}</td>
                                 <td scope="col">{{agent.name}}</td>
                                 <td scope="col">{{agent.language}}</td>
                                 <td scope="col">
-                                    <div v-for="(record,index) in agent.records" v-bind:key="index">
+                                    <div v-for="(record,index) in agent.records" v-bind:key="Math.random()">
                                         <a :href="getRecordSrc(record)" target="_blank">{{record.title}}</a>
                                         <div v-show="admin" class="deleteWorkBtn NoDecor" @click="deleteAgentRecord(record.id)" style=" width: 75px; float: none;">
                                             <a href="javascript:void(0)">

@@ -134,6 +134,7 @@
         background: floralwhite;
 
         .content{
+            width: 100%;
             padding-left: 50px;
             padding-right: 50px;
            .searchInput{

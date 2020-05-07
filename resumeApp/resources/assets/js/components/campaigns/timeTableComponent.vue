@@ -1,11 +1,11 @@
 <template>
     <div style="padding-top:20px;">
-        <div v-for="(shift,index) in shifts" v-bind:key="index">
+        <div v-for="(shift,index) in shifts" v-bind:key="Math.random()">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col" class="text-center">Time</th>
-                        <th scope="col" v-for="(day,index) in shift.daysArray" v-bind:key="index" style="color:#218dce;">{{day.date}}</th>
+                        <th scope="col" v-for="(day,index) in shift.daysArray" v-bind:key="Math.random()" style="color:#218dce;">{{day.date}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -14,11 +14,11 @@
                             Start at : <span style="color:#218dce;">{{shift.start_time}}</span><br/>
                             Ends at  :<span style="color:#218dce;">{{shift.end_time}}</span>
                         </th>
-                        <td v-for="(day,index) in shift.daysArray" v-bind:key="index">
+                        <td v-for="(day,index) in shift.daysArray" v-bind:key="Math.random()">
                             <!--
                                 here we need to choose to add one of the members so each day has shift id and has
                             -->
-                            <div v-for="(user,index) in day.users"  v-bind:key="index" class="log">
+                            <div v-for="(user,index) in day.users"  v-bind:key="Math.random()" class="log">
                                 {{user.firstName}} {{user.lastName}}
                                 <span class="deleteWorkBtn NoDecor" @click="deleteDayUser(user,day)" style="padding:10px; width: 15px;border: none;">
                                     <a href="javascript:void(0)">
@@ -30,7 +30,7 @@
                             <div class="form-group">
                                 <select class="form-control" @change="updateDayAgents(day)" v-model="selectedUser">
                                     <option disabled selected>Add agent</option>
-                                    <option :value="member" v-for="(member,index) in members" v-bind:key="index">
+                                    <option :value="member" v-for="(member,index) in members" v-bind:key="Math.random()">
                                         {{member.firstName}} {{member.lastName}}
                                     </option>
                                 </select>

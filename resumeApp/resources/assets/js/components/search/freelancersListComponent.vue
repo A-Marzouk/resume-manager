@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="list" class="row">
-            <freelancer-card v-for="(freelancer,index) in freelancers" v-bind:key="index" class="list-item">
+            <freelancer-card v-for="(freelancer,index) in freelancers" v-bind:key="Math.random()" class="list-item">
                 <div class="row" style="padding-top: 20px;">
                     <div class="col-lg-12">
                         <div class="freelancerCard" style="width: auto;">

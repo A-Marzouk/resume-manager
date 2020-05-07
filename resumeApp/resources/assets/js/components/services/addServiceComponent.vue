@@ -87,7 +87,7 @@
                                   <div class="form-group">
                                       <label class="panelFormLabel">Choose days :</label>
                                       <div class="row" v-show="!toBeEditedService.days.includes('all_days')">
-                                          <div class="col-md-2" v-for="(day,index) in daysOfWeek" v-bind:key="index">
+                                          <div class="col-md-2" v-for="(day,index) in daysOfWeek" v-bind:key="Math.random()">
                                               <input type="checkbox" :value="day" v-model="toBeEditedService.days">
                                               {{day}}
                                           </div>

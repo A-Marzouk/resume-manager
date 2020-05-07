@@ -11,7 +11,7 @@
 
         <div class="faqs-wrapper" style="max-width: 95%">
             <div class="faq-questions-list">
-                <div v-for="(faq,index) in faqs" v-bind:key="index" class="question-container">
+                <div v-for="(faq,index) in faqs" v-bind:key="Math.random()" class="question-container">
                     <div class="faq-question">
                         <div class="faq-numbering">
                             <span>{{index+1}}</span>

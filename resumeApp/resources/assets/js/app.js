@@ -9,6 +9,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import vuetify from './vuetify';
+import {store} from './store/store';
+
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -28,6 +32,17 @@ require('./main.js');
  */
 
 Vue.config.devtools = true;
+
+// new freelancers component:
+
+Vue.component('freelancers-list', require('./components/admin/Freelancers.vue'));
+if ($("#freelancersList").length !== 0){
+    let freelancersList = new Vue({
+        vuetify,
+        store,
+        el:'#freelancersList'
+    });
+}
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('chat-message', require('./components/chat/chatMessage.vue'));

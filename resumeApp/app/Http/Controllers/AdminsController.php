@@ -40,6 +40,10 @@ class AdminsController extends Controller
         return view('admin.business_support_users');
     }
 
+    public function viewFreelancersList(){
+        return view('admin.new.freelancers_list');
+    }
+
     public function getBusinessUsersOrdered($items_count){
         $businessUsers = User::where('profession','businessSupport')
             ->orderByRaw("FIELD(status ,'GREY','ORANGE','GREEN','DARKGREEN','RED','NOT_SELECTED') ASC")

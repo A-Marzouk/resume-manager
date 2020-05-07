@@ -117,6 +117,7 @@ Route::get('/admin/client/{client_id}','AdminsController@logInAsClient')->name('
 // view and edit campaigns is only for admin,
 Route::get('/admin/get_camps','CampaignsController@getAllCamps')->name('get.camps');
 Route::get('/admin/view/business_support_users','AdminsController@viewBusinessSupportUsers')->name('view.business.support.users');
+Route::get('/admin/view/freelancers-list','AdminsController@viewFreelancersList')->name('view.freelancers.list');
 Route::get('admin/get_clients','CampaignsController@getAllClients')->name('get.clients');
 Route::get('admin/get_users','CampaignsController@getBusinessSupportUsers')->name('get.users');
 Route::post('/admin/camps/delete','CampaignsController@deleteCamp')->name('delete.camp');

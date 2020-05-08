@@ -147,6 +147,8 @@ Route::post('/admin/business_support/update_stage','BusinessSupportController@up
     // business users :
 Route::get('/admin/get/business_support_users/{items_count}','AdminsController@getBusinessUsersOrdered');
 
+Route::get('/admin/get/users/{items_count}','AdminsController@getUsersOrdered');
+
 
 // delete users, clients and conversations :
 Route::post('/admin/delete_multiple','AdminsController@deleteMultiple');

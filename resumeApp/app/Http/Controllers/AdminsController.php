@@ -41,7 +41,8 @@ class AdminsController extends Controller
     }
 
     public function viewFreelancersList(){
-        return view('admin.new.freelancers_list');
+        $users = User::all();
+        return view('admin.new.freelancers_list',compact('users'));
     }
 
     public function getBusinessUsersOrdered($items_count){
@@ -60,6 +61,15 @@ class AdminsController extends Controller
         }
 
         return ['admin' => auth()->user(), 'businessUsers'=> $businessUsers];
+    }
+
+    public function getUsersOrdered($items_count){
+        $users = User::paginate($items_count);
+        foreach ($users as &$user){
+           $user->userData;
+        }
+
+        return $users ;
     }
 
     public  function showPermissionsPage(){

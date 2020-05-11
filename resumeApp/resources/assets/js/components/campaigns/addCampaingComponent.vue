@@ -40,7 +40,7 @@
                                     <label for="client_id" class="panelFormLabel">Choose client :</label>
                                     <select  id="client_id" class="form-control" v-model="toBeEditedCamp.client_id" @change="setClientName">
                                         <option disabled value="">Please select one</option>
-                                        <option v-for="(client,index) in clients" v-bind:key="index" :value="client.id" >
+                                        <option v-for="(client,index) in clients" v-bind:key="Math.random()" :value="client.id" >
                                             {{client.name}} ({{client.email}})
                                         </option>
                                     </select>

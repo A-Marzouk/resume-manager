@@ -31,6 +31,11 @@
                 <p class="panelFormLabel" style="font-size: 20px;"># Clients</p>
                 <p class="panelFormLabel"> Total : {{count($clients)}} </p>
             </div>
+
+
+            <div class="col-md-2 adminBox d-flex align-items-center justify-content-center NoDecor">
+                <a href="/admin/view/freelancers-list" target="_blank">New Admin panel</a>
+            </div>
         </div>
     </div>
 </div>

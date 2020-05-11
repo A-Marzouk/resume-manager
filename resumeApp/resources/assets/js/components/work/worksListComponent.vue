@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="list" class="row">
-            <work-history v-for="(work,index) in works" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
+            <work-history v-for="(work,index) in works" v-bind:key="Math.random()" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
                 <span class="deleteWorkBtn NoDecor" @click="deleteWork(work)">
                     <a href="javascript:void(0)">
                         <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">

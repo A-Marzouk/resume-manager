@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="list" class="row">
-            <cbrief-component v-for="(cBrief,index) in cBriefs" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
+            <cbrief-component v-for="(cBrief,index) in cBriefs" v-bind:key="Math.random()" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
 
                 <span class="deleteWorkBtn NoDecor" @click="deleteCBrief(cBrief)">
                     <a href="javascript:void(0)">
@@ -135,7 +135,7 @@
                         <div class="pageSubHeading" style="padding-bottom:15px;">
                             Campaign brief services. ( {{cBrief.services.length}}# )
                         </div>
-                        <div v-for="(service,index) in cBrief.services" v-bind:key="index">
+                        <div v-for="(service,index) in cBrief.services" v-bind:key="Math.random()">
                              <span class="deleteWorkBtn NoDecor" @click="deleteService(service)" style="margin-bottom:5px;">
                                 <a href="javascript:void(0)">
                                     <img src="/resumeApp/resources/assets/images/close_blue.png" alt="edit profile">

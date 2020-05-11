@@ -6,7 +6,7 @@
                     <a href="javascript:void(0)" @click="useFilter = !useFilter" class="btn btn-primary">Filter</a>
                 </div>
                 <div class="col-12">
-                    <label v-show="useFilter" class="form-check-label col-md-2 checkBoxContainer checkBoxText" v-for="(filter,index) in filters" v-bind:key="index">
+                    <label v-show="useFilter" class="form-check-label col-md-2 checkBoxContainer checkBoxText" v-for="(filter,index) in filters" v-bind:key="Math.random()">
                         <input class="form-check-input" :value="filter" type="checkbox" v-model="currentFilter">
                         <span class="checkmark"></span> {{filter}}
                     </label>
@@ -52,7 +52,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(user,index) in businessUsers" v-bind:key="index" v-show=" filterByStatus(user,currentFilter) && filterByName(user,nameFilter)|| !useFilter" :class="{'shaded' : isShaded(user),}" @click="unShadeUser(user)">
+                <tr v-for="(user,index) in businessUsers" v-bind:key="Math.random()" v-show=" filterByStatus(user,currentFilter) && filterByName(user,nameFilter)|| !useFilter" :class="{'shaded' : isShaded(user),}" @click="unShadeUser(user)">
                     <th scope="row">
                         <!-- check boxes -->
                         <label class="form-check-label col-md-3 checkBoxContainer checkBoxText">
@@ -208,7 +208,7 @@
                                 <div class="modal-body">
                                     <div class="modal-body">
                                         <div class="row">
-                                            <label class="form-check-label col-md-4 checkBoxContainer checkBoxText" v-for="(permission,index) in permissions" v-bind:key="index">
+                                            <label class="form-check-label col-md-4 checkBoxContainer checkBoxText" v-for="(permission,index) in permissions" v-bind:key="Math.random()">
                                                 <input class="form-check-input" :value="permission" type="checkbox" v-model="user.permissions">
                                                 <span class="checkmark"></span> {{permission}}
                                             </label>

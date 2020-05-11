@@ -9,6 +9,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import vuetify from './vuetify';
+import {store} from './store/store';
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -28,6 +33,37 @@ require('./main.js');
  */
 
 Vue.config.devtools = true;
+
+// new freelancers component:
+
+Vue.component('freelancers-list', require('./components/admin/Dashboard.vue'));
+
+import General from './components/admin/tabs/General';
+import accountSettings from './components/admin/tabs/Settings';
+import Users from './components/admin/tabs/UsersTable';
+
+
+if ($("#freelancersList").length !== 0){
+
+    const routes = [
+        {path: '/', component: General, name:'general'},
+        {path: '/account-settings', component: accountSettings, name:'acc_settings'},
+        {path: '/users', component: Users, name:'users'}
+    ];
+
+    const router = new VueRouter({
+        mode: 'history',
+        routes,
+        base: '/admin/view/freelancers-list/'
+    });
+
+    let freelancersList = new Vue({
+        vuetify,
+        router,
+        store,
+        el:'#freelancersList'
+    });
+}
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('chat-message', require('./components/chat/chatMessage.vue'));

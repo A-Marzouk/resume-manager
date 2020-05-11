@@ -28,7 +28,7 @@
                                     Custom dates :
                                 </div><br/>
                                 <div class="col-md-3" v-for="(date,index) in getDates(new Date(toBeEditedCamp.start_date),new Date(toBeEditedCamp.end_date))">
-                                    <input type="checkbox" :value="date" v-bind:key="index" v-model="toBeEditedShift.days">
+                                    <input type="checkbox" :value="date" v-bind:key="Math.random()" v-model="toBeEditedShift.days">
                                     {{date}}
                                 </div>
                             </div>

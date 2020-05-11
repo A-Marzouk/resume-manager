@@ -40,6 +40,11 @@ class AdminsController extends Controller
         return view('admin.business_support_users');
     }
 
+    public function viewFreelancersList(){
+        $users = User::all();
+        return view('admin.new.freelancers_list',compact('users'));
+    }
+
     public function getBusinessUsersOrdered($items_count){
         $businessUsers = User::where('profession','businessSupport')
             ->orderByRaw("FIELD(status ,'GREY','ORANGE','GREEN','DARKGREEN','RED','NOT_SELECTED') ASC")
@@ -56,6 +61,15 @@ class AdminsController extends Controller
         }
 
         return ['admin' => auth()->user(), 'businessUsers'=> $businessUsers];
+    }
+
+    public function getUsersOrdered($items_count){
+        $users = User::paginate($items_count);
+        foreach ($users as &$user){
+           $user->userData;
+        }
+
+        return $users ;
     }
 
     public  function showPermissionsPage(){

@@ -13,8 +13,8 @@
                           <div class="row">
                               <div class="form-group col-md-12">
                                   <label for="user_id" class="panelFormLabel">Agent :</label>
-                                  <select class="form-control" id="user_id" v-model="toBeEditedInvoice.user_id" @change="updateAgent(agent.id)">
-                                      <option v-for="(agent,index) in agents" :key="index" :value="agent.id">
+                                  <select class="form-control" id="user_id" v-model="toBeEditedInvoice.user_id" @change="updateAgent(toBeEditedInvoice.user_id)">
+                                      <option v-for="(agent,index) in agents" :key="index" :value="agent.id" >
                                           {{agent.firstName}} {{agent.lastName}}
                                       </option>
                                   </select>
@@ -22,7 +22,7 @@
 
                               <div class="form-group col-md-6">
                                   <label for="hours" class="panelFormLabel">Hours :</label>
-                                  <input type="number" class="form-control" autofocus id="hours" name="hours" v-model="toBeEditedInvoice.hours" required>
+                                  <input type="number" step="any" class="form-control" autofocus id="hours" name="hours" v-model="toBeEditedInvoice.hours" required>
                               </div>
 
                               <!-- hours -->
@@ -41,7 +41,7 @@
 
                               <div class="form-group col-md-6">
                                   <label for="total_amount" class="panelFormLabel">Total amount :</label>
-                                  <input type="number" class="form-control" id="total_amount" name="total_amount" :placeholder="'Hours * Rate : '+toBeEditedInvoice.rate * toBeEditedInvoice.hours" v-model="toBeEditedInvoice.total_amount" required>
+                                  <input type="number" class="form-control" id="total_amount" name="total_amount" step="any" :placeholder="'Hours * Rate : '+toBeEditedInvoice.rate * toBeEditedInvoice.hours" v-model="toBeEditedInvoice.total_amount" required>
                               </div>
                               <div class="form-group col-md-12">
                                   <label for="service" class="panelFormLabel">Service :</label>
@@ -101,7 +101,7 @@
                                   <label for="status" class="panelFormLabel">Realted campaign brief :</label>
                                   <select  id="campBrief" class="form-control" v-model="toBeEditedInvoice.campaign_brief_id">
                                       <option disabled value="">Please select</option>
-                                      <option v-for="(campBrief,index) in campBriefs" v-bind:key="index" :value="campBrief.id">
+                                      <option v-for="(campBrief,index) in campBriefs" v-bind:key="Math.random()" :value="campBrief.id">
                                           {{campBrief.company_website}}
                                       </option>
                                   </select>

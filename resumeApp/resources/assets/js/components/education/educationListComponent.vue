@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="list" class="row">
-            <education-history v-for="(education,index) in educations" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
+            <education-history v-for="(education,index) in educations" v-bind:key="Math.random()" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
 
                 <span class="deleteWorkBtn NoDecor" @click="deleteEducation(education)">
                     <a href="javascript:void(0)">

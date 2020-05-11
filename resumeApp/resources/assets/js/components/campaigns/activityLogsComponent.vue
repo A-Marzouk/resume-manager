@@ -1,6 +1,6 @@
 <template>
     <div style="padding-top:20px;">
-        <div class="row" v-for="(member,index) in members" v-bind:key="index">
+        <div class="row" v-for="(member,index) in members" v-bind:key="Math.random()">
             <div class="col-md-4 text-center" style="border-right:1px solid lightgrey;">
                 <img :src="getImageSrc(member.image)"
                      alt="freelancer image" class="memberImg"><br/>
@@ -10,7 +10,7 @@
                 <br/>
             </div>
             <div class="col-md-8">
-                <div v-for="(log,index) in logs" v-bind:key="index" style="padding:5px;  display:inline-block;"
+                <div v-for="(log,index) in logs" v-bind:key="Math.random()" style="padding:5px;  display:inline-block;"
                      v-show = "log.user_id == member.id"
                 >
                     <div class="log">

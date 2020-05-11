@@ -20,7 +20,7 @@
         </div>
         <div class="row">
             <div v-for="(mail,index) in mailsList"
-                 v-bind:key="index"
+                 v-bind:key="Math.random()"
                  class="text-center skillView col-4"
                  style="margin-right: 10px; background: white;border-radius: 10px; margin-top:5px; margin-bottom:5px;"
             >
@@ -39,7 +39,7 @@
         </div>
         <div class="row">
             <div v-for="(template,index) in templatesList"
-                 v-bind:key="index"
+                 v-bind:key="Math.random()"
                  class="col-3 emailTemplate"
                  @click="chooseTemplate(template)"
                  :id="template"

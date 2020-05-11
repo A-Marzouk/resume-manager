@@ -4,7 +4,7 @@
             Error while saving, please fill in all required fields.
         </div>
         <transition-group name="list" class="row">
-            <invoice-component v-for="(invoice,index) in invoices" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
+            <invoice-component v-for="(invoice,index) in invoices" v-bind:key="Math.random()" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
                 <div class="row">
                     <div class="col-md-12">
                         <span class="deleteWorkBtn NoDecor" @click="deleteInvoice(invoice)">
@@ -54,7 +54,7 @@
                             <div class="font-weight-bold col-12">
                                 Services : ({{invoice.services.length}}#)
                             </div>
-                            <div  class="col-8" v-for="(service,index) in invoice.services" v-bind:key="index" style="margin:5px 0 5px 5px; padding:5px 0 5px 5px; border:1px solid lightgrey; border-radius:5px;">
+                            <div  class="col-8" v-for="(service,index) in invoice.services" v-bind:key="Math.random()" style="margin:5px 0 5px 5px; padding:5px 0 5px 5px; border:1px solid lightgrey; border-radius:5px;">
                                 <div class="text-center row">
                                     <span style="padding:10px 0 5px 0; border-bottom: 1px solid lightgrey">
                                         Service details

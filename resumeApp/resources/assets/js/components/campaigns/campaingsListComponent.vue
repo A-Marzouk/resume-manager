@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition-group name="list" class="row">
-            <campaign-component v-for="(camp,index) in camps" v-bind:key="index" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
+            <campaign-component v-for="(camp,index) in camps" v-bind:key="Math.random()" class="list-item workExperience col-12" style="margin: 0px 10px 20px;">
 
                 <div class="row">
                     <div class="col-md-8">
@@ -28,7 +28,7 @@
                                 Shifts : ({{camp.shifts.length}}#)
                             </div>
                             <transition-group name="list" class="col-12">
-                                <div  class="list-item" v-for="(shift,index) in camp.shifts" v-bind:key="index" style="margin:5px 0 5px 5px; padding:5px 0 5px 5px; border:1px solid lightgrey; border-radius:5px;">
+                                <div  class="list-item" v-for="(shift,index) in camp.shifts" v-bind:key="Math.random()" style="margin:5px 0 5px 5px; padding:5px 0 5px 5px; border:1px solid lightgrey; border-radius:5px;">
                                     <div class="text-center">
                                         <span style="padding:10px 0 5px 0; border-bottom: 1px solid lightgrey">
                                             Shift details

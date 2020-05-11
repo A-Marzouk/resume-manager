@@ -1,6 +1,8 @@
 <template>
     <div>
-        General
+        <div class="mt-5">
+            New Admin Home
+        </div>
     </div>
 </template>
 

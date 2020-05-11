@@ -3,7 +3,9 @@
     <v-card class="mt-5">
 
         <v-card-title>
-            123Workforce
+            <a href="javascript:void(0)" @click="search='developer'" style="color:white;" class="btn-primary btn mr-3">Developers</a>
+            <a href="javascript:void(0)" @click="search='designer'" style="color:white;" class="btn-primary btn mr-3">Designers</a>
+            <a href="javascript:void(0)" @click="search='businessSupport'" style="color:white;" class="btn-primary btn">Business Support</a>
             <v-spacer></v-spacer>
             <v-text-field
                     v-model="search"
@@ -133,13 +135,13 @@
                     value: 'firstName',
                 },
                 { text: 'Email', value: 'email',filterable:true },
-                { text: 'Link to resume', value: 'profileLink',filterable:true},
-                { text: 'Sub. Status', value: '' ,filterable:true},
+                { text: 'Link to resume', sortable: false, value: 'profileLink',filterable:true},
+                { text: 'Sub. Status', sortable: false, value: '' ,filterable:true},
                 { text: 'Signup date', value: 'created_at' ,filterable:true},
                 { text: 'Last activity', value: 'lastActivity' ,filterable:true},
                 { text: 'Profession', value: 'profession' ,filterable:true},
-                { text: 'Status', value: '', sortable: true ,filterable:true},
-                { text: 'Notes', value: '', sortable: true ,filterable:true},
+                { text: 'Status', value: '', sortable: false ,filterable:true},
+                { text: 'Notes', value: '', sortable: false ,filterable:true},
                 { text: 'Actions', value: 'actions', sortable: true ,filterable:true},
             ],
             tableUsers: [],
@@ -299,7 +301,12 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+
+    .v-data-footer__select{
+        display: none !important;
+    }
+
     .users-table{
         margin-top: 37px;
     }

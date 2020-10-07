@@ -49,8 +49,8 @@
                <div class="pageSubHeading text-left">
                    Welcome to 123 Workforce. Here you can manage your contractors, track payments and search for freelancers.<br/><br/> We are currently working on our system and these features will be available as soon as possible.
                    <br/><br/>For the moment please send all communication about your account to :
-                   <br/> <a href="mailto:conor@123workforce.com">Conor@123workforce.com</a> ( email)
-                   <br/> <a href="skype:cheska@123workforce.com">Cheska@123workforce.com</a>  (Skype id)
+                   <br/> <a href="mailto:accounts@123workforce.com">accounts@123workforce.com</a> ( email)
+                   <br>
                    Thank-you Kindly
                    <br/><br/>
                </div>

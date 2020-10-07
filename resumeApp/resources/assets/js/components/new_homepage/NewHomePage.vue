@@ -1,6 +1,6 @@
 <template>
-  <div class="main-container">
-    <div class="container">
+  <div class="main-conainter-home">
+    <div class="conainter-home">
       <div class="header">
         <div class="logo-section">
           <img class="new-logo" src="/images/new_homepage/logo.png" />
@@ -15,7 +15,8 @@
           Scale your Creative Workforce with no overheads.
         </div>
         <div class="talented-title">
-          Affordable <span class="talented"> UI Designer</span>
+          <span class="talented"> {{ typeValue }} </span>
+          <span class="cursor" :class="{ typing: typeStatus }">&nbsp;</span>
         </div>
       </div>
       <div class="search-section">
@@ -41,7 +42,9 @@
       </div>
       <div class="theme-section">
         <div class="theme" v-for="(theme, i) in themes" :key="i">
-          <img :src="theme.src" alt="theme thumbnail" />
+          <a :href="theme.link">
+            <img :src="theme.src" alt="theme thumbnail" />
+          </a>
         </div>
       </div>
     </div>
@@ -90,6 +93,13 @@
 export default {
   data() {
     return {
+      typeValue: "",
+      typeStatus: false,
+      typingSpeed: 100,
+      erasingSpeed: 100,
+      newTextDelay: 1000,
+      typeArrayIndex: 0,
+      charIndex: 0,
       themes: [
         {
           src: "/images/new_homepage/Item_1.png",
@@ -168,7 +178,52 @@ export default {
           label: "Product",
         },
       ],
+      typeArray: [
+        "Affordable UI Designer",
+        " Reliable UX Designer",
+        " Talented Graphic Designer",
+        " Creative Illustrator",
+        " Visionary Motion Designer",
+        "Trusted Animator",
+        " Verified Product Designer",
+        " Approved UX Architect",
+      ],
     };
+  },
+  methods: {
+    typeText() {
+      if (this.charIndex < this.typeArray[this.typeArrayIndex].length) {
+        if (!this.typeStatus) this.typeStatus = true;
+        this.typeValue += this.typeArray[this.typeArrayIndex].charAt(
+          this.charIndex
+        );
+        this.charIndex += 1;
+        setTimeout(this.typeText, this.typingSpeed);
+      } else {
+        this.typeStatus = false;
+        setTimeout(this.eraseText, this.newTextDelay);
+      }
+    },
+    eraseText() {
+      if (this.charIndex > 0) {
+        if (!this.typeStatus) this.typeStatus = true;
+        this.typeValue = this.typeArray[this.typeArrayIndex].substring(
+          0,
+          this.charIndex - 1
+        );
+        this.charIndex -= 1;
+        setTimeout(this.eraseText, this.erasingSpeed);
+      } else {
+        this.typeStatus = false;
+        this.typeArrayIndex += 1;
+        if (this.typeArrayIndex >= this.typeArray.length)
+          this.typeArrayIndex = 0;
+        setTimeout(this.typeText, this.typingSpeed + 1000);
+      }
+    },
+  },
+  created() {
+    setTimeout(this.typeText, this.newTextDelay + 200);
   },
 };
 </script>
@@ -178,9 +233,9 @@ export default {
   border-radius: 0rem;
   background: #f7f9ff;
 
-  .main-container {
+  .main-conainter-home {
     background: #f7f9ff;
-    .container {
+    .conainter-home {
       margin: 2rem;
 
       padding-left: 12rem;
@@ -237,7 +292,30 @@ export default {
     line-height: 6.5rem;
     color: #2523f0;
   }
+  .cursor {
+    display: inline-block;
+    margin-left: 0.3rem;
+    width: 0.4rem;
+    background-color: #001d68;
+    animation: cursorBlink 1s infinite;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+  span.cursor.typing {
+    animation: none;
+  }
 
+  @keyframes cursorBlink {
+    49% {
+      background-color: #001d68;
+    }
+    50% {
+      background-color: transparent;
+    }
+    99% {
+      background-color: transparent;
+    }
+  }
   .search-section {
     display: flex;
     flex-wrap: wrap;
@@ -461,9 +539,9 @@ export default {
   }
 
   @media screen and (max-width: 1024px) {
-    .main-container {
+    .main-conainter-home {
       background: #f7f9ff;
-      .container {
+      .conainter-home {
         margin: 0rem;
 
         padding-left: 2rem;
@@ -705,9 +783,9 @@ export default {
     }
   }
   @media screen and (max-width: 475px) {
-    .main-container {
+    .main-conainter-home {
       background: #f7f9ff;
-      .container {
+      .conainter-home {
         margin: 0rem;
 
         padding-left: 2rem;
@@ -736,7 +814,6 @@ export default {
       margin-top: 1rem;
     }
     .talented-title {
-      width: 17rem;
       font-size: 2.5rem;
       line-height: 3.5rem;
 
@@ -950,56 +1027,54 @@ export default {
 
   /* animateion */
   .talented-title {
-    border-right: 0.15em solid orange;
-
     white-space: nowrap;
     overflow: hidden;
   }
 
-  .talented-title {
-    width: 14em;
-    opacity: 0;
-    -webkit-animation: type2 1.5s steps(60, end);
-    animation: type2 1.5s steps(60, end);
-    -webkit-animation-delay: 1.5s;
-    animation-delay: 1s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-  }
+  // .talented-title {
+  //   width: 14em;
+  //   opacity: 0;
+  //   -webkit-animation: type2 1.5s steps(60, end);
+  //   animation: type2 1.5s steps(60, end);
+  //   -webkit-animation-delay: 1.5s;
+  //   animation-delay: 1s;
+  //   -webkit-animation-fill-mode: forwards;
+  //   animation-fill-mode: forwards;
+  // }
 
-  @keyframes type2 {
-    0% {
-      width: 3px;
-      border-right: 3px solid #001d68;
-    }
-    1% {
-      opacity: 1;
-      border-right: 3px solid #001d68;
-    }
-    99.9% {
-      border-right: 3px solid #001d68;
-    }
-    100% {
-      opacity: 1;
+  // @keyframes type2 {
+  //   0% {
+  //     width: 3px;
+  //     border-right: 3px solid #001d68;
+  //   }
+  //   1% {
+  //     opacity: 1;
+  //     border-right: 3px solid #001d68;
+  //   }
+  //   99.9% {
+  //     border-right: 3px solid #001d68;
+  //   }
+  //   100% {
+  //     opacity: 1;
 
-      border-right: 3px solid #001d68;
-    }
-  }
+  //     border-right: 3px solid #001d68;
+  //   }
+  // }
 
-  @-webkit-keyframes type2 {
-    0% {
-      width: 0;
-    }
-    1% {
-      opacity: 1;
-    }
-    99.9% {
-      border-right: 3px solid #001d68;
-    }
-    100% {
-      opacity: 1;
-      border: none;
-    }
-  }
+  // @-webkit-keyframes type2 {
+  //   0% {
+  //     width: 0;
+  //   }
+  //   1% {
+  //     opacity: 1;
+  //   }
+  //   99.9% {
+  //     border-right: 3px solid #001d68;
+  //   }
+  //   100% {
+  //     opacity: 1;
+  //     border: none;
+  //   }
+  // }
 }
 </style>

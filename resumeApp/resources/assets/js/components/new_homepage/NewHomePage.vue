@@ -3,7 +3,10 @@
     <div class="conainter-home">
       <div class="header">
         <div class="logo-section">
-          <img class="new-logo" src="/images/new_homepage/logo.png" />
+          <img
+            class="new-logo"
+            src="/resumeApp/public/images/new_homepage/logo.png"
+          />
         </div>
       </div>
       <div class="freelacer-text">
@@ -28,7 +31,10 @@
             placeholder="Type here..."
           />
           <a href="#" class="pen-tool">
-            <img src="/images/new_homepage/pen-tool.svg" alt="pen tool" />
+            <img
+              src="/resumeApp/public/images/new_homepage/pen-tool.svg"
+              alt="pen tool"
+            />
           </a>
           <div class="search-tags">
             <div class="search-tag" v-for="(tag, i) in searchTags" :key="i">
@@ -88,13 +94,16 @@
     <div class="separator"></div>
     <div class="footer">
       <div class="footer-logo">
-        <img class="new-logo" src="/images/new_homepage/logo.png" />
+        <img
+          class="new-logo"
+          src="/resumeApp/public/images/new_homepage/logo.png"
+        />
       </div>
       <div class="follow-us">
         <div class="footer-text">Follow us</div>
         <div class="facebook">
           <img
-            src="/images/new_homepage/facebook.svg"
+            src="/resumeApp/public/images/new_homepage/facebook.svg"
             alt="fackbook"
             class="follow-logo"
           />
@@ -102,7 +111,7 @@
         </div>
         <div class="instagram">
           <img
-            src="/images/new_homepage/instagram.svg"
+            src="/resumeApp/public/images/new_homepage/instagram.svg"
             alt="instagram"
             class="follow-logo"
           />
@@ -312,16 +321,16 @@ export default {
       ],
       socialIcons: [
         {
-          src: "/images/new_homepage/whatsapp.svg",
+          src: "/resumeApp/public/images/new_homepage/whatsapp.svg",
         },
         {
-          src: "/images/new_homepage/skype.svg",
+          src: "/resumeApp/public/images/new_homepage/skype.svg",
         },
         {
-          src: "/images/new_homepage/gmail.svg",
+          src: "/resumeApp/public/images/new_homepage/gmail.svg",
         },
         {
-          src: "/images/new_homepage/telegram.svg",
+          src: "/resumeApp/public/images/new_homepage/telegram.svg",
         },
       ],
       searchTags: [
@@ -494,7 +503,7 @@ export default {
         border: 2px solid #c4c9f5;
         box-sizing: border-box;
         border-radius: 1rem;
-        background-image: url("/images/new_homepage/magnifiy.svg");
+        background-image: url("/resumeApp/public/images/new_homepage/magnifiy.svg");
         background-position: 2.5rem 2rem;
         background-repeat: no-repeat;
 
@@ -867,7 +876,7 @@ export default {
           border: 2px solid #c4c9f5;
           box-sizing: border-box;
           border-radius: 1rem;
-          background-image: url("/images/new_homepage/magnifiy.svg");
+          background-image: url("/resumeApp/public/images/new_homepage/magnifiy.svg");
           background-position: 2.5rem 2rem;
           background-repeat: no-repeat;
 
@@ -1224,7 +1233,7 @@ export default {
           border: 2px solid #c4c9f5;
           box-sizing: border-box;
           border-radius: 1rem;
-          background-image: url("/images/new_homepage/magnifiy.svg");
+          background-image: url("/resumeApp/public/images/new_homepage/magnifiy.svg");
           background-position: 2.5rem 2rem;
           background-repeat: no-repeat;
 

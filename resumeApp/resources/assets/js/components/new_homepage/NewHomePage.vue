@@ -41,10 +41,47 @@
         </div>
       </div>
       <div class="theme-section">
-        <div class="theme" v-for="(theme, i) in themes" :key="i">
+        <div
+          class="theme"
+          v-for="(theme, i) in themes"
+          :key="i"
+          @mouseover="showDetailsIndex = i"
+          @mouseleave="showDetailsIndex = null"
+        >
           <a :href="theme.link">
             <img :src="theme.src" alt="theme thumbnail" />
           </a>
+          <div class="view-details" v-if="showDetailsIndex == i">
+            <div class="personal-info">
+              <div class="info-details">
+                <div class="full-name">{{ theme.name }}</div>
+                <div class="designation">{{ theme.designation }}</div>
+                <div class="address">{{ theme.address }}</div>
+              </div>
+              <div class="hire">
+                <a class="hire-button" href="#">Hire</a>
+              </div>
+            </div>
+            <div class="work-available">
+              <div class="work-available-title">Available For Work</div>
+              <div class="avaiable">
+                <div>{{ theme.hours }} hours a week</div>
+                <div>${{ theme.weekly_rate }}/week</div>
+              </div>
+              <div class="divide"></div>
+              <div class="hourly-rate">
+                ${{ theme.hourly_rate }} hourly rate
+              </div>
+            </div>
+            <div class="view-portfolio">
+              <a
+                target="_blank"
+                :href="theme.link"
+                class="view-portfolio-button"
+                >View Portfolio</a
+              >
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -93,6 +130,7 @@
 export default {
   data() {
     return {
+      showDetailsIndex: null,
       typeValue: "",
       typeStatus: false,
       typingSpeed: 100,
@@ -102,49 +140,174 @@ export default {
       charIndex: 0,
       themes: [
         {
-          src: "/images/new_homepage/Item_1.png",
+          name: "Shakib Ali",
+          designation: "UI UX Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Dhaka, Bangladesh",
+          link: "https://civ.ie/123workforce/ShakibAli",
+          src: "/images/new_homepage/portfolio/sakib_ali.jpg",
         },
         {
-          src: "/images/new_homepage/Item_2.png",
+          name: "Abu Usuf",
+          designation: "UI / Visual Designer, Web Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Dhaka, Bangladesh",
+          link: "https://civ.ie/123workforce/AbuUsuf",
+          src: "/images/new_homepage/portfolio/abu_usuf.jpg",
         },
         {
-          src: "/images/new_homepage/Item_3.png",
+          name: "Mahmudul Hasan Manik",
+          designation: "UX/UI, Product Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: " Bangladesh",
+          link: "https://civ.ie/123workforce/mahmudulhasan",
+          src: "/images/new_homepage/portfolio/mehdi_manik.jpg",
         },
         {
-          src: "/images/new_homepage/Item_4.png",
+          name: "Aymane Helfa",
+          designation: "UI/UX DESIGNER & Brand identity designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Morocco",
+          link: "https://civ.ie/123workforce/Aymane",
+          src: "/images/new_homepage/portfolio/helfa_aymane.jpg",
         },
         {
-          src: "/images/new_homepage/Item_5.png",
+          name: "Md. Tajul Islam Sajib",
+          designation: "UX/UI & Creative Graphic Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Bangladesh",
+          link: "https://civ.ie/123workforce/Rony",
+          src: "/images/new_homepage/portfolio/rony.jpg",
         },
         {
-          src: "/images/new_homepage/Item_6.png",
+          name: "Shai Falcutila",
+          designation: "Graphic Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Philippines",
+          link: "https://civ.ie/123workforce/Shai",
+          src: "/images/new_homepage/portfolio/shai.jpg",
         },
         {
-          src: "/images/new_homepage/Item_3.png",
+          name: "Yoka Leis",
+          designation: "Web Designer, Graphic Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Venezuela",
+          link: "https://civ.ie/123workforce/Yoka",
+          src: "/images/new_homepage/portfolio/yoka.jpg",
         },
         {
-          src: "/images/new_homepage/Item_5.png",
+          name: "Anton Vasyliev",
+          designation: "Web Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Kharkiv,Ukraine",
+          link: "https://civ.ie/123workforce/Anton",
+          src: "/images/new_homepage/portfolio/anton.jpg",
         },
         {
-          src: "/images/new_homepage/Item_4.png",
+          name: "Ishrat Jahan Shaeera",
+          designation: "Illustrator, Graphic Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Bangladesh",
+          link: "https://civ.ie/123workforce/Ishrat",
+          src: "/images/new_homepage/portfolio/ishrat.jpg",
         },
         {
-          src: "/images/new_homepage/Item_2.png",
+          name: "Darina Kulyk",
+          designation: "Product Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Ukraine",
+          link: "https://civ.ie/123workforce/darina",
+          src: "/images/new_homepage/portfolio/darina.jpg",
         },
         {
-          src: "/images/new_homepage/Item_1.png",
+          name: "Maral Golrokh",
+          designation: "UI UX Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Iran",
+          link: "https://civ.ie/123workforce/maral",
+          src: "/images/new_homepage/portfolio/maral.jpg",
         },
         {
-          src: "/images/new_homepage/Item_3.png",
+          name: "Sharfuzzaman Sayem",
+          designation: "UI/UX Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Bangladesh",
+          link: "https://civ.ie/123workforce/sayem",
+          src: "/images/new_homepage/portfolio/sayem.jpg",
         },
         {
-          src: "/images/new_homepage/Item_4.png",
+          name: "Imran Molla",
+          designation: "UI UX Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Bangladesh",
+          link: "https://civ.ie/123workforce/Imran",
+          src: "/images/new_homepage/portfolio/imran.jpg",
         },
         {
-          src: "/images/new_homepage/Item_5.png",
+          name: "Humayra Kabir",
+          designation: "UI UX Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Bangladesh",
+          link: "https://civ.ie/123workforce/Humayra",
+          src: "/images/new_homepage/portfolio/humayra.jpg",
         },
         {
-          src: "/images/new_homepage/Item_2.png",
+          name: "Viktoriya Kliuchnyck",
+          designation: "Product Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Russia",
+          link: "https://civ.ie/123workforce/Viktoriia",
+          src: "/images/new_homepage/portfolio/viktoriya.jpg",
+        },
+        {
+          name: "Ronak Chhatwal",
+          designation: "UI/UX Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "India",
+          link: "https://civ.ie/123workforce/Ronak",
+          src: "/images/new_homepage/portfolio/ronak.jpg",
+        },
+        {
+          name: "Hachibur Rahman",
+          designation: "Graphic Designer",
+          hours: "8",
+          weekly_rate: "40",
+          hourly_rate: "25",
+          address: "Bangladesh",
+          link: "https://civ.ie/123workforce/huchibur",
+          src: "/images/new_homepage/portfolio/hachibur.jpg",
         },
       ],
       socialIcons: [
@@ -244,7 +407,7 @@ export default {
 
   .new-logo {
     margin: 3rem 0;
-    height: 15rem;
+    height: 8rem;
   }
   .rate-text {
     font-family: Montserrat;
@@ -408,10 +571,121 @@ export default {
     padding: 0 6rem 0 0;
     .theme {
       width: 33.3333%;
+      position: relative;
       img {
         width: 100%;
         margin: auto;
         padding: 2rem;
+      }
+      .view-details {
+        position: absolute;
+        margin: auto;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 3rem;
+        top: 0em;
+        left: 0em;
+        display: flex;
+        flex-wrap: wrap;
+        .personal-info {
+          width: 100%;
+          position: relative;
+          display: flex;
+          flex-wrap: wrap;
+          .info-details {
+            width: 75%;
+            .full-name {
+              font-family: Montserrat;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 2rem;
+              line-height: 2.4rem;
+              color: #001d68;
+            }
+            .designation,
+            .address {
+              font-family: Noto Sans;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 1.5rem;
+              line-height: 1.5rem;
+              color: #687494;
+              padding: 1rem 0;
+            }
+          }
+          .hire {
+            width: 25%;
+            margin-top: 1rem;
+            .hire-button {
+              text-decoration: none;
+              padding: 1rem 3rem;
+              background: #1917ef;
+              border-radius: 6px;
+              font-family: Montserrat;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 1.5rem;
+              line-height: 1.5rem;
+              text-align: center;
+              letter-spacing: 0.005em;
+              color: #ffffff;
+            }
+          }
+        }
+        .work-available {
+          display: flex;
+          width: 100%;
+          flex-wrap: wrap;
+          align-items: center;
+          .work-available-title {
+            font-family: Noto Sans;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 2rem;
+            line-height: 2.5rem;
+            color: #0046fe;
+            width: 100%;
+          }
+          .avaiable,
+          .hourly-rate {
+            font-family: Noto Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            color: #687494;
+            width: 50%;
+          }
+          .avaiable {
+            border-right: 1px solid #cad9ff;
+            div {
+              padding: 0.5rem 0;
+            }
+          }
+          .hourly-rate {
+            padding-left: 2rem;
+          }
+        }
+        .view-portfolio {
+          width: 100%;
+          text-align: center;
+          margin: auto;
+          .view-portfolio-button {
+            text-decoration: none;
+            padding: 1rem 3rem;
+            background: #1917ef;
+            border-radius: 6px;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1.5rem;
+            text-align: center;
+            letter-spacing: 0.005em;
+            color: #ffffff;
+          }
+        }
       }
     }
   }
@@ -433,7 +707,7 @@ export default {
     .footer-logo {
       width: 22%;
       .new-logo {
-        height: 10rem;
+        height: 6rem;
       }
     }
     .follow-us {
@@ -548,7 +822,7 @@ export default {
       }
     }
     .new-logo {
-      height: 10rem;
+      height: 8rem;
     }
     .rate-text {
       font-size: 4rem;
@@ -671,10 +945,121 @@ export default {
       padding: 0 2rem 0 0;
       .theme {
         width: 33.3333%;
+        position: relative;
         img {
           width: 100%;
           margin: auto;
           padding: 2rem;
+        }
+        .view-details {
+          position: absolute;
+          margin: auto;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(255, 255, 255, 0.95);
+          padding: 2rem;
+          top: 0em;
+          left: 0em;
+          display: flex;
+          flex-wrap: wrap;
+          .personal-info {
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            .info-details {
+              width: 75%;
+              .full-name {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 1.2rem;
+                line-height: 1.4rem;
+                color: #001d68;
+              }
+              .designation,
+              .address {
+                font-family: Noto Sans;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 1rem;
+                line-height: 1rem;
+                color: #687494;
+                padding: 0.5rem 0;
+              }
+            }
+            .hire {
+              width: 25%;
+              margin-top: 1rem;
+              .hire-button {
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                background: #1917ef;
+                border-radius: 6px;
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 1.2rem;
+                line-height: 1.2rem;
+                text-align: center;
+                letter-spacing: 0.005em;
+                color: #ffffff;
+              }
+            }
+          }
+          .work-available {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            align-items: center;
+            .work-available-title {
+              font-family: Noto Sans;
+              font-style: normal;
+              font-weight: 600;
+              font-size: 1rem;
+              line-height: 1.5rem;
+              color: #0046fe;
+              width: 100%;
+            }
+            .avaiable,
+            .hourly-rate {
+              font-family: Noto Sans;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 1rem;
+              line-height: 1.5rem;
+              color: #687494;
+              width: 50%;
+            }
+            .avaiable {
+              border-right: 1px solid #cad9ff;
+              div {
+                padding: 0.5rem 0;
+              }
+            }
+            .hourly-rate {
+              padding-left: 1rem;
+            }
+          }
+          .view-portfolio {
+            width: 100%;
+            text-align: center;
+            margin: auto;
+            .view-portfolio-button {
+              text-decoration: none;
+              padding: 0.5rem 1rem;
+              background: #1917ef;
+              border-radius: 6px;
+              font-family: Montserrat;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 1rem;
+              line-height: 1.5rem;
+              text-align: center;
+              letter-spacing: 0.005em;
+              color: #ffffff;
+            }
+          }
         }
       }
     }
@@ -689,7 +1074,7 @@ export default {
         width: 100%;
 
         .new-logo {
-          height: 8rem;
+          height: 6rem;
         }
       }
       .follow-us {
@@ -787,41 +1172,42 @@ export default {
       background: #f7f9ff;
       .conainter-home {
         margin: 0rem;
-
+        padding-right: 2rem;
         padding-left: 2rem;
       }
     }
 
     .new-logo {
-      height: 10rem;
+      height: 6rem;
+      width: 30rem;
     }
     .rate-text {
-      font-size: 3rem;
-      line-height: 4rem;
+      font-size: 2.5rem;
+      line-height: 5rem;
     }
     .from {
-      font-size: 2.5rem;
-      line-height: 4rem;
+      font-size: 2rem;
+      line-height: 5rem;
     }
     .rate {
-      font-size: 3rem;
-      line-height: 4rem;
+      font-size: 2.5rem;
+      line-height: 5rem;
     }
     .rate-info {
-      font-size: 1.2rem;
-      line-height: 1.2rem;
+      font-size: 1rem;
+      line-height: 1.5rem;
 
       margin-top: 1rem;
     }
     .talented-title {
-      font-size: 2.5rem;
-      line-height: 3.5rem;
+      font-size: 2rem;
+      line-height: 4rem;
 
       margin-top: 2rem;
     }
     .talented {
-      font-size: 2.5rem;
-      line-height: 3.5rem;
+      font-size: 2rem;
+      line-height: 4rem;
     }
     .search-section {
       display: flex;
@@ -904,6 +1290,7 @@ export default {
         }
       }
     }
+
     .theme-section {
       display: flex;
       align-items: center;
@@ -915,10 +1302,121 @@ export default {
       margin: 0 1rem;
       .theme {
         width: 100%;
+        position: relative;
         img {
           width: 100%;
           margin: auto;
           padding: 1rem 0;
+        }
+        .view-details {
+          position: absolute;
+          margin: auto;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(255, 255, 255, 0.95);
+          padding: 2rem;
+          top: 0em;
+          left: 0em;
+          display: flex;
+          flex-wrap: wrap;
+          .personal-info {
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            .info-details {
+              width: 75%;
+              .full-name {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 1.2rem;
+                line-height: 1.4rem;
+                color: #001d68;
+              }
+              .designation,
+              .address {
+                font-family: Noto Sans;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 1rem;
+                line-height: 1rem;
+                color: #687494;
+                padding: 1rem 0;
+              }
+            }
+            .hire {
+              width: 25%;
+              margin-top: 1rem;
+              .hire-button {
+                text-decoration: none;
+                padding: 1rem 2rem;
+                background: #1917ef;
+                border-radius: 6px;
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 1.2rem;
+                line-height: 1.2rem;
+                text-align: center;
+                letter-spacing: 0.005em;
+                color: #ffffff;
+              }
+            }
+          }
+          .work-available {
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            align-items: center;
+            .work-available-title {
+              font-family: Noto Sans;
+              font-style: normal;
+              font-weight: 600;
+              font-size: 1rem;
+              line-height: 1.5rem;
+              color: #0046fe;
+              width: 100%;
+            }
+            .avaiable,
+            .hourly-rate {
+              font-family: Noto Sans;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 1rem;
+              line-height: 1.5rem;
+              color: #687494;
+              width: 50%;
+            }
+            .avaiable {
+              border-right: 1px solid #cad9ff;
+              div {
+                padding: 0.5rem 0;
+              }
+            }
+            .hourly-rate {
+              padding-left: 1rem;
+            }
+          }
+          .view-portfolio {
+            width: 100%;
+            text-align: center;
+            margin: auto;
+            .view-portfolio-button {
+              text-decoration: none;
+              padding: 1rem 3rem;
+              background: #1917ef;
+              border-radius: 6px;
+              font-family: Montserrat;
+              font-style: normal;
+              font-weight: bold;
+              font-size: 1.2rem;
+              line-height: 1.5rem;
+              text-align: center;
+              letter-spacing: 0.005em;
+              color: #ffffff;
+            }
+          }
         }
       }
     }
@@ -931,7 +1429,8 @@ export default {
       .footer-logo {
         width: 100%;
         .new-logo {
-          height: 8rem;
+          height: 6rem;
+          width: 30rem;
         }
       }
       .follow-us {
@@ -945,7 +1444,7 @@ export default {
           font-family: Montserrat;
           font-style: normal;
           font-weight: 600;
-          font-size: 1.5rem;
+          font-size: 1rem;
           line-height: 3rem;
           color: #0046fe;
         }
@@ -954,13 +1453,13 @@ export default {
           display: flex;
           .follow-logo {
             margin: auto 0rem;
-            height: 2.5rem;
+            height: 2rem;
           }
           .follow-number {
             font-family: Montserrat;
             font-style: normal;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1rem;
             line-height: 3rem;
             color: #0046fe;
             align-self: center;
@@ -972,13 +1471,13 @@ export default {
           .follow-logo {
             margin: auto 0rem;
 
-            height: 2.5rem;
+            height: 2rem;
           }
           .follow-number {
             font-family: Montserrat;
             font-style: normal;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1rem;
             line-height: 3rem;
             color: #0046fe;
             align-self: center;
@@ -997,7 +1496,7 @@ export default {
           font-family: Montserrat;
           font-style: normal;
           font-weight: 600;
-          font-size: 1.5rem;
+          font-size: 1rem;
           line-height: 3rem;
           color: #0046fe;
         }
@@ -1016,8 +1515,8 @@ export default {
             img {
               object-fit: contain;
               margin: 0 auto;
-              width: 1.5rem;
-              height: 1.5rem;
+              width: 1.2rem;
+              height: 1.2rem;
             }
           }
         }
@@ -1030,51 +1529,5 @@ export default {
     white-space: nowrap;
     overflow: hidden;
   }
-
-  // .talented-title {
-  //   width: 14em;
-  //   opacity: 0;
-  //   -webkit-animation: type2 1.5s steps(60, end);
-  //   animation: type2 1.5s steps(60, end);
-  //   -webkit-animation-delay: 1.5s;
-  //   animation-delay: 1s;
-  //   -webkit-animation-fill-mode: forwards;
-  //   animation-fill-mode: forwards;
-  // }
-
-  // @keyframes type2 {
-  //   0% {
-  //     width: 3px;
-  //     border-right: 3px solid #001d68;
-  //   }
-  //   1% {
-  //     opacity: 1;
-  //     border-right: 3px solid #001d68;
-  //   }
-  //   99.9% {
-  //     border-right: 3px solid #001d68;
-  //   }
-  //   100% {
-  //     opacity: 1;
-
-  //     border-right: 3px solid #001d68;
-  //   }
-  // }
-
-  // @-webkit-keyframes type2 {
-  //   0% {
-  //     width: 0;
-  //   }
-  //   1% {
-  //     opacity: 1;
-  //   }
-  //   99.9% {
-  //     border-right: 3px solid #001d68;
-  //   }
-  //   100% {
-  //     opacity: 1;
-  //     border: none;
-  //   }
-  // }
 }
 </style>

@@ -156,7 +156,7 @@ export default {
           hourly_rate: "25",
           address: "Dhaka, Bangladesh",
           link: "https://civ.ie/123workforce/ShakibAli",
-          src: "/images/new_homepage/portfolio/sakib_ali.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/sakib_ali.jpg",
         },
         {
           name: "Abu Usuf",
@@ -166,7 +166,7 @@ export default {
           hourly_rate: "25",
           address: "Dhaka, Bangladesh",
           link: "https://civ.ie/123workforce/AbuUsuf",
-          src: "/images/new_homepage/portfolio/abu_usuf.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/abu_usuf.jpg",
         },
         {
           name: "Mahmudul Hasan Manik",
@@ -176,7 +176,8 @@ export default {
           hourly_rate: "25",
           address: " Bangladesh",
           link: "https://civ.ie/123workforce/mahmudulhasan",
-          src: "/images/new_homepage/portfolio/mehdi_manik.jpg",
+          src:
+            "/resumeApp/public/images/new_homepage/portfolio/mehdi_manik.jpg",
         },
         {
           name: "Aymane Helfa",
@@ -186,7 +187,8 @@ export default {
           hourly_rate: "25",
           address: "Morocco",
           link: "https://civ.ie/123workforce/Aymane",
-          src: "/images/new_homepage/portfolio/helfa_aymane.jpg",
+          src:
+            "/resumeApp/public/images/new_homepage/portfolio/helfa_aymane.jpg",
         },
         {
           name: "Md. Tajul Islam Sajib",
@@ -196,7 +198,7 @@ export default {
           hourly_rate: "25",
           address: "Bangladesh",
           link: "https://civ.ie/123workforce/Rony",
-          src: "/images/new_homepage/portfolio/rony.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/rony.jpg",
         },
         {
           name: "Shai Falcutila",
@@ -206,7 +208,7 @@ export default {
           hourly_rate: "25",
           address: "Philippines",
           link: "https://civ.ie/123workforce/Shai",
-          src: "/images/new_homepage/portfolio/shai.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/shai.jpg",
         },
         {
           name: "Yoka Leis",
@@ -216,7 +218,7 @@ export default {
           hourly_rate: "25",
           address: "Venezuela",
           link: "https://civ.ie/123workforce/Yoka",
-          src: "/images/new_homepage/portfolio/yoka.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/yoka.jpg",
         },
         {
           name: "Anton Vasyliev",
@@ -226,7 +228,7 @@ export default {
           hourly_rate: "25",
           address: "Kharkiv,Ukraine",
           link: "https://civ.ie/123workforce/Anton",
-          src: "/images/new_homepage/portfolio/anton.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/anton.jpg",
         },
         {
           name: "Ishrat Jahan Shaeera",
@@ -236,7 +238,7 @@ export default {
           hourly_rate: "25",
           address: "Bangladesh",
           link: "https://civ.ie/123workforce/Ishrat",
-          src: "/images/new_homepage/portfolio/ishrat.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/ishrat.jpg",
         },
         {
           name: "Darina Kulyk",
@@ -246,7 +248,7 @@ export default {
           hourly_rate: "25",
           address: "Ukraine",
           link: "https://civ.ie/123workforce/darina",
-          src: "/images/new_homepage/portfolio/darina.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/darina.jpg",
         },
         {
           name: "Maral Golrokh",
@@ -256,7 +258,7 @@ export default {
           hourly_rate: "25",
           address: "Iran",
           link: "https://civ.ie/123workforce/maral",
-          src: "/images/new_homepage/portfolio/maral.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/maral.jpg",
         },
         {
           name: "Sharfuzzaman Sayem",
@@ -266,7 +268,7 @@ export default {
           hourly_rate: "25",
           address: "Bangladesh",
           link: "https://civ.ie/123workforce/sayem",
-          src: "/images/new_homepage/portfolio/sayem.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/sayem.jpg",
         },
         {
           name: "Imran Molla",
@@ -276,7 +278,7 @@ export default {
           hourly_rate: "25",
           address: "Bangladesh",
           link: "https://civ.ie/123workforce/Imran",
-          src: "/images/new_homepage/portfolio/imran.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/imran.jpg",
         },
         {
           name: "Humayra Kabir",
@@ -286,7 +288,7 @@ export default {
           hourly_rate: "25",
           address: "Bangladesh",
           link: "https://civ.ie/123workforce/Humayra",
-          src: "/images/new_homepage/portfolio/humayra.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/humayra.jpg",
         },
         {
           name: "Viktoriya Kliuchnyck",
@@ -296,7 +298,7 @@ export default {
           hourly_rate: "25",
           address: "Russia",
           link: "https://civ.ie/123workforce/Viktoriia",
-          src: "/images/new_homepage/portfolio/viktoriya.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/viktoriya.jpg",
         },
         {
           name: "Ronak Chhatwal",
@@ -306,7 +308,7 @@ export default {
           hourly_rate: "25",
           address: "India",
           link: "https://civ.ie/123workforce/Ronak",
-          src: "/images/new_homepage/portfolio/ronak.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/ronak.jpg",
         },
         {
           name: "Hachibur Rahman",
@@ -316,7 +318,7 @@ export default {
           hourly_rate: "25",
           address: "Bangladesh",
           link: "https://civ.ie/123workforce/huchibur",
-          src: "/images/new_homepage/portfolio/hachibur.jpg",
+          src: "/resumeApp/public/images/new_homepage/portfolio/hachibur.jpg",
         },
       ],
       socialIcons: [

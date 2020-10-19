@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- flevix.com -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1800px"
+	 height="1200px" viewBox="0 0 1800 1200" enable-background="new 0 0 1800 1200" xml:space="preserve">
+
+<g id="Circle-1">
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="155.9581" y1="810.7278" x2="2366.6882" y2="810.7278">
+		<stop  offset="0" style="stop-color:#2484C6"/>
+		<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" d="M287.591,1784.46C5.314,1502.184,188.187,861.649,729.206,320.63s1235.313-777.652,1517.589-495.375
+		s45.645,976.57-495.375,1517.59S569.868,2066.737,287.591,1784.46z">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="2s"
+                          begin="1.8"
+                          values="0,50;0,-50;0,50;"
+                          repeatCount="indefinite"/>
+	</path>
+</g>
+<g id="Circle-2">
+	<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="59.1978" y1="667.7515" x2="2263.8411" y2="667.7515">
+		<stop  offset="0" style="stop-color:#2484C6"/>
+		<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
+	</linearGradient>
+	<path fill="url(#SVGID_2_)" d="M184.744,1641.976c-282.277-282.277-72.524-949.69,468.495-1490.71
+		c515.932-515.932,1208.433-750.772,1490.71-468.495s45.645,976.57-495.375,1517.59S467.02,1924.253,184.744,1641.976z">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="2s"
+                          begin="1.6"
+                          values="0,50;0,-50;0,50;"
+                          repeatCount="indefinite"/>
+	</path>
+</g>
+<g id="Circle-3">
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-71.1346" y1="535.0845" x2="2133.5088" y2="535.0845">
+		<stop  offset="0" style="stop-color:#2484C6"/>
+		<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
+	</linearGradient>
+	<path fill="url(#SVGID_3_)" d="M54.411,1511.644c-282.277-282.277-72.524-949.691,468.495-1490.71
+		s1208.433-750.772,1490.71-468.495s45.645,976.57-495.375,1517.59S336.688,1793.921,54.411,1511.644z">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="2s"
+                          begin="1.4"
+                          values="0,50;0,-50;0,50;"
+                          repeatCount="indefinite"/>
+	</path>
+</g>
+<g id="Circle-4">
+	<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="-223.841" y1="422.0151" x2="1980.8022" y2="422.0151">
+		<stop  offset="0" style="stop-color:#2484C6"/>
+		<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
+	</linearGradient>
+	<path fill="url(#SVGID_4_)" d="M-98.295,1398.574C-380.572,1116.297-170.82,448.884,370.2-92.136s1208.433-750.772,1490.71-468.495
+		s45.645,976.57-495.375,1517.59S183.982,1680.851-98.295,1398.574z">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="2s"
+                          begin="1.2"
+                          values="0,50;0,-50;0,50;"
+                          repeatCount="indefinite"/>
+	</path>
+</g>
+<g id="Circle-6">
+	<linearGradient id="SVGID_5_" gradientUnits="userSpaceOnUse" x1="-356.7289" y1="289.1272" x2="1847.9144" y2="289.1272">
+		<stop  offset="0" style="stop-color:#2484C6"/>
+		<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
+	</linearGradient>
+	<path fill="url(#SVGID_5_)" d="M-231.183,1265.686c-282.277-282.277-72.524-949.691,468.495-1490.71
+		s1208.433-750.772,1490.71-468.495s45.645,976.57-495.375,1517.59S51.094,1547.963-231.183,1265.686z">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="2s"
+                          begin="1"
+                          values="0,50;0,-50;0,50;"
+                          repeatCount="indefinite"/>
+	</path>
+</g>
+<g id="Circle-7">
+	<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="-487.0613" y1="158.7948" x2="1717.582" y2="158.7948">
+		<stop  offset="0" style="stop-color:#2484C6"/>
+		<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
+	</linearGradient>
+	<path fill="url(#SVGID_6_)" d="M-361.516,1135.354c-282.277-282.277-72.524-949.69,468.495-1490.71
+		s1208.433-750.772,1490.71-468.495s45.645,976.57-495.375,1517.59S-79.239,1417.631-361.516,1135.354z">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="2s"
+                          begin=".8"
+                          values="0,50;0,-50;0,50;"
+                          repeatCount="indefinite"/>
+	</path>
+</g>
+<g id="Circle-8">
+	<linearGradient id="SVGID_7_" gradientUnits="userSpaceOnUse" x1="-621.783" y1="14.9976" x2="1582.8604" y2="14.9976">
+		<stop  offset="0" style="stop-color:#2484C6"/>
+		<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
+	</linearGradient>
+	<path fill="url(#SVGID_7_)" d="M-496.237,991.557C-778.514,709.28-568.762,41.866-27.742-499.153s1208.433-750.772,1490.71-468.495
+		s45.645,976.57-495.375,1517.59S-213.96,1273.834-496.237,991.557z">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="2s"
+                          begin=".6"
+                          values="0,50;0,-50;0,50;"
+                          repeatCount="indefinite"/>
+	</path>
+</g>
+<g id="Circle-9">
+	<linearGradient id="SVGID_8_" gradientUnits="userSpaceOnUse" x1="-769.2341" y1="-132.4535" x2="1435.4093" y2="-132.4535">
+		<stop  offset="0" style="stop-color:#2484C6"/>
+		<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
+	</linearGradient>
+	<path fill="url(#SVGID_8_)" d="M-643.688,844.106c-282.277-282.277-72.524-949.691,468.495-1490.71
+		s1208.433-750.772,1490.71-468.495s45.645,976.57-495.375,1517.59S-361.412,1126.383-643.688,844.106z">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="2s"
+                          begin=".4"
+                          values="0,50;0,-50;0,50;"
+                          repeatCount="indefinite"/>
+	</path>
+</g>
+<g id="Circle-10">
+	<linearGradient id="SVGID_9_" gradientUnits="userSpaceOnUse" x1="-1427.0598" y1="-500.7461" x2="1248.9705" y2="-500.7461">
+		<stop  offset="0" style="stop-color:#2484C6"/>
+		<stop  offset="1" style="stop-color:#2484C6;stop-opacity:0"/>
+	</linearGradient>
+	<path fill="url(#SVGID_9_)" d="M-1186.249,596.169c-423.656-423.656-273.697-1260.497,334.942-1869.136
+		s1445.48-758.598,1869.136-334.942S1261.287-317.174,652.648,291.466S-762.593,1019.825-1186.249,596.169z">
+		<animateTransform attributeName="transform"
+                          attributeType="XML"
+                          type="translate"
+                          dur="2s"
+                          begin=".2"
+                          values="0,50;0,-50;0,50;"
+                          repeatCount="indefinite"/>
+	</path>
+</g>
+</svg>

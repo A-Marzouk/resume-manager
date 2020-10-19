@@ -1,0 +1,42 @@
+.oneLineHiddenOverflow{
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  width: 200px;
+  text-overflow: ellipsis;
+}
+
+.addDesigner{
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.bookingsBox{
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 30px 10px 0px 10px;
+  text-align: center;
+  line-height: 160px;
+}
+
+.centerVertically{
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.circle-blue{
+  padding: 0px 8px 0px 8px;
+  background: blue;
+  border-radius: 50%;
+}
+
+#indicatingLine {
+  transform: scaleY(-1);
+  padding: 3px 0 0 0;
+  width: 30px;
+  background-color: #30323D;
+  margin-top: 8px; }

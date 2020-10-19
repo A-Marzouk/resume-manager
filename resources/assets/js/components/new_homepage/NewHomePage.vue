@@ -6,7 +6,7 @@
                     <div class="logo-section">
                         <img
                                 class="new-logo"
-                                src="//images/new_homepage/logo.png"
+                                src="/images/new_homepage/logo.png"
                         />
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                                     slot="append"
                             >
                                 <img
-                                        src="//images/new_homepage/pen-tool.svg"
+                                        src="/images/new_homepage/pen-tool.svg"
                                         alt="pen tool"
                                 />
                             </button>
@@ -47,7 +47,7 @@
                                     slot="prepend-inner"
                             >
                                 <img
-                                        src="//images/new_homepage/magnifiy.svg"
+                                        src="/images/new_homepage/magnifiy.svg"
                                         alt="pen tool"
                                 />
                             </button>
@@ -127,14 +127,14 @@
                 <div class="footer-logo">
                     <img
                             class="new-logo"
-                            src="//images/new_homepage/logo.png"
+                            src="/images/new_homepage/logo.png"
                     />
                 </div>
                 <div class="follow-us">
                     <div class="footer-text">Follow us</div>
                     <div class="facebook">
                         <img
-                                src="//images/new_homepage/facebook.svg"
+                                src="/images/new_homepage/facebook.svg"
                                 alt="fackbook"
                                 class="follow-logo"
                         />
@@ -142,7 +142,7 @@
                     </div>
                     <div class="instagram">
                         <img
-                                src="//images/new_homepage/instagram.svg"
+                                src="/images/new_homepage/instagram.svg"
                                 alt="instagram"
                                 class="follow-logo"
                         />
@@ -189,9 +189,9 @@
                         weekly_rate: "40",
                         hourly_rate: "25",
                         address: "Dhaka, Bangladesh",
-                        link: "https://civ.ie/123workforce/ShakibAli",
+                        link: "https:/civ.ie/123workforce/ShakibAli",
                         skills: "User Interface Design ,Design, Web Design, Photoshop, Illustrator,Illustration, UI/UX, GraphicDesignSkills, Aesthetics, .net, sketch, Photoshop",
-                        src: "//images/new_homepage/portfolio/sakib_ali.jpg",
+                        src: "/images/new_homepage/portfolio/sakib_ali.jpg",
                     },
                     {
                         name: "Abu Usuf",
@@ -200,9 +200,9 @@
                         weekly_rate: "40",
                         hourly_rate: "25",
                         address: "Dhaka, Bangladesh",
-                        link: "https://civ.ie/123workforce/AbuUsuf",
+                        link: "https:/civ.ie/123workforce/AbuUsuf",
                         skills: "Photoshop, design, illustrator,Illustration, user interface design, ui/ux, Aesthetics, Prototyping ",
-                        src: "//images/new_homepage/portfolio/abu_usuf.jpg",
+                        src: "/images/new_homepage/portfolio/abu_usuf.jpg",
                     },
                     {
                         name: "Mahmudul Hasan Manik",
@@ -211,10 +211,10 @@
                         weekly_rate: "40",
                         hourly_rate: "25",
                         address: " Bangladesh",
-                        link: "https://civ.ie/123workforce/mahmudulhasan",
+                        link: "https:/civ.ie/123workforce/mahmudulhasan",
                         skills: "Photoshop, design, illustrator,Illustration, user interface design, ui/ux, Aesthetics, Prototyping ",
                         src:
-                            "//images/new_homepage/portfolio/mehdi_manik.jpg",
+                            "/images/new_homepage/portfolio/mehdi_manik.jpg",
                     },
                     {
                         name: "Aymane Helfa",
@@ -224,9 +224,9 @@
                         hourly_rate: "25",
                         address: "Morocco",
                         skills: "Adaptability, Typography, Illustrator, Prototyping, Web Design, Motion",
-                        link: "https://civ.ie/123workforce/Aymane",
+                        link: "https:/civ.ie/123workforce/Aymane",
                         src:
-                            "//images/new_homepage/portfolio/helfa_aymane.jpg",
+                            "/images/new_homepage/portfolio/helfa_aymane.jpg",
                     },
                     {
                         name: "Md. Tajul Islam Sajib",
@@ -236,8 +236,8 @@
                         hourly_rate: "25",
                         address: "Bangladesh",
                         skills: "User Interface Design ,Design, Web Design, InDesign, Perceptivity, Photoshop, Illustrator, UI/UX, GraphicDesignSkills, Aesthetics, .net, sketch, Photoshop",
-                        link: "https://civ.ie/123workforce/Rony",
-                        src: "//images/new_homepage/portfolio/rony.jpg",
+                        link: "https:/civ.ie/123workforce/Rony",
+                        src: "/images/new_homepage/portfolio/rony.jpg",
                     },
                     {
                         name: "Shai Falcutila",
@@ -247,8 +247,8 @@
                         hourly_rate: "25",
                         address: "Philippines",
                         skills: "",
-                        link: "https://civ.ie/123workforce/Shai",
-                        src: "//images/new_homepage/portfolio/shai.jpg",
+                        link: "https:/civ.ie/123workforce/Shai",
+                        src: "/images/new_homepage/portfolio/shai.jpg",
                     },
                     {
                         name: "Yoka Leis",
@@ -258,8 +258,8 @@
                         hourly_rate: "25",
                         address: "Venezuela",
                         skills: "",
-                        link: "https://civ.ie/123workforce/Yoka",
-                        src: "//images/new_homepage/portfolio/yoka.jpg",
+                        link: "https:/civ.ie/123workforce/Yoka",
+                        src: "/images/new_homepage/portfolio/yoka.jpg",
                     },
                     {
                         name: "Anton Vasyliev",
@@ -269,8 +269,8 @@
                         hourly_rate: "25",
                         address: "Kharkiv,Ukraine",
                         skills: "",
-                        link: "https://civ.ie/123workforce/Anton",
-                        src: "//images/new_homepage/portfolio/anton.jpg",
+                        link: "https:/civ.ie/123workforce/Anton",
+                        src: "/images/new_homepage/portfolio/anton.jpg",
                     },
                     {
                         name: "Ishrat Jahan Shaeera",
@@ -280,8 +280,8 @@
                         hourly_rate: "25",
                         address: "Bangladesh",
                         skills: "",
-                        link: "https://civ.ie/123workforce/Ishrat",
-                        src: "//images/new_homepage/portfolio/ishrat.jpg",
+                        link: "https:/civ.ie/123workforce/Ishrat",
+                        src: "/images/new_homepage/portfolio/ishrat.jpg",
                     },
                     {
                         name: "Darina Kulyk",
@@ -291,8 +291,8 @@
                         hourly_rate: "25",
                         skills: "",
                         address: "Ukraine",
-                        link: "https://civ.ie/123workforce/darina",
-                        src: "//images/new_homepage/portfolio/darina.jpg",
+                        link: "https:/civ.ie/123workforce/darina",
+                        src: "/images/new_homepage/portfolio/darina.jpg",
                     },
                     {
                         name: "Maral Golrokh",
@@ -302,8 +302,8 @@
                         hourly_rate: "25",
                         address: "Iran",
                         skills: "",
-                        link: "https://civ.ie/123workforce/maral",
-                        src: "//images/new_homepage/portfolio/maral.jpg",
+                        link: "https:/civ.ie/123workforce/maral",
+                        src: "/images/new_homepage/portfolio/maral.jpg",
                     },
                     {
                         name: "Sharfuzzaman Sayem",
@@ -313,8 +313,8 @@
                         hourly_rate: "25",
                         address: "Bangladesh",
                         skills: "",
-                        link: "https://civ.ie/123workforce/sayem",
-                        src: "//images/new_homepage/portfolio/sayem.jpg",
+                        link: "https:/civ.ie/123workforce/sayem",
+                        src: "/images/new_homepage/portfolio/sayem.jpg",
                     },
                     {
                         name: "Imran Molla",
@@ -324,8 +324,8 @@
                         hourly_rate: "25",
                         skills: "",
                         address: "Bangladesh",
-                        link: "https://civ.ie/123workforce/Imran",
-                        src: "//images/new_homepage/portfolio/imran.jpg",
+                        link: "https:/civ.ie/123workforce/Imran",
+                        src: "/images/new_homepage/portfolio/imran.jpg",
                     },
                     {
                         name: "Humayra Kabir",
@@ -335,8 +335,8 @@
                         hourly_rate: "25",
                         address: "Bangladesh",
                         skills: "",
-                        link: "https://civ.ie/123workforce/Humayra",
-                        src: "//images/new_homepage/portfolio/humayra.jpg",
+                        link: "https:/civ.ie/123workforce/Humayra",
+                        src: "/images/new_homepage/portfolio/humayra.jpg",
                     },
                     {
                         name: "Viktoriya Kliuchnyck",
@@ -346,8 +346,8 @@
                         hourly_rate: "25",
                         address: "Russia",
                         skills: "",
-                        link: "https://civ.ie/123workforce/Viktoriia",
-                        src: "//images/new_homepage/portfolio/viktoriya.jpg",
+                        link: "https:/civ.ie/123workforce/Viktoriia",
+                        src: "/images/new_homepage/portfolio/viktoriya.jpg",
                     },
                     {
                         name: "Ronak Chhatwal",
@@ -357,8 +357,8 @@
                         hourly_rate: "25",
                         address: "India",
                         skills: "",
-                        link: "https://civ.ie/123workforce/Ronak",
-                        src: "//images/new_homepage/portfolio/ronak.jpg",
+                        link: "https:/civ.ie/123workforce/Ronak",
+                        src: "/images/new_homepage/portfolio/ronak.jpg",
                     },
                     {
                         name: "Hachibur Rahman",
@@ -368,26 +368,26 @@
                         hourly_rate: "25",
                         skills: "",
                         address: "Bangladesh",
-                        link: "https://civ.ie/123workforce/huchibur",
-                        src: "//images/new_homepage/portfolio/hachibur.jpg",
+                        link: "https:/civ.ie/123workforce/huchibur",
+                        src: "/images/new_homepage/portfolio/hachibur.jpg",
                     },
                 ],
                 socialIcons: [
                     {
-                        src: "//images/new_homepage/whatsapp.svg",
-                        link: "https://wa.me/353868447832",
+                        src: "/images/new_homepage/whatsapp.svg",
+                        link: "https:/wa.me/353868447832",
                     },
                     {
-                        src: "//images/new_homepage/skype.svg",
+                        src: "/images/new_homepage/skype.svg",
                         link: "skype:magictime.uk?chat",
                     },
                     {
-                        src: "//images/new_homepage/gmail.svg",
+                        src: "/images/new_homepage/gmail.svg",
                         link: "mailto:accounts@123workforce.com",
                     },
                     {
-                        src: "//images/new_homepage/telegram.svg",
-                        link: "https://t.me/conormarjoram",
+                        src: "/images/new_homepage/telegram.svg",
+                        link: "https:/t.me/conormarjoram",
                     },
                 ],
                 typeArray: [
@@ -709,7 +709,7 @@
                     border: 2px solid #c4c9f5;
                     box-sizing: border-box;
                     border-radius: 1rem;
-                    background-image: url("//images/new_homepage/magnifiy.svg");
+                    background-image: url("/images/new_homepage/magnifiy.svg");
                     background-position: 2.5rem 2rem;
                     background-repeat: no-repeat;
 
@@ -1147,7 +1147,7 @@
                         border: 2px solid #c4c9f5;
                         box-sizing: border-box;
                         border-radius: 1rem;
-                        background-image: url("//images/new_homepage/magnifiy.svg");
+                        background-image: url("/images/new_homepage/magnifiy.svg");
                         background-position: 2.5rem 2rem;
                         background-repeat: no-repeat;
 
@@ -1540,7 +1540,7 @@
                         border: 2px solid #c4c9f5;
                         box-sizing: border-box;
                         border-radius: 1rem;
-                        background-image: url("//images/new_homepage/magnifiy.svg");
+                        background-image: url("/images/new_homepage/magnifiy.svg");
                         background-position: 2.5rem 2rem;
                         background-repeat: no-repeat;
 

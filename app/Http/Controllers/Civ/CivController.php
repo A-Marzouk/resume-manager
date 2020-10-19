@@ -33,7 +33,7 @@ class CivController extends Controller
             "url" => $url,
         ));
 
-        $target = "/images/civ-profiles/preview_" . $id . "_.jpeg";
+        $target = "images/civ-profiles/preview_" . $id . "_.jpeg";
 
         if(file_exists($target)){
           return $target;

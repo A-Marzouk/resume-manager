@@ -391,6 +391,7 @@
                     },
                 ],
                 typeArray: [
+                    "On Demand Freelance Talent",
                     "Affordable UI Designer",
                     " Reliable UX Designer",
                     " Talented Graphic Designer",

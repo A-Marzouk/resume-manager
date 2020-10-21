@@ -1,7 +1,4 @@
 /.idea
-/public/css/app.css
-/public/css/app-vuetify.css
-/public/js/app.js
 /node_modules
 /public/hot
 /public/storage

@@ -20,7 +20,8 @@
         "php-http/message": "^1.7",
         "pusher/pusher-php-server": "^3.0",
         "srmklive/paypal": "^1.6",
-        "vinkla/instagram": "^9.0"
+        "vinkla/instagram": "^9.0",
+        "symfony/http-foundation": "4.2.12"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

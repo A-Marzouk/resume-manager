@@ -13,7 +13,7 @@
                 <div class="freelacer-text">
                     <div class="rate-text">
                         Trusted Freelance Designers
-                        <span class="from">at</span> <span class="rate">$10/hr</span>
+                        <span class="from">at</span> <span class="rate">$15/hr</span>
                     </div>
                     <div class="rate-info">
                         Scale your Creative Workforce with no overheads.
@@ -504,14 +504,6 @@
                 return filtered.sort(this.compare);
             },
             searchTags() {
-                if (this.searchValue.join().toLowerCase().includes('php') || this.searchValue.join().toLowerCase().includes('backend')) {
-                    return ["PHP", "MySQL", "WordPress", "Laravel", "OpenCart"]
-                }
-
-                if (this.searchValue.join().toLowerCase().includes('developer')) {
-                    return ["JavaScript", "HTML", "CSS", "React.js", "Vue.js"]
-                }
-
                 if (this.searchValue.join().toLowerCase().includes('designer')) {
                     return ["UI/UX", "Illustrator", "Graphic Design", "Motion Design", "Product Design"]
                 }
@@ -520,17 +512,8 @@
                     return ["XD", "Lightroom", "Figma", "Photoshop", "Illustrator"]
                 }
 
-                if (this.searchValue.join().toLowerCase().includes('javascript')) {
-                    return ["HTML", "CSS", "Vue.js", "Node.js", "React.js"]
-                }
 
-                if (this.searchValue.join().toLowerCase().includes('html')) {
-                    return ["BootStrap", "Scss", "Sass", "XHTML", "Vue.js"]
-                }
-
-
-
-                return ["UI/UX", "Motion Design", "Graphic Design", "HTML", "CSS"]
+                return ["UI/UX", "Motion Design", "Graphic Design", "Illustrator", "Interaction"]
 
             }
         },

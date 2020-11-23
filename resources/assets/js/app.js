@@ -21,7 +21,7 @@ Vue.use(Vuetify);
 import SvgVue from 'svg-vue';
 Vue.use(SvgVue);
 
-import {store} from './store/store';
+import { store } from './store/store';
 
 import vue2Dropzone from 'vue2-dropzone'
 
@@ -50,7 +50,6 @@ require('./select.js');
 
 Vue.config.devtools = true;
 
-
 // resume builder components & routes
 
 Vue.component('resume-builder', require('./components/resume_builder/Main'));
@@ -69,7 +68,7 @@ import ResumeBuilderEditCVProjects from './components/resume_builder/tabs/edit_t
 import ResumeBuilderEditCVAchievement from './components/resume_builder/tabs/edit_tabs/Achievement'
 import ResumeBuilderEditCVHobbies from './components/resume_builder/tabs/edit_tabs/Hobbies'
 import ResumeBuilderEditCVAudioVideo from './components/resume_builder/tabs/edit_tabs/AudioVideo'
-import ResumeBuilderEditCVPayAvailability  from './components/resume_builder/tabs/edit_tabs/PayAvailability'
+import ResumeBuilderEditCVPayAvailability from './components/resume_builder/tabs/edit_tabs/PayAvailability'
 import ResumeBuilderEditCVImports from './components/resume_builder/tabs/edit_tabs/Imports'
 import ResumeBuilderEditCVReferences from './components/resume_builder/tabs/edit_tabs/References'
 
@@ -77,7 +76,7 @@ import ResumeBuilderEditCVReferences from './components/resume_builder/tabs/edit
 if ($("#resumeBuilder").length !== 0) {
 
     const routes = [
-        {path: '/resume-builder', component: ResumeBuilderMyAccount},
+        { path: '/resume-builder', component: ResumeBuilderMyAccount },
         {
             path: '/resume-builder/edit',
             component: ResumeBuilderEditCV,
@@ -112,22 +111,22 @@ if ($("#resumeBuilder").length !== 0) {
                     props: true,
                     children: [
                         {
-                            path:'',
+                            path: '',
                             component: require('./components/resume_builder/tabs/edit_tabs/projects_views/projects.vue'),
                             props: true
                         },
                         {
-                            path:'step-1',
+                            path: 'step-1',
                             component: require('./components/resume_builder/tabs/edit_tabs/projects_views/form_view_num1.vue'),
                             props: true
                         },
                         {
-                            path:'step-2',
+                            path: 'step-2',
                             component: require('./components/resume_builder/tabs/edit_tabs/projects_views/form_view_num2.vue'),
                             props: true
                         },
                         {
-                            path:'step-3',
+                            path: 'step-3',
                             component: require('./components/resume_builder/tabs/edit_tabs/projects_views/form_view_num3.vue'),
                             props: true
                         }
@@ -160,7 +159,7 @@ if ($("#resumeBuilder").length !== 0) {
             ]
 
         },
-        {path: '/resume-builder/view', component: ResumeBuilderViewCV}
+        { path: '/resume-builder/view', component: ResumeBuilderViewCV }
     ];
 
     const router = new VueRouter({
@@ -401,10 +400,10 @@ if ($("#advancedSearch").length !== 0) {
 if ($("#adminDashboardComponent").length !== 0) {
 
     const routes = [
-        {path: '/admin/agents/', component: AdminAgents},
-        {path: '/admin/clients/', component: AdminClients},
-        {path: '/admin/campaign-manager/', component: AdminCampaigns},
-        {path: '/admin/', component: AdminCampaigns},
+        { path: '/admin/agents/', component: AdminAgents },
+        { path: '/admin/clients/', component: AdminClients },
+        { path: '/admin/campaign-manager/', component: AdminCampaigns },
+        { path: '/admin/', component: AdminCampaigns },
     ];
 
     const router = new VueRouter({
@@ -422,13 +421,13 @@ if ($("#adminDashboardComponent").length !== 0) {
 if ($('#adminRegisterAgent').length !== 0) {
 
     const routes = [
-        {path: '/admin/register-agent', component: AdminAgentRegisterPage1},
-        {path: '/admin/register-agent/page1', component: AdminAgentRegisterPage1},
-        {path: '/admin/register-agent/page2', component: AdminAgentRegisterPage2},
-        {path: '/admin/register-agent/page3', component: AdminAgentRegisterPage3},
-        {path: '/admin/register-agent/page4', component: AdminAgentRegisterPage4},
-        {path: '/admin/register-agent/page5', component: AdminAgentRegisterPage5},
-        {path: '/admin/register-agent/completed', component: AdminAgentRegisterCompleted}
+        { path: '/admin/register-agent', component: AdminAgentRegisterPage1 },
+        { path: '/admin/register-agent/page1', component: AdminAgentRegisterPage1 },
+        { path: '/admin/register-agent/page2', component: AdminAgentRegisterPage2 },
+        { path: '/admin/register-agent/page3', component: AdminAgentRegisterPage3 },
+        { path: '/admin/register-agent/page4', component: AdminAgentRegisterPage4 },
+        { path: '/admin/register-agent/page5', component: AdminAgentRegisterPage5 },
+        { path: '/admin/register-agent/completed', component: AdminAgentRegisterCompleted }
     ];
 
     const router = new VueRouter({
@@ -482,9 +481,9 @@ import MyAccount from './components/client/dashboardComponents/MyAccount.vue';
 
 if ($('#campaignMainComponent').length !== 0) {
     const routes = [
-        {path: '/:campaign-team', component: CampaignTeam},
-        {path: '/:campaign-brief', component: CampaignBrief},
-        {path: '/', component: CampaignActivity}
+        { path: '/:campaign-team', component: CampaignTeam },
+        { path: '/:campaign-brief', component: CampaignBrief },
+        { path: '/', component: CampaignActivity }
     ];
 
     const router = new VueRouter({
@@ -501,12 +500,12 @@ if ($('#campaignMainComponent').length !== 0) {
 if ($("#clientDashboardComponent").length !== 0) {
 
     const routes = [
-        {path: '/client/dashboard/my-account', component: MyAccount},
-        {path: '/client/dashboard/agents-database', component: AgentsDatabase},
-        {path: '/client/dashboard/payments', component: Payments},
-        {path: '/client', component: CampaignManager},
-        {path: '/client/dashboard', component: CampaignManager},
-        {path: '/client/dashboard/*', component: CampaignManager}
+        { path: '/client/dashboard/my-account', component: MyAccount },
+        { path: '/client/dashboard/agents-database', component: AgentsDatabase },
+        { path: '/client/dashboard/payments', component: Payments },
+        { path: '/client', component: CampaignManager },
+        { path: '/client/dashboard', component: CampaignManager },
+        { path: '/client/dashboard/*', component: CampaignManager }
     ];
 
     const router = new VueRouter({
@@ -647,13 +646,13 @@ Vue.component('privacy-agreement', require('./components/freelancer/dashboardCom
 if ($('#freelancerRegisterComponent').length !== 0) {
 
     const routes = [
-        {path: '/freelancer/register', component: FreelancerRegisterPage1},
-        {path: '/freelancer/register/page1', component: FreelancerRegisterPage1},
-        {path: '/freelancer/register/page2', component: FreelancerRegisterPage2},
-        {path: '/freelancer/register/page3', component: FreelancerRegisterPage3},
-        {path: '/freelancer/register/page4', component: FreelancerRegisterPage4},
-        {path: '/freelancer/register/page5', component: FreelancerRegisterPage5},
-        {path: '/freelancer/register/completed', component: FreelancerRegisterCompleted}
+        { path: '/freelancer/register', component: FreelancerRegisterPage1 },
+        { path: '/freelancer/register/page1', component: FreelancerRegisterPage1 },
+        { path: '/freelancer/register/page2', component: FreelancerRegisterPage2 },
+        { path: '/freelancer/register/page3', component: FreelancerRegisterPage3 },
+        { path: '/freelancer/register/page4', component: FreelancerRegisterPage4 },
+        { path: '/freelancer/register/page5', component: FreelancerRegisterPage5 },
+        { path: '/freelancer/register/completed', component: FreelancerRegisterCompleted }
     ];
 
     const router = new VueRouter({
@@ -671,9 +670,9 @@ if ($('#freelancerRegisterComponent').length !== 0) {
 
 if ($('#freelancerDashboardComponent').length !== 0) {
     const routes = [
-        {path: '/freelancer/dashboard/my-account', component: FreelancerMyAccount},
-        {path: '/freelancer/dashboard/payments', component: FreelancerPayments},
-        {path: '/freelancer/dashboard', component: FreelancerCampaignManager}
+        { path: '/freelancer/dashboard/my-account', component: FreelancerMyAccount },
+        { path: '/freelancer/dashboard/payments', component: FreelancerPayments },
+        { path: '/freelancer/dashboard', component: FreelancerCampaignManager }
     ]
 
     const router = new VueRouter({
@@ -699,9 +698,9 @@ import FreelancerCampaignBrief from './components/freelancer/campaignComponents/
 
 if ($('#freelancerCampaignMainComponent').length !== 0) {
     const routes = [
-        {path: '/:campaign-team', component: FreelancerCampaignTeam},
-        {path: '/:campaign-brief', component: FreelancerCampaignBrief},
-        {path: '/', component: FreelancerCampaignActivity}
+        { path: '/:campaign-team', component: FreelancerCampaignTeam },
+        { path: '/:campaign-brief', component: FreelancerCampaignBrief },
+        { path: '/', component: FreelancerCampaignActivity }
     ];
 
     const router = new VueRouter({
@@ -1052,6 +1051,13 @@ if ($("#freelancer_skills").length !== 0) {
 }
 
 
+Vue.component('browse-resumes', require('./components/resumes/Browse/Index.vue'));
+if ($("#browse_resumes").length !== 0) {
+    new Vue({
+        el: '#browse_resumes',
+    });
+}
+
 if ($("#VueChat").length !== 0) {
     const app = new Vue({
         el: '#VueChat',
@@ -1080,11 +1086,11 @@ if ($("#VueChat").length !== 0) {
                 });
                 //scroll down :
                 if ($("#chatBox").length) {
-                    $('#messagesBox').animate({scrollTop: $('#messagesBox')[0].scrollHeight}, 'slow');
+                    $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
                 }
                 if ($("#chatLogs").length && this.currentUser.admin == 1) {
                     setTimeout(function () {
-                        $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+                        $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
                     }, 2000);
                 }
                 // save to DB and so on.
@@ -1131,7 +1137,7 @@ if ($("#VueChat").length !== 0) {
                     if (this.currentConvId == e.message.conversation_id) {
                         if ($("#chatLogs").length) {
                             setTimeout(function () {
-                                $('html,body').animate({scrollTop: $("#sendMessage").offset().top}, 'slow');
+                                $('html,body').animate({ scrollTop: $("#sendMessage").offset().top }, 'slow');
                             }, 2000);
                         }
                         // play sound :
@@ -1147,7 +1153,7 @@ if ($("#VueChat").length !== 0) {
                             // write the head is new message
                             $('#chatText').html('New message !');
                             setTimeout(function () {
-                                $('#messagesBox').animate({scrollTop: $('#messagesBox')[0].scrollHeight}, 'slow');
+                                $('#messagesBox').animate({ scrollTop: $('#messagesBox')[0].scrollHeight }, 'slow');
                             }, 1000);
                             //2 seconds and return it back
                             setTimeout(function () {

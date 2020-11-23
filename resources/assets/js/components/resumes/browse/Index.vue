@@ -1,6 +1,6 @@
 <template>
 	<div id="browse-resumes">
-		<SearchFreelancers />
+		<SearchFreelancersForm />
 		<!-- <FilterResumes />
         <SortResumes />
         <ResumesListView /> -->
@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import SearchFreelancers from "./components/SearchFreelancers";
+import SearchFreelancersForm from "./components/SearchFreelancersForm";
 
 export default {
 	name: "Index",
 	components: {
-		SearchFreelancers,
+		SearchFreelancersForm,
 	},
 };
 </script>

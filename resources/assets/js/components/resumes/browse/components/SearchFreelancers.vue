@@ -88,6 +88,10 @@ export default {
 		&:hover {
 			box-shadow: $button-hover-shadow;
 		}
+
+		&:focus {
+			outline: none;
+		}
 	}
 	.form__input-outer {
 		flex: 1;
@@ -116,6 +120,11 @@ export default {
 			color: inherit;
 			font-size: 14px;
 			font-weight: 400;
+			transition: all 0.3s;
+			&:focus {
+				outline: none;
+				border-color: $blue;
+			}
 
 			&::placeholder {
 				color: $placeholder-color;
@@ -142,14 +151,18 @@ export default {
 				height: 35px;
 				background-color: $white;
 				box-shadow: $inline-filter-shadow;
-				&:hover {
-					box-shadow: $button-hover-shadow;
-				}
+				transition: all 0.15s;
 				svg {
 					transform: scale(0.8);
 				}
 				&.--enabled {
 					background-color: $blue;
+				}
+				&:hover {
+					box-shadow: $button-hover-shadow;
+				}
+				&:focus {
+					border: 1px solid $blue;
 				}
 			}
 		}
@@ -158,8 +171,12 @@ export default {
 		width: 47px;
 		height: 47px;
 		background-color: $blue;
+		transition: all 0.15s;
 		.search-action__text {
 			display: none;
+		}
+		&:active {
+			transform: translateY(1px);
 		}
 	}
 }

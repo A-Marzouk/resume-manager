@@ -1,6 +1,6 @@
 <template>
 	<div class="search-suggestion-keywords" :class="classes">
-		<button class="search-suggestion-keyword" v-for="keyword in suggestionKeywords" v-text="keyword" :key="keyword"></button>
+		<button type="button" class="search-suggestion-keyword" @click="$emit('onsuggestion', keyword)" v-for="keyword in suggestionKeywords" v-text="keyword" :key="keyword"></button>
 	</div>
 </template>
 
@@ -42,10 +42,12 @@ export default {
 		margin-bottom: 3px;
 		border: 1px solid transparent;
 		background-color: $darkselago;
-		&:hover {
-			border-color: $selago;
+		transition: all 0.2s;
+		&:hover,
+		&:focus {
+			outline: none;
+			border-color: $lynch50;
 		}
-
 		&:last-child {
 			margin-right: unset;
 		}

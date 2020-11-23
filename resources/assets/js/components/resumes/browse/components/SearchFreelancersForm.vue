@@ -21,7 +21,7 @@
 			</div>
 
 			<div class="search-suggestion-keywords__wrapper">
-				<SearchSuggestionKeywords />
+				<SearchSuggestionKeywords @onsuggestion="form.keyword=$event" />
 			</div>
 		</div>
 		<button class="form__search-action">
@@ -60,7 +60,6 @@ export default {
 				);
 				return;
 			}
-
 			this.enabledFilters.push(filter);
 		},
 		onFormSubmit() {
@@ -136,7 +135,7 @@ export default {
 				}
 
 				&::placeholder {
-					color: $placeholder-color;
+					color: $lynch50;
 				}
 			}
 			.form__inline-filters {

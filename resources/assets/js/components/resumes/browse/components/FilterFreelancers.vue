@@ -95,17 +95,8 @@ export default {
 
 @include xl {
 	.filter-freelancers {
-		max-width: 1467px;
-		.filter-freelancers__right-side {
-		}
-		.filter-freelancers__left-side {
-		}
-	}
-}
-
-@include xxl {
-	.filter-freelancers {
-		max-width: 1700px;
+		max-width: 1720px;
+		margin-top: 86px;
 		.filter-freelancers__right-side {
 		}
 		.filter-freelancers__left-side {

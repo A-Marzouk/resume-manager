@@ -75,7 +75,6 @@ export default {
 
 #search-freelancers-form {
 	display: flex;
-	font-family: $main-font;
 	color: $midnightblue;
 	width: 100%;
 	margin-left: auto;

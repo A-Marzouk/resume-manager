@@ -29,7 +29,6 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-family: $main-font;
 	.search-suggestion-keyword {
 		color: $lynch;
 		height: 34px;

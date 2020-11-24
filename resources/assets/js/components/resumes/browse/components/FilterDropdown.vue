@@ -7,6 +7,7 @@
 			</svg>
 		</button>
 		<div class="filter-dropdown__menu" :class="{'--open': isOpen}">
+			<div v-if="value" class="menu__item" @click="$emit('input', '')">{{ title }}</div>
 			<div class="menu__item" :class="{'--selected': option.value===value}" v-for="option in options" :key="option.id" @click="$emit('input', option.value)" v-text="option.value"></div>
 		</div>
 	</div>
@@ -56,8 +57,8 @@ export default {
 
 .filter-dropdown {
 	position: relative;
-	color: $midnightblue;
 	font-size: 12px;
+	color: $midnightblue;
 
 	.filter-dropdown__action {
 		display: flex;

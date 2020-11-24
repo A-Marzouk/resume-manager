@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
+// Browse Resumes
+Route::view('/resumes/browse', 'resumes.browse')->name('resumes.browse');
+
 // UserPhoto Routes...
 Route::get('users/photos', 'UserPhotoController@index')
     ->name('me.photos.index');
@@ -320,7 +323,7 @@ Route::prefix('freelancer')->group(function () {
         return redirect()->back();
     });
 
-//    Route::get('/register/{any?}', 'Auth\FreelancerRegisterController@showRegistrationForm')->name('freelancer.register'); temporally changed to simple register
+    //    Route::get('/register/{any?}', 'Auth\FreelancerRegisterController@showRegistrationForm')->name('freelancer.register'); temporally changed to simple register
 
     Route::get('/register', 'Auth\SocialSitesRegisterController@simpleRegisterView')->name('freelancer.register');
     Route::post('/register', 'Auth\SocialSitesRegisterController@simpleRegister')->name('freelancer.register');
@@ -347,7 +350,7 @@ Route::prefix('freelancer')->group(function () {
 
     Route::get('/skillsList', 'FreelancersController@getSkillsList');
 
-//    resume editor routes
+    //    resume editor routes
 
 });
 

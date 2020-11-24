@@ -83,6 +83,7 @@ class HomeController extends Controller
 //            return $promotedUser->user;
 //        });
 
+
         return view('welcome_landing');
     }
 

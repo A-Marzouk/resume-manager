@@ -1,18 +1,21 @@
 <template>
 	<div id="browse-resumes">
 		<SearchFreelancersForm />
-		<!-- <FilterResumes />
+		<FilterFreelancers />
+		<!--
         <SortResumes />
         <ResumesListView /> -->
 	</div>
 </template>
 
 <script>
+import FilterFreelancers from "./components/FilterFreelancers";
 import SearchFreelancersForm from "./components/SearchFreelancersForm";
 
 export default {
 	name: "Index",
 	components: {
+		FilterFreelancers,
 		SearchFreelancersForm,
 	},
 };

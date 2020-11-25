@@ -15,6 +15,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../scss/variables";
+@import "../scss/media-queries";
 
 .freelancer-portfolio-preview {
 	padding: 0;
@@ -36,6 +37,22 @@ export default {
 		}
 		img {
 			width: 100%;
+		}
+	}
+}
+
+@include lg {
+	.freelancer-portfolio-preview {
+		.portfolio__preview {
+		}
+	}
+}
+
+@include xl {
+	.freelancer-portfolio-preview {
+		.portfolio__preview {
+			margin-left: 18px;
+			margin-right: 18px;
 		}
 	}
 }

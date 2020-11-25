@@ -93,9 +93,15 @@ export default {
 	}
 }
 
+@include lg-xl {
+	.filter-freelancers {
+		max-width: 1578px;
+	}
+}
+
 @include xl {
 	.filter-freelancers {
-		max-width: 1720px;
+		max-width: 1712px;
 		margin-top: 86px;
 		.filter-freelancers__right-side {
 		}

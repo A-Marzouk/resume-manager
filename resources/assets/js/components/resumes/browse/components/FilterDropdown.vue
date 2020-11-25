@@ -108,6 +108,12 @@ export default {
 		font-size: inherit;
 		overflow: auto;
 		transition: all 0.2s;
+		z-index: 9999;
+		&::-webkit-scrollbar {
+			display: none;
+			scrollbar-width: none;
+			-ms-overflow-style: none;
+		}
 		&.--open {
 			height: auto;
 			padding: 5px 0;

@@ -29,7 +29,6 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-family: $main-font;
 	.search-suggestion-keyword {
 		color: $lynch;
 		height: 34px;
@@ -43,6 +42,7 @@ export default {
 		border: 1px solid transparent;
 		background-color: $darkselago;
 		transition: all 0.2s;
+		word-break: break-all;
 		&:hover,
 		&:focus {
 			outline: none;

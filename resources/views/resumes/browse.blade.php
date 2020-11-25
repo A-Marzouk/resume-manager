@@ -10,7 +10,7 @@
 
     @include('layouts.includes.styles')
 </head>
-<body>
+<body style="overflow-x: unset; background-color: white !important;">
     <div class="container">
         <div class="row no-gutters">
             <div class="col-12" id="browse_resumes">

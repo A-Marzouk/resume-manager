@@ -683,7 +683,7 @@
             margin: 4rem 0;
 
             .search {
-                width: 70%;
+                width: 80vw;
                 position: relative;
 
                 #advanced-search {
@@ -728,7 +728,7 @@
                     overflow-x: auto;
 
                     .search-tag {
-                        padding: 1rem 5rem;
+                        padding: 1rem 4rem;
 
                         background: #e6e8fc;
                         border-radius: 5rem;
@@ -922,7 +922,7 @@
             width: 100%;
             color: gray;
             font-size: 2rem;
-            uyjtyryndhrrnuyhmargin-left: 25px;
+            margin-left: 25px;
             margin-top: 25px;
 
             .search-tips {
@@ -1074,7 +1074,7 @@
             background: #001ce2;
         }
 
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: 1165px) {
             .main-conainter-home {
                 background: #f7f9ff;
 
@@ -1121,7 +1121,7 @@
                 margin: 4rem 0;
 
                 .search {
-                    width: 100%;
+                    width:95vw;
                     position: relative;
 
                     #advanced-search {
@@ -1166,7 +1166,7 @@
                         flex-wrap: nowrap !important;
 
                         .search-tag {
-                            padding: 1rem 5rem;
+                            padding: 1rem 4rem;
                             margin: 0 1rem;
                             background: #e6e8fc;
                             border-radius: 5rem;

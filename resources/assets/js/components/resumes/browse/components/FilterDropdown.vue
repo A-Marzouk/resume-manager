@@ -108,7 +108,7 @@ export default {
 		font-size: inherit;
 		overflow: auto;
 		transition: all 0.2s;
-		z-index: 9999;
+		z-index: 30;
 		&::-webkit-scrollbar {
 			display: none;
 			scrollbar-width: none;

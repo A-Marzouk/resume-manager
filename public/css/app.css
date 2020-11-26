@@ -11367,8 +11367,8 @@ input:focus, textarea:focus, button:focus, select:focus {
 
 body,
 html {
-  width: 100vw;
-  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 .home {
@@ -11377,7 +11377,7 @@ html {
   margin: 0;
   margin-top: 0 !important;
   background-color: white !important;
-  font-family: 'Montserrat', sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
   overflow-x: hidden;
   position: relative;
 }
@@ -11480,7 +11480,7 @@ html {
   font-style: normal;
   font-weight: bold;
   font-size: 77px;
-  color: #2660AE;
+  color: #2660ae;
   width: 70%;
   z-index: 5;
   max-width: 945px;
@@ -11506,7 +11506,7 @@ html {
 }
 
 .mainSection__content .gold-divider {
-  background: #FECA5F;
+  background: #feca5f;
   border-radius: 50%;
   height: 8px;
   width: 8px;
@@ -11904,7 +11904,7 @@ html {
 
 .registerBtn {
   padding: 18px 35px !important;
-  background-color: #05A4F4;
+  background-color: #05a4f4;
   font-size: 14px;
   margin-left: 54px;
   font-weight: bold;
@@ -11944,7 +11944,7 @@ html {
   overflow: hidden;
   width: 100%;
   background-image: url(/resumeApp/public/images/home/agentsBg-1.svg), url(/resumeApp/public/images/home/pencilsBg.png);
-  background-repeat: no-repeat,no-repeat;
+  background-repeat: no-repeat, no-repeat;
   background-size: cover;
 }
 
@@ -12043,7 +12043,7 @@ html {
   font-size: 36px;
   background: white;
   width: 550px;
-  color: #2A3749;
+  color: #2a3749;
   z-index: 5;
 }
 
@@ -12063,7 +12063,7 @@ html {
 
 .agentsSection .agentsContainer__searchTools button.active {
   color: white;
-  background: #FECA5F;
+  background: #feca5f;
 }
 
 .agentsSection .agentsContainer__searchTools .btn-first {
@@ -12117,26 +12117,29 @@ html {
   }
 }
 
-.agentsSection .agentsContainer__selectContainer select, .agentsSection .agentsContainer__selectContainer input {
-  background: #FFFFFF;
+.agentsSection .agentsContainer__selectContainer select,
+.agentsSection .agentsContainer__selectContainer input {
+  background: #ffffff;
   width: 100%;
   font-size: 22px;
   border: 0;
   border-radius: 4px;
   padding: 12px 20px;
   font-weight: bold;
-  color: #4A5464 !important;
+  color: #4a5464 !important;
   font-family: Nunito, Arial, Helvetica, sans-serif;
 }
 
 @media (max-width: 992px) {
-  .agentsSection .agentsContainer__selectContainer select, .agentsSection .agentsContainer__selectContainer input {
+  .agentsSection .agentsContainer__selectContainer select,
+  .agentsSection .agentsContainer__selectContainer input {
     font-size: 16px;
   }
 }
 
 @media (max-width: 768px) {
-  .agentsSection .agentsContainer__selectContainer select, .agentsSection .agentsContainer__selectContainer input {
+  .agentsSection .agentsContainer__selectContainer select,
+  .agentsSection .agentsContainer__selectContainer input {
     font-size: 14px;
   }
 }
@@ -12821,10 +12824,11 @@ html {
   font-size: 27px;
   line-height: 37px;
   /* identical to box height */
-  color: #4A5464;
+  color: #4a5464;
 }
 
-.contact_pop_up .faq-question-input, .contact_pop_up .faq-answer-input {
+.contact_pop_up .faq-question-input,
+.contact_pop_up .faq-answer-input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12835,42 +12839,48 @@ html {
   margin-top: 36px;
 }
 
-.contact_pop_up .faq-question-input .faq-input-label, .contact_pop_up .faq-answer-input .faq-input-label {
+.contact_pop_up .faq-question-input .faq-input-label,
+.contact_pop_up .faq-answer-input .faq-input-label {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  color: #4A5464;
+  color: #4a5464;
 }
 
-.contact_pop_up .faq-question-input .sub-label, .contact_pop_up .faq-answer-input .sub-label {
+.contact_pop_up .faq-question-input .sub-label,
+.contact_pop_up .faq-answer-input .sub-label {
   font-size: 16px;
-  color: #7A828D;
+  color: #7a828d;
   padding-bottom: 15px;
   padding-right: 38px;
 }
 
 @media (max-width: 768px) {
-  .contact_pop_up .faq-question-input .sub-label, .contact_pop_up .faq-answer-input .sub-label {
+  .contact_pop_up .faq-question-input .sub-label,
+  .contact_pop_up .faq-answer-input .sub-label {
     font-size: 13px;
   }
 }
 
 @media (max-width: 768px) {
-  .contact_pop_up .faq-question-input, .contact_pop_up .faq-answer-input {
+  .contact_pop_up .faq-question-input,
+  .contact_pop_up .faq-answer-input {
     width: 100%;
   }
 }
 
-.contact_pop_up .faq-question-input img, .contact_pop_up .faq-answer-input img {
+.contact_pop_up .faq-question-input img,
+.contact_pop_up .faq-answer-input img {
   margin-right: 38px;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 
-.contact_pop_up .faq-question-input .faq-input, .contact_pop_up .faq-answer-input .faq-input {
+.contact_pop_up .faq-question-input .faq-input,
+.contact_pop_up .faq-answer-input .faq-input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12880,35 +12890,52 @@ html {
   width: 100%;
 }
 
-.contact_pop_up .faq-question-input .faq-input input, .contact_pop_up .faq-question-input .faq-input textarea, .contact_pop_up .faq-question-input .faq-input select, .contact_pop_up .faq-answer-input .faq-input input, .contact_pop_up .faq-answer-input .faq-input textarea, .contact_pop_up .faq-answer-input .faq-input select {
+.contact_pop_up .faq-question-input .faq-input input,
+.contact_pop_up .faq-question-input .faq-input textarea,
+.contact_pop_up .faq-question-input .faq-input select,
+.contact_pop_up .faq-answer-input .faq-input input,
+.contact_pop_up .faq-answer-input .faq-input textarea,
+.contact_pop_up .faq-answer-input .faq-input select {
   width: 400px;
   border: none;
-  border-bottom: 1px solid #7A828D;
+  border-bottom: 1px solid #7a828d;
   height: 56px;
-  background: #FBFBFB;
+  background: #fbfbfb;
   padding-left: 22px;
   border-radius: 4px 4px 0px 0px;
 }
 
 @media (max-width: 768px) {
-  .contact_pop_up .faq-question-input .faq-input input, .contact_pop_up .faq-question-input .faq-input textarea, .contact_pop_up .faq-question-input .faq-input select, .contact_pop_up .faq-answer-input .faq-input input, .contact_pop_up .faq-answer-input .faq-input textarea, .contact_pop_up .faq-answer-input .faq-input select {
+  .contact_pop_up .faq-question-input .faq-input input,
+  .contact_pop_up .faq-question-input .faq-input textarea,
+  .contact_pop_up .faq-question-input .faq-input select,
+  .contact_pop_up .faq-answer-input .faq-input input,
+  .contact_pop_up .faq-answer-input .faq-input textarea,
+  .contact_pop_up .faq-answer-input .faq-input select {
     width: 100%;
   }
 }
 
-.contact_pop_up .faq-question-input .faq-input textarea, .contact_pop_up .faq-answer-input .faq-input textarea {
+.contact_pop_up .faq-question-input .faq-input textarea,
+.contact_pop_up .faq-answer-input .faq-input textarea {
   width: 100%;
 }
 
-.contact_pop_up .faq-question-input .faq-input input:focus, .contact_pop_up .faq-question-input .faq-input textarea:focus, .contact_pop_up .faq-question-input .faq-input select:focus, .contact_pop_up .faq-answer-input .faq-input input:focus, .contact_pop_up .faq-answer-input .faq-input textarea:focus, .contact_pop_up .faq-answer-input .faq-input select:focus {
+.contact_pop_up .faq-question-input .faq-input input:focus,
+.contact_pop_up .faq-question-input .faq-input textarea:focus,
+.contact_pop_up .faq-question-input .faq-input select:focus,
+.contact_pop_up .faq-answer-input .faq-input input:focus,
+.contact_pop_up .faq-answer-input .faq-input textarea:focus,
+.contact_pop_up .faq-answer-input .faq-input select:focus {
   border-color: inherit;
   -webkit-box-shadow: none;
   box-shadow: none;
-  border-bottom: 1px solid #05A4F4;
+  border-bottom: 1px solid #05a4f4;
   outline: none;
 }
 
-.contact_pop_up .faq-question-input .faq-input img, .contact_pop_up .faq-answer-input .faq-input img {
+.contact_pop_up .faq-question-input .faq-input img,
+.contact_pop_up .faq-answer-input .faq-input img {
   margin-left: -62px;
   cursor: pointer;
 }
@@ -12917,7 +12944,7 @@ html {
   margin-top: 52px;
   width: 235px;
   height: 48px;
-  background: #05A4F4;
+  background: #05a4f4;
   border-radius: 2px;
   display: -webkit-box;
   display: -ms-flexbox;

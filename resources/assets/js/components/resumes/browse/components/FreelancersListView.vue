@@ -1,22 +1,28 @@
 <template>
 	<div class="freelancers-list-view">
-		<FreelancersListViewItem v-for="freelancer in freelancers" :freelancer="freelancer" :key="freelancer.id" />
+		<FreelancersListViewItem v-for="freelancer in freelancers" :freelancer="freelancer" :key="freelancer.id" @oncontact="onContact" />
+		<ContactFreelancerModal :isOpen="isContactFreelancerModalOpen" :freelancer="contactModalFreelancer" @onclose="onContactFreelancerModalClosed" />
 	</div>
 </template>
 
 <script>
+import ContactFreelancerModal from "./ContactFreelancerModal";
 import FreelancersListViewItem from "./FreelancersListViewItem";
 export default {
 	name: "FreelancersListView",
 	components: {
+		ContactFreelancerModal,
 		FreelancersListViewItem,
 	},
 	data() {
 		return {
+			contactModalFreelancer: {},
+			isContactFreelancerModalOpen: false,
 			freelancers: [
 				{
 					id: 1,
 					avatar: "/images/freelancers/Anton.jpg",
+					full_name: "Jhone",
 					title: "Jhone - ui designer",
 					hourlyRate: 25,
 					portfolio: [
@@ -61,8 +67,9 @@ export default {
 					],
 				},
 				{
-					id: 1,
+					id: 2,
 					avatar: "/images/freelancers/Anton.jpg",
+					full_name: "Jhone",
 					title: "Jhone - ui designer",
 					hourlyRate: 25,
 					portfolio: [
@@ -107,8 +114,9 @@ export default {
 					],
 				},
 				{
-					id: 1,
+					id: 3,
 					avatar: "/images/freelancers/Anton.jpg",
+					full_name: "Jhone",
 					title: "Jhone - ui designer",
 					hourlyRate: 25,
 					portfolio: [
@@ -154,6 +162,17 @@ export default {
 				},
 			],
 		};
+	},
+	methods: {
+		onContact(freelancer) {
+			console.log(freelancer);
+			this.contactModalFreelancer = freelancer;
+			this.isContactFreelancerModalOpen = true;
+		},
+		onContactFreelancerModalClosed() {
+			this.contactModalFreelancer = {};
+			this.isContactFreelancerModalOpen = false;
+		},
 	},
 };
 </script>

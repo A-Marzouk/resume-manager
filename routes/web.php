@@ -365,6 +365,7 @@ Route::post('affiliate/password/reset', 'Auth\Affiliates\AffiliateResetPasswordC
 Route::get('/image-resizer','HomeController@resizeHomePageProjectImages');
 
 
+
 Route::get('payment/paypal','\App\classes\PayPalPayments@showForm')->name('show.paypal.form');
 
 // paypal - express checkout routes :
@@ -397,6 +398,7 @@ Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('pa
 // civ functions
 Route::get('/get-civ-profiles','Civ\CivController@getProfiles')->name('civ.profiles');
 Route::get('/civ/callback','Civ\CivController@callback')->name('civ.callback');
+Route::get('/{username}/{version?}','Civ\CivController@loadCivProfile');
 
 
 
@@ -414,5 +416,5 @@ Route::get('/resume_sample/{username}','HomeController@ResumeSample');
 Route::get('/v2/{username}','HomeController@ResumePageV2');
 Route::get('/v2/short/{username}','HomeController@ResumePageShortV2');
 Route::get('/admin/{user_id}','AdminsController@logInAsUser')->name('logInAsUser');
-Route::get('/{username}','HomeController@ResumePage');
+//Route::get('/{username}','HomeController@ResumePage');
 

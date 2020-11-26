@@ -50,8 +50,10 @@ class CivController extends Controller
 
             return "";
         }
+    }
 
-
+    public function loadCivProfile($username, $version = ''){
+        return view('civ.profile', compact('username','version'));
     }
 
 

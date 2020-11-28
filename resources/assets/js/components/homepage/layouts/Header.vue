@@ -28,10 +28,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../browse-freelancers/scss/variables";
-@import "../browse-freelancers/scss/media-queries";
+@import "../scss/variables";
+@import "../scss/media-queries";
 
 .header {
+	padding-top: 28px;
+	padding-bottom: 32px;
 	.header__navbar {
 		.navbar__logo {
 			text-align: center;
@@ -74,6 +76,8 @@ export default {
 	}
 
 	@include md {
+		padding-top: 20px;
+		padding-bottom: 58px;
 		.header__navbar {
 			.navbar__logo {
 				a {
@@ -97,6 +101,10 @@ export default {
 				}
 			}
 		}
+	}
+
+	@include lg {
+		padding-bottom: 52px;
 	}
 
 	@include xl {
@@ -124,6 +132,10 @@ export default {
 				}
 			}
 		}
+	}
+
+	@include xl {
+		padding-bottom: 78px;
 	}
 }
 </style>

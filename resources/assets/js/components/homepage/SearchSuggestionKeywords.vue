@@ -22,8 +22,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/variables";
-@import "../scss/media-queries";
+@import "./scss/variables";
+@import "./scss/media-queries";
 
 .search-suggestion-keywords {
 	display: flex;

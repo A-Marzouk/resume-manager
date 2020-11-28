@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/media-queries";
+@import "./scss/media-queries";
 
 .freelancers-list-view-item {
 	display: flex;

@@ -71,8 +71,8 @@ export default {
 </style>
 
 <style lang="scss" scoped>
-@import "../scss/variables";
-@import "../scss/media-queries";
+@import "./scss/variables";
+@import "./scss/media-queries";
 
 .contact-freelancer-modal {
 	position: fixed;

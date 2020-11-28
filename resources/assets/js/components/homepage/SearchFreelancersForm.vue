@@ -1,38 +1,42 @@
 <template>
 	<form id="search-freelancers-form" @submit.prevent="onFormSubmit">
-		<div class="form__input-outer">
-			<div class="form__keyword-input__wrapper">
-				<label for="form__keyword-input" class="form__keyword-prepend">
-					<svg :width="getIcon('search.prepend', '#707B99').width" :height="getIcon('search.prepend', '#707B99').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.prepend', '#707B99').path"></svg>
-				</label>
-				<input id="form__keyword-input" class="form__keyword-input" type="text" v-model="form.keyword" placeholder="Search freelancer for hire">
+		<div class="container">
+			<div class="d-flex">
+				<div class="form__input-outer">
+					<div class="form__keyword-input__wrapper">
+						<label for="form__keyword-input" class="form__keyword-prepend">
+							<svg :width="getIcon('search.prepend', '#707B99').width" :height="getIcon('search.prepend', '#707B99').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.prepend', '#707B99').path"></svg>
+						</label>
+						<input id="form__keyword-input" class="form__keyword-input" type="text" v-model="form.keyword" autocomplete="off" placeholder="Search freelancer for hire">
 
-				<div class="form__inline-filters">
-					<button type="button" class="inline-filter--pen" :class="{'--enabled': isEnabled('pen')}" @click="toggleFilter('pen')">
-						<svg :width="getIcon('pen', isEnabled('pen')?'#fff':'#001CE3').width" :height="getIcon('pen', isEnabled('pen')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('pen', isEnabled('pen')?'#fff':'#001CE3').path"></svg>
-					</button>
-					<button type="button" class="inline-filter--skill" :class="{'--enabled': isEnabled('skill')}" @click="toggleFilter('skill')">
-						<svg :width="getIcon('skill', isEnabled('skill')?'#fff':'#001CE3').width" :height="getIcon('skill', isEnabled('skill')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('skill', isEnabled('skill')?'#fff':'#001CE3').path"></svg>
-					</button>
-					<button type="button" class="inline-filter--portfolio" :class="{'--enabled': isEnabled('portfolio')}" @click="toggleFilter('portfolio')">
-						<svg :width="getIcon('portfolio', isEnabled('portfolio')?'#fff':'#001CE3').width" :height="getIcon('portfolio', isEnabled('portfolio')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('portfolio', isEnabled('portfolio')?'#fff':'#001CE3').path"></svg>
-					</button>
+						<div class="form__inline-filters">
+							<button type="button" class="inline-filter--pen" :class="{'--enabled': isEnabled('pen')}" @click="toggleFilter('pen')">
+								<svg :width="getIcon('pen', isEnabled('pen')?'#fff':'#001CE3').width" :height="getIcon('pen', isEnabled('pen')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('pen', isEnabled('pen')?'#fff':'#001CE3').path"></svg>
+							</button>
+							<button type="button" class="inline-filter--skill" :class="{'--enabled': isEnabled('skill')}" @click="toggleFilter('skill')">
+								<svg :width="getIcon('skill', isEnabled('skill')?'#fff':'#001CE3').width" :height="getIcon('skill', isEnabled('skill')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('skill', isEnabled('skill')?'#fff':'#001CE3').path"></svg>
+							</button>
+							<button type="button" class="inline-filter--portfolio" :class="{'--enabled': isEnabled('portfolio')}" @click="toggleFilter('portfolio')">
+								<svg :width="getIcon('portfolio', isEnabled('portfolio')?'#fff':'#001CE3').width" :height="getIcon('portfolio', isEnabled('portfolio')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('portfolio', isEnabled('portfolio')?'#fff':'#001CE3').path"></svg>
+							</button>
+						</div>
+					</div>
+
+					<div class="search-suggestion-keywords__wrapper">
+						<SearchSuggestionKeywords @onsuggestion="form.keyword=$event" />
+					</div>
 				</div>
-			</div>
-
-			<div class="search-suggestion-keywords__wrapper">
-				<SearchSuggestionKeywords @onsuggestion="form.keyword=$event" />
+				<button class="form__search-action">
+					<svg :width="getIcon('search.button').width" :height="getIcon('search.button').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.button').path"></svg>
+					<span class="search-action__text">Search</span>
+				</button>
 			</div>
 		</div>
-		<button class="form__search-action">
-			<svg :width="getIcon('search.button').width" :height="getIcon('search.button').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.button').path"></svg>
-			<span class="search-action__text">Search</span>
-		</button>
 	</form>
 </template>
 
 <script>
-import hasIcons from "../mixins/hasIcons";
+import hasIcons from "./mixins/hasIcons";
 import SearchSuggestionKeywords from "./SearchSuggestionKeywords";
 
 export default {
@@ -70,16 +74,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/variables";
-@import "../scss/media-queries";
+@import "./scss/variables";
+@import "./scss/media-queries";
 
 #search-freelancers-form {
-	display: flex;
-	color: $midnightblue;
 	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 986px;
+	color: $midnightblue;
 
 	button {
 		border: 0;
@@ -106,13 +106,14 @@ export default {
 		.form__keyword-input__wrapper {
 			position: relative;
 			.form__keyword-prepend {
-				position: absolute;
-				left: 0;
 				top: 0;
-				display: flex;
-				align-items: center;
-				margin-left: 10px;
+				left: 0;
 				height: 100%;
+				display: flex;
+				margin-left: 5px;
+				margin-bottom: 0;
+				position: absolute;
+				align-items: center;
 				svg {
 					transform: scale(0.645);
 				}
@@ -121,8 +122,8 @@ export default {
 				width: 100%;
 				height: 60px;
 				border-radius: 30px;
-				padding-left: 45px;
-				padding-right: 62px;
+				padding-left: 44px;
+				padding-right: 58px;
 				border: 2px solid $moonraker;
 				color: inherit;
 				font-size: 14px;

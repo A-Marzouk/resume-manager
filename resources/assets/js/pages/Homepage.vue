@@ -1,14 +1,19 @@
 <template>
 	<div id="homepage">
 		<Header />
+		<AnimatedIntroduction />
+		<!-- <BrowseFreelancers /> -->
 	</div>
 </template>
 
 <script>
 import Header from "../components/homepage/layouts/Header";
+import BrowseFreelancers from "../components/homepage/BrowseFreelancers";
+import AnimatedIntroduction from "../components/homepage/AnimatedIntroduction";
+
 export default {
 	name: "Homepage",
-	components: { Header },
+	components: { Header, BrowseFreelancers, AnimatedIntroduction },
 	mounted() {
 		document.body.classList.add("homepage-body");
 	},
@@ -16,8 +21,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../components/homepage/browse-freelancers/scss/variables";
-@import "../components/homepage/browse-freelancers/scss/media-queries";
+@import "../components/homepage/scss/variables";
+@import "../components/homepage/scss/media-queries";
 
 .homepage-body {
 	margin: 0 !important;
@@ -25,8 +30,10 @@ export default {
 	background-color: white !important;
 
 	.container {
+		padding-top: 0;
 		padding-left: 8px;
 		padding-right: 8px;
+		padding-bottom: 0;
 
 		@include sm {
 			max-width: $sm;

@@ -51,8 +51,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../scss/variables";
-@import "../scss/media-queries";
+@import "./scss/variables";
+@import "./scss/media-queries";
 
 $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 

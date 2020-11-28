@@ -9,7 +9,7 @@ require("./bootstrap");
 window.Vue = require("vue");
 
 import vuetify from "./vuetify";
-import {store} from "./store/store";
+import { store } from "./store/store";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
@@ -44,13 +44,13 @@ import Users from "./components/admin/tabs/UsersTable";
 
 if ($("#freelancersList").length !== 0) {
     const routes = [
-        {path: "/", component: General, name: "general"},
+        { path: "/", component: General, name: "general" },
         {
             path: "/account-settings",
             component: accountSettings,
             name: "acc_settings",
         },
-        {path: "/users", component: Users, name: "users"},
+        { path: "/users", component: Users, name: "users" },
     ];
 
     const router = new VueRouter({
@@ -68,16 +68,11 @@ if ($("#freelancersList").length !== 0) {
 }
 
 //new homepage components
-import welcomeView from './components/new_homepage/NewHomePage';
-
-if ($("#newHomepage").length !== 0) {
+import Homepage from './pages/Homepage.vue';
+if ($("#homepage-root").length !== 0) {
     new Vue({
-        el: "#newHomepage",
-        vuetify,
-        components: {
-            "new-homepage": welcomeView,
-        },
-    });
+        render: h => h(Homepage),
+    }).$mount('#homepage-root');
 }
 
 Vue.component(
@@ -561,14 +556,14 @@ if ($("#VueChat").length !== 0) {
                 //scroll down :
                 if ($("#chatBox").length) {
                     $("#messagesBox").animate(
-                        {scrollTop: $("#messagesBox")[0].scrollHeight},
+                        { scrollTop: $("#messagesBox")[0].scrollHeight },
                         "slow"
                     );
                 }
                 if ($("#chatLogs").length && this.currentUser.admin == 1) {
                     setTimeout(function () {
                         $("html,body").animate(
-                            {scrollTop: $("#sendMessage").offset().top},
+                            { scrollTop: $("#sendMessage").offset().top },
                             "slow"
                         );
                     }, 2000);
@@ -617,7 +612,7 @@ if ($("#VueChat").length !== 0) {
                     if ($("#chatLogs").length) {
                         setTimeout(function () {
                             $("html,body").animate(
-                                {scrollTop: $("#sendMessage").offset().top},
+                                { scrollTop: $("#sendMessage").offset().top },
                                 "slow"
                             );
                         }, 2000);
@@ -636,7 +631,7 @@ if ($("#VueChat").length !== 0) {
                         $("#chatText").html("New message !");
                         setTimeout(function () {
                             $("#messagesBox").animate(
-                                {scrollTop: $("#messagesBox")[0].scrollHeight},
+                                { scrollTop: $("#messagesBox")[0].scrollHeight },
                                 "slow"
                             );
                         }, 1000);

@@ -14,9 +14,7 @@
     @include('layouts.includes.styles')
   </head>
   <body >
-      <div id="newHomepage">
-      <new-homepage></new-homepage>
-      </div>
+      <div id="homepage-root"></div>
    
     @include('layouts.includes.scripts')
   </body>

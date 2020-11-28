@@ -17,6 +17,7 @@
 <script>
 export default {
 	name: "AnimatedIntroduction",
+	props: { typeArray: { type: Array } },
 	data() {
 		return {
 			typeValue: "",
@@ -26,17 +27,6 @@ export default {
 			erasingSpeed: 100,
 			newTextDelay: 1000,
 			typeArrayIndex: 0,
-			typeArray: [
-				"On Demand Freelance Talent",
-				"Affordable UI Designer",
-				" Reliable UX Designer",
-				" Talented Graphic Designer",
-				" Creative Illustrator",
-				" Visionary Motion Designer",
-				"Trusted Animator",
-				" Verified Product Designer",
-				" Approved UX Architect",
-			],
 		};
 	},
 	methods: {
@@ -113,13 +103,13 @@ export default {
 		overflow: hidden;
 		font-size: 20px;
 		font-weight: 500;
-		line-height: 36px;
+		line-height: 32px;
 		white-space: nowrap;
 
 		.job-titles__animated-text {
 		}
 		.cursor {
-			width: 4px;
+			width: 3px;
 			display: inline-block;
 			margin-left: 3px;
 			background-color: $midnightblue;

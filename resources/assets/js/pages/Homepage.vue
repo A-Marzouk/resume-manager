@@ -1,19 +1,25 @@
 <template>
 	<div id="homepage">
 		<Header />
-		<AnimatedIntroduction />
-		<!-- <BrowseFreelancers /> -->
+		<AnimatedIntroduction :typeArray="homepageWrittenQuotes" />
+		<BrowseFreelancers />
 	</div>
 </template>
 
 <script>
 import Header from "../components/homepage/layouts/Header";
 import BrowseFreelancers from "../components/homepage/BrowseFreelancers";
+import { homepageWrittenQuotes } from "../components/homepage/sharedStore";
 import AnimatedIntroduction from "../components/homepage/AnimatedIntroduction";
 
 export default {
 	name: "Homepage",
 	components: { Header, BrowseFreelancers, AnimatedIntroduction },
+	data() {
+		return {
+			homepageWrittenQuotes,
+		};
+	},
 	mounted() {
 		document.body.classList.add("homepage-body");
 	},

@@ -119,7 +119,7 @@ export default {
 				}
 				.logo__hint {
 					font-size: 14px;
-					margin-top: -7px;
+					margin-top: -5px;
 					margin-left: -24px;
 				}
 			}

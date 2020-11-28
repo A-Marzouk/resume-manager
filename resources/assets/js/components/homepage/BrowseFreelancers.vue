@@ -1,5 +1,5 @@
 <template>
-	<div id="browse-resumes">
+	<div class="browse-freelancers">
 		<SearchFreelancersForm />
 		<!-- <FilterFreelancers />
 		<FreelancersListView /> -->
@@ -7,16 +7,12 @@
 </template>
 
 <script>
-import FilterFreelancers from "./FilterFreelancers";
-import FreelancersListView from "./FreelancersListView";
-import SearchFreelancersForm from "./SearchFreelancersForm";
-
 export default {
 	name: "BrowseFreelancers",
 	components: {
-		FilterFreelancers,
-		FreelancersListView,
-		SearchFreelancersForm,
+		FilterFreelancers: require("./FilterFreelancers"),
+		FreelancersListView: require("./FreelancersListView"),
+		SearchFreelancersForm: require("./SearchFreelancersForm"),
 	},
 };
 </script>
@@ -24,8 +20,9 @@ export default {
 <style lang="scss" scoped>
 @import "./scss/variables";
 
-#browse-resumes {
+.browse-freelancers {
 	font-family: $main-font;
+	padding-top: 32px;
 	background-color: $white;
 }
 </style>

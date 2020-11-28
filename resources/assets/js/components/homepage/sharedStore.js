@@ -1,4 +1,4 @@
-export const predictions = [
+export const searchFreelancersPredictions = [
 
 
     //  designers job titles
@@ -83,7 +83,21 @@ export const predictions = [
 
 ];
 
-const sharedStore = {
+export const homepageWrittenQuotes = [
+    "On Demand Freelance Talent",
+    "Affordable UI Designer",
+    " Reliable UX Designer",
+    " Talented Graphic Designer",
+    " Creative Illustrator",
+    " Visionary Motion Designer",
+    "Trusted Animator",
+    " Verified Product Designer",
+    " Approved UX Architect",
+];
 
+const sharedStore = {
+    state: {},
+    getters: {},
+    mutations: {}
 };
 export default sharedStore;

@@ -7,23 +7,29 @@
 						<label for="form__keyword-input" class="form__keyword-prepend">
 							<svg :width="getIcon('search.prepend', '#707B99').width" :height="getIcon('search.prepend', '#707B99').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.prepend', '#707B99').path"></svg>
 						</label>
-						<input id="form__keyword-input" class="form__keyword-input" type="text" v-model="form.keyword" autocomplete="off" placeholder="Search freelancer for hire">
+
+						<div class="form__chosen-predictions" v-text="chosenPredictions.join(',')"></div>
+						<input id="form__keyword-input" class="form__keyword-input" type="text" v-model="keyword" @focus="isSearching=true" @click.stop autocomplete="off" placeholder="Search freelancer for hire">
+
+						<transition-group name="dropdown-list" tag="div" class="search-prediction-dropdown" :class="{'--open': isSearching && isFilterEnabled('pen')}" @click.stop>
+							<div class="search-prediction-dropdown__item" :class="{'--chosen':isPredictionChosen(prediction)}" v-for="prediction in predictions" :key="prediction" v-text="prediction" @click.stop="onPredictionChosen(prediction)"></div>
+						</transition-group>
 
 						<div class="form__inline-filters">
-							<button type="button" class="inline-filter--pen" :class="{'--enabled': isEnabled('pen')}" @click="toggleFilter('pen')">
-								<svg :width="getIcon('pen', isEnabled('pen')?'#fff':'#001CE3').width" :height="getIcon('pen', isEnabled('pen')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('pen', isEnabled('pen')?'#fff':'#001CE3').path"></svg>
+							<button type="button" class="inline-filter--pen" :class="{'--enabled': isFilterEnabled('pen')}" @click="toggleFilter('pen')">
+								<svg :width="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').width" :height="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').path"></svg>
 							</button>
-							<button type="button" class="inline-filter--skill" :class="{'--enabled': isEnabled('skill')}" @click="toggleFilter('skill')">
-								<svg :width="getIcon('skill', isEnabled('skill')?'#fff':'#001CE3').width" :height="getIcon('skill', isEnabled('skill')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('skill', isEnabled('skill')?'#fff':'#001CE3').path"></svg>
+							<button type="button" class="inline-filter--skill" :class="{'--enabled': isFilterEnabled('skill')}" @click="toggleFilter('skill')">
+								<svg :width="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').width" :height="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').path"></svg>
 							</button>
-							<button type="button" class="inline-filter--portfolio" :class="{'--enabled': isEnabled('portfolio')}" @click="toggleFilter('portfolio')">
-								<svg :width="getIcon('portfolio', isEnabled('portfolio')?'#fff':'#001CE3').width" :height="getIcon('portfolio', isEnabled('portfolio')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('portfolio', isEnabled('portfolio')?'#fff':'#001CE3').path"></svg>
+							<button type="button" class="inline-filter--portfolio" :class="{'--enabled': isFilterEnabled('portfolio')}" @click="toggleFilter('portfolio')">
+								<svg :width="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').width" :height="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').path"></svg>
 							</button>
 						</div>
 					</div>
 
 					<div class="search-suggestion-keywords__wrapper">
-						<SearchSuggestionKeywords @onsuggestion="form.keyword=$event" />
+						<SearchSuggestionKeywords @onsuggestion="keyword=$event" />
 					</div>
 				</div>
 				<button class="form__search-action">
@@ -37,25 +43,61 @@
 
 <script>
 import hasIcons from "./mixins/hasIcons";
-import SearchSuggestionKeywords from "./SearchSuggestionKeywords";
+import domUtils from "./mixins/utils/dom";
+import { searchFreelancersPredictions } from "./sharedStore";
 
 export default {
 	name: "SearchFreelancersForm",
-	mixins: [hasIcons],
+	mixins: [hasIcons, domUtils],
 	components: {
-		SearchSuggestionKeywords,
+		SearchSuggestionKeywords: require("./SearchSuggestionKeywords"),
 	},
 	data() {
 		return {
+			isSearching: false,
+			chosenPredictions: [],
 			enabledFilters: ["pen"],
-			form: {
-				keyword: "",
-			},
+			keyword: "",
 		};
 	},
+	watch: {
+		keyword() {
+			this.isSearching = true;
+		},
+	},
+	computed: {
+		searchInput() {
+			console.log(this.$refs);
+			return this.$refs["form__keyword-input"];
+		},
+		predictions() {
+			return searchFreelancersPredictions.filter((prediction) => {
+				return (
+					prediction
+						.toLowerCase()
+						.indexOf(this.keyword.toLowerCase()) !== -1
+				);
+			});
+		},
+	},
 	methods: {
-		isEnabled(filter) {
+		isFilterEnabled(filter) {
 			return this.enabledFilters.includes(filter);
+		},
+		isPredictionChosen(prediction) {
+			return this.chosenPredictions.includes(prediction);
+		},
+		onPredictionChosen(prediction) {
+			if (this.chosenPredictions.includes(prediction)) {
+				this.chosenPredictions = this.chosenPredictions.filter(
+					(p) => p !== prediction
+				);
+				return;
+			}
+			this.chosenPredictions.push(prediction);
+		},
+		hidePredictionsDropdown() {
+			this.isSearching = false;
 		},
 		toggleFilter(filter) {
 			if (this.enabledFilters.includes(filter)) {
@@ -67,11 +109,25 @@ export default {
 			this.enabledFilters.push(filter);
 		},
 		onFormSubmit() {
-			console.log("Your search was: ", this.form.keyword);
+			console.log("Your search was: ", this.keyword);
 		},
+	},
+	mounted() {
+		document.addEventListener("click", this.hidePredictionsDropdown);
+	},
+	destroyed() {
+		document.removeEventListener("click", this.hidePredictionsDropdown);
 	},
 };
 </script>
+
+<style lang="scss">
+#search-freelancers-form {
+	.dropdown-list-move {
+		transition: transform 0.3s;
+	}
+}
+</style>
 
 <style lang="scss" scoped>
 @import "./scss/variables";
@@ -118,6 +174,16 @@ export default {
 					transform: scale(0.645);
 				}
 			}
+			.form__chosen-predictions {
+				position: absolute;
+				left: 34px;
+				font-size: 10px;
+				font-weight: 700;
+				right: 50px;
+				display: flex;
+				flex-wrap: wrap;
+				padding: 5px 0;
+			}
 			.form__keyword-input {
 				width: 100%;
 				height: 60px;
@@ -136,6 +202,46 @@ export default {
 
 				&::placeholder {
 					color: $lynch50;
+				}
+			}
+			.search-prediction-dropdown {
+				position: absolute;
+				left: 0;
+				top: 100%;
+				width: 100%;
+				height: 0;
+				outline: none;
+				overflow: auto;
+				max-height: 200px;
+				transition: all 0.3s;
+				box-shadow: $dropdown-box-shadow;
+
+				&.--open {
+					height: auto;
+					margin-top: 10px;
+				}
+
+				&::-webkit-scrollbar {
+					width: 5px;
+				}
+				&::-webkit-scrollbar-track {
+					border-radius: 10px;
+					background-color: $moonraker;
+				}
+				&::-webkit-scrollbar-thumb {
+					border-radius: 10px;
+					background-color: $blue;
+				}
+
+				.search-prediction-dropdown__item {
+					width: 100%;
+					display: flex;
+					align-items: center;
+					padding: 10px 5px 5px 10px;
+
+					&.--chosen {
+						color: $blue;
+					}
 				}
 			}
 			.form__inline-filters {

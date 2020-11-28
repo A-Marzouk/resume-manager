@@ -18,25 +18,4 @@
    
     @include('layouts.includes.scripts')
   </body>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      font-size: 10px;
-    }
-    body {
-      border-radius: 0rem;
-      background: #f7f9ff !important;
-      margin-top: 0 !important;
-
-    }
-    
-   
-
-   
-  </style>
 </html>

@@ -13,7 +13,6 @@
                 <div class="freelacer-text">
                     <div class="rate-text">
                         Trusted Freelance Designers
-                        <span class="from">at</span> <span class="rate">$15/hr</span>
                     </div>
                     <div class="rate-info">
                         Scale your Creative Workforce with no overheads.

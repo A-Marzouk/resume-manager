@@ -1,0 +1,2 @@
+todos:
+Make input height dynamic so its enlarge when prediction is chosen

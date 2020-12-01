@@ -1,4 +1,5 @@
 /.idea
+/public/images/civ-profiles
 /public/css/app.css
 /public/css/app-vuetify.css
 /public/js/app.js

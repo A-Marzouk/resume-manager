@@ -31,7 +31,7 @@
 					</div>
 
 					<div class="search-suggestion-keywords__wrapper">
-						<SearchSuggestionKeywords @onsuggestion="keyword=$event" />
+						<SearchSuggestionKeywords @onsuggestion="onSuggestionClicked" />
 					</div>
 				</div>
 				<button class="form__search-action">
@@ -97,6 +97,10 @@ export default {
 		},
 	},
 	methods: {
+		onSuggestionClicked(keyword) {
+			document.querySelector("label[for=form__keyword-input]").click();
+			this.keyword = keyword;
+		},
 		isFilterEnabled(filter) {
 			return this.sharedStore.state.enabledFilters.includes(filter);
 		},
@@ -261,6 +265,7 @@ export default {
 				overflow: auto;
 				max-height: 200px;
 				transition: all 0.3s;
+				border-radius: 13px;
 				background-color: white;
 				box-shadow: $dropdown-box-shadow;
 				z-index: 100;
@@ -287,6 +292,7 @@ export default {
 					display: flex;
 					align-items: center;
 					padding: 10px 5px 5px 10px;
+					cursor: pointer;
 
 					&.--chosen {
 						color: $blue;
@@ -432,6 +438,15 @@ export default {
 					&::placeholder {
 					}
 				}
+
+				.search-prediction-dropdown {
+					max-height: 274px;
+					.search-prediction-dropdown__item {
+						font-size: 18px;
+						padding: 15px 7px 7px 15px;
+					}
+				}
+
 				.form__inline-filters {
 					padding-right: 20px;
 

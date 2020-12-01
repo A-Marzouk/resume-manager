@@ -114,52 +114,52 @@ const sharedStore = {
 
                 // console.log(profile);
 
-                if (!profile.avatar) {
-                    profile.avatar = '/images/civ-profiles/dummy/avatars/default.png'
-                }
+                // if (!profile.avatar) {
+                //     profile.avatar = '/images/civ-profiles/dummy/avatars/default.png'
+                // }
 
-                if (!profile.hourlyRate) {
-                    profile.hourlyRate = 25
-                }
+                // if (!profile.hourlyRate) {
+                //     profile.hourlyRate = 25
+                // }
 
-                if (!profile.tags) {
-                    profile.tags = [
-                        {
-                            id: 1,
-                            tag: "Ui",
-                        },
-                        {
-                            id: 2,
-                            tag: "Ux",
-                        },
-                        {
-                            id: 3,
-                            tag: "Web",
-                        },
-                        {
-                            id: 4,
-                            tag: "Design",
-                        },
-                        {
-                            id: 5,
-                            tag: "Adobe Xd",
-                        },
-                        {
-                            id: 6,
-                            tag: "Figma",
-                        },
-                    ];
-                }
+                // if (!profile.tags) {
+                //     profile.tags = [
+                //         {
+                //             id: 1,
+                //             tag: "Ui",
+                //         },
+                //         {
+                //             id: 2,
+                //             tag: "Ux",
+                //         },
+                //         {
+                //             id: 3,
+                //             tag: "Web",
+                //         },
+                //         {
+                //             id: 4,
+                //             tag: "Design",
+                //         },
+                //         {
+                //             id: 5,
+                //             tag: "Adobe Xd",
+                //         },
+                //         {
+                //             id: 6,
+                //             tag: "Figma",
+                //         },
+                //     ];
+                // }
 
-                if (!profile.portfolio) {
-                    profile.portfolio = [
-                        { id: 1, title: '', preview: profile.preview },
-                        { id: 2, title: '', preview: profile.preview },
-                        { id: 3, title: '', preview: profile.preview },
-                    ];
-                }
+                // if (!profile.portfolio) {
+                //     profile.portfolio = [
+                //         { id: 1, title: '', preview: profile.preview },
+                //         { id: 2, title: '', preview: profile.preview },
+                //         { id: 3, title: '', preview: profile.preview },
+                //     ];
+                // }
 
-                profile.title = `${profile.name} - ${profile.job_title}`
+                // profile.title = `${profile.name} - ${profile.job_title}`
 
                 profile.percentageSum = 0;
                 profile.skills.forEach((skill) => {

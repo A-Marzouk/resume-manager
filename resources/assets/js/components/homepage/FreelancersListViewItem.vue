@@ -1,7 +1,7 @@
 <template>
 	<div class="freelancers-list-view-item">
 		<FreelancerProfilePreview :freelancer="freelancer" @oncontact="$emit('oncontact', $event)" />
-		<FreelancerPortfolioPreview :portfolio="freelancer.portfolio" />
+		<FreelancerPortfolioPreview v-if="freelancer.projects.length" :portfolio="freelancer.projects" />
 	</div>
 </template>
 
@@ -30,14 +30,15 @@ export default {
 	flex-direction: column;
 
 	.freelancer-profile-preview {
-		margin-bottom: 20px;
+	}
+	.freelancer-portfolio-preview {
+		margin-top: 20px;
 	}
 }
 
 @include md {
 	.freelancers-list-view-item {
 		.freelancer-profile-preview {
-			margin-bottom: 26px;
 		}
 	}
 }
@@ -51,11 +52,11 @@ export default {
 		.freelancer-profile-preview {
 			width: 100%;
 			max-width: 460px;
-			margin-bottom: unset;
 		}
 		.freelancer-portfolio-preview {
 			flex: 1;
 			padding-left: 10px;
+			margin-top: unset;
 		}
 	}
 }

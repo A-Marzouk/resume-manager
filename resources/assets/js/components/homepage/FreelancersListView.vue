@@ -117,7 +117,7 @@ export default {
 	padding-top: 15px;
 	padding-bottom: 15px;
 	.freelancers-list-view-item {
-		padding-top: 24px;
+		padding-top: 12px;
 		padding-bottom: 12px;
 		border-bottom: 1px solid $moonraker;
 		&:last-child {
@@ -126,19 +126,17 @@ export default {
 	}
 }
 
-@include lg {
+@include md {
 	.freelancers-list-view {
 		.freelancers-list-view-item {
 			border-bottom: none;
-			padding-bottom: 24px;
+			margin-bottom: 34px;
 		}
 	}
 }
 
 @include xl {
 	.freelancers-list-view {
-		padding-top: 20px;
-		padding-bottom: 20px;
 		.freelancers-list-view-item {
 			padding-top: 30px;
 			padding-bottom: 48px;

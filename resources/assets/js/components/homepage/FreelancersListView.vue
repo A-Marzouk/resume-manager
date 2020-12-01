@@ -24,52 +24,27 @@ export default {
 	},
 	computed: {
 		filteredProfiles() {
-			return this.sharedStore.state.workForceProfiles;
-			return [].filter((r) => {
-				return (
-					r.skills.filter((s) => {
-						return (
-							s.title.indexOf(this.sharedStore.state.keyword) !==
-							-1
-						);
-					}).length > 0
-				);
-			});
-
-			const noPredictionChosen =
-					this.sharedStore.state.chosenPredictions.length === 0,
-				predictionFilterEnabled = this.sharedStore.methods.isFilterEnabled(
-					"pen"
-				);
-
-			if (noPredictionChosen || !predictionFilterEnabled) {
-				return this.sharedStore.state.workForceProfiles;
-			}
-
-			let filtered = this.sharedStore.state.workForceProfiles.filter(
-				(profile) => {
-					return this.sharedStore.state.chosenPredictions
-						.filter(Boolean)
-						.every((searchTerm) =>
-							profile.skillTitles.includes(
-								searchTerm
+			return this.sharedStore.state.workForceProfiles
+				.filter((profile) => {
+					const hasMatchedSkill =
+						profile.skills.filter((skill) => {
+							return (
+								skill.title
 									.toLowerCase()
-									.replace(" designer", "")
-									.replace(" fullstack developer", "")
-									.replace(" developer", "")
-									.replace("front-end", "javascript")
-									.replace("back-end", "php")
-							)
-						);
-				}
-			);
+									.indexOf(
+										this.sharedStore.state.q.toLowerCase()
+									) !== -1
+							);
+						}).length > 0;
 
-			return filtered.sort((a, b) => {
-				if (a.percentageSum > b.percentageSum) {
-					return -1;
-				}
-				return 1;
-			});
+					return hasMatchedSkill;
+				})
+				.sort((a, b) => {
+					if (a.percentageSum > b.percentageSum) {
+						return -1;
+					}
+					return 1;
+				});
 		},
 	},
 	methods: {

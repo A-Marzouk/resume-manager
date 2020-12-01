@@ -15,7 +15,7 @@ class CivController extends Controller
     {
         $civAccessToken = $this->authorizeWorkForceClient();
         $http = new \GuzzleHttp\Client(['headers' => ['Authorization' => 'Bearer ' . $civAccessToken]]);
-        $response = $http->get(env('CIV_URL') . 'api/search/workforce-profiles');
+        $response = $http->get(config('services.civ.url') . 'api/search/workforce-profiles');
         $jsonResponse = json_decode((string)$response->getBody(), true);
 
         foreach ($jsonResponse as &$user){
@@ -68,12 +68,12 @@ class CivController extends Controller
 
         $http = new \GuzzleHttp\Client;
 
-        $response = $http->post(env('CIV_URL') . 'api/login', [
+        $response = $http->post(config('services.civ.url') . 'api/login', [
             'form_params' => [
-                'client_id' => env('CIV_CLIENT_ID'),
-                'client_secret' => env('CIV_CLIENT_SECRET'),
-                'email' => env('CIV_LOGIN_EMAIL'),
-                'password' => env('CIV_LOGIN_PASS')
+                'client_id' => config('services.civ.client_id'),
+                'client_secret' => config('services.civ.client_secret'),
+                'email' => config('services.civ.login'),
+                'password' => config('services.civ.password')
             ],
         ]);
 

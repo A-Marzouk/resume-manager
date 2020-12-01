@@ -43,6 +43,16 @@ return [
         'client_id' => 'f877808c985d4f43ad73ae517db95151',
         'client_secret' => '066768fb9e6b4186b3a3c6eb40da33a8 ',
         'redirect' => 'https://123workforce.com/freelancer/instagram'
+    ],
+
+    // civ:
+    'civ' => [
+        'client_id' => env('CIV_CLIENT_ID'),
+        'client_secret' => env('CIV_CLIENT_SECRET'),
+        'redirect_url' => env('CIV_REDIRECT_URL'),
+        'url' => env('CIV_URL'),
+        'login' => env('CIV_LOGIN_EMAIL'),
+        'password' => env('CIV_LOGIN_PASS'),
     ]
 
 ];

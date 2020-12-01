@@ -1,0 +1,90 @@
+<template>
+	<div id="homepage">
+		<Header />
+		<AnimatedIntroduction :typeArray="homepageWrittenQuotes" />
+		<BrowseFreelancers />
+	</div>
+</template>
+
+<script>
+import Header from "../components/homepage/layouts/Header";
+import BrowseFreelancers from "../components/homepage/BrowseFreelancers";
+import { homepageWrittenQuotes } from "../components/homepage/sharedStore";
+import AnimatedIntroduction from "../components/homepage/AnimatedIntroduction";
+import sharedStore from "../components/homepage/sharedStore";
+
+export default {
+	name: "Homepage",
+	components: { Header, BrowseFreelancers, AnimatedIntroduction },
+	data() {
+		return {
+			homepageWrittenQuotes,
+			sharedStore,
+		};
+	},
+	mounted() {
+		document.body.classList.add("homepage-body");
+	},
+	created() {
+		axios
+			.get("/dummy-api/get-civ-profiles.json")
+			// .get("/get-civ-profiles")
+			.then((res) =>
+				this.sharedStore.mutations.setWorkforceProfiles(res.data)
+			);
+	},
+};
+</script>
+
+<style lang="scss">
+@import "../components/homepage/scss/variables";
+@import "../components/homepage/scss/media-queries";
+
+.homepage-body {
+	margin: 0 !important;
+	padding: 0 !important;
+	background-color: white !important;
+
+	.container {
+		padding-top: 0;
+		padding-left: 8px;
+		padding-right: 8px;
+		padding-bottom: 0;
+
+		@include sm {
+			max-width: $sm;
+			padding-left: 16px;
+			padding-right: 16px;
+		}
+
+		@include md {
+			max-width: $md;
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+
+		@include lg {
+			max-width: $lg;
+			padding-left: 32px;
+			padding-right: 32px;
+		}
+
+		@include xl {
+			max-width: $xl;
+			padding-left: 52px;
+			padding-right: 52px;
+		}
+
+		@include xxl {
+			max-width: $xxl;
+			padding-left: 85px;
+			padding-right: 85px;
+		}
+	}
+}
+</style>
+
+<style lang="scss" scoped>
+#homepage {
+}
+</style>

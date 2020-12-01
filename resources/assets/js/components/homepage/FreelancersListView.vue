@@ -1,9 +1,7 @@
 <template>
 	<div class="freelancers-list-view">
-		<div class="container">
-			<FreelancersListViewItem v-for="freelancer in filteredProfiles" :freelancer="freelancer" :key="freelancer.id" @oncontact="onContact" />
-			<ContactFreelancerModal :isOpen="isContactFreelancerModalOpen" :freelancer="contactModalFreelancer" @onclose="onContactFreelancerModalClosed" />
-		</div>
+		<FreelancersListViewItem v-for="freelancer in filteredProfiles" :freelancer="freelancer" :key="freelancer.id" @oncontact="onContact" />
+		<ContactFreelancerModal :isOpen="isContactFreelancerModalOpen" :freelancer="contactModalFreelancer" @onclose="onContactFreelancerModalClosed" />
 	</div>
 </template>
 
@@ -26,6 +24,18 @@ export default {
 	},
 	computed: {
 		filteredProfiles() {
+			return this.sharedStore.state.workForceProfiles;
+			return [].filter((r) => {
+				return (
+					r.skills.filter((s) => {
+						return (
+							s.title.indexOf(this.sharedStore.state.keyword) !==
+							-1
+						);
+					}).length > 0
+				);
+			});
+
 			const noPredictionChosen =
 					this.sharedStore.state.chosenPredictions.length === 0,
 				predictionFilterEnabled = this.sharedStore.methods.isFilterEnabled(
@@ -60,39 +70,6 @@ export default {
 				}
 				return 1;
 			});
-		},
-		searchTags() {
-			if (
-				this.sharedStore.state.chosenPredictions
-					.join()
-					.toLowerCase()
-					.includes("designer")
-			) {
-				return [
-					"UI/UX",
-					"Illustrator",
-					"Graphic Design",
-					"Motion Design",
-					"Product Design",
-				];
-			}
-
-			if (
-				this.sharedStore.state.chosenPredictions
-					.join()
-					.toLowerCase()
-					.includes("ux")
-			) {
-				return ["XD", "Lightroom", "Figma", "Photoshop", "Illustrator"];
-			}
-
-			return [
-				"UI/UX",
-				"Motion Design",
-				"Graphic Design",
-				"Illustrator",
-				"Interaction",
-			];
 		},
 	},
 	methods: {

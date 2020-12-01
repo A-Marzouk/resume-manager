@@ -45,37 +45,18 @@ export default {
 
 @include lg {
 	.freelancers-list-view-item {
-		max-width: $lg;
-		margin-left: auto;
-		margin-right: auto;
 		flex-direction: row;
 		.freelancer-profile-preview {
-			width: 100%;
-			max-width: 460px;
 		}
 		.freelancer-portfolio-preview {
-			flex: 1;
-			padding-left: 10px;
 			margin-top: unset;
-		}
-	}
-}
-
-@include lg-xl {
-	.freelancers-list-view-item {
-		max-width: 1578px;
-		.freelancer-profile-preview {
-			max-width: 584px;
-		}
-		.freelancer-portfolio-preview {
-			padding-left: 28px;
+			padding-left: 10px;
 		}
 	}
 }
 
 @include xl {
 	.freelancers-list-view-item {
-		max-width: 1721px;
 		.freelancer-profile-preview {
 		}
 		.freelancer-portfolio-preview {

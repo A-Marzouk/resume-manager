@@ -213,9 +213,9 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 
 				&,
 				& a {
-					font-size: 18px;
+					font-size: 20px;
 					.detail-title__jobtitle {
-						font-size: inherit;
+						font-size: 16px;
 						font-weight: 400;
 					}
 					.detail-title__rate {
@@ -279,7 +279,6 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 			margin-left: 7px;
 
 			.detail__title {
-				font-size: 22px;
 				margin-bottom: 12px;
 				padding-right: 0;
 			}
@@ -310,7 +309,7 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 	}
 }
 
-@include lg-xl {
+@include xl {
 	.freelancer-profile-preview {
 		.profile-preview__avatar {
 			width: 156px;
@@ -334,6 +333,14 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 			.detail__title {
 				font-size: 30px;
 				margin: 7px 0 20px 0;
+
+				&,
+				& a {
+					font-size: 24px;
+					.detail-title__jobtitle {
+						font-size: 20px;
+					}
+				}
 			}
 			.detail__tags {
 				.tags__tag {

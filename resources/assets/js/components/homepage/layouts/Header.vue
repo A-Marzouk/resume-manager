@@ -7,11 +7,11 @@
 						<a href="/">
 							<img src="/images/new_homepage/logo.png" alt="123workforce logo" />
 						</a>
-						<h2 class="logo__hint">Top freelance talent</h2>
+						<h2 class="logo__hint">The Top 1% of Designers</h2>
 					</div>
 
 					<div class="navbar__links">
-						<a href="/login" class="navbar-link navbar-link--login">
+						<a href="/client/login" class="navbar-link navbar-link--login">
 							Login
 						</a>
 					</div>
@@ -34,6 +34,8 @@ export default {
 .header {
 	padding-top: 28px;
 	padding-bottom: 32px;
+	font-family: $main-font;
+
 	.header__navbar {
 		.navbar__logo {
 			text-align: center;
@@ -47,6 +49,8 @@ export default {
 				color: $lynch;
 				font-size: 10px;
 				font-weight: 500;
+				margin-left: 28px;
+				margin-top: -5px;
 				margin-bottom: unset;
 			}
 		}
@@ -87,7 +91,7 @@ export default {
 				}
 				.logo__hint {
 					font-size: 12px;
-					margin-left: 10px;
+					margin-left: 40px;
 				}
 			}
 			.navbar__links {
@@ -119,23 +123,18 @@ export default {
 				}
 				.logo__hint {
 					font-size: 14px;
-					margin-top: -5px;
-					margin-left: -24px;
+					margin-left: 10px;
+					margin-top: -7px;
 				}
 			}
 			.navbar__links {
 				.navbar-link--login {
-					height: 64px;
+					height: 53px;
 					font-size: 24px;
-					padding-left: 65px;
-					padding-right: 65px;
+					padding: 0 56px;
 				}
 			}
 		}
-	}
-
-	@include xl {
-		padding-bottom: 78px;
 	}
 }
 </style>

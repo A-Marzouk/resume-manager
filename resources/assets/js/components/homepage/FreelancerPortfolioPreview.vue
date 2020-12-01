@@ -69,7 +69,9 @@ export default {
 
 @include lg {
 	.freelancer-portfolio-preview {
+		justify-content: flex-end;
 		.portfolio__preview--outer {
+			max-width: 127px;
 			.portfolio__preview {
 			}
 		}
@@ -81,8 +83,17 @@ export default {
 		.portfolio__preview--outer {
 			margin-left: 18px;
 			margin-right: 18px;
+			max-width: 180px;
 			.portfolio__preview {
 			}
+		}
+	}
+}
+
+@include xxl {
+	.freelancer-portfolio-preview {
+		.portfolio__preview--outer {
+			max-width: 198px;
 		}
 	}
 }

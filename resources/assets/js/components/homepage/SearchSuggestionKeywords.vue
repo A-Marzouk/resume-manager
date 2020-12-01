@@ -21,12 +21,9 @@ export default {
 	},
 	computed: {
 		suggestionKeywords() {
-			if (
-				sharedStore.state.chosenPredictions
-					.join()
-					.toLowerCase()
-					.includes("designer")
-			) {
+			const q = sharedStore.state.q.toLowerCase();
+
+			if (q.includes("designer")) {
 				return [
 					"UI/UX",
 					"Illustrator",
@@ -36,12 +33,7 @@ export default {
 				];
 			}
 
-			if (
-				sharedStore.state.chosenPredictions
-					.join()
-					.toLowerCase()
-					.includes("ux")
-			) {
+			if (q.includes("ux")) {
 				return ["XD", "Lightroom", "Figma", "Photoshop", "Illustrator"];
 			}
 
@@ -64,22 +56,24 @@ export default {
 .search-suggestion-keywords {
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
-	flex-wrap: wrap;
+	overflow-x: scroll;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 	.search-suggestion-keyword {
 		color: $lynch;
-		height: 34px;
-		font-size: 14px;
+		height: 38px;
+		font-size: 12px;
 		text-align: center;
-		border-radius: 40px;
+		border-radius: 100px;
+		padding: 0 12px;
 		margin-right: 13px;
-		padding-left: 13px;
-		padding-right: 13px;
 		margin-bottom: 3px;
+		transition: all 0.2s;
+		white-space: nowrap;
 		border: 1px solid transparent;
 		background-color: $darkselago;
-		transition: all 0.2s;
-		word-break: break-all;
+		min-width: 110px;
 		&:hover,
 		&:focus {
 			outline: none;
@@ -91,26 +85,15 @@ export default {
 	}
 }
 
-@include lg {
-	.search-suggestion-keywords {
-		.search-suggestion-keyword {
-			height: 50px;
-			font-size: 16px;
-			margin-right: 12px;
-			padding: 0 20px;
-		}
-	}
-}
-
 @include xl {
 	.search-suggestion-keywords {
 		.search-suggestion-keyword {
-			height: 62px;
-			font-size: 20px;
-			padding: 0 26px;
-			&:last-child {
-				margin-right: unset;
-			}
+			height: 44px;
+			font-size: 14px;
+			padding: 0 14px;
+			margin-right: 15px;
+			margin-bottom: 4px;
+			min-width: 130px;
 		}
 	}
 }

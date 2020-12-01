@@ -1,8 +1,8 @@
 <template>
 	<div class="browse-freelancers">
 		<SearchFreelancersForm />
-		<!-- <FilterFreelancers />
-		<FreelancersListView /> -->
+		<!-- <FilterFreelancers /> -->
+		<FreelancersListView />
 	</div>
 </template>
 

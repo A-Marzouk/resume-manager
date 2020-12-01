@@ -11,6 +11,7 @@ import Header from "../components/homepage/layouts/Header";
 import BrowseFreelancers from "../components/homepage/BrowseFreelancers";
 import { homepageWrittenQuotes } from "../components/homepage/sharedStore";
 import AnimatedIntroduction from "../components/homepage/AnimatedIntroduction";
+import sharedStore from "../components/homepage/sharedStore";
 
 export default {
 	name: "Homepage",
@@ -18,10 +19,19 @@ export default {
 	data() {
 		return {
 			homepageWrittenQuotes,
+			sharedStore,
 		};
 	},
 	mounted() {
 		document.body.classList.add("homepage-body");
+	},
+	created() {
+		axios
+			.get("/dummy-api/get-civ-profiles.json")
+			// .get("/get-civ-profiles")
+			.then((res) =>
+				this.sharedStore.mutations.setWorkforceProfiles(res.data)
+			);
 	},
 };
 </script>

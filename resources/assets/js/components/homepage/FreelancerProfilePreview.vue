@@ -21,7 +21,9 @@
 			</button>
 		</div>
 		<div class="profile-preview__detail">
-			<h2 class="detail__title" v-text="freelancer.title"></h2>
+			<h2 class="detail__title">
+				<a :href="freelancer.url" target="_blank" v-text="freelancer.title"></a>
+			</h2>
 			<div class="detail__tags">
 				<div class="tags__tag" v-for="tag in freelancer.tags" :key="tag.id" v-text="tag.tag"></div>
 			</div>
@@ -60,8 +62,9 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 	display: flex;
 	.profile-preview__avatar {
 		position: relative;
-		width: 74px;
-		height: 74px;
+		width: 62px;
+		min-width: 62px;
+		height: 62px;
 		.avatar__video,
 		.avatar__contact {
 			width: 22px;
@@ -109,10 +112,13 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 		margin-left: 7px;
 
 		.detail__title {
-			font-size: 18px;
-			font-weight: 700;
-			margin-bottom: 10px;
-			color: $midnightblue;
+			&,
+			& a {
+				font-size: 18px;
+				font-weight: 700;
+				margin-bottom: 10px;
+				color: $midnightblue;
+			}
 		}
 		.detail__tags {
 			display: flex;
@@ -161,11 +167,15 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 
 @include md {
 	.freelancer-profile-preview {
+		width: 100%;
+		position: relative;
 		.profile-preview__avatar {
-			width: 156px;
-			height: 156px;
+			width: 72px;
+			min-width: 72px;
+			height: 72px;
 			.avatar__video,
 			.avatar__contact {
+				display: none;
 				width: 50px;
 				height: 50px;
 				svg {
@@ -195,8 +205,11 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 				}
 			}
 			.detail__action {
+				top: 0;
+				right: 0;
 				height: 46px;
 				margin-top: 24px;
+				position: absolute;
 				.action__hireme {
 					font-size: 18px;
 					padding-left: 28px;
@@ -218,6 +231,7 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 	.freelancer-profile-preview {
 		.profile-preview__avatar {
 			width: 110px;
+			min-width: 100px;
 			height: 110px;
 			.avatar__video,
 			.avatar__contact {
@@ -268,6 +282,7 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 	.freelancer-profile-preview {
 		.profile-preview__avatar {
 			width: 156px;
+			min-width: 156px;
 			height: 156px;
 			.avatar__video,
 			.avatar__contact {

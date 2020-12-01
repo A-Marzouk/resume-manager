@@ -68,6 +68,17 @@ if ($("#freelancersList").length !== 0) {
 }
 
 //new homepage components
+import welcomeView from './components/new_homepage/NewHomePage';
+if ($("#newHomepage").length !== 0) {
+    new Vue({
+        el: "#newHomepage",
+        vuetify,
+        components: {
+            "new-homepage": welcomeView,
+        },
+    });
+}
+
 import Homepage from './pages/Homepage.vue';
 if ($("#homepage-root").length !== 0) {
     new Vue({

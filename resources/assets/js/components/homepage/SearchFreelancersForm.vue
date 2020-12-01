@@ -1,15 +1,17 @@
 <template>
 	<form id="search-freelancers-form" @submit.prevent="onFormSubmit">
 		<div class="container">
-			<div class="d-flex">
+			<div class="d-flex align-items-center">
 				<div class="form__input-outer">
 					<div class="form__keyword-input__wrapper">
 						<label for="form__keyword-input" class="form__keyword-prepend">
 							<svg :width="getIcon('search.prepend', '#707B99').width" :height="getIcon('search.prepend', '#707B99').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.prepend', '#707B99').path"></svg>
 						</label>
 
-						<div class="form__chosen-predictions" v-text="chosenPredictions.join(',')"></div>
-						<input id="form__keyword-input" class="form__keyword-input" type="text" v-model="keyword" @focus="isSearching=true" @click.stop autocomplete="off" placeholder="Search freelancer for hire">
+						<div ref="formChosenPredictions" class="form__chosen-predictions">
+							<span v-for="prediction in sharedStore.state.chosenPredictions" v-text="prediction" :key="prediction"></span>
+						</div>
+						<input id="form__keyword-input" class="form__keyword-input" :style="keywordInputPredictionsDynamicHeightStyle" type="text" v-model="keyword" @focus="isSearching=true" @click.stop autocomplete="off" placeholder="Search freelancer for hire">
 
 						<transition-group name="dropdown-list" tag="div" class="search-prediction-dropdown" :class="{'--open': isSearching && isFilterEnabled('pen')}" @click.stop>
 							<div class="search-prediction-dropdown__item" :class="{'--chosen':isPredictionChosen(prediction)}" v-for="prediction in predictions" :key="prediction" v-text="prediction" @click.stop="onPredictionChosen(prediction)"></div>
@@ -44,7 +46,10 @@
 <script>
 import hasIcons from "./mixins/hasIcons";
 import domUtils from "./mixins/utils/dom";
-import { searchFreelancersPredictions } from "./sharedStore";
+import sharedStore, {
+	searchFreelancersPredictions,
+	screenSizes,
+} from "./sharedStore";
 
 export default {
 	name: "SearchFreelancersForm",
@@ -55,8 +60,8 @@ export default {
 	data() {
 		return {
 			isSearching: false,
-			chosenPredictions: [],
-			enabledFilters: ["pen"],
+			predictionsBoxHeight: 0,
+			sharedStore,
 			keyword: "",
 		};
 	},
@@ -66,8 +71,22 @@ export default {
 		},
 	},
 	computed: {
+		keywordInputPredictionsDynamicHeightStyle() {
+			let baseHeigh = 60;
+
+			if (window.innerWidth > screenSizes.md) {
+				baseHeigh = 74;
+			}
+
+			if (window.innerWidth > screenSizes.lg) {
+				baseHeigh = 92;
+			}
+
+			return `height: ${
+				baseHeigh + this.predictionsBoxHeight
+			}px;padding-top: ${this.predictionsBoxHeight}px;`;
+		},
 		searchInput() {
-			console.log(this.$refs);
 			return this.$refs["form__keyword-input"];
 		},
 		predictions() {
@@ -82,31 +101,37 @@ export default {
 	},
 	methods: {
 		isFilterEnabled(filter) {
-			return this.enabledFilters.includes(filter);
+			return this.sharedStore.state.enabledFilters.includes(filter);
 		},
 		isPredictionChosen(prediction) {
-			return this.chosenPredictions.includes(prediction);
+			return this.sharedStore.state.chosenPredictions.includes(
+				prediction
+			);
 		},
 		onPredictionChosen(prediction) {
-			if (this.chosenPredictions.includes(prediction)) {
-				this.chosenPredictions = this.chosenPredictions.filter(
+			if (this.sharedStore.state.chosenPredictions.includes(prediction)) {
+				this.sharedStore.state.chosenPredictions = this.sharedStore.state.chosenPredictions.filter(
 					(p) => p !== prediction
 				);
 				return;
 			}
-			this.chosenPredictions.push(prediction);
+			this.sharedStore.state.chosenPredictions.push(prediction);
+			this.onFormChosenPredictionsItemsChange();
 		},
 		hidePredictionsDropdown() {
 			this.isSearching = false;
 		},
 		toggleFilter(filter) {
-			if (this.enabledFilters.includes(filter)) {
-				this.enabledFilters = this.enabledFilters.filter(
+			if (this.sharedStore.state.enabledFilters.includes(filter)) {
+				this.sharedStore.state.enabledFilters = this.sharedStore.state.enabledFilters.filter(
 					(f) => f !== filter
 				);
 				return;
 			}
-			this.enabledFilters.push(filter);
+			this.sharedStore.state.enabledFilters.push(filter);
+		},
+		onFormChosenPredictionsItemsChange() {
+			this.predictionsBoxHeight = this.$refs.formChosenPredictions.offsetHeight;
 		},
 		onFormSubmit() {
 			console.log("Your search was: ", this.keyword);
@@ -177,12 +202,25 @@ export default {
 			.form__chosen-predictions {
 				position: absolute;
 				left: 34px;
-				font-size: 10px;
-				font-weight: 700;
 				right: 50px;
 				display: flex;
+				font-size: 10px;
+				font-weight: 700;
 				flex-wrap: wrap;
-				padding: 5px 0;
+				white-space: nowrap;
+				padding: 5px 10px 0;
+				word-break: break-all;
+				span {
+					margin-right: 3px;
+					&::after {
+						content: ",";
+					}
+					&:last-child {
+						&::after {
+							content: "";
+						}
+					}
+				}
 			}
 			.form__keyword-input {
 				width: 100%;
@@ -214,7 +252,9 @@ export default {
 				overflow: auto;
 				max-height: 200px;
 				transition: all 0.3s;
+				background-color: white;
 				box-shadow: $dropdown-box-shadow;
+				z-index: 100;
 
 				&.--open {
 					height: auto;

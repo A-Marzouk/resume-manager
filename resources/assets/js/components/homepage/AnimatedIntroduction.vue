@@ -3,7 +3,7 @@
 		<div class="container">
 			<h2 class="introduction__title">
 				Trusted Freelance Designers
-				<span class="title--from">at</span> <span class="title--rate">$15/hr</span>
+				<!-- <span class="title--from">at</span> <span class="title--rate">$15/hr</span> -->
 			</h2>
 			<h3 class="introduction__subtitle">Scale your Creative Workforce with no overheads.</h3>
 			<div class="introduction__job-titles">

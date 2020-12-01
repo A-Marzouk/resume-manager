@@ -27,8 +27,7 @@ export default {
 	},
 	created() {
 		axios
-			.get("/dummy-api/get-civ-profiles.json")
-			// .get("/get-civ-profiles")
+			.get("/get-civ-profiles")
 			.then((res) =>
 				this.sharedStore.mutations.setWorkforceProfiles(res.data)
 			);

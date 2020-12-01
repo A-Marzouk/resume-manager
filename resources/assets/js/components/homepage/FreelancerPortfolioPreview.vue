@@ -1,8 +1,8 @@
 <template>
 	<div class="freelancer-portfolio-preview">
-		<div class="portfolio__preview--outer" v-for="project in portfolio" :key="project.id">
-			<div class="portfolio__preview">
-				<img :src="project.preview" :alt="project.title || 'portfolio title'">
+		<div v-lazy-container="{ selector: 'img' }" class="portfolio__preview--outer" v-for="project in getFirstProjects" :key="project.id">
+			<div v-if="project.images.length && project.images[0].src" class="portfolio__preview">
+				<img :data-src="project.images[0].src" :alt="project.name">
 			</div>
 		</div>
 	</div>
@@ -12,6 +12,18 @@
 export default {
 	name: "FreelancerPortfolioPreview",
 	props: { portfolio: { type: Array, required: true } },
+	computed: {
+		getFirstProjects() {
+			return this.portfolio
+				.sort((a, b) => {
+					if (a.images.length > b.images.length) {
+						return -1;
+					}
+					return 1;
+				})
+				.slice(0, 3);
+		},
+	},
 };
 </script>
 
@@ -27,6 +39,7 @@ export default {
 		flex: 1;
 		margin-left: 5px;
 		margin-right: 5px;
+		max-width: calc(100% / 3);
 		&:first-child {
 			margin-left: 0;
 		}
@@ -38,6 +51,7 @@ export default {
 			transition: all 0.2s;
 			padding-top: 92%;
 			border: 1px solid transparent;
+			background-color: #e5e8fb73;
 			&:hover {
 				border-color: $lynch50;
 			}

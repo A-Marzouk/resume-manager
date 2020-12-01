@@ -5,18 +5,54 @@
 </template>
 
 <script>
+import sharedStore from "./sharedStore";
 export default {
 	name: "SearchSuggestionKeywords",
 	props: { classes: { type: String, default: "" } },
 	data() {
 		return {
-			suggestionKeywords: [
+			staticSuggestionKeywords: [
 				"Illustration",
 				"Graphic Design",
 				"Motion",
 				"Product",
 			],
 		};
+	},
+	computed: {
+		suggestionKeywords() {
+			if (
+				sharedStore.state.chosenPredictions
+					.join()
+					.toLowerCase()
+					.includes("designer")
+			) {
+				return [
+					"UI/UX",
+					"Illustrator",
+					"Graphic Design",
+					"Motion Design",
+					"Product Design",
+				];
+			}
+
+			if (
+				sharedStore.state.chosenPredictions
+					.join()
+					.toLowerCase()
+					.includes("ux")
+			) {
+				return ["XD", "Lightroom", "Figma", "Photoshop", "Illustrator"];
+			}
+
+			return [
+				"UI/UX",
+				"Motion Design",
+				"Graphic Design",
+				"Illustrator",
+				"Interaction",
+			];
+		},
 	},
 };
 </script>
@@ -28,7 +64,8 @@ export default {
 .search-suggestion-keywords {
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
 	.search-suggestion-keyword {
 		color: $lynch;
 		height: 34px;
@@ -59,10 +96,8 @@ export default {
 		.search-suggestion-keyword {
 			height: 50px;
 			font-size: 16px;
-			min-width: 150px;
-			margin-right: 20px;
-			padding-left: 16px;
-			padding-right: 16px;
+			margin-right: 12px;
+			padding: 0 20px;
 		}
 	}
 }
@@ -72,11 +107,10 @@ export default {
 		.search-suggestion-keyword {
 			height: 62px;
 			font-size: 20px;
-			min-width: 194px;
-			margin-right: 30px;
-			/* &:last-child {
+			padding: 0 26px;
+			&:last-child {
 				margin-right: unset;
-			} */
+			}
 		}
 	}
 }

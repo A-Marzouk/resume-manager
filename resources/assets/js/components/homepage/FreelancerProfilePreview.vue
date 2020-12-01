@@ -22,10 +22,14 @@
 		</div>
 		<div class="profile-preview__detail">
 			<h2 class="detail__title">
-				<a :href="freelancer.url" target="_blank" v-text="freelancer.title"></a>
+				<a :href="freelancer.url" target="_blank">
+					{{ freelancer.name }}
+					<span class="detail-title__jobtitle" v-text="freelancer.job_title"></span>
+					<span class="detail-title__rate" v-text="`- $${freelancer.hourlyRate}/hr`"></span>
+				</a>
 			</h2>
 			<div class="detail__tags">
-				<div class="tags__tag" v-for="tag in freelancer.tags" :key="tag.id" v-text="tag.tag"></div>
+				<div class="tags__tag" v-for="skill in freelancer.skills.slice(0, 6)" :key="skill.id" v-text="skill.title"></div>
 			</div>
 			<div class="detail__action">
 				<button class="action__hireme">Hire me</button>
@@ -62,9 +66,9 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 	display: flex;
 	.profile-preview__avatar {
 		position: relative;
-		width: 62px;
-		min-width: 62px;
-		height: 62px;
+		width: 72px;
+		min-width: 72px;
+		height: 72px;
 		.avatar__video,
 		.avatar__contact {
 			width: 22px;
@@ -110,14 +114,22 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 	}
 	.profile-preview__detail {
 		margin-left: 7px;
+		position: relative;
 
 		.detail__title {
+			padding-right: 75px;
+
 			&,
 			& a {
-				font-size: 18px;
+				font-size: 17px;
 				font-weight: 700;
 				margin-bottom: 10px;
 				color: $midnightblue;
+
+				.detail-title__jobtitle,
+				.detail-title__rate {
+					font-size: 13px;
+				}
 			}
 		}
 		.detail__tags {
@@ -125,20 +137,23 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 			flex-wrap: wrap;
 			align-items: center;
 			.tags__tag {
-				font-size: 12px;
 				padding: 5px;
-				margin-right: 4px;
-				margin-bottom: 4px;
+				font-size: 12px;
+				margin: 2px;
 				border-radius: 6px;
 				color: $midnightblue;
+				text-transform: lowercase;
 				background-color: $moonraker14;
 			}
 		}
 		.detail__action {
+			position: absolute;
+			top: 0;
+			righ: 0;
 			display: flex;
 			align-items: center;
 			height: 32px;
-			margin-top: 6px;
+			right: 0;
 			.action__hireme {
 				color: $white;
 				border: 0;
@@ -150,13 +165,10 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 				background-color: $darkblue;
 			}
 			.action__v-line {
-				height: 96%;
-				max-height: 30px;
-				margin-left: 12px;
-				margin-right: 11px;
-				border-right: 2px solid $lynch;
+				display: none;
 			}
 			.action__rate {
+				display: none;
 				font-size: 14px;
 				font-weight: 700;
 				color: $midnightblue;
@@ -170,9 +182,9 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 		width: 100%;
 		position: relative;
 		.profile-preview__avatar {
-			width: 72px;
-			min-width: 72px;
-			height: 72px;
+			width: 92px;
+			min-width: 92px;
+			height: 92px;
 			.avatar__video,
 			.avatar__contact {
 				display: none;
@@ -192,35 +204,53 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 			}
 		}
 		.profile-preview__detail {
+			flex: 1;
 			margin-left: 10px;
 
 			.detail__title {
-				font-size: 30px;
 				margin: 7px 0 20px 0;
+				padding-right: 165px;
+
+				&,
+				& a {
+					font-size: 18px;
+					.detail-title__jobtitle {
+						font-size: inherit;
+						font-weight: 400;
+					}
+					.detail-title__rate {
+						display: none;
+					}
+				}
 			}
 			.detail__tags {
 				.tags__tag {
-					font-size: 18px;
 					padding: 5px 10px;
 				}
 			}
 			.detail__action {
 				top: 0;
 				right: 0;
-				height: 46px;
-				margin-top: 24px;
+				height: 36px;
 				position: absolute;
 				.action__hireme {
-					font-size: 18px;
-					padding-left: 28px;
-					padding-right: 28px;
+					order: 2;
+					font-size: 14px;
+					padding-left: 20px;
+					padding-right: 20px;
 				}
 				.action__v-line {
-					margin-left: 22px;
-					margin-right: 23px;
+					order: 1;
+					display: block;
+					height: 96%;
+					max-height: 18px;
+					margin-left: 12px;
+					margin-right: 12px;
+					border-right: 2px solid $lynch;
 				}
 				.action__rate {
-					font-size: 22px;
+					display: block;
+					order: 0;
 				}
 			}
 		}
@@ -251,6 +281,7 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 			.detail__title {
 				font-size: 22px;
 				margin-bottom: 12px;
+				padding-right: 0;
 			}
 			.detail__tags {
 				.tags__tag {
@@ -261,6 +292,7 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 			.detail__action {
 				height: 55px;
 				margin-top: 18px;
+				position: static;
 				.action__hireme {
 					font-size: 20px;
 					padding-left: 38px;

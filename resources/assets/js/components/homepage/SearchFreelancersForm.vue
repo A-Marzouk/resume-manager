@@ -1,7 +1,7 @@
 <template>
 	<form id="search-freelancers-form" @submit.prevent="onFormSubmit">
 		<div class="container">
-			<div class="d-flex align-items-center">
+			<div class="d-flex align-items-center --mobile-only">
 				<div class="form__input-outer">
 					<div class="form__keyword-input__wrapper">
 						<label for="form__keyword-input" class="form__keyword-prepend">
@@ -11,7 +11,7 @@
 						<div ref="formChosenPredictions" class="form__chosen-predictions">
 							<span v-for="prediction in sharedStore.state.chosenPredictions" v-text="prediction" :key="prediction"></span>
 						</div>
-						<input id="form__keyword-input" class="form__keyword-input" :style="keywordInputPredictionsDynamicHeightStyle" type="text" v-model="keyword" @focus="isSearching=true" @click.stop autocomplete="off" placeholder="Search freelancer for hire">
+						<input id="form__keyword-input" class="form__keyword-input" :style="keywordInputPredictionsDynamicHeightStyle" type="text" v-model="keyword" @focus="isSearching=true" @click.stop @keydown="onInputkeyDown" autocomplete="off" placeholder="Search freelancer for hire">
 
 						<transition-group name="dropdown-list" tag="div" class="search-prediction-dropdown" :class="{'--open': isSearching && isFilterEnabled('pen')}" @click.stop>
 							<div class="search-prediction-dropdown__item" :class="{'--chosen':isPredictionChosen(prediction)}" v-for="prediction in predictions" :key="prediction" v-text="prediction" @click.stop="onPredictionChosen(prediction)"></div>
@@ -86,9 +86,6 @@ export default {
 				baseHeigh + this.predictionsBoxHeight
 			}px;padding-top: ${this.predictionsBoxHeight}px;`;
 		},
-		searchInput() {
-			return this.$refs["form__keyword-input"];
-		},
 		predictions() {
 			return searchFreelancersPredictions.filter((prediction) => {
 				return (
@@ -108,6 +105,18 @@ export default {
 				prediction
 			);
 		},
+		onInputkeyDown(e) {
+			const isKeyBackspace = e.keyCode === 8;
+			if (isKeyBackspace) {
+				if (
+					e.target.value === "" &&
+					this.sharedStore.state.chosenPredictions.length
+				) {
+					this.sharedStore.state.chosenPredictions.splice(-1, 1);
+				}
+			}
+		},
+
 		onPredictionChosen(prediction) {
 			if (this.sharedStore.state.chosenPredictions.includes(prediction)) {
 				this.sharedStore.state.chosenPredictions = this.sharedStore.state.chosenPredictions.filter(
@@ -331,7 +340,6 @@ export default {
 		height: 47px;
 		background-color: $blue;
 		transition: all 0.15s;
-		margin-top: 6.5px;
 		.search-action__text {
 			display: none;
 		}
@@ -344,6 +352,11 @@ export default {
 @include md {
 	#search-freelancers-form {
 		button {
+		}
+		.--mobile-only {
+			&.align-items-center {
+				align-items: flex-start !important;
+			}
 		}
 		.form__input-outer {
 			margin-right: 18px;
@@ -362,6 +375,10 @@ export default {
 
 					&::placeholder {
 					}
+				}
+				.form__chosen-predictions {
+					font-size: 12px;
+					padding: 7px 10px 0;
 				}
 				.form__inline-filters {
 					.inline-filter--pen,
@@ -385,8 +402,6 @@ export default {
 		.form__search-action {
 			width: 64px;
 			height: 64px;
-			margin-top: 5px;
-
 			svg {
 				transform: scale(1.4);
 			}
@@ -441,8 +456,6 @@ export default {
 			font-size: 26px;
 			min-width: 214px;
 			border-radius: 50px;
-			margin-top: 7px;
-
 			svg {
 				display: none;
 			}

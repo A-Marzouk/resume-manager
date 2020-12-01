@@ -11,6 +11,9 @@ window.Vue = require("vue");
 import vuetify from "./vuetify";
 import { store } from "./store/store";
 import VueRouter from "vue-router";
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload);
 
 Vue.use(VueRouter);
 

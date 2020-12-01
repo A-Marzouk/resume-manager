@@ -399,7 +399,6 @@ Route::get('/paypal/status', 'PaypalController@getPayPalPaymentStatus')->name('p
 // civ functions
 Route::get('/get-civ-profiles', 'Civ\CivController@getProfiles')->name('civ.profiles');
 Route::get('/civ/callback', 'Civ\CivController@callback')->name('civ.callback');
-Route::get('/{username}/{version?}', 'Civ\CivController@loadCivProfile');
 
 
 
@@ -408,7 +407,6 @@ Route::get('/{username}/{version?}', 'Civ\CivController@loadCivProfile');
 Route::get('/apply', 'BusinessSupportController@showRegistrationForm')->name('freelancer.register');
 Route::get('/it/apply', 'Auth\RegisterController@showRegistrationForm')->name('freelancer.agents.register');
 Route::get('/new-home', 'HomeController@newHome')->name('welcome.new');
-//Route::get('/','HomeController@welcomePage')->name('welcome');
 Route::get('/jobs/view_post/{job_id}', 'JobsController@viewSingleJobPost')->name('jobs.view_single');
 Route::get('/search/{search_id}', 'HomeController@getSearch')->name('public.search');
 Route::get('/workforce/terms_and_conditions', 'HomeController@termsView')->name('terms');
@@ -417,4 +415,4 @@ Route::get('/resume_sample/{username}', 'HomeController@ResumeSample');
 Route::get('/v2/{username}', 'HomeController@ResumePageV2');
 Route::get('/v2/short/{username}', 'HomeController@ResumePageShortV2');
 Route::get('/admin/{user_id}', 'AdminsController@logInAsUser')->name('logInAsUser');
-//Route::get('/{username}','HomeController@ResumePage');
+Route::get('/{username}/{version?}', 'Civ\CivController@loadCivProfile');

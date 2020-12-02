@@ -109,6 +109,8 @@ export default {
 		overflow: auto;
 		transition: all 0.2s;
 		z-index: 30;
+		border: 1px solid transparent;
+		border-radius: 4px;
 		&::-webkit-scrollbar {
 			display: none;
 			scrollbar-width: none;
@@ -117,6 +119,7 @@ export default {
 		&.--open {
 			height: auto;
 			padding: 5px 0;
+			border-color: $selago60;
 		}
 		.menu__item {
 			cursor: pointer;
@@ -131,55 +134,24 @@ export default {
 	}
 }
 
-@include lg {
-	.filter-dropdown {
-		font-size: 20px;
-		.filter-dropdown__action {
-			height: 50px;
-			padding-left: 28px;
-			padding-right: 28px;
-			svg {
-				margin-left: 8px;
-				&.up {
-					transform: scale(0.9) rotate(180deg);
-				}
-				&.down {
-					transform: scale(0.9) rotate(0deg);
-				}
-			}
-		}
-		.filter-dropdown__menu {
-			font-size: 16px;
-			max-height: 120px;
-
-			&.--open {
-				padding: 9px 0;
-			}
-			.menu__item {
-				padding: 9px 10px;
-			}
-		}
-	}
-}
-
 @include xl {
 	.filter-dropdown {
-		font-size: 26px;
+		font-size: 16px;
 		.filter-dropdown__action {
-			height: 74px;
-			padding-left: 50px;
-			padding-right: 50px;
+			height: 47px;
+			padding-left: 42px;
+			padding-right: 42px;
 			svg {
 				&.up {
-					transform: scale(1) rotate(180deg);
+					transform: scale(0.6) rotate(180deg);
 				}
 				&.down {
-					transform: scale(1) rotate(0deg);
+					transform: scale(0.6) rotate(0deg);
 				}
 			}
 		}
 		.filter-dropdown__menu {
-			font-size: 20px;
+			font-size: 14px;
 			max-height: 180px;
 			&.--open {
 				padding: 10px 0;

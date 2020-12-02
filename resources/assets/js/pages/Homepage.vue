@@ -1,36 +1,29 @@
 <template>
 	<div id="homepage">
 		<Header />
-		<AnimatedIntroduction :typeArray="homepageWrittenQuotes" />
+		<!-- <AnimatedIntroduction :typeArray="homepageWrittenQuotes" /> -->
 		<BrowseFreelancers />
+		<Footer />
 	</div>
 </template>
 
 <script>
 import Header from "../components/homepage/layouts/Header";
+import Footer from "../components/homepage/layouts/Footer";
 import BrowseFreelancers from "../components/homepage/BrowseFreelancers";
 import { homepageWrittenQuotes } from "../components/homepage/sharedStore";
 import AnimatedIntroduction from "../components/homepage/AnimatedIntroduction";
-import sharedStore from "../components/homepage/sharedStore";
 
 export default {
 	name: "Homepage",
-	components: { Header, BrowseFreelancers, AnimatedIntroduction },
+	components: { Header, Footer, BrowseFreelancers, AnimatedIntroduction },
 	data() {
 		return {
 			homepageWrittenQuotes,
-			sharedStore,
 		};
 	},
 	mounted() {
 		document.body.classList.add("homepage-body");
-	},
-	created() {
-		axios
-			.get("/get-civ-profiles")
-			.then((res) =>
-				this.sharedStore.mutations.setWorkforceProfiles(res.data)
-			);
 	},
 };
 </script>
@@ -42,6 +35,7 @@ export default {
 .homepage-body {
 	margin: 0 !important;
 	padding: 0 !important;
+	font-family: $main-font;
 	background-color: white !important;
 
 	.container {

@@ -100,8 +100,8 @@ export const screenSizes = {
 
 const sharedStore = {
     state: {
-        enabledFilters: ["pen"],
-        chosenPredictions: [],
+        q: '',
+        enabledFilters: ['pen'],
         workForceProfiles: [],
     },
     getters: {},

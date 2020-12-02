@@ -50,21 +50,12 @@ export default {
 	}
 }
 
-@include lg {
-	.filter-checkbox {
-		font-size: 20px;
-		height: 50px;
-		padding-left: 28px;
-		padding-right: 28px;
-	}
-}
-
 @include xl {
 	.filter-checkbox {
-		font-size: 26px;
-		height: 74px;
-		padding-left: 50px;
-		padding-right: 50px;
+		font-size: 16px;
+		height: 47px;
+		padding-left: 42px;
+		padding-right: 42px;
 	}
 }
 </style>

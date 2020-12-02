@@ -53,8 +53,7 @@ export default {
 	align-items: center;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	margin: 28px auto 0;
-	max-width: 986px;
+	margin: 50px auto 0;
 	padding-bottom: 5px;
 	.filter-freelancers__right-side {
 		width: 100%;
@@ -93,16 +92,9 @@ export default {
 	}
 }
 
-@include lg-xl {
-	.filter-freelancers {
-		max-width: 1578px;
-	}
-}
-
 @include xl {
 	.filter-freelancers {
-		max-width: 1712px;
-		margin-top: 86px;
+		margin-top: 89px;
 		.filter-freelancers__right-side {
 		}
 		.filter-freelancers__left-side {

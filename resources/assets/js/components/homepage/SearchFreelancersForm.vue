@@ -1,45 +1,38 @@
 <template>
-	<form id="search-freelancers-form" @submit.prevent="onFormSubmit">
-		<div class="container">
-			<div class="d-flex align-items-center --mobile-only">
-				<div class="form__input-outer">
-					<div class="form__keyword-input__wrapper">
-						<label for="form__keyword-input" class="form__keyword-prepend">
-							<svg :width="getIcon('search.prepend', '#707B99').width" :height="getIcon('search.prepend', '#707B99').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.prepend', '#707B99').path"></svg>
-						</label>
+	<form id="search-freelancers-form" @submit.prevent>
+		<div class="form__input-outer">
+			<div class="form__keyword-input__wrapper">
+				<label for="form__keyword-input" class="form__keyword-prepend">
+					<svg :width="getIcon('search.prepend', '#707B99').width" :height="getIcon('search.prepend', '#707B99').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.prepend', '#707B99').path"></svg>
+				</label>
 
-						<div ref="formChosenPredictions" class="form__chosen-predictions">
-							<span v-for="prediction in sharedStore.state.chosenPredictions" v-text="prediction" :key="prediction"></span>
-						</div>
-						<input id="form__keyword-input" class="form__keyword-input" :style="keywordInputPredictionsDynamicHeightStyle" type="text" v-model="keyword" @focus="isSearching=true" @click.stop @keydown="onInputkeyDown" autocomplete="off" placeholder="Search freelancer for hire">
+				<input id="form__keyword-input" class="form__keyword-input" type="text" v-model="sharedStore.state.q" @focus="isSearching=true" @click.stop @keydown="onInputkeyDown" autocomplete="off" placeholder="Search Freelance Designers for Hire">
 
-						<transition-group name="dropdown-list" tag="div" class="search-prediction-dropdown" :class="{'--open': isSearching && isFilterEnabled('pen')}" @click.stop>
-							<div class="search-prediction-dropdown__item" :class="{'--chosen':isPredictionChosen(prediction)}" v-for="prediction in predictions" :key="prediction" v-text="prediction" @click.stop="onPredictionChosen(prediction)"></div>
-						</transition-group>
+				<transition-group name="dropdown-list" tag="div" class="search-prediction-dropdown" :class="{'--open': isSearching}" @click.stop>
+					<div class="search-prediction-dropdown__item" :class="{'--chosen':isPredictionChosen(prediction)}" v-for="prediction in predictions" :key="prediction" v-text="prediction" @click="onPredictionChosen(prediction)"></div>
+				</transition-group>
 
-						<div class="form__inline-filters">
-							<button type="button" class="inline-filter--pen" :class="{'--enabled': isFilterEnabled('pen')}" @click="toggleFilter('pen')">
-								<svg :width="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').width" :height="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').path"></svg>
-							</button>
-							<button type="button" class="inline-filter--skill" :class="{'--enabled': isFilterEnabled('skill')}" @click="toggleFilter('skill')">
-								<svg :width="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').width" :height="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').path"></svg>
-							</button>
-							<button type="button" class="inline-filter--portfolio" :class="{'--enabled': isFilterEnabled('portfolio')}" @click="toggleFilter('portfolio')">
-								<svg :width="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').width" :height="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').path"></svg>
-							</button>
-						</div>
-					</div>
+				<!-- <div class="form__inline-filters">
+                    <button type="button" class="inline-filter--pen" :class="{'--enabled': isFilterEnabled('pen')}" @click="toggleFilter('pen')">
+                        <svg :width="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').width" :height="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').path"></svg>
+                    </button>
+                    <button type="button" class="inline-filter--skill" :class="{'--enabled': isFilterEnabled('skill')}" @click="toggleFilter('skill')">
+                        <svg :width="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').width" :height="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').path"></svg>
+                    </button>
+                    <button type="button" class="inline-filter--portfolio" :class="{'--enabled': isFilterEnabled('portfolio')}" @click="toggleFilter('portfolio')">
+                        <svg :width="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').width" :height="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').path"></svg>
+                    </button>
+                </div> -->
+			</div>
 
-					<div class="search-suggestion-keywords__wrapper">
-						<SearchSuggestionKeywords @onsuggestion="onSuggestionClicked" />
-					</div>
-				</div>
-				<button class="form__search-action">
-					<svg :width="getIcon('search.button').width" :height="getIcon('search.button').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.button').path"></svg>
-					<span class="search-action__text">Search</span>
-				</button>
+			<div class="search-suggestion-keywords__wrapper">
+				<SearchSuggestionKeywords @onsuggestion="onSuggestionClicked" />
 			</div>
 		</div>
+		<button class="form__search-action">
+			<svg :width="getIcon('search.button').width" :height="getIcon('search.button').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.button').path"></svg>
+			<span class="search-action__text">Search</span>
+		</button>
 	</form>
 </template>
 
@@ -60,9 +53,7 @@ export default {
 	data() {
 		return {
 			isSearching: false,
-			predictionsBoxHeight: 0,
 			sharedStore,
-			keyword: "",
 		};
 	},
 	watch: {
@@ -71,68 +62,34 @@ export default {
 		},
 	},
 	computed: {
-		keywordInputPredictionsDynamicHeightStyle() {
-			let baseHeigh = 60;
-
-			if (window.innerWidth > screenSizes.md) {
-				baseHeigh = 74;
-			}
-
-			if (window.innerWidth > screenSizes.lg) {
-				baseHeigh = 92;
-			}
-
-			return `height: ${
-				baseHeigh + this.predictionsBoxHeight
-			}px;padding-top: ${this.predictionsBoxHeight}px;`;
-		},
 		predictions() {
 			return searchFreelancersPredictions.filter((prediction) => {
 				return (
 					prediction
 						.toLowerCase()
-						.indexOf(this.keyword.toLowerCase()) !== -1
+						.indexOf(this.sharedStore.state.q.toLowerCase()) !== -1
 				);
 			});
 		},
 	},
 	methods: {
+		onPredictionChosen(prediction) {
+			this.sharedStore.state.q = prediction;
+			document.getElementById("form__keyword-input").focus();
+		},
 		onSuggestionClicked(keyword) {
 			document.querySelector("label[for=form__keyword-input]").click();
-			this.keyword = keyword;
+			this.sharedStore.state.q = keyword;
+			this.isSearching = true;
 		},
 		isFilterEnabled(filter) {
 			return this.sharedStore.state.enabledFilters.includes(filter);
 		},
 		isPredictionChosen(prediction) {
-			return this.sharedStore.state.chosenPredictions.includes(
-				prediction
-			);
+			return this.sharedStore.state.q === prediction;
 		},
 		onInputkeyDown(e) {
-			const isKeyBackspace = e.keyCode === 8;
-			if (isKeyBackspace) {
-				if (
-					e.target.value === "" &&
-					this.sharedStore.state.chosenPredictions.length
-				) {
-					this.sharedStore.state.chosenPredictions.splice(-1, 1);
-				}
-			}
-		},
-
-		onPredictionChosen(prediction) {
-			if (this.sharedStore.state.chosenPredictions.includes(prediction)) {
-				this.sharedStore.state.chosenPredictions = this.sharedStore.state.chosenPredictions.filter(
-					(p) => p !== prediction
-				);
-				return;
-			}
-			this.sharedStore.state.chosenPredictions.push(prediction);
-			this.onFormChosenPredictionsItemsChange();
-		},
-		hidePredictionsDropdown() {
-			this.isSearching = false;
+			this.isSearching = true;
 		},
 		toggleFilter(filter) {
 			if (this.sharedStore.state.enabledFilters.includes(filter)) {
@@ -143,24 +100,19 @@ export default {
 			}
 			this.sharedStore.state.enabledFilters.push(filter);
 		},
-		onFormChosenPredictionsItemsChange() {
-			this.predictionsBoxHeight = this.$refs.formChosenPredictions.offsetHeight;
-		},
-		onFormSubmit() {
-			console.log("Your search was: ", this.keyword);
-		},
 	},
 	mounted() {
-		document.addEventListener("click", this.hidePredictionsDropdown);
+		document.addEventListener("click", () => (this.isSearching = false));
 	},
 	destroyed() {
-		document.removeEventListener("click", this.hidePredictionsDropdown);
+		document.removeEventListener("click", () => (this.isSearching = false));
 	},
 };
 </script>
 
 <style lang="scss">
 #search-freelancers-form {
+	/** vuejs transition for predictions dropdown */
 	.dropdown-list-move {
 		transition: transform 0.3s;
 	}
@@ -174,6 +126,7 @@ export default {
 #search-freelancers-form {
 	width: 100%;
 	color: $midnightblue;
+	display: flex;
 
 	button {
 		border: 0;
@@ -196,9 +149,13 @@ export default {
 	}
 	.form__input-outer {
 		flex: 1;
+		min-width: 0;
 		margin-right: 10px;
 		.form__keyword-input__wrapper {
+			display: flex;
 			position: relative;
+			align-items: center;
+
 			.form__keyword-prepend {
 				top: 0;
 				left: 0;
@@ -212,35 +169,12 @@ export default {
 					transform: scale(0.645);
 				}
 			}
-			.form__chosen-predictions {
-				position: absolute;
-				left: 34px;
-				right: 50px;
-				display: flex;
-				font-size: 10px;
-				font-weight: 700;
-				flex-wrap: wrap;
-				white-space: nowrap;
-				padding: 5px 10px 0;
-				word-break: break-all;
-				span {
-					margin-right: 3px;
-					&::after {
-						content: ",";
-					}
-					&:last-child {
-						&::after {
-							content: "";
-						}
-					}
-				}
-			}
 			.form__keyword-input {
 				width: 100%;
 				height: 60px;
-				border-radius: 30px;
 				padding-left: 44px;
 				padding-right: 58px;
+				border-radius: 100px;
 				border: 2px solid $moonraker;
 				color: inherit;
 				font-size: 14px;
@@ -291,7 +225,8 @@ export default {
 					width: 100%;
 					display: flex;
 					align-items: center;
-					padding: 10px 5px 5px 10px;
+					font-size: 16px;
+					padding: 10px 5px 5px 44px;
 					cursor: pointer;
 
 					&.--chosen {
@@ -357,34 +292,20 @@ export default {
 
 @include md {
 	#search-freelancers-form {
-		button {
-		}
-		.--mobile-only {
-			&.align-items-center {
-				align-items: flex-start !important;
-			}
-		}
+		margin: 0 auto;
+		max-width: 666px;
 		.form__input-outer {
 			margin-right: 18px;
 			.form__keyword-input__wrapper {
 				.form__keyword-prepend {
 					svg {
-						transform: scale(0.75);
+						transform: scale(0.55);
 					}
 				}
 				.form__keyword-input {
-					font-size: 20px;
-					height: 74px;
-					border-radius: 50px;
-					padding-left: 54px;
-					padding-right: 194px;
-
-					&::placeholder {
-					}
-				}
-				.form__chosen-predictions {
-					font-size: 12px;
-					padding: 7px 10px 0;
+					font-size: 16px;
+					padding-left: 50px;
+					padding-right: 15px;
 				}
 				.form__inline-filters {
 					.inline-filter--pen,
@@ -402,14 +323,21 @@ export default {
 			}
 			.search-suggestion-keywords__wrapper {
 				display: block;
-				margin-top: 18px;
+				margin-top: 12px;
 			}
 		}
+
 		.form__search-action {
-			width: 64px;
-			height: 64px;
+			height: 44px;
+			font-size: 16px;
+			min-width: 119px;
+			margin-top: 8px;
+			border-radius: 100px;
 			svg {
-				transform: scale(1.4);
+				display: none;
+			}
+			.search-action__text {
+				display: inline;
 			}
 		}
 	}
@@ -417,33 +345,19 @@ export default {
 
 @include lg {
 	#search-freelancers-form {
-		button {
-		}
+		max-width: 757px;
 		.form__input-outer {
-			margin-right: 24px;
+			margin-right: 14px;
 			.form__keyword-input__wrapper {
 				.form__keyword-prepend {
-					margin-left: 34px;
-
-					svg {
-						transform: scale(1);
-					}
+					margin-left: 15px;
 				}
 				.form__keyword-input {
-					height: 92px;
-					font-size: 24px;
-					padding-left: 96px;
-					padding-right: 250px;
-
-					&::placeholder {
-					}
 				}
 
 				.search-prediction-dropdown {
 					max-height: 274px;
 					.search-prediction-dropdown__item {
-						font-size: 18px;
-						padding: 15px 7px 7px 15px;
 					}
 				}
 
@@ -463,30 +377,43 @@ export default {
 				}
 			}
 			.search-suggestion-keywords__wrapper {
-				margin-top: 28px;
 			}
 		}
 		.form__search-action {
-			height: 78px;
-			font-size: 26px;
-			min-width: 214px;
-			border-radius: 50px;
-			svg {
-				display: none;
-			}
-			.search-action__text {
-				display: inline;
-			}
+			height: 64px;
+			font-size: 24px;
+			min-width: 178px;
+			margin-top: 4px;
 		}
 	}
 }
 
 @include xl {
 	#search-freelancers-form {
-		max-width: 1467px;
+		max-width: 964px;
 		.form__input-outer {
+			margin-right: 20px;
+			.form__keyword-input__wrapper {
+				.form__keyword-prepend {
+					margin-left: 23px;
+				}
+				.form__keyword-input {
+					font-size: 18px;
+					height: 72px;
+					padding-left: 64px;
+					padding-right: 23px;
+				}
+
+				.search-prediction-dropdown {
+					.search-prediction-dropdown__item {
+						font-size: 18px;
+						padding-left: 64px;
+					}
+				}
+			}
 			.search-suggestion-keywords__wrapper {
-				margin-top: 40px;
+				padding-left: 50px;
+				margin-top: 10px;
 			}
 		}
 	}

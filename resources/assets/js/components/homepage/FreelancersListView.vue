@@ -1,9 +1,7 @@
 <template>
 	<div class="freelancers-list-view">
-		<div class="container">
-			<FreelancersListViewItem v-for="freelancer in filteredProfiles" :freelancer="freelancer" :key="freelancer.id" @oncontact="onContact" />
-			<ContactFreelancerModal :isOpen="isContactFreelancerModalOpen" :freelancer="contactModalFreelancer" @onclose="onContactFreelancerModalClosed" />
-		</div>
+		<FreelancersListViewItem v-for="freelancer in filteredProfiles" :freelancer="freelancer" :key="freelancer.id" @oncontact="onContact" />
+		<ContactFreelancerModal :isOpen="isContactFreelancerModalOpen" :freelancer="contactModalFreelancer" @onclose="onContactFreelancerModalClosed" />
 	</div>
 </template>
 
@@ -26,73 +24,27 @@ export default {
 	},
 	computed: {
 		filteredProfiles() {
-			const noPredictionChosen =
-					this.sharedStore.state.chosenPredictions.length === 0,
-				predictionFilterEnabled = this.sharedStore.methods.isFilterEnabled(
-					"pen"
-				);
-
-			if (noPredictionChosen || !predictionFilterEnabled) {
-				return this.sharedStore.state.workForceProfiles;
-			}
-
-			let filtered = this.sharedStore.state.workForceProfiles.filter(
-				(profile) => {
-					return this.sharedStore.state.chosenPredictions
-						.filter(Boolean)
-						.every((searchTerm) =>
-							profile.skillTitles.includes(
-								searchTerm
+			return this.sharedStore.state.workForceProfiles
+				.filter((profile) => {
+					const hasMatchedSkill =
+						profile.skills.filter((skill) => {
+							return (
+								skill.title
 									.toLowerCase()
-									.replace(" designer", "")
-									.replace(" fullstack developer", "")
-									.replace(" developer", "")
-									.replace("front-end", "javascript")
-									.replace("back-end", "php")
-							)
-						);
-				}
-			);
+									.indexOf(
+										this.sharedStore.state.q.toLowerCase()
+									) !== -1
+							);
+						}).length > 0;
 
-			return filtered.sort((a, b) => {
-				if (a.percentageSum > b.percentageSum) {
-					return -1;
-				}
-				return 1;
-			});
-		},
-		searchTags() {
-			if (
-				this.sharedStore.state.chosenPredictions
-					.join()
-					.toLowerCase()
-					.includes("designer")
-			) {
-				return [
-					"UI/UX",
-					"Illustrator",
-					"Graphic Design",
-					"Motion Design",
-					"Product Design",
-				];
-			}
-
-			if (
-				this.sharedStore.state.chosenPredictions
-					.join()
-					.toLowerCase()
-					.includes("ux")
-			) {
-				return ["XD", "Lightroom", "Figma", "Photoshop", "Illustrator"];
-			}
-
-			return [
-				"UI/UX",
-				"Motion Design",
-				"Graphic Design",
-				"Illustrator",
-				"Interaction",
-			];
+					return hasMatchedSkill;
+				})
+				.sort((a, b) => {
+					if (a.percentageSum > b.percentageSum) {
+						return -1;
+					}
+					return 1;
+				});
 		},
 	},
 	methods: {

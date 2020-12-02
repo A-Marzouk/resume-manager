@@ -8,19 +8,22 @@
 			</div>
 			<div class="footer__social-links">
 				<h3>Follow us</h3>
-				<a class="social-links__link" href="https://www.facebook.com/123workforce">
-					<img src="/images/new_homepage/facebook.svg" alt="123workforce fackbook account" />
-					<span>13.899 like</span>
-				</a>
-				<a class="social-links__link" href="https://www.instagram.com/123workforce">
-					<img src="/images/new_homepage/instagram.svg" alt="123workforce instagram account" />
-					<span>733 Followers</span>
-				</a>
+				<div class="social-links__links">
+
+					<a class="social-links__link" href="https://www.facebook.com/123workforce">
+						<img src="/images/new_homepage/facebook.svg" alt="123workforce fackbook account" />
+						<span>13.899 like</span>
+					</a>
+					<a class="social-links__link" href="https://www.instagram.com/123workforce">
+						<img src="/images/new_homepage/instagram.svg" alt="123workforce instagram account" />
+						<span>733 Followers</span>
+					</a>
+				</div>
 			</div>
 			<div class="footer__contact-info">
 				<h3>Contact us</h3>
 				<div class="contact-info__links">
-					<a :href="icon.link" v-for="(icon, i) in socialIcons" :key="i">
+					<a class="contact-info__link" :href="icon.link" v-for="(icon, i) in socialIcons" :key="i">
 						<img :src="icon.src" alt="social icons" />
 					</a>
 				</div>
@@ -64,7 +67,7 @@ export default {
 .footer {
 	color: $lighterblue;
 	margin-top: 10px;
-	padding-top: 20px;
+	padding: 20px 0;
 	border-top: 1px solid;
 	font-family: $main-font;
 
@@ -74,8 +77,9 @@ export default {
 	}
 
 	.footer__logo {
+		text-align: center;
 		a {
-			height: 42px;
+			height: 28px;
 			display: inline-block;
 			img {
 				width: auto;
@@ -88,50 +92,65 @@ export default {
 	.footer__contact-info {
 		width: 100%;
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
-		padding-top: 34px;
+		padding-top: 24px;
 		& > h3 {
-			width: 100%;
-			font-size: 21px;
-			margin-bottom: 15px;
+			font-size: 18px;
 			font-weight: 700;
+			margin-bottom: unset;
+			min-width: 110px;
+		}
+	}
+
+	.social-links__link,
+	.contact-info__link {
+		margin-right: 13px;
+		&:last-child {
+			margin-right: unset;
 		}
 	}
 
 	.footer__social-links {
-		.social-links__link {
-			color: inherit;
+		.social-links__links {
+			flex: 1;
 			display: flex;
-			flex-direction: column;
 			align-items: center;
+			.social-links__link {
+				color: inherit;
+				display: flex;
+				align-items: center;
 
-			span {
-				font-size: 14px;
-				margin-top: 5px;
+				img {
+					width: 32px;
+					height: 32px;
+				}
+				span {
+					font-size: 14px;
+					margin-left: 3px;
+				}
 			}
 		}
 	}
 
 	.footer__contact-info {
 		.contact-info__links {
-			width: 100%;
+			flex: 1;
 			display: flex;
 			align-items: center;
-			justify-content: center;
+
 			& > a {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				width: 44px;
-				height: 44px;
+				width: 32px;
+				height: 32px;
 				border-radius: 50%;
 				background-color: $lighterblue;
-				margin-right: 15px;
 
-				&:last-child {
-					margin-right: unset;
+				img {
+					width: auto;
+					height: 22px;
 				}
 			}
 		}
@@ -143,29 +162,19 @@ export default {
 		& > .container {
 			flex-wrap: wrap;
 			flex-direction: row;
-			justify-content: space-between;
 		}
-
 		.footer__logo {
 			width: 100%;
 		}
 
-		.footer__social-links,
-		.footer__contact-info {
-			width: auto;
-		}
-
 		.footer__social-links {
 			justify-content: flex-start;
-			.social-links__link {
-				margin-right: 24px;
-				&:last-child {
-					margin-right: unset;
-				}
+			.social-links__links {
+				justify-content: flex-start;
 			}
 		}
-
 		.footer__contact-info {
+			justify-content: flex-start;
 			.contact-info__links {
 				justify-content: flex-start;
 			}
@@ -177,74 +186,20 @@ export default {
 	.footer {
 		& > .container {
 			align-items: center;
+			justify-content: space-between;
 		}
+
 		.footer__logo {
 			width: auto;
 			a {
-				height: 34px;
+				height: 32px;
 			}
 		}
 
 		.footer__social-links,
 		.footer__contact-info {
+			width: auto;
 			padding-top: unset;
-			& > h3 {
-				width: auto;
-				margin-bottom: 0;
-				font-size: 18px;
-				margin-right: 12px;
-			}
-		}
-
-		.footer__social-links {
-			.social-links__link {
-				flex-direction: row;
-				margin-right: 14px;
-				span {
-					margin-left: 6px;
-					margin-top: unset;
-				}
-			}
-		}
-
-		.footer__contact-info {
-			.contact-info__links {
-				width: auto;
-			}
-		}
-	}
-}
-
-@include xl {
-	.footer {
-		.footer__logo {
-			width: auto;
-			a {
-				height: 52px;
-			}
-		}
-
-		.footer__social-links,
-		.footer__contact-info {
-			& > h3 {
-				font-size: 27px;
-				margin-right: 18px;
-			}
-		}
-
-		.footer__social-links {
-			.social-links__link {
-				margin-right: 20px;
-				span {
-					margin-left: 9px;
-					font-size: 18px;
-				}
-			}
-		}
-
-		.footer__contact-info {
-			.contact-info__links {
-			}
 		}
 	}
 }

@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import functionsUtils from "./mixins/utils/functions";
 import ContactFreelancerModal from "./ContactFreelancerModal";
 import FreelancersListViewItem from "./FreelancersListViewItem";
 import sharedStore from "./sharedStore";
@@ -15,6 +16,7 @@ export default {
 		ContactFreelancerModal,
 		FreelancersListViewItem,
 	},
+	mixins: [functionsUtils],
 	data() {
 		return {
 			contactModalFreelancer: {},
@@ -24,20 +26,43 @@ export default {
 	},
 	computed: {
 		filteredProfiles() {
+			if (this.sharedStore.state.qPrefix.length === 0) {
+				return this.sharedStore.state.workForceProfiles;
+			}
+
 			return this.sharedStore.state.workForceProfiles
 				.filter((profile) => {
-					const hasMatchedSkill =
+					const skillsMatched =
 						profile.skills.filter((skill) => {
-							return (
-								skill.title
-									.toLowerCase()
-									.indexOf(
-										this.sharedStore.state.q.toLowerCase()
-									) !== -1
-							);
-						}).length > 0;
+							const skillMatched =
+								this.sharedStore.state.qPrefix.filter(
+									(prediction) => {
+										const predictionSegments = this.ensureSingleSpanceBetweenWords(
+											prediction.trim().toLowerCase()
+										).split(" ");
 
-					return hasMatchedSkill;
+										const atLeastOneSegmentWasMatched =
+											predictionSegments.filter(
+												(predictionSegment) => {
+													return (
+														skill.title
+															.trim()
+															.toLowerCase()
+															.indexOf(
+																predictionSegment.toLowerCase()
+															) !== -1
+													);
+												}
+											).length > 0;
+
+										return atLeastOneSegmentWasMatched;
+									}
+								).length >=
+								this.sharedStore.state.qPrefix.length;
+
+							return skillMatched;
+						}).length > 0;
+					return skillsMatched;
 				})
 				.sort((a, b) => {
 					if (a.percentageSum > b.percentageSum) {

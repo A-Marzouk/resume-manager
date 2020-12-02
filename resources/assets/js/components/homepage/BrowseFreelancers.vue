@@ -2,7 +2,7 @@
 	<div class="browse-freelancers">
 		<div class="container">
 			<SearchFreelancersForm />
-			<FilterFreelancers />
+			<!-- <FilterFreelancers /> -->
 			<FreelancersListView />
 		</div>
 	</div>
@@ -10,6 +10,7 @@
 
 <script>
 import sharedStore from "./sharedStore";
+import dummyCivProfiles from "./dummy-api/civ-profiles";
 
 export default {
 	name: "BrowseFreelancers",
@@ -24,11 +25,15 @@ export default {
 		};
 	},
 	created() {
-		axios
-			.get("/get-civ-profiles")
-			.then((res) =>
-				this.sharedStore.mutations.setWorkforceProfiles(res.data)
-			);
+		if (sharedStore.env.debug) {
+			this.sharedStore.mutations.setWorkforceProfiles(dummyCivProfiles);
+		} else {
+			axios
+				.get("/get-civ-profiles")
+				.then((res) =>
+					this.sharedStore.mutations.setWorkforceProfiles(res.data)
+				);
+		}
 	},
 };
 </script>

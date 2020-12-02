@@ -9,12 +9,26 @@
 </template>
 
 <script>
+import sharedStore from "./sharedStore";
+
 export default {
 	name: "BrowseFreelancers",
 	components: {
 		FilterFreelancers: require("./FilterFreelancers"),
 		FreelancersListView: require("./FreelancersListView"),
 		SearchFreelancersForm: require("./SearchFreelancersForm"),
+	},
+	data() {
+		return {
+			sharedStore,
+		};
+	},
+	created() {
+		axios
+			.get("/get-civ-profiles")
+			.then((res) =>
+				this.sharedStore.mutations.setWorkforceProfiles(res.data)
+			);
 	},
 };
 </script>

@@ -62,12 +62,11 @@ export default {
 			}
 			.navbar-link--login {
 				color: $blue;
-				height: 32px;
+				height: 40px;
 				font-size: 14px;
-				font-weight: 600;
-				padding-left: 22px;
-				padding-right: 22px;
+				min-width: 92px;
 				border: 1.5px solid;
+				line-height: 1;
 				transition: all 0.2s;
 				border-radius: 100px;
 				&:hover {
@@ -96,11 +95,10 @@ export default {
 			}
 			.navbar__links {
 				.navbar-link--login {
-					height: 43px;
-					font-size: 18px;
-					font-weight: 500;
-					padding-left: 35px;
-					padding-right: 35px;
+					height: 44px;
+					font-size: 16px;
+					min-width: 119px;
+					border-radius: 100px;
 					border-width: 2px;
 				}
 			}
@@ -129,9 +127,9 @@ export default {
 			}
 			.navbar__links {
 				.navbar-link--login {
-					height: 53px;
+					height: 64px;
 					font-size: 24px;
-					padding: 0 56px;
+					min-width: 178px;
 				}
 			}
 		}

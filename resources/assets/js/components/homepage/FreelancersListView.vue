@@ -2,17 +2,20 @@
 	<div class="freelancers-list-view">
 		<FreelancersListViewItem v-for="freelancer in filteredProfiles" :freelancer="freelancer" :key="freelancer.id" @oncontact="onContact" />
 		<ContactFreelancerModal :isOpen="isContactFreelancerModalOpen" :freelancer="contactModalFreelancer" @onclose="onContactFreelancerModalClosed" />
+		<PortfolioImagePreviewPoup :portfolio="sharedStore.state.portfolioPreview.portfolio" :isOpen="sharedStore.state.portfolioPreview.isOpen" />
 	</div>
 </template>
 
 <script>
-import functionsUtils from "./mixins/utils/functions";
+import PortfolioImagePreviewPoup from "./PortfolioImagePreviewPoup";
 import ContactFreelancerModal from "./ContactFreelancerModal";
 import FreelancersListViewItem from "./FreelancersListViewItem";
 import sharedStore from "./sharedStore";
+import functionsUtils from "./mixins/utils/functions";
 export default {
 	name: "FreelancersListView",
 	components: {
+		PortfolioImagePreviewPoup,
 		ContactFreelancerModal,
 		FreelancersListViewItem,
 	},

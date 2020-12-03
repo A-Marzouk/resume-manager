@@ -107,6 +107,14 @@ const sharedStore = {
         qPrefix: [],
         enabledFilters: ['pen'],
         workForceProfiles: [],
+        portfolioPreview: {
+            portfolio: {
+                title: '',
+                description: '',
+                src: '',
+            },
+            isOpen: false,
+        }
     },
     getters: {},
     mutations: {

@@ -99,10 +99,22 @@ export const screenSizes = {
 }
 
 const sharedStore = {
+    env: {
+        debug: false,
+    },
     state: {
         q: '',
+        qPrefix: [],
         enabledFilters: ['pen'],
         workForceProfiles: [],
+        portfolioPreview: {
+            portfolio: {
+                title: '',
+                description: '',
+                src: '',
+            },
+            isOpen: false,
+        }
     },
     getters: {},
     mutations: {

@@ -44,7 +44,6 @@ export default {
 	},
 	methods: {
 		hideModal() {
-			console.log("hideModal");
 			this.$emit("onclose");
 		},
 	},

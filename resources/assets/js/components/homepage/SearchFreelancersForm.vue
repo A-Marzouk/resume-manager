@@ -6,7 +6,7 @@
 					<svg :width="getIcon('search.prepend', '#707B99').width" :height="getIcon('search.prepend', '#707B99').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.prepend', '#707B99').path"></svg>
 				</label>
 
-				<input id="form__keyword-input" class="form__keyword-input" type="text" v-model="sharedStore.state.q" @focus="isSearching=true" @click.stop @keydown="onInputkeyDown" autocomplete="off" placeholder="Search Freelance Designers for Hire">
+				<input id="form__keyword-input" class="form__keyword-input" type="text" :value="sharedStore.state.q" @input="onSearchInputChange($event.target.value)" @focus="isSearching=true" @click.stop @keydown.delete="onInputDeleteKeyDown($event.target.value)" autocomplete="off" placeholder="Search Freelance Designers for Hire">
 
 				<transition-group name="dropdown-list" tag="div" class="search-prediction-dropdown" :class="{'--open': isSearching}" @click.stop>
 					<div class="search-prediction-dropdown__item" :class="{'--chosen':isPredictionChosen(prediction)}" v-for="prediction in predictions" :key="prediction" v-text="prediction" @click="onPredictionChosen(prediction)"></div>
@@ -53,6 +53,7 @@ export default {
 	data() {
 		return {
 			isSearching: false,
+			predictionJustWasDeleted: false,
 			sharedStore,
 		};
 	},
@@ -63,33 +64,60 @@ export default {
 	},
 	computed: {
 		predictions() {
+			const q = this.sharedStore.state.q.toLowerCase();
+			const qPrefix = this.sharedStore.state.qPrefix
+				.join(" ")
+				.trim()
+				.toLowerCase();
+
 			return searchFreelancersPredictions.filter((prediction) => {
 				return (
 					prediction
+						.trim()
 						.toLowerCase()
-						.indexOf(this.sharedStore.state.q.toLowerCase()) !== -1
+						.indexOf(q.replace(qPrefix, "").trim()) !== -1 &&
+					!this.sharedStore.state.qPrefix.includes(prediction)
 				);
 			});
 		},
 	},
 	methods: {
-		onPredictionChosen(prediction) {
-			this.sharedStore.state.q = prediction;
-			document.getElementById("form__keyword-input").focus();
+		onSearchInputChange(value) {
+			const qPrefix = this.sharedStore.state.qPrefix.join(" ");
+			const q = this.predictionJustWasDeleted
+				? ""
+				: value.replace(sharedStore.state.qPrefix.join(" "), "");
+			this.predictionJustWasDeleted = false;
+
+			this.sharedStore.state.q = `${qPrefix}${q}`;
 		},
-		onSuggestionClicked(keyword) {
-			document.querySelector("label[for=form__keyword-input]").click();
-			this.sharedStore.state.q = keyword;
-			this.isSearching = true;
+		onInputDeleteKeyDown(value) {
+			let qPrefix = this.sharedStore.state.qPrefix.join(" ");
+			const q = value.replace(qPrefix, "");
+
+			if (q.trim() === "") {
+				this.sharedStore.state.qPrefix.splice(-1, 1);
+				this.predictionJustWasDeleted = true;
+			}
+		},
+		onPredictionChosen(prediction) {
+			if (this.sharedStore.state.qPrefix.includes(prediction)) {
+				this.sharedStore.state.qPrefix = this.sharedStore.state.qPrefix.filter(
+					(p) => p !== prediction
+				);
+			} else {
+				this.sharedStore.state.qPrefix.push(prediction);
+			}
+			this.onSearchInputChange(" ");
+		},
+		onSuggestionClicked(prediction) {
+			this.onPredictionChosen(prediction);
 		},
 		isFilterEnabled(filter) {
 			return this.sharedStore.state.enabledFilters.includes(filter);
 		},
 		isPredictionChosen(prediction) {
-			return this.sharedStore.state.q === prediction;
-		},
-		onInputkeyDown(e) {
-			this.isSearching = true;
+			return this.sharedStore.state.qPrefix.includes(prediction);
 		},
 		toggleFilter(filter) {
 			if (this.sharedStore.state.enabledFilters.includes(filter)) {
@@ -127,6 +155,7 @@ export default {
 	width: 100%;
 	color: $midnightblue;
 	display: flex;
+	align-items: center;
 
 	button {
 		border: 0;
@@ -173,7 +202,7 @@ export default {
 				width: 100%;
 				height: 60px;
 				padding-left: 44px;
-				padding-right: 58px;
+				padding-right: 12px;
 				border-radius: 100px;
 				border: 2px solid $moonraker;
 				color: inherit;
@@ -294,6 +323,7 @@ export default {
 	#search-freelancers-form {
 		margin: 0 auto;
 		max-width: 666px;
+		align-items: normal;
 		.form__input-outer {
 			margin-right: 18px;
 			.form__keyword-input__wrapper {
@@ -379,12 +409,6 @@ export default {
 			.search-suggestion-keywords__wrapper {
 			}
 		}
-		.form__search-action {
-			height: 64px;
-			font-size: 24px;
-			min-width: 178px;
-			margin-top: 4px;
-		}
 	}
 }
 
@@ -415,6 +439,12 @@ export default {
 				padding-left: 50px;
 				margin-top: 10px;
 			}
+		}
+		.form__search-action {
+			height: 64px;
+			font-size: 24px;
+			min-width: 178px;
+			margin-top: 4px;
 		}
 	}
 }

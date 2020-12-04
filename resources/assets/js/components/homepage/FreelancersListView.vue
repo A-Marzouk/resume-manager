@@ -2,19 +2,24 @@
 	<div class="freelancers-list-view">
 		<FreelancersListViewItem v-for="freelancer in filteredProfiles" :freelancer="freelancer" :key="freelancer.id" @oncontact="onContact" />
 		<ContactFreelancerModal :isOpen="isContactFreelancerModalOpen" :freelancer="contactModalFreelancer" @onclose="onContactFreelancerModalClosed" />
+		<PortfolioImagePreviewPoup :portfolio="sharedStore.state.portfolioPreview.portfolio" :isOpen="sharedStore.state.portfolioPreview.isOpen" />
 	</div>
 </template>
 
 <script>
+import PortfolioImagePreviewPoup from "./PortfolioImagePreviewPoup";
 import ContactFreelancerModal from "./ContactFreelancerModal";
 import FreelancersListViewItem from "./FreelancersListViewItem";
 import sharedStore from "./sharedStore";
+import functionsUtils from "./mixins/utils/functions";
 export default {
 	name: "FreelancersListView",
 	components: {
+		PortfolioImagePreviewPoup,
 		ContactFreelancerModal,
 		FreelancersListViewItem,
 	},
+	mixins: [functionsUtils],
 	data() {
 		return {
 			contactModalFreelancer: {},
@@ -24,20 +29,43 @@ export default {
 	},
 	computed: {
 		filteredProfiles() {
+			if (this.sharedStore.state.qPrefix.length === 0) {
+				return this.sharedStore.state.workForceProfiles;
+			}
+
 			return this.sharedStore.state.workForceProfiles
 				.filter((profile) => {
-					const hasMatchedSkill =
+					const skillsMatched =
 						profile.skills.filter((skill) => {
-							return (
-								skill.title
-									.toLowerCase()
-									.indexOf(
-										this.sharedStore.state.q.toLowerCase()
-									) !== -1
-							);
-						}).length > 0;
+							const skillMatched =
+								this.sharedStore.state.qPrefix.filter(
+									(prediction) => {
+										const predictionSegments = this.ensureSingleSpanceBetweenWords(
+											prediction.trim().toLowerCase()
+										).split(" ");
 
-					return hasMatchedSkill;
+										const atLeastOneSegmentWasMatched =
+											predictionSegments.filter(
+												(predictionSegment) => {
+													return (
+														skill.title
+															.trim()
+															.toLowerCase()
+															.indexOf(
+																predictionSegment.toLowerCase()
+															) !== -1
+													);
+												}
+											).length > 0;
+
+										return atLeastOneSegmentWasMatched;
+									}
+								).length >=
+								this.sharedStore.state.qPrefix.length;
+
+							return skillMatched;
+						}).length > 0;
+					return skillsMatched;
 				})
 				.sort((a, b) => {
 					if (a.percentageSum > b.percentageSum) {

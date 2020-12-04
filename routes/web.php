@@ -20,8 +20,7 @@ use Illuminate\Support\Facades\Artisan;
 
 Auth::routes();
 //test route for new homepage
-Route::view('/', 'new_homepage');
-Route::view('/new-homepage', 'index');
+Route::view('/', 'index');
 
 Route::prefix('client')->group(function () {
     Route::get('/login', 'Auth\ClientLoginController@showLoginForm')->name('client.login');

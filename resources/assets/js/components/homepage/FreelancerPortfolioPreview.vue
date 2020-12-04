@@ -1,7 +1,7 @@
 <template>
 	<div class="freelancer-portfolio-preview">
 		<div v-lazy-container="{ selector: 'img' }" class="portfolio__preview--outer" v-for="project in getFirstProjects" :key="project.id">
-			<div v-if="project.images.length && project.images[0].src" class="portfolio__preview">
+			<div v-if="project.images.length && project.images[0].src" class="portfolio__preview" @click="onPreview(project)">
 				<img :data-src="project.images[0].src" :alt="project.name">
 			</div>
 		</div>
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import sharedStore from "./sharedStore";
+
 export default {
 	name: "FreelancerPortfolioPreview",
 	props: { portfolio: { type: Array, required: true } },
@@ -22,6 +24,18 @@ export default {
 					return 1;
 				})
 				.slice(0, 3);
+		},
+	},
+	methods: {
+		onPreview({ name: title, description, images }) {
+			sharedStore.state.portfolioPreview = {
+				portfolio: {
+					title: title,
+					description: description,
+					src: images[0].src,
+				},
+				isOpen: true,
+			};
 		},
 	},
 };

@@ -193,17 +193,8 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 			height: 92px;
 			.avatar__video,
 			.avatar__contact {
-				display: none;
-				width: 50px;
-				height: 50px;
-				svg {
-					&.svg-sm {
-						display: none;
-					}
-					&.svg-md {
-						display: block;
-					}
-				}
+				width: 30px;
+				height: 30px;
 			}
 			.avatar__image {
 				padding: 10px;
@@ -274,7 +265,7 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 				width: 32px;
 				height: 32px;
 				svg {
-					transform: scale(0.9);
+					transform: scale(1.2);
 				}
 			}
 			.avatar__image {
@@ -323,10 +314,16 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 			height: 156px;
 			.avatar__video,
 			.avatar__contact {
-				width: 50px;
-				height: 50px;
+				width: 42px;
+				height: 42px;
 				svg {
-					transform: scale(1);
+					transform: scale(0.8);
+					&.svg-sm {
+						display: none;
+					}
+					&.svg-md {
+						display: block;
+					}
 				}
 			}
 			.avatar__image {

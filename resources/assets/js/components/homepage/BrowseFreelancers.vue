@@ -32,6 +32,7 @@ export default {
 	created() {
 		if (sharedStore.env.debug) {
 			this.sharedStore.mutations.setWorkforceProfiles(dummyCivProfiles);
+			this.ready = true;
 		} else {
 			axios.get("/get-civ-profiles").then((res) => {
 				this.sharedStore.mutations.setWorkforceProfiles(res.data);

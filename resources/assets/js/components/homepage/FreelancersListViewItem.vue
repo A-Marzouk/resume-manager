@@ -1,7 +1,7 @@
 <template>
 	<div class="freelancers-list-view-item">
-		<FreelancerProfilePreview :freelancer="freelancer" @oncontact="$emit('oncontact', $event)" />
-		<FreelancerPortfolioPreview v-if="freelancer.projects.length" :portfolio="freelancer.projects" />
+		<FreelancerProfilePreview :freelancer="profile" @oncontact="$emit('oncontact', $event)" />
+		<FreelancerPortfolioPreview :profileIndex="profileIndex" :projects="profile.projects" />
 	</div>
 </template>
 
@@ -12,7 +12,8 @@ import FreelancerPortfolioPreview from "./FreelancerPortfolioPreview";
 export default {
 	name: "FreelancersListViewItem",
 	props: {
-		freelancer: { type: Object, required: true },
+		profileIndex: { type: Number },
+		profile: { type: Object, required: true },
 	},
 	components: {
 		FreelancerProfilePreview,

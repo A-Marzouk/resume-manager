@@ -88,16 +88,6 @@ export const homepageWrittenQuotes = [
     'Approved UX Architect',
 ];
 
-export const screenSizes = {
-    xs: 375,
-    sm: 414,
-    md: 768,
-    lg: 1024,
-    lgXl: 1440,
-    xl: 1600,
-    xxl: 1920,
-}
-
 const sharedStore = {
     env: {
         debug: false,
@@ -107,13 +97,10 @@ const sharedStore = {
         qPrefix: [],
         enabledFilters: ['pen'],
         workForceProfiles: [],
-        portfolioPreview: {
-            portfolio: {
-                title: '',
-                description: '',
-                src: '',
-            },
+        projectPreview: {
             isOpen: false,
+            profileIndex: 0,
+            projectIndex: 0,
         }
     },
     getters: {},
@@ -123,55 +110,6 @@ const sharedStore = {
                 profile.skillTitles = profile.skills.map(function (skill) {
                     return skill.title.toLowerCase();
                 });
-
-                // console.log(profile);
-
-                // if (!profile.avatar) {
-                //     profile.avatar = '/images/civ-profiles/dummy/avatars/default.png'
-                // }
-
-                // if (!profile.hourlyRate) {
-                //     profile.hourlyRate = 25
-                // }
-
-                // if (!profile.tags) {
-                //     profile.tags = [
-                //         {
-                //             id: 1,
-                //             tag: "Ui",
-                //         },
-                //         {
-                //             id: 2,
-                //             tag: "Ux",
-                //         },
-                //         {
-                //             id: 3,
-                //             tag: "Web",
-                //         },
-                //         {
-                //             id: 4,
-                //             tag: "Design",
-                //         },
-                //         {
-                //             id: 5,
-                //             tag: "Adobe Xd",
-                //         },
-                //         {
-                //             id: 6,
-                //             tag: "Figma",
-                //         },
-                //     ];
-                // }
-
-                // if (!profile.portfolio) {
-                //     profile.portfolio = [
-                //         { id: 1, title: '', preview: profile.preview },
-                //         { id: 2, title: '', preview: profile.preview },
-                //         { id: 3, title: '', preview: profile.preview },
-                //     ];
-                // }
-
-                // profile.title = `${profile.name} - ${profile.job_title}`
 
                 profile.percentageSum = 0;
                 profile.skills.forEach((skill) => {

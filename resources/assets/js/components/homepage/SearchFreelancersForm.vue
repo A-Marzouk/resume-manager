@@ -39,10 +39,7 @@
 <script>
 import hasIcons from "./mixins/hasIcons";
 import domUtils from "./mixins/utils/dom";
-import sharedStore, {
-	searchFreelancersPredictions,
-	screenSizes,
-} from "./sharedStore";
+import sharedStore, { searchFreelancersPredictions } from "./sharedStore";
 
 export default {
 	name: "SearchFreelancersForm",

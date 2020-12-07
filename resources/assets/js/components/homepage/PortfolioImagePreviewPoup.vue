@@ -1,5 +1,5 @@
 <template>
-	<div class="portfolio-image-preview-poup" v-if="isOpen">
+	<div class="portfolio-image-preview-poup" v-if="sharedStore.state.projectPreview.isOpen">
 		<div class="preview-poup__wrapper">
 			<div class="preview-poup__content">
 				<div class="poup-content__header">
@@ -10,13 +10,7 @@
 					</button>
 				</div>
 				<div class="poup-content__body">
-					<a v-lazy-container="{ selector: 'img' }" :href="portfolio.src" target="_blank" class="image-preview-popup__preview">
-						<img :data-src="portfolio.src" :alt="portfolio.title">
-					</a>
-					<div class="image-preview-popup__detail">
-						<h3 v-text="portfolio.title"></h3>
-						<div v-text="portfolio.description"></div>
-					</div>
+					<ProjectsPreviewPopupSlider />
 				</div>
 			</div>
 		</div>
@@ -25,22 +19,25 @@
 
 <script>
 import sharedStore from "./sharedStore";
+import ProjectsPreviewPopupSlider from "./ProjectsPreviewPopupSlider";
 
 export default {
 	name: "PortfolioImagePreviewPoup",
 	props: {
-		portfolio: { type: Object },
-		isOpen: { type: Boolean, default: false },
+		projectIndex: { type: Number, default: 0 },
+	},
+	components: { ProjectsPreviewPopupSlider },
+	data() {
+		return {
+			sharedStore,
+		};
 	},
 	methods: {
 		onClose() {
-			sharedStore.state.portfolioPreview = {
-				portfolio: {
-					title: "",
-					description: "",
-					src: "",
-				},
+			sharedStore.state.projectPreview = {
 				isOpen: false,
+				profileIndex: 0,
+				projectIndex: 0,
 			};
 		},
 	},
@@ -67,19 +64,20 @@ export default {
 		justify-content: center;
 		height: 100%;
 		width: 100%;
-		padding: 15px;
+		padding: 7px;
 	}
 
 	.preview-poup__content {
+		width: 100%;
+		border-radius: 10px;
 		background-color: white;
 		.poup-content__header {
 			position: relative;
 			.poup-content-header-btn--close {
 				position: absolute;
 				bottom: 100%;
-				right: 50%;
-				transform: translateX(50%);
-				margin-bottom: 7px;
+				right: 0;
+				margin-bottom: 3px;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -91,6 +89,7 @@ export default {
 				border: 1px solid $selago60;
 				border-radius: 50%;
 				transition: all 0.15s;
+				z-index: 30;
 				svg {
 					height: 12px;
 					width: 12px;
@@ -106,30 +105,8 @@ export default {
 			}
 		}
 		.poup-content__body {
-			overflow: auto;
-			max-height: 90vh;
 			border-radius: 10px;
 			box-shadow: $dropdown-box-shadow;
-
-			.image-preview-popup__preview {
-				display: block;
-				max-height: 50vh;
-				overflow: auto;
-				img {
-					width: 100%;
-					height: auto;
-				}
-			}
-			.image-preview-popup__detail {
-				padding: 15px 28px;
-				font-size: 12px;
-				color: midnightblue;
-				h3 {
-					line-height: 1;
-					font-size: 16px;
-					font-weight: 700;
-				}
-			}
 		}
 	}
 }
@@ -141,25 +118,12 @@ export default {
 
 			.poup-content__header {
 				.poup-content-header-btn--close {
-					right: -8px;
-					top: -28px;
 					height: 38px;
 					width: 38px;
-					margin-bottom: unset;
 
 					svg {
 						height: 13px;
 						width: 13px;
-					}
-				}
-			}
-
-			.poup-content__body {
-				.image-preview-popup__detail {
-					font-size: 14px;
-					padding: 20px 40px;
-					h3 {
-						font-size: 18px;
 					}
 				}
 			}

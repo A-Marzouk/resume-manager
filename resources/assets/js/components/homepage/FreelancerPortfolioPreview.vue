@@ -1,8 +1,8 @@
 <template>
 	<div v-if="projects.length" class="freelancer-portfolio-preview">
 		<div v-lazy-container="{ selector: 'img' }" class="portfolio__preview--outer" v-for="(project, projectIndex) in getFirstProjects" :key="project.id">
-			<div v-if="project.images.length && project.images[0].src" class="portfolio__preview" @click="onPreview(projectIndex)">
-				<img :data-src="project.images[0].src" :alt="project.name">
+			<div v-if="project.images.length && (project.images[0].preview || project.images[0].src)" class="portfolio__preview" @click="onPreview(projectIndex)">
+				<img :data-src="project.images[0].preview || project.images[0].src" :alt="project.name">
 			</div>
 		</div>
 	</div>

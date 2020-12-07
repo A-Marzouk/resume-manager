@@ -6,7 +6,6 @@
 			<FreelancersListView v-if="ready" />
 			<div class="loading-profiles-indicator" v-else>
 				<img src="/images/animated-svgs/ball-triangle.svg" alt="loading animated svg">
-				<div>Loading profiles</div>
 			</div>
 		</div>
 	</div>

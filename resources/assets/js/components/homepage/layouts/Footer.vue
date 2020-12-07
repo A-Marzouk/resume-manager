@@ -162,9 +162,15 @@ export default {
 		& > .container {
 			flex-wrap: wrap;
 			flex-direction: row;
+			justify-content: space-between;
 		}
 		.footer__logo {
 			width: 100%;
+		}
+
+		.footer__social-links,
+		.footer__contact-info {
+			width: auto;
 		}
 
 		.footer__social-links {
@@ -186,7 +192,6 @@ export default {
 	.footer {
 		& > .container {
 			align-items: center;
-			justify-content: space-between;
 		}
 
 		.footer__logo {

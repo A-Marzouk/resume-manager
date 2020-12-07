@@ -1,7 +1,7 @@
 <template>
-	<div class="freelancer-portfolio-preview">
-		<div v-lazy-container="{ selector: 'img' }" class="portfolio__preview--outer" v-for="project in getFirstProjects" :key="project.id">
-			<div v-if="project.images.length && project.images[0].src" class="portfolio__preview" @click="onPreview(project)">
+	<div v-if="projects.length" class="freelancer-portfolio-preview">
+		<div v-lazy-container="{ selector: 'img' }" class="portfolio__preview--outer" v-for="(project, projectIndex) in getFirstProjects" :key="project.id">
+			<div v-if="project.images.length && project.images[0].src" class="portfolio__preview" @click="onPreview(projectIndex)">
 				<img :data-src="project.images[0].src" :alt="project.name">
 			</div>
 		</div>
@@ -13,10 +13,13 @@ import sharedStore from "./sharedStore";
 
 export default {
 	name: "FreelancerPortfolioPreview",
-	props: { portfolio: { type: Array, required: true } },
+	props: {
+		profileIndex: { type: Number },
+		projects: { type: Array, required: true },
+	},
 	computed: {
 		getFirstProjects() {
-			return this.portfolio
+			return this.projects
 				.sort((a, b) => {
 					if (a.images.length > b.images.length) {
 						return -1;
@@ -27,14 +30,11 @@ export default {
 		},
 	},
 	methods: {
-		onPreview({ name: title, description, images }) {
-			sharedStore.state.portfolioPreview = {
-				portfolio: {
-					title: title,
-					description: description,
-					src: images[0].src,
-				},
+		onPreview(projectIndex) {
+			sharedStore.state.projectPreview = {
 				isOpen: true,
+				profileIndex: this.profileIndex,
+				projectIndex,
 			};
 		},
 	},

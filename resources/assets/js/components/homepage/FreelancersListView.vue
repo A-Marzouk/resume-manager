@@ -1,8 +1,8 @@
 <template>
 	<div class="freelancers-list-view">
-		<FreelancersListViewItem v-for="freelancer in filteredProfiles" :freelancer="freelancer" :key="freelancer.id" @oncontact="onContact" />
+		<FreelancersListViewItem v-for="(profile, profileIndex) in filteredProfiles" :profile="profile" :profileIndex="profileIndex" :key="profile.id" @oncontact="onContact" />
 		<ContactFreelancerModal :isOpen="isContactFreelancerModalOpen" :freelancer="contactModalFreelancer" @onclose="onContactFreelancerModalClosed" />
-		<PortfolioImagePreviewPoup :portfolio="sharedStore.state.portfolioPreview.portfolio" :isOpen="sharedStore.state.portfolioPreview.isOpen" />
+		<PortfolioImagePreviewPoup />
 	</div>
 </template>
 
@@ -76,9 +76,9 @@ export default {
 		},
 	},
 	methods: {
-		onContact(freelancer) {
-			console.log(freelancer);
-			this.contactModalFreelancer = freelancer;
+		onContact(profile) {
+			console.log(profile);
+			this.contactModalFreelancer = profile;
 			this.isContactFreelancerModalOpen = true;
 		},
 		onContactFreelancerModalClosed() {

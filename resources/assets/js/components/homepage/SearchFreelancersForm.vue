@@ -63,7 +63,7 @@ export default {
 		predictions() {
 			const q = this.sharedStore.state.q.toLowerCase();
 			const qPrefix = this.sharedStore.state.qPrefix
-				.join(" ")
+				.join(", ")
 				.trim()
 				.toLowerCase();
 
@@ -80,16 +80,16 @@ export default {
 	},
 	methods: {
 		onSearchInputChange(value) {
-			const qPrefix = this.sharedStore.state.qPrefix.join(" ");
+			const qPrefix = this.sharedStore.state.qPrefix.join(", ");
 			const q = this.predictionJustWasDeleted
 				? ""
-				: value.replace(sharedStore.state.qPrefix.join(" "), "");
+				: value.replace(sharedStore.state.qPrefix.join(", "), "");
 			this.predictionJustWasDeleted = false;
 
 			this.sharedStore.state.q = `${qPrefix}${q}`;
 		},
 		onInputDeleteKeyDown(value) {
-			let qPrefix = this.sharedStore.state.qPrefix.join(" ");
+			let qPrefix = this.sharedStore.state.qPrefix.join(", ");
 			const q = value.replace(qPrefix, "");
 
 			if (q.trim() === "") {

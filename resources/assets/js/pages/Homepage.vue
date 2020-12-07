@@ -79,5 +79,11 @@ export default {
 
 <style lang="scss" scoped>
 #homepage {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	.browse-freelancers {
+		flex-grow: 1;
+	}
 }
 </style>

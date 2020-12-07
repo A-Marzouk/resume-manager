@@ -22,4 +22,10 @@ mix.webpackConfig({
 
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .sourceMaps(false)
+    .extract(['vue', 'jquery', 'bootstrap', 'axios', 'popper.js']);
+
+if (mix.inProduction()) {
+    mix.version();
+} 

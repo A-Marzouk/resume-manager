@@ -7,7 +7,7 @@
 						<a href="/">
 							<img src="/images/new_homepage/logo.png" alt="123workforce logo" />
 						</a>
-						<h2 class="logo__hint">The Top 1% of Designers</h2>
+						<h2 class="logo__hint mb-0">The Top 1% of Designers</h2>
 					</div>
 
 					<div class="navbar__links">
@@ -38,20 +38,23 @@ export default {
 
 	.header__navbar {
 		.navbar__logo {
+			position: relative;
 			text-align: center;
 			a {
+				display: flex;
 				img {
 					width: auto;
-					height: 33px;
+					height: 40px;
 				}
 			}
 			.logo__hint {
+				position: absolute;
+				left: 48px;
+				top: 27px;
 				color: $lynch;
-				font-size: 10px;
+				font-size: 9.7px;
 				font-weight: 500;
-				margin-left: 28px;
-				margin-top: -5px;
-				margin-bottom: unset;
+				white-space: nowrap;
 			}
 		}
 		.navbar__links {
@@ -85,12 +88,13 @@ export default {
 			.navbar__logo {
 				a {
 					img {
-						height: 35px;
+						height: 44px;
 					}
 				}
 				.logo__hint {
-					font-size: 12px;
-					margin-left: 40px;
+					left: 52px;
+					top: 30px;
+					font-size: 10.7px;
 				}
 			}
 			.navbar__links {
@@ -116,13 +120,13 @@ export default {
 			.navbar__logo {
 				a {
 					img {
-						height: 55px;
+						height: 64px;
 					}
 				}
 				.logo__hint {
-					font-size: 14px;
-					margin-left: 10px;
-					margin-top: -7px;
+					left: 76px;
+					top: 44px;
+					font-size: 15.5px;
 				}
 			}
 			.navbar__links {

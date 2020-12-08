@@ -3,10 +3,7 @@
 		<div class="container">
 			<SearchFreelancersForm />
 			<!-- <FilterFreelancers /> -->
-			<FreelancersListView v-if="ready" />
-			<div class="loading-profiles-indicator" v-else>
-				<img src="/images/animated-svgs/ball-triangle.svg" alt="loading animated svg">
-			</div>
+			<FreelancersListView />
 		</div>
 	</div>
 </template>
@@ -49,21 +46,5 @@ export default {
 	font-family: $main-font;
 	padding-top: 32px;
 	background-color: $white;
-
-	.loading-profiles-indicator {
-		display: flex;
-		min-height: 50vh;
-		align-items: center;
-		flex-direction: column;
-		justify-content: center;
-		font-size: 14px;
-		color: $lighterblue;
-
-		img {
-			width: 50px;
-			height: auto;
-			margin-bottom: 16px;
-		}
-	}
 }
 </style>

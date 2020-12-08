@@ -31,7 +31,7 @@ export default {
 			this.ready = true;
 		} else {
 			axios.get("/get-civ-profiles").then((res) => {
-				this.sharedStore.mutations.setWorkforceProfiles(res.data);
+				this.sharedStore.mutations.setWorkforceProfiles(res.data.data);
 				this.ready = true;
 			});
 		}

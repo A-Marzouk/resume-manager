@@ -452,7 +452,7 @@
             getCIVProfiles() {
                 axios.get('/get-civ-profiles').then(
                     (response) => {
-                        this.workForceProfiles = response.data;
+                        this.workForceProfiles = response.data.data;
                         this.workForceProfiles.forEach((profile) => {
                             profile.skillTitles = profile.skills.map(function (skill) {
                                 return skill.title.toLowerCase();

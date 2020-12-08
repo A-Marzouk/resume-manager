@@ -3,22 +3,33 @@
 namespace App\Http\Controllers\Civ;
 
 
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
 use Throwable;
-
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 
 class CivController extends Controller
 {
-
-    public function getProfiles()
+    public function getProfiles(Request $request)
     {
-        $civAccessToken = $this->authorizeWorkForceClient();
-        $http = new \GuzzleHttp\Client(['headers' => ['Authorization' => 'Bearer ' . $civAccessToken]]);
-        $response = $http->get(config('services.civ.url') . 'api/search/workforce-profiles?page=' . request('page') . '&count=' . request('count'));
-        $jsonResponse = json_decode((string)$response->getBody(), true);
+        $page = $request->get('page');
+        $count = $request->get('count');
 
-        return $jsonResponse;
+        return Cache::tags(['workforce-profiles-pages'])
+            ->remember("workforce-profiles-page-$page", now()->addMinutes(7 * 24 * 60), function () use ($page, $count) {
+                $civAccessToken = $this->authorizeWorkForceClient();
+                $http = new \GuzzleHttp\Client([
+                    'headers' => [
+                        'Authorization' => 'Bearer ' . $civAccessToken
+                    ]
+                ]);
+                $response = $http->get(
+                    config('services.civ.url') . "api/search/workforce-profiles?page=$page&&count=$count"
+                );
+
+                return json_decode((string)$response->getBody(), true);
+            });
     }
 
     protected function getProfilePreview($id, $url)
@@ -31,16 +42,15 @@ class CivController extends Controller
 
         $target = "images/civ-profiles/preview_" . $id . "_.jpeg";
 
-        if(file_exists($target)){
-          return $target;
+        if (file_exists($target)) {
+            return $target;
         }
 
         try {
             $image_data = file_get_contents("https://api.apiflash.com/v1/urltoimage?" . $params);
             file_put_contents($target, $image_data);
 
-            return $target ;
-
+            return $target;
         } catch (Throwable $e) {
             report($e);
 
@@ -48,8 +58,9 @@ class CivController extends Controller
         }
     }
 
-    public function loadCivProfile($username, $version = ''){
-        return view('civ.profile', compact('username','version'));
+    public function loadCivProfile($username, $version = '')
+    {
+        return view('civ.profile', compact('username', 'version'));
     }
 
 
@@ -79,5 +90,4 @@ class CivController extends Controller
 
         return $jsonResponse['access_token'];
     }
-
 }

@@ -1,3 +1,4 @@
+import NProgress from 'nprogress';
 
 window._ = require('lodash');
 window.Popper = require('popper.js').default;
@@ -12,7 +13,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-} catch (e) {}
+} catch (e) { }
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -23,6 +24,16 @@ try {
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+axios.interceptors.request.use((config) => {
+    NProgress.start();
+    return config;
+}, (error) => Promise.reject(error));
+
+axios.interceptors.response.use((response) => {
+    NProgress.done();
+    return response;
+}, (error) => Promise.reject(error));
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
@@ -50,7 +61,7 @@ window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
-    key:'5a68edc88d31ad12ddb1',
+    key: '5a68edc88d31ad12ddb1',
     cluster: 'eu',
     encrypted: true
 });

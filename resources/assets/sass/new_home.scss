@@ -1,3 +1,5 @@
+@import "~nprogress/nprogress.css";
+
 * {
     box-sizing: border-box;
 }
@@ -9,6 +11,19 @@ html {
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+/** Start NProgress Style */
+#nprogress {
+    .bar {
+        background-color: #001ce3;
+    }
+    .spinner-icon {
+        display: none;
+        border-top-color: #001ce3;
+        border-left-color: #001ce3;
+    }
+}
+/** End NProgress Style */
 
 .home {
     width: 100% !important;

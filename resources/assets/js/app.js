@@ -36,6 +36,7 @@ require("./main.js");
  */
 
 Vue.config.devtools = true;
+Vue.config.productionTip = false;
 
 // new freelancers component:
 
@@ -83,6 +84,7 @@ if ($("#newHomepage").length !== 0) {
 }
 
 import Homepage from './pages/Homepage.vue';
+import Vue from "vue";
 if ($("#homepage-root").length !== 0) {
     new Vue({
         render: h => h(Homepage),

@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="footer__logo">
 				<a href="/">
-					<img src="/images/new_homepage/logo.png" alt="123workforce logo" />
+					<img src="/images/new_homepage/logo.svg" alt="123workforce logo" />
 				</a>
 			</div>
 			<div class="footer__social-links">
@@ -84,6 +84,7 @@ export default {
 			img {
 				width: auto;
 				height: 100%;
+				opacity: 0.7;
 			}
 		}
 	}

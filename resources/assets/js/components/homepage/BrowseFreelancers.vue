@@ -10,7 +10,7 @@
 
 <script>
 import sharedStore from "./sharedStore";
-import dummyCivProfiles from "./dummy-api/civ-profiles";
+import infiniteScroll from "./mixins/utils/infinite-scroll";
 
 export default {
 	name: "BrowseFreelancers",
@@ -19,22 +19,33 @@ export default {
 		FreelancersListView: require("./FreelancersListView"),
 		SearchFreelancersForm: require("./SearchFreelancersForm"),
 	},
+	mixins: [infiniteScroll],
 	data() {
 		return {
 			sharedStore,
 			ready: false,
 		};
 	},
-	created() {
-		if (sharedStore.env.debug) {
-			this.sharedStore.mutations.setWorkforceProfiles(dummyCivProfiles);
-			this.ready = true;
-		} else {
-			axios.get("/get-civ-profiles").then((res) => {
-				this.sharedStore.mutations.setWorkforceProfiles(res.data.data);
+	methods: {
+		loadProfiles() {
+			this.initialLoad(
+				"/get-civ-profiles",
+				undefined,
+				undefined,
+				"loadMoreProfiles"
+			).then((data) => {
+				this.sharedStore.mutations.setWorkforceProfiles(data);
 				this.ready = true;
 			});
-		}
+		},
+		loadMoreProfiles() {
+			this.loadMore().then((data) => {
+				this.sharedStore.mutations.setWorkforceProfiles(data, true);
+			});
+		},
+	},
+	created() {
+		this.loadProfiles();
 	},
 };
 </script>

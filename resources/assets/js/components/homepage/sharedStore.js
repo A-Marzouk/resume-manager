@@ -89,9 +89,6 @@ export const homepageWrittenQuotes = [
 ];
 
 const sharedStore = {
-    env: {
-        debug: false,
-    },
     state: {
         q: '',
         qPrefix: [],
@@ -105,7 +102,7 @@ const sharedStore = {
     },
     getters: {},
     mutations: {
-        setWorkforceProfiles(workForceProfiles) {
+        setWorkforceProfiles(workForceProfiles, append = false) {
             workForceProfiles.forEach((profile) => {
                 profile.skillTitles = profile.skills.map(function (skill) {
                     return skill.title.toLowerCase();
@@ -116,6 +113,12 @@ const sharedStore = {
                     profile.percentageSum += parseInt(skill.percentage);
                 });
             });
+
+
+            if (append) {
+                sharedStore.state.workForceProfiles = sharedStore.state.workForceProfiles.concat(workForceProfiles)
+                return;
+            }
 
             sharedStore.state.workForceProfiles = workForceProfiles;
         }

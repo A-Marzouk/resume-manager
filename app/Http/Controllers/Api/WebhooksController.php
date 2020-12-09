@@ -18,7 +18,7 @@ class WebhooksController extends Controller
     public function __invoke(Request $request)
     {
         $mapWebhookToHandlers = [
-            'forget.civ.profiels' => 'forgetCivProfiles',
+            'forget.civ.profiles' => 'forgetCivProfiles',
         ];
 
         $webhookName = $request->get('name');

@@ -81,13 +81,17 @@ export default {
 				iframe.el.style.transition = "bottom .3s";
 
 				let bottom = parseInt(iframe.bottom);
-				if (scrollBottom <= 73) bottom += 54;
+				if (scrollBottom <= 73) {
+					if (document.body.clientWidth < 768) bottom += 184;
+					else if (document.body.clientWidth < 1024) bottom += 129;
+					else bottom += 54;
+				}
 				iframe.el.style.bottom = `${bottom}px`;
 			});
 		},
 	},
 	mounted() {
-		$("body").on("scroll", this.onScroll);
+		$("body").on("scroll resize", this.onScroll);
 	},
 };
 </script>

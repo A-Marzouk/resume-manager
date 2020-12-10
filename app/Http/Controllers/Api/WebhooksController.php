@@ -85,7 +85,7 @@ class WebhooksController extends Controller
         $page = 1;
         while ($page <= $lastPage) {
             $response = $client->get(
-                config('services.civ.url') . "api/search/workforce-profiles?page=1&&count=10"
+                config('services.civ.url') . "api/search/workforce-profiles?page=$page&&count=10"
             );
             $jsonResponse = json_decode((string)$response->getBody(), true);
             Cache::put("workforce-profiles-page-$page", $jsonResponse, now()->addMinutes(7 * 24 * 60));

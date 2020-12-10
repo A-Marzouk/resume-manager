@@ -16,20 +16,19 @@ class CivController extends Controller
         $page = $request->get('page');
         $count = $request->get('count');
 
-        return Cache::tags(['workforce-profiles-pages'])
-            ->remember("workforce-profiles-page-$page", now()->addMinutes(7 * 24 * 60), function () use ($page, $count) {
-                $civAccessToken = $this->authorizeWorkForceClient();
-                $http = new \GuzzleHttp\Client([
-                    'headers' => [
-                        'Authorization' => 'Bearer ' . $civAccessToken
-                    ]
-                ]);
-                $response = $http->get(
-                    config('services.civ.url') . "api/search/workforce-profiles?page=$page&&count=$count"
-                );
+        return Cache::remember("workforce-profiles-page-$page", now()->addMinutes(7 * 24 * 60), function () use ($page, $count) {
+            $civAccessToken = $this->authorizeWorkForceClient();
+            $http = new \GuzzleHttp\Client([
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $civAccessToken
+                ]
+            ]);
+            $response = $http->get(
+                config('services.civ.url') . "api/search/workforce-profiles?page=$page&&count=$count"
+            );
 
-                return json_decode((string)$response->getBody(), true);
-            });
+            return json_decode((string)$response->getBody(), true);
+        });
     }
 
     protected function getProfilePreview($id, $url)
@@ -66,16 +65,12 @@ class CivController extends Controller
 
     public function authorizeWorkForceClient()
     {
-
-        $session = Session::get('civ_access_token');
-
-        if ($session) {
-            return $session;
+        if (Cache::has('civ_access_token')) {
+            return Cache::get('civ_access_token');
         }
 
-        $http = new \GuzzleHttp\Client;
-
-        $response = $http->post(config('services.civ.url') . 'api/login', [
+        $client = new \GuzzleHttp\Client;
+        $response = $client->post(config('services.civ.url') . 'api/login', [
             'form_params' => [
                 'client_id' => config('services.civ.client_id'),
                 'client_secret' => config('services.civ.client_secret'),
@@ -83,10 +78,8 @@ class CivController extends Controller
                 'password' => config('services.civ.password')
             ],
         ]);
-
         $jsonResponse = json_decode((string)$response->getBody(), true);
-
-        Session::put('civ_access_token', $jsonResponse['access_token']);
+        Cache::put('civ_access_token', $jsonResponse['access_token'], now()->addMinutes(7 * 24 * 60));
 
         return $jsonResponse['access_token'];
     }

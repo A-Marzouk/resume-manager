@@ -96,6 +96,7 @@ if($user){
     </div>
 
     @include('layouts.footer')
+    @include('layouts.includes.scripts')
 
     {{-- Changes saved --}}
     <div class="changesSavedText d-none" id="changesSaved">
@@ -116,7 +117,9 @@ if($user){
             @include('includes.chat')
         <? endif;?>
     </div>
-<script type="text/javascript" src="/js/app.js"></script>
+
+
+
 <script>
         $(document).ready(function(){
             if ($("#sendMessage").length ){

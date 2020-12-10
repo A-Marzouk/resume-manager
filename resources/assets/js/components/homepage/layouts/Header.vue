@@ -5,7 +5,7 @@
 				<div class="d-flex justify-content-between align-items-center">
 					<div class="navbar__logo">
 						<a href="/">
-							<img src="/images/new_homepage/logo.png" alt="123workforce logo" />
+							<img src="/images/new_homepage/logo.svg" alt="123workforce logo" />
 						</a>
 						<h2 class="logo__hint mb-0">The Top 1% of Designers</h2>
 					</div>

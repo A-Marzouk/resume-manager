@@ -36,6 +36,7 @@ require("./main.js");
  */
 
 Vue.config.devtools = true;
+Vue.config.productionTip = false;
 
 // new freelancers component:
 

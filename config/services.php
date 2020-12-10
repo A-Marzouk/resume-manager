@@ -39,7 +39,7 @@ return [
         'client_secret' => '9ql6QUkQLNZzS2J9',
         'redirect' => 'https://123workforce.com/freelancer/linkedin'
     ],
-    'instagram'=>[
+    'instagram' => [
         'client_id' => 'f877808c985d4f43ad73ae517db95151',
         'client_secret' => '066768fb9e6b4186b3a3c6eb40da33a8 ',
         'redirect' => 'https://123workforce.com/freelancer/instagram'
@@ -47,6 +47,7 @@ return [
 
     // civ:
     'civ' => [
+        'api_token' => env('CIV_API_TOKEN'),
         'client_id' => env('CIV_CLIENT_ID'),
         'client_secret' => env('CIV_CLIENT_SECRET'),
         'redirect_url' => env('CIV_REDIRECT_URL'),

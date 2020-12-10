@@ -55,7 +55,39 @@ export default {
 					link: "https:/t.me/conormarjoram",
 				},
 			],
+			fbChatIframes: [],
 		};
+	},
+	methods: {
+		onScroll({ target: body }) {
+			if (!document.querySelectorAll("#fb-root iframe").length) return;
+
+			if (!this.fbChatIframes.length) {
+				this.fbChatIframes = Array.prototype.slice
+					.call(document.querySelectorAll("#fb-root iframe"))
+					.map((iframe) => ({
+						el: iframe,
+						bottom: iframe.style.bottom,
+					}))
+					.filter((iframe) => iframe.bottom);
+			}
+
+			if (!this.fbChatIframes.length) return;
+
+			const scrollBottom =
+				body.scrollHeight - body.scrollTop - body.clientHeight;
+
+			this.fbChatIframes.forEach((iframe) => {
+				iframe.el.style.transition = "bottom .3s";
+
+				let bottom = parseInt(iframe.bottom);
+				if (scrollBottom <= 73) bottom += 54;
+				iframe.el.style.bottom = `${bottom}px`;
+			});
+		},
+	},
+	mounted() {
+		$("body").on("scroll", this.onScroll);
 	},
 };
 </script>

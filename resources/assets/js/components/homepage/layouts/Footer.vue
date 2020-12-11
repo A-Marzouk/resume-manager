@@ -3,8 +3,10 @@
 		<div class="container">
 			<div class="footer__logo">
 				<a href="/">
-					<img src="/images/new_homepage/logo.svg" alt="123workforce logo" />
+					<img class="footer__logo--text" src="/images/new_homepage/logo.svg" alt="123workforce logo" />
+					<img class="footer__logo--icon" src="/images/new_homepage/logo-icon.svg" alt="123workforce logo icon" />
 				</a>
+				<h2 class="footer__logo--hint mb-0">The Top 1% of Designers</h2>
 			</div>
 			<div class="footer__social-links">
 				<h3>Follow us</h3>
@@ -12,11 +14,11 @@
 
 					<a class="social-links__link" href="https://www.facebook.com/123workforce">
 						<img src="/images/new_homepage/facebook.svg" alt="123workforce fackbook account" />
-						<span>13.899 like</span>
+						<span class="link__social-count">13.899 like</span>
 					</a>
 					<a class="social-links__link" href="https://www.instagram.com/123workforce">
 						<img src="/images/new_homepage/instagram.svg" alt="123workforce instagram account" />
-						<span>733 Followers</span>
+						<span class="link__social-count">733 Followers</span>
 					</a>
 				</div>
 			</div>
@@ -91,7 +93,7 @@ export default {
 		},
 	},
 	mounted() {
-		$("body").on("scroll resize", this.onScroll);
+		$("body").on("scroll resize`", this.onScroll);
 	},
 };
 </script>
@@ -103,46 +105,47 @@ export default {
 .footer {
 	color: $lighterblue;
 	margin-top: 10px;
-	padding: 20px 0;
-	border-top: 1px solid;
+	padding: 30px 0;
+	border-top: 2px solid rgba(0, 70, 254, 0.1);
 	font-family: $main-font;
 
 	& > .container {
 		display: flex;
-		flex-direction: column;
+		justify-content: space-between;
 	}
 
 	.footer__logo {
-		text-align: center;
 		a {
-			height: 28px;
+			height: 32px;
 			display: inline-block;
 			img {
 				width: auto;
 				height: 100%;
-				opacity: 0.7;
+				&.footer__logo--text {
+					display: none;
+				}
 			}
+		}
+		.footer__logo--hint {
+			display: none;
 		}
 	}
 
 	.footer__social-links,
 	.footer__contact-info {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		flex-wrap: wrap;
-		padding-top: 24px;
 		& > h3 {
 			font-size: 18px;
-			font-weight: 700;
-			margin-bottom: unset;
-			min-width: 110px;
+			font-weight: 300;
+			margin-bottom: 7px;
 		}
 	}
 
 	.social-links__link,
 	.contact-info__link {
 		margin-right: 13px;
+		.link__social-count {
+			display: none;
+		}
 		&:last-child {
 			margin-right: unset;
 		}
@@ -161,10 +164,6 @@ export default {
 				img {
 					width: 32px;
 					height: 32px;
-				}
-				span {
-					font-size: 14px;
-					margin-left: 3px;
 				}
 			}
 		}
@@ -196,30 +195,34 @@ export default {
 
 @include md {
 	.footer {
+		padding: 20px 0;
 		& > .container {
 			flex-wrap: wrap;
 			flex-direction: row;
 			justify-content: space-between;
 		}
 		.footer__logo {
-			width: 100%;
-		}
-
-		.footer__social-links,
-		.footer__contact-info {
-			width: auto;
-		}
-
-		.footer__social-links {
-			justify-content: flex-start;
-			.social-links__links {
-				justify-content: flex-start;
+			position: relative;
+			a {
+				height: 55px;
+				img {
+					&.footer__logo--text {
+						display: inline;
+					}
+					&.footer__logo--icon {
+						display: none;
+					}
+				}
 			}
-		}
-		.footer__contact-info {
-			justify-content: flex-start;
-			.contact-info__links {
-				justify-content: flex-start;
+			.footer__logo--hint {
+				display: block;
+				color: $lynch;
+				font-size: 14px;
+				font-weight: 500;
+				position: absolute;
+				white-space: nowrap;
+				top: 38px;
+				left: 65px;
 			}
 		}
 	}
@@ -231,17 +234,77 @@ export default {
 			align-items: center;
 		}
 
-		.footer__logo {
-			width: auto;
-			a {
-				height: 32px;
+		.footer__social-links,
+		.footer__contact-info {
+			display: flex;
+			align-items: center;
+
+			h3 {
+				font-size: 24px;
+				margin-right: 20px;
+				margin-bottom: unset;
+			}
+		}
+	}
+}
+
+@include xl {
+	.footer {
+		.footer__social-links,
+		.footer__contact-info {
+			h3 {
+				font-size: 30px;
+				margin-right: 30px;
 			}
 		}
 
-		.footer__social-links,
+		.social-links__link {
+			margin-right: 40px;
+		}
+
+		.footer__social-links {
+			.social-links__links {
+				.social-links__link {
+					img {
+						width: 42px;
+						height: 42px;
+					}
+					.link__social-count {
+						display: inline;
+						font-size: 24px;
+						margin-left: 10px;
+					}
+				}
+			}
+		}
+
 		.footer__contact-info {
-			width: auto;
-			padding-top: unset;
+			.contact-info__links {
+				& > a {
+					width: 42px;
+					height: 42px;
+
+					img {
+						width: auto;
+						height: 26px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include xxl {
+	.footer {
+		.footer__logo {
+			a {
+				height: 80px;
+			}
+			.footer__logo--hint {
+				font-size: 18px;
+				top: 58px;
+				left: 94px;
+			}
 		}
 	}
 }

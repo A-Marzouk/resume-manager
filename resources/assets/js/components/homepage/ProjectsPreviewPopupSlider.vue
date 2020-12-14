@@ -129,7 +129,6 @@ export default {
 .project-preview-popup__slider {
 	width: 100%;
 	position: relative;
-	max-height: 556px;
 
 	.preview-popup-slider__counter {
 		font-weight: 700;
@@ -152,15 +151,16 @@ export default {
 	.preview-popup-slider__prev-button,
 	.preview-popup-slider__next-button {
 		position: absolute;
-		top: 100%;
+		bottom: 50%;
+		transform: translateY(50%);
 		margin-top: 5px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		background: white;
 		color: $lighterblue;
-		height: 32px;
-		width: 64px;
+		height: 34px;
+		width: 34px;
 		box-shadow: $inline-filter-shadow;
 		border: 1px solid $selago60;
 		border-radius: 100px;
@@ -209,7 +209,7 @@ export default {
 			min-width: 100%;
 			.image-preview-popup__preview {
 				width: 100%;
-				max-height: 396px;
+				height: 222px;
 				overflow-y: scroll;
 				a {
 					width: 100%;
@@ -225,7 +225,7 @@ export default {
 
 			.image-preview-popup__detail {
 				font-size: 12px;
-				height: 120px;
+				height: 100px;
 				overflow-y: scroll;
 				padding: 15px 28px;
 				color: midnightblue;
@@ -243,20 +243,29 @@ export default {
 	.project-preview-popup__slider {
 		.preview-popup-slider__prev-button,
 		.preview-popup-slider__next-button {
+			width: 50px;
 			height: 50px;
-			width: 100px;
-			margin-top: 10px;
 			svg {
-				fill: currentColor;
 				width: 32px;
 				height: 32px;
 			}
 		}
 
+		.preview-popup-slider__prev-button {
+			left: -25px;
+		}
+		.preview-popup-slider__next-button {
+			right: -25px;
+		}
+
 		.project-preview-popup__slider-inner {
 			.preview-popup-slider__slide {
+				.image-preview-popup__preview {
+					height: 436px;
+				}
 				.image-preview-popup__detail {
 					font-size: 14px;
+					height: 120px;
 					padding: 20px 40px;
 					h3 {
 						font-size: 18px;
@@ -269,30 +278,16 @@ export default {
 
 @include lg {
 	.project-preview-popup__slider {
-		height: 556px;
-
 		.preview-popup-slider__prev-button,
 		.preview-popup-slider__next-button {
-			bottom: 50%;
-			top: unset;
-			transform: translateY(50%);
-			height: 50px;
-			width: 50px;
+			width: 60px;
+			height: 60px;
 		}
 		.preview-popup-slider__prev-button {
-			left: -62px;
+			left: -63px;
 		}
 		.preview-popup-slider__next-button {
-			right: -62px;
-		}
-
-		.project-preview-popup__slider-inner {
-			.preview-popup-slider__slide {
-				.image-preview-popup__preview {
-					height: 436px;
-					max-height: 436px;
-				}
-			}
+			right: -63px;
 		}
 	}
 }

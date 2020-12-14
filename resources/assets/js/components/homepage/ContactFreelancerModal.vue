@@ -3,7 +3,7 @@
 		<div v-if="isOpen" class="contact-freelancer-modal">
 			<div class="freelancer-modal__content" @click.stop>
 				<div class="freelancer-modal__header">
-					<h2>Message <span>for {{ freelancer.full_name }}</span></h2>
+					<h2>Message <span>for {{ freelancer.name }}</span></h2>
 					<button type="button" @click="hideModal">
 						<svg width="16" height="17" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M14.5 1.75l-13 13.5M1.5 1.75l13 13.5" stroke="#001D68" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -188,11 +188,9 @@ export default {
 				h2 {
 					font-size: 42px;
 					span {
-						display: none;
+						font-size: 18px;
+						margin-top: 5px;
 					}
-				}
-				button {
-					display: none;
 				}
 			}
 

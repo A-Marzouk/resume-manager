@@ -3,7 +3,7 @@
 		<div class="container">
 			<SearchFreelancersForm />
 			<!-- <FilterFreelancers /> -->
-			<!-- <FreelancersListView /> -->
+			<FreelancersListView />
 		</div>
 	</div>
 </template>

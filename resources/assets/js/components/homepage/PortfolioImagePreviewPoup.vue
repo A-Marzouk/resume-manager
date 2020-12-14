@@ -118,12 +118,13 @@ export default {
 
 			.poup-content__header {
 				.poup-content-header-btn--close {
-					height: 38px;
-					width: 38px;
-
+					height: 50px;
+					width: 50px;
+					top: -25px;
+					right: -25px;
 					svg {
-						height: 13px;
-						width: 13px;
+						width: 20px;
+						height: 20px;
 					}
 				}
 			}
@@ -134,6 +135,14 @@ export default {
 @include lg {
 	.portfolio-image-preview-poup {
 		.preview-poup__content {
+			.poup-content__header {
+				.poup-content-header-btn--close {
+					height: 60px;
+					width: 60px;
+					top: -38px;
+					right: -38px;
+				}
+			}
 		}
 	}
 }

@@ -32,7 +32,7 @@
 				<div class="tags__tag" v-for="skill in freelancer.skills.slice(0, 6)" :key="skill.id" v-text="skill.title"></div>
 			</div>
 			<div class="detail__action">
-				<button class="action__hireme">Hire me</button>
+				<a class="action__hireme" :href="`${freelancer.url}?hire=true`" target="_blank">Hire me</a>
 				<span class="action__v-line"></span>
 				<div class="action__rate" v-text="`$${freelancer.hourlyRate}/hr`"></div>
 			</div>
@@ -164,11 +164,18 @@ $action-shadow: 0px 4.52941px 9.05882px rgba(0, 16, 131, 0.15);
 				color: $white;
 				border: 0;
 				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				font-size: 12px;
 				padding-left: 13px;
 				padding-right: 13px;
 				border-radius: 30px;
 				background-color: $darkblue;
+
+				&:hover {
+					text-decoration: none;
+				}
 			}
 			.action__v-line {
 				display: none;

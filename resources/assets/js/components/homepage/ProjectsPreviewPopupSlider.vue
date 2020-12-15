@@ -14,7 +14,7 @@
 				<div class="project-preview-popup__slider-inner" :style="sliderSlideStyle">
 					<div class="preview-popup-slider__slide" v-lazy-container="{ selector: 'img' }" v-for="(project, projectIndex) in projects" :key="project.id + '-' + projectIndex">
 						<div class="image-preview-popup__preview">
-							<a class="popup-preview__slide" :href="getProjectMainImage(project)" target="_blank">
+							<a class="popup-preview__slide" href="javascript:void(0)">
 								<img :data-src="getProjectMainImage(project)" :alt="project.name">
 							</a>
 						</div>

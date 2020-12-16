@@ -90,6 +90,29 @@ if ($("#homepage-root").length !== 0) {
     }).$mount('#homepage-root');
 }
 
+
+import registerForm from './components/auth/Register';
+if ($("#registerForm").length !== 0) {
+    new Vue({
+        el: '#registerForm',
+        vuetify,
+        components:{
+            'register-form':registerForm
+        }
+    });
+}
+
+import loginForm from './components/auth/Login';
+if ($("#loginForm").length !== 0) {
+    new Vue({
+        el: '#loginForm',
+        vuetify,
+        components:{
+            'login-form':loginForm
+        }
+    });
+}
+
 Vue.component(
     "example-component",
     require("./components/ExampleComponent.vue")

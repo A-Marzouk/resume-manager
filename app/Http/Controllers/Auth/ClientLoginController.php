@@ -11,6 +11,16 @@ use Illuminate\Validation\ValidationException;
 class ClientLoginController extends Controller
 {
 
+
+    public function __construct()
+    {
+        $this->middleware('guest.client')->except('logout');
+    }
+
+    public function showLoginForm(){
+        return view('auth.client.login');
+    }
+
     public function login(Request $request){
         $this->validator($request->all())->validate();
         // attempt to log in

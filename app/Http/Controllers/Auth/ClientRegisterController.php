@@ -19,7 +19,11 @@ class ClientRegisterController extends Controller
 
     public function __construct()
     {
-        $this->middleware('guest:client');
+        $this->middleware('guest.client');
+    }
+
+    public function showRegisterForm(){
+        return view('auth.client.register');
     }
 
     public function register(Request $request){

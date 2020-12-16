@@ -22,11 +22,11 @@ Auth::routes();
 
 Route::view('/', 'index');
 
-Route::view('/client/register', 'auth.client.register');
-Route::view('/client/login', 'auth.client.login')->name('client.login');
 
 Route::prefix('client')->group(function () {
     Route::post('/logout', 'Auth\ClientLoginController@logout')->name('client.logout');
+    Route::get('/register', 'Auth\ClientRegisterController@showRegisterForm');
+    Route::get('/login', 'Auth\ClientLoginController@showLoginForm')->name('client.login');;
     Route::post('/login/submit', 'Auth\ClientLoginController@login')->name('client.login.submit');
     Route::post('/search_mail', 'NotificationsController@mailSearchToClient');
     Route::get('/login/submit', function () {

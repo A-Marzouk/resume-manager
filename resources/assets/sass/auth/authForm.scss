@@ -1,0 +1,262 @@
+#loginForm, #registerForm {
+
+  .inner-text {
+    padding-top: 6px;
+    color: #aeaeae;
+  }
+
+  .inner-link {
+    padding-top: 4px;
+    padding-right: 10px;
+    white-space: nowrap;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .card-login {
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1) !important;
+    border-radius: 15px !important;
+    @media screen and (max-width: 959px) {
+      margin-top: -15px;
+    }
+    @media screen and (max-width: 599px) {
+      height: 812px;
+      margin-top: -38px;
+    }
+  }
+
+  .login-form {
+    label {
+      font-family: "Montserrat" !important;
+      font-size: 14px;
+      text-align: left !important;
+      font-weight: 500;
+      color: #616161 !important;
+    }
+
+    @media screen and (max-width: 599px) {
+      .login-input {
+        margin-top: 5px;
+      }
+      label {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: "Montserrat" !important;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .separator::before,
+  .separator::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .separator::before {
+    margin-right: 2em;
+  }
+
+  .separator::after {
+    margin-left: 2em;
+  }
+
+  .create-new-account-text {
+    font-family: "Montserrat" !important;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #0046fe !important;
+    @media screen and (max-width: 599px) {
+      font-size: 18px;
+      line-height: 22px;
+      padding-top: 32px;
+    }
+  }
+
+  .social-icon {
+    height: 39px !important;
+    width: 39px !important;
+    min-width: 39px !important;
+    border: 1px solid #ebebeb !important;
+    border-radius: 10px !important;
+    @media screen and (max-width: 330px) {
+      margin-left: 5px !important;
+    }
+  }
+
+  .agree-text {
+    font-family: "Montserrat" !important;
+    color: #838ca3 !important;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    margin-top: 8px;
+
+    span {
+      color: #0046fe !important;
+    }
+
+    @media screen and (max-width: 1263px) {
+      font-size: 12px !important;
+    }
+  }
+
+  .btn-signup {
+    box-shadow: 0px 4px 40px rgba(0, 70, 254, 0.2);
+    border-radius: 10px !important;
+    width: 11.31rem !important;
+    height: 3.625rem !important;
+
+    span {
+      font-family: "Montserrat" !important;
+      font-weight: bold;
+      color: #ffffff !important;
+      letter-spacing: 0.2em !important;
+      font-size: 0.875rem !important;
+    }
+
+    @media screen and (min-width: 1264px) and (max-width: 1903px) {
+      width: 180px !important;
+      height: 51.35px !important;
+      font-size: 12px !important;
+    }
+
+    @media screen and (min-width: 960px) and (max-width: 1263px) {
+      width: 160px !important;
+      height: 51.35px !important;
+      font-size: 10px !important;
+    }
+    @media screen and (max-width: 599px) {
+      width: 173px !important;
+      height: 52px !important;
+      font-size: 12px !important;
+    }
+    @media screen and (max-width: 400px) {
+      width: 154px !important;
+      font-size: 10px !important;
+    }
+  }
+
+  .account-exists {
+    font-family: "Montserrat" !important;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+
+    a {
+      color: #0046fe !important;
+      font-weight: 500;
+    }
+
+    @media screen and (max-width: 959px) {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    @media screen and (max-width: 599px) {
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+
+  .v-text-field input {
+    color: #aeaeae !important;
+  }
+
+  .theme--light.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state)
+  > .v-input__control
+  > .v-input__slot
+  fieldset {
+    border: 2px solid #c4c9f5;
+  }
+
+  .theme--dark.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state)
+  > .v-input__control
+  > .v-input__slot
+  fieldset {
+    border: 2px solid #c4c9f5;
+  }
+
+
+  .v-text-field {
+    border-radius: 10px !important;
+  }
+
+  .error-custom-margin {
+    margin-top: -15px;
+    margin-bottom: 10px;
+  }
+
+  .slick-dots li button {
+    width: 110px !important;
+    height: 6px;
+    border-radius: 0px;
+    margin-left: -10px;
+    background-color: #e5e5e5 !important;
+  }
+
+  .slick-dots li.slick-active button {
+    background-color: #0f4cee !important;
+    outline: none;
+    transition: width 5s ease-out 0s;
+  }
+
+  .slick-dots li button:focus {
+    outline: none !important;
+  }
+
+  @media screen and (max-width: 959px) {
+    .slick-initialized .slick-slide {
+      margin-left: -80px;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    .slick-initialized .slick-slide {
+      margin-left: -75px;
+    }
+    .slick-dots li button {
+      width: 80px !important;
+      height: 6px;
+    }
+  }
+
+  @media screen and (max-width: 599px) {
+    .slick-dots li button {
+      width: 40px !important;
+      height: 6px;
+    }
+
+    .theme--dark.v-text-field--outlined:not(.v-input--is-focused):not(.v-input--has-state)
+    > .v-input__control
+    > .v-input__slot {
+      min-height: 48px !important;
+      border-radius: 7px !important;
+    }
+    .slick-initialized .slick-slide {
+      margin-left: -70px;
+    }
+    @media screen and (max-width: 410px) {
+      .slick-initialized .slick-slide {
+        margin-left: -69px;
+      }
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .slick-initialized .slick-slide {
+      margin-left: -40px;
+    }
+  }
+}

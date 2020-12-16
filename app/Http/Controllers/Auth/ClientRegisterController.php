@@ -42,6 +42,10 @@ class ClientRegisterController extends Controller
         return view('auth.client-register',compact('ownerCode'));
     }
 
+    public function newRegisterForm(){
+        return view('auth.new-register');
+    }
+
     public function register(Request $request){
         // validate data
         $validator = $this->validator($request->all());

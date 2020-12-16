@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Artisan;
 Auth::routes();
 //test route for new homepage
 Route::view('/', 'index');
+Route::view('/client/register', 'auth.client.register');
 
 Route::prefix('client')->group(function () {
     Route::get('/login', 'Auth\ClientLoginController@showLoginForm')->name('client.login');
@@ -33,7 +34,6 @@ Route::prefix('client')->group(function () {
     Route::get('/', 'ClientsController@index')->name('client.dashboard');
     Route::get('/has_agreed', 'ClientsController@hasAgreed');
     Route::post('/set_terms', 'ClientsController@setTerms');
-    Route::get('/register', 'Auth\ClientRegisterController@showRegistrationForm')->name('client.register');
     Route::post('/register/submit', 'Auth\ClientRegisterController@register')->name('client.register.submit');
     Route::get('/register/submit', function () {
         return redirect()->back();

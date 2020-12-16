@@ -19,8 +19,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
 Auth::routes();
-//test route for new homepage
+
 Route::view('/', 'index');
+
 Route::view('/client/register', 'auth.client.register');
 
 Route::prefix('client')->group(function () {

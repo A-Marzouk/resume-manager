@@ -47,30 +47,21 @@ class ClientRegisterController extends Controller
     }
 
     public function register(Request $request){
-        // validate data
-        $validator = $this->validator($request->all());
-        if ($validator->fails())
-        {
-            return redirect('/client/register')->withErrors($validator)->withInput();
-        }
 
-        // register a client
+        $this->validator($request->all())->validate();
+
         $client = $this->create($request->all());
-        // log the client in :
+
         Auth::guard('client')->login($client);
 
-        return redirect(route('client.dashboard'));
+        return ['status' => 'success'];
     }
 
     protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'agency' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:clients',
-            'emailDept' => 'required|string|email|max:255|unique:clients',
-            'phone' => 'required|min:11|numeric',
-            'timeZone' => 'required',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -80,11 +71,7 @@ class ClientRegisterController extends Controller
         Client::create([
             'firstName'=>$data['name'],
             'name' => $data['name'],
-            'agency' => $data['agency'],
             'email' => $data['email'],
-            'emailDept' => $data['emailDept'],
-            'phone' => $data['phone'],
-            'timeZone' => $data['timeZone'],
             'password' => Hash::make($data['password']),
         ]);
 
@@ -96,16 +83,7 @@ class ClientRegisterController extends Controller
         $data['id'] = $client->id ;
         $notification->clientRegisteredEmail($data);
 
-        // save the owner :
-        // add the owner code if exists
-        if(isset($data['ownerCode'])){
-            // get owner with this code
-            $owner = Owner::where('code',$data['ownerCode'])->first();
-            $client->owner_id = $owner->id;
-            $client->save();
-        }
 
         return $client;
-
     }
 }

@@ -15,7 +15,7 @@
                                             class="login-input"
                                             type="text"
                                             outlined
-                                            :error="errors.name"
+                                            :error="!!errors.name"
                                             background-color="#ffffff"
                                             v-model="formData.name"
                                             :height="windowWidth<=599 ? '33.44' : '60'"
@@ -34,7 +34,7 @@
                                             class="login-input"
                                             type="email"
                                             outlined
-                                            :error="errors.email"
+                                            :error="!!errors.email"
                                             background-color="#ffffff"
                                             v-model="formData.email"
                                             :height="windowWidth<=599 ? '33.44' : '60'"
@@ -53,7 +53,7 @@
                                             class="login-input"
                                             type="password"
                                             outlined
-                                            :error="errors.password"
+                                            :error="!!errors.password"
                                             background-color="#ffffff"
                                             v-model="formData.password"
                                             :height="windowWidth<=599 ? '33.44' : '60'"
@@ -108,24 +108,6 @@
                             Already registered?
                             <a href="/login">Sign In</a>
                         </v-card-subtitle>
-                        <v-card-subtitle align="center" class="separator text--black">Or</v-card-subtitle>
-                        <!-- social icons -->
-                        <v-card-subtitle align="center">
-                            <v-btn
-                                    class="social-icon mx-md-2 mx-sm-3 mx-2"
-                                    color="#ffffff"
-                                    v-for="icon in socialMediaIcons"
-                                    :key="icon.title"
-                                    :href="icon.link"
-                            >
-                                <img
-                                        :width="windowWidth>599 && windowWidth<=959?icon.tablet_width:icon.width"
-                                        :src="getSocialIcon(icon.title)"
-                                        alt
-                                />
-                            </v-btn>
-                        </v-card-subtitle>
-                        <!-- social icons -->
                     </v-card>
                 </v-card>
             </v-col>
@@ -197,30 +179,18 @@
                     return;
                 }
 
-                if(this.username !== ''){
-                    this.formData.username = this.username;
-                }
-
-                axios.post('/simple-register', this.formData)
-                    .then(response => {
-                        // save the access token then redirect:
-                        Vue.$cookies.set('access_token', response.data.access_token, "3y");
-                        if(response.data.is_admin){
-                            window.location.href = '/workforce-admin';
-                        }else{
-                            window.location.href = '/resume-builder';
+                axios.post('/client/register/submit', this.formData)
+                    .then( (response) => {
+                        if(response.data.status === 'success'){
+                            window.location.href = '/client';
                         }
                     })
                     .catch(error => {
                         if (typeof error.response.data === 'object') {
                             this.errors = error.response.data.errors;
                         } else {
-                            this.errors = ['Something went wrong. Please try again.'];
+                            this.errors = ['Something went wrong. Please try again'];
                         }
-                        this.$store.dispatch('flyingNotification', {
-                            message: 'Error',
-                            iconSrc: '/images/resume_builder/error.png'
-                        });
                     });
             },
             getSocialIcon(title) {

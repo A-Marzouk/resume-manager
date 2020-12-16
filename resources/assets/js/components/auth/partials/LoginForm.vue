@@ -71,7 +71,7 @@
                         </v-card-subtitle>
                         <v-card-subtitle class="account-exists NoDecor">
                             Don't have an account?
-                            <a href="/register">Register</a>
+                            <a href="/client/register">Register</a>
                         </v-card-subtitle>
                     </v-card>
                 </v-card>

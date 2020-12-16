@@ -106,7 +106,7 @@
                         </v-card-subtitle>
                         <v-card-subtitle class="account-exists NoDecor">
                             Already registered?
-                            <a href="/login">Sign In</a>
+                            <a href="/client/login">Sign In</a>
                         </v-card-subtitle>
                     </v-card>
                 </v-card>

@@ -102,6 +102,17 @@ if ($("#registerForm").length !== 0) {
     });
 }
 
+import loginForm from './components/auth/Login';
+if ($("#loginForm").length !== 0) {
+    new Vue({
+        el: '#loginForm',
+        vuetify,
+        components:{
+            'login-form':loginForm
+        }
+    });
+}
+
 Vue.component(
     "example-component",
     require("./components/ExampleComponent.vue")

@@ -22,30 +22,6 @@ class ClientRegisterController extends Controller
         $this->middleware('guest:client');
     }
 
-    public function showRegistrationForm(Request $request)
-    {
-        if(isset($request->ownerCode)){
-            $ownerCode = $request->ownerCode;
-            $affiliate = Affiliate::where('code',$request->ownerCode)->first();
-            if(!$affiliate){
-                return redirect('client/register')->with('errorMessage','Wrong affiliate code');
-            }
-            // new click on the affiliate link
-            if(!Session::get('AffiliateLinkClient')){ // if not clicked
-                $click = new AffiliateClick;
-                $click->affiliate_id = $affiliate->id;
-                $click->client = 1;
-                $click->save();
-            }
-            Session::put('AffiliateLinkClient','clicked'); // clicked once
-        }
-        return view('auth.client-register',compact('ownerCode'));
-    }
-
-    public function newRegisterForm(){
-        return view('auth.new-register');
-    }
-
     public function register(Request $request){
 
         $this->validator($request->all())->validate();

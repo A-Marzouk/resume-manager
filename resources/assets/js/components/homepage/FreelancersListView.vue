@@ -97,8 +97,8 @@ export default {
 	padding-top: 15px;
 	padding-bottom: 15px;
 	.freelancers-list-view-item {
-		padding-top: 12px;
-		padding-bottom: 12px;
+		padding-top: 28px;
+		padding-bottom: 28px;
 		border-bottom: 1px solid $moonraker;
 		&:last-child {
 			border-bottom: none;

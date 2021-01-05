@@ -13,15 +13,8 @@ class CreateWorkHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('works_history', function (Blueprint $table) {
+        Schema::create('work_history', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->text('job_title');
-            $table->text('company');
-            $table->longText('job_description');
-            $table->text('date_from');
-            $table->text('date_to');
-            $table->text('currently_working');
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ class CreateWorkHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('works_history');
+        Schema::dropIfExists('work_history');
     }
 }

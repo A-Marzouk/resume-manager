@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectsTable extends Migration
+class CreateStripeInvoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,8 @@ class CreateProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('stripe_invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->text('projectName');
-            $table->text('isActive');
-            $table->text('link');
-            $table->longText('projectDesc');
-            $table->longText('images');
-            $table->text('mainImage');
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ class CreateProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('stripe_invoices');
     }
 }

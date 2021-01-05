@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreaeVisitorsTable extends Migration
+class CreateUserDatasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreaeVisitorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('visitors', function (Blueprint $table) {
+        Schema::create('user_datas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstName')->nullable;
-            $table->string('lastName')->nullable;
-            $table->string('token')->nullable;
-            $table->longText('chatHistory')->nullable;
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreaeVisitorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('visitors');
+        Schema::dropIfExists('user_datas');
     }
 }

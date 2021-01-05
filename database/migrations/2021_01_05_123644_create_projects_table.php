@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddConversationIdMessage extends Migration
+class CreateProjectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddConversationIdMessage extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function (Blueprint $table) {
-            $table->integer('conversation_id')->nullable;
+        Schema::create('projects', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +26,6 @@ class AddConversationIdMessage extends Migration
      */
     public function down()
     {
-        Schema::table('messages', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('projects');
     }
 }

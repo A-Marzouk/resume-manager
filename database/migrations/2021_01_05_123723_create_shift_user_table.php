@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAudioFile extends Migration
+class CreateShiftUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddAudioFile extends Migration
      */
     public function up()
     {
-        Schema::table('user_datas', function (Blueprint $table) {
-            $table->string('audioFile')->nullable();
+        Schema::create('shift_user', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +26,6 @@ class AddAudioFile extends Migration
      */
     public function down()
     {
-        Schema::table('user_datas', function (Blueprint $table) {
-            Schema::drop('user_datas');
-        });
+        Schema::dropIfExists('shift_user');
     }
 }

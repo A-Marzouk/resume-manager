@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFieldToUserDatas extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddFieldToUserDatas extends Migration
      */
     public function up()
     {
-        Schema::table('user_datas', function (Blueprint $table) {
-            $table->string('video_file')->nullable();
-
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +26,6 @@ class AddFieldToUserDatas extends Migration
      */
     public function down()
     {
-        Schema::table('user_datas', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('users');
     }
 }

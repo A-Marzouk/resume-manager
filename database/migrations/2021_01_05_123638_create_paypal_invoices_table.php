@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConversationsTable extends Migration
+class CreatePaypalInvoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateConversationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('conversations', function (Blueprint $table) {
+        Schema::create('paypal_invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->nullable;
-            $table->integer('client_id')->nullable;
-            $table->longText('visitor_id')->nullable;
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateConversationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conversations');
+        Schema::dropIfExists('paypal_invoices');
     }
 }

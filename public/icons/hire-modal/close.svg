@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 55 56" width="55" height="56">
+	<defs>
+		<image width="12" height="15" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAPCAMAAADnP957AAAAAXNSR0IB2cksfwAAAJxQTFRFTFB4AAAATFB6TFF5S1F5S1F5S1J6TFF5TFF6UFCAS1F5SlJ3TFF5S1F5TFF6TlF6S1F6TFB5TFB4TFF5S1J5TFF5SVt/S1F5S1B5TFB5TFF5TFB5TFF4TVB6Sk52TFF5TFF5MzNmTFB5TVF5S1R5TVF5TVJ4TVJ7TVJ5TlJ5TlV8TFF5TFF6VVVVTFJ5TFB5TFF4UVF5TVB6TFF5S2Xc7QAAADR0Uk5TgABv/1/3QbnrEIs+kdWXRVjhxbNO/Q6pafGxidhJNL3gBbi6PX5qOI87J+ebA+G1oRNWcq21Z3cAAAB7SURBVHicNczXEoJQFEPREzcqKIpir9h79///zXtB8pQ1k4mZmfK4YhUIfA+o1kx1wkiKQhoyNSGWYlpuKbUhSaCTQ13SlJ4K9IHB8A+NYKwSE5iWmDGHRYGle8pYrXNs2GoHe48DHKUTnGWXKzc3vz94yl7w9k8f+P4AkiIGQwhxZAMAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+		.shp0 { fill: #ffffff } 
+	</style>
+	<g id="Group_383">
+		<g id="Group_364">
+			<g id="Layer">
+				<path id="Ellipse_23-2" class="shp0" d="M27.5 55C12.29 55 0 42.71 0 27.5C0 12.29 12.29 0 27.5 0C42.71 0 55 12.29 55 27.5C55 42.71 42.71 55 27.5 55Z" />
+			</g>
+		</g>
+		<use id="X" href="#img1" x="22" y="21" />
+	</g>
+</svg>

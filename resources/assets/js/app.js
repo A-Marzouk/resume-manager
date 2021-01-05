@@ -84,10 +84,14 @@ if ($("#newHomepage").length !== 0) {
 }
 
 import Homepage from './pages/Homepage.vue';
-if ($("#homepage-root").length !== 0) {
+if ($("#homepageRoot").length !== 0) {
     new Vue({
-        render: h => h(Homepage),
-    }).$mount('#homepage-root');
+        el: "#homepageRoot",
+        vuetify,
+        components: {
+            "homepage-root": Homepage,
+        },
+    });
 }
 
 

@@ -1,0 +1,259 @@
+.main-color {
+    color: #001d68;
+}
+.v-avatar img {
+    height: auto;
+}
+.user-name {
+    font-family: Noto Sans;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #001d68;
+
+    @media screen and (max-width: 425px) {
+        font-size: 18px;
+    }
+}
+.user-rate {
+    font-family: Noto Sans;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 35.76px;
+    text-align: left;
+    color: #001d68;
+}
+.hireMe-text {
+    display: inline;
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 36px;
+    color: #001d68;
+}
+.monthly {
+    background: #e6e8fc;
+    border-radius: 5px;
+    width: 110px;
+    height: 38px;
+    display: inline-block;
+    text-align: center;
+    margin: 0 5px;
+    &_text {
+        font-family: Noto Sans;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 39px;
+        color: #001ce2;
+        text-transform: capitalize;
+    }
+}
+.elevation {
+    box-shadow: 0px 5px 10px rgba(0, 16, 131, 0.15);
+}
+.selectHour {
+    background: #ffffff;
+    box-shadow: 0px 0px 40px rgba(0, 28, 226, 0.08);
+    border-radius: 10px;
+}
+.select-text {
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 39px;
+    color: #001d68;
+}
+.select-tag {
+    float: right;
+    text-align: center;
+    padding: 5px 10px;
+    background: #e6e8fc;
+    border-radius: 5px;
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #001ce2;
+}
+.perDayNumber,
+.perMonthNumber {
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+    padding: 0 12px;
+    .number {
+        width: 1.5rem;
+        text-align: center;
+        font-family: Noto Sans;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 12px;
+        color: #687494;
+    }
+}
+.calculate-payment {
+    background: #f2f3fd;
+    border-radius: 5px;
+    padding: 20px 15px;
+    .rate-label {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 1.25;
+        color: #001d68;
+        margin-bottom: 10px;
+        @media screen and (max-width: 425px) {
+            font-size: 12px;
+        }
+    }
+    .operators {
+        display: flex;
+        height: 44.8px;
+        align-items: center;
+        justify-content: center;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 900;
+        font-size: 18px;
+        color: #001d68;
+    }
+    .rate-input {
+        width: 90px;
+        height: 44.81px;
+        background: #ffffff;
+        border: 2px solid #e6e8fc;
+        box-sizing: border-box;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .text {
+        font-family: Noto Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 39px;
+        color: #001d68;
+    }
+    .total {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 22px;
+        color: #001ce2;
+    }
+}
+.divider {
+    margin: 1rem auto;
+    height: 1px;
+    width: 95%;
+    background: rgba(122, 133, 161, 0.2);
+}
+.total-payment {
+    font-family: Montserrat;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1.5;
+    border-top: 0.5px solid rgba(122, 133, 161, 0.2);
+    color: #687494;
+    &_text {
+        font-weight: 500;
+    }
+    &_value {
+        font-weight: bold;
+    }
+
+    @media screen and (max-width: 425px) {
+        font-size: 14px;
+    }
+}
+
+
+.payment-text {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: initial;
+    @media screen and (max-width: 425px) {
+        font-size: 12px;
+    }
+}
+.or {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 32px;
+    color: #687494;
+}
+.month-numbers {
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 39px;
+    color: #001d68;
+}
+.inactive-method {
+    opacity: 0.2;
+}
+.active-method {
+    opacity: 1;
+}
+.week-days {
+    justify-content: space-evenly;
+    flex-direction: row;
+    display: flex;
+    padding: 0 5px;
+    &_single {
+        flex: 1;
+        position: relative;
+        text-align: center;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 0 1.1rem;
+        @media screen and (max-width: 425px) {
+            padding: 0 0.4rem;
+        }
+        cursor: pointer;
+        .weekday {
+            font-size: 12px;
+            line-height: 15px;
+        }
+        .days {
+            font-size: 18px;
+            line-height: 22px;
+        }
+    }
+    .active {
+        color: #001d68;
+        &::after {
+            content: "\25CF";
+            position: absolute;
+            top: 100%;
+            right: 50%;
+            transform: translateX(50%);
+            font-size: 15px;
+            line-height: 0.4;
+        }
+        .day {
+            color: #001ce2;
+        }
+    }
+    .inactive {
+        color: #687494;
+    }
+}

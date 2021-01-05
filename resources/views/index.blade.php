@@ -41,7 +41,7 @@
        page_id="1010896968958465">
   </div>
 
-      <div id="homepage-root"></div>
+      <homepage-root id="homepageRoot"></homepage-root>
    
     @include('layouts.includes.scripts')
 

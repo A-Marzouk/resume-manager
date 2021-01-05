@@ -15,6 +15,10 @@ class CreateServiceUserTable extends Migration
     {
         Schema::create('service_user', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('user_id')->nullable();
+            $table->integer('service_id')->nullable();
+
             $table->timestamps();
         });
     }

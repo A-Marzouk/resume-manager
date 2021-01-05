@@ -15,6 +15,17 @@ class CreatePaypalInvoicesTable extends Migration
     {
         Schema::create('paypal_invoices', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('title')->nullable();
+            $table->string('payment_status')->nullable();
+            $table->string('recurring_id')->nullable();
+            $table->string('payer_email')->nullable();
+
+            $table->integer('weeks')->nullable();
+            $table->integer('count')->nullable();
+
+            $table->double('price')->nullable();
+
             $table->timestamps();
         });
     }

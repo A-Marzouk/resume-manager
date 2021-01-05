@@ -15,6 +15,20 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('client_id')->nullable();
+
+            $table->string('title')->nullable();
+            $table->string('skills')->nullable();
+            $table->string('budget')->nullable();
+            $table->string('level')->nullable();
+            $table->string('status')->nullable();
+            $table->string('posted')->nullable();
+            $table->string('time')->nullable();
+
+            $table->text('job_attachment')->nullable();
+            $table->text('description')->nullable();
+
             $table->timestamps();
         });
     }

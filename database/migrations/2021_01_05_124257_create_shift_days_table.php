@@ -15,6 +15,11 @@ class CreateShiftDaysTable extends Migration
     {
         Schema::create('shift_days', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('shift_id')->nullable();
+            $table->string('date')->nullable();
+
+
             $table->timestamps();
         });
     }

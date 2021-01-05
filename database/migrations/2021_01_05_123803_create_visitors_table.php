@@ -15,6 +15,12 @@ class CreateVisitorsTable extends Migration
     {
         Schema::create('visitors', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('firstName')->nullable();
+            $table->string('lastName')->nullable();
+            $table->string('token')->nullable();
+            $table->longText('chatHistory')->nullable();
+
             $table->timestamps();
         });
     }

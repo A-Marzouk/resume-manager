@@ -15,6 +15,17 @@ class CreateWorkHistoryTable extends Migration
     {
         Schema::create('work_history', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('user_id')->nullable();
+
+            $table->text('company')->nullable();
+            $table->text('job_title')->nullable();
+            $table->text('job_description')->nullable();
+            $table->text('date_from')->nullable();
+            $table->text('date_to')->nullable();
+            $table->text('currently_working')->nullable();
+
+
             $table->timestamps();
         });
     }

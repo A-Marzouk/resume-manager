@@ -15,6 +15,17 @@ class CreateShiftsTable extends Migration
     {
         Schema::create('shifts', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('campaign_id')->nullable();
+            $table->integer('invoice_id')->nullable();
+
+            $table->text('days')->nullable();
+            $table->string('rate')->nullable();
+            $table->string('service')->nullable();
+
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
+
             $table->timestamps();
         });
     }

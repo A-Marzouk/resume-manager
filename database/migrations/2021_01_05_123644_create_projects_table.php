@@ -15,6 +15,19 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('user_id')->nullable();
+            $table->integer('work_history_id')->nullable();
+            $table->integer('order')->nullable();
+
+            $table->string('projectName')->nullable();
+            $table->string('isActive')->nullable();
+            $table->string('link')->nullable();
+
+            $table->longText('projectDesc')->nullable();
+            $table->text('images')->nullable();
+            $table->text('mainImage')->nullable();
+
             $table->timestamps();
         });
     }

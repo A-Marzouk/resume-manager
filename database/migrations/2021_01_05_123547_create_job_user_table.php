@@ -15,6 +15,11 @@ class CreateJobUserTable extends Migration
     {
         Schema::create('job_user', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('user_id')->nullable();
+            $table->integer('job_id')->nullable();
+
+
             $table->timestamps();
         });
     }

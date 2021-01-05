@@ -15,6 +15,15 @@ class CreateCampaignsTable extends Migration
     {
         Schema::create('campaigns', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('client_id')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('status')->nullable();
+
+
             $table->timestamps();
         });
     }

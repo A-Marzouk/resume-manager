@@ -15,6 +15,11 @@ class CreateAffiliatePaymentHistoryTable extends Migration
     {
         Schema::create('affiliate_payment_history', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('amount_paid')->nullable();
+            $table->integer('affiliate_id')->nullable();
+            $table->string('admin_paid')->nullable();
+
             $table->timestamps();
         });
     }

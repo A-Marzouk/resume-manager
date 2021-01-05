@@ -15,6 +15,11 @@ class CreateAffiliateLinkClicksTable extends Migration
     {
         Schema::create('affiliate_link_clicks', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('affiliate_id')->nullable();
+            $table->integer('freelancer')->nullable();
+            $table->integer('client')->nullable();
+
             $table->timestamps();
         });
     }

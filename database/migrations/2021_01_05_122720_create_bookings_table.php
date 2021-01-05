@@ -15,6 +15,21 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('user_id')->nullable();
+            $table->integer('client_id')->nullable();
+            $table->integer('invoice_id')->nullable();
+            $table->integer('weeks')->nullable();
+            $table->integer('weeks_original')->nullable();
+            $table->integer('is_paid')->nullable();
+            $table->string('amount_paid')->nullable();
+            $table->string('hours')->nullable();
+            $table->string('canceled')->nullable();
+            $table->string('booking_email')->nullable();
+            $table->string('subscription_id')->nullable();
+            $table->string('finished')->nullable();
+            $table->string('payment_method')->nullable();
+
             $table->timestamps();
         });
     }

@@ -15,6 +15,17 @@ class CreateAffiliatesTable extends Migration
     {
         Schema::create('affiliates', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('name')->nullable();
+            $table->string('email')->unique();
+            $table->string('remember_token')->nullable();
+            $table->string('agree_with_terms')->nullable();
+            $table->string('code')->nullable();
+            $table->string('paypal_email')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('password')->nullable();
+
+
             $table->timestamps();
         });
     }

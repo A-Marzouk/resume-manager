@@ -15,6 +15,11 @@ class CreateCampaignUserTable extends Migration
     {
         Schema::create('campaign_user', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('user_id')->nullable();
+            $table->integer('campaign_id')->nullable();
+
+
             $table->timestamps();
         });
     }

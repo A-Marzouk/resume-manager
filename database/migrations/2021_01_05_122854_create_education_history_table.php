@@ -15,6 +15,17 @@ class CreateEducationHistoryTable extends Migration
     {
         Schema::create('education_history', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('user_id')->nullable();
+
+            $table->string('school_title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('date_from')->nullable();
+            $table->string('date_to')->nullable();
+            $table->string('type')->nullable();
+            $table->string('currently_learning')->nullable();
+
+
             $table->timestamps();
         });
     }

@@ -15,6 +15,12 @@ class CreateClientSearchTable extends Migration
     {
         Schema::create('clients_search', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('name')->nullable();
+            $table->integer('client_id')->nullable();
+            $table->integer('freelancer_id')->nullable();
+
+
             $table->timestamps();
         });
     }

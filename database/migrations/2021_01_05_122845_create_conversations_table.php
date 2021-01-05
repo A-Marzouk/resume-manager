@@ -15,6 +15,13 @@ class CreateConversationsTable extends Migration
     {
         Schema::create('conversations', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('user_id')->nullable();
+            $table->integer('client_id')->nullable();
+            $table->integer('visitor_id')->nullable();
+            $table->integer('unread_messages_client')->nullable();
+            $table->integer('unread_messages_freelancer')->nullable();
+
             $table->timestamps();
         });
     }

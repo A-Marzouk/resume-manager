@@ -12,7 +12,7 @@
 
         <div class="notification">
             <div class="notification-image">
-                <img src="/images/new_resume_builder/error-icon.svg" alt="error icon">
+                <img src="/icons/hire-modal/error-icon.svg" alt="error icon">
             </div>
             <div class="notification-message">
                 We are sorry! your payment did not go through!<br/>

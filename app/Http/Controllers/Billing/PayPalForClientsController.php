@@ -47,21 +47,21 @@ class PayPalForClientsController extends Controller
     public function __construct()
     {
         // Detect if we are running in live mode or sandbox
-        if (config('paypal.settings.mode') == 'live') {
-            $this->client_id = config('paypal.live_client_id');
-            $this->secret = config('paypal.live_secret');
-            $this->monthly_plan_id = env('PAYPAL_LIVE_MONTHLY_PLAN_ID', '');
-            $this->yearly_plan_id = env('PAYPAL_LIVE_YEARLY_PLAN_ID', '');
+        if (config('services.paypal.mode') == 'live') {
+            $this->client_id = config('services.paypal.live.client_id');
+            $this->secret = config('services.paypal.live.secret');
+            $this->monthly_plan_id = config('services.paypal.live.monthly_plan_id', '');
+            $this->yearly_plan_id = config('services.paypal.live.yearly_plan_id', '');
         } else {
-            $this->client_id = config('paypal.sandbox_client_id');
-            $this->secret = config('paypal.sandbox_secret');
-            $this->monthly_plan_id = env('PAYPAL_SANDBOX_MONTHLY_PLAN_ID', '');
-            $this->yearly_plan_id = env('PAYPAL_SANDBOX_YEARLY_PLAN_ID', '');
+            $this->client_id = config('services.paypal.sandbox.client_id');
+            $this->secret = config('services.paypal.sandbox.secret');
+            $this->monthly_plan_id = config('services.paypal.sandbox.monthly_plan_id', '');
+            $this->yearly_plan_id = config('services.paypal.sandbox.yearly_plan_id', '');
         }
 
         // Set the Paypal API Context/Credentials
         $this->apiContext = new ApiContext(new OAuthTokenCredential($this->client_id, $this->secret));
-        $this->apiContext->setConfig(config('paypal.settings'));
+        $this->apiContext->setConfig(config('services.paypal.settings'));
     }
 
 
@@ -98,7 +98,7 @@ class PayPalForClientsController extends Controller
         // Set transaction object
         $transaction = new Transaction();
         $transaction->setAmount($amount)
-            ->setDescription('Hire ' . $request->freelancer['default_resume_link']['title'] . ' For ' . $request->payment_info['numberOfHours'] . ' Hours.');
+            ->setDescription('Hire ' . $request->freelancer['name']. ' For 20 Hours.');
 
         // Create the full payment object
         $payment = new Payment();
@@ -135,8 +135,8 @@ class PayPalForClientsController extends Controller
     {
         // Create a new billing plan
         $plan = new Plan();
-        $plan->setName('Hire Freelancer with civ.ie')
-            ->setDescription('Hire Freelancer with civ.ie.')
+        $plan->setName('Hire Freelancer with 123workforce.com')
+            ->setDescription('Hire Freelancer with 123workforce.com.')
             ->setType('fixed');
 
         // Set billing plan definitions
@@ -203,8 +203,8 @@ class PayPalForClientsController extends Controller
     {
         // Create new agreement
         $agreement = new Agreement();
-        $agreement->setName('Hire freelancer with civ.ie')
-            ->setDescription('Hire freelancer with civ.ie | subscription')
+        $agreement->setName('Hire freelancer with 123workforce.com')
+            ->setDescription('Hire freelancer with 123workforce.com | subscription')
             ->setStartDate(Carbon::now()->addMinutes(5)->toIso8601String());
 
         // Set plan id
@@ -295,7 +295,7 @@ class PayPalForClientsController extends Controller
             'name' => $payerData->first_name . ' ' . $payerData->last_name,
             'email' => 'guest_' . $payerData->email,
             'username' => strstr($payerData->email, '@', true),
-            'password' => Hash::make($payerData->email . '_civie_client'),
+            'password' => Hash::make(strtolower($payerData->email . '_123workforce_client')),
         ]);
 
         paymentGatewayInfo::create([
@@ -341,6 +341,8 @@ class PayPalForClientsController extends Controller
             return false;
         }
 
+
+
         $dt = Carbon::now();
         if($result->plan->payment_definitions[0]->frequency == 'MONTH'){
             $expires_at = $dt->addMonths($result->agreement_details->cycles_remaining);
@@ -349,12 +351,12 @@ class PayPalForClientsController extends Controller
         }
 
         return Subscription::create([
+            'client_id' => $client->id,
             'payment_method' => 'paypal',
             'sub_frequency' => $result->plan->payment_definitions[0]->frequency,
             'amount' => $result->plan->payment_definitions[0]->amount->value,
             'sub_status' => 'active',
             'paypal_agreement_id' => $result->id,
-            'client_id' => $client->id,
             'expires_at' => $expires_at
         ]);
     }
@@ -384,13 +386,13 @@ class PayPalForClientsController extends Controller
         $unit_price->setValue($request->payment_info['toPayLaterAmount']);
 
 
-        $invoice_item->setName('Hire Freelancer with civ.ie | later payment')
+        $invoice_item->setName('Hire Freelancer with 123workforce.com | later payment')
             ->setQuantity(1)
             ->setUnitPrice($unit_price);
 
 
         $invoice->setItems(array($invoice_item));
-        $invoice_item->setDescription('Hire Freelancer with civ.ie | later payment');
+        $invoice_item->setDescription('Hire Freelancer with 123workforce.com | later payment');
 
         try {
             $invoice->create($this->apiContext);
@@ -406,7 +408,7 @@ class PayPalForClientsController extends Controller
         $webhook = new Webhook();
 
         // Set webhook notification URL
-        $webhook->setUrl("https://civ.ie/paypal/webhooks");
+        $webhook->setUrl("https://123workforce.com/paypal/webhooks");
 
         // Set webhooks to subscribe to
         $webhookEventTypes = array();

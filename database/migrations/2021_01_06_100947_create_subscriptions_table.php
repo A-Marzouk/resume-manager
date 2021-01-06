@@ -25,7 +25,7 @@ class CreateSubscriptionsTable extends Migration
             $table->date('expires_at')->nullable();
 
 
-            $table->integer('user_id')->unsigned();
+            $table->integer('client_id')->unsigned();
             $table->integer('promocode_id')->unsigned()->nullable();
             $table->timestamps();
         });

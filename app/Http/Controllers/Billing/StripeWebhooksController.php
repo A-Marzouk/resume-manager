@@ -77,14 +77,14 @@ class StripeWebhooksController extends Controller
         $price    = StripePrice::retrieve($price_id);
 
         Subscription::create([
+            'client_id' => $client->id,
             'payment_method' => 'stripe',
             'sub_frequency' => $price['recurring']['interval'],
             'sub_status' => $payload['data']['object']['status'],
             'amount' => $price['unit_amount'] / 100 ,
             'stripe_subscription_id' => $payload['data']['object']['id'],
             'stripe_customer_id' => $payload['data']['object']['customer'],
-            'expires_at' => Carbon::createFromTimestamp($payload['data']['object']['phases'][0]['end_date'])->toDateTimeString(),
-            'client_id' => $client->id
+            'expires_at' => Carbon::createFromTimestamp($payload['data']['object']['phases'][0]['end_date'])->toDateTimeString()
         ]);
     }
 

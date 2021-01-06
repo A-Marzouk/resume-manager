@@ -16,6 +16,8 @@ class CreateUserDatasTable extends Migration
         Schema::create('user_datas', function (Blueprint $table) {
             $table->increments('id');
 
+            $table->integer('user_id')->nullable();
+
             $table->string('name')->nullable();
             $table->string('email')->nullable();
 
@@ -26,7 +28,7 @@ class CreateUserDatasTable extends Migration
             $table->string('jobTitle')->nullable();
             $table->string('githubLink')->nullable();
             $table->string('behanceLink')->nullable();
-            $table->string('instagrmLink')->nullable();
+            $table->string('instagramLink')->nullable();
             $table->string('stackoverflowLink')->nullable();
             $table->string('freeDate')->nullable();
             $table->string('personalSite')->nullable();

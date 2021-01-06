@@ -73,10 +73,12 @@ class StripeWebhooksController extends Controller
         }
 
         // get the amount of teh subscription:
-        $price_id = $payload['data']['object']['phases'][0]['plans'][0]['price'];
-        if( ! $price_id){
-            $payload['data']['object']['phases'][0]['items'][0]['price'];
+        try{
+            $price_id = $payload['data']['object']['phases'][0]['plans'][0]['price'];
+        }catch (\Exception $e){
+            $price_id = $payload['data']['object']['phases'][0]['items'][0]['price'];
         }
+
         $price    = StripePrice::retrieve($price_id);
 
         Subscription::create([

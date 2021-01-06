@@ -10,8 +10,8 @@ namespace App\Http\Controllers\Billing;
 
 
 use App\Billing\paymentGatewayInfo;
+use App\Client;
 use App\Http\Controllers\Controller;
-use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -191,7 +191,7 @@ class StripeForClientsController extends Controller
     // general:
     protected function createOrFetchCustomer($request)
     {
-        $client   = User::where('email', $request->client['email'])->first();
+        $client   = Client::where('email', $request->client['email'])->first();
         $stripeID = $client->paymentGatewayInfo->stripe_customer_id ?? '' ;
 
         if($stripeID){
@@ -220,22 +220,22 @@ class StripeForClientsController extends Controller
 
     protected function createClient($request, $stripe_customer_id)
     {
-        $client = User::where('email', $request->client['email'])->first();
+        $client = Client::where('email', $request->client['email'])->first();
 
         if( ! $client){
-            $client =  User::create([
+            $client =  Client::create([
                 'name' => $request->client['name'],
-                'email' => $request->client['email'],
+                'email' => 'auto_created_' . $request->client['email'],
                 'username' => strtolower(strstr($request->client['email'], '@', true)),
-                'password' => Hash::make(strtolower($request->client['email'] . '_civie_client')),
-            ])->assignRole('client');
+                'password' => Hash::make(strtolower($request->client['email'] . '_123workforce_client')),
+            ]);
         }
 
-        $paymentGatewayInfo = paymentGatewayInfo::where('user_id', $client->id)->first();
+        $paymentGatewayInfo = paymentGatewayInfo::where('client_id', $client->id)->first();
 
         if( ! $paymentGatewayInfo){
             paymentGatewayInfo::create([
-                'user_id' => $client->id,
+                'client_id' => $client->id,
                 'stripe_customer_id' => $stripe_customer_id
             ]);
         }
@@ -247,9 +247,6 @@ class StripeForClientsController extends Controller
     public function clientSubscription(){
         return view('billing.subscription');
     }
-
-
-
 
     // notifications:
     public function firstPaymentSuccess(){

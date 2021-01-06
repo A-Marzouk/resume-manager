@@ -2,7 +2,10 @@
 
 namespace App;
 
+use App\Billing\Payment;
+use App\Billing\paymentGatewayInfo;
 use App\Notifications\ClientResetPasswordNotification;
+use App\Traits\Billable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -10,6 +13,7 @@ class Client extends Authenticatable
 {
 
     use Notifiable;
+    use Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -87,6 +91,23 @@ class Client extends Authenticatable
         }
 
         return $countUnread;
+    }
+
+
+//    Payments:
+    public function paymentGatewayInfo()
+    {
+        return $this->hasOne(paymentGatewayInfo::class);
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 
 

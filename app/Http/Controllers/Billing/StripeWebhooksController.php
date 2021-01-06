@@ -1,18 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ahmed-pc
- * Date: 9/22/2020
- * Time: 10:51 AM
- */
 
 namespace App\Http\Controllers\Billing;
 
 
 use App\Billing\Payment;
+use App\Client;
 use App\Http\Controllers\Controller;
 use App\Subscription;
-use App\User;
 use Carbon\Carbon;
 use Stripe\Price as StripePrice;
 
@@ -57,13 +51,13 @@ class StripeWebhooksController extends Controller
     public function onChargeSucceeded($payload)
     {
 
-        $client = User::byStripeCustomerId($payload['data']['object']['customer']);
+        $client = Client::byStripeCustomerId($payload['data']['object']['customer']);
         // add success payment history.
         if( ! $client){
             return;
         }
         Payment::create([
-            'user_id' => $client->id,
+            'client_id' => $client->id,
             'amount' => $payload['data']['object']['amount'] / 100,
             'payment_method' => 'stripe',
             'status' => 'paid',
@@ -72,7 +66,7 @@ class StripeWebhooksController extends Controller
     }
 
     public function onSubscriptionScheduleCreated($payload){
-        $client = User::byStripeCustomerId($payload['data']['object']['customer']);
+        $client = Client::byStripeCustomerId($payload['data']['object']['customer']);
 
         if( ! $client){
             return;
@@ -90,7 +84,7 @@ class StripeWebhooksController extends Controller
             'stripe_subscription_id' => $payload['data']['object']['id'],
             'stripe_customer_id' => $payload['data']['object']['customer'],
             'expires_at' => Carbon::createFromTimestamp($payload['data']['object']['phases'][0]['end_date'])->toDateTimeString(),
-            'user_id' => $client->id
+            'client_id' => $client->id
         ]);
     }
 

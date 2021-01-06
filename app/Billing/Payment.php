@@ -2,6 +2,7 @@
 
 namespace App\Billing;
 
+use App\Client;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,8 +13,8 @@ class Payment extends Model
 
 
     // relation belongs to
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function client(){
+        return $this->belongsTo(Client::class);
     }
 
 }

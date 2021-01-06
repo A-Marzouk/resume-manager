@@ -2,7 +2,7 @@
 
 namespace App\Billing;
 
-use App\User;
+use App\Client;
 use Illuminate\Database\Eloquent\Model;
 
 class paymentGatewayInfo extends Model
@@ -12,8 +12,8 @@ class paymentGatewayInfo extends Model
 
 
     // relation belongs to
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function client(){
+        return $this->belongsTo(Client::class);
     }
 
 }

@@ -12,12 +12,8 @@ class Subscription extends Model
 
     protected $guarded = [] ;
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-
-    public function promocode(){
-        return $this->belongsTo(Promocode::class);
+    public function client(){
+        return $this->belongsTo(Client::class);
     }
 
     public function isExpired(){

@@ -1,4 +1,4 @@
-@extends('layouts.theme-vuetify')
+@extends('layouts.my-app')
 
 @section('content')
 
@@ -6,7 +6,7 @@
 
         <div class="navbar">
             <a href="/">
-                <img src="/images/civie_logo-blue1.svg" alt="check green">
+                <img src="/images/new_homepage/logo.svg" alt="123workforce logo">
             </a>
         </div>
 

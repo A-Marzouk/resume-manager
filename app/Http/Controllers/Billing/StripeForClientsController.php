@@ -49,7 +49,7 @@ class StripeForClientsController extends Controller
     // one time payments
     protected function makeOneTimePayment($request, $customer)
     {
-        $product = $this->createNewProduct('Hire ' . $request->freelancer['default_resume_link']['title'] . ' For ' . $request->payment_info['numberOfHours'] . ' Hours.');
+        $product = $this->createNewProduct('Hire ' . $request->freelancer['name'] . ' For 20 Hours.');
 
         if($request->payment_info['payNow'] == 'true'){
             // pay now
@@ -119,9 +119,9 @@ class StripeForClientsController extends Controller
 
     // subscriptions :
     protected function makeSubscriptionPayment($request, $customer){
-        $product = $this->createNewProduct('civ.ie | Hire ' .
-            $request->freelancer['default_resume_link']['title'] .
-            ' For ' . $request->payment_info['numberOfHours'] . ' Hours | ' .
+        $product = $this->createNewProduct('123workforce | Hire ' .
+            $request->freelancer['name'] .
+            ' For 20 Hours | ' .
             $request->payment_info['iterations'] . ' '
             . $request->payment_info['interval'] . 's');
         if($request->payment_info['payNow'] == 'true'){
@@ -220,12 +220,12 @@ class StripeForClientsController extends Controller
 
     protected function createClient($request, $stripe_customer_id)
     {
-        $client = Client::where('email', $request->client['email'])->first();
+        $client = Client::where('email', 'guest_' . $request->client['email'])->first();
 
         if( ! $client){
             $client =  Client::create([
                 'name' => $request->client['name'],
-                'email' => 'auto_created_' . $request->client['email'],
+                'email' => 'guest_' . $request->client['email'],
                 'username' => strtolower(strstr($request->client['email'], '@', true)),
                 'password' => Hash::make(strtolower($request->client['email'] . '_123workforce_client')),
             ]);

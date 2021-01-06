@@ -20,6 +20,7 @@ class CreateClientsTable extends Migration
             $table->integer('affiliate_id')->nullable();
 
             $table->string('name')->nullable();
+            $table->string('username')->nullable();
             $table->string('agency')->nullable();
             $table->string('contact')->nullable();
             $table->string('phone')->nullable();

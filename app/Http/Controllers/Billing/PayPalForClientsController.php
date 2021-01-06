@@ -1,29 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Ahmed-pc
- * Date: 11/9/2020
- * Time: 9:43 AM
- */
 
 namespace App\Http\Controllers\Billing;
 
 
 use App\Billing\paymentGatewayInfo;
+use App\Client;
 use App\Http\Controllers\Controller;
 use App\Subscription;
-use App\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Str;
 use PayPal\Api\BillingInfo;
-use PayPal\Api\ChargeModel;
 use PayPal\Api\Currency;
 use PayPal\Api\InvoiceItem;
 use PayPal\Api\MerchantInfo;
@@ -36,7 +25,6 @@ use PayPal\Api\Agreement as Agreement;
 use PayPal\Api\PaymentDefinition;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Plan;
-use PayPal\Api\ShippingAddress;
 use PayPal\Api\Webhook;
 use PayPal\Api\WebhookEventType;
 use PayPal\Common\PayPalModel;
@@ -44,9 +32,6 @@ use PayPal\Exception\PayPalConnectionException;
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Api\Amount;
-use PayPal\Api\Details;
-use PayPal\Api\Item;
-use PayPal\Api\ItemList;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
@@ -301,20 +286,20 @@ class PayPalForClientsController extends Controller
     protected function createClient($payerData)
     {
 
-        $client = User::where('email', $payerData->email)->first();
+        $client = Client::where('email', 'guest_' . $payerData->email)->first();
         if ($client) {
             return $client;
         }
 
-        $newClient = User::create([
+        $newClient = Client::create([
             'name' => $payerData->first_name . ' ' . $payerData->last_name,
-            'email' => $payerData->email,
+            'email' => 'guest_' . $payerData->email,
             'username' => strstr($payerData->email, '@', true),
             'password' => Hash::make($payerData->email . '_civie_client'),
-        ])->assignRole('client');
+        ]);
 
         paymentGatewayInfo::create([
-            'user_id' => $newClient->id,
+            'client_id' => $newClient->id,
             'paypal_payer_id' => $payerData->payer_id
         ]);
 
@@ -342,7 +327,7 @@ class PayPalForClientsController extends Controller
 
         \App\Billing\Payment::create([
             'away_payment_id' => $paymentId,
-            'user_id' => $client->id,
+            'client_id' => $client->id,
             'amount' => $amount,
             'payment_method' => 'paypal',
             'status' => 'paid',
@@ -369,7 +354,7 @@ class PayPalForClientsController extends Controller
             'amount' => $result->plan->payment_definitions[0]->amount->value,
             'sub_status' => 'active',
             'paypal_agreement_id' => $result->id,
-            'user_id' => $client->id,
+            'client_id' => $client->id,
             'expires_at' => $expires_at
         ]);
     }

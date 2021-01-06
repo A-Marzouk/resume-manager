@@ -233,8 +233,6 @@ Route::post('/admin/client/generate_service_invoice/', 'ServicesController@gener
 
 // bookings calendar:
 Route::get('/admin/bookings/calendar', 'BookingsController@viewBookingsCalendar')->name('bookings.calendar.page');
-Route::get('/admin/permissions', 'AdminsController@showPermissionsPage')->name('admin.permissions.page');
-Route::post('/admin/permissions/update', 'AdminsController@saveAdminPermissions');
 Route::get('/admin/get/bookings', 'BookingsController@getBookings')->name('get.bookings');
 Route::get('/admin/view/booking/{id}', 'BookingsController@viewSingleBooking')->name('single.booking');
 

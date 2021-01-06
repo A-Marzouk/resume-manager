@@ -32,7 +32,6 @@ class CreateUsersTable extends Migration
             $table->string('status')->nullable();
             $table->string('is_shaded')->nullable();
             $table->string('stage')->nullable();
-            $table->string('permissions')->nullable();
             $table->string('has_agreed')->nullable();
 
             $table->integer('owner_id')->nullable();

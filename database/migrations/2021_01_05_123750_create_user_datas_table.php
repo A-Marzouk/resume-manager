@@ -49,7 +49,6 @@ class CreateUserDatasTable extends Migration
             $table->text('design_styles')->nullable();
             $table->text('intro')->nullable();
             $table->text('googleCalendar')->nullable();
-            $table->text('careerObjective')->nullable();
             $table->text('education')->nullable();
             $table->text('workExperience')->nullable();
             $table->text('primarySkills')->nullable();

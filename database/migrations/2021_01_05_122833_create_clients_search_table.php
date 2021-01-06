@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientSearchTable extends Migration
+class CreateClientsSearchTable extends Migration
 {
     /**
      * Run the migrations.
@@ -32,6 +32,6 @@ class CreateClientSearchTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_search');
+        Schema::dropIfExists('clients_search');
     }
 }

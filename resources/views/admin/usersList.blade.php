@@ -19,35 +19,13 @@
                 @include('admin.includes.home')
 
                 @include('admin.includes.searches')
-
-
-
                 @include('admin.includes.freelancers')
-
-                @if(in_array('Subscriptions',$permissions))
-                    @include('admin.includes.subscriptions')
-                @endif
-
-                @if(in_array('Clients and invoices',$permissions))
-                    @include('admin.includes.clients')
-                @endif
-
-                @if(in_array('Freelancers',$permissions))
-                    @include('admin.includes.searches')
-                @endif
-                @if(in_array('Freelancers',$permissions))
-                    @include('admin.includes.bookings')
-
-                @endif
-
-                @if(in_array('Freelancers',$permissions))
-                    @include('admin.includes.owners')
-                @endif
-
-                @if(in_array('Jobs',$permissions))
-                    @include('admin.includes.jobs_posts')
-                @endif
-
+                @include('admin.includes.subscriptions')
+                @include('admin.includes.clients')
+                @include('admin.includes.searches')
+                @include('admin.includes.bookings')
+                @include('admin.includes.owners')
+                @include('admin.includes.jobs_posts')
 
             </div>
         </div>

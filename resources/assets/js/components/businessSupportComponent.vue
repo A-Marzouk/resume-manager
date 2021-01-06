@@ -42,7 +42,6 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Full Name</th>
-                    <th scope="col" class="text-center" v-show="admin.username==='admin_workforce'">Admin permissions</th>
                     <th scope="col">Link to Resume</th>
                     <th scope="col">Hourly / Monthly Rate</th>
                     <th scope="col"></th>
@@ -63,12 +62,6 @@
                     <td class="NoDecor">
                         <a href="javascript:void(0)" :data-target="'#businessSupportInfo'+user.id"  data-toggle="modal">
                             {{user.firstName}} {{user.lastName}}
-                        </a>
-                    </td>
-
-                    <td class="NoDecor text-center" v-show="admin.username==='admin_workforce'">
-                        <a href="javascript:void(0)" :data-target="'#makeAdmin'+user.id"  data-toggle="modal">
-                            Admin permissions
                         </a>
                     </td>
 
@@ -192,35 +185,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal fade" :id="'makeAdmin' + user.id" tabindex="-1" role="dialog" aria-labelledby="businessSupportInfo" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="text-right" style="padding: 15px 10px 0 0;">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" :id="'closePermissionsModal'+user.id">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 pageSubHeading">
-                                        Change admin permissions.
-                                    </div>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <label class="form-check-label col-md-4 checkBoxContainer checkBoxText" v-for="(permission,index) in permissions" v-bind:key="Math.random()">
-                                                <input class="form-check-input" :value="permission" type="checkbox" v-model="user.permissions">
-                                                <span class="checkmark"></span> {{permission}}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="javascript:void(0)" class="btn btn-outline-primary" @click="saveAdminPermissions(user)">Save</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </tr>
                 </tbody>
             </table>
@@ -270,10 +234,6 @@
                 ],
                 nameFilter:'',
                 useFilter:false,
-                permissions:[
-                    'Freelancers','Clients and invoices','Campaigns','Agents','Camp Briefs','Bookings','Chats',
-                    'Affiliates','Jobs','Public search links','Search Freelancers','Send emails','Subscriptions'
-                ],
                 itemsPerPage:15,
                 currentPage:1,
                 lastPage:'',
@@ -398,23 +358,7 @@
                     }
                 );
             },
-            saveAdminPermissions(user){
-                let adminData = {
-                    userID: user.id,
-                    permissions : user.permissions
-                };
-                axios.post('/admin/permissions/update',adminData).then(
-                    response => {
-                       console.log(response.data);
-                       $('#closePermissionsModal'+user.id).click();
-                        $('#changesSaved').fadeIn('slow');
-                        setTimeout(function () {
-                            $('#changesSaved').fadeOut();
-                        },2000);
-                    }
-                );
 
-            },
             filterByName(user,nameFilter){
                 let userName =  (user.firstName +' '+ user.lastName).toLowerCase();
                 if(userName.includes(nameFilter.toLowerCase()) || nameFilter.length < 1){

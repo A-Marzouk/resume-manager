@@ -32,7 +32,7 @@ class AdminsController extends Controller
         $data['bookings'] = Booking::all();
         $data['owners']   = Affiliate::all();
         $data['jobs']     = Job::all();
-        $data['permissions'] = explode(',',auth()->user()->permissions);
+
         return view('admin.usersList', compact('data'));
     }
 
@@ -70,10 +70,6 @@ class AdminsController extends Controller
         }
 
         return $users ;
-    }
-
-    public  function showPermissionsPage(){
-        return view('admin_permissions');
     }
 
     public function saveAdminPermissions(Request $request){

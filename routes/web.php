@@ -230,11 +230,8 @@ Route::post('/admin/client/addservice/', 'ServicesController@addService')->name(
 Route::post('/admin/client/deleteservice/', 'ServicesController@deleteService')->name('delete.service');
 Route::post('/admin/client/generate_service_invoice/', 'ServicesController@generateInvoiceForServices')->name('generate.service.invoice');
 
-
 // bookings calendar:
 Route::get('/admin/bookings/calendar', 'BookingsController@viewBookingsCalendar')->name('bookings.calendar.page');
-Route::get('/admin/permissions', 'AdminsController@showPermissionsPage')->name('admin.permissions.page');
-Route::post('/admin/permissions/update', 'AdminsController@saveAdminPermissions');
 Route::get('/admin/get/bookings', 'BookingsController@getBookings')->name('get.bookings');
 Route::get('/admin/view/booking/{id}', 'BookingsController@viewSingleBooking')->name('single.booking');
 
@@ -357,12 +354,6 @@ Route::post('affiliate/password/email', 'Auth\Affiliates\AffiliateForgotPassword
 Route::get('affiliate/password/reset/{token}', 'Auth\Affiliates\AffiliateResetPasswordController@showResetForm');
 Route::post('affiliate/password/reset', 'Auth\Affiliates\AffiliateResetPasswordController@reset');
 
-
-// paypal routes
-//Route::get('payment/paypal','PaypalController@showForm')->name('show.paypal.form');
-//Route:: post('payment/paypal/submit','PaypalController@payWithPaypal')->name('submit.paypal.form');
-//Route::get('/paypal/status','PaypalController@getPayPalPaymentStatus')->name('paypal.status');
-
 Route::get('/image-resizer', 'HomeController@resizeHomePageProjectImages');
 
 
@@ -390,6 +381,22 @@ Route::post('/stripe/create/usage_report/', '\App\classes\StripePayments@makeUsa
 Route::get('/admin/client/subscriptions_view/{client_id}', 'AdminsController@viewMeteredSubscriptionsPage')
     ->name('show.subscriptions.page');
 
+// payment gates for clients:
+    // Stripe for clients:
+    Route::post('/custom-stripe-payment', 'Billing\StripeForClientsController@customStripePayments')->name('custom.stripe.payments');
+    Route::get('/client-subscription', 'Billing\StripeForClientsController@clientSubscription')->name('subscription');
+    Route::get('/hire-freelancer/success', 'Billing\StripeForClientsController@firstPaymentSuccess')->name('payment.success');
+    Route::get('/hire-freelancer/cancel', 'Billing\StripeForClientsController@firstPaymentFail')->name('payment.fail');
+
+    // PayPal for clients:
+    Route::post('/custom-paypal-payment', 'Billing\PayPalForClientsController@customPayPalPayments')->name('custom.stripe.payments');
+    Route::get('/paypal/hire-freelancer/success', 'Billing\PayPalForClientsController@success')->name('paypal.clients.success');
+    Route::get('/paypal/hire-freelancer-regular/success', 'Billing\PayPalForClientsController@successRegular')->name('paypal..regular.clients.success');
+    Route::get('/paypal/hire-freelancer/cancel','Billing\PayPalForClientsController@cancel')->name('paypal.clients.cancel');
+    Route::get('/paypal/create-webhooks','Billing\PayPalForClientsController@createWebhooks')->name('paypal.create.webhooks');
+    // webhooks:
+    Route::post('/stripe/webhooks', 'Billing\StripeWebhooksController@handle')->name('stripe.webhooks');
+    Route::post('/paypal/webhooks', 'Billing\PayPalWebhooksController@handle')->name('paypal.webhooks');
 
 // send payments to our users.
 Route::get('payment/paypal/send', 'PaypalController@showSendForm')->name('show.paypal.form');

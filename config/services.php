@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+
 return [
 
     /*
@@ -28,12 +30,6 @@ return [
     'sparkpost' => [
         'secret' => env('SPARKPOST_SECRET'),
     ],
-
-    'stripe' => [
-        'model' => App\User::class,
-        'key' => env('STRIPE_KEY'),
-        'secret' => env('STRIPE_SECRET'),
-    ],
     'linkedin' => [
         'client_id' => '865ff2s2qvpkzb',
         'client_secret' => '9ql6QUkQLNZzS2J9',
@@ -54,6 +50,14 @@ return [
         'url' => env('CIV_URL'),
         'login' => env('CIV_LOGIN_EMAIL'),
         'password' => env('CIV_LOGIN_PASS'),
-    ]
+    ],
+
+    // payments:
+
+    'stripe' => [
+        'model' => User::class,
+        'key' => env('STRIPE_KEY'),
+        'secret' => env('STRIPE_SECRET')
+    ],
 
 ];

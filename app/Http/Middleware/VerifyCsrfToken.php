@@ -15,5 +15,7 @@ class VerifyCsrfToken extends Middleware
         '/chat/store/message',
         '/stripe/webhocks',
         '/search-developers',
+        '/stripe/webhooks',
+        '/paypal/webhooks'
     ];
 }

@@ -27,7 +27,7 @@
         </div>
         <div class="profile-preview__detail">
             <h2 class="detail__title">
-                <a :href="freelancer.url" target="_blank">
+                <a :href="freelancer.workforce_url" target="_blank">
                     {{ freelancer.name }}
                     <span class="detail-title__jobtitle" v-text="freelancer.job_title"></span>
                     <span class="detail-title__rate" v-text="`- $${freelancer.hourlyRate}/hr`"></span>

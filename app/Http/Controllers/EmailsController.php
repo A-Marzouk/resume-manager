@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResumeMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -9,7 +10,7 @@ class EmailsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('admin')->except('sendResumeMessage');
     }
 
     public function showSendEmailsPage(){
@@ -35,6 +36,32 @@ class EmailsController extends Controller
     public function getEmailTemplate(Request $request){
         $templateName = $request->templateName ;
         return view('emails.'.$templateName) ;
+    }
+
+    public function sendResumeMessage(Request $request){
+
+        $emailData = [
+            'header' => 'New message on resume.',
+            'body' => $request->message['body'],
+            'actionText' => 'Open resume',
+            'actionURL' => $request->resumeURL,
+            'footer' => '123workforce.com team.'
+        ];
+
+        $from = [
+            'name' => $request->message['name'],
+            'email' => $request->message['email']
+        ];
+
+        $to[] = [
+            'name' => '123workforce admin',
+            'email' => 'conor@123workforce.com',
+        ];
+
+
+        Mail::to($to)->send(new ResumeMessage($emailData, $from));
+
+        return ['status' => 'success'];
     }
 
 

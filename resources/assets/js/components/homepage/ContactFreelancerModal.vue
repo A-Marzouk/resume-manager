@@ -16,12 +16,15 @@
 							<div class="col-12">
 								<div class="form-group">
 									<input type="text" v-model="postData.message.name" name="name" placeholder="Name">
+									<span class="error" v-if="errors.name.length > 0">{{errors.name}}</span>
 								</div>
 								<div class="form-group">
 									<input type="email" v-model="postData.message.email" name="email" placeholder="Email">
+									<span class="error" v-if="errors.email.length > 0">{{errors.email}}</span>
 								</div>
 								<div class="form-group">
 									<textarea name="message" rows="5" v-model="postData.message.body" placeholder="Message"></textarea>
+									<span class="error" v-if="errors.body.length > 0">{{errors.body}}</span>
 								</div>
 								<div class="form-group">
 									<button type="submit" @click="sendMessage">Send</button>
@@ -55,7 +58,11 @@ export default {
 				},
 				resumeURL: '',
 			},
-			errors: {},
+			errors: {
+				name: '',
+				email: '',
+				body: ''
+			},
 			isMessageSent: false
 		}
 	},
@@ -96,7 +103,11 @@ export default {
 		},
 		validateInputs() {
 			let isValid = true;
-			this.errors = {};
+			this.errors = {
+				name: '',
+				email: '',
+				body: ''
+			};
 
 			if (this.postData.message.name.length < 2 || this.postData.message.name.length > 200) {
 				isValid = false;
@@ -129,6 +140,11 @@ export default {
 
 <style lang="scss">
 
+	span.error{
+		color: red;
+		font-size: 13px;
+		padding-left: 10px;
+	}
 	.modal-success{
 		background: white;
 		width: 750px;

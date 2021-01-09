@@ -77,7 +77,6 @@ export default {
 	},
 	methods: {
 		onContact(profile) {
-			console.log(profile);
 			this.contactModalFreelancer = profile;
 			this.isContactFreelancerModalOpen = true;
 		},

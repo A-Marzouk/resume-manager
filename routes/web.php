@@ -12,8 +12,6 @@
 */
 
 
-use App\Message;
-use App\Campaign;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -21,6 +19,7 @@ use Illuminate\Support\Facades\Artisan;
 Auth::routes();
 
 Route::view('/', 'index');
+Route::post('/resume/send-message','EmailsController@sendResumeMessage')->name('send.resume.message');
 
 
 Route::prefix('client')->group(function () {

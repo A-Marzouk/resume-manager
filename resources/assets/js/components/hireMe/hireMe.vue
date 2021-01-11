@@ -281,6 +281,11 @@ export default {
 
 <style lang="scss">
 
+  .v-dialog__content{
+    z-index: 9999999999 !important;
+  }
+
+
   .hire-me-url-btn{
     height: 50px;
     @media screen and (max-width: 425px) {

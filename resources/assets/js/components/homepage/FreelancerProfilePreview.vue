@@ -63,7 +63,10 @@
         components: {
             HireModal,
         },
-        props: {freelancer: {type: Object, required: true}},
+        props: {
+            freelancer: {type: Object, required: true},
+            profileIndex: {type: Number, default: 0}
+        },
         data() {
             return {
                 hireMeModal: false,
@@ -81,6 +84,8 @@
             },
             onVideo() {
                 sharedStore.state.videoPreview.isOpen = true;
+                sharedStore.state.videoPreview.profileIndex = this.profileIndex;
+                sharedStore.state.videoPreview.videoIndex = 0;
             },
             onContact() {
             },

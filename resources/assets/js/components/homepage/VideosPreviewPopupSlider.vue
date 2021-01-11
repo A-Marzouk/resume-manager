@@ -1,7 +1,7 @@
 <template>
     <transition name="fade-project-preview-popup__slider" appear>
         <div class="project-preview-popup__slider">
-			<span class="preview-popup-slider__counter" v-text="">
+			<span class="preview-popup-slider__counter" v-text="videoText()">
 			</span>
             <button v-show="!isFirstSlide" type="button" class="preview-popup-slider__prev-button"
                     @click="activatePreviousProject">
@@ -42,7 +42,7 @@
 
     export default {
         name: "VideosPreviewPopupSlider",
-        data() {
+        data() {``
             return {
                 sharedStore,
                 imgWidth: 0,
@@ -58,43 +58,25 @@
                 return sharedStore.state.videoPreview.videoIndex <= 0;
             },
             isLastSlide() {
-                if(sharedStore.state.workForceProfiles[
-                    sharedStore.state.videoPreview.profileIndex
-                    ]){
-                    return (
-                        sharedStore.state.videoPreview.videoIndex >=
-                        sharedStore.state.workForceProfiles[
-                            sharedStore.state.videoPreview.profileIndex
-                            ].videos.length -
-                        1
-                    );
-                }
+                return (
+                    sharedStore.state.videoPreview.videoIndex >=
+                    sharedStore.state.workForceProfiles[
+                        sharedStore.state.videoPreview.profileIndex
+                        ].videos.length - 1
+                );
 
             },
             videos() {
-                if(sharedStore.state.workForceProfiles[
+                return sharedStore.state.workForceProfiles[
                     sharedStore.state.videoPreview.profileIndex
-                    ]){
-                  return sharedStore.state.workForceProfiles[
-                        sharedStore.state.videoPreview.profileIndex
-                        ].videos;
-                }else {
-                    return [];
-                }
+                    ].videos;
             },
         },
         methods: {
             videoText(){
-                if(this.sharedStore.state.workForceProfiles[
+                return `${sharedStore.state.videoPreview.videoIndex + 1}/${sharedStore.state.workForceProfiles[
                     sharedStore.state.videoPreview.profileIndex
-                    ].videos){
-
-                    return `${sharedStore.state.videoPreview.videoIndex + 1}/${sharedStore.state.workForceProfiles[
-                        sharedStore.state.videoPreview.profileIndex
-                        ].videos.length}`;
-                }
-                else return '';
-
+                    ].videos.length}`;
             },
             activatePreviousProject() {
                 if (this.isFirstSlide) return;
@@ -120,12 +102,8 @@
             },
             updateImgWidth() {
                 this.imgWidth = document.querySelector(
-                    ".project-preview-popup__slider-inner img"
-                );
-
-                if(this.imgWidth){
-                    this.imgWidth.clientWidth ;
-                }
+                    ".project-preview-popup__slider-inner video"
+                ).clientWidth;
             },
         },
         mounted() {

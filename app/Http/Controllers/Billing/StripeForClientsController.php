@@ -49,7 +49,7 @@ class StripeForClientsController extends Controller
     // one time payments
     protected function makeOneTimePayment($request, $customer)
     {
-        $product = $this->createNewProduct('Hire ' . $request->freelancer['name'] . ' For 20 Hours.');
+        $product = $this->createNewProduct('Hire ' . $request->freelancer['name'] . ' For ' . $request->payment_info['numberOfHours'] . ' Hours.');
 
         if($request->payment_info['payNow'] == 'true'){
             // pay now
@@ -121,7 +121,7 @@ class StripeForClientsController extends Controller
     protected function makeSubscriptionPayment($request, $customer){
         $product = $this->createNewProduct('123workforce | Hire ' .
             $request->freelancer['name'] .
-            ' For 20 Hours | ' .
+            ' For ' . $request->payment_info['numberOfHours'] . ' Hours | ' .
             $request->payment_info['iterations'] . ' '
             . $request->payment_info['interval'] . 's');
         if($request->payment_info['payNow'] == 'true'){

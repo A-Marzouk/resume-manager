@@ -6,7 +6,6 @@
 					<img class="footer__logo--text" src="/images/new_homepage/logo.svg" alt="123workforce logo" />
 					<img class="footer__logo--icon" src="/images/new_homepage/logo-icon.svg" alt="123workforce logo icon" />
 				</a>
-				<h2 class="footer__logo--hint mb-0">The Top 1% of Designers</h2>
 			</div>
 			<div class="footer__social-links">
 				<h3>Follow us</h3>

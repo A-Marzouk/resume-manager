@@ -54,7 +54,7 @@
                       ><div class="rate-label">
                         No. of hours/week
                       </div>
-                      <input type="text" disabled class="rate-input text" name="no_of_week" value="20" />
+                      <input type="number" min="5" max="40" class="rate-input text" name="no_of_week" v-model="totalHours" />
                     </v-col>
                     <v-col cols="12" sm="auto" class="text-center">
                       <div class="operators">=</div>

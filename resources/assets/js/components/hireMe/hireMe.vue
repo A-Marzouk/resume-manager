@@ -27,7 +27,7 @@
                     <div class="user-name">
                       {{ user.name }} - {{ user.job_title }}
                     </div>
-                    <div class="user-rate">$19.95/Hour</div>
+                    <div class="user-rate">${{user.hourlyRate}}/Hour</div>
                   </v-col>
                 </v-row>
                 <!-- Profile Info -->

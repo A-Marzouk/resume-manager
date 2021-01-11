@@ -42,7 +42,7 @@ export default {
 			socialIcons: [
 				{
 					src: "/images/new_homepage/whatsapp.svg",
-					link: "https:/wa.me/353868447832",
+					link: "https://wa.me/353868447832",
 				},
 				{
 					src: "/images/new_homepage/skype.svg",
@@ -54,7 +54,7 @@ export default {
 				},
 				{
 					src: "/images/new_homepage/telegram.svg",
-					link: "https:/t.me/conormarjoram",
+					link: "https://t.me/conormarjoram",
 				},
 			],
 			fbChatIframes: [],

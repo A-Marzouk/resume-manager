@@ -190,10 +190,10 @@ export default {
     },
     computed: {
         paymentTotal() {
-            return Math.ceil(this.totalHours * 19.95);
+            return Math.ceil(this.totalHours * this.user.hourlyRate);
         },
         userHourlyRate() {
-            return 19.95;
+            return this.user.hourlyRate;
         },
 
         currentDate() {

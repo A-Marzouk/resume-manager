@@ -26,6 +26,7 @@
             </button>
         </div>
         <div class="profile-preview__detail">
+            <span class="not-available" v-show="freelancer.id === notAvailableID">No videos available</span>
             <h2 class="detail__title">
                 <a :href="freelancer.workforce_url" target="_blank">
                     {{ freelancer.name }}
@@ -70,6 +71,7 @@
         data() {
             return {
                 hireMeModal: false,
+                notAvailableID: 0,
             };
         },
         methods: {
@@ -83,6 +85,13 @@
                 return path;
             },
             onVideo() {
+                if(this.freelancer.videos.length < 1){
+                    this.notAvailableID = this.freelancer.id ;
+                    setTimeout( () => {
+                        this.notAvailableID = 0 ;
+                    }, 1000);
+                    return ;
+                }
                 sharedStore.state.videoPreview.isOpen = true;
                 sharedStore.state.videoPreview.profileIndex = this.profileIndex;
                 sharedStore.state.videoPreview.videoIndex = 0;
@@ -453,5 +462,16 @@
                 }
             }
         }
+    }
+
+    .not-available{
+        font-size: 13px;
+        color: white;
+        background: grey;
+        opacity: 0.9;
+        padding: 6px;
+        border-radius: 5px;
+        position: absolute;
+        top: -25px;
     }
 </style>

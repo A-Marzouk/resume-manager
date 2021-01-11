@@ -35,7 +35,7 @@ export default {
             currentActiveMethod: 'stripe',
             isModalOpened: false,
             selectHours: 1,
-            totalHours: null,
+            totalHours: 20,
             payToday: true,
             weekdayCounter: 0,
             dateSelected: null,
@@ -182,7 +182,14 @@ export default {
     },
     computed: {
         paymentTotal() {
-            return 399;
+            if(this.totalHours > 40){
+                this.totalHours = 40
+            }
+            if(this.totalHours < 5){
+                this.totalHours = 5
+            }
+
+            return Math.ceil(this.totalHours * 19.95);
         },
         userHourlyRate() {
             return 19.95;

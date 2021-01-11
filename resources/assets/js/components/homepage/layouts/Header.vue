@@ -131,7 +131,7 @@ export default {
 			}
 			.navbar__links {
 				.navbar-link--login {
-					height: 64px;
+					height: 50px;
 					font-size: 24px;
 					min-width: 178px;
 				}

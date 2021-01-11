@@ -56,6 +56,7 @@
 
 <script>
     import HireModal from '../hireMe/hireMe';
+    import sharedStore from "./sharedStore";
 
     export default {
         name: "FreelancerProfilePreview",
@@ -79,7 +80,7 @@
                 return path;
             },
             onVideo() {
-                console.log("onVideo");
+                sharedStore.state.videoPreview.isOpen = true;
             },
             onContact() {
             },

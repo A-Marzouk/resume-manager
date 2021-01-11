@@ -53,13 +53,19 @@ class EmailsController extends Controller
             'email' => $request->message['email']
         ];
 
-        $to[] = [
+        $to[] =   [
             'name' => '123workforce admin',
-            'email' => 'conor@123workforce.com',
+            'email' => 'conor@123workforce.com'
         ];
 
+        $cc[] =  [
+            'name' => 'Ahmed Marzouk - admin',
+            'email' => 'ahmedmarzouk266@gmail.com'
+        ];
 
-        Mail::to($to)->send(new ResumeMessage($emailData, $from));
+        Mail::to($to)
+            ->cc($cc)
+            ->send(new ResumeMessage($emailData, $from));
 
         return ['status' => 'success'];
     }

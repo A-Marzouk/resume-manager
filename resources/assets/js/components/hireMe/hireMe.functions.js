@@ -179,16 +179,17 @@ export default {
             }
             return '/custom-paypal-payment';
         },
+        validateHours(){
+            if(this.totalHours > 40){
+                this.totalHours = 40;
+            }
+            if(this.totalHours < 5){
+                this.totalHours = 5;
+            }
+        }
     },
     computed: {
         paymentTotal() {
-            if(this.totalHours > 40){
-                this.totalHours = 40
-            }
-            if(this.totalHours < 5){
-                this.totalHours = 5
-            }
-
             return Math.ceil(this.totalHours * 19.95);
         },
         userHourlyRate() {

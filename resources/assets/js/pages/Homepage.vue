@@ -1,5 +1,5 @@
 <template>
-	<div id="homepage">
+	<div id="homepage" style="min-height: calc(100vh - 122px); position: relative; width:100%;">
 		<Header />
 		<!-- <AnimatedIntroduction :typeArray="homepageWrittenQuotes" /> -->
 		<BrowseFreelancers />

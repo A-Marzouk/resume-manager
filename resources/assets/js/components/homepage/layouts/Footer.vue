@@ -108,7 +108,11 @@ export default {
 	padding: 30px 0;
 	border-top: 2px solid rgba(0, 70, 254, 0.1);
 	font-family: $main-font;
-
+	/* position to bottom */
+	position: absolute;
+	width: 100%;
+	bottom: -122px;
+	/* position end*/
 	& > .container {
 		display: flex;
 		justify-content: space-between;

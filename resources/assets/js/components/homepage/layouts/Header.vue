@@ -7,7 +7,6 @@
 						<a href="/">
 							<img src="/images/new_homepage/logo.svg" alt="123workforce logo" />
 						</a>
-						<h2 class="logo__hint mb-0">The Top 1% of Designers</h2>
 					</div>
 
 					<div class="navbar__links">
@@ -131,7 +130,7 @@ export default {
 			}
 			.navbar__links {
 				.navbar-link--login {
-					height: 64px;
+					height: 50px;
 					font-size: 24px;
 					min-width: 178px;
 				}

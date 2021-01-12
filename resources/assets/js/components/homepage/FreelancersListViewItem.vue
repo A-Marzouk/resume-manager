@@ -1,6 +1,6 @@
 <template>
 	<div class="freelancers-list-view-item">
-		<FreelancerProfilePreview :freelancer="profile" @oncontact="$emit('oncontact', $event)" />
+		<FreelancerProfilePreview :freelancer="profile" :profileIndex="profileIndex" @oncontact="$emit('oncontact', $event)" />
 		<FreelancerPortfolioPreview :profileIndex="profileIndex" :projects="profile.projects" />
 	</div>
 </template>

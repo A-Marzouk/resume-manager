@@ -232,7 +232,7 @@ export default {
 
 				&.--open {
 					height: auto;
-					margin-top: 10px;
+					margin-top: 2px;
 				}
 
 				&::-webkit-scrollbar {
@@ -420,7 +420,7 @@ export default {
 				}
 				.form__keyword-input {
 					font-size: 18px;
-					height: 72px;
+					height: 50px;
 					padding-left: 64px;
 					padding-right: 23px;
 				}
@@ -438,10 +438,10 @@ export default {
 			}
 		}
 		.form__search-action {
-			height: 64px;
+			height: 50px;
 			font-size: 24px;
 			min-width: 178px;
-			margin-top: 4px;
+			margin-top: 0px;
 		}
 	}
 }

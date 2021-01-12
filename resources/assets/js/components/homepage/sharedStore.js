@@ -98,6 +98,11 @@ const sharedStore = {
             isOpen: false,
             profileIndex: 0,
             projectIndex: 0,
+        },
+        videoPreview: {
+            isOpen: false,
+            profileIndex: 0,
+            videoIndex: 0,
         }
     },
     getters: {},

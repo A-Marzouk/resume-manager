@@ -3,11 +3,13 @@
 		<FreelancersListViewItem v-for="(profile, profileIndex) in filteredProfiles" :profile="profile" :profileIndex="profileIndex" :key="profile.id" @oncontact="onContact" />
 		<ContactFreelancerModal :isOpen="isContactFreelancerModalOpen" :freelancer="contactModalFreelancer" @onclose="onContactFreelancerModalClosed" />
 		<PortfolioImagePreviewPoup />
+		<PortfolioVideoPreviewPoup />
 	</div>
 </template>
 
 <script>
 import PortfolioImagePreviewPoup from "./PortfolioImagePreviewPoup";
+import PortfolioVideoPreviewPoup from "./PortfolioVideoPreviewPoup";
 import ContactFreelancerModal from "./ContactFreelancerModal";
 import FreelancersListViewItem from "./FreelancersListViewItem";
 import sharedStore from "./sharedStore";
@@ -16,6 +18,7 @@ export default {
 	name: "FreelancersListView",
 	components: {
 		PortfolioImagePreviewPoup,
+		PortfolioVideoPreviewPoup,
 		ContactFreelancerModal,
 		FreelancersListViewItem,
 	},

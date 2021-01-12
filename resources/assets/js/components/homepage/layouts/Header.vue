@@ -5,7 +5,7 @@
 				<div class="d-flex justify-content-between align-items-center">
 					<div class="navbar__logo">
 						<a href="/">
-							<img src="/images/new_homepage/logo.svg" alt="123workforce logo" />
+							<img src="/images/new_homepage/123workforce_logo.png" alt="123workforce logo" />
 						</a>
 					</div>
 
@@ -131,8 +131,8 @@ export default {
 			.navbar__links {
 				.navbar-link--login {
 					height: 50px;
-					font-size: 24px;
-					min-width: 178px;
+					font-size: 20px;
+					min-width: 150px;
 				}
 			}
 		}

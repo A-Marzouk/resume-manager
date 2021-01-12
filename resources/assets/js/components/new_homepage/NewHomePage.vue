@@ -6,7 +6,7 @@
                     <div class="logo-section">
                         <img
                                 class="new-logo"
-                                src="/images/new_homepage/logo.png"
+                                src="/images/new_homepage/123workforce_logo.png"
                         />
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                 <div class="footer-logo">
                     <img
                             class="new-logo"
-                            src="/images/new_homepage/logo.png"
+                            src="/images/new_homepage/123workforce_logo.png"
                     />
                 </div>
                 <div class="follow-us">

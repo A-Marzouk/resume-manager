@@ -3,8 +3,8 @@
 		<div class="container">
 			<div class="footer__logo">
 				<a href="/">
-					<img class="footer__logo--text" src="/images/new_homepage/logo.svg" alt="123workforce logo" />
-					<img class="footer__logo--icon" src="/images/new_homepage/logo-icon.svg" alt="123workforce logo icon" />
+					<img class="footer__logo--text" src="/images/new_homepage/123workforce_logo.png" alt="123workforce logo" />
+					<img class="footer__logo--icon" src="/images/new_homepage/123workforce_logo_icon.png" alt="123workforce logo icon" />
 				</a>
 			</div>
 			<div class="footer__social-links">

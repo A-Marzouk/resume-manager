@@ -439,7 +439,7 @@ export default {
 		}
 		.form__search-action {
 			height: 50px;
-			font-size: 24px;
+			font-size: 20px;
 			min-width: 178px;
 			margin-top: 0px;
 		}

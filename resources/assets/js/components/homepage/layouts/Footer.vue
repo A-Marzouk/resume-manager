@@ -11,11 +11,11 @@
 				<h3>Follow us</h3>
 				<div class="social-links__links">
 
-					<a class="social-links__link" href="https://www.facebook.com/123workforce">
-						<img src="/images/new_homepage/facebook.svg" alt="123workforce fackbook account" />
+					<a class="social-links__link" href="https://www.facebook.com/www.civ.ie">
+						<img src="/images/new_homepage/facebook.svg" alt="123workforce facebook account" />
 						<span class="link__social-count">13.899 like</span>
 					</a>
-					<a class="social-links__link" href="https://www.instagram.com/123workforce">
+					<a class="social-links__link" href="https://www.instagram.com/civ.ie/">
 						<img src="/images/new_homepage/instagram.svg" alt="123workforce instagram account" />
 						<span class="link__social-count">733 Followers</span>
 					</a>

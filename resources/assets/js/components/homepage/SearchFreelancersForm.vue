@@ -6,23 +6,12 @@
 					<svg :width="getIcon('search.prepend', '#707B99').width" :height="getIcon('search.prepend', '#707B99').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.prepend', '#707B99').path"></svg>
 				</label>
 
-				<input id="form__keyword-input" class="form__keyword-input" type="text" :value="sharedStore.state.q" @input="onSearchInputChange($event.target.value)" @focus="isSearching=true" @click.stop @keydown.delete="onInputDeleteKeyDown($event.target.value)" autocomplete="off" placeholder="Search Freelance Designers for Hire">
+				<input id="form__keyword-input" class="form__keyword-input" type="text" :value="sharedStore.state.q" @input="onSearchInputChange($event.target.value)" @focus="isSearching=true" @click.stop @keydown.delete="onInputDeleteKeyDown($event.target.value)" autocomplete="off" placeholder="Search freelance developers for Hire">
 
 				<transition-group name="dropdown-list" tag="div" class="search-prediction-dropdown" :class="{'--open': isSearching}" @click.stop>
 					<div class="search-prediction-dropdown__item" :class="{'--chosen':isPredictionChosen(prediction)}" v-for="prediction in predictions" :key="prediction" v-text="prediction" @click="onPredictionChosen(prediction)"></div>
 				</transition-group>
 
-				<!-- <div class="form__inline-filters">
-                    <button type="button" class="inline-filter--pen" :class="{'--enabled': isFilterEnabled('pen')}" @click="toggleFilter('pen')">
-                        <svg :width="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').width" :height="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('pen', isFilterEnabled('pen')?'#fff':'#001CE3').path"></svg>
-                    </button>
-                    <button type="button" class="inline-filter--skill" :class="{'--enabled': isFilterEnabled('skill')}" @click="toggleFilter('skill')">
-                        <svg :width="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').width" :height="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('skill', isFilterEnabled('skill')?'#fff':'#001CE3').path"></svg>
-                    </button>
-                    <button type="button" class="inline-filter--portfolio" :class="{'--enabled': isFilterEnabled('portfolio')}" @click="toggleFilter('portfolio')">
-                        <svg :width="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').width" :height="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('portfolio', isFilterEnabled('portfolio')?'#fff':'#001CE3').path"></svg>
-                    </button>
-                </div> -->
 			</div>
 
 			<div class="search-suggestion-keywords__wrapper">

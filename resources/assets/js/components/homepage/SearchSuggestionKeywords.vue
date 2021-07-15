@@ -38,11 +38,11 @@ export default {
 			}
 
 			return [
-				"UI/UX",
-				"Motion Design",
-				"Graphic Design",
-				"Illustrator",
-				"Interaction",
+				"Javascript",
+				"PHP",
+				"Vue.js",
+				"React.js",
+				"Python",
 			];
 		},
 	},

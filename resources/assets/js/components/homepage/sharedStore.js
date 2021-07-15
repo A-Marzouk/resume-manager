@@ -1,8 +1,18 @@
 export const searchFreelancersPredictions = [
     //  designers job titles
-    'UI/UX designer',
 
     // developers job titles:
+    "Javascript",
+    "PHP",
+    'HTML',
+    'CSS',
+    'Bootstrap',
+    "Python",
+    "Vue.js",
+    "Node.js",
+    "React.js",
+    "Laravel",
+    "SQL",
 
     // technical
 
@@ -17,12 +27,9 @@ export const searchFreelancersPredictions = [
     'Adobe XD',
     'XD',
     'Adobe Creative Suite',
-    'HTML',
     'UI/UX',
     'Typography',
     'Print Design',
-    'CSS',
-    'Bootstrap',
     'Web Design',
     'Branding',
     'Portfolio Management',

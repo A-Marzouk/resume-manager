@@ -15,6 +15,20 @@ export const searchFreelancersPredictions = [
     "SQL",
 
     // technical
+    "DevOps",
+    "AWS",
+    "Azure",
+    "GCP",
+    "Google Cloud Platform",
+    "Google App Engine",
+    "Google Compute Engine",
+    "Linux",
+    "Git",
+    "Github",
+    "Bitbucket",
+    "Docker",
+    "Vagrant",
+    "Kubernetes",
 
     // design
     'Photoshop',

@@ -71,7 +71,7 @@ export default {
 	},
 	methods: {
 		getProjectMainImage(project) {
-			return project.images.filter((img) => img.is_main == 1)[0].src;
+			return project.images[0].src;
 		},
 		activatePreviousProject() {
 			if (this.isFirstSlide) return;

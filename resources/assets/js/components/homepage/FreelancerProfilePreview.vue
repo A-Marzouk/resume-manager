@@ -469,7 +469,7 @@
                     }
 
                     .user-hire-info{
-                        font-size: 20px;
+                        font-size: 22px;
                         font-weight: 700;
                         color: $midnightblue;
                         display: flex;
@@ -580,7 +580,7 @@
                     }
 
                     .user-hire-info{
-                        font-size: 20px;
+                        font-size: 22px;
                         font-weight: 700;
                         color: $midnightblue;
                         display: flex;

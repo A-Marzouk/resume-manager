@@ -29,8 +29,9 @@
             <h2 class="detail__title">
                 <a :href="freelancer.workforce_url" target="_blank">
                     {{ freelancer.name }}
-                    <span class="detail-title__jobtitle" v-text="freelancer.job_title"></span>
-                    <span class="detail-title__rate" v-text="`- $${freelancer.hourlyRate}/hr`"></span>
+                    <span class="detail-title__jobtitle" v-text="freelancer.job_title"></span><br/>
+                    <span class="detail-title__rate" v-text="`$${freelancer.rates[0].salary}/${freelancer.rates[0].salary_frequency}`"></span>
+                    <span class="detail-title__rate" v-text="`| ${freelancer.availability[0].available_hours} hours/${freelancer.availability[0].available_hours_frequency}`"></span>
                 </a>
             </h2>
             <div class="detail__tags">
@@ -39,8 +40,19 @@
             </div>
             <div class="detail__action">
                 <a class="action__hireme" href="javascript:void(0)" @click="hireMeModal = true">Hire me</a>
-                <span class="action__v-line"></span>
-                <div class="action__rate" v-text="`$${freelancer.hourlyRate}/hr`"></div>
+
+                <div class="user-hire-info">
+                    <div class="rate" v-if="freelancer.rates[0]">
+                        <div>${{freelancer.rates[0].salary}}</div>
+                        <span>{{freelancer.rates[0].salary_frequency}}</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="availability" v-if="freelancer.availability[0]">
+                        <div>{{freelancer.availability[0].available_hours}} hours</div>
+                        <span>{{freelancer.availability[0].available_hours_frequency}}</span>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -97,6 +109,10 @@
             },
             onContact() {
             },
+
+            // rate and availability methods:
+
+
         },
     };
 </script>
@@ -263,6 +279,11 @@
                     font-weight: 700;
                     color: $midnightblue;
                 }
+
+                .user-hire-info{
+                   display: none;
+                }
+
             }
         }
     }
@@ -344,6 +365,41 @@
                         display: block;
                         order: 0;
                     }
+
+                    .user-hire-info{
+                        font-size: 14px;
+                        font-weight: 700;
+                        color: $midnightblue;
+                        display: flex;
+                        align-items: center;
+                        margin-right: 5px;
+
+                        .rate, .availability{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            width: fit-content;
+                            padding: 0 6px;
+
+                            span{
+                                font-size: 12px;
+                                font-weight: 500;
+                            }
+                        }
+
+                        .rate{
+                            width: fit-content;
+                        }
+
+                        .divider{
+                            width: 1px;
+                            height: 22px;
+                            margin-right: 5px;
+                            margin-left: 5px;
+                            background: $midnightblue;
+                        }
+                    }
                 }
             }
         }
@@ -393,8 +449,8 @@
 
                     .action__hireme {
                         font-size: 20px;
-                        padding-left: 38px;
-                        padding-right: 38px;
+                        padding-left: 30px;
+                        padding-right: 30px;
                     }
 
                     .action__v-line {
@@ -404,6 +460,40 @@
 
                     .action__rate {
                         font-size: 26px;
+                    }
+
+                    .user-hire-info{
+                        font-size: 20px;
+                        font-weight: 700;
+                        color: $midnightblue;
+                        display: flex;
+                        align-items: center;
+                        margin-right: 12px;
+
+                        .rate, .availability{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            width: 100px;
+
+                            span{
+                                font-size: 14px;
+                                font-weight: 500;
+                            }
+                        }
+
+                        .rate{
+                            width: 85px;
+                        }
+
+                        .divider{
+                            width: 1px;
+                            height: 30px;
+                            margin-right: 12px;
+                            margin-left: 12px;
+                            background: $midnightblue;
+                        }
                     }
                 }
             }
@@ -466,7 +556,7 @@
 
                 .detail__action {
                     height: 46px;
-                    margin-top: 24px;
+                    margin-top: 18px;
 
                     .action__hireme {
                         font-size: 18px;
@@ -481,6 +571,40 @@
 
                     .action__rate {
                         font-size: 22px;
+                    }
+
+                    .user-hire-info{
+                        font-size: 20px;
+                        font-weight: 700;
+                        color: $midnightblue;
+                        display: flex;
+                        align-items: center;
+                        margin-right: 25px;
+
+                        .rate, .availability{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            width: 120px;
+
+                            span{
+                                font-size: 14px;
+                                font-weight: 500;
+                            }
+                        }
+
+                        .rate{
+                            width: 90px;
+                        }
+
+                        .divider{
+                            width: 1px;
+                            height: 30px;
+                            margin-right: 25px;
+                            margin-left: 25px;
+                            background: $midnightblue;
+                        }
                     }
                 }
             }

@@ -205,7 +205,7 @@ class PayPalForClientsController extends Controller
         $agreement = new Agreement();
         $agreement->setName('Hire freelancer with 123workforce.com')
             ->setDescription('Hire freelancer with 123workforce.com | subscription')
-            ->setStartDate(Carbon::now()->addMinutes(5)->toIso8601String());
+            ->setStartDate(Carbon::now()->addMinutes(1)->toIso8601String());
 
         // Set plan id
         $plan = new Plan();

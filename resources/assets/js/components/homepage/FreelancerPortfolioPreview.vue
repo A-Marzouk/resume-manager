@@ -1,5 +1,14 @@
 <template>
 	<div v-if="projects.length" class="freelancer-portfolio-preview">
+
+		<div class="portfolio__preview--outer" v-if="videos.length > 0">
+			<div class="portfolio__preview">
+				<video width="100%" controls>
+					<source :src="videos[0].url" type="video/mp4">
+				</video>
+			</div>
+		</div>
+
 		<div v-lazy-container="{ selector: 'img' }" class="portfolio__preview--outer" v-for="(project, projectIndex) in getFirstProjects" :key="project.id">
 			<div v-if="project.images.length && (project.images[0].preview || project.images[0].src)" class="portfolio__preview" @click="onPreview(projectIndex)">
 				<img :data-src="project.images[0].preview || project.images[0].src" :alt="project.name">
@@ -16,6 +25,12 @@ export default {
 	props: {
 		profileIndex: { type: Number },
 		projects: { type: Array, required: true },
+		videos: { type: Array, required: true },
+	},
+	data(){
+		return{
+
+		}
 	},
 	computed: {
 		getFirstProjects() {
@@ -26,8 +41,11 @@ export default {
 					}
 					return 1;
 				})
-				.slice(0, 3);
+				.slice(0, this.portfolioNumber);
 		},
+		portfolioNumber(){
+			return this.videos.length > 0 ? 1 : 3 ;
+		}
 	},
 	methods: {
 		onPreview(projectIndex) {
@@ -69,14 +87,18 @@ export default {
 			&:hover {
 				border-color: $lynch50;
 			}
-			img {
+			img,video {
 				position: absolute;
 				top: 0;
-				righ: 0;
+				right: 0;
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
 				cursor: pointer;
+			}
+			video{
+				width: 200%;
+				border-radius: 3px;
 			}
 		}
 	}

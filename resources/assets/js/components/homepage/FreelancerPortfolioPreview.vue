@@ -10,8 +10,8 @@
 		</div>
 
 		<div v-lazy-container="{ selector: 'img' }" class="portfolio__preview--outer" v-for="(project, projectIndex) in getFirstProjects" :key="project.id">
-			<div v-if="project.images.length && (project.images[0].preview || project.images[0].src)" class="portfolio__preview" @click="onPreview(projectIndex)">
-				<img :data-src="project.images[0].preview || project.images[0].src" :alt="project.name">
+			<div v-if="project.images.length && project.images[0].src" class="portfolio__preview" @click="onPreview(projectIndex)">
+				<img :data-src="project.images[0].src" :alt="project.name">
 			</div>
 		</div>
 	</div>
@@ -96,10 +96,10 @@ export default {
 				height: 100%;
 				object-fit: cover;
 				cursor: pointer;
+				border-radius: 10px;
 			}
 			video{
 				width: calc(200% + 10px);
-				border-radius: 3px;
 			}
 		}
 	}

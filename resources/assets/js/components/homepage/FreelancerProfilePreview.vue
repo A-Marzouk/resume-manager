@@ -30,8 +30,12 @@
                 <a :href="freelancer.workforce_url" target="_blank">
                     {{ freelancer.name }}
                     <span class="detail-title__jobtitle" v-text="freelancer.job_title"></span><br/>
-                    <span class="detail-title__rate" v-text="`$${freelancer.rates[0].salary}/${freelancer.rates[0].salary_frequency}`"></span>
-                    <span class="detail-title__rate" v-text="`| ${freelancer.availability[0].available_hours} hours/${freelancer.availability[0].available_hours_frequency}`"></span>
+                    <span class="detail-title__rate" v-if="freelancer.rates.length > 0">
+                        ${{freelancer.rates[0].salary}}/{{freelancer.rates[0].salary_frequency}}
+                    </span>
+                    <span class="detail-title__rate" v-if="freelancer.availability.length > 0">
+                        | {{freelancer.availability[0].available_hours}} hours/{{freelancer.availability[0].available_hours_frequency}}
+                    </span>
                 </a>
             </h2>
             <div class="detail__tags">
@@ -42,12 +46,12 @@
                 <a class="action__hireme" href="javascript:void(0)" @click="hireMeModal = true">Hire me</a>
 
                 <div class="user-hire-info">
-                    <div class="rate" v-if="freelancer.rates[0]">
+                    <div class="rate" v-if="freelancer.rates.length > 0">
                         <div>${{freelancer.rates[0].salary}}</div>
                         <span>{{freelancer.rates[0].salary_frequency}}</span>
                     </div>
-                    <div class="divider"></div>
-                    <div class="availability" v-if="freelancer.availability[0]">
+                    <div class="divider" v-if="freelancer.rates.length > 0"></div>
+                    <div class="availability" v-if="freelancer.availability.length > 0">
                         <div>{{freelancer.availability[0].available_hours}} hours</div>
                         <span>{{freelancer.availability[0].available_hours_frequency}}</span>
                     </div>

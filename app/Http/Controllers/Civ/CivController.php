@@ -16,18 +16,6 @@ class CivController extends Controller
         $page = $request->get('page');
         $count = $request->get('count');
 
-        $civAccessToken = $this->authorizeWorkForceClient();
-        $http = new \GuzzleHttp\Client([
-            'headers' => [
-                'Authorization' => 'Bearer ' . $civAccessToken
-            ]
-        ]);
-        $response = $http->get(
-            config('services.civ.url') . "api/search/workforce-profiles?page=$page&&count=$count"
-        );
-
-        return json_decode((string)$response->getBody(), true);
-
         return Cache::remember("workforce-profiles-page-$page", now()->addMinutes(7 * 24 * 60), function () use ($page, $count) {
             $civAccessToken = $this->authorizeWorkForceClient();
             $http = new \GuzzleHttp\Client([

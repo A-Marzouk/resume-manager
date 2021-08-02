@@ -66,6 +66,7 @@ export default {
 .freelancer-portfolio-preview {
 	padding: 0;
 	display: flex;
+	justify-content: flex-end;
 	width: 100%;
 	.portfolio__preview--outer {
 		flex: 1;
@@ -97,7 +98,7 @@ export default {
 				cursor: pointer;
 			}
 			video{
-				width: 200%;
+				width: calc(200% + 10px);
 				border-radius: 3px;
 			}
 		}
@@ -121,8 +122,7 @@ export default {
 			margin-left: 18px;
 			margin-right: 18px;
 			max-width: 180px;
-			.portfolio__preview {
-			}
+
 		}
 	}
 }
@@ -131,6 +131,13 @@ export default {
 	.freelancer-portfolio-preview {
 		.portfolio__preview--outer {
 			max-width: 198px;
+		}
+
+		.portfolio__preview {
+			video{
+				width: calc(200% + 36px);
+				border-radius: 3px;
+			}
 		}
 	}
 }

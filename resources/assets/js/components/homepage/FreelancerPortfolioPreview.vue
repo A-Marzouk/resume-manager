@@ -99,7 +99,7 @@ export default {
 				border-radius: 10px;
 			}
 			video{
-				width: calc(200% + 10px);
+				width: calc(200% + 1px);
 			}
 		}
 	}

@@ -410,6 +410,7 @@ Route::get('/civ/callback', 'Civ\CivController@callback')->name('civ.callback');
 
 
 // public routes :
+Route::get('/search', 'HomeController@searchPage')->name('search.page');
 Route::get('/apply', 'BusinessSupportController@showRegistrationForm')->name('freelancer.register');
 Route::get('/it/apply', 'Auth\RegisterController@showRegistrationForm')->name('freelancer.agents.register');
 Route::get('/new-home', 'HomeController@newHome')->name('welcome.new');

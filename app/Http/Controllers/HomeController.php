@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('privacyView','getSearch','termsView','welcomePage','ResumePage','ResumePageV2','ResumePageShortV2','ResumeSample','newHome','fosterCareForm');
+        $this->middleware('auth')->except('searchPage','privacyView','getSearch','termsView','welcomePage','ResumePage','ResumePageV2','ResumePageShortV2','ResumeSample','newHome','fosterCareForm');
     }
 
     /**
@@ -162,6 +162,9 @@ class HomeController extends Controller
         return true;
     }
 
+    public function searchPage(){
+        return view('search_page');
+    }
 
     public function termsView(){
         return view('terms');

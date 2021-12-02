@@ -49,7 +49,7 @@
 
                 <div class="user-hire-info">
                     <div class="rate">
-                        <div>$55</div>
+                        <div>$25</div>
                         <span>Hourly</span>
                     </div>
                     <div class="divider"></div>

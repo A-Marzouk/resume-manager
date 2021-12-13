@@ -1,10 +1,7 @@
-@extends('client.layouts.app')
+@extends('client.layouts.client_frame')
+
 @section('content')
-
-
-    <h1>
-        Hello {{$client->name}} | new dashboard
-
-    </h1>
-
+    <div id="clientDashboardComponent">
+        <client-dashboard :client="{{$client}}"></client-dashboard>
+    </div>
 @endsection

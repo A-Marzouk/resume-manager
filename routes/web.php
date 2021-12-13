@@ -32,13 +32,18 @@ Route::prefix('client')->group(function () {
         return redirect()->back();
     });
     Route::get('/', 'ClientsController@index')->name('client.dashboard');
+    Route::get('/dashboard/{any?}', 'ClientsController@index')->name('client.dashboard.campaing-manager');
     Route::get('/has_agreed', 'ClientsController@hasAgreed');
     Route::post('/set_terms', 'ClientsController@setTerms');
     Route::post('/register/submit', 'Auth\ClientRegisterController@register')->name('client.register.submit');
     Route::get('/register/submit', function () {
         return redirect()->back();
     });
+    Route::get('/account/service-agreement', 'ClientsController@viewClientServiceAgreement')->name('service.agreement');
+    Route::get('/account/privacy-agreement', 'ClientsController@viewClientPrivacyAgreement')->name('privacy.agreement');
 
+    // client sign contract :
+    Route::post('/contracts/sign', 'ClientsController@signContract')->name('client.sign.contract');
 
     //client jobs :
     Route::get('/jobs', 'ClientsController@viewJobsPage')->name('client.jobs');

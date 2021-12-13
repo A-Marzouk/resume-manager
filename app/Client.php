@@ -22,9 +22,7 @@ class Client extends Authenticatable
      */
     protected $guard = 'client';
 
-    protected $fillable = [
-        'name', 'phone','email','password','username','agency','contact','emailDept','agree_with_terms','timeZone','firstName',
-    ];
+    protected $guarded = [] ;
 
     /**
      * The attributes that should be hidden for arrays.

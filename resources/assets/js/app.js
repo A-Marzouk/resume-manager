@@ -29,6 +29,57 @@ require("./affiliates.js");
 require("./freelancer.js");
 require("./main.js");
 
+
+// client components
+Vue.component('client-dashboard', require('./components/client/Dashboard.vue'));
+Vue.component('campaign-main', require('./components/client/CampaignMainComponent.vue'));
+Vue.component('campaign-archives', require('./components/client/CampaignArchives.vue'));
+Vue.component('account-info-edit', require('./components/client/dashboardComponents/my_account/MyAccountEdit.vue'));
+Vue.component('service-agreement', require('./components/client/dashboardComponents/my_account/ServiceAgreement.vue'));
+Vue.component('privacy-agreement', require('./components/client/dashboardComponents/my_account/PrivacyAgreement.vue'));
+
+
+// dashboard inside components
+import Payments from './components/client/dashboardComponents/Payments.vue';
+import MyAccount from './components/client/dashboardComponents/MyAccount.vue';
+
+if ($("#clientDashboardComponent").length !== 0) {
+
+    const routes = [
+        { path: '/client', component: MyAccount },
+        { path: '/client/dashboard', component: MyAccount },
+        { path: '/client/dashboard/my-account', component: MyAccount },
+        { path: '/client/dashboard/payments', component: Payments },
+    ];
+
+    const router = new VueRouter({
+        mode: 'history',
+        routes,
+    });
+
+
+    new Vue({
+        router,
+        el: '#clientDashboardComponent'
+    });
+}
+
+
+
+if ($("#serviceAgreement").length !== 0) {
+
+    new Vue({
+        el: '#serviceAgreement'
+    });
+}
+
+if ($("#privacyAgreement").length !== 0) {
+
+    new Vue({
+        el: '#privacyAgreement'
+    });
+}
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -715,3 +766,4 @@ window.Echo.channel("conversations").listen("UpdateMessageCount", (e) => {
 });
 
 require("./record.js");
+require('./side_nav.js');

@@ -2,7 +2,7 @@
     <div class="row container1">
         <div class="col-md-4 offset-md-1 three">
             <div class="footerText">
-                © Copyright 2018 123Workforce.<br/>
+                © Copyright 2021 123Workforce.<br/>
                 All Rights Reserved.<br/>
                 <div class="skypeText" style="padding-top: 5px;">
                     {{--@if(auth()->guard('client')->user())--}}

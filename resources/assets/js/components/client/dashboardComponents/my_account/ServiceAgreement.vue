@@ -208,7 +208,7 @@
 
 <style scoped lang="scss">
     .privacy-container{
-        max-width: 1600px;
+        max-width: 92%;
         margin: 0 auto;
     }
     .btn-primar:hover{

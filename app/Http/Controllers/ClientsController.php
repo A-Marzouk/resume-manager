@@ -44,13 +44,13 @@ class ClientsController extends Controller
                 'agreed_with_privacy_agreement_at' => $current_date_time
             ]);
         } else if ($request->type === 'service') {
-            currentClient()->update([
+            auth()->user()->update([
                 'agreed_with_service_agreement_at' => $current_date_time
             ]);
         }
 
         if (isset($request->signature)) {
-            currentClient()->update([
+            auth()->user()->update([
                 'signature' => $request->signature
             ]);
         }

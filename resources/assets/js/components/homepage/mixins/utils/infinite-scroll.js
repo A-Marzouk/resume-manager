@@ -45,8 +45,7 @@ export default {
             }
         },
         onListScroll() {
-            let list = $('#freelancers-list');
-            console.log('list scroll');
+            let list = document.getElementById('freelancers-list');
             const scrollBottom = list.scrollHeight - list.scrollTop - list.clientHeight;
             if (!this.loadingMore && this.currentPage < this.lastPage && scrollBottom <= 92) {
                 this[this.loadMoreMethodName]();

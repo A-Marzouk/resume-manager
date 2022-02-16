@@ -9,11 +9,11 @@
 			</div>
 		</div>
 
-		<div v-lazy-container="{ selector: 'img' }" class="portfolio__preview--outer" v-for="(project, projectIndex) in getFirstProjects" :key="project.id">
-			<div v-if="project.images.length && project.images[0].src" class="portfolio__preview" @click="onPreview(projectIndex)">
-				<img :data-src="project.images[0].src" :alt="project.name">
-			</div>
-		</div>
+		<!--<div v-lazy-container="{ selector: 'img' }" class="portfolio__preview&#45;&#45;outer" v-for="(project, projectIndex) in getFirstProjects" :key="project.id">-->
+			<!--<div v-if="project.images.length && project.images[0].src" class="portfolio__preview" @click="onPreview(projectIndex)">-->
+				<!--<img :data-src="project.images[0].src" :alt="project.name">-->
+			<!--</div>-->
+		<!--</div>-->
 	</div>
 </template>
 
@@ -72,7 +72,7 @@ export default {
 		flex: 1;
 		margin-left: 5px;
 		margin-right: 5px;
-		max-width: calc(100% / 3);
+
 		&:first-child {
 			margin-left: 0;
 		}
@@ -80,26 +80,36 @@ export default {
 			margin-right: 0;
 		}
 		.portfolio__preview {
-			position: relative;
 			transition: all 0.2s;
-			padding-top: 92%;
 			border: 1px solid transparent;
-			background-color: #e5e8fb73;
+			width: fit-content;
+			margin-left: auto;
+			margin-right: auto;
+
 			&:hover {
-				border-color: $lynch50;
+
 			}
+
 			img,video {
-				position: absolute;
 				top: 0;
 				right: 0;
 				width: 100%;
-				height: 100%;
 				object-fit: cover;
 				cursor: pointer;
 				border-radius: 10px;
 			}
 			video{
-				width: calc(200% + 1px);
+				width: 380px;
+			}
+		}
+	}
+}
+@include md {
+	.freelancer-portfolio-preview {
+		justify-content: flex-end;
+		.portfolio__preview--outer {
+			.portfolio__preview {
+
 			}
 		}
 	}
@@ -109,8 +119,8 @@ export default {
 	.freelancer-portfolio-preview {
 		justify-content: flex-end;
 		.portfolio__preview--outer {
-			max-width: 127px;
 			.portfolio__preview {
+				margin-right: 0;
 			}
 		}
 	}
@@ -121,7 +131,6 @@ export default {
 		.portfolio__preview--outer {
 			margin-left: 18px;
 			margin-right: 18px;
-			max-width: 180px;
 
 		}
 	}
@@ -130,13 +139,12 @@ export default {
 @include xxl {
 	.freelancer-portfolio-preview {
 		.portfolio__preview--outer {
-			max-width: 198px;
+
 		}
 
 		.portfolio__preview {
 			video{
-				width: calc(200% + 36px);
-				border-radius: 3px;
+
 			}
 		}
 	}

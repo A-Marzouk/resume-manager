@@ -98,6 +98,7 @@ export default {
 .freelancers-list-view {
 	padding-top: 15px;
 	padding-bottom: 15px;
+
 	.freelancers-list-view-item {
 		padding-top: 28px;
 		padding-bottom: 28px;
@@ -110,14 +111,45 @@ export default {
 
 @include md {
 	.freelancers-list-view {
+		padding-right: 0;
+		max-height: initial;
+		overflow-y: auto;
+
 		.freelancers-list-view-item {
 			margin-bottom: 34px;
 		}
 	}
 }
 
+@include lg {
+	.freelancers-list-view {
+		padding-right: 64px;
+		max-height: 50vh;
+		overflow-y: auto;
+
+		&::-webkit-scrollbar {
+			width: 5px;
+			border-radius: 6px;
+		}
+
+		&::-webkit-scrollbar-track {
+			background: #E6E8FC;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background: #001CE2;
+			border-radius: 6px;
+		}
+
+		&::-webkit-scrollbar-thumb:hover {
+			background: #001CE1;
+		}
+	}
+}
+
 @include xl {
 	.freelancers-list-view {
+
 		.freelancers-list-view-item {
 			padding-top: 30px;
 			padding-bottom: 48px;

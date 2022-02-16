@@ -1,5 +1,5 @@
 <template>
-	<div class="freelancers-list-view">
+	<div class="freelancers-list-view" id="freelancers-list">
 		<FreelancersListViewItem v-for="(profile, profileIndex) in filteredProfiles" :profile="profile" :profileIndex="profileIndex" :key="profile.id" @oncontact="onContact" />
 		<ContactFreelancerModal :isOpen="isContactFreelancerModalOpen" :freelancer="contactModalFreelancer" @onclose="onContactFreelancerModalClosed" />
 		<PortfolioImagePreviewPoup />

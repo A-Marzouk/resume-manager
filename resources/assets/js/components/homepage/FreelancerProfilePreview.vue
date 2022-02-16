@@ -47,17 +47,17 @@
             <div class="detail__action">
                 <a class="action__hireme" href="javascript:void(0)" @click="hireMeModal = true">Hire me</a>
 
-                <div class="user-hire-info">
-                    <div class="rate">
-                        <div>$25</div>
-                        <span>Hourly</span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="availability" v-if="freelancer.availability">
-                        <div v-if="freelancer.availability.length > 0">{{freelancer.availability[0].available_hours}} hours</div>
-                        <span v-if="freelancer.availability.length > 0">{{freelancer.availability[0].available_hours_frequency}}</span>
-                    </div>
-                </div>
+                <!--<div class="user-hire-info">-->
+                    <!--<div class="rate">-->
+                        <!--<div>$25</div>-->
+                        <!--<span>Hourly</span>-->
+                    <!--</div>-->
+                    <!--<div class="divider"></div>-->
+                    <!--<div class="availability" v-if="freelancer.availability">-->
+                        <!--<div v-if="freelancer.availability.length > 0">{{freelancer.availability[0].available_hours}} hours</div>-->
+                        <!--<span v-if="freelancer.availability.length > 0">{{freelancer.availability[0].available_hours_frequency}}</span>-->
+                    <!--</div>-->
+                <!--</div>-->
 
             </div>
         </div>

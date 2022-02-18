@@ -43,17 +43,9 @@ export default {
             if (!this.loadingMore && this.currentPage < this.lastPage && scrollBottom <= 92) {
                 this[this.loadMoreMethodName]();
             }
-        },
-        onListScroll() {
-            let list = document.getElementById('freelancers-list');
-            const scrollBottom = list.scrollHeight - list.scrollTop - list.clientHeight;
-            if (!this.loadingMore && this.currentPage < this.lastPage && scrollBottom <= 92) {
-                this[this.loadMoreMethodName]();
-            }
-        },
+        }
     },
     mounted() {
         $('body').on('scroll', this.onScroll);
-        $('#freelancers-list').on('scroll', this.onListScroll);
     },
 }

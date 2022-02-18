@@ -122,29 +122,7 @@ export default {
 }
 
 @include lg {
-	.freelancers-list-view {
-		padding-right: 64px;
-		max-height: 50vh;
-		overflow-y: auto;
 
-		&::-webkit-scrollbar {
-			width: 5px;
-			border-radius: 6px;
-		}
-
-		&::-webkit-scrollbar-track {
-			background: #E6E8FC;
-		}
-
-		&::-webkit-scrollbar-thumb {
-			background: #001CE2;
-			border-radius: 6px;
-		}
-
-		&::-webkit-scrollbar-thumb:hover {
-			background: #001CE1;
-		}
-	}
 }
 
 @include xl {

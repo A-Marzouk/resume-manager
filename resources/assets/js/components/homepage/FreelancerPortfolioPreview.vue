@@ -141,7 +141,7 @@ export default {
 			video {
 				top: 0;
 				right: 0;
-				width: auto;
+				width: 100%;
 				height: 200px;
 				object-fit: cover;
 				cursor: pointer;

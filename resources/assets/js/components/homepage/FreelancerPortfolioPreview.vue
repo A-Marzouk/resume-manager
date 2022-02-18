@@ -3,17 +3,16 @@
 
 		<div class="portfolio__preview--outer" v-if="videos.length > 0">
 			<div class="portfolio__preview">
-				<video width="100%" controls>
-					<source :src="videos[0].url" type="video/mp4">
+				<div class="video-holder" @click="playVideo"  v-show="!isVideoPlaying()">
+					<img src="/images/home/video-background.png" alt="background" class="background-image">
+					<img src="/images/home/video-play-icon.png" alt="play-icon" class="play-icon">
+				</div>
+				<video width="100%" @pause="videoPaused" controls v-show="isVideoPlaying()" class="videoElement" :id="`video_${videos[0].id}`" >
+					<!--<source :src="videos[0].url" type="video/mp4" :id="`video_${videos[0].id}`" class="videoElement">-->
+					<source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" >
 				</video>
 			</div>
 		</div>
-
-		<!--<div v-lazy-container="{ selector: 'img' }" class="portfolio__preview&#45;&#45;outer" v-for="(project, projectIndex) in getFirstProjects" :key="project.id">-->
-			<!--<div v-if="project.images.length && project.images[0].src" class="portfolio__preview" @click="onPreview(projectIndex)">-->
-				<!--<img :data-src="project.images[0].src" :alt="project.name">-->
-			<!--</div>-->
-		<!--</div>-->
 	</div>
 </template>
 
@@ -55,6 +54,31 @@ export default {
 				projectIndex,
 			};
 		},
+		playVideo(){
+			let currentVideoID = `video_${this.videos[0].id}`;
+			let currentVideoElement = document.getElementById(currentVideoID) ;
+
+			$(".videoElement:not(currentVideoID)").each(function() {
+				$(this).get(0).pause();
+			});
+
+			currentVideoElement.play();
+
+			this.$forceUpdate();
+
+		},
+		isVideoPlaying(){
+			let currentVideoElement = document.getElementById(`video_${this.videos[0].id}`) ;
+			if(currentVideoElement){
+				return !currentVideoElement.paused
+			}
+
+			return  false;
+		},
+		videoPaused(){
+			console.log('video paused');
+			this.$forceUpdate();
+		}
 	},
 };
 </script>
@@ -90,17 +114,41 @@ export default {
 
 			}
 
-			img,video {
+			.video-holder{
+				position: relative;
+				width: auto;
+				height: 200px;
+				border-radius: 10px;
+				overflow: hidden;
+
+				&:hover{
+					cursor: pointer;
+				}
+
+				.background-image{
+					border-radius: 10px;
+					width: 100%;
+				}
+
+				.play-icon{
+					position: absolute;
+					top: calc(50% - 15px);
+					left: calc(50% - 13px);
+					width: 26px;
+					height: 30px;
+				}
+			}
+
+			video {
 				top: 0;
 				right: 0;
-				width: 100%;
+				width: auto;
+				height: 200px;
 				object-fit: cover;
 				cursor: pointer;
 				border-radius: 10px;
 			}
-			video{
-				width: 380px;
-			}
+
 		}
 	}
 }

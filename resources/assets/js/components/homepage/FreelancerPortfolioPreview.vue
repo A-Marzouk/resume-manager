@@ -8,8 +8,7 @@
 					<img src="/images/home/video-play-icon.png" alt="play-icon" class="play-icon">
 				</div>
 				<video width="100%" @pause="videoPaused" controls v-show="isVideoPlaying()" class="videoElement" :id="`video_${videos[0].id}`" >
-					<!--<source :src="videos[0].url" type="video/mp4" :id="`video_${videos[0].id}`" class="videoElement">-->
-					<source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" >
+					<source :src="videos[0].url" type="video/mp4" >
 				</video>
 			</div>
 		</div>

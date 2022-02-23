@@ -1,5 +1,5 @@
 <template>
-	<div v-if="projects.length" class="freelancer-portfolio-preview">
+	<div class="freelancer-portfolio-preview">
 
 		<div class="portfolio__preview--outer" v-if="videos.length > 0">
 			<div class="portfolio__preview">

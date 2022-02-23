@@ -102,7 +102,7 @@ class StripeForClientsController extends Controller
         return StripePrice::create([
             'product' => $product_id,
             'unit_amount' => $request->payment_info['toPayNowAmount'] * 100, // USD in cents
-            'currency' => 'usd',
+            'currency' => 'gbp',
         ]);
     }
 
@@ -111,7 +111,7 @@ class StripeForClientsController extends Controller
         return StripePrice::create([
             'product' => $product_id,
             'unit_amount' => $request->payment_info['toPayLaterAmount'] * 100, // USD in cents
-            'currency' => 'usd',
+            'currency' => 'gbp',
         ]);
     }
 
@@ -166,7 +166,7 @@ class StripeForClientsController extends Controller
         return StripePrice::create([
             'product' => $product_id,
             'unit_amount' => $request->payment_info['toPayNowAmount'] * 100, // USD in cents
-            'currency' => 'usd',
+            'currency' => 'gbp',
             // pass interval only if recurring payment.
             'recurring' => [
                 'interval' => $request->payment_info['interval'],
@@ -179,7 +179,7 @@ class StripeForClientsController extends Controller
         return StripePrice::create([
             'product' => $product_id,
             'unit_amount' => $request->payment_info['toPayLaterAmount'] * 100, // USD in cents
-            'currency' => 'usd',
+            'currency' => 'gbp',
             // pass interval only if recurring payment.
             'recurring' => [
                 'interval' => $request->payment_info['interval'],

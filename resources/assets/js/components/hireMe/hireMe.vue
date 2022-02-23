@@ -27,7 +27,7 @@
                     <div class="user-name">
                       {{ user.name }} - {{ user.job_title }}
                     </div>
-                    <div class="user-rate">${{user.hourlyRate}}/Hour</div>
+                    <div class="user-rate">£{{user.hourlyRate}}/Hour</div>
                   </v-col>
                 </v-row>
                 <!-- Profile Info -->
@@ -44,7 +44,7 @@
                         disabled
                         class="rate-input text"
                         name="hourly_rate"
-                        :value="'$' + userHourlyRate"
+                        :value="'£' + userHourlyRate"
                       />
                     </v-col>
                     <v-col cols="2" sm="auto" class="text-center">
@@ -69,7 +69,7 @@
                         disabled
                         class="rate-input total"
                         name="weekly-rate"
-                        :value="'$' + paymentTotal"
+                        :value="'£' + paymentTotal"
                       />
                     </v-col>
                   </v-row>
@@ -83,7 +83,7 @@
                   <div class="total-payment_text">
                     Your weekly payment will be
                   </div>
-                  <div class="total-payment_value pl-2 pl-md-3">${{ paymentTotal }}</div>
+                  <div class="total-payment_value pl-2 pl-md-3">£{{ paymentTotal }}</div>
                 </div>
               </v-col>
               <!-- Total Payment -->

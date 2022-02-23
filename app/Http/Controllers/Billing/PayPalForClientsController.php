@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Billing;
 use App\Billing\paymentGatewayInfo;
 use App\Client;
 use App\Http\Controllers\Controller;
-use App\Subscription;
+use App\Billing\Subscription;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -92,7 +92,7 @@ class PayPalForClientsController extends Controller
 
         // Set payment amount
         $amount = new Amount();
-        $amount->setCurrency("USD")
+        $amount->setCurrency("GBP")
             ->setTotal($request->payment_info['toPayNowAmount']);
 
         // Set transaction object
@@ -146,7 +146,7 @@ class PayPalForClientsController extends Controller
             ->setFrequency($request->payment_info['interval'])
             ->setFrequencyInterval('1')
             ->setCycles($request->payment_info['iterations'] === 'ongoing' ? '12' : $request->payment_info['iterations'])
-            ->setAmount(new Currency(array('value' => $request->payment_info['toPayNowAmount'], 'currency' => 'USD')));
+            ->setAmount(new Currency(array('value' => $request->payment_info['toPayNowAmount'], 'currency' => 'GBP')));
 
 
         // Set merchant preferences
@@ -382,7 +382,7 @@ class PayPalForClientsController extends Controller
         $invoice_item = new InvoiceItem();
 
         $unit_price = new Currency();
-        $unit_price->setCurrency('USD');
+        $unit_price->setCurrency('GBP');
         $unit_price->setValue($request->payment_info['toPayLaterAmount']);
 
 

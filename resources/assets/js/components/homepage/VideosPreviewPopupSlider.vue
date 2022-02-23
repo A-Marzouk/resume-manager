@@ -14,7 +14,7 @@
                     <div class="preview-popup-slider__slide" v-lazy-container="{ selector: 'img' }"
                          v-for="(video, videoIndex) in videos" :key="video.id + '-' + videoIndex">
                         <div class="image-preview-popup__preview">
-                            <a class="popup-preview__slide" href="javascript:void(0)">
+                            <a class="popup-preview__slide video" href="javascript:void(0)">
                                 <video width="100%" controls>
                                     <source :src="video.url" type="video/mp4">
                                 </video>
@@ -231,8 +231,22 @@
 
                         img {
                             width: 100%;
+                            max-width: 380px;
                             height: auto;
                             border-radius: inherit;
+                        }
+                    }
+
+                    a.video{
+                        width: auto;
+                        height: 100%;
+                        display: flex;
+                        border-radius: 10px;
+                        justify-content: center;
+
+                        video{
+                            width: auto;
+                            height: 100%;
                         }
                     }
                 }

@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Billing;
 
+use App\Client;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 

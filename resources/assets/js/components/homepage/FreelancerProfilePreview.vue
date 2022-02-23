@@ -30,9 +30,7 @@
                 <a :href="freelancer.workforce_url" target="_blank">
                     {{ freelancer.name }}
                     <span class="detail-title__jobtitle" v-text="freelancer.job_title"></span><br/>
-                    <span class="detail-title__rate">
-                        $55/Hourly
-                    </span>
+                    <span class="detail-title__rate"></span>
                     <span class="detail-title__rate" v-if="freelancer.availability">
                         <span v-if="freelancer.availability.length > 0">
                             | {{freelancer.availability[0].available_hours}} hours/{{freelancer.availability[0].available_hours_frequency}}
@@ -47,17 +45,19 @@
             <div class="detail__action">
                 <a class="action__hireme" href="javascript:void(0)" @click="hireMeModal = true">Hire me</a>
 
-                <!--<div class="user-hire-info">-->
-                    <!--<div class="rate">-->
-                        <!--<div>$25</div>-->
-                        <!--<span>Hourly</span>-->
-                    <!--</div>-->
-                    <!--<div class="divider"></div>-->
-                    <!--<div class="availability" v-if="freelancer.availability">-->
-                        <!--<div v-if="freelancer.availability.length > 0">{{freelancer.availability[0].available_hours}} hours</div>-->
-                        <!--<span v-if="freelancer.availability.length > 0">{{freelancer.availability[0].available_hours_frequency}}</span>-->
-                    <!--</div>-->
-                <!--</div>-->
+                <div class="user-hire-info">
+                    <div class="rate">
+                        <div>£25</div>
+                        <span>Hourly</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="availability" v-if="freelancer.availability">
+                        <div v-if="freelancer.availability.length > 0">{{freelancer.availability[0].available_hours}} hours</div>
+                        <div v-else>20 hours</div>
+                        <span v-if="freelancer.availability.length > 0">{{freelancer.availability[0].available_hours_frequency}}</span>
+                        <span v-else>weekly</span>
+                    </div>
+                </div>
 
             </div>
         </div>

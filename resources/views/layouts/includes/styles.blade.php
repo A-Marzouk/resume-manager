@@ -1,5 +1,5 @@
 {{-- faveicon --}}
-<link rel="shortcut icon" href="/images/logo123.png">
+<link rel="shortcut icon" href="/images/new_homepage/123workforce_logo_icon.png">
 
 <!-- Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>

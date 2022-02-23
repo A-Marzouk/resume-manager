@@ -4,12 +4,22 @@
 		<div class="portfolio__preview--outer" v-if="videos.length > 0">
 			<div class="portfolio__preview">
 				<div class="video-holder" @click="playVideo"  v-show="!isVideoPlaying()">
-					<img src="/images/home/video-background.png" alt="background" class="background-image">
+					<img :src="videos[0].media_preview" v-if="videos[0].media_preview" alt="background" class="background-image">
+					<img src="/images/home/video-background.png" v-else alt="background" class="background-image">
+
 					<img src="/images/home/video-play-icon.png" alt="play-icon" class="play-icon">
 				</div>
 				<video width="100%" @pause="videoPaused" controls v-show="isVideoPlaying()" class="videoElement" :id="`video_${videos[0].id}`" >
 					<source :src="videos[0].url" type="video/mp4" >
 				</video>
+			</div>
+		</div>
+
+		<div class="portfolio__preview--outer" v-else>
+			<div class="portfolio__preview">
+				<div class="video-holder">
+					<img src="/images/home/video-placeholder.png" alt="background" class="background-image">
+				</div>
 			</div>
 		</div>
 	</div>
@@ -127,6 +137,7 @@ export default {
 				.background-image{
 					border-radius: 10px;
 					width: 100%;
+					max-width: 380px;
 				}
 
 				.play-icon{

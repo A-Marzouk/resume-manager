@@ -6,7 +6,7 @@
 					<svg :width="getIcon('search.prepend', '#707B99').width" :height="getIcon('search.prepend', '#707B99').height" fill="none" xmlns="http://www.w3.org/2000/svg" v-html="getIcon('search.prepend', '#707B99').path"></svg>
 				</label>
 
-				<input id="form__keyword-input" class="form__keyword-input" type="text" :value="sharedStore.state.q" @input="onSearchInputChange($event.target.value)" @focus="isSearching=true" @click.stop @keydown.delete="onInputDeleteKeyDown($event.target.value)" autocomplete="off" placeholder="Search freelance developers for Hire">
+				<input id="form__keyword-input" class="form__keyword-input" type="text" :value="sharedStore.state.q" @input="onSearchInputChange($event.target.value)" @focus="isSearching=true" @click.stop @keydown.delete="onInputDeleteKeyDown($event.target.value)" autocomplete="off" placeholder="Search developers for Hire">
 
 				<transition-group name="dropdown-list" tag="div" class="search-prediction-dropdown" :class="{'--open': isSearching}" @click.stop>
 					<div class="search-prediction-dropdown__item" :class="{'--chosen':isPredictionChosen(prediction)}" v-for="prediction in predictions" :key="prediction" v-text="prediction" @click="onPredictionChosen(prediction)"></div>
